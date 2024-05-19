@@ -1,0 +1,34 @@
+# Site settings
+title: CS 61BL Summer 2023
+email: cs61bl@berkeley.edu
+description: Data Structures & Programming Methodology
+keywords: CS 61BL, Computer Science, CS, 61BL, Data Structures, Programming Methodology, UC Berkeley, EECS
+url: https://cs61bl.org
+baseurl: /su23
+permalink: /:year/:month/:day
+avatar: assets/img/cs61bl.png
+
+# Resources
+github: https://github.com/cs61bl
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+sass:
+    sass_dir: _sass
+    style: compressed
+plugins:
+    - jekyll-relative-links
+    - jekyll-redirect-from
+    - jekyll-seo-tag
+tz: -0700
+timezone: America/Los_Angeles
+exclude:
+    - Gemfile
+    - Gemfile.lock
+    - README.md
+    - '**/README.md'
+    - Makefile
+    - .vscode
+port: 8000
+

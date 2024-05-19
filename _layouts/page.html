@@ -1,0 +1,93 @@
+---
+layout: default
+---
+
+{%- if page.searchable -%}
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none">
+  <symbol id="svg-search" viewBox="0 0 24 24">
+    <title>Search</title>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="feather feather-search"
+    >
+      <circle cx="11" cy="11" r="8"></circle>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+    </svg>
+  </symbol>
+</svg>
+{%- endif -%}
+
+<header class="call-out"
+    {%- if page.feature-img -%}
+    style="background-image: url('{{ site.baseurl }}{{ page.feature-img }}')"
+    {%- endif -%}>
+  <h1 id="{{ page.title | slugify }}" class="title">
+    {{ page.title }}
+  </h1>
+  {%- if page.subtitle -%}
+  <h2 class="subtitle">{{ page.subtitle }}</h2>
+  {%- endif -%}
+  {%- assign page_tags = page.tags | join: '|' -%}
+</header>
+
+{%- if page.searchable -%}
+<div class="search">
+  <div class="search-input-wrap">
+    <label for="search-input" class="search-label">
+      <svg viewBox="0 0 24 24" class="search-icon">
+        <use xlink:href="#svg-search"></use>
+      </svg>
+    </label>
+    <input
+      type="text"
+      id="search-input"
+      class="search-input"
+      tabindex="0"
+      placeholder="Search {{ page.title }}"
+      aria-label="Search {{ page.title }}"
+      autocomplete="off"
+    >
+  </div>
+  <div id="search-results" class="search-results"></div>
+</div>
+{%- endif -%}
+<article class="post-flex {% if page.feature-img %}feature-image{% endif %}">
+  <section class="post-content {% if page.no_toc %}no-toc{% endif %}">
+    {%- if page.released or jekyll.environment == "debug" -%}
+        {%- assign anchor_h_min = page.anchor.h_min | default: 1 -%}
+        {%- assign anchor_h_max = page.anchor.h_max | default: 6 -%}
+        {%- include
+            anchor_headings.html
+            html=content
+            h_min=anchor_h_min
+            h_max=anchor_h_max
+            anchorBody="#"
+            anchorClass="anchor_heading"
+        -%}
+    {%- else -%}
+      <h3><em>{{ page.title }}</em><br>has not been released yet.</h3>
+    {%- endif -%}
+  </section>
+  {%- unless page.no_toc -%}
+  <nav class="post-nav {% if page.title contains 'FAQ' %}post-nav-faq{% endif %}">
+    {%- if page.released or jekyll.environment == "debug" -%}
+        {% assign toc_h_min = page.toc.h_min | default: 1 %}
+        {% assign toc_h_max = page.toc.h_max | default: 3 %}
+        {% include toc.html html=content h_min=toc_h_min h_max=toc_h_max %}
+    {%- endif -%}
+  </nav>
+  {%- endunless -%}
+</article>
+
+{%- if page.searchable -%}
+<script src="{{ site.baseurl }}/assets/js/lunr.min.js" defer></script>
+<script src="{{ site.baseurl }}/assets/js/search.js" defer></script>
+{%- endif -%}

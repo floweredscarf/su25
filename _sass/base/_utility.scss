@@ -1,0 +1,108 @@
+// Mix-ins
+%padding-small {
+    padding: $padding-x-small $padding-x-small * 2;
+    @media (max-width: $break) {
+        padding: $padding-x-small $padding-x-small;
+    }
+}
+
+%padding-regular {
+    padding: $padding-small $padding-large;
+    @media (max-width: $break) {
+        padding: $padding-small $padding-large / 2;
+    }
+}
+
+// Responsive tables
+.table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+// Buttons
+.button {
+    border-radius: 2em;
+    border: 1px solid;
+    display: inline-block;
+    margin: 0.25em;
+    padding: 0.5em 1em;
+}
+
+a.button {
+    @extend .button-link;
+}
+
+.button-link {
+    text-decoration: none;
+    &:hover {
+        background: $link-color;
+        border: 1px solid $link-color;
+        color: $background-color;
+    }
+}
+
+.body-link {
+    text-decoration: underline;
+    &:hover {
+        color: darken($link-color, 15%);
+    }
+}
+
+.post-link {
+    &:hover {
+        text-decoration: none;
+        color: lighten($link-color, 10%);
+    }
+}
+
+.big-input {
+    display: block;
+    width: 100%;
+    height: 46px;
+    padding: 6px 12px;
+    font-size: 18px;
+    line-height: 1.43;
+    color: $text-color;
+    background: $background-color none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
+    -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+
+    &:focus,
+    &:hover {
+        border-color: $link-color;
+        outline: 0;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px transparentize($link-color, .6);
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px transparentize($link-color, .6);
+    }
+
+    input {
+        &[type=text] {
+            height: 46px;
+            padding: 10px 16px;
+            font-size: 18px;
+            line-height: 1.33;
+            border-radius: 6px;
+        }
+    }
+}
+
+// States
+.disabled {
+    opacity: 0.7;
+}
+
+// Custom
+.text-center {
+    text-align: center;
+}
+
+.right {
+    float: right;
+}

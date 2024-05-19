@@ -1,0 +1,149 @@
+staffers:
+- biography: Pronouns:he/him<br><br>Salams! I'm Ali, a rising junior from Tracy, CA.
+    Click the link on my name to discover the best version of Spider-Man ever. Thank
+    me later.
+  email: khani@berkeley.edu
+  name: Ali Khani
+  p1: assets/img/staff/ali.jpeg
+  website: https://youtu.be/3-RW3nUHs8g
+- biography: "Pronouns:he/him<br><br>Hello there! I\u2019m a third-year majoring in\
+    \ Computer Science and Political Science and minoring in Journalism! You can usually\
+    \ find me wearing bright red beats headphones probably listening to some Bowie\
+    \ or some OSTs. Right now, as I'm writing this I am reading Dune, but I also enjoy\
+    \ watching Better Call Saul, Succession and Ghibli movies. I also really love\
+    \ playing piano and Super Metroid! I hope to be as helpful to you as a data structure\
+    \ is to an algorithm/project! So feel free to reach out (especially if you have\
+    \ any recommendations)!"
+  email: aaaldaco2002@berkeley.edu
+  name: Angel Aldaco
+  p1: assets/img/staff/angel.png
+- biography: Pronouns:he/him/his<br><br>Hi! My name is Anniyat and I am a rising junior
+    from Kazakhstan. Apart from teaching, I really enjoy watching detectives, ballroom
+    dancing, and listening to Frank Sinatra's songs. When it comes to food, I am (unhealthily)
+    obsessed with Seoul Hotdog!
+  email: kanniyat@berkeley.edu
+  name: Anniyat Karymsak
+  p1: assets/img/staff/anniyat.PNG
+  website: https://www.youtube.com/watch?v=PSbvcGnfaXg&t=17s
+- biography: Pronouns:she/her<br><br>Hi! I'm Ashley and I'm a rising third-year EECS
+    major from Irvine, CA. This will be my second time on 61B staff. When I'm not
+    thinking about 61bees, you can find me obsessing over public transit or hunting
+    for shiny Pokemon. Looking forward to meeting you all!
+  email: ashleykao@berkeley.edu
+  name: Ashley Kao
+  p1: assets/img/staff/ashley.jpg
+- biography: Pronouns:she/her<br><br>Hii, I'm Ayati! I'm a rising junior from India
+    studying CS (and CogSci/BioE). This was my favourite class and I'm super excited
+    to be teaching 61B again! I really enjoy reading, dancing, art history and learning
+    about the brain & human genome. In my free time you'll find me listening to music
+    and binge watching films. Feel free to reach out to me anytime and looking forward
+    to meeting everyone :D
+  email: ayati.sharma@berkeley.edu
+  name: Ayati Sharma
+  p1: assets/img/staff/ayati.jpeg
+- biography: Pronouns:he/him/his<br><br>Hi! I'm originally from Shenzhen, China and
+    this is my 4th time on 61B(L) course staff. I enjoy drawing connections between
+    computer science, gaming, and real life. I'm a very active Genshin Impact player
+    and I also make mods for some other games. I'd be very happy if you'd like to
+    chat with me about the above things outside class. Also try out my linked game
+    - it's different from the previous years ;)
+  email: circlecly@berkeley.edu
+  name: Circle Chen
+  p1: assets/img/staff/circle.jpg
+  website: https://circlecly.itch.io/ship-wars
+- biography: Pronouns:he/him<br><br>Hi everyone! My name is David and I'm a rising
+    junior studying CS and Linguistics from Tallahassee, Florida. In my free time,
+    I enjoy rock-climbing, playing music, chess, and keeping my Duolingo streak. Please
+    reach out to me if you wanna talk about any common  interests or simply want to
+    chat. Looking forward to meeting everyone!
+  email: davidmyang@berkeley.edu
+  name: David Yang
+  p1: assets/img/staff/david.jpg
+- biography: Pronouns:He series<br><br>Heyoooo I'm Dylan! I'm a rising Junior in EECS
+    and I'm really excited support y'all through 61B. I loved 61B and I hope you will
+    too! Always feel free to reach out if you have any questions about absolutely
+    anything. I'm here to help!
+  email: dylanhamuy@berkeley.edu
+  name: Dylan Hamuy
+  p1: assets/img/staff/dylan.jpg
+  website: https://stackoverflow.com/questions/2609857/are-there-any-worse-sorting-algorithms-than-bogosort-a-k-a-monkey-sort
+- biography: Pronouns:she/her/hers<br><br>Hi! I'm Elana, a junior majoring in computer
+    science. In addition to being a TA, I am also a CSM senior mentor for 61B. When
+    I'm not teaching data structures and algorithms, I enjoy drawing, learning foreign
+    languages, and watching anime. I'm super excited to meet you all, and I look forward
+    to a fun summer! Please feel free to reach out about anything :3
+  email: elanaho@berkeley.edu
+  name: Elana Ho
+  p1: assets/img/staff/elana.JPG
+  website: https://forms.gle/8eiJNPKr3aF7fUrr6
+- biography: "Pronouns:he/him<br><br>Hi everyone! I\u2019m Erik, a rising junior from\
+    \ Fresno, California, and I\u2019m majoring in EECS. This is my first time as\
+    \ a TA for 61BL and I'm very excited to meet all of you.  As of late, I've been\
+    \ spending my free time playing Super Smash Bros and TOTK, going bowling, and\
+    \ brushing up my basketball skills.  I'm happy to chat anytime, feel free to shoot\
+    \ me an email if you have any questions about 61B or anything else."
+  email: erikkizior@berkeley.edu
+  name: Erik Kizior
+  p1: assets/img/staff/erik.jpeg
+- biography: Pronouns:she/her/they<br><br>Boba. Matcha. Boba.
+  email: jaslin@berkeley.edu
+  name: Jasmine Lin
+  p1: assets/img/staff/jasmine.jpg
+- biography: Pronouns:he/him/his<br><br>Heyo! I'm Jedi, an incoming master's student
+    focusing on CS education. I'll be developing content, managing academic interns,
+    and handling misconduct this summer (fun stuff). I previously ran exams and student
+    support for the class too! Ask me about politics (particularly campaign finance),
+    volleyball, or the new season of Black Mirror that's coming out soon :O
+  email: jedidiahtsang@berkeley.edu
+  name: Jedidiah Tsang
+  p1: assets/img/staff/jedidiah.jpg
+- biography: Pronouns:he/him/his<br><br>Hey there! I'm Kevin, a rising Junior majoring
+    in Computer Science. Taking CS61B has been a fantastic experience for me, so I
+    hope I can help you get the most out of this class as well. In my free time, I
+    like to learn about game design and development, and I am also currently trying
+    to learn how to cook. Feel free to reach out about anything!
+  email: kevinsheng@berkeley.edu
+  name: Kevin Sheng
+  p1: assets/img/staff/kevin.jpeg
+- biography: "Hi guys! I'm Noemi, a rising third year CS\
+    \ + Math major. I'm a huge nerd and a video game lover. In my free time you can\
+    \ find me making art, playing videogames (Tears of the Kingdom and Minecraft at\
+    \ the moment!), cooking, and hanging out with friends. My favorite restaurant\
+    \ in Berkeley is Momo Masala's. \n\nI also have a really good 88-hour-long study\
+    \ music playlist on Spotify: \nhttps://open.spotify.com/playlist/7m6PiiqIJI8V1pkSnLEJwN?si=bf3d13621eb74a74"
+  email: noemi.chulo@berkeley.edu
+  name: Noemi Chulo
+  p1: assets/img/staff/noemi.png
+- biography: Pronouns:he/him<br><br>Hello! I'm Omar, a senior transfer majoring in
+    EECS. I'm an enthusiast of cats, cloudy rainy weather, and music of all kinds
+    (especially game OSTs). This summer, I'm planning on learning guitar, getting
+    back into playing tennis, and cooking yummy food. Please feel free to ask questions
+    about anything. Looking forward to a great summer of 61BL!
+  email: omaryu@berkeley.edu
+  name: Omar Yu
+  p1: assets/img/staff/omar.jpeg
+  website: https://www.youtube.com/watch?v=Y9r_BLEKd3o
+- biography: Pronouns:he/him<br><br>Hey all~ I'm a rising junior from Washington state.
+    I'm usually chained to the computer doing homework but when I'm not, you can find
+    me cooking or dancing in AFX :)
+  email: ronaldwang2025@berkeley.edu
+  name: Ronald Wang
+  p1: assets/img/staff/ronald.jpg
+- biography: 'Pronouns:she/her/hers<br><br>Hello wonderful people : ) My name is Teresa
+    and I am a rising junior studying Computer Science and Data Science. I am a seasonal
+    resident of Chengdu, Beijing, and Palos Verdes(LA), currently getting my daily
+    dose of corgi content, reading about software design principles, and trying to
+    learn how to play champagne problems on the piano. Looking forward to a fun summer
+    with you all!'
+  email: teresaluo1210@berkeley.edu
+  name: Teresa Luo
+  p1: assets/img/staff/teresa.jpg
+  website: https://www.youtube.com/watch?v=df7-56dcb-k
+- biography: Pronouns:she/her/hers<br><br>hi! i'm vanessa, a rising junior from the
+    bay area studying computer science and business. i like to crochet, play with
+    my cats, and make+listen to every possible genre of music. i love 61B(L) and am
+    incredibly excited to meet everyone!
+  email: vanessateo@berkeley.edu
+  name: Vanessa Teo
+  p1: assets/img/staff/vanessa.jpg
+title: Teaching Assistants

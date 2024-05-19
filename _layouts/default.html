@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% include head.html %}
+  <body>
+    {% include navbar.html %}
+    <div class="content">
+      {{ content }}
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/darkreader@4.9.44/darkreader.js"></script>
+        <script>
+      document.getElementsByClassName('dark-mode-button')[0].onclick = function() {
+        toggle_darkmode();
+    }
+
+      function toggle_darkmode() {
+      let enabled = localStorage.getItem('dark-mode')
+
+      if (enabled === null || enabled === 'false') {
+        enable();
+      } else {
+          disable();
+      }
+    }
+
+      function enable()  {
+      DarkReader.setFetchMethod(window.fetch);
+	      DarkReader.enable({brightness: 90,contrast: 95,sepia: 20});
+      localStorage.setItem('dark-mode', 'true');
+      document.getElementById('icon-dark').className = 'fa-solid fa-sun';
+    }
+
+    function disable() {
+      DarkReader.disable();
+      localStorage.setItem('dark-mode', 'false');
+      document.getElementById('icon-dark').className = 'fa-solid fa-moon';
+    }
+
+    function darkmode() {
+      let enabled = localStorage.getItem('dark-mode')
+
+      if (enabled === null) {
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            enable();
+        }
+      } else if (enabled === 'true') {
+        enable();
+      }
+    }
+
+    darkmode();
+
+    </script>
+    <div class="search-overlay"></div>
+  </body>
+</html>

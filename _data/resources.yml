@@ -1,0 +1,78 @@
+- title: Staff Guides
+  groups:
+    - heading: How To Guides
+      body: |
+          - [IntelliJ Weird Technical Failure Scenarios](guides/intellij-wtfs)
+          - [Using Intellij](guides/using-intellij)
+          - [Git Weird Technical Failure Scenarios](guides/git-wtfs)
+          - [Using Git](guides/using-git)
+          - [Official Course Style Guide](guides/style-guide)
+    - heading: Course Infrastructure
+      body: |
+          - [Adademic Misconduct](guides/academic-misconduct)
+          - [Partnership Guide](guides/partnership-guide)
+          - [Submissions and Extensions](guides/submissions-and-extensions)
+          - [Ed Policies and Guidelines](guides/ed)
+- title: Review Material
+  groups:
+      - heading: Past Exams
+        body: |
+            - [**Exam Studying Guide**](guides/study-guide)
+            - CS 61B: [HKN](https://hkn.eecs.berkeley.edu/exams/course/cs/61b), [TBP](https://tbp.berkeley.edu/courses/cs/61B/)
+            - CS 61BL: [HKN](https://hkn.eecs.berkeley.edu/exams/course/cs/61bl), [TBP](https://tbp.berkeley.edu/courses/cs/61BL/)
+            - [COS 226 (Princeton)](http://www.cs.princeton.edu/courses/archive/spring18/cos226/exams.php)
+- title: Staff Resources
+  groups:
+      - heading: Current Semester
+        body: |
+            - [Student Facing Google Drive](https://drive.google.com/drive/folders/1bXo2X7s_r2d-b9kwcKpVp8wMeUB20run?usp=drive_link)
+      - heading: Past Semesters
+        body: |
+            - [Circle Chen's Lab Materials](https://tinyurl.com/61bl-su22-circle-chen-slides)
+            - [Jasmine Lin's Lab Folder](https://drive.google.com/drive/folders/1RqcRFNValhL0MrTil-M9TjymOz1R5lnw?usp=sharing)
+            - [Allen Guo's Website](http://aguo.us/cs61b/)
+            - [Antares' and Vivian's Notes on Inheritance](https://drive.google.com/file/d/1lsSW3vrN7-x8SwsHqjfjDbAkyY0c_uv_/view?usp=sharing)
+            - [Christine Zhou's Materials](http://tinyurl.com/cs61b-christine-zhou)
+            - [Daniel Nguyen's Website](http://danielnguyen.io/cs61b/)
+            - [Jonathan Murata's Website](https://jonmurata.me/CS61BL_Su19/)
+            - [Kevin Lin's Website](http://kevinl.info/cs61b)
+            - [Matt Sit's Website](https://mattsit.github.io/cs61b)
+            - [Nicole's Videos on Typing, Overloading, and Overriding](https://www.youtube.com/playlist?list=PLEdR-EJ6X7NrMIEgC1chCWUUvmU0j5ftZ)
+            - [Wayne Li's Website](https://wayne-li2.github.io/sp18-cs61b)
+            - [Allyson's DMS Flowchart](https://drive.google.com/file/d/1I0vGBk-jF9bd7_SdqQcnbKQVsDDt_geq/view?usp=sharing)
+            - [Anton Zabreyko's Lab Slides](https://drive.google.com/drive/folders/14m17FjjOomjDqfpH3oOBiXikSK70xBZm?usp=sharing)
+            - [Aram Kazorian's Lab Materials (Slides/Notes)](https://drive.google.com/drive/folders/1CLlZgf7t1V2ZYuDLu_XkeRmrlrUCAHKj?usp=sharing)
+            - [Ayush Sehgal's Lab Materials (Slides/Notes)](https://drive.google.com/drive/folders/1kfi1oSp95mTWq-0lq_v6JIYi-mMOU63K?usp=sharing)
+            - [Jack Wang's Lab Materials (Slides/Notes)](https://drive.google.com/drive/folders/1wv9W4gDmSHtq-q8pNc42QXyN0lvm2SuT?usp=sharing)
+            - [Jedi Tsang's Lab Stuff](https://drive.google.com/drive/folders/1WPkrkE8MLXHEG5DU1CuBxP35ijnFfzcB?usp=sharing)
+            - [Rahul Shah's Reviews on each topic](https://rsha256.github.io/teaching/teaching.html)
+            - [Sadia Qureshi's Lab Materials](https://drive.google.com/drive/folders/1AIpnqTYgbs5o_vR8kU9FrFoSKtLB0rXs?usp=sharing)
+            - [Shirley Yu's Lab Slides](https://drive.google.com/drive/folders/1X7XpT489Dp0zAX0zceHwiUrgnIfQpodE?usp=sharing)
+            - [Sofia Roz's Notes](https://drive.google.com/drive/folders/1J6GfhOczln_e0GQE23t6DzcdaAUo3LpQ)
+            - [Aniruth Narayanan's Notes](https://aniruthn.com/teaching/su21-cs61bl)
+- title: Software Development
+  groups:
+      - heading: Tools and Visualization
+        body: |
+            - [Online Java Visualizer](https://cscircles.cemc.uwaterloo.ca/java_visualize/)
+      - heading: Documentation
+        body: |
+            - [Java Crash Course](https://cs61bl.org/su23/java/)
+            - [Java Library Documentation](https://docs.oracle.com/javase/10/docs/api/overview-summary.html)
+                - [`java.util` Documentation](https://docs.oracle.com/javase/10/docs/api/java/util/package-summary.html)
+            - [JUnit Documentation](https://junit.org/junit4/javadoc/latest/index.html)
+            - [Professor Hug's *Hug61B*](https://joshhug.gitbooks.io/hug61b/content/)
+
+- title: Data Structures & Algorithms
+  groups:
+      - heading: Visualizations
+        body: |
+            - [VisuAlgo](https://visualgo.net/en)
+            - [USFCA Visualizations](http://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
+      - heading: Textbooks
+        body: |
+            - [Offical Class Textbook](https://cs61b-2.gitbook.io/cs61b-textbook/)
+            - [Professor Hug's *Hug61B*](https://joshhug.gitbooks.io/hug61b/content/)
+            - [Data Structures Wikibook](http://en.wikibooks.org/wiki/Data_Structures)
+            - [Paul Hilfinger's Data Structures Reader](../materials/pnh-data-structures.pdf)
+            

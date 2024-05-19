@@ -1,0 +1,17 @@
+---
+layout: home
+javascript: >
+    $(document).ready(function() {
+        var currentTime = new Date();
+        $('.calendar .card').each(function(_, day) {
+            var cardDate = new Date($(day).data('date'));
+            var nextDate = new Date(cardDate);
+            nextDate.setDate(nextDate.getDate() + 1);
+            if (cardDate.getTime() <= currentTime && currentTime < nextDate.getTime()) {
+                $(day).addClass('card-today');
+                return false;
+            }
+        });
+    });
+---
+

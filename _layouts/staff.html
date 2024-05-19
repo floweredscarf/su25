@@ -1,0 +1,41 @@
+---
+layout: default
+---
+
+{% for role_key in page.roles %}
+{% assign role = site.data.staff[role_key] %}
+<section class="role" id="{{ role.title | slugify }}">
+  <div class="title">
+    <h1>{{ role.title }}</h1>
+    {%- if role.text -%}
+    {{ role.text | markdownify }}
+    {% endif %}
+  </div>
+  {% for staffer in role.staffers %}
+  <div class="staffer">
+    {%- if staffer.p1 -%}
+    <img class="staffer-img" src="{{ staffer.p1 }}" alt="{{ staffer.name }}">
+    {% endif %}
+    <div class="staffer-body">
+      <h2 class="staffer-name">
+        {%- if staffer.website -%}
+        <a href="{{ staffer.website }}" target="_blank">
+          {{ staffer.name }}
+        </a>
+        {%- else -%}
+        {{ staffer.name }}
+        {% endif %}
+      </h2>
+      {%- if staffer.email -%}
+      <h4 class="email">
+        <a href="mailto:{{ staffer.email }}">{{ staffer.email }}</a>
+      </h4>
+      {% endif %}
+      {%- if staffer.biography -%}
+      {{ staffer.biography | markdownify }}
+      {% endif %}
+    </div>
+  </div>
+  {% endfor %}
+</section>
+{% endfor %}
