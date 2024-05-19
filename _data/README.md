@@ -1,6 +1,6 @@
 When adding something to resources.yml, an example of adding a collection of worksheets and associated videos nested within a titled group can be found below (to follow):
 
-'''
+```
  - heading: Tutoring Worksheets
         body: |
             - <a href="./tutoring/Worksheet1.pdf">Worksheet 1</a> - <a href="./tutoring/Worksheet1Solutions.pdf">Solutions</a>
@@ -16,7 +16,7 @@ When adding something to resources.yml, an example of adding a collection of wor
             - <a href="./tutoring/Worksheet10.pdf">Worksheet 10</a> -  <a href="./tutoring/Worksheet10Solutions.pdf">Solutions</a> -  <a href="https://www.youtube.com/playlist?list=PLDMWsWbBOBRL_wyUJGH58Urs3COLiVUP4">Videos</a>
             - <a href="./tutoring/Worksheet11Tutoring.pdf">Worksheet 11</a> -  <a href="./tutoring/Worksheet11Solutions.pdf">Solutions</a> -  <a href="https://www.youtube.com/playlist?list=PLDMWsWbBOBRKWglUX25EA_JkT1nH6iaMB">Videos</a>
             - <a href="./tutoring/Worksheet12Tutoring.pdf">Worksheet 12</a> -  <a href="./tutoring/Worksheet12Solutions3.pdf">Solutions</a> -  <a href="https://www.youtube.com/playlist?list=PL1ES8VSiDf0UIpQiKauDXyTcmBKYirPlz">Videos</a>
-'''
+```
 
 
 To generate the tutors.csv and the zoom links, see the zoom_links_to_yaml.py script and download roster.
