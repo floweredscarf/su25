@@ -1,26 +1,2 @@
 staffers:
-- biography: Pronouns:she/her<br><br>Hi everyone! I'm a rising third-year CS + DS
-    major from Seattle. When I'm not tutoring, you can probably find me playing word
-    games/JRPGs, drinking ungodly amounts of caffeine, or finding new indie rock/k-pop
-    to put in my 1000+ song playlist. Excited to meet y'all and feel free to reach
-    out to me for anything :3
-  email: alyssa.427@berkeley.edu
-  name: Alyssa Smith
-  p1: assets/img/staff/alyssa.jpg
-  website: https://www.youtube.com/watch?v=wXFLzODIdUI
-- biography: 'Pronouns:he/him/his<br><br>Hello, I''m Hanqi Xiong and I''m a incoming
-    junior studying computer science and data science. On my free time I love to play
-    video games: geometry dash/ARAM/clash royale. Please don''t hesitate to contact
-    me if we have any games in common!'
-  email: hxiong@berkeley.edu
-  name: Hanqi Xiong
-  p1: assets/img/staff/hanqi.jpg
-- biography: Pronouns:he/him<br><br>zzz
-  email: j.tuazon@berkeley.edu
-  name: Julian Tuazon
-  p1: assets/img/staff/julian.PNG
-- biography: Pronouns:<br><br>Incoming sophomore who loves a good poem.
-  email: yixuanstonewu@berkeley.edu
-  name: Stone Wu
-  p1: assets/img/staff/stone.jpg
 title: Tutors
