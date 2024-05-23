@@ -6,6 +6,8 @@ released: true
 searchable: true
 ---
 
+# This is a draft of the course policies. Please note that details are subject to change.
+
 ## Welcome to CS 61BL
 
 The CS 61 series is an introduction to computer science, with particular
