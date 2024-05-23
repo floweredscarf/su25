@@ -1,96 +1,14 @@
-- staff: Ronald Wang
-  room: "[Zoom Link](https://berkeley.zoom.us/j/95215159658)"
-  theory: "[Zoom Link](https://berkeley.zoom.us/j/95215159658)"
-  time: 4 PM - 6 PM
-  oh_location:  Soda 320
-  oh_day: Friday
-  oh_time: 6 PM - 7 PM
-- staff: Ali Khani
-  room: "[Zoom Link](https://berkeley.zoom.us/j/93090091100)"
-  theory: "[Zoom Link](https://berkeley.zoom.us/j/93090091100)"
-  time: 4 PM - 6 PM
-  oh_location: Soda 275
-  oh_day: Monday
-  oh_time: 6 PM - 7 PM
-- staff: Angel Aldaco
-  room: Soda 273
-  theory: Soda 310
-  time: 2 PM - 4 PM
-  oh_location: "[Zoom Link](https://berkeley.zoom.us/my/angelaldaco)"
-  oh_day: Thursday
-  oh_time: 6 PM - 7 PM
-- staff: Anniyat Karymsak
-  room: Soda 275
-  theory: Soda 320
-  time: 2 PM - 4 PM
-  oh_location: "[Zoom Link](https://berkeley.zoom.us/my/anniyat)"
-  oh_day: Thursday
-  oh_time: 11 AM - 12 PM
-- staff: Ashley Kao
-  room: "[Zoom Link](https://berkeley.zoom.us/my/ashleykao)"
-  theory: "[Zoom Link](https://berkeley.zoom.us/my/ashleykao)"
-  time: 8 PM - 10 PM
-  oh_location: Soda 277
-  oh_day: Monday
-  oh_time: 6 PM - 7 PM
-- staff: Circle Chen
-  room: Soda 273
-  theory: Soda 310
-  time: 7 PM - 9 PM
-  oh_location: "[Zoom Link](https://berkeley.zoom.us/j/6743714920)"
-  oh_day: Tuesday
-  oh_time: 11 AM - 12 PM
-- staff: David Yang
-  room: Soda 275
-  theory: Soda 320
-  time: 12 PM - 2 PM
-  oh_location: "[Zoom Link](https://berkeley.zoom.us/j/98044332139?pwd=ZDJ2MWhpVXJRemhZSmhoRHZSTEhsUT09)" 
-  oh_day: Thursday
-  oh_time: 9 AM - 10 AM
-- staff: Dylan Hamuy
-  room: Soda 273
-  theory: Soda 310
-  time: 4 PM - 6 PM
-  oh_location: "[Zoom Link](https://berkeley.zoom.us/j/96356391527)"
-  oh_day: Wednesday
-  oh_time: 11 AM - 12 PM
-- staff: Elana Ho
-  room: "[Zoom Link](https://berkeley.zoom.us/j/95181123657)"
-  theory: "[Zoom Link](https://berkeley.zoom.us/j/95181123657)"
-  time: 7 PM - 9 PM
-  oh_location: Soda 310
-  oh_day: Thursday
-  oh_time: 4 PM - 5 PM
-- staff: Erik Kizior
-  room: "[Zoom Link](https://berkeley.zoom.us/j/96161442713)"
-  theory: "[Zoom Link](https://berkeley.zoom.us/j/96161442713)"
-  time: 8 PM - 10 PM
-  oh_location: Soda 275
-  oh_day: Tuesday
-  oh_time: 6 PM - 7 PM
-- staff: Kevin Sheng
-  room: "[Zoom Link](https://berkeley.zoom.us/j/91289452297)"
-  theory: "[Zoom Link](https://berkeley.zoom.us/j/91289452297)"
-  time: 4 PM - 6 PM
-  oh_location: Soda 273
-  oh_day: Tuesday
-  oh_time: 6 PM - 7 PM
-- staff: Noemi Chulo
-  room: "[Zoom Link](https://berkeley.zoom.us/my/noemichulo)"
-  theory: "[Zoom Link](https://berkeley.zoom.us/my/noemichulo)"
-  time: 8 PM - 10 PM
-  oh_location: Soda 277
-  oh_day: Tuesday
-  oh_time: 6 PM - 7 PM
-- staff: Omar Yu
-  room: Soda 277
-  theory: Soda 405
-  time: 4 PM - 6 PM
-  oh_location: "[Zoom Link](https://berkeley.zoom.us/my/omaryu)"
-  oh_day: Thursday
-  oh_time: 11 AM - 12 PM
-- staff: Vanessa Teo
-  room: Soda 273
-  theory: Soda 310
-  time: 12 PM - 2 PM 
-
+#- staff: Ronald Wang
+#  room: "[Zoom Link](https://berkeley.zoom.us/j/95215159658)"
+#  theory: "[Zoom Link](https://berkeley.zoom.us/j/95215159658)"
+#  time: 4 PM - 6 PM
+#  oh_location:  Soda 320
+#  oh_day: Friday
+#  oh_time: 6 PM - 7 PM
+#- staff: Anniyat Karymsak
+#  room: Soda 275
+#  theory: Soda 320
+#  time: 2 PM - 4 PM
+#  oh_location: "[Zoom Link](https://berkeley.zoom.us/my/anniyat)"
+#  oh_day: Thursday
+#  oh_time: 11 AM - 12 PM
