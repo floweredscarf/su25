@@ -2,7 +2,7 @@
 
 [BLear]: assets/img/blear.png
 
-# su23
+# su24
 
 The course website for CS 61BL Summer 2023, made with [Jekyll][],
 [Type-on-Strap][], and few components from [Bootstrap][].
