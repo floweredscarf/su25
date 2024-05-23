@@ -1,473 +1,208 @@
 - week: 1
   days:
-    - title: Observation of Juneteenth
-      type: Holiday
-      date: 2023-06-19
-      description: >
-        Welcome to CS 61BL!<br><br>
-      published: false
     - title: Java & Git
       type: Lab
-      date: 2023-06-20
+      date: 2024-06-17
       description: >
-         <br>
-         [Live Instructor Lab Link](https://berkeley.zoom.us/j/99839639142?pwd=SENyWitDVDN0bSt5VWR2MlhGQSt6dz09)<br><br>
-         Instructor Lab Time: 10-11am PDT<br>
-         Location: Dwinelle 145<br><br>
-         [Slides](https://docs.google.com/presentation/d/1Eose6fZRqWK9GWS7sfHMBDK97-QKx39bBZktZshoZUc/edit?usp=sharing)
-          |
-         [Video](https://bcourses.berkeley.edu/courses/1525530/external_tools/78985)
+        Welcome to CS 61BL!<br><br>
       url: labs/lab01
-      published: true
+      published: false
       footer: >
-        [Project 0: 2048](/su23/projects/game2048)
+        Project 0: 2048
     - title: Conditionals, Loops and Arrays
       type: Lab
-      date: 2023-06-21
-      description: >
-         <br>
-         [Live Lecture Link](https://berkeley.zoom.us/j/93681882489?pwd=WEo1MzJ2ZUNtTXc2ZUxSZ2hKZlJOdz09)<br><br>
-         Lecture Time: 9-10am PDT<br>
-         Location: VLSB 2050<br><br>
-         [Slides](https://docs.google.com/presentation/d/15jpq_Ctf0ZatM74wGc8_vHzv9x_I1cjyKyWcQPSrj4I/edit#slide=id.p)
-          |
-         [Video](https://bcourses.berkeley.edu/courses/1525530/external_tools/78985)
+      date: 2024-06-18
       url: labs/lab02
-      published: true
+      published: false
+    - title: Observation of Juneteenth
+      type: Holiday
+      date: 2024-06-19
+      published: false
     - title: Test Driven Development and Debugging
       type: Lab
-      date: 2023-06-22
-      description: >
-         <br>
-         [Live Instructor Lab Link](https://berkeley.zoom.us/j/99839639142?pwd=SENyWitDVDN0bSt5VWR2MlhGQSt6dz09)<br><br>
-         Instructor Lab Time: 10-11am PDT<br>
-         Location: Dwinelle 145<br><br>
-         [Slides](https://docs.google.com/presentation/d/1c6DbRtkXQVUiz-a2HcHckMrI4u2LwBtFtepxlDcv820/edit?usp=sharing)
-          |
-         [Video](https://bcourses.berkeley.edu/courses/1525530/external_tools/78985)
+      date: 2024-06-20
       url: labs/lab03
-      published: true
+      published: false
     - title: Introduction to Java Programming
       type: Theory
-      date: 2023-06-23
-      description: >
-         <br>
-         [Worksheet](https://drive.google.com/file/d/10d6fE4XUNUwUK32eaEPPHuntMZwGwD4n/view?usp=drive_link)
-          |
-         [Slides](https://docs.google.com/presentation/d/1_MRLxE3L3d0407uZp99Y3ZB8xz_VRfuFYaIopbln65k/edit?usp=drive_link)
-          |
-         [Solutions](https://drive.google.com/file/d/10fqyC62ZJjg3sHccheiwFR3v-v69LEW3/view?usp=drive_link)
-      footer: >
-        [Project 0: 2048](/su23/projects/game2048) due **Sunday 6/25, 11:59 PM**
-      alt-footer: >
-          Quiz 1
-      published: true
+      date: 2024-06-21
+      published: false
 - week: 2
   days:
     - title: Primitives and Objects
       type: Lab
-      date: 2023-06-26
-      description: >
-         <br>
-         [Live Lecture Link](https://berkeley.zoom.us/j/93681882489?pwd=WEo1MzJ2ZUNtTXc2ZUxSZ2hKZlJOdz09)<br><br>
-         Lecture Time: 9-10am PDT<br>
-         Location: VLSB 2050<br><br>
-         [Slides](https://docs.google.com/presentation/d/1IDt7Ga9qqIDL4NmUM7bpXIgoXHcr9EokhKQKHos8N1Y/edit#slide=id.p)
-          |
-         [Video](https://bcourses.berkeley.edu/courses/1525530/external_tools/78985)
+      date: 2024-06-24
       url: labs/lab04
-      published: true
+      published: false
       footer: >
-        [Project 1: Deques](/su23/projects/deques) due **Wednesday 7/05, 11:59 PM**
+        Project 1: Deques
     - title: Linked Lists
       type: Lab
-      date: 2023-06-27
-      description: >
-         <br>
-         [Live Instructor Lab Link](https://berkeley.zoom.us/j/99839639142?pwd=SENyWitDVDN0bSt5VWR2MlhGQSt6dz09)<br><br>
-         Instructor Lab Time: 10-11am PDT<br>
-         Location: Dwinelle 145<br><br>
-         [Slides](https://docs.google.com/presentation/d/1IlvFOh_P12e6VW1rPRvR3WprfwXOang-VlLM9G_VQuE/edit)
-          |
-         [Video](https://bcourses.berkeley.edu/courses/1525530/external_tools/78985)
+      date: 2024-06-25
       url: labs/lab05
-      published: true
+      published: false
     - title: Inheritance
       type: Lab
-      date: 2023-06-28
-      description: >
-         <br>
-         [Live Lecture Link](https://berkeley.zoom.us/j/93681882489?pwd=WEo1MzJ2ZUNtTXc2ZUxSZ2hKZlJOdz09)<br><br>
-         Lecture Time: 9-10am PDT<br>
-         Location: VLSB 2050<br><br>
-         [Slides](https://docs.google.com/presentation/d/12QZ8IiMad2hxlb9iO0mJkh9K1CCxaECThdCrZGFzpLU/edit)
-          |
-         [Video](https://bcourses.berkeley.edu/courses/1525530/external_tools/78985)
+      date: 2024-06-26
       url: labs/lab06
-      published: true
+      published: false
     - title: Comparison, Exceptions, and Iteration
       type: Lab
-      date: 2023-06-29
-      description: >
-         <br>
-         [Live Instructor Lab Link](https://berkeley.zoom.us/j/99839639142?pwd=SENyWitDVDN0bSt5VWR2MlhGQSt6dz09)<br><br>
-         Instructor Lab Time: 10-11am PDT<br>
-         Location: Dwinelle 145<br><br>
-         [Slides](https://docs.google.com/presentation/d/1vb_TS8od1mCKqDHne3CpHa5hcwAs9W2F6vXL_pAA998/edit#slide=id.p)
-          |
-         [Video](https://bcourses.berkeley.edu/courses/1525530/external_tools/78985)
+      date: 2024-06-27
       url: labs/lab07
-      published: true
+      published: false
     - title: Object Oriented Programming and ADTs
       type: Theory
-      date: 2023-06-30
-      description: >
-         <br>
-         [Worksheet](https://drive.google.com/file/d/1Yct7gWelL26eF8K6DMMCn8Mx4U00RQIB/view?usp=drive_link)
-          |
-         [Slides](https://docs.google.com/presentation/d/1QNK8K8-_AxtjQiI_8l5ccJYlssr2818hXU5otVwXRJo/edit?usp=drive_link)
-          |
-         [Solutions](https://drive.google.com/file/d/1TrzyCyjiUE5C0Mz9a2pFGbCBlZ1X90r3/view?usp=sharing)
-      alt-footer: >
-          Quiz 2
-      published: true
+      date: 2024-06-28
+      published: false
 - week: 3
   days:
     - title: Persistence and Gitlet
       type: Lab
-      date: 2023-07-03
-      description: >
-         <br>
-         [Live Lecture Link](https://berkeley.zoom.us/j/93681882489?pwd=WEo1MzJ2ZUNtTXc2ZUxSZ2hKZlJOdz09)<br><br>
-         Lecture Time: 9-10am PDT<br>
-         Location: VLSB 2050<br><br>
-         [Slides](https://docs.google.com/presentation/d/1tLxO1qTtJGH7tEp4vK5sguF3pe3t0NWEx4ThI--011Q/edit?usp=sharing)
-          |
-         [Video](https://bcourses.berkeley.edu/courses/1525530/external_tools/78985)
-      url: labs/lab08
+      date: 2024-07-01
       footer: >
-        [Project 2: Gitlet](https://cs61bl.org/su23/projects/gitlet)
-      published: true
-    - title: Independence Day
-      type: Holiday
-      date: 2023-07-04
+        Project 2: Gitlet
+      published: false
     - title: Asymptotics
       type: Lab
-      date: 2023-07-05
-      description: >
-         <br>
-         [Live Lecture Link](https://berkeley.zoom.us/j/93681882489?pwd=WEo1MzJ2ZUNtTXc2ZUxSZ2hKZlJOdz09)<br><br>
-         Lecture Time: 9-10am PDT<br>
-         Location: VLSB 2050<br><br>
-         [Slides](https://docs.google.com/presentation/d/1SM4OMo7JdJLomB46tiqrCDMOeoi1VZuYG1zRKQmyByQ)
-          |
-         [Video](https://bcourses.berkeley.edu/courses/1525530/external_tools/78985)
+      date: 2024-07-02
       url: labs/lab09
-      published: true
-      footer: >
-        [Project 1: Deques](/su23/projects/deques) due **Wednesday 7/05, 11:59 PM**
+      published: false
     - title: Trees and Traversals
       type: Lab
-      date: 2023-07-06
+      date: 2024-07-03
       url: labs/lab10
-      description: >
-         <br>
-         [Live Instructor Lab Link](https://berkeley.zoom.us/j/99839639142?pwd=SENyWitDVDN0bSt5VWR2MlhGQSt6dz09)<br><br>
-         Instructor Lab Time: 10-11am PDT<br>
-         Location: Dwinelle 145<br><br>
-         [Slides](https://docs.google.com/presentation/d/1yRTDxpdbSU_msPA5CDsqwmc0o0L1YmHI3ych6yov7yk/edit#slide=id.ge2d06e10f1_0_229)
-          |
-         [Video](https://bcourses.berkeley.edu/courses/1525530/external_tools/78985)
-      published: True
+      published: false
+    - title: Independence Day
+      type: Holiday
+      date: 2024-07-04
     - title: Asymptotics and Trees
       type: Theory
-      date: 2023-07-07
-      description: >
-         <br>
-         [Worksheet](https://drive.google.com/file/d/10gg3n4MeIqZ3ZeZH4G2Xm6NtQu3fjqzF/view?usp=drive_link)
-          |
-         [Slides](https://docs.google.com/presentation/d/1gghZqguD3RvtaPJkIgOJ50zEG2EueTpmtV4I9Exji-I/edit?usp=sharing)
-          |
-         [Solutions](https://drive.google.com/file/d/10kvXKOKi43Cui3Our7XNUF1vdBcNEvI6/view?usp=sharing)
-      alt-footer: >
-          Quiz 3
-      published: true
+      date: 2024-07-05
+      published: false
 - week: 4
   days:
     - title: Binary Search Trees
       type: Lab
-      date: 2023-07-10
-      description: >
-         <br>
-         [Live Lecture Link](https://berkeley.zoom.us/j/93681882489?pwd=WEo1MzJ2ZUNtTXc2ZUxSZ2hKZlJOdz09)<br><br>
-         Lecture Time: 9-10am PDT<br>
-         Location: VLSB 2050<br><br>
-         [Slides](https://docs.google.com/presentation/d/1YwTShfO1GBQuEICaStYSb4pCzmcWtkUjRudYSFU_P2E/edit#slide=id.g22f1afeef50_0_72)
-          |
-         [Video](https://bcourses.berkeley.edu/courses/1525530/external_tools/78985)
+      date: 2024-07-08
       url: labs/lab11
-      published: true
+      published: false
     - title: Balanced Search Trees
       type: Lab
-      date: 2023-07-11
-      description: >
-         <br>
-         [Live Instructor Lab Link](https://berkeley.zoom.us/j/99839639142?pwd=SENyWitDVDN0bSt5VWR2MlhGQSt6dz09)<br><br>
-         Instructor Lab Time: 10-11am PDT<br>
-         Location: Dwinelle 145<br><br>
-         [Slides](https://docs.google.com/presentation/d/1utTen0GC29wlZd1GRNBbdqGNHHhXFsGjhhB3ReO90d4/)
-          |
-         [Video](https://bcourses.berkeley.edu/courses/1525530/external_tools/78985)
+      date: 2024-07-09
       url: labs/lab12
-      published: true
+      published: false
     - title: Project 2 Work Day
       type: Lab
-      date: 2023-07-12
-      description: >
-         Time: No Lecture today<br><br>
+      date: 2024-07-10
       published: false
     - title: Midterm Review
       type: Lab
-      date: 2023-07-13
-      description: >
-         Time: No Instructor Lab today
+      date: 2024-07-11
       published: false
     - title: Midterm
       type: Exam
-      date: 2023-07-14
+      date: 2024-07-12
       published: false
-      footer: >
-        [Project 2: Gitlet](https://cs61bl.org/su23/projects/gitlet) Checkpoint due **Sunday, 7/16, 11:59 PM**
-      alt-footer: >
-          [Theory Worksheet](https://drive.google.com/file/d/10nUSX6AkrZ7qmRfXxJPmntOgJaDFHETe/view?usp=sharing), [Solutions](https://drive.google.com/file/d/10saiIRm7gZLosO0M-Oz1rWkev84ED7oo/view?usp=sharing) - Optional
 - week: 5
   days:
     - title: Hashing
       type: Lab
-      date: 2023-07-17
-      description: >
-         <br>
-         [Live Lecture Link](https://berkeley.zoom.us/j/93681882489?pwd=WEo1MzJ2ZUNtTXc2ZUxSZ2hKZlJOdz09)<br><br>
-         Lecture Time: 9-10am PDT<br>
-         Location: VLSB 2050<br><br>
-         [Slides](https://docs.google.com/presentation/d/1Rna6mzD4Igu3z_KZVWlor35E82M2rVukJwzMObMaph0/edit#slide=id.g259debed4f4_0_196)
-          |
-         [Video](https://bcourses.berkeley.edu/courses/1525530/external_tools/78985)
+      date: 2024-07-15
       url: labs/lab13
-      published: true
+      published: false
     - title: Heaps and Priority Queues
       type: Lab
-      date: 2023-07-18
-      description: >
-         <br>
-         [Live Instructor Lab Link](https://berkeley.zoom.us/j/99839639142?pwd=SENyWitDVDN0bSt5VWR2MlhGQSt6dz09)<br><br>
-         Instructor Lab Time: 10-11am PDT<br>
-         Location: Dwinelle 145<br><br>
-         [Slides](https://docs.google.com/presentation/d/13nQ66Y-tVlP0w6LkKfFAcoBKD4UuAsLKXGJRuF6RTOg/edit#slide=id.g2318110c70d_0_58)
-          |
-         [Video](https://bcourses.berkeley.edu/courses/1525530/external_tools/78985)
+      date: 2024-07-16
       url: labs/lab14
-      published: true
+      published: false
     - title: Disjoint Sets
       type: Lab
-      date: 2023-07-19
-      description: >
-         <br>
-         [Live Lecture Link](https://berkeley.zoom.us/j/93681882489?pwd=WEo1MzJ2ZUNtTXc2ZUxSZ2hKZlJOdz09)<br><br>
-         Lecture Time: 9-10am PDT<br>
-         Location: VLSB 2050<br><br>
-         [Slides](https://docs.google.com/presentation/d/1mnWQp7wz4x2G-65aeG4Z2BRvREEc7WCE6HM5pRuqfDU/edit#slide=id.g23192da88ac_0_86)
-          |
-         [Video](https://bcourses.berkeley.edu/courses/1525530/external_tools/78985)
+      date: 2024-07-17
       url: labs/lab15
-      published: true
+      published: false
     - title: Project 2 Workday
       type: Lab
-      date: 2023-07-20
+      date: 2024-07-18
       published: false
     - title: Hashing, Heaps, and Union Find
       type: Theory
-      date: 2023-07-21
-      published: true
-      description: >
-         <br>
-         [Worksheet](https://drive.google.com/file/d/1EUgt-xIMqqSopnnW28dMdnQAy6n_Ty4F/view?usp=sharing)
-          |
-         [Slides](https://docs.google.com/presentation/d/1Cc4DpJS_J--DuO_qw8sau0le4Jlv4o2m2_dQ6ffb4x8/edit?usp=sharing)
-          |
-         [Solutions](https://drive.google.com/file/d/1GrfKuXH-jK64J2gJ_tuClc3_HZESf_VO/view?usp=sharing)
-      alt-footer: >
-        Quiz 5 (Quiz 4 ungraded)
-      footer: >
-        [Project 2: Gitlet](https://cs61bl.org/su23/projects/gitlet) due **Sunday, 7/23, 11:59PM**
+      date: 2024-07-19
+      published: false
 - week: 6
   days:
     - title: BYOW Introduction
       type: Lab
-      date: 2023-07-24
-      description: >
-         <br>
-         [Live Lecture Link](https://berkeley.zoom.us/j/93681882489?pwd=WEo1MzJ2ZUNtTXc2ZUxSZ2hKZlJOdz09)<br><br>
-         Lecture Time: 9-10am PDT<br>
-         Location: VLSB 2050<br><br>
-         [Slides](https://docs.google.com/presentation/d/1JGy5aJHKk3GGGia3jxlABSCbwaAXEzewp9IhZ9krGBw/)
-          |
-         [Video](https://bcourses.berkeley.edu/courses/1525530/external_tools/78985)
+      date: 2024-07-22
       url: labs/lab16
-      published: true
+      published: false
       footer: >
-        [Project 3: BYOW](/su23/projects/byow)
+        Project 3: Build Your Own World
     - title: Graphs
       type: Lab
-      date: 2023-07-25
-      description: >
-         <br>
-         [Live Instructor Lab Link](https://berkeley.zoom.us/j/99839639142?pwd=SENyWitDVDN0bSt5VWR2MlhGQSt6dz09)<br><br>
-         Instructor Lab Time: 10-11am PDT<br>
-         Location: Dwinelle 145<br><br>
-         [Slides](https://docs.google.com/presentation/d/14iY5CA-4E0eTZQnB70Xkecay5dAvSrkeZUCGzLyCQvE/)
-          |
-         [Video](https://bcourses.berkeley.edu/courses/1525530/external_tools/78985)
+      date: 2024-07-23
       url: labs/lab17
-      published: true
+      published: false
     - title: Shortest Path Trees
       type: Lab
-      date: 2023-07-26
-      description: >
-         <br>
-         [Live Lecture Link](https://berkeley.zoom.us/j/93681882489?pwd=WEo1MzJ2ZUNtTXc2ZUxSZ2hKZlJOdz09)<br><br>
-         Lecture Time: 9-10am PDT<br>
-         Location: VLSB 2050<br><br>
-         [Slides](https://docs.google.com/presentation/d/1aLWrFBnQ-K3r_QZJqhQxltyhJ287z0wVXYyl4lojt8w/)
-          |
-         [Video](https://bcourses.berkeley.edu/courses/1525530/external_tools/78985)
+      date: 2024-07-24
       url: labs/lab18
-      published: true
+      published: false
     - title: Minimum Spanning Trees
       type: Lab
-      date: 2023-07-27
-      description: >
-         <br>
-         [Live Instructor Lab Link](https://berkeley.zoom.us/j/99839639142?pwd=SENyWitDVDN0bSt5VWR2MlhGQSt6dz09)<br><br>
-         Instructor Lab Time: 10-11am PDT<br>
-         Location: Dwinelle 145<br><br>
-         [Slides](https://docs.google.com/presentation/d/1NcR-EBmQVcXy-Pw6SrKHIsfrAbpHlh3dPJlG832Rui8)
-          |
-         [Video](https://bcourses.berkeley.edu/courses/1525530/external_tools/78985)
+      date: 2024-07-25
       url: labs/lab19
-      published: true
+      published: false
     - title: Graphs
       type: Theory
-      date: 2023-07-28
-      alt-footer: >
-          Quiz 6
-      published: true
-      description: >
-         <br>
-         [Worksheet](https://drive.google.com/file/d/10wXK_lS6DsAVuQVoasgQTKB1fH_QeZ4r/view?usp=sharing)
-          |
-         [Slides](https://docs.google.com/presentation/d/1oYG6NU-89-G4ndxdIm5BHtcpComRTOkd3MgcxJ0xeUc/edit?usp=sharing)
-          |
-         [Solutions](https://drive.google.com/file/d/11AQpMgi2DAzEVz45vcxqruVRuqFi9dER/view?usp=sharing)
-      published: true
+      date: 2024-07-26
+      published: false
+      published: false
 - week: 7
   days:
     - title: Comparison Sorts 1
       type: Lab
-      date: 2023-07-31
-      description: >
-         <br>
-         [Live Lecture Link](https://berkeley.zoom.us/j/93681882489?pwd=WEo1MzJ2ZUNtTXc2ZUxSZ2hKZlJOdz09)<br><br>
-         Lecture Time: 9-10am PDT<br>
-         Location: VLSB 2050<br><br>
-         [Slides](https://docs.google.com/presentation/d/16ENjgPyF9p6dpddvl3TVC1rrGQgNxR2PYebVZ7-7SEY/)
-          |
-         [Video](https://bcourses.berkeley.edu/courses/1525530/external_tools/78985)
-      published: true
+      date: 2024-07-29
+      published: false
       url: labs/lab20
-      footer: >
-        Project 3: BYOW Phase 1 due
     - title: Comparison Sorts 2
       type: Lab
-      date: 2023-08-01
-      description: >
-         <br>
-         [Live Instructor Lab Link](https://berkeley.zoom.us/j/99839639142?pwd=SENyWitDVDN0bSt5VWR2MlhGQSt6dz09)<br><br>
-         Instructor Lab Time: 10-11am PDT<br>
-         Location: Dwinelle 145<br><br>
-         [Slides](https://docs.google.com/presentation/d/1rY6vvTYR0HiGDQGdND-RgDkcNRmqOPrBugHQ5s-ORMs/edit?usp=sharing)
-          |
-         [Video](https://bcourses.berkeley.edu/courses/1525530/external_tools/78985)
+      date: 2024-07-30
       url: labs/lab21
-      published: true
+      published: false
     - title: Counting Sorts
       type: Lab
-      date: 2023-08-02
-      description: >
-         <br>
-         [Live Lecture Link](https://berkeley.zoom.us/j/93681882489?pwd=WEo1MzJ2ZUNtTXc2ZUxSZ2hKZlJOdz09)<br><br>
-         Lecture Time: 9-10am PDT<br>
-         Location: VLSB 2050<br><br>
-         [Slides](https://docs.google.com/presentation/d/1SQQDJzj__dGusHzmYgOS4Xdpr44e_R74BbwM_thNs48/edit?usp=sharing)
-          |
-         [Video](https://bcourses.berkeley.edu/courses/1525530/external_tools/78985)
+      date: 2024-07-31
       url: labs/lab22
-      published: true
+      published: false
     - title: Project 3 Workday
       type: Lab
-      date: 2023-08-03
+      date: 2024-08-01
       published: false
     - title: Sorting
       type: Theory
-      date: 2023-08-04
-      alt-footer: >
-        Quiz 7 
-      description: >
-         <br>
-         [Worksheet](https://drive.google.com/file/d/10uiEpfYwqAxBX4chpqwZz7n9nXlNW4XB/view?usp=sharing)
-          |
-         [Slides](https://docs.google.com/presentation/d/1lNBLwN3WCtMmbkRiDx3GX6NCtAxdKarVSi9E3CfYA-g/edit?usp=sharing)
-          |
-         [Solutions](https://drive.google.com/file/d/10t1ZGu24z-lcPmKxRwZg67WsFpJfEluh/view?usp=sharing)
-      published: true
+      date: 2024-08-02
+      published: falsey
 - week: 8
   days:
     - title: Project 3 Workday
       type: Lab
-      date: 2023-08-07
-      description: >
-         <br>
-         [Live Lecture Link](https://berkeley.zoom.us/j/93681882489?pwd=WEo1MzJ2ZUNtTXc2ZUxSZ2hKZlJOdz09)<br><br>
-         Lecture Time: 9-10am PDT<br>
-         Location: VLSB 2050<br><br>
-         [Slides](/)
-          |
-         [Video](/)
+      date: 2024-08-05
       published: false
-      footer: >
-        Project 3: BYOW Phase 2 due
     - title: BYOW Presentations
       type: Lab
-      date: 2023-08-08
+      date: 2024-08-06
       published: false
     - title: Final Exam Review and AMA
       type: Lab
-      date: 2023-08-09
-      description: >
-         <br>
-         [Live Lecture Link](https://berkeley.zoom.us/j/93681882489?pwd=WEo1MzJ2ZUNtTXc2ZUxSZ2hKZlJOdz09)<br><br>
-         Lecture Time: 9-10am PDT<br>
-         Location: VLSB 2050<br><br>
-         [Slides](/)
-          |
-         [Video](/)
+      date: 2024-08-07
       published: false
     - title: Practice Final 
       type: Lab
-      date: 2023-08-10
+      date: 2024-08-09
       published: false
     - title: Final Exam
       type: Exam
-      date: 2023-08-11
+      date: 2024-08-10
       url: exams/final
       published: false
