@@ -166,9 +166,8 @@ attend, the lecture video will be posted promptly.
 
 ### Instructor Lab
 There will be instructor-taught labs on Tuesday and Thursday. These will largely consist of
-instructor lecturing and a small ungraded check for understanding at the end. This can be
-completed asynchrounsly, but it is strongly recommended to be completed before your lab section.
-A recording of the lab will be posted promptly after its conclusion.
+instructor lecturing and covering content relevant to that day's lab assignment. Instructor Labs will also be held in person, and
+a recording of the lab will be posted promptly after its conclusion. 
 
 ### Instructor Office Hours
 
@@ -185,12 +184,11 @@ administrative email address, <cs61bl@berkeley.edu>.
 
 ### Lab Exercises
 
-Each lab assignment is worth 2 points and due 22 hours after the start of your enrolled lab
+Each lab assignment is worth 2 points and officialy due **22 hours** after the start of your enrolled lab
 section (or of your switched section if have received approval from both the TA
 and the instructors). For example, if your lab section is from 4-6 PM, then
-Tuesday’s lab assignment will be due on Wednesday at 2 PM. Lab exercises and self-assessments
-will be graded via online submission to Gradescope, and you may submit every half an hour as many
-times as you like before the deadline.
+Tuesday’s lab assignment will be due on Wednesday at 2 PM. However, you will have a **2 hour grace period** to submit the assignment without lateness penalty. Lab exercises and self-assessments
+will be graded via online submission to Gradescope.
 
 ### Quizzes
 
@@ -522,31 +520,12 @@ have made the wrong choice for guidance.
 [incident reports]: https://sp18.datastructur.es/materials/guides/incident-reports-2017.html
 [AM]: guides/academic-misconduct.md
 
-### Lab Collaboration
+### Project and Lab Collaboration
 
-The entire point of labs is to learn, so we emphasize active learning and pair
-programming. For labs, just like projects, you can submit with a partner.
-One person can make a submission on Gradescope (from the partner repositories
-that are distributed on 6/27), and then add the other person to their
-submission. If you decide to work alone, you are
-able to submit individually. Feel free to collaborate with others besides your
-partner however you choose, though keep in mind that greater independence
-between pairs is likely to give
-you a better learning experience, as long as you aren't totally stuck. Even
-though we will allow close collaboration outside of just your partner pairs on
-labs, **the code you and your partner turn in should still be by you and your partner alone**! This means that although
-you may discuss the labs with students other than your partner, you should not
-be sharing or receiving code from them.
+For both labs and projects, they are deisgned for learning and evaluating your mastery of the course material. As such, they are intended to be completed primarily **independently** of any other student, particularly when it comes to
+writing actual code. However, we do encourage collaborations through discussing high-level strategies, specific syntax issues,
+and solutions to bugs with other students. **You should never be in direct possession code that was not written entirely by you alone.**
 
-### Project Collaboration
-
-By contrast, the projects were designed not just for learning (particularly how
-to be self-reliant in the context of large unfamiliar systems), but also for
-the dual purpose of evaluating your mastery of the course material. As such,
-they are intended to be completed primarily independently of any other student (who is not your partner), particularly when it comes to
-writing actual code. **You should never be in direct possession code that was not written entirely by you or your partner alone.**
-However, we encourage you to discuss high-level strategies, specific syntax issues,
-and solutions to bugs.
 
 ### Exam Misconduct
 
@@ -627,10 +606,12 @@ Some course information ideas derived from:
 
 - [Josh Hug's CS 61B syllabus][Hug],
 - [Brian Harvey's CS 61A handout][BH],
-- [David Malan's CS50][CS50], and
-- [Zephyr Omaly's guide to inclusive classrooms][ZB].
+- [David Malan's CS50][CS50]
+- [Zephyr Omaly's guide to inclusive classrooms][ZB], and
+- [CS 61C Spring 2024's course policies][CS61C].
 
 [Hug]: http://sp18.datastructur.es/about.html
 [BH]: https://inst.eecs.berkeley.edu/~cs61a/sp11/0.pdf
 [CS50]: https://docs.cs50.net/2017/fall/syllabus/cs50.html
 [ZB]: https://docs.google.com/document/d/1vKzZJ56K4V025mm02RWN_VNocRqeVNhqN_lKe10_Jwk/edit?usp=sharing
+[CS61C]: https://cs61c.org/sp24/policies/
