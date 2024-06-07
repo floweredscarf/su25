@@ -101,7 +101,7 @@ The National Suicide Prevention Lifeline is a 24-hour number any student or
 faculty / staff person can call to speak with someone about suicide:
 (800) 273-TALK (8255).
 
-If you’re experiencing extenuating circumstances impacting your mental health and would like to meet with a member of course staff to work out accommodations within the course, or would like to be connected to more resources, you can set up a meeting with us [here](https://docs.google.com/forms/d/e/1FAIpQLSepUVvG8AZP0bjgg7lUXo6kBGtHezvIzs0kkqPu6VaqjXyFVg/viewform).
+If you’re experiencing extenuating circumstances impacting your mental health and would like to meet with a member of course staff to work out accommodations within the course, or would like to be connected to more resources, fill out our [Extenuating Circumstances form](#extenuating-cirucmstances).
 
 [CAPS]: https://uhs.berkeley.edu/caps
 
@@ -200,22 +200,7 @@ times as you like before the deadline.
 
 ### Quizzes
 
-Quizzes will be administered once a week covering the content on the course material for that week.
-These will contain questions ranging from multiple choice questions to code writing questions.
-Quizzes will be released on Fridays, and due the following Monday. Quizzes are closed note, closed IDE.
-The quizzes will be timed and you will have 1 hour to complete them after you start the assignment on Gradescope.
-
-Regardless of length, all quizzes will be worth 2.5 points. The maximum number of
-quiz points you can get will be 15.
-
-Those who perform poorly have the option to attend Tutor led redemption sections on the
-topics from the quiz. Those who attend these short sections will unlock the ability to take
-a different version of a quiz on the same topic, which can clobber your initial score. This
-will be a full clobber so your score would be `max(original_quiz_score, redemption_quiz_score)`.
-
-The quiz review sections will occur on Tuesdays and Wednesdays. You will have to sign up for
-these section, more instructions on this will be provided after the first quiz. 
-Redemption quizzes will be released at 12 AM Thursday and due almost 24 hours later on Thursday, midnight. 
+TBD
 
 ### Projects
 
@@ -438,7 +423,7 @@ a lab late, partner B should also request one (otherwise partner B would
 receive no credit).
 
 **To use a lab slip day, go to the Extensions tab on Beacon. If you have enough
-slip days remaining, you may select your assignment and your new due date.*
+slip days remaining, you may select your assignment and your new due date.**
 Note that once you apply a slip day to an assignment, you cannot later extend 
 it by even more time.
 
@@ -456,11 +441,22 @@ in 8 hours after the deadline will receive a 10% penalty; the final score will
 be 9 points. Similarly, the same project turned in 25 hours after the deadline
 will receive a 50% deduction, and the final score will be 5 points.
 
+No extensions will be granted for project checkpoints and project 3 with the exception of DSP extension accommodations. 
+
 #### DSP Accommodations
 
 We will be honoring DSP accommodations for extensions on assignments. For any assignment,
-students with the appropriate accommodations can receive an automatic one day extension
+students with the extension accommodations can receive an automatic one day extension
 on any assignment.
+
+#### Extenuating Cirucmstances
+We define extenuating circumstances as circumstances outside of the student’s control that directly inhibits the student’s ability to complete assignments in a timely manner. Some examples include unforeseen physical/mental health crises, technical issues (broken laptop), family emergency, etc.
+
+If you’re experiencing extenuating circumstances impacting your mental health and would like to meet with a member of course staff to work out accommodations within the course, or would like to be connected to more resources, you can set up a meeting with us [**here**](https://forms.gle/5SguirrAShQTniS68).
+
+{% include alert.html type="danger" content=" We will not be considering retroactive submissions to the extenuating circumstances form. **This means that you should proactively submit to the form before the assignment’s deadline to be considered.** Exceptions will only be made in extreme cases. " %}
+
+The last day to submit any assignment is **Wednesday, August 8th, 11:59 PM PT.** This is a hard deadline, and we will not accept any submissions made after this deadline.
 
 ## Resources
 
@@ -496,7 +492,7 @@ Reference][AJR] or Head First Java, 2nd Edition by Sierra and Bates (O'Reilly,
 Plagiarism on any lab or project will result in a score of zero on that
 assignment, along with academic sanctions. A second instance of plagiarism 
 on a lab or project will result in an F in the course. All incidents of 
-plagiarism will be referred to the Office of Student Conduct, including 
+plagiarism will be referred to the Center for Student Conduct, including 
 carelessly leaving code up on GitHub. Further details about our academic 
 misconduct policy can be found [here][AM].
 
@@ -544,7 +540,7 @@ and solutions to bugs.
 **For exams, we will be absolutely unforgiving.** Any incident will result in a
 failing grade for the course, though Berkeley will let you retake CS 61B next
 semester. All incidents of academic misconduct on exams will be referred to the
-Office of Student Conduct.
+Center for Student Conduct.
 
 ### Academic Misconduct
 
@@ -579,9 +575,7 @@ bounds of acceptable behavior, we have three important rules for projects:
     Zoom screen sharing your code, for example, is **never permitted**. Cite any
     non course staff (course staff meaning AI, Tutor, TA, and Instructor) person
     you received advice from.
--   Using small snippets of code that you find online for solving tiny problems
-    such as code for finding the distance between two points. Such usages must be
-    cited in comments in your code.
+-   Using small snippets of code that you find online for solving tiny problems such as math operations (finding the distance between two points, etc), or basic Java syntax (how to capitalize a String, how to iterate a list, etc). Such usages must be cited in comments in your code, or would be considered plagiarism.
 
 #### Absolutely Forbidden
 
@@ -599,7 +593,7 @@ bounds of acceptable behavior, we have three important rules for projects:
 -   Working in lock-step with other students. Your workflow should not involve a
     group of people identifying, tackling, and effectively identically solving a
     sequence of subproblems.
--   Using tools like Chat GPT and GitHub Co-Pilot to generate code. 
+-   Using any LLM tools such as ChatGPT, GitHub Co-Pilot, or similar AI tools to generate code. (Project 3 BYOW Note: LLMs are permitted in the Interactivity component with citations, but they are still forbidden in the World Generation component. Further details will be released in the project spec)
 
 You can obey the letter of this entire policy while completely violating its
 spirit. However, this policy is not a game to be defeated, and such
