@@ -57,22 +57,18 @@ Students with “sufficient partial credit” in CS 61B should consider taking C
 these self-paced courses are only offered during the fall and spring semesters.
 
 ### Goals and Class Norms
+We are committed to creating a learning environment welcoming of all students that supports a diversity of thoughts, perspectives and experiences and respects your identities and backgrounds (including race, ethnicity, nationality, gender identity, socioeconomic class, sexual orientation, language, religion, ability, and more.) To help accomplish this:
 
-It is our intent that students from all diverse backgrounds and perspectives be
-well-served by this course, that students' learning needs be addressed both in
-and out of class, and that the diversity that students bring to this class be
-viewed as a resource, strength, and benefit. It is our intent to present
-materials and activities that are respectful of diversity: gender, sexual
-orientation, disability, age, socioeconomic status, ethnicity, race, culture,
-perspective, and other background characteristics. Your suggestions about how
-to improve the value of diversity in this course are encouraged and
-appreciated. Please let us know ways to improve the effectiveness of the course
-for you personally or for other students or student groups.
+- If your name and/or pronouns differ from those that appear in your official records, please let us know.
+- In scheduling exams, we have attempted to avoid conflicts with major religious holidays. If, however, we have inadvertently scheduled an exam or major deadline that creates a conflict with your religious observances, please let us know as soon as possible so that we can make other arrangements.
+- If you feel like your performance in the class is being affected by your experiences outside of class (e.g., family matters, current events), please don’t hesitate to come and talk with us. We want to be resources for you.
 
-In addition, in scheduling exams, we have attempted to avoid conflicts with
-major religious holidays. If, however, we have inadvertently scheduled an exam
-or major deadline that creates a conflict with your religious observances,
-please let us know as soon as possible so that we can make other arrangements.
+Professionalism and respect for diversity are not just matters between students; they also apply to how the course staff treat the students. The staff of this course will treat you in a way that respects our differences. However, despite our best efforts, we might slip up, hopefully inadvertently. We (like many people) are still in the process of learning about diverse perspectives and identities. If you are concerned about classroom environment issues created by the overall class dynamic or by the staff, please feel free to talk to us about it.
+
+If something was said in class (by anyone—staff member or fellow student) that made you feel uncomfortable, please talk to us about it. Sometimes, you may not be comfortable bringing this up directly to us. Here are some options:
+- via the [61BL SU24 Incident Reporting Form.](https://forms.gle/kvTnbkvhYPZdiKbY6)
+- via email to our instructors, head TAs, or another member of staff you're comfortable with.
+- via the department's [Student Climate and Incident Reporting Form.](https://docs.google.com/forms/d/e/1FAIpQLSc4NYHdUJ8IzYA1SoiTinWBybGWkj0mfmdnHAeygAxkZajelQ/viewform)
 
 ### Remote Policy
 This is, per university policy, an in-person course. <strong> However, we will make at least one 
@@ -88,22 +84,20 @@ complete the course fully remote.
 
 As a student you may experience a range of issues that can cause barriers to
 learning, such as strained relationships, increased anxiety, alcohol/drug problems,
-depression, difficulty concentrating and/or lack of motivation. These mental health
-concerns or stressful events may lead to diminished academic performance or
-reduce a student's ability to participate in daily activities. UC offers services to
-assist you with addressing these and other concerns you may be experiencing. If
-you or someone you know are suffering from any of the aforementioned conditions,
-consider utilizing the confidential mental health services available on campus. We
-encourage you to reach out to the [Counseling Center][CAPS] for support. An on
-campus counselor or after-hours clinician is available 24/7.
+depression, difficulty concentrating and/or lack of motivation. Your mental health is more important than this course. **Seriously.** UC Berkeley offers services to assist you with addressing mental health concerns or stressful events:
 
-The National Suicide Prevention Lifeline is a 24-hour number any student or
-faculty / staff person can call to speak with someone about suicide:
-(800) 273-TALK (8255).
+- [Counseling and Psychological Services](https://uhs.berkeley.edu/caps) has multiple free, confidential services. An on campus counselor or after-hours clinician is available 24/7.
+  - [UHS Casual Consulting](https://uhs.berkeley.edu/counseling/lets-talk)
+  - [UHS Crisis Management Counseling](https://uhs.berkeley.edu/counseling/urgent)
+- [UHS's mental health resources](https://uhs.berkeley.edu/health-topics/mental-health) offers guides, handbooks, and more.
+- The National Suicide Prevention Lifeline is a 24-hour number any student or faculty/staff person can call to speak with someone about suicide: +1-800-273-TALK (+1-800-273-8255).
+- Support is also available for survivors of sexual violence or harassment. Note that course staff are [Responsible Employees](https://svsh.berkeley.edu/responsible-employee) for such incidents. Campus also has free, confidential services available:
+  - [UC Berkeley Sexual Violence Services](https://svsh.berkeley.edu/)
+  - [PATH to Care Center: Reporting and Privacy](https://survivorsupport.berkeley.edu/Confidential-Resources-Anonymous-Reporting-and-Privacy)
 
-If you’re experiencing extenuating circumstances impacting your mental health and would like to meet with a member of course staff to work out accommodations within the course, or would like to be connected to more resources, fill out our [Extenuating Circumstances form](#extenuating-cirucmstances).
+If you're in need of laptops, Wi-Fi hotspots, or other required technologies, check out the [Student Technology Equity Program.](https://technology.berkeley.edu/STEP)
 
-[CAPS]: https://uhs.berkeley.edu/caps
+{% include alert.html type="info" content="If you’re experiencing extenuating circumstances impacting your mental health and would like to meet with a member of course staff to work out accommodations within the course, or would like to be connected to more resources, fill out our [Extenuating Circumstances form](#extenuating-cirucmstances). " %}
 
 ### Accommodation
 
@@ -261,17 +255,6 @@ the presemester, midsemester, or end of the semester surveys will earn 1 extra
 credit point. Completing all three will give 3 points. So, if you complete
 every survey in this class, you can get a total of 6 extra credit points!
 
-## Forum
-All important course announcements will be made on Ed (the course discussion forum). We will be automatically enrolling everyone. 
-
-### Ed Etiquette
--   **Search before posting.**: Your question may have already been answered by us or other students in the past. Reading other  students' posts will let you refine your question, and gives us more time to answer new questions.
--   **Try to avoid open-ended or vague questions such as**: "How does Java work?" or "How come the solution to a discussion      problem is this?". If you walk us through your thoughts and reference specific lines that you find confusing, we can better address the problem you are facing. Being specific helps us uncover any misunderstandings that you may have.
--   **Post questions about assignments as public follow-ups on the corresponding assignment post.**: For example, post your questions about Lab 1 under the Lab 1 post. If your question is too detailed or revealing to fit as a follow-up, your question would be better answered during office hours. 
--   **No follow-up +1's.**:  Instead, you should use the heart button on a question/follow-up. Excessive +1 follow-ups clutter the post and make it more difficult to get to the unresolved follow-ups.
--   **If you want a reply on a follow-up, mark it as unresolved**, or we may not see it.
-
-For more detailed information, please read over the [Ed policies and guidelines.](guides/ed/index.md)
 
 ## Grading
 
@@ -486,6 +469,15 @@ Our discussion forum this semester will be Ed. For most questions about the cour
 is the right place to ask them. The course staff read it regularly, so you will get a
 quick answer. Furthermore, by posting online as opposed to emailing us directly, other
 students benefit by seeing the question and the answer.
+
+#### Ed Etiquette
+-   **Search before posting.**: Your question may have already been answered by us or other students in the past. Reading other  students' posts will let you refine your question, and gives us more time to answer new questions.
+-   **Try to avoid open-ended or vague questions such as**: "How does Java work?" or "How come the solution to a discussion      problem is this?". If you walk us through your thoughts and reference specific lines that you find confusing, we can better address the problem you are facing. Being specific helps us uncover any misunderstandings that you may have.
+-   **Post questions about assignments as public follow-ups on the corresponding assignment post.**: For example, post your questions about Lab 1 under the Lab 1 post. If your question is too detailed or revealing to fit as a follow-up, your question would be better answered during office hours. 
+-   **No follow-up +1's.**:  Instead, you should use the heart button on a question/follow-up. Excessive +1 follow-ups clutter the post and make it more difficult to get to the unresolved follow-ups.
+-   **If you want a reply on a follow-up, mark it as unresolved**, or we may not see it.
+
+For more detailed information, please read over the [Ed policies and guidelines.](guides/ed/index.md)
 
 ### Staff Email
 

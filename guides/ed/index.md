@@ -27,7 +27,7 @@ someone from our course staff, please fill out our
 [Incident Report form](https://forms.gle/kvTnbkvhYPZdiKbY6) to report it. If
 you would rather not speak to someone from staff, there are several campus
 offices you may report to instead
-(<https://diversity.berkeley.edu/report-incident>).
+(https://docs.google.com/forms/d/e/1FAIpQLSc4NYHdUJ8IzYA1SoiTinWBybGWkj0mfmdnHAeygAxkZajelQ/viewform).
 
 ## Overall Requests
 
