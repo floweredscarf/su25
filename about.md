@@ -166,7 +166,7 @@ de-prioritized for help. </strong>
 ### Lectures
 
 There are two 50-minute lectures on Monday and Wednesday. The lecture will be held in
-VLSB 2050, and will also be webcast synchronously over Zoom. Attendance is
+**Dwinelle 155**, and will also be webcast synchronously over Zoom. Attendance is
 strongly recommended. If for whatever reason you are unable to
 attend, the lecture video will be posted promptly.
 
