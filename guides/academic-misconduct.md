@@ -151,7 +151,10 @@ that you can fill out to provide your input on the case:
   academic misconduct, and express a desire to enter the adjudication phase
   (see next section). You must schedule a meeting with the instructors to
   determine the facts of your case (internal adjudication). **You should NOT
-  select this option if you are sure that you violated course policies**. Note that if there is a high volume of cases, 61BL staff may not be able to hold an internal meeting and the case may be forwarded directly to the CSC for them to determine what occurred.
+  select this option if you are sure that you violated course policies**. Note 
+  that if there is a high volume of cases, 61BL staff may not be able to hold an 
+  internal meeting and the case may be forwarded directly to the CSC for them to 
+  determine what occurred.
 
 To determine what option to enter, please review the
 [course collaboration policies][collab-policies].

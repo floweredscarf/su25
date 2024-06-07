@@ -261,6 +261,18 @@ the presemester, midsemester, or end of the semester surveys will earn 1 extra
 credit point. Completing all three will give 3 points. So, if you complete
 every survey in this class, you can get a total of 6 extra credit points!
 
+## Forum
+All important course announcements will be made on Ed (the course discussion forum). We will be automatically enrolling everyone. 
+
+### Ed Etiquette
+-   **Search before posting.**: Your question may have already been answered by us or other students in the past. Reading other  students' posts will let you refine your question, and gives us more time to answer new questions.
+-   **Try to avoid open-ended or vague questions such as**: "How does Java work?" or "How come the solution to a discussion      problem is this?". If you walk us through your thoughts and reference specific lines that you find confusing, we can better address the problem you are facing. Being specific helps us uncover any misunderstandings that you may have.
+-   **Post questions about assignments as public follow-ups on the corresponding assignment post.**: For example, post your questions about Lab 1 under the Lab 1 post. If your question is too detailed or revealing to fit as a follow-up, your question would be better answered during office hours. 
+-   **No follow-up +1's.**:  Instead, you should use the heart button on a question/follow-up. Excessive +1 follow-ups clutter the post and make it more difficult to get to the unresolved follow-ups.
+-   **If you want a reply on a follow-up, mark it as unresolved**, or we may not see it.
+
+For more detailed information, please read over the [Ed policies and guidelines.](guides/ed/index.md)
+
 ## Grading
 
 Your course grade is computed using a point system with a total of 300 points.
@@ -441,7 +453,8 @@ in 8 hours after the deadline will receive a 10% penalty; the final score will
 be 9 points. Similarly, the same project turned in 25 hours after the deadline
 will receive a 50% deduction, and the final score will be 5 points.
 
-No extensions will be granted for project checkpoints and project 3 with the exception of DSP extension accommodations. 
+No extensions will be granted for project checkpoints and project 3 with the 
+exception of DSP extension accommodations. 
 
 #### DSP Accommodations
 
@@ -450,13 +463,21 @@ students with the extension accommodations can receive an automatic one day exte
 on any assignment.
 
 #### Extenuating Cirucmstances
-We define extenuating circumstances as circumstances outside of the student’s control that directly inhibits the student’s ability to complete assignments in a timely manner. Some examples include unforeseen physical/mental health crises, technical issues (broken laptop), family emergency, etc.
+We define extenuating circumstances as circumstances outside of the student’s control that 
+directly inhibits the student’s ability to complete assignments in a timely manner. Some 
+examples include unforeseen physical/mental health crises, technical issues (broken laptop), 
+family emergency, etc.
 
-If you’re experiencing extenuating circumstances impacting your mental health and would like to meet with a member of course staff to work out accommodations within the course, or would like to be connected to more resources, you can set up a meeting with us [**here**](https://forms.gle/5SguirrAShQTniS68).
+If you’re experiencing extenuating circumstances impacting your mental health and would like
+to meet with a member of course staff to work out accommodations within the course, or would 
+like to be connected to more resources, you can set up a meeting with us 
+[**here**](https://forms.gle/5SguirrAShQTniS68).
 
-{% include alert.html type="danger" content=" We will not be considering retroactive submissions to the extenuating circumstances form. **This means that you should proactively submit to the form before the assignment’s deadline to be considered.** Exceptions will only be made in extreme cases. " %}
+{% include alert.html type="danger" content=" We will not be considering retroactive 
+submissions to the extenuating circumstances form. **This means that you should proactively submit to the form before the assignment’s deadline to be considered.** Exceptions will only be made in extreme cases. " %}
 
-The last day to submit any assignment is **Wednesday, August 8th, 11:59 PM PT.** This is a hard deadline, and we will not accept any submissions made after this deadline.
+The last day to submit any assignment is **Wednesday, August 8th, 11:59 PM PT.** 
+This is a hard deadline, and we will not accept any submissions made after this deadline.
 
 ## Resources
 
