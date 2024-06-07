@@ -230,8 +230,7 @@ This course has a midterm exam and a final exam.
 - The Midterm will be on **Friday, 12th July from 7-9 PM**.
 - The Final Exam will be on **Thursday, 8th August from 6-9 PM**.
 
-We will have in-person and remote options for both exams. Remote exams will be
-administered using an online assessment software and will be proctored.
+We will offer **in-person exams only**.
 
 Students with DSP accommodations that require alternate exam timing
 will be accounted for, so long as you can make a time that overlaps the official
@@ -245,15 +244,27 @@ are unable to make the final exam, please email <cs61bl@berkeley.edu> as soon as
 
 For those of you who, have a bad night, fall sick, or make major improvements over the semester, the exam clobbering policy gives you a chance to replace potentially both of your midterm exam scores.
 
-Specifically, if it helps your score, we will replace your midterm scores by their “final percentile equivalent” (FPE). For example, suppose you score in the bottom quartile of midterm 1 (i.e. earn a score in the bottom 25%)i; later, you improve significantly and earn the median score (i.e. you are at the 50th percentile) on the final. In this case, we will replace your midterm score by the medians for the midterm.
+Specifically, if it helps your score, we will offer a full [z-score](https://en.wikipedia.org/wiki/Standard_score) clobber to the midterm from the final.
 
-Percentiles will be based on the grades before this policy is applied. In other words, we will not recalculate the statistics for the midterm for the purposes of implementing this policy.
+As an example, suppose you are in the following situation (all numbers are in terms of raw scores):
+-   **Midterm Exam:** Your Score = 60, Mean Score = 70, Standard Deviation = 10
+-   **Final Exam:** Your Score = 85, Mean Score = 75, Standard Deviation = 10
 
-The final exam percentile clobbering policy will only be applied if it helps your score. For example, if you score the median on the midterm, but then have a bad day and do terribly on the final, we will not change your midterm scores.
+In this case, you will have the following z-scores:
+-   **Midterm Exam**: (60 - 70) / 10 = -1
+-   **Final Exam**: (85 - 75) / 10 = 1
 
-While this does mechanism introduce a bit of “curving” to the class, in practice it does not turn the class into a competition. Our grading bins are still fixed, a vast majority of the points are not subject to this mechanism, and the impact tends to be relatively small for most students.
+Since the final exam z-score (1) is higher than the midterm z-score (-1), **we will replace your midterm score with a score that corresponds to a z-score of 1**, meaning that your updated midterm score will be 80 (midterm mean + 1 std = 70 + 10).
 
-In theory, it would be nice to have a mechanism that avoids use any statistics, e.g. simply replacing your midterm  score by the final grade if it’s higher. In practice it is very difficult to get both the exam medians (and variances) to line up. Therefore, we use a percentile clobbering policy as described above.
+Z-scores will be based on the grades before this policy is applied. In other words, we will not recalculate the statistics for the midterm for the purposes of implementing this policy.
+
+The final exam z-score clobbering policy will only be applied if it helps your score. For example, if you score around the average on the midterm, but then have a bad day and do poorly on the final, we will not change your midterm scores.
+
+
+While this mechanism introduces a bit of curving to the class, in practice it does not turn the class into a competition. Our grading bins are still fixed, a vast majority of the points are not subject to this mechanism, and the impact tends to be relatively small for most students.
+
+
+In theory, it would be nice to have a mechanism that avoids using any statistics, e.g., simply replacing your midterm score with the final grade if it’s higher. In practice, it is very difficult to get both the exam means (and variances) to line up. Therefore, we use a z-score clobbering policy as described above.
 
 ### Surveys
 
