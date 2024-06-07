@@ -398,7 +398,7 @@ guidelines][].
 Incomplete grades will be granted only for dire medical or personal emergencies
 that cause you to miss the final, and only if your work up to that point has
 been satisfactory. You must complete all coursework before the drop deadline to
-be considered for an incomplete grade. For more information, please email the instructors.
+be considered for an incomplete grade. Per university policy, you will **not** be able to request for an incomplete on assignments that were involved in academic misconduct. For more information, please email the instructors.
 
 There are a total of 24 graded lab exercises, each worth 2 points.
 Thus, while the total point value for labs is 48 points, lab grades are capped
