@@ -227,8 +227,8 @@ but they are largely meant to be completed outside of lab.
 
 This course has a midterm exam and a final exam.
 
-- The Midterm will be on **Friday, 14th July from 7-9 PM**.
-- The Final Exam will be on **Friday, 11th August from 6-9 PM**.
+- The Midterm will be on **Friday, 12th July from 7-9 PM**.
+- The Final Exam will be on **Thursday, 8th August from 6-9 PM**.
 
 We will have in-person and remote options for both exams. Remote exams will be
 administered using an online assessment software and will be proctored.
@@ -360,8 +360,8 @@ scores:
     <tbody>
       <tr>
         <td>295</td>
-        <td>270</td>
-        <td>255</td>
+        <td>280</td>
+        <td>265</td>
         <td>245</td>
         <td>225</td>
         <td>205</td>
