@@ -29,6 +29,8 @@
       type: Theory
       date: 2024-06-21
       published: false
+      footer: >
+        Project 0: 2048 due **Friday 6/21, 11:59 PM**
 - week: 2
   days:
     - title: Linked Lists
