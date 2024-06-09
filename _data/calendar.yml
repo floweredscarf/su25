@@ -98,6 +98,9 @@
       published: false
     - title: Midterm
       type: Exam
+      description: >
+        7pm - 9pm<br><br>
+      date: 2024-07-12
       published: false
 - week: 5
   days:
@@ -194,5 +197,8 @@
       published: false
     - title: Final Exam
       type: Exam
+      description: >
+        6pm - 9pm<br><br>
       url: exams/final
+      date: 2024-08-08
       published: false
