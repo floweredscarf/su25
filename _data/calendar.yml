@@ -1,25 +1,27 @@
 - week: 1
   days:
-    - title: Java & Git
-      type: Lab
+    - title: Introduction to Java, Git, and Setup
+      type: Lecture, Lab
       date: 2024-06-17
       description: >
         Welcome to CS 61BL!<br><br>
       url: labs/lab01
       published: false
       footer: >
-        Project 0: 2048
-    - title: Conditionals, Loops and Arrays
-      type: Lab
+        Project 0: 2048 Released
+    - title: Arrays and Objects
+      type: Lecture, Lab
       date: 2024-06-18
       url: labs/lab02
       published: false
     - title: Observation of Juneteenth
       type: Holiday
       date: 2024-06-19
+      description: >
+        Nothing due and nothing to attend<br><br>
       published: false
     - title: Test Driven Development and Debugging
-      type: Lab
+      type: Lecture, Lab
       date: 2024-06-20
       url: labs/lab03
       published: false
@@ -29,53 +31,55 @@
       published: false
 - week: 2
   days:
-    - title: Primitives and Objects
-      type: Lab
+    - title: Linked Lists
+      type: Lecture, Lab
       date: 2024-06-24
       url: labs/lab04
       published: false
       footer: >
-        Project 1: Deques
-    - title: Linked Lists
-      type: Lab
+        Project 1: Deques Released
+    - title: Abstract Data Types
+      type: Lecture, Lab
       date: 2024-06-25
       url: labs/lab05
       published: false
     - title: Inheritance
-      type: Lab
+      type: Lecture, Lab
       date: 2024-06-26
       url: labs/lab06
       published: false
     - title: Comparison, Exceptions, and Iteration
-      type: Lab
+      type: Lecture, Lab
       date: 2024-06-27
       url: labs/lab07
       published: false
-    - title: Object Oriented Programming and ADTs
+    - title: Object Oriented Programming and Abstract Data Types
       type: Theory
       date: 2024-06-28
       published: false
 - week: 3
   days:
-    - title: Persistence and Gitlet
-      type: Lab
+    - title: Gitlet Introduction
+      type: Lecture, Lab
       date: 2024-07-01
       footer: >
-        Project 2: Gitlet
+        Project 2: Gitlet Released
       published: false
-    - title: Asymptotics
-      type: Lab
+    - title: Asymptotics and Measuring Code Efficiency
+      type: Lecture, Lab
       date: 2024-07-02
       url: labs/lab09
       published: false
-    - title: Trees and Traversals
-      type: Lab
+    - title: Introduction to Trees and Traversals
+      type: Lecture, Lab
       date: 2024-07-03
       url: labs/lab10
       published: false
     - title: Independence Day
       type: Holiday
       date: 2024-07-04
+      description: >
+        Nothing due and nothing to attend<br><br>
     - title: Asymptotics and Trees
       type: Theory
       date: 2024-07-05
@@ -83,18 +87,23 @@
 - week: 4
   days:
     - title: Binary Search Trees
-      type: Lab
+      type: Lecture, Lab
       date: 2024-07-08
       url: labs/lab11
       published: false
     - title: Balanced Search Trees
-      type: Lab
+      type: Lecture, Lab
       date: 2024-07-09
       url: labs/lab12
       published: false
-    - title: Project 2 Work Day
-      type: Lab
+    - title: Exam Advice and Midterm Review
+      type: Lecture, Lab
       date: 2024-07-10
+      published: false
+    - title: Exam Study Day
+      date: 2024-07-11
+      description: >
+        No Lecture and No Lab<br><br>
       published: false
     - title: Midterm
       type: Exam
@@ -105,17 +114,17 @@
 - week: 5
   days:
     - title: Hashing
-      type: Lab
+      type: Lecture, Lab
       date: 2024-07-15
       url: labs/lab13
       published: false
     - title: Heaps and Priority Queues
-      type: Lab
+      type: Lecture, Lab
       date: 2024-07-16
       url: labs/lab14
       published: false
     - title: Disjoint Sets
-      type: Lab
+      type: Lecture, Lab
       date: 2024-07-17
       url: labs/lab15
       published: false
@@ -129,25 +138,25 @@
       published: false
 - week: 6
   days:
-    - title: BYOW Introduction
-      type: Lab
+    - title: Build Your Own World Introduction
+      type: Lecture, Lab
       date: 2024-07-22
       url: labs/lab16
       published: false
       footer: >
-        Project 3: Build Your Own World
+        Project 3: Build Your Own World Released
     - title: Graphs
-      type: Lab
+      type: Lecture, Lab
       date: 2024-07-23
       url: labs/lab17
       published: false
-    - title: Shortest Path Trees
-      type: Lab
+    - title: Shortest Paths
+      type: Lecture, Lab
       date: 2024-07-24
       url: labs/lab18
       published: false
     - title: Minimum Spanning Trees
-      type: Lab
+      type: Lecture, Lab
       date: 2024-07-25
       url: labs/lab19
       published: false
@@ -158,41 +167,41 @@
       published: false
 - week: 7
   days:
-    - title: Comparison Sorts 1
-      type: Lab
+    - title: Sorting
+      type: Lecture, Lab
       date: 2024-07-29
       published: false
       url: labs/lab20
-    - title: Comparison Sorts 2
-      type: Lab
+    - title: Quicksort
+      type: Lecture, Lab
       date: 2024-07-30
       url: labs/lab21
       published: false
-    - title: Counting Sorts
-      type: Lab
+    - title: Radix Sorts
+      type: Lecture, Lab
       date: 2024-07-31
       url: labs/lab22
       published: false
     - title: Project 3 Workday
-      type: Lab
+      type: Lecture, Lab
       date: 2024-08-01
       published: false
     - title: Sorting
       type: Theory
       date: 2024-08-02
-      published: falsey
+      published: false
 - week: 8
   days:
-    - title: Project 3 Workday
-      type: Lab
+    - title: Ask Us Anything and BYOW Presentations
+      type: Lecture, Lab
       date: 2024-08-05
       published: false
-    - title: BYOW Presentations
-      type: Lab
+    - title: Special Topics and Final Exam Review
+      type: Lecture, Lab
       date: 2024-08-06
       published: false
-    - title: Final Exam Review and AMA
-      type: Lab
+    - title: Special Topics
+      type: Lecture
       date: 2024-08-07
       published: false
     - title: Final Exam
@@ -202,3 +211,5 @@
       url: exams/final
       date: 2024-08-08
       published: false
+    - title: No Class
+      date: 2024-08-09
