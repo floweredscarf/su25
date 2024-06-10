@@ -1194,6 +1194,110 @@ repackaged `while` loop that puts all the information about how long the
 loop should continue in one place. Thus, a `for` loop is generally easier
 to understand than an equivalent `while` loop.
 
+### Shortcuts for Incrementing / Decrementing
+
+Let `k` be an integer variable. Then the three following statements are
+equivalent in that they all increment `k`.
+
+```java
+k = k + 1;
+k += 1;
+k++;
+```
+
+Similarly, these three statements all decrement `k` by 1.
+
+```java
+k = k - 1;
+k -= 1;
+k--;
+```
+
+Note: The motivation for this shorthand notation is that the operations of
+incrementing and decrementing by 1 are very common. While it is legal to
+increment or decrement variables within larger expressions like
+
+```java
+System.out.println(values[k++]);
+```
+
+this is a risky practice very susceptible to off-by-one errors. Discuss a
+few settings that could lead to OBO errors with your partner. In general,
+we suggest starting with more verbose syntax. Therefore, we ask that you
+only use the `++` or `--` operations on lines **by themselves**.
+
+### The `break` Statement
+
+The `break` statement "breaks out of" a loop (both for and while loops). In
+other words, it stops the execution of the loop body, and continues with the
+statement immediately following the loop. An example of its use would be a
+program segment that searches an array named `values` for a given `value`,
+setting the variable found to true if the value is found and to false if it
+is not in the array.
+
+```java
+boolean found = false;
+for (int k = 0; k < values.length; k++) {
+    if (values[k] == value) {
+        found = true;
+        break;
+    }
+}
+```
+
+This `break` statement allows us to save computation time. If we find the value within
+the array before the end, we don't waste more time looping through the rest
+of the array.
+
+However, the `break` statement is not always necessary, and code with a lot
+of `break`s can be confusing. Abusing the break statement is often considered
+poor style. When using `break`, first consider if instead it would be more
+appropriate to put another condition in the test.
+
+### The `continue` Statement
+
+The `continue` statement skips the current iteration of the loop body,
+increments the variables in the loop information, then evaluates the loop
+test. This example checks how many 0's there are in array `values`:
+
+```java
+int count = 0;
+for (int i = 0; i < values.length; i++) {
+    if (values[i] != 0) {
+        continue;
+    }
+    count += 1;
+}
+System.out.println("Number of 0s in values array: " + count);
+```
+
+Similar to the `break` statement, the `continue` allows us to save time by
+skipping sections of the loop. In this case, the `continue` allows us to add
+to the `count` only when there is a 0 in the array. Removing continue will
+give an incorrect output.
+
+The difference between `break` and `continue` is that `break` immediately stops
+the loop and moves on to the code directly following it. In comparison,
+`continue` stops going through the current iteration of the loop body and
+immediately continues on to the next iteration as given by the loop information.
+
+Like with `break`, abusing `continue` is often considered poor style. Try not
+to go crazy with nested `break`s and `continue`s.
+
+Both `break` and `continue` apply to only the closest loop it is enclosed in.
+For instance, in the case of the following nested loop, the `break` will only
+exit out of the inner for loop, not the outer one.
+
+```java
+for (int i = 0; i < values.length; i++) {
+    for (int j = i + 1; j < values.length; j++) {
+        if (values[i] == value[j]) {
+            break;
+        }
+    }
+}
+```
+
 ### Array Definition and Use
 
  An array is an indexed sequence of elements, all of the same type. Real-life
@@ -1348,111 +1452,6 @@ int[][][] threeDimensionalArray = new int[100][100][100];
 
 This 3D array has 100x100x100 = 1,000,000 different values. Multidimensional
 arrays are extremely useful, and you'll be encountering them a lot.
-
-
-### Shortcuts for Incrementing / Decrementing
-
-Let `k` be an integer variable. Then the three following statements are
-equivalent in that they all increment `k`.
-
-```java
-k = k + 1;
-k += 1;
-k++;
-```
-
-Similarly, these three statements all decrement `k` by 1.
-
-```java
-k = k - 1;
-k -= 1;
-k--;
-```
-
-Note: The motivation for this shorthand notation is that the operations of
-incrementing and decrementing by 1 are very common. While it is legal to
-increment or decrement variables within larger expressions like
-
-```java
-System.out.println(values[k++]);
-```
-
-this is a risky practice very susceptible to off-by-one errors. Discuss a
-few settings that could lead to OBO errors with your partner. In general,
-we suggest starting with more verbose syntax. Therefore, we ask that you
-only use the `++` or `--` operations on lines **by themselves**.
-
-### The `break` Statement
-
-The `break` statement "breaks out of" a loop (both for and while loops). In
-other words, it stops the execution of the loop body, and continues with the
-statement immediately following the loop. An example of its use would be a
-program segment that searches an array named `values` for a given `value`,
-setting the variable found to true if the value is found and to false if it
-is not in the array.
-
-```java
-boolean found = false;
-for (int k = 0; k < values.length; k++) {
-    if (values[k] == value) {
-        found = true;
-        break;
-    }
-}
-```
-
-This `break` statement allows us to save computation time. If we find the value within
-the array before the end, we don't waste more time looping through the rest
-of the array.
-
-However, the `break` statement is not always necessary, and code with a lot
-of `break`s can be confusing. Abusing the break statement is often considered
-poor style. When using `break`, first consider if instead it would be more
-appropriate to put another condition in the test.
-
-### The `continue` Statement
-
-The `continue` statement skips the current iteration of the loop body,
-increments the variables in the loop information, then evaluates the loop
-test. This example checks how many 0's there are in array `values`:
-
-```java
-int count = 0;
-for (int i = 0; i < values.length; i++) {
-    if (values[i] != 0) {
-        continue;
-    }
-    count += 1;
-}
-System.out.println("Number of 0s in values array: " + count);
-```
-
-Similar to the `break` statement, the `continue` allows us to save time by
-skipping sections of the loop. In this case, the `continue` allows us to add
-to the `count` only when there is a 0 in the array. Removing continue will
-give an incorrect output.
-
-The difference between `break` and `continue` is that `break` immediately stops
-the loop and moves on to the code directly following it. In comparison,
-`continue` stops going through the current iteration of the loop body and
-immediately continues on to the next iteration as given by the loop information.
-
-Like with `break`, abusing `continue` is often considered poor style. Try not
-to go crazy with nested `break`s and `continue`s.
-
-Both `break` and `continue` apply to only the closest loop it is enclosed in.
-For instance, in the case of the following nested loop, the `break` will only
-exit out of the inner for loop, not the outer one.
-
-```java
-for (int i = 0; i < values.length; i++) {
-    for (int j = i + 1; j < values.length; j++) {
-        if (values[i] == value[j]) {
-            break;
-        }
-    }
-}
-```
 
 ### (Optional) Exercise: A Jigsaw Puzzle - Drawing a Triangle
 
