@@ -271,8 +271,8 @@ Your course grade is computed using a point system with a total of 300 points.
     <tbody>
       <tr>
         <th scope="row">Lab Assignments</th>
-        <td>15%</td>
-        <td>45</td>
+        <td>13%</td>
+        <td>40</td>
       </tr>
       <tr>
         <th scope="row">Theoretical Lab Attendance</th>
@@ -311,8 +311,8 @@ Your course grade is computed using a point system with a total of 300 points.
       </tr>
       <tr>
         <th scope="row">Final Exam</th>
-        <td>18%</td>
-        <td>54</td>
+        <td>20%</td>
+        <td>59</td>
       </tr>
       <tr>
         <th scope="row">Total</th>
@@ -378,11 +378,11 @@ that cause you to miss the final, and only if your work up to that point has
 been satisfactory. You must complete all coursework before the drop deadline to
 be considered for an incomplete grade. Per university policy, you will **not** be able to request for an incomplete on assignments that were involved in academic misconduct. For more information, please email the instructors.
 
-There are a total of 24 graded lab exercises, each worth 2 points.
+There are a total of 21 graded lab exercises, each worth 2 points.
 Thus, while the total point value for labs is 48 points, lab grades are capped
-at 45 points. This means that you can miss up to 3 points on labs without
-penalty. In other words, getting more than 45 points on lab is equivalent to
-getting 45 points for your lab score.
+at 40 points. This means that **you can miss up to 1 lab without penalty**. 
+In other words, getting more than 40 points on lab is equivalent to
+getting 40 points for your lab score.
 
 For the theoretical lab sections, you will need to attend 5 out of the total 6 in order to recieve full attendance credit. 
 
@@ -409,11 +409,6 @@ this situation, it may be better for you to consider skipping the assignment and
 proceeding with the more current ones to keep pace with the course. Remember,
 you don't need to get all points in the lab category to still get full credit
 for labs.
-
-Note that slip days are handled individually, not on a partner basis, meaning
-that your slip days don't add up. If partner A requests a slip day and turns in
-a lab late, partner B should also request one (otherwise partner B would
-receive no credit).
 
 **To use a lab slip day, go to the Extensions tab on Beacon. If you have enough
 slip days remaining, you may select your assignment and your new due date.**
