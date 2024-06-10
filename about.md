@@ -57,22 +57,18 @@ Students with “sufficient partial credit” in CS 61B should consider taking C
 these self-paced courses are only offered during the fall and spring semesters.
 
 ### Goals and Class Norms
+We are committed to creating a learning environment welcoming of all students that supports a diversity of thoughts, perspectives and experiences and respects your identities and backgrounds (including race, ethnicity, nationality, gender identity, socioeconomic class, sexual orientation, language, religion, ability, and more.) To help accomplish this:
 
-It is our intent that students from all diverse backgrounds and perspectives be
-well-served by this course, that students' learning needs be addressed both in
-and out of class, and that the diversity that students bring to this class be
-viewed as a resource, strength, and benefit. It is our intent to present
-materials and activities that are respectful of diversity: gender, sexual
-orientation, disability, age, socioeconomic status, ethnicity, race, culture,
-perspective, and other background characteristics. Your suggestions about how
-to improve the value of diversity in this course are encouraged and
-appreciated. Please let us know ways to improve the effectiveness of the course
-for you personally or for other students or student groups.
+- If your name and/or pronouns differ from those that appear in your official records, please let us know.
+- In scheduling exams, we have attempted to avoid conflicts with major religious holidays. If, however, we have inadvertently scheduled an exam or major deadline that creates a conflict with your religious observances, please let us know as soon as possible so that we can make other arrangements.
+- If you feel like your performance in the class is being affected by your experiences outside of class (e.g., family matters, current events), please don’t hesitate to come and talk with us. We want to be resources for you.
 
-In addition, in scheduling exams, we have attempted to avoid conflicts with
-major religious holidays. If, however, we have inadvertently scheduled an exam
-or major deadline that creates a conflict with your religious observances,
-please let us know as soon as possible so that we can make other arrangements.
+Professionalism and respect for diversity are not just matters between students; they also apply to how the course staff treat the students. The staff of this course will treat you in a way that respects our differences. However, despite our best efforts, we might slip up, hopefully inadvertently. We (like many people) are still in the process of learning about diverse perspectives and identities. If you are concerned about classroom environment issues created by the overall class dynamic or by the staff, please feel free to talk to us about it.
+
+If something was said in class (by anyone—staff member or fellow student) that made you feel uncomfortable, please talk to us about it. Sometimes, you may not be comfortable bringing this up directly to us. Here are some options:
+- via the [61BL SU24 Incident Reporting Form.](https://forms.gle/kvTnbkvhYPZdiKbY6)
+- via email to our instructors, head TAs, or another member of staff you're comfortable with.
+- via the department's [Student Climate and Incident Reporting Form.](https://docs.google.com/forms/d/e/1FAIpQLSc4NYHdUJ8IzYA1SoiTinWBybGWkj0mfmdnHAeygAxkZajelQ/viewform)
 
 ### Remote Policy
 This is, per university policy, an in-person course. <strong> However, we will make at least one 
@@ -88,22 +84,20 @@ complete the course fully remote.
 
 As a student you may experience a range of issues that can cause barriers to
 learning, such as strained relationships, increased anxiety, alcohol/drug problems,
-depression, difficulty concentrating and/or lack of motivation. These mental health
-concerns or stressful events may lead to diminished academic performance or
-reduce a student's ability to participate in daily activities. UC offers services to
-assist you with addressing these and other concerns you may be experiencing. If
-you or someone you know are suffering from any of the aforementioned conditions,
-consider utilizing the confidential mental health services available on campus. We
-encourage you to reach out to the [Counseling Center][CAPS] for support. An on
-campus counselor or after-hours clinician is available 24/7.
+depression, difficulty concentrating and/or lack of motivation. Your mental health is more important than this course. **Seriously.** UC Berkeley offers services to assist you with addressing mental health concerns or stressful events:
 
-The National Suicide Prevention Lifeline is a 24-hour number any student or
-faculty / staff person can call to speak with someone about suicide:
-(800) 273-TALK (8255).
+- [Counseling and Psychological Services](https://uhs.berkeley.edu/caps) has multiple free, confidential services. An on campus counselor or after-hours clinician is available 24/7.
+  - [UHS Casual Consulting](https://uhs.berkeley.edu/counseling/lets-talk)
+  - [UHS Crisis Management Counseling](https://uhs.berkeley.edu/counseling/urgent)
+- [UHS's mental health resources](https://uhs.berkeley.edu/health-topics/mental-health) offers guides, handbooks, and more.
+- The National Suicide Prevention Lifeline is a 24-hour number any student or faculty/staff person can call to speak with someone about suicide: +1-800-273-TALK (+1-800-273-8255).
+- Support is also available for survivors of sexual violence or harassment. Note that course staff are [Responsible Employees](https://svsh.berkeley.edu/responsible-employee) for such incidents. Campus also has free, confidential services available:
+  - [UC Berkeley Sexual Violence Services](https://svsh.berkeley.edu/)
+  - [PATH to Care Center: Reporting and Privacy](https://survivorsupport.berkeley.edu/Confidential-Resources-Anonymous-Reporting-and-Privacy)
 
-If you’re experiencing extenuating circumstances impacting your mental health and would like to meet with a member of course staff to work out accommodations within the course, or would like to be connected to more resources, you can set up a meeting with us [here](https://docs.google.com/forms/d/e/1FAIpQLSepUVvG8AZP0bjgg7lUXo6kBGtHezvIzs0kkqPu6VaqjXyFVg/viewform).
+If you're in need of laptops, Wi-Fi hotspots, or other required technologies, check out the [Student Technology Equity Program.](https://technology.berkeley.edu/STEP)
 
-[CAPS]: https://uhs.berkeley.edu/caps
+{% include alert.html type="info" content="If you’re experiencing extenuating circumstances impacting your mental health and would like to meet with a member of course staff to work out accommodations within the course, or would like to be connected to more resources, fill out our [Extenuating Circumstances form](#extenuating-cirucmstances). " %}
 
 ### Accommodation
 
@@ -166,15 +160,14 @@ de-prioritized for help. </strong>
 ### Lectures
 
 There are two 50-minute lectures on Monday and Wednesday. The lecture will be held in
-VLSB 2050, and will also be webcast synchronously over Zoom. Attendance is
+**Dwinelle 155**, and will also be webcast synchronously over Zoom. Attendance is
 strongly recommended. If for whatever reason you are unable to
 attend, the lecture video will be posted promptly.
 
 ### Instructor Lab
 There will be instructor-taught labs on Tuesday and Thursday. These will largely consist of
-instructor lecturing and a small ungraded check for understanding at the end. This can be
-completed asynchrounsly, but it is strongly recommended to be completed before your lab section.
-A recording of the lab will be posted promptly after its conclusion.
+instructor lecturing and covering content relevant to that day's lab assignment. Instructor Labs will also be held in person, and
+a recording of the lab will be posted promptly after its conclusion. 
 
 ### Instructor Office Hours
 
@@ -191,31 +184,15 @@ administrative email address, <cs61bl@berkeley.edu>.
 
 ### Lab Exercises
 
-Each lab assignment is worth 2 points and due 22 hours after the start of your enrolled lab
+Each lab assignment is worth 2 points and officialy due **22 hours** after the start of your enrolled lab
 section (or of your switched section if have received approval from both the TA
 and the instructors). For example, if your lab section is from 4-6 PM, then
-Tuesday’s lab assignment will be due on Wednesday at 2 PM. Lab exercises and self-assessments
-will be graded via online submission to Gradescope, and you may submit every half an hour as many
-times as you like before the deadline.
+Tuesday’s lab assignment will be due on Wednesday at 2 PM. However, you will have a **2 hour grace period** to submit the assignment without lateness penalty. Lab exercises and self-assessments
+will be graded via online submission to Gradescope.
 
 ### Quizzes
 
-Quizzes will be administered once a week covering the content on the course material for that week.
-These will contain questions ranging from multiple choice questions to code writing questions.
-Quizzes will be released on Fridays, and due the following Monday. Quizzes are closed note, closed IDE.
-The quizzes will be timed and you will have 1 hour to complete them after you start the assignment on Gradescope.
-
-Regardless of length, all quizzes will be worth 2.5 points. The maximum number of
-quiz points you can get will be 15.
-
-Those who perform poorly have the option to attend Tutor led redemption sections on the
-topics from the quiz. Those who attend these short sections will unlock the ability to take
-a different version of a quiz on the same topic, which can clobber your initial score. This
-will be a full clobber so your score would be `max(original_quiz_score, redemption_quiz_score)`.
-
-The quiz review sections will occur on Tuesdays and Wednesdays. You will have to sign up for
-these section, more instructions on this will be provided after the first quiz. 
-Redemption quizzes will be released at 12 AM Thursday and due almost 24 hours later on Thursday, midnight. 
+TBD
 
 ### Projects
 
@@ -227,11 +204,10 @@ but they are largely meant to be completed outside of lab.
 
 This course has a midterm exam and a final exam.
 
-- The Midterm will be on **Friday, 14th July from 7-9 PM**.
-- The Final Exam will be on **Friday, 11th August from 6-9 PM**.
+- The Midterm will be on **Friday, 12th July from 7-9 PM**.
+- The Final Exam will be on **Thursday, 8th August from 6-9 PM**.
 
-We will have in-person and remote options for both exams. Remote exams will be
-administered using an online assessment software and will be proctored.
+We will offer **in-person exams only**.
 
 Students with DSP accommodations that require alternate exam timing
 will be accounted for, so long as you can make a time that overlaps the official
@@ -245,15 +221,27 @@ are unable to make the final exam, please email <cs61bl@berkeley.edu> as soon as
 
 For those of you who, have a bad night, fall sick, or make major improvements over the semester, the exam clobbering policy gives you a chance to replace potentially both of your midterm exam scores.
 
-Specifically, if it helps your score, we will replace your midterm scores by their “final percentile equivalent” (FPE). For example, suppose you score in the bottom quartile of midterm 1 (i.e. earn a score in the bottom 25%)i; later, you improve significantly and earn the median score (i.e. you are at the 50th percentile) on the final. In this case, we will replace your midterm score by the medians for the midterm.
+Specifically, if it helps your score, we will offer a full [z-score](https://en.wikipedia.org/wiki/Standard_score) clobber to the midterm from the final.
 
-Percentiles will be based on the grades before this policy is applied. In other words, we will not recalculate the statistics for the midterm for the purposes of implementing this policy.
+As an example, suppose you are in the following situation (all numbers are in terms of raw scores):
+-   **Midterm Exam:** Your Score = 60, Mean Score = 70, Standard Deviation = 10
+-   **Final Exam:** Your Score = 85, Mean Score = 75, Standard Deviation = 10
 
-The final exam percentile clobbering policy will only be applied if it helps your score. For example, if you score the median on the midterm, but then have a bad day and do terribly on the final, we will not change your midterm scores.
+In this case, you will have the following z-scores:
+-   **Midterm Exam**: (60 - 70) / 10 = -1
+-   **Final Exam**: (85 - 75) / 10 = 1
 
-While this does mechanism introduce a bit of “curving” to the class, in practice it does not turn the class into a competition. Our grading bins are still fixed, a vast majority of the points are not subject to this mechanism, and the impact tends to be relatively small for most students.
+Since the final exam z-score (1) is higher than the midterm z-score (-1), **we will replace your midterm score with a score that corresponds to a z-score of 1**, meaning that your updated midterm score will be 80 (midterm mean + 1 std = 70 + 10).
 
-In theory, it would be nice to have a mechanism that avoids use any statistics, e.g. simply replacing your midterm  score by the final grade if it’s higher. In practice it is very difficult to get both the exam medians (and variances) to line up. Therefore, we use a percentile clobbering policy as described above.
+Z-scores will be based on the grades before this policy is applied. In other words, we will not recalculate the statistics for the midterm for the purposes of implementing this policy.
+
+The final exam z-score clobbering policy will only be applied if it helps your score. For example, if you score around the average on the midterm, but then have a bad day and do poorly on the final, we will not change your midterm scores.
+
+
+While this mechanism introduces a bit of curving to the class, in practice it does not turn the class into a competition. Our grading bins are still fixed, a vast majority of the points are not subject to this mechanism, and the impact tends to be relatively small for most students.
+
+
+In theory, it would be nice to have a mechanism that avoids using any statistics, e.g., simply replacing your midterm score with the final grade if it’s higher. In practice, it is very difficult to get both the exam means (and variances) to line up. Therefore, we use a z-score clobbering policy as described above.
 
 ### Surveys
 
@@ -264,6 +252,7 @@ presemester, midsemester, and end of the semester surveys. Completing each of
 the presemester, midsemester, or end of the semester surveys will earn 1 extra
 credit point. Completing all three will give 3 points. So, if you complete
 every survey in this class, you can get a total of 6 extra credit points!
+
 
 ## Grading
 
@@ -360,8 +349,8 @@ scores:
     <tbody>
       <tr>
         <td>295</td>
-        <td>270</td>
-        <td>255</td>
+        <td>280</td>
+        <td>265</td>
         <td>245</td>
         <td>225</td>
         <td>205</td>
@@ -387,7 +376,7 @@ guidelines][].
 Incomplete grades will be granted only for dire medical or personal emergencies
 that cause you to miss the final, and only if your work up to that point has
 been satisfactory. You must complete all coursework before the drop deadline to
-be considered for an incomplete grade. For more information, please email the instructors.
+be considered for an incomplete grade. Per university policy, you will **not** be able to request for an incomplete on assignments that were involved in academic misconduct. For more information, please email the instructors.
 
 There are a total of 24 graded lab exercises, each worth 2 points.
 Thus, while the total point value for labs is 48 points, lab grades are capped
@@ -427,7 +416,7 @@ a lab late, partner B should also request one (otherwise partner B would
 receive no credit).
 
 **To use a lab slip day, go to the Extensions tab on Beacon. If you have enough
-slip days remaining, you may select your assignment and your new due date.*
+slip days remaining, you may select your assignment and your new due date.**
 Note that once you apply a slip day to an assignment, you cannot later extend 
 it by even more time.
 
@@ -445,11 +434,31 @@ in 8 hours after the deadline will receive a 10% penalty; the final score will
 be 9 points. Similarly, the same project turned in 25 hours after the deadline
 will receive a 50% deduction, and the final score will be 5 points.
 
+No extensions will be granted for project checkpoints and project 3 with the 
+exception of DSP extension accommodations. 
+
 #### DSP Accommodations
 
 We will be honoring DSP accommodations for extensions on assignments. For any assignment,
-students with the appropriate accommodations can receive an automatic one day extension
+students with the extension accommodations can receive an automatic one day extension
 on any assignment.
+
+#### Extenuating Cirucmstances
+We define extenuating circumstances as circumstances outside of the student’s control that 
+directly inhibits the student’s ability to complete assignments in a timely manner. Some 
+examples include unforeseen physical/mental health crises, technical issues (broken laptop), 
+family emergency, etc.
+
+If you’re experiencing extenuating circumstances impacting your mental health and would like
+to meet with a member of course staff to work out accommodations within the course, or would 
+like to be connected to more resources, you can set up a meeting with us 
+[**here**](https://forms.gle/5SguirrAShQTniS68).
+
+{% include alert.html type="danger" content=" We will not be considering retroactive 
+submissions to the extenuating circumstances form. **This means that you should proactively submit to the form before the assignment’s deadline to be considered.** Exceptions will only be made in extreme cases. " %}
+
+The last day to submit any assignment is **Wednesday, August 8th, 11:59 PM PT.** 
+This is a hard deadline, and we will not accept any submissions made after this deadline.
 
 ## Resources
 
@@ -458,6 +467,15 @@ Our discussion forum this semester will be Ed. For most questions about the cour
 is the right place to ask them. The course staff read it regularly, so you will get a
 quick answer. Furthermore, by posting online as opposed to emailing us directly, other
 students benefit by seeing the question and the answer.
+
+#### Ed Etiquette
+-   **Search before posting.**: Your question may have already been answered by us or other students in the past. Reading other  students' posts will let you refine your question, and gives us more time to answer new questions.
+-   **Try to avoid open-ended or vague questions such as**: "How does Java work?" or "How come the solution to a discussion      problem is this?". If you walk us through your thoughts and reference specific lines that you find confusing, we can better address the problem you are facing. Being specific helps us uncover any misunderstandings that you may have.
+-   **Post questions about assignments as public follow-ups on the corresponding assignment post.**: For example, post your questions about Lab 1 under the Lab 1 post. If your question is too detailed or revealing to fit as a follow-up, your question would be better answered during office hours. 
+-   **No follow-up +1's.**:  Instead, you should use the heart button on a question/follow-up. Excessive +1 follow-ups clutter the post and make it more difficult to get to the unresolved follow-ups.
+-   **If you want a reply on a follow-up, mark it as unresolved**, or we may not see it.
+
+For more detailed information, please read over the [Ed policies and guidelines.](guides/ed/index.md)
 
 ### Staff Email
 
@@ -485,7 +503,7 @@ Reference][AJR] or Head First Java, 2nd Edition by Sierra and Bates (O'Reilly,
 Plagiarism on any lab or project will result in a score of zero on that
 assignment, along with academic sanctions. A second instance of plagiarism 
 on a lab or project will result in an F in the course. All incidents of 
-plagiarism will be referred to the Office of Student Conduct, including 
+plagiarism will be referred to the Center for Student Conduct, including 
 carelessly leaving code up on GitHub. Further details about our academic 
 misconduct policy can be found [here][AM].
 
@@ -502,38 +520,19 @@ have made the wrong choice for guidance.
 [incident reports]: https://sp18.datastructur.es/materials/guides/incident-reports-2017.html
 [AM]: guides/academic-misconduct.md
 
-### Lab Collaboration
+### Project and Lab Collaboration
 
-The entire point of labs is to learn, so we emphasize active learning and pair
-programming. For labs, just like projects, you can submit with a partner.
-One person can make a submission on Gradescope (from the partner repositories
-that are distributed on 6/27), and then add the other person to their
-submission. If you decide to work alone, you are
-able to submit individually. Feel free to collaborate with others besides your
-partner however you choose, though keep in mind that greater independence
-between pairs is likely to give
-you a better learning experience, as long as you aren't totally stuck. Even
-though we will allow close collaboration outside of just your partner pairs on
-labs, **the code you and your partner turn in should still be by you and your partner alone**! This means that although
-you may discuss the labs with students other than your partner, you should not
-be sharing or receiving code from them.
+For both labs and projects, they are deisgned for learning and evaluating your mastery of the course material. As such, they are intended to be completed primarily **independently** of any other student, particularly when it comes to
+writing actual code. However, we do encourage collaborations through discussing high-level strategies, specific syntax issues,
+and solutions to bugs with other students. **You should never be in direct possession code that was not written entirely by you alone.**
 
-### Project Collaboration
-
-By contrast, the projects were designed not just for learning (particularly how
-to be self-reliant in the context of large unfamiliar systems), but also for
-the dual purpose of evaluating your mastery of the course material. As such,
-they are intended to be completed primarily independently of any other student (who is not your partner), particularly when it comes to
-writing actual code. **You should never be in direct possession code that was not written entirely by you or your partner alone.**
-However, we encourage you to discuss high-level strategies, specific syntax issues,
-and solutions to bugs.
 
 ### Exam Misconduct
 
 **For exams, we will be absolutely unforgiving.** Any incident will result in a
 failing grade for the course, though Berkeley will let you retake CS 61B next
 semester. All incidents of academic misconduct on exams will be referred to the
-Office of Student Conduct.
+Center for Student Conduct.
 
 ### Academic Misconduct
 
@@ -568,9 +567,7 @@ bounds of acceptable behavior, we have three important rules for projects:
     Zoom screen sharing your code, for example, is **never permitted**. Cite any
     non course staff (course staff meaning AI, Tutor, TA, and Instructor) person
     you received advice from.
--   Using small snippets of code that you find online for solving tiny problems
-    such as code for finding the distance between two points. Such usages must be
-    cited in comments in your code.
+-   Using small snippets of code that you find online for solving tiny problems such as math operations (finding the distance between two points, etc), or basic Java syntax (how to capitalize a String, how to iterate a list, etc). Such usages must be cited in comments in your code, or would be considered plagiarism.
 
 #### Absolutely Forbidden
 
@@ -588,7 +585,7 @@ bounds of acceptable behavior, we have three important rules for projects:
 -   Working in lock-step with other students. Your workflow should not involve a
     group of people identifying, tackling, and effectively identically solving a
     sequence of subproblems.
--   Using tools like Chat GPT and GitHub Co-Pilot to generate code. 
+-   Using any LLM tools such as ChatGPT, GitHub Co-Pilot, or similar AI tools to generate code. (Project 3 BYOW Note: LLMs are permitted in the Interactivity component with citations, but they are still forbidden in the World Generation component. Further details will be released in the project spec)
 
 You can obey the letter of this entire policy while completely violating its
 spirit. However, this policy is not a game to be defeated, and such
@@ -609,10 +606,12 @@ Some course information ideas derived from:
 
 - [Josh Hug's CS 61B syllabus][Hug],
 - [Brian Harvey's CS 61A handout][BH],
-- [David Malan's CS50][CS50], and
-- [Zephyr Omaly's guide to inclusive classrooms][ZB].
+- [David Malan's CS50][CS50]
+- [Zephyr Omaly's guide to inclusive classrooms][ZB], and
+- [CS 61C Spring 2024's course policies][CS61C].
 
 [Hug]: http://sp18.datastructur.es/about.html
 [BH]: https://inst.eecs.berkeley.edu/~cs61a/sp11/0.pdf
 [CS50]: https://docs.cs50.net/2017/fall/syllabus/cs50.html
 [ZB]: https://docs.google.com/document/d/1vKzZJ56K4V025mm02RWN_VNocRqeVNhqN_lKe10_Jwk/edit?usp=sharing
+[CS61C]: https://cs61c.org/sp24/policies/
