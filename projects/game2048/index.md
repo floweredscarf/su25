@@ -14,9 +14,9 @@ This assignment has an [FAQ page](faq.md).
 
 ### Due Dates
 
-Project 1 Checkpoint is worth 1 point and due **Thursday, June 20th, 11:59pm**.
+Project 0 Checkpoint is worth 1 point and due **Thursday, June 20th, 11:59pm**.
 
-This project is official due **Friday, June 21st, 11:59pm**. We host office hours, project parties, and answer questions on Edstem Monday through Friday.
+This project is officially due **Friday, June 21st, 11:59pm**. We host office hours, project parties, and answer questions on Edstem Monday through Friday.
 
 We are allowing everyone to turn in the project as late as **Sunday, June 23rd, 11:59pm** with no penalties. However, understand that over the weekend there is **no** office hour or project party support, and limited Edstem support.
 
@@ -36,7 +36,7 @@ you find yourself stuck anywhere.
 
 [Java Crash Course]: ../../java/index.md
 [Chapter 1]: https://cs61b-2.gitbook.io/cs61b-textbook/1.-introduction
-[lateness policy]: ../../about#project-lateness
+[lateness policy]: ../../about#project-latenesso
 The main purpose of this project is to help you build some comfort with the
 material in these first few weeks of the course, so it's not necessary to have
 a deep understanding of everything just yet.
