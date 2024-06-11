@@ -2,7 +2,7 @@
 layout: page
 title: "FAQ - Lab 12: Balanced Search Trees"
 categories: lab
-released: true
+released: false
 searchable: true
 ---
 

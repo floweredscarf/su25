@@ -2,7 +2,7 @@
 layout: page
 title: "Lab 18: Shortest Path Trees"
 tags: [Lab, Graphs, Graph Algorithms, Shortest Paths]
-released: true
+released: false
 ---
 
 ## [FAQ](faq.md)

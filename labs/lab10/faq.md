@@ -2,7 +2,7 @@
 layout: page
 title: "FAQ - Lab 10: Trees and Traversals"
 categories: lab
-released: true
+released: false
 searchable: true
 ---
 

@@ -2,7 +2,7 @@
 layout: page
 title: "FAQ - Lab 4: Primitives and Objects"
 categories: lab
-released: true
+released: false
 searchable: true
 ---
 ### I'm getting a fatal: Need to specify how to reconcile divergent branches when trying to pull from the skeleton.

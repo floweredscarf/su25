@@ -2,7 +2,7 @@
 layout: page
 title: "FAQ - Lab 21: Comparison-Based Sorts 2"
 categories: lab
-released: true
+released: false
 searchable: true
 ---
 

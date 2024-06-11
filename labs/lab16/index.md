@@ -2,7 +2,7 @@
 layout: page
 title: "Lab 16: BYOW Introduction"
 categories: lab
-released: true
+released: false
 
 ---
 

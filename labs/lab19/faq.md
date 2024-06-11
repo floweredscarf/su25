@@ -2,7 +2,7 @@
 layout: page
 title: "FAQ - Lab 19: Minimum Spanning Trees"
 categories: lab
-released: true
+released: false
 searchable: true
 ---
 

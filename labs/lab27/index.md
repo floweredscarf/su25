@@ -2,7 +2,7 @@
 layout: page
 title: "Lab 27: Final Exam Practice"
 tags: [Lab, Final, Exam, Practice]
-released: true
+released: false
 searchable: true
 ---
 

@@ -2,7 +2,7 @@
 layout: page
 title: "Lab 4: Primitives & Objects"
 tags: [Lab, Java]
-released: true
+released: false
 searchable: true
 ---
 ## [FAQ](faq.md)

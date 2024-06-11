@@ -2,7 +2,7 @@
 layout: page
 title: "FAQ - Lab 03: Debugging & Test-Driven Development"
 categories: lab
-released: true
+released: false
 searchable: true
 ---
 
