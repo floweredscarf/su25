@@ -40,13 +40,6 @@ a dead-end.
 {% endcapture %}
 {% include alert.html type="warning" content=alertContent%}
 
-### Partners
-
-For all labs, partners are optional, and you can change partners for every lab.
-If you'd like to work with a partner but don't have one, your lab TA will assign
-you one to work with today. For more information, take a look at our
-[Partnership Guide](../../guides/partnership-guide.md).
-
 ## Personal Computer Setup
 
 ### Task: Configure Your Computer
@@ -492,7 +485,6 @@ This is for several reasons:
     repository**. This is a major violation of course policy!
 -   To expose you to a realistic workflow that is common on every major project
     you'll ever work on in the future.
--   To enable safer, more equitable partner collaborations.
 
 ### Task: Setting up your Git Repository
 
@@ -1221,8 +1213,7 @@ increment or decrement variables within larger expressions like
 System.out.println(values[k++]);
 ```
 
-this is a risky practice very susceptible to off-by-one errors. Discuss a
-few settings that could lead to OBO errors with your partner. In general,
+this is a risky practice very susceptible to off-by-one errors. In general,
 we suggest starting with more verbose syntax. Therefore, we ask that you
 only use the `++` or `--` operations on lines **by themselves**.
 
@@ -1475,10 +1466,6 @@ in the last line is the value of the `SIZE` variable. `SIZE` has a hard-coded va
 which you should experiment with. Feel free to make `SIZE` controlled by a command-line argument!
 However, when you turn it in, make sure that it will run with `SIZE = 10`!)
 
-First, if you are working with a partner, swap which partner is primarily writing 
-the code. For this next part, we are going to need to create a new class, so let's 
-learn how to do this!
-
 At the top of IntelliJ, you should see "File". Click on it, and then hover over "New"
 and then click on "Java Class". See this reference screenshot:
 ![New Java Class](img/NewJavaClass.png)
@@ -1579,7 +1566,7 @@ problems. Specifically, for the class `AddingMachine.java` we assumed that the
 user will never enter more than `MAXIMUM_NUMBER_OF_INPUTS` non-zero values during
 any run of the program.
 
-Discuss with your partner: is this usually a fair assumption to make? Try
+Is this usually a fair assumption to make? Try
 running the code and supply input that violates this assumption. Does the code
 tell you that you have made an error or does it just crash? This touches on a
 new idea of programming: **robustness**. This refers to code's ability to
@@ -1624,7 +1611,7 @@ Fill in the blanks in the `ArrayOperations` class. Your methods should pass
 the associated tests in `ArrayOperationsTest`.
 
 Note: Before trying to program an algorithm, you should usually try a small
-case by hand. For each of the exercises today, work with your partner to do
+case by hand. For each of the exercises today, demo
 each algorithm by hand before writing any code.
 
 -   The `insert` method takes three arguments: an `int` array, a position in the
@@ -1667,7 +1654,7 @@ performs as indicated below and in the comments. Remember that some
 arrays can have zero elements!
 
 Note: Again, before trying to program an algorithm, you should usually try a small
-case by hand. Walk through the algorithm by hand with your partner.
+case by hand.
 
 You may find `System.arraycopy` useful for this problem, but you are not
 required to use it. If you are not sure how to use this method, try Googling it!
