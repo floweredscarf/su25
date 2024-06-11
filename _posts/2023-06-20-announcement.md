@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Welcome to CS61BL - Draft Website WIP
+title: Welcome to CS61BL
 tags: [Announcement]
 ---
 
