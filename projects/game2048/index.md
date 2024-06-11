@@ -2,7 +2,7 @@
 layout: page
 title: "Project 0: 2048"
 tags: [Project]
-released: true
+released: false
 searchable: true
 ---
 
