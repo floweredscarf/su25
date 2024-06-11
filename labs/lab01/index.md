@@ -1188,8 +1188,7 @@ to understand than an equivalent `while` loop.
 
 ### Shortcuts for Incrementing / Decrementing
 
-Let `k` be an integer variable. Then the three following statements are
-equivalent in that they all increment `k`.
+Let `k` be an integer variable. Then the three following statements all increment `k` by 1:
 
 ```java
 k = k + 1;
