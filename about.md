@@ -135,23 +135,20 @@ Indian and Indigenous peoples.
 ### Labs
 
 Lab sections meet Monday through Friday. You may only
-attend the lab section in which you are enrolled. All lab work may optionally
-be done with a partner. You do not need to work with a partner. You may also
-dissolve your partnership, but if you do so we will not help you find a new one.
-If you do find another partner, then we will match the two of you together.
-In-person labs will be held in a lab room in Soda. Remote labs will be held over 
+attend the lab section in which you are enrolled.
+In-person labs will be held in a lab room in Soda Hall. Remote labs will be held over 
 Zoom where you will be working primarily in
-breakout rooms with your partner (TAs / Tutors / Academic Interns will join the
-breakout room when you need assistance).
+breakout rooms.
 
-This summer, we are trying out a new way of teaching lab. The Monday through Thursday
-labs are practical labs that emphasize hands-on experience with the course material.
-The Friday lab will be a theoretical lab, that involves working through with your classmates
-and the TA a worksheet covering the theoretical aspects of the material covered that week.
+The Monday through Thursday labs are practical labs that emphasize hands-on experience with the course material.
+These involve coding assignments that are submitted for credit. Practical labs do not require attendance.
+The Friday labs are theoretical labs that involve working through a worksheet with your classmates
+and TA. Theoretical labs will have a small attendance credit (see grading breakdown below).
 
 If you would like to swap to a lab section that you are not officially enrolled
-in, you must receive permission from your current lab TA and the lab TA of the
-section you would like to attend. <strong> Attending a lab that you are not officially
+in you must receive permission from your current lab TA and the lab TA of the
+section you would like to attend. Please email or talk to your TA if you
+would like to swap sections. <strong> Attending a lab that you are not officially
 enrolled in or have not received permission to attend may result in you being 
 de-prioritized for help. </strong>
 
