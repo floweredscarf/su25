@@ -316,7 +316,7 @@ repository ("repo"), which you will need to submit all coding assignments.
 1.  Create an account at [GitHub.com](https://github.com/). If you already have
     an account, you do not need to create a new one.
 1.  Go to
-    [the Beacon website](https://su23.beacon.datastructur.es/register/)
+    [the Beacon website](https://su24.beacon.datastructur.es/register/)
     and you'll be guided through a few steps to complete your GitHub repository
     registration. Please follow them carefully! You must be logged in to your
     Berkeley account to complete the Google Form quiz. If any errors occur while
@@ -333,8 +333,8 @@ repository ("repo"), which you will need to submit all coding assignments.
 ### Your Repository
 
 Your repository will have a name containing a number that is unique to you!
-For instance, if your repo is called "`su23-s42`", you'll be able to visit your
-private repository at <https://github.com/Berkeley-CS61B-Student/su23-s42>
+For instance, if your repo is called "`su24-s42`", you'll be able to visit your
+private repository at <https://github.com/Berkeley-CS61B-Student/su24-s42>
 (when logged into GitHub). **If your repo number is not "42" this link will not
 work for you.** Replace "42" with your own to see your repo on Github.
 
@@ -424,9 +424,9 @@ directories, etc., refer back to
 
 
 1.  Create a directory called `lab01-checkoff`. You can put this directory
-    anywhere on your computer (unless you have already cloned your `su23-s***`
+    anywhere on your computer (unless you have already cloned your `su24-s***`
     repository, in which case, you **should not put this directory inside of
-    your `su23-s***` repo)**.
+    your `su24-s***` repo)**.
 2.  Move into the `lab01-checkoff` directory, and initialize a git repository
     in this directory.
 3.  Create a file called `61b.txt` in any way you'd like. In this text file,
@@ -488,7 +488,7 @@ This is for several reasons:
 
 ### Task: Setting up your Git Repository
 
-#### Clone your `su23-s***` Git Repository
+#### Clone your `su24-s***` Git Repository
 
 Navigate to the spot in your folders on your computer that you'd like to start
 your repository. In the example below, we're assuming you want all your stuff
@@ -540,7 +540,7 @@ Enter the following command to clone your GitHub repo. Make sure to replace the
 were assigned through Beacon, not your lab section number).
 
 ```shell
-git clone https://github.com/Berkeley-CS61B-Student/su23-s***.git
+git clone https://github.com/Berkeley-CS61B-Student/su24-s***.git
 ```
 
 {% capture alertContent %}
@@ -553,7 +553,7 @@ that there are no files in the repo, which is what we expect here.
 Move into your newly created repo!
 
 ```shell
-cd su23-s***
+cd su24-s***
 ```
 
 Now we will add the `skeleton` remote repository. You will pull from this
@@ -562,7 +562,7 @@ within the newly created repository folder when you continue with these
 commands.) Enter the following command to add the `skeleton` remote.
 
 ```shell
-git remote add skeleton https://github.com/cs61bl/skeleton-su23.git
+git remote add skeleton https://github.com/cs61bl/skeleton-su24.git
 ```
 
 Listing the remotes should now show both the `origin` and `skeleton` remotes.
@@ -573,7 +573,7 @@ git remote -v
 
 {% include alert.html content="
 If you see an error like `fatal: not a git repository` make sure you have
-properly moved into the `su23-s***` directory using `cd`.
+properly moved into the `su24-s***` directory using `cd`.
 " %}
 
 ### Getting the Skeleton
@@ -622,7 +622,7 @@ git push origin main
 You can verify that this was successful by checking your repository online on
 GitHub's website. It should contain the updated `magic_word.txt` file. If it
 doesn't, make sure that your `add` and `commit` were successful. In particular,
-make sure that you are in your repo, `su23-***`.
+make sure that you are in your repo, `su24-***`.
 
 {% include alert.html type="task" content="
 **Task**: Follow the instructions above to push your magic word to GitHub, and
@@ -683,24 +683,24 @@ dependency management is a bit of a mess, so we instead provide a
 git repo that contains all the dependencies that we will use in this course.
 
 {% include alert.html type="danger" content="
-First, **move out of your `su23-s***` repo with `cd ..`**. Failing to do so can
+First, **move out of your `su24-s***` repo with `cd ..`**. Failing to do so can
 cause many headaches later.
 " %}
 
 Then, run:
 
 ```shell
-git clone https://github.com/cs61bl/library-su23
+git clone https://github.com/cs61bl/library-su24
 ```
 
-Below is shown the directory structure of `library-su23`. Look inside the
-folder using `ls library-su23` and make sure you see the `.jar` files
+Below is shown the directory structure of `library-su24`. Look inside the
+folder using `ls library-su24` and make sure you see the `.jar` files
 listed below. There are many more, but we only list the first few. If you're
 using your operating system's file explorer, the `jar` part might not show up
 in the filenames, and that's OK.
 
 ```console
-library-su23
+library-su24
 ├── algs4.jar
 ├── animated-gif-lib-1.4.jar
 ├── antlr4-runtime-4.11.1.jar
@@ -742,7 +742,7 @@ the git exercise:**
 
 1.  You have installed Java 17 or higher.
 1.  You have successfully created your local repo for the class on your own
-    machine. This is the `su23-s***` repository you earlier.
+    machine. This is the `su24-s***` repository you earlier.
 1.  You have pulled from the skeleton, and you have a `lab01` directory.
 
 ### Installing IntelliJ
