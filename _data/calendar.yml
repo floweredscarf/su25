@@ -4,7 +4,15 @@
       type: Lecture, Lab
       date: 2024-06-17
       description: >
-        Welcome to CS 61BL!<br><br>
+        <br>
+         [Live Lecture Link]()<br><br>
+         Lecture Time: 10-11am PDT<br>
+         Location: Dwinelle 155<br><br>
+         [Slides]()
+          |
+         [Video]()
+          |
+         **Textbook:** [Ch 1](https://cs61b-2.gitbook.io/cs61b-textbook/1.-introduction)
       url: labs/lab01
       published: false
       footer: >
@@ -12,6 +20,17 @@
     - title: Arrays and Objects
       type: Lecture, Lab
       date: 2024-06-18
+      description: >
+        <br>
+         [Live Lecture Link]()<br><br>
+         Lecture Time: 10-11am PDT<br>
+         Location: Dwinelle 155<br><br>
+         [Slides]()
+          |
+         [Video]()
+          |
+        **Textbook:** [Ch 2](https://cs61b-2.gitbook.io/cs61b-textbook/2.-defining-and-using-classes),
+        [Ch 6](https://cs61b-2.gitbook.io/cs61b-textbook/6.-arrays)
       url: labs/lab02
       published: false
     - title: Observation of Juneteenth
