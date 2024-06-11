@@ -16,9 +16,9 @@ This assignment has an [FAQ page](faq.md).
 
 Project 0 Checkpoint is worth 1 point and due **Thursday, June 20th, 11:59pm**.
 
-This project is official due **Friday, June 21st, 11:59pm**. We host office hours, project parties, and answer questions on Edstem Monday through Friday.
+We encourage everyone to threat the project as if it is officially due **Friday, June 21st, 11:59pm**. We host office hours, project parties, and answer questions on Edstem Monday through Friday.
 
-We are allowing everyone to turn in the project as late as **Sunday, June 23rd, 11:59pm** with no penalties. However, understand that over the weekend there is **no** office hour or project party support, and limited Edstem support.
+We are allowing everyone to turn in the project as late as **Sunday, June 23rd, 11:59pm**. However, understand that over the weekend there is **no** office hour or project party support, and limited Edstem support.
 
 For turning in the project after Sunday, please see our [lateness policy][].
 
