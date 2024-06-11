@@ -160,8 +160,8 @@ strongly recommended. If for whatever reason you are unable to
 attend, the lecture video will be posted promptly.
 
 ### Instructor Lab
-There will be instructor-taught labs on Tuesday and Thursday held in **VLSB 2050** These will largely consist of
-instructors lecturing and covering content relevant to that day's lab assignment. Instructor Labs will also be webcast synchronously over Zoom, and recording of the lab will be posted promptly after its conclusion. These labs will cover material required for the course, and will cover new material separate from the lecture times above. It is highly recommended you treat instructor labs like lectures and attend them or watch the recording.
+There will be instructor-taught labs on Tuesday and Thursday held in **VLSB 2050**. These will largely consist of
+instructors lecturing and covering content relevant to that day's lab assignment. Instructor Labs will also be webcast synchronously over Zoom, and a recording of the lab will be posted promptly after its conclusion. These labs will cover material required for the course, and will cover new material separate from the lecture times above. It is highly recommended you treat instructor labs like lectures and attend them or watch the recording.
 
 ### Instructor Office Hours
 
@@ -214,7 +214,7 @@ are unable to make the final exam, please email <cs61bl@berkeley.edu> as soon as
 
 #### Final Exam Percentile Clobbering
 
-For those of you who, have a bad night, fall sick, or make major improvements over the semester, the exam clobbering policy gives you a chance to replace potentially both of your midterm exam scores.
+For those of you who have a bad night, fall sick, or make major improvements over the semester, the exam clobbering policy gives you a chance to replace your midterm exam score.
 
 Specifically, if it helps your score, we will offer a full [z-score](https://en.wikipedia.org/wiki/Standard_score) clobber to the midterm from the final.
 
@@ -462,10 +462,10 @@ quick answer. Furthermore, by posting online as opposed to emailing us directly,
 students benefit by seeing the question and the answer.
 
 #### Ed Etiquette
--   **Search before posting.**: Your question may have already been answered by us or other students in the past. Reading other  students' posts will let you refine your question, and gives us more time to answer new questions.
+-   **Search before posting**: Your question may have already been answered by us or other students in the past. Reading other  students' posts will let you refine your question, and gives us more time to answer new questions.
 -   **Try to avoid open-ended or vague questions such as**: "How does Java work?" or "How come the solution to a discussion      problem is this?". If you walk us through your thoughts and reference specific lines that you find confusing, we can better address the problem you are facing. Being specific helps us uncover any misunderstandings that you may have.
--   **Post questions about assignments as public follow-ups on the corresponding assignment post.**: For example, post your questions about Lab 1 under the Lab 1 post. If your question is too detailed or revealing to fit as a follow-up, your question would be better answered during office hours. 
--   **No follow-up +1's.**:  Instead, you should use the heart button on a question/follow-up. Excessive +1 follow-ups clutter the post and make it more difficult to get to the unresolved follow-ups.
+-   **Post questions about assignments as public follow-ups on the corresponding assignment post**: For example, post your questions about Lab 1 under the Lab 1 post. If your question is too detailed or revealing to fit as a follow-up, your question would be better answered during office hours. 
+-   **No follow-up +1's**:  Instead, you should use the heart button on a question/follow-up. Excessive +1 follow-ups clutter the post and make it more difficult to get to the unresolved follow-ups.
 -   **If you want a reply on a follow-up, mark it as unresolved**, or we may not see it.
 
 For more detailed information, please read over the [Ed policies and guidelines.](guides/ed/index.md)
