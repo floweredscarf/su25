@@ -160,15 +160,16 @@ strongly recommended. If for whatever reason you are unable to
 attend, the lecture video will be posted promptly.
 
 ### Instructor Lab
-There will be instructor-taught labs on Tuesday and Thursday. These will largely consist of
-instructor lecturing and covering content relevant to that day's lab assignment. Instructor Labs will also be held in person, and
-a recording of the lab will be posted promptly after its conclusion. 
+There will be instructor-taught labs on Tuesday and Thursday held in **VLSB 2050** These will largely consist of
+instructors lecturing and covering content relevant to that day's lab assignment. Instructor Labs will also be webcast synchronously over Zoom, and recording of the lab will be posted promptly after its conclusion. These labs will cover material required for the course, and will cover new material separate from the lecture times above. It is highly recommended you treat instructor labs like lectures and attend them or watch the recording.
 
 ### Instructor Office Hours
 
 Instructor office hours are primarily for conceptual questions and administrative
 problems. The instructors are teachers too: we like teaching, and we’d rather see
-you as soon as you don’t understand something rather than right before the exam. If you'd like to meet with us and cannot make any of the weekly times, reach out to us privately via the course email.
+you as soon as you don’t understand something rather than right before the exam. That being said,
+please direct any debugging questions to lab or normal office hours.
+If you'd like to meet with us and cannot make any of the weekly times, reach out to us privately via the course email.
 
 In a lab-based course like CS 61BL, we expect that most of the course-related
 questions will occur during lab or through our course forum. For administrative
@@ -182,8 +183,7 @@ administrative email address, <cs61bl@berkeley.edu>.
 Each lab assignment is worth 2 points and officialy due **22 hours** after the start of your enrolled lab
 section (or of your switched section if have received approval from both the TA
 and the instructors). For example, if your lab section is from 4-6 PM, then
-Tuesday’s lab assignment will be due on Wednesday at 2 PM. However, you will have a **2 hour grace period** to submit the assignment without lateness penalty. Lab exercises and self-assessments
-will be graded via online submission to Gradescope.
+Tuesday’s lab assignment will be due on Wednesday at 2 PM. However, you will have a **2 hour grace period** to submit the assignment without lateness penalty. This grace period is intended to be used for technical difficulties which may arise when submitting to the official deadline. Lab exercises and self-assessments will be graded via online submission to Gradescope.
 
 ### Quizzes
 
@@ -374,12 +374,13 @@ been satisfactory. You must complete all coursework before the drop deadline to
 be considered for an incomplete grade. Per university policy, you will **not** be able to request for an incomplete on assignments that were involved in academic misconduct. For more information, please email the instructors.
 
 There are a total of 21 graded lab exercises, each worth 2 points.
-Thus, while the total point value for labs is 48 points, lab grades are capped
-at 40 points. This means that **you can miss up to 1 lab without penalty**. 
+Thus, while the total point value for labs is 42 points, lab grades are capped
+at 40 points. This means that **you can miss up to 1 lab without penalty** if you get a full score on every other lab. 
+It also means that you can get full credit for labs in this class if you do not get a full score on every lab assignment.
 In other words, getting more than 40 points on lab is equivalent to
 getting 40 points for your lab score.
 
-For the theoretical lab sections, you will need to attend 5 out of the total 6 in order to recieve full attendance credit. 
+For the theoretical lab sections, you will need to attend 5 out of the total 6 in order to recieve full attendance credit. Each attendance is worth 3 points, with a point cap of 15 points.
 
 ### Late Policy
 
