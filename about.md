@@ -434,6 +434,8 @@ We will be honoring DSP accommodations for extensions on assignments. For any as
 students with the extension accommodations can receive an automatic one day extension
 on any assignment.
 
+**To request for a DSP-related extension, go to the "DSP Extensions" section under the Extensions tab on Beacon. We will check your DSP record for extensions related accommodations.**
+
 #### Extenuating Cirucmstances
 We define extenuating circumstances as circumstances outside of the student’s control that 
 directly inhibits the student’s ability to complete assignments in a timely manner. Some 
