@@ -143,8 +143,7 @@ that you can fill out to provide your input on the case:
   applies even if you simply posted your code somewhere publicly, e.g. a public
   Github repository.
 - **Option 2**: You accept that you submitted work that was not your own for a
-  grade, and sign the faculty disposition form. You receive a more severe point
-  penalty on the assignment and will be referred to the
+  grade, and sign the faculty disposition form. You will receive a point penalty be referred to the
   Center for Student Conduct for an NRW. Optionally, you may meet with the
   instructors, though this will not prevent an CSC warning.
 - **Option 3**: You are unsure if / do not believe your case constitutes
@@ -162,7 +161,7 @@ Feel free to contact us at cs61bl@berkeley.edu for advice on options.
 
 [collab-policies]: /su23/about#collaboration-and-academic-misconduct
 
-For Option 1 and 2, the point penalty and NRW are the maximum penalties possible.
+For Option 1 and 2, the point penalty and NRW are the maximum penalties possible if this is your first misconduct case.
 
 For any case involving a group of students with matching code, the choices of
 all participants will be rejected if there is no student who accepts they
