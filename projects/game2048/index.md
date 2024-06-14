@@ -172,13 +172,13 @@ Example of syntax: If `t` is a variable of type `Tile`, representing a tile with
 
 To test your method, run the tests in `TestTask1.java` by right-clicking the file and selecting "Run 'TestTask1'": 
 
-![run-test-empty-space](img/run-test-empty-space.png){:style="display:block; margin-left:auto; margin-right:auto"}
+![run-test-empty-space](img/test-task1.png){:style="display:block; margin-left:auto; margin-right:auto"}
 
 (You can also run all the tests in the entire folder by right-clicking `game2048logic` > "Run 'Tests in 'game2048logic''".)
 
 Alternatively, you may open the `TestTask1.java` file and click the green arrow next to `public class TestTask1` to run the tests (yours may look a little different):
 
-![run-test-empty-space-2](img/run-test-empty-space-2.gif){:style="display:block; margin-left:auto; margin-right:auto"}
+![run-test-empty-space-2](img/test-task1-play.gif){:style="display:block; margin-left:auto; margin-right:auto"}
 
 You may also run individual tests in the same manner.
 
