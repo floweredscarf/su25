@@ -19,7 +19,7 @@ Note that this video was recorded during the spring semester and there will be m
 
 The `skeleton` remote repository contains the skeleton code for all assignments.
 Whenever a new assignment is released, or if we need to update an assignment,
-you will pull from the skeleton. First ensure that you are in your `su23-s***`
+you will pull from the skeleton. First ensure that you are in your `su24-s***`
 repository directory, then:
 
 ```shell
@@ -27,7 +27,7 @@ git pull skeleton main
 ```
 
 This fetches all remote files from the repo named `skeleton` (which
-is located at `https://github.com/cs61bl/skeleton-su23.git`) and copies
+is located at `https://github.com/cs61bl/skeleton-su24.git`) and copies
 them into your current folder.
 
 {% include alert.html type="warning" content="
@@ -53,7 +53,7 @@ through the following steps again.**
     **"File --> Open"**.
 
 1.  Find and choose the directory of your current assignment. For example, for
-    Lab 1, you would select the `lab01` directory inside your `su23-***` repo.
+    Lab 1, you would select the `lab01` directory inside your `su24-***` repo.
 
 1.  Navigate to the **"File -> Project Structure"** menu, and make sure you are
     in the **Project** tab. Set your project SDK to your installed Java version.
@@ -75,7 +75,7 @@ through the following steps again.**
         directory, followed by `out`
 
 1.  Still in Project Structure, go to the **Libraries** tab. Click the
-    "**+ -> Java**" button, then navigate to `library-su23`, select the
+    "**+ -> Java**" button, then navigate to `library-su24`, select the
     folder, and click "Ok".
 
 1.  Click "Ok" to apply your settings and leave Project Structure.
@@ -89,12 +89,12 @@ At this point, if things have been configured correctly:
 ## Submitting to Gradescope
 
 1.  Add your assignment directory using `git add`. For example, for Lab 1,
-    from your repo root (`su23-***`) you would use `git add lab01`. From the
+    from your repo root (`su24-***`) you would use `git add lab01`. From the
     assignment directory, you could use `git add .`.
 1.  Commit the files using `git commit -m "<commit message here>"`. The commit
     message is required. For example, `git commit -m "Finished Lab 1"`.
 1.  Push your code to your remote repository with `git push origin main`.
-1.  Open the assignment on Gradescope. Select Github, then your `su23-***`
+1.  Open the assignment on Gradescope. Select Github, then your `su24-***`
     repository and the `main` branch, then submit your assignment. You will
     receive a confirmation email, and the autograder will run automatically.
 
@@ -103,5 +103,5 @@ that Gradescope isn't grading the right code, check that you have added,
 committed, and pushed  with `git status`.**
 
 If you've gotten yourself into a situation where you're unable to push for some reason,
-see [https://cs61bl.org/su23/guides/git-wtfs](https://cs61bl.org/su23/guides/git-wtfs).
+see [https://cs61bl.org/su24/guides/git-wtfs](https://cs61bl.org/su24/guides/git-wtfs).
 
