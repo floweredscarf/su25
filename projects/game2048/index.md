@@ -35,7 +35,7 @@ you find yourself stuck anywhere.
 
 [Java Crash Course]: ../../java/index.md
 [Chapter 1]: https://cs61b-2.gitbook.io/cs61b-textbook/1.-introduction
-[lateness policy]: ../../about#project-latenesso
+[lateness policy]: ../../about.md#lateness-policy
 
 The main purpose of this project is to help you build some comfort with the
 material in these first few weeks of the course, so it's not necessary to have
