@@ -701,19 +701,19 @@ Gradescope will only grade your `Model.java` file. If you edit any other files, 
 
 Tests are "all or nothing" in their own fields. If you fail one of the subtests in the test category, you will not receive credit for that category although you might have passed different test cases. For example, you'll see in Gradescope `TestTask1` category 8 subtests.
 
-Here is a breakdown of what percent you'd earn on this project with varying levels of completing:
+Here is a breakdown of the points you'd earn on this project with varying levels of completion:
 
 1. `TestTask1`: 1
 2. `TestTask2`: 1
 3. `TestTask3`: 1
 4. `TestCheckpoint`: 1
-5. `TestTask5`: 2
-6. `TestTask6`: 2
-7. `TestTask7`: 2
+5. `TestTask5`: 1
+6. `TestTask6`: 1
+7. `TestTask7`: 1
 8. `TestTask8`: 1
 9. `TestTask9`: 1
 10. `TestTask10`: 1
-11. `TestIntegration`: 2
+11. `TestIntegration`: 5
 
 Once you've pushed your code to GitHub (i.e. ran `git push`), then you may go to Gradescope, find the `proj0` assignment, and submit the code there. Keep in mind that the version of code that Gradescope uses is the most recent commit you've pushed, so if you do not run `git push` before you submit on Gradescope, old code will be tested instead of the most recent code you have on your computer.
 
