@@ -415,8 +415,6 @@ Now that you've read the first 3 sections of the
 [Using Git Guide](../../guides/using-git.md), you're ready to start using git!
 As part of your lab checkoff, you will be working through a small git workflow
 by setting up a git repository and making a couple commits to the repository.
-An academic intern or staff member will look at your git repository during
-checkoff to ensure that it is in a good state.
 
 If you need help with creating directories, creating files, changing
 directories, etc., refer back to
