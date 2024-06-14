@@ -2,7 +2,7 @@
 layout: page
 title: "Project 1: Deques" # Title of page.
 tags: [Project]
-released: true
+released: false
 searchable: true
 ---
 

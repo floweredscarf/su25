@@ -2,7 +2,7 @@
 layout: page
 title: "FAQ - Lab 27: Final Exam Practice"
 categories: lab
-released: true
+released: false
 searchable: true
 ---
 

@@ -2,7 +2,7 @@
 layout: page
 title: "Lab 15: Disjoint Sets"
 tags: [Lab, Disjoint Sets]
-released: true
+released: false
 ---
 
 ## [FAQ](faq.md)

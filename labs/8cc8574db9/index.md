@@ -2,7 +2,7 @@
 layout: page
 title: "Lab 6: Inheritance"
 tags: [Lab]
-released: true
+released: false
 searchable: true
 ---
 ## [FAQ](faq.md)

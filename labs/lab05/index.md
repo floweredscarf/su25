@@ -2,7 +2,7 @@
 layout: page
 title: "Lab 5: Introduction to Linked Lists"
 tags: [Lab, Linked Lists, Debugging, Testing]
-released: true
+released: false
 searchable: true
 ---
 

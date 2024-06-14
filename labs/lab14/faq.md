@@ -2,7 +2,7 @@
 layout: page
 title: "FAQ - Lab 14: Heaps and Priority Queues"
 categories: lab
-released: true
+released: false
 searchable: true
 ---
 

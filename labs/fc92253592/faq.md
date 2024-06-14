@@ -2,7 +2,7 @@
 layout: page
 title: "FAQ - Lab 7: Comparison, Iteration, and Exceptions"
 categories: lab
-released: true
+released: false
 searchable: true
 ---
 

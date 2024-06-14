@@ -2,7 +2,7 @@
 layout: page
 title: "Lab 10: Trees and Traversals"
 tags: [Lab, Trees, Binary Trees, Iterators, DFS, BFS, Traversals]
-released: true
+released: false
 searchable: true
 ---
 

@@ -2,7 +2,7 @@
 layout: page
 title: "FAQ - Lab 6: Inheritance"
 categories: lab
-released: true
+released: false
 searchable: true
 ---
 ## `ListSet`

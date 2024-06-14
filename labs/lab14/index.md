@@ -2,7 +2,7 @@
 layout: page
 title: "Lab 14: Heaps and Priority Queues"
 tags: [Lab, Heaps, Priority Queues]
-released: true
+released: false
 searchable: true
 ---
 

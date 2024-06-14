@@ -2,7 +2,7 @@
 layout: page
 title: "Lab 20: Comparison-Based Sorts 1"
 tags: [Lab, Sorting, Comparison]
-released: true
+released: false
 searchable: true
 ---
 

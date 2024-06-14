@@ -2,7 +2,7 @@
 layout: page
 title: "Lab 11: Binary Search Trees"
 tags: [Lab, Java, Binary Search Trees, Binary Trees]
-released: true
+released: false
 searchable: true
 ---
 

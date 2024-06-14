@@ -2,7 +2,7 @@
 layout: page
 title: "Lab 2: Conditionals, Loops, Arrays"
 tags: [Lab, Java]
-released: true
+released: false
 searchable: true
 ---
 

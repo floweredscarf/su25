@@ -2,7 +2,7 @@
 layout: page
 title: "FAQ - Project 2: Gitlet"
 categories: proj
-released: true
+released: false
 searchable: true
 toc:
   h_max: 4

@@ -2,7 +2,7 @@
 layout: page
 title: "Lab 13: Hash Tables"
 tags: [Lab, Hash Tables]
-released: true
+released: false
 searchable: true
 ---
 

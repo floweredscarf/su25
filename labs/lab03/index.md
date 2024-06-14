@@ -2,7 +2,7 @@
 layout: page
 title: "Lab 03: Debugging & Test-Driven Development"
 categories: lab
-released: true
+released: false
 toc:
     h_max: 4
 ---

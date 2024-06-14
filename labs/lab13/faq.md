@@ -2,7 +2,7 @@
 layout: page
 title: "FAQ - Lab 13: Hash Tables"
 categories: lab
-released: true
+released: false
 searchable: true
 ---
 
