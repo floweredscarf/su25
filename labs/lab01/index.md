@@ -421,13 +421,13 @@ directories, etc., refer back to
 *[Learn to use the Terminal](#learn-to-use-the-terminal)*.
 
 
-1.  Create a directory called `lab01-checkoff`. You can put this directory
+1.  Create a directory called `lab01-checkoff` (`mkdir`). You can put this directory
     anywhere on your computer (unless you have already cloned your `su24-s***`
     repository, in which case, you **should not put this directory inside of
     your `su24-s***` repo)**.
-2.  Move into the `lab01-checkoff` directory, and initialize a git repository
-    in this directory.
-3.  Create a file called `61b.txt` in any way you'd like. In this text file,
+2.  Move into the `lab01-checkoff` directory (`cd`), and initialize a git repository
+    in this directory (`git init`).
+3.  Create a file called `61b.txt` in any way you'd like (`touch`). In this text file,
     add the text "61b version 1" into it.
 4.  Create another file called `61bl.txt` in any way you'd like. In this text
     file, add the text "61bl version 1" into it.
