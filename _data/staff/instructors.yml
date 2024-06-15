@@ -1,5 +1,40 @@
 title: Instructors
-text: |
-  **All course related, time sensitive emails should go to cs61bl@berkeley.edu.** Only the instructors have access to this account
-  and we promise to monitor it closely.
 staffers:
+- name: Alex Kassil
+  email: alexkassil@berkeley.edu
+  biography: 'Pronouns: he/him/his<br><br>Hello everyone! I graduated back in 2021 with my master and undergraduate degree at Berkeley studying computer science. I taught CS61A, CS61B, CS88, and Data 140 while at Berkeley. Currently I am a software engineer, but I am excited to return to instruct CS 61BL this summer. I like running and playing video games like Starcraft 2 and Slay the Spire.'
+  p1: assets/img/staff/alex.png
+- name: Circle Chen
+  email: circlecly@berkeley.edu
+  biography: 'Pronouns: he/him/his<br><br>Hi! I am Liangyuan (Circle) Chen. I''m a
+    rising senior studying CS + Data Science. I''ve been involved in teaching this
+    course for two years, and I''m extremely excited to co-instruct CS 61BL this summer!
+    I cook, literally and figuratively, whether it be real food, video games, or game
+    music. Just don''t get me started drawing connections between Genshin Impact and
+    real life...'
+  p1: assets/img/staff/circle.jpg
+  website: https://circlecly.github.io
+- name: Dominic Conricode
+  email: dvconricode@berkeley.edu
+  biography: 'Pronouns: he/him/his<br><br>Hey y''all! I''m Dom, I''m a recent Berkeley
+    CS graduate. I was a 5-time TA for the 61Best course and I''m incredibly stoked
+    to be instructing this summer! In my undergrad I did everything from latin dance
+    to rocket engineering to collegiate boxing and now I''m trying to get better at
+    surfing :D I''m looking forward to talking with all of you as we dive into the
+    world of data structures!'
+  p1: assets/img/staff/dominic.png
+  website: https://xkcd.com/323/
+- name: Erik Kizior
+  email: erikkizior@berkeley.edu
+  biography: "Pronouns: he/him/his<br><br>Hey! I\u2019m Erik, a rising 4th year majoring\
+    \ in EECS. I love eating burritos, playing Smash, and sleeping. I\u2019m so excited\
+    \ to be instructing CS 61BL this summer and I hope you have a fun time in this\
+    \ class!"
+  p1: assets/img/staff/erik.png
+- name: 'Teresa Luo '
+  email: teresaluo1210@berkeley.edu
+  biography: 'Pronouns: She/her/hers<br><br>Hi! I''m Teresa, a rising senior majoring
+    in Computer Science and Data Science. I am currently    getting my daily dose
+    of Corgi content, keeping up with my Duolingo streak, and learning how to felt!
+    Looking forward to a fun summer with you all!'
+  p1: assets/img/staff/teresa.jpeg
