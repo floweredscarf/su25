@@ -187,7 +187,13 @@ Tuesday’s lab assignment will be due on Wednesday at 2 PM. However, you will h
 
 ### Quizzes
 
-TBD
+Quizzes will be administered once a week covering the content on the course material for that week. These will contain questions ranging from multiple choice questions to code writing questions. Quizzes will be released on Fridays, and due the following Monday. Quizzes are closed note, closed IDE. The quizzes will be timed and you will have 1 hour to complete them after you start the assignment on Gradescope.
+
+Regardless of length, all quizzes will be worth 2.5 points. The maximum number of quiz points you can get will be 15.
+
+Those who perform poorly have the option to attend Tutor led redemption sections on the topics from the quiz. Those who attend these short sections will unlock the ability to take a different version of a quiz on the same topic, which can clobber your initial score. This will be a full clobber so your score would be max(original_quiz_score, redemption_quiz_score).
+
+The quiz review sections will occur on Tuesdays and Wednesdays. You will have to sign up for these section, more instructions on this will be provided after the first quiz. Redemption quizzes will be released at 12 AM Thursday and due almost 24 hours later on Thursday, midnight.
 
 ### Projects
 
@@ -519,6 +525,8 @@ For both labs and projects, they are deisgned for learning and evaluating your m
 writing actual code. However, we do encourage collaborations through discussing high-level strategies, specific syntax issues,
 and solutions to bugs with other students. **You should never be in direct possession code that was not written entirely by you alone.**
 
+Project 3 will be the only exception where formal partnerships are allowed. Details related to partnerships will be released in the project spec. 
+
 
 ### Exam Misconduct
 
@@ -533,8 +541,8 @@ Center for Student Conduct.
 responsible for work that is not yours.** To help (but not entirely define) the
 bounds of acceptable behavior, we have three important rules for projects:
 
--   **By You Alone**: All code that you submit (other
-    than skeleton code) should be written by you alone, except
+-   **By You (and Your Parnter) Alone**: All code that you submit (other
+    than skeleton code) should be written by you (and your partner) alone, except
     for small snippets that solve tiny subproblems (examples in the Permitted
     section below).
 -   **Do Not Possess or Share Code**: Before you've submitted your final work for
