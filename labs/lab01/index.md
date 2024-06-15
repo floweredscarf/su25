@@ -754,10 +754,9 @@ to some common problems.
 **Before continuing, make sure that you have completed all above tasks besides
 the git exercise:**
 
-1.  You have installed Java 17 or higher.
 1.  You have successfully created your local repo for the class on your own
     machine. This is the `su24-s***` repository you earlier.
-1.  You have pulled from the skeleton, and you have a `lab01` directory.
+2.  You have pulled from the skeleton, and you have a `lab01` directory.
 
 ### Installing IntelliJ
 
