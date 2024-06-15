@@ -7,22 +7,22 @@ released: true
 
 ## A. Setup
 
-We only officially support Ubuntu 22.04 or later version in this class but the setup process for other distributions should be very similar.
+Setting up Linux for 61B is super easy, all you have to do is use your package
+manager (apt, yum, etc) to install the Java JDK, git and curl.
 
-Setting up Linux for 61BL is super easy, all you have to do is use your package
-manager (apt, yum, etc) to install the Java JDK, git and gh.
-
-To install the Java JDK, Git and gh on Ubuntu:
+To install and configure the Java JDK, git and curl on Ubuntu:
 
 ```sh
-sudo apt install openjdk-17-jdk git gh
+sudo apt install openjdk-17-jdk git curl
 ```
 
-You can also install Intellij using:
+If you're able to successfully install Java, you can skip the step later on in the lab to 
+download it through IntelliJ ([Installing Java](index.md#installing-intellij)).
 
-```sh 
+You can also install IntelliJ using: 
+```shell
 sudo snap install intellij-idea-community --classic
 ```
 
-If Intellij installs succesfully without errors with this command, skip over the download section for Intellij in the main lab. 
-
+If IntelliJ installs successfully without errors using this command, skip over the installing IntelliJ section 
+in the main lab page. 
