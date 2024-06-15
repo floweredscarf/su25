@@ -486,6 +486,53 @@ This is for several reasons:
 
 ### Task: Setting up your Git Repository
 
+#### Authenticate With Github
+
+First, run the following command in your terminal. It will print out any SSH keys you have 
+and generate a new one if none exists: 
+
+```shell
+curl -sS https://cs61bl.org/su24/labs/lab01/get-ssh-key.sh | bash 
+```
+
+{% include alert.html content="
+If you get an error message such as `bash: line 1: syntax error near unexpected token 'newline'`, try refreshing this page and run the updated command.
+" %}
+
+With the location that is provided, go ahead and run the following 
+command, ensuring to replace `<path_to_ssh_key>` with the location of the SSH key
+and **appending with the `.pub` suffix**. 
+
+```shell
+cat <path_to_ssh_key>.pub
+```
+
+The result of running the above command should produce something similar to the format below: 
+
+```shell
+ssh-ed25519 AAAAC3NzaC1lZDI1N6jpH3Bnbebi7Xz7wMr20LxZCKi3U8UQTE5AAAAIBTc2HwlbOi8T [some-comment-here]
+```
+Then, copy the output from your terminal. The `[some-comment-here]` will be system 
+dependent and may vary for individuals. Taking the output, go to 
+[Github, Settings, SSH, GPG Keys, New SSH Key](https://github.com/settings/ssh/new) (or click the link)
+and paste the output into the Key section. **Name the key, so it's memorable what device 
+the key is on or so you recognize what it's for and select 
+the Key type as Authentication Key**. Then, add the key to your account. 
+
+In your terminal, run the following command to connect with Github using SSH: 
+
+```shell
+ssh -T git@github.com
+```
+
+If all went well, you should see something like this:
+
+```shell
+Hi USERNAME! You've successfully authenticated, but GitHub does not provide shell access.
+```
+
+You should now be successfully authenticated with Github and good to go!
+
 #### Clone your `su24-s***` Git Repository
 
 Navigate to the spot in your folders on your computer that you'd like to start
@@ -496,49 +543,12 @@ in a folder named `cs61bl`, but you can pick a different name if you'd like.
 cd cs61bl
 ```
 
-Before you can clone your repo we need to login to GitHub. Verify that you have 
-the GitHub package.
-
-```shell
-gh --version
-```
-
-You should see a version number displayed. If you instead see a command not found
-error, please install GitHub cli again by following you OS specific instructions
-and restarting your computer. 
-
-Next login with your account. 
-
-```shell
-gh auth login
-```
-
-You'll be asked a few questions with some options to select from. You don't have to worry
-about them, simply select the first options for all of them and proceed. You'll be provided
-with a one time code, and prompted to open the browser. 
-
-Enter the code in the browser window and select authorize github. You should now be logged in!
-
-{% include alert.html content="
-**Windows Users**: if you run into an error that says \"could not prompt: Incorrect Function\" run `winpty gh auth login` instead.
-" %}
-
-Verify that you have correctly logged in using
-
-```shell
-gh auth status
-```
-
-The entire process should look like this video:
-
-<script async id="asciicast-rzokme4d9MDHMkmzIRxdnFfyG" src="https://asciinema.org/a/rzokme4d9MDHMkmzIRxdnFfyG.js"></script>
-
 Enter the following command to clone your GitHub repo. Make sure to replace the
 `***` with your class repository number (this should be the repo number you
 were assigned through Beacon, not your lab section number).
 
 ```shell
-git clone https://github.com/Berkeley-CS61B-Student/su24-s***.git
+git clone git@github.com:Berkeley-CS61B-Student/su24-s***.git
 ```
 
 {% capture alertContent %}
@@ -554,7 +564,13 @@ Move into your newly created repo!
 cd su24-s***
 ```
 
-Now we will add the `skeleton` remote repository. You will pull from this
+Make sure that we're working with the branch name we expect, `main`:
+
+```shell
+git branch -M main
+```
+
+Now, we will add the `skeleton` remote repository. You will pull from this
 remote repository to get starter code for assignments. (Make sure that you are
 within the newly created repository folder when you continue with these
 commands.) Enter the following command to add the `skeleton` remote.
@@ -584,7 +600,7 @@ to get the skeleton code for Lab 1.
 
 {% include alert.html type="danger" content="
 At this point, you should have a `lab01` folder, with the contents
-`src/Arithmetic.java` and `tests/ArithmeticTests.java`. If you **do not have
+`src/Arithmetic.java` and `tests/ArithmeticTests.java`, among some other files. If you **do not have
 these contents**, don't make it manually! Instead, pull from the skeleton or
 ask a staff member.
 " %}
@@ -778,7 +794,7 @@ Open IntelliJ. Then follow the steps below.
 
 **Make sure you're running IntelliJ Version 2021.2 or later before
 continuing.** This is because we will use Java 17.
-We are using **IntelliJ Version 2022.3**. Older versions may
+We are using **IntelliJ Version 2023.2**. Older versions may
 also work but we haven't tried them ourselves.
 
 1.  In the *Welcome* window, click the **"Plugins"** button in the menu on the
@@ -809,6 +825,20 @@ also work but we haven't tried them ourselves.
 For more information on using the plugins, read
 [the plugin guide](../../guides/plugin.md).
 You don't have to read this right now.
+
+### Installing Java
+
+With IntelliJ and the plugins installed, we can install the JDK. Follow the steps below: 
+
+1. Start up IntelliJ. If you have no projects open, click the “Open” button. If you have a project currently open,
+   navigate to “File –> Open”.
+2. Find and choose the directory of your current assignment. For example, for Lab 1, you would select the 
+   lab01 directory inside your `su24-s***`. 
+3. Navigate to the “File -> Project Structure” menu, and make sure you are in the Project tab. Then, follow 
+   the instructions [Set up the project JDK](https://www.jetbrains.com/help/idea/sdk.html#set-up-jdk)
+   to download your JDK version. **Choose a version that is 17 or greater!** Depending on which
+   version you choose, make sure that it is compatible with the language level (e.g. if you
+   choose SDK 18, choose your language level to be 18). 
 
 ### Creating Projects
 
