@@ -17,15 +17,21 @@ current branch was behind its remote counterpart", then read
 First, make sure that you've pushed your code! You can check this by viewing
 your repository on GitHub.
 
-Secondly, the expected file structure is
+Secondly, the expected file structure (including the optional files) is
 
 ```text
-su23-***
+su24-***
 ├── magic_word.txt
 ├── src
+│   └── AddingMachine.java
 │   └── Arithmetic.java
+│   └── ArrayOperations.java
+│   └── TriangleDrawer.java
+│   └── TriangleDrawer2.java
+│   └── TriangleDrawer.stuff
 └── tests
     └── ArithmeticTest.java
+    └── ArrayOperationsTest.java
 
 ```
 
