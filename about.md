@@ -414,9 +414,8 @@ you don't need to get all points in the lab category to still get full credit
 for labs.
 
 **To use a lab slip day, go to the Extensions tab on Beacon. If you have enough
-slip days remaining, you may select your assignment and your new due date.**
-Note that once you apply a slip day to an assignment, you cannot later extend 
-it by even more time.
+slip days remaining, you may select your assignment and your new due date**
+Note that you can only request at most 1 slip day per lab, and once you apply a slip day to an assignment, you cannot later extend it by even more time.
 
 #### Project Lateness
 
@@ -522,7 +521,7 @@ have made the wrong choice for guidance.
 
 ### Project and Lab Collaboration
 
-For both labs and projects, they are deisgned for learning and evaluating your mastery of the course material. As such, they are intended to be completed primarily **independently** of any other student, particularly when it comes to
+For both labs and projects, they are designed for learning and evaluating your mastery of the course material. As such, they are intended to be completed primarily **independently** of any other student, particularly when it comes to
 writing actual code. However, we do encourage collaborations through discussing high-level strategies, specific syntax issues,
 and solutions to bugs with other students. **You should never be in direct possession code that was not written entirely by you alone.**
 
