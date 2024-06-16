@@ -522,7 +522,7 @@ have made the wrong choice for guidance.
 
 ### Project and Lab Collaboration
 
-For both labs and projects, they are deisgned for learning and evaluating your mastery of the course material. As such, they are intended to be completed primarily **independently** of any other student, particularly when it comes to
+For both labs and projects, they are designed for learning and evaluating your mastery of the course material. As such, they are intended to be completed primarily **independently** of any other student, particularly when it comes to
 writing actual code. However, we do encourage collaborations through discussing high-level strategies, specific syntax issues,
 and solutions to bugs with other students. **You should never be in direct possession code that was not written entirely by you alone.**
 
