@@ -219,7 +219,7 @@ we will discuss alternate arrangements with you directly.
 If you have a time conflict with the midterm exam, or if you
 are unable to make the final exam, please email <cs61bl@berkeley.edu> as soon as possible explaining your needs.
 
-#### Final Exam Percentile Clobbering
+#### Final Exam Clobbering
 
 For those of you who have a bad night, fall sick, or make major improvements over the semester, the exam clobbering policy gives you a chance to replace your midterm exam score.
 
