@@ -29,8 +29,9 @@ of work. **We strongly recommend not taking any other courses alongside CS
 While we can’t predict how many hours you will spend on the course, here is a
 brief breakdown of what you will have to do in this course.
 
-- A total of 12 hours of lab, broken down into 8 hours of practical lab, 2 hours of theoretical lab, and 2 hours of instructor lab.
-- Two one-hour lectures per week.
+- Four 2 hour practical labs per week on Monday - Thursday.
+- One 2 hour theoretical lab per week on Friday.
+- Four one-hour lectures per week on Monday - Thursday. 
 - One quiz per week (total of 6).
 - Two exams in the 8 weeks of the course.
 - Four projects in the 8 weeks of the course.
