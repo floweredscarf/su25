@@ -42,6 +42,27 @@ git pull --rebase --allow-unrelated-histories skeleton main
 
 (If you're working on Lab 1, go back to the lab spec at this point.)
 
+## Submitting to Gradescope
+
+1.  Add your assignment directory using `git add`. For example, for Lab 1,
+    from your repo root (`su24-***`) you would use `git add lab01`. From the
+    assignment directory, you could use `git add .`.
+1.  Commit the files using `git commit -m "<commit message here>"`. The commit
+    message is required. For example, `git commit -m "Finished Lab 1"`.
+1.  Push your code to your remote repository with `git push origin main`.
+1.  Open the assignment on Gradescope. Select Github, then your `su24-***`
+    repository and the `main` branch, then submit your assignment. You will
+    receive a confirmation email, and the autograder will run automatically.
+
+Gradescope will use the latest version of your code from Github. **If you think
+that Gradescope isn't grading the right code, check that you have added,
+committed, and pushed  with `git status`.**
+
+If you've gotten yourself into a situation where you're unable to push for some reason,
+see [https://cs61bl.org/su24/guides/git-wtfs](https://cs61bl.org/su24/guides/git-wtfs).
+
+(If you're working on Lab 1, go back to the lab spec at this point.)
+
 ## Opening in IntelliJ
 
 The following instructions apply for **every** assignment. **Each time after
@@ -85,23 +106,4 @@ At this point, if things have been configured correctly:
 -   Each Java file should have a blue circle next to its name.
 -   When you open any file, none of the code should be highlighted in
     red.
-
-## Submitting to Gradescope
-
-1.  Add your assignment directory using `git add`. For example, for Lab 1,
-    from your repo root (`su24-***`) you would use `git add lab01`. From the
-    assignment directory, you could use `git add .`.
-1.  Commit the files using `git commit -m "<commit message here>"`. The commit
-    message is required. For example, `git commit -m "Finished Lab 1"`.
-1.  Push your code to your remote repository with `git push origin main`.
-1.  Open the assignment on Gradescope. Select Github, then your `su24-***`
-    repository and the `main` branch, then submit your assignment. You will
-    receive a confirmation email, and the autograder will run automatically.
-
-Gradescope will use the latest version of your code from Github. **If you think
-that Gradescope isn't grading the right code, check that you have added,
-committed, and pushed  with `git status`.**
-
-If you've gotten yourself into a situation where you're unable to push for some reason,
-see [https://cs61bl.org/su24/guides/git-wtfs](https://cs61bl.org/su24/guides/git-wtfs).
 

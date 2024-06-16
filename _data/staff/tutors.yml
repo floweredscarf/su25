@@ -1,2 +1,42 @@
-staffers:
 title: Tutors
+staffers:
+- name: Brian Sui
+  email: brian.sui@berkeley.edu
+  biography: "Pronouns: he/him/his<br><br>Hi! I\u2019m a rising junior majoring in\
+    \ CS and applied math. In my free time, I like running and watching basketball.\
+    \ I look forward to meeting you!"
+  p1: assets/img/staff/brian.png
+- name: Codey Ma
+  email: cm.1@berkeley.edu
+  biography: 'Pronouns: <br><br>Hi! I am a rising junior studying CS. I enjoy sleeping
+    and playing badminton. Feel free to reach out if you have any questions!'
+  p1: assets/img/staff/codey.png
+- name: Iris Zhou
+  email: iris.zhou@berkeley.edu
+  biography: "Pronouns: she/her/hers<br><br>hi everyone! i\u2019m iris, a rising junior\
+    \ studying cs + astrophysics. in my free time i enjoy cafe hopping, scrapbooking,\
+    \ and collecting music albums. excited to be back on staff and to be meeting everyone\
+    \ this summer!"
+  p1: assets/img/staff/iris.jpeg
+- name: Lawrence Wu
+  email: lawrence.wu@berkeley.edu
+  biography: "Pronouns: He/him/his<br><br>Hello! I\u2019m an upcoming 4th year from\
+    \ LA studying CS. I like to read and watch movies in my free time. Excited to\
+    \ meet you all!"
+  p1: assets/img/staff/lawrence.png
+- name: Mihir Mirchandani
+  email: mihirm@berkeley.edu
+  biography: 'Pronouns: he/him/his<br><br>Hi everyone! I''m an incoming senior studying
+    CS from Mountain View, CA. In my free time, I enjoy basketball, piano (rn really
+    love Alicia Keys'' songs), long drives, and chess. This is my 3rd semester on
+    61B course staff and I can''t wait to meet y''all! Hope everyone has a great summer
+    :)'
+  p1: assets/img/staff/mihir.png
+- name: Ryan Yang
+  email: yuchanyang@berkeley.edu
+  biography: 'Pronouns: he/him/his<br><br>Hi, I''m Ryan and I''m a rising 3rd year
+    majoring in cs! Outside of teaching, I''ve recently gotten into playing slaying
+    the spire and I like playing a variety of strategy games. I also like playing
+    the violin and writing in my free time. If you guys ever want to talk about anything
+    feel free to shoot me a message!'
+  p1: assets/img/staff/ryan.jpg
