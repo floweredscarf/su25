@@ -2,9 +2,15 @@
 layout: page
 title: "Project 0: 2048"
 tags: [Project]
-released: false
+released: true
 searchable: true
 ---
+
+
+{% capture alertContent %}
+**Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
+{% endcapture %}
+{% include alert.html type="warning" content=alertContent%}
 
 ## [FAQ](faq.md)
 
