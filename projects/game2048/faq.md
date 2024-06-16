@@ -2,13 +2,9 @@
 layout: page
 title: "FAQ - Project 0: 2048"
 categories: proj
-released: false
+released: true
 searchable: true
 ---
-
-The instructors will add to this page as you all ask questions about the
-project! If you have a question that isn't answered here, ask in lab or
-by [submitting a ticket](../../guides/ticketing-system.md)!
 
 ## Setup
 
@@ -25,7 +21,7 @@ libraries and packages.
 
 We *highly* recommend using IntelliJ to work on this project. It will handle
 the compilation step for you, if you've imported all the libraries (see
-[Lab 1](../../labs/lab01/index.md#task-creating-projects).
+[Lab 1](../../labs/lab01/index.md#task-creating-projects).)
 
 ### I pass all the tests, but when I play the game, I can't make any moves.
 
@@ -34,12 +30,6 @@ fixed after the initial release of the project. Merge the skeleton again
 to get the update!
 
 ## Getting Started
-
-### I haven't modified anything yet, but I'm getting a `NullPointerException`
-
-This is expected. Until you implement a specific piece of the `Model`
-constructors, you will get `NullPointerException`s when you run the tests
-or `Main::main`.
 
 ### This seems like a lot of code to write. How do we check along the way if we're doing it correctly?
 
@@ -66,79 +56,20 @@ You'll get plenty of practice with it starting with this project though!
 
 <cite>Paraphrased from Shreyas Kallingal.</cite>
 
-## `Model` Constructors
+## `atLeastOneMoveExists`
 
-### How do we refer to an instance variable in our constructor?
-
-You can simply refer to it by name, as long as the instance variable has a
-different name from a provided argument. Generally, we name instance variables
-starting with an underscore to avoid this. If they have a name conflict, then
-you'll have to use the `this.` prefix to specify that we're talking about the
-instance variable. For example:
-
-```java
-public class Tester {
-    int _test;
-    public Tester(int test) {
-        // The underscore prevents a name conflict
-        _test = test
-    }
-}
-```
-
-vs.
-
-```java
-public class Tester {
-    int test;
-    public Tester(int test) {
-        // The name conflict means we *must* use this.test to be specific
-        this.test = test
-    }
-}
-```
-
-<cite>Paraphrased from Shreyas Kallingal.</cite>
-
-## `TestAtLeastOneMoveExists`
-
-### I pass everything in `TestAtLeastOneMoveExists` except for `testAnyDir`. If my code works for each direction, why would it break for any direction?
+### I pass everything in `TestTask1` except for `testAnyDir`. If my code works for each direction, why would it break for any direction?
 
 In this test, the relevant moves are on the border (specifically, the
 upper-right corner). If you are looping over the coordinates in the board,
 make sure that you are considering *every possible comparison*. For example,
 your boundary condition in the for loop may be off by one.
 
-## `TestUpOnly`
-
-### I don't understand why the score doesn't change in "`TestUp`: Up merge" (`testUpBasicMerge`), or in other tests. Is this a bug with the provided tests / autograder tests?
-
-This test and many others use the `checkModel` function, which has the
-following line of code:
-
-```java
-Model expected = new Model(values, score, maxScore, false);
-```
-
-Even though this is a function that we use to construct the "expected" state,
-**it calls a `Model` constructor you wrote**. If your `Model` constructor is
-incomplete, then the tests that rely on that constructor will have
-**incorrect expectations**. Take a look at the warning in the
-[constructors section of the spec](index.md#constructors) for more information.
-
-In this specific case, make sure that your 4-argument `Model` constructor
-passess all the tests in `TestArgsConstructor`.
-
 ## `tilt`
 
-### For `tilt`, my code works in the up direction, but doesn't in any of the other directions.
+### I don't know how to get started on `tilt`.
 
-There are two possibilities here:
-
-1.  Make sure that you're setting the viewing perspective, and *resetting* it
-    back to north after you're done.
-1.  Make sure that you don't use `Tile::row` or `Tile::col`. The `Tile` class
-    doesn't know anything about the `Board`'s `viewPerspective`!
+Please watch [Josh's intro video to this method](https://youtu.be/abFbbK1QY2k)! However, the methods in the intro video might be different that current skeleton code since a lot changed.
 
 ### Am I allowed to modify `Tile`? I want to store whether a tile has been merged or not, to prevent multiple merges.
 
