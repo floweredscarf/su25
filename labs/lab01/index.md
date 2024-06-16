@@ -6,12 +6,6 @@ released: true
 searchable: true
 ---
 
-
-{% capture alertContent %}
-**Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
-{% endcapture %}
-{% include alert.html type="warning" content=alertContent%}
-
 ## [FAQ](faq.md)
 
 Each assignment will have an FAQ linked at the top. You can also access it by
