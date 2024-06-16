@@ -16,7 +16,7 @@
       url: labs/lab01
       published: true
       footer: >
-        Project 0: 2048 Released
+        [Project 0: 2048 Released](/su24/projects/game2048)
     - title: Arrays and Objects
       type: Lecture, Lab
       date: 2024-06-18
