@@ -110,6 +110,9 @@ Theoretical Labs
 : Questions and conceptual clarifications on theoretical lab worksheets. This
   category has a subcategory for each week.
 
+Quizzes
+: Logistics and conceptual questions about quizzes. 
+
 Exams
 : Questions about exam logistics, past exams, and anything related to exams.
   As we get closer to the exam, we will add additional categories for asking
