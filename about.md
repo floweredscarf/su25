@@ -541,7 +541,7 @@ Center for Student Conduct.
 responsible for work that is not yours.** To help (but not entirely define) the
 bounds of acceptable behavior, we have three important rules for projects:
 
--   **By You (and Your Parnter) Alone**: All code that you submit (other
+-   **By You (and Your Partner) Alone**: All code that you submit (other
     than skeleton code) should be written by you (and your partner) alone, except
     for small snippets that solve tiny subproblems (examples in the Permitted
     section below).
