@@ -546,80 +546,13 @@ these diagrams are drawn the way they are:
 There aren't necessarily correct answers to these questions, so just see if you
 can come up with explanations that make sense to you.
 
-## Stack and Heap
+## Pass-by-Value
 
-When we create objects, our computer allocates space on the *heap*.
-The *heap* is where all objects and arrays live. However, method calls and
-local parameters are stored on the *stack*. Each time a method is called, the
-JVM allocates a *stack frame*, which stores the parameters and local variables
-for that method.
+Java is **pass-by-value**. Methods are
+given **copies** of the actual parameters during execution. The original parameters cannot
+be changed by the method.
 
-At times, we may only care about the heap and the state of the objects that we
-create. Other times, it will be useful to keep track of the stack frames as
-well.
-
-Let's consider the following code:
-
-```java
-public static void main(String[] args) {
-    Potato p = new Potato();
-    int newAge = 20
-    p.setAge(newAge);
-}
-```
-
-When the `setAge()` method is called, the stack and heap look like below. 
-
-![StackHeap](img/StackHeap.jpg)
-
-You can also step through the code, line by line to see what effect each line has on the box
-and pointer diagram. Everything under 'Frames' is located on the stack, while everything 
-under objects will be placed on the heap.
-
-{%- capture pvsodemo -%}
-public class Potato {
-
-    private String variety;
-    private int age;
-
-    public Potato() {
-        this.variety = "Russet Burbank";
-        this.age = 0;
-    }
-
-    public Potato(String variety, int age) {
-        this.variety = variety;
-        this.age = age;
-    }
-
-   
-    public void setAge(int age) {
-        this.age = age;
-    }
-   
-    public static void main(String[] args){
-       Potato p = new Potato();
-       int newAge = 20;
-       p.setAge(newAge);
-   
-   }
-}
-
-{%- endcapture -%}
-{% include java_visualizer.html embed=true height="500px" code=pvsodemo %}
-
-
-
-The method that is currently executing (at any given point in time) lies on the
-top of the stack. All other stack frames are waiting for the top frame to
-return and be popped off the stack so they can resume execution. When a stack
-frame is popped(when the function returns/completes execution), all of its local variables are lost.
-
-One thing that you may notice is that Java is **pass-by-value**. Methods are
-passed in **copies** of the actual parameters. The original parameters cannot
-be changed by the method. The copies lie in the stack frame.
-
-Consider the following code and the stack and heap diagram, right before
+Consider the following code, right before
 `tryToIncrement` returns.
 
 {%- capture value -%}
@@ -635,22 +568,13 @@ public class passByValue{
     }
 }
 
-
-
-
 {%- endcapture -%}
 {% include java_visualizer.html code=value %}
 
 ![PassByValue1](img/PassByValue1.jpg)
 
-
-
-
-
-
-Perhaps here is where it becomes apparent that the value for references is not
-the object it references. When we pass a variable into a method, we copy whatever is inside the box of the variable and put that copy into a new box in the method. For primitives, like x, we copy whatever is inside the box for x (in this case 10), and put that data into the stack frame. This means that, like we saw in tryToIncrement(), when we modify primitives in a method we modify the copy of that primitive, not the original.
-For objects, this is different. Remember, in our box and pointer diagrams, the object itself is not stored inside the box for the object variable. Instead, what is stored is a pointer to the object in the heap (represented by an arrow). Therefore, what is copied over is that pointer, not an entirely new copy of the object. In more technical terms, **when we pass in an object, what is copied is not the object itself, but the reference to the object**.
+When we pass a variable into a method, we copy whatever is inside the box of the variable and put that copy into a new box in the method. For primitives, like x, we copy whatever is inside the box for x (in this case 10), and put that data into the method's **stack frame**, the space in memory that this method uses to track its variables. This means that, like we saw in tryToIncrement(), when we modify primitives in a method we modify the copy of that primitive, not the original.
+For objects, this is different. Remember, in our box and pointer diagrams, the object itself is not stored inside the box for the object variable. Instead, what is stored is a pointer to the object in memory (represented by an arrow). Therefore, what is copied over is that pointer, not an entirely new copy of the object. In more technical terms, **when we pass in an object, what is copied is not the object itself, but the reference to the object**.
 
 ```java
 public static void refresh(Potato p) {
@@ -697,8 +621,6 @@ public class Potato {
 
 What is copied over into the parameter of the `refresh` method is not a copy of
 the Potato object, but a copy of the reference (the arrow) to the Potato Object.
-
-
 
 ### `static`
 
@@ -791,7 +713,6 @@ context. Instead, you must do so through an object reference (due to the lack
 of a `this` reference). Note that static methods can be called from a static
 context (like in `main`) and do not need to be called with an instance
 associated with them.
-
 
 
 ## Exercise: Account Management
@@ -1068,11 +989,19 @@ for (String key : map.keySet()) {
 [`TreeMap`]: https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/TreeMap.html
 [`HashMap`]: https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/HashMap.html
 
-## Exercise: ADT Practice
+## Task: ADT Practice
 
 In order to get you more familiar with Java syntax and testing, there are a few exercises for you to solve! After you complete the functions, we have provided a handful of tests for you. Although we have provided tests, you are welcome to write your own too! Writing tests is not only crucial for this class but it is one of the most important skills to have in general. It reinforces our understanding of what specific methods are supposed to do and allows us to catch edge cases. You will have more exercises for testing later in tomorrow's lab but we want you to be exposed early on.
 
+`ListExercises.java` has 2 different methods for you to complete:
 
+- `common`: This method takes two lists `List<Integer> L1`, `List<Integer> L2` and returns a _new_ list containing the items present in both of the two given lists. If there are no common items, it should return an empty list.
+- `countOccurrencesOfC`: This method takes a list and a character `List<String> words`, `char c` and returns the number of occurrences of the given character in a list of strings. If the character does not occur in any of the words, it should return 0.
+
+`MapExercises.java` has 2 different methods for you to complete:
+
+- `letterToNum`: This method returns a map from every lower case letter to the number corresponding to its ordering in the alphabet, where 'a' corresponds to 1 and 'z' corresponds to 26.
+- `squares`: This method takes a list `List<Integer> nums` and returns a map from the integers in the list to their squares. If the given list is empty, it should return an empty map.
 
 
 ## Exercise: Pursuit Curves
@@ -1099,7 +1028,7 @@ given by the following equation.
 Of course, we won't require you to solve a differential equation. In fact, let's
 see what your task will be!
 
-### Task: Implementing Pursuit Curves
+## Task: Implementing Pursuit Curves
 
 Implement a simpler version of pursuit curves in order to create a
 cool visual by filling out `lab04/src/Path.java`. An additional
@@ -1231,6 +1160,11 @@ identity of objects. If you have not already, read over the
 [Identity and Equality section of the Java guide](../../java/index.md#identity-and-equality).
  Many tricky bugs can arise from this if you misuse these two related but different concepts.
 
+## Task: Starting Project 0
+
+The last exercise of this lab is to start Project 0, if you have not done so already. This is a fast-paced course, and want you to get started early so that you stay on track. Please take a moment to read the [Project 0 Spec](../../projects/game2048/index.md) up to Task 1.
+
+Your job is to complete Task 1, which asks you to implement the `emptySpaceExists()` method. There is no graded deliverable associated with this section of the lab, but you will thank yourself later if you take this task seriously and start Project 0!
 
 ## Conclusion
 
@@ -1263,15 +1197,15 @@ is struggling, let a TA know and we'll be more than happy to help.
 
 To quickly recap what you need to do for this lab:
 
--   Read through the lab and learn about Java objects and the Golden Rule of
-    Equals. Make sure you understand how to draw box-and-pointer diagrams.
--   Build good collaboration habits as you work through the provided discussion
-    questions and exercises.
--   In `lab02/Account.java` edit the behavior of withdrawal to return a boolean
+-   Make sure you understand Box and Pointer Diagrams
+-   In `Account.java` edit the behavior of withdrawal to return a boolean
     then implement account merging and overdraft protection.
     ([Exercise: Modifying Withdrawal Behavior](#exercise-account-management))
--   Implement `lab02/src/Path.java`, which keeps track of `currPoint` and
+-   `ListExercises.java`
+-   `MapExercises.java`
+-   Implement `src/Path.java`, which keeps track of `currPoint` and
     `nextPoint` and implements the method `iterate(dx, dy)` using helper methods
     `getCurrX()`, `getCurrY()`, `getNextX()`, `getNextY()`, `getCurrentPoint()`
     and `setCurrentPoint(Point point)`.
     ([Exercise: Pursuit Curves](#exercise-pursuit-curves))
+-   Start Project 0
