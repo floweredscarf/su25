@@ -14,7 +14,7 @@
           |
          **Textbook:** [Ch 1](https://cs61b-2.gitbook.io/cs61b-textbook/1.-introduction)
       url: labs/lab01
-      published: false
+      published: true
       footer: >
         Project 0: 2048 Released
     - title: Arrays and Objects
