@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Lab 2: Conditionals, Loops, Arrays"
+title: "Lab 2: Intro to Objects and Primitives"
 tags: [Lab, Java]
 released: false
 searchable: true
@@ -25,852 +25,1253 @@ look at this [Java Crash Course](https://cs61bl.org/su23/java/) as supplemental 
 
 ### Learning Goals
 
-First off, this lab will provide an introduction to Java loops and conditionals
-(the `if`, `while` and `for` statements), followed by a brief explanation of
-Java Arrays. We assume no prior experience with any of these topics in Java,
-but we *do* assume some prior knowledge of these concepts from an earlier
-course (like Python control flow and lists as taught in CS61A).
+This lab will focus on Java *primitives* and *objects*. Our goals for this lab will
+be as follows:
 
-Because of this, there is a lot of information presented in this lab, but
-hopefully most of it will be review that can be skimmed through quickly.
+-   Learn the different Java primitives and when to use them.
+-   Introduce some common Java abstract data types (more in Lab 5) that you will use throughout the course
+-   Learn how to define *classes* and use reference-typed variables.
+-   Learn how to work with *box-and-pointer* diagrams to identify common
+    usage errors.
+-   Start Project 0!
 
-This course strives to teach you how to "program", and this includes not just
-teaching you how to write code, but how to do a variety of activities. Today's
-lab includes some exercises that tests your ability not only to write code,
-but also to analyze code (to figure out what code does), to test code (to see
-if given code is doing what it should do) and to evaluate multiple versions of
-code.
+## Primitives
 
-## Control Flow Review
-
-### How `if` and `if ... else` Work
-
-Hopefully you've already seen this in another course, so it should be a bit of 
-a review — but read on!
-
-An `if` statement starts with the word `if`. It is followed by a *condition*
-statement **in parentheses** that is either true or false (a *boolean
-expression*). There is then a sequence of statements surrounded by braces,
-which is called the *body*. For example:
+As you may have noticed, when initializing a variable in Java you must put the
+type next to it. Notice that this is different than Python, where you can simply assign
+any arbitrary data type to a variable name.
 
 ```java
-if (year % 4 == 0) {
-    System.out.println (year + " might be a leap year.");
-}
+int number = 10;
 ```
 
-> Note: like in Python, the `%` symbol above is called *mod*, and it takes the
-> remainder after division. The above statement is checking if `year` has no
-> remainder when divided by 4). The behavior of the `%` operator in Java
-> annoyingly differs slightly from how it functions in Python, particularly
-> with respect to negative numbers.
->
-> For example in Python `-5 % 4` evaluates to `3` whereas in Java `-5 % 4`
-> evaluates to `-1`. If you want the behavior to match what you might expect 
-> in Python, you should use the Math.floorMod function in Java. If you do this 
-> then Math.floorMod(-5, 4) evaluates to 3.
+The above line tells Java that the variable `number` is an **integer** that
+holds the value `10`. A variable’s type tells us what kind of data is stored in that variable. In the case of the variable `number`, its data type is an integer. In Java, there are a predefined set of *primitive types*.
 
-The braces after an `if` statement aren't technically necessary if there is
-only one statement in the sequence; however, it is good practice to always
-include them since it makes it easier to add lines to the body later.
+-   **boolean** : a `boolean` represents the two possible values of `true` and `false`.
 
-Unlike other languages (Python in particular), the condition of the `if`
-statement *must* be a boolean statement or a statement that reduces to a
-boolean expression. `if (5):` is a legal statement in Python, but `if (5) {`
-will not compile in Java.
+-   **byte** : a `byte` represents an 8-bit signed integer.
 
-Boolean expressions often involve comparisons. The comparison operators in Java
-are `==` and `!=` for equality and inequality testing, and `>`, `>=`, `<`, and
-`<=` for comparison of magnitudes. Multiple comparisons can be chained together
-with the logical operators `&&` (and) and `||` (or). If instead you wish to
-negate an expression, you can prefix your expression with `!`, the Java
-negation operator.
+-   **short** : a `short` represents a 16-bit signed integer.
 
-The block of statements following the `if` statement above will not execute if
-`year`'s value is not divisible by 4. If you wanted something to happen when
-the test fails, use the `else` keyword. Here's an example:
+-   **int** : an `int` represents a 32-bit signed integer. This is the most commonly
+    used integer type and can hold values between -2,147,483,648 to
+    2,147,483,647 inclusive.
+
+-   **long** : a `long` represents a 64-bit signed integer. Sometimes when we need to
+    express large integral numbers we will use this as it ranges from
+    -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807.
+
+-   **float** : a `float` represents a 32-bit single precision floating point
+    number. *Floating point numbers* can approximate a range of real numbers
+    including integers, decimals, and special values like infinity. Floating point
+    numbers can only represent a finite number of the infinitely many numbers in
+    existence. Anything that cannot be represented is encoded as "NaN", which stands
+    for "Not a Number". **How float determines what numbers can be represented is a 61C topic. For the purposes of this class, you can work under the assumption that every number can be represented as a float.**
+
+-   **double** : a `double` represents a 64-bit double precision floating point
+    number. Most of our decimal numbers will use this type as it provides
+    greater precision.
+
+-   **char** : a `char` represents an [ASCII](https://www.asciitable.com/) letter (like the English alphabet).
+
+These words are *reserved* in Java. That is, we cannot use `int` and
+`double` in any other context besides declaring a variable of that type. Note
+that all primitives begin with a lowercase letter.
+
+Declaring a primitive is very simple. For example, if we wanted to declare a
+double, we can write the following.
 
 ```java
-if (year % 4 == 0) {
-    System.out.println (year + " might be a leap year.");
-} else {
-    System.out.println (year + " is definitely not a leap year.");
-}
+double pi = 3.14;
 ```
 
-You can also add further tests that are executed only if above boolean
-expressions evaluate to false, similarly to `elif` in Python. For example:
+Certain primitives require an extra letter after the initial value. For example,
+to declare a `long` or a `float`, we write the following. Notice the `L` and
+the `f` that signify the end of the value.
 
 ```java
-if (year % 4 != 0) {
-    System.out.println (year + " is not a leap year.");
-} else if (year % 100 != 0) {
-    System.out.println (year + " is a leap year.");
-} else if (year % 400 != 0) {
-    System.out.println (year + " is not a leap year.");
-} else {
-    System.out.println (year + " is a leap year.");
-}
+long num = 9223372036854775807L;
+float num2 = 42.0f;
 ```
 
-Note that only one body section, the one corresponding to the first true
-boolean expression (or `else` if none are true), will execute. After that,
-your program will continue on, skipping all the remaining code in this `if`
-structure. This implies that none of the conditions below the first true
-boolean expression will be evaluated.
-
-One consequence of conditions reveals in non-void methods. Recall that in Java,
-you must return something of the return type. Consider the following code snippet:
+Finally, we can declare a `char` using a **single-quoted literal**. For example, if
+we want to initialize variable `a` to the letter "a", we would write the following.
 
 ```java
-public int relu(int x) {
-    if (x < 0) {
-        return 0;
+char a = 'a';
+```
+
+We need not always initialize the value of a primitive. Sometimes, we don't
+care about the value at that point in time, and only need a variable to use in
+later code. We do so by *declaring* the following:
+
+```java
+char a;
+double d;
+```
+
+Note that primitives have default values - we'll talk about this later.
+
+So *declaring* an object is like telling Java you have a variable of a certain
+type. Java sets aside a little container of memory that can perfectly hold that
+type. Once you've declared an object, *initializing* an object is when you
+actually put a value inside that little container of memory. We can imagine
+that these little magic memory boxes can only contain objects of a certain
+type. So if you declare a variable of type `int`, and then try to initialize
+its value to `false`, your code won't compile because `false` is not an `int`!
+
+```java
+int a;
+int b;
+a = 61; //This line will compile with no errors
+b = false; //This line will error during compilation as 'b' is of type int and not boolean
+```
+
+## Objects
+
+Java is an *object-oriented* language. This means that everything we want to
+represent in Java is defined in terms of *objects*.
+
+Objects are bundles of code that define the *state* and *behavior* of the
+construct we wish to represent. Suppose we wish to represent a potato. A potato's
+state can be described by its *variety* and *age*, and it also has behaviors such as
+*grow* and *flower*.
+
+Now suppose Erik and Alex both have potatoes; Erik has a Yukon Gold and Alex has
+a Red Pontiac. Even though Erik and Alex have different varieties of potatoes, they are
+both still potatoes. They each have an age, color and variety. Critically, we can
+describe an entire group of Potatoes with a set of common descriptors.
+
+In Java we define an Object via its *Class*. Erik's Yukon Gold and Alex's Red
+Pontiac would then be called *instances* of the `Potato` class. Let's see how we can
+implement a `Potato` class in Java.
+
+### Example
+
+For this section, we will be using the Potato code found below. This can also be found in
+`lab02/src/Potato.java`.
+
+```java
+public class Potato {
+
+    /* An instance variable representing the potato's species. */
+    private String variety;
+    /* An instance variable representing the potato's age. */
+    private int age;
+
+    /** A constructor that returns a very young russet burbank potato. */
+    public Potato() {
+        this.variety = "Russet Burbank";
+        this.age = 0;
+    }
+
+    /** A constructor that allows you to specify its variety and age. */
+    public Potato(String variety, int age) {
+        this.variety = variety;
+        this.age = age;
+    }
+
+    /** A getter method that returns the potato's type. */
+    public String getVariety() {
+        return this.variety;
+    }
+
+    /** A getter method that returns the potato's age. */
+    public int getAge() {
+        return this.age;
+    }
+
+    /** A setter method that sets the potato's age to AGE. */
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    /** A method that grows the potato. Note it increases its age by 1. */
+    public void grow() {
+        System.out.println("Photosynthesis!");
+        this.age = this.age + 1;
+    }
+
+    /** Did you know potatoes can flower? No? Neither did I... */
+    public void flower() {
+        System.out.println("I am now a beautiful potato");
     }
 }
 ```
 
-As the code is, it will not compile. That is because currently, a value is only
-returned when `x` is less than 0. What happens when that's not the case? Java
-must be assured that `relu()` *always* returns an int, and thus will not allow
-you to compile your code.
+We will also be looking at `lab02/src/Potato1.java` later on!
 
-A correct version looks like this:
+### Defining a Class
+
+Let's see how to define our `Potato` class. To define a Java class, create a new
+`.java` file and encompass the class's code with the following header:
 
 ```java
-public int relu(int x) {
-    if (x < 0) {
-        return 0;
-    } else {
-        return x;
-    }
+class Potato {
+    /** Potato code goes here! */
 }
 ```
 
-### How `while` Works
+There are two things to keep in mind when writing Java classes.
 
-The `while` statement is used to repeat a sequence of statements. It consists
-of the word `while`, followed by a continuation *test* in parentheses, also
-called the *condition*. It is then followed by a sequence of statements to
-repeat enclosed in braces, called the *loop body*.
+-   Java requires the class name to be the same as the file name. This is why
+    the `Potato` class is written in `Potato.java`.
 
-The `while` statement works by evaluating the condition. If the condition is
-true (the test succeeds), the entire loop body is executed, and the condition
-is checked again. If it succeeds again, the entire loop body is executed again.
-This continues, possibly infinitely.
+-   By convention, the name of a class always begin with a capital letter and is generally
+    named using camel case (ex: `ThisIsCamelCase`)
 
-A common mistake when first learning a Java-like language is to think that the
-behavior of `while` is to stop as soon as the test becomes false, possibly in
-the middle of the loop. This is not the case. The test is checked only at the
-end of a complete iteration, and so this is the only time the loop can stop.
+### Constructors
 
-Here's an example that implements the remainder operation `dividend % divisor`,
-and produces some output. We assume all variables have already been declared,
-and that `divisor` and `dividend` have already been assigned positive values.
+Now, to initialize a `Potato` object, we must call its *constructor*. The
+constructor is a special method that creates and returns a new instance of your
+class. This method is where we will initialize all the variables associated
+with the class's instance. Unlike other methods, there is **no** return type in
+the constructor's signature, and it **must** have the same name as the class itself.
+Although we do not specify a return type in the method name and there is no return statement, the constructor creates an instance of the class and returns it. This is a unique property of constructor methods.
+
+It's possible to define a constructor that takes in no arguments.
 
 ```java
-while (dividend >= divisor) {
-    dividend = dividend - divisor;
-    System.out.println ("loop is executed");
-}
-remainder = dividend;
-```
-
-All statements of the loop body are executed, even if one of them affects the
-truth value of the test. In the example above, values of 9 for `dividend` and
-4 for `divisor` result in two lines of output. We show a representation with
-values of 13 for `dividend` and 4 for `divisor` and initially 0 for
-`remainder`. This results in 3 lines of output.
-
-When debugging `while` loop code, sometimes it's useful to make charts like the
-one below to keep track of the value of each variable.
-
-![DividendDivisor](img/DividendDivisor.jpg)
-
-### Exercise: Date Converter
-
-> For this exercise, suppose that the year is 988, before computers were invented and the 
-world was better off for it. Also, it is important to remember that we at CS 61BL course staff
-> do not believe in leap years, so 988 should have 365 days!
->
-> All joking aside, for this question we will not take leap years into account
-> and you should assume that the year has 365 days. Thus
-> `java DateConverter 60` should print `3/1` not `2/29` as you might expect.
-
-The program `DateConverter.java` in the `lab02` skeleton folder is missing two
-assignment statements. The missing statements can either be at the beginning,
-the end, or at both the beginning and the end of the loop.
-
-#### Date Converter Tests
-
-In a bit, you'll determine what the statements are and where they go. But
-first, you'll come up with a small but comprehensive set of tests for the code
-before writing the code itself. This technique is called *test-driven
-development*, and we'll be doing it more in subsequent labs.
-
-Create a table with 6 pairs of Input and Output. Ensure you have some edge cases to
-test for odd behavior! The input should be in the form of a day number in 2020,
-an integer between 1 and 365, and the corresponding date output. An example is 365 is 12/31.
-
-This will not be handed in or graded, but later in the lab you will be using these input and
-outputs to verify the correctness of your code.
-
-#### Command Line Arguments in IntelliJ
-In order to run your selected inputs against your code, we will need to pass in the test inputs
-into the command line. As it turns out, IntelliJ provides just a feature, so we can run it without
-having to open up the terminal. The steps to doing so are as follows:
-
-1. Click the green arrow next to the "public static void main(String[] args)" method header. 
-    ![StepZero](img/Args0.png)
-2. On the menu that pops up, click on "Modify Run Configuration..." 
-    ![StepOne](img/Args1.png)
-3. Another menu will pop-up. Find the blank labeled "Program arguments" and try typing in a number, like 22.
-Then hit ok.
-    ![StepTwo](img/Args2.png)
-    ![StepThree](img/Args3.png)
-4. Now, just try running the program as normal, and you should see the program output 1/22! That means your input
-was successfully passed in. 
-
-#### Implement and Test
-
-Testing the code involves supplying a value for `dayOfYear` on the command
-line. A few new things about the code:
-
--   The value for `dayOfYear` is read from `args[0]`, which is a command line
-    argument. Review the previous section for instructions.
-
--   The statement `import java.io.*;` makes Java library methods involving
-    file input and output accessible inside the program. You don't have to worry
-    about this.
-
--   The five lines starting with `try {` catches an *exception* that would
-    occur if the command line argument isn't an integer. We'll learn about
-    exceptions in a couple of weeks.
-
-Complete `DateConverter.java` by putting in two assignment statements as
-specified above. Once you're done with that, compile your program and try each
-one of your test cases.
-
-Compile and run your code as you did in lab01.
-
-#### Testing
-
-Using the Input and Output table you created earlier, test your program. Does
-it provide the expected output for all of your inputs?
-
-## `for` loops
-
-### How `for` Works
-
-The `for` statement provides another way in Java to repeat a sequence of
-statements, similar to `while` but slightly different. It starts with `for`,
-continues with *loop information* inside parentheses, and ends with the *loop
-body* (the segment to be repeated) enclosed in curly braces.
-
-```java
-for (loop-information) {
-    loop-body;
+public Potato() {
+    this.variety = "Russet Burbank";
+    this.age = 0;
 }
 ```
 
-<!-- TODO: I know Oracle docs refer to these as "increments",
-but that's weird because it's arbitrary. "update" might be better. -->
-Loop information consists of *initializations*, a *test* (condition), and
-*increments*. If the test succeeds, the loop continues and then increments. These refer to the creation of variables, boolean conditions that dictates when the loop should and should not be entered, 
-and the equation we use to update our position between loops. 
-These three sections are separated by semicolons, and any of
-these may be blank. If there is more than one initialization or increment,
-they are separated by commas.
+Creating a constructor that takes in no arguments lets us create a default case. Here, if the user doesn’t give us the type or age of the potato, we’re telling the computer to set the type to “Russet Burbank” and age to 0 by default. 
+
+However, we can also give our user the option to specify arguments in our constructor.
+
 ```java
-for (initialization; test; increment) {
-    loop-body;
+public Potato(String variety, int age) {
+    this.variety = variety;
+    this.age = age;
 }
 ```
 
-Loop execution proceeds as follows:
+This constructor returns a `Potato` with its `variety` and `age` set to the
+values given as arguments. Now we can construct potatoes such as erik's 3
+year old Yukon Gold potato.
 
-1.  Initializations are performed.
-2.  The test is evaluated.
-    -   If the condition is false, the loop is finished and execution continues
-        with the code following the for loop.
-    -   If the condition is true, the loop body is executed, increments are
-        performed, and we loop back to the top of step 2 where the test is
-        evaluated again. (Note: We never re-initialize.)
+We will discuss how to declare objects in more detail during the **Boxes and Pointer Diagrams**
+section.
 
-Note that, in fact, all of these sections of the for loop are optional. The code
-`for (;;)` is in fact valid Java code. It never terminates!
+{% include alert.html content="
+**Caveat:** if no constructors are defined in the object file, then the Java compiler
+will provide a *default constructor* that accepts no argument. However, if a constructor
+is defined, then the compiler will **not** provide a *default constructor*. Read more
+about it [here](https://docs.oracle.com/javase/tutorial/java/javaOO/constructors.html).
+" %}
 
-![For Loop Execution](img/ForLoopExecution.png)
+### Instance Variables
 
-The following loops are several equivalent ways to compute `n` factorial
-(the product of all the positive integers up through `n`).
+Instance variables allow us to represent the state of an object and can be both
+primitives or objects. The "has a" test is an easy way to see if something should
+be an instance variable of an object. For example, a potato has an age and variety.
+Thus, within our `Potato` class, we see that there are two
+instance variables: `variety` and `age`.
 
--   Two initializations in loop-information
+```java
+/* An instance variable representing the potato's species. */
+private String variety;
+/* An instance variable representing the potato's age. */
+private int age;
+```
 
-    ```java
-    for (int k = n, product = 1; k > 0; k = k - 1) {
-        product = product * k;
-    }
-    ```
+As with any other variable, we must declare what type it is. The `String` keyword
+tells us `variety` is a string object and `int` tells us the age is an integer
+primitive.
 
--   Product initialized outside for loop
+Instance variables have *default values* that correspond to the type of the
+variable. If instance variables are not initialized in the constructor or
+elsewhere with a value, they will initially contain the default. These defaults
+will correspond to a zero value. `0` for `int`, `float`, `double`, etc. `false`
+for `boolean`, and `null` for `Object` types. **However, it is not good practice
+to rely on default values, as it makes it harder to understand your code.**
+Instead, you should explicitly initialize your instance variables.
 
-    ```java
-    int product = 1;
-    for (int k = n; k > 0; k = k - 1) {
-        product = product * k;
-    }
-    ```
+We can (usually) access the age and variety of the Potato via dot notation.
+This is similar to Python's dot notation, which you may have encountered in CS 61A.
 
--   Decrement performed inside the loop-body
+```java
+Potato eriksPotato = new Potato("Yukon Gold", 3); // erik's potato!
+eriksPotato.variety; // returns the variety of erik's potato
+eriksPotato.age; // returns the age of erik's potato
+```
 
-    ```java
-    int product = 1;
-    for (int k = n; k > 0; ) {
-        product = product * k;
-        k = k - 1;
-    }
-    ```
+Notice that we had to first instantiate a new `Potato` object before we could
+access `variety` or `age`. The order of the variables that we pass into the
+`new Potato` call must match the order of the parameters of the constructor.
+Remember that *instance variables* are particular to the object.
+Thus we need to create an object first in order to have `variety` and `age`.
+Also notice that we have both *declared* and *instantiated* `eriksPotato`
+within the same line to make our code a little more compact. 
 
--   While loop equivalent
+Doing something like:
 
-    ```java
-    int product = 1;
-    int k = n;
-    while (k > 0) {
-        product = product * k;
-        k = k - 1;
-    }
-    ```
+```java
+Potato eriksPotato;
+eriksPotato = new Potato("Yukon Gold", 3);
+```
 
-Look over these four options and decide with your partner which is the easiest
-to read. Why?
+is practically the same. You may want to declare a variable before instantiating it
+if the initial assignment of the variable should not be set (e.g. we don't know that 
+Erik's potato is currently 3 years old).
 
-As the last loop demonstrates, the `for` loop is basically a
-repackaged `while` loop that puts all the information about how long the
-loop should continue in one place. Thus, a `for` loop is generally easier
-to understand than an equivalent `while` loop.
+When writing object code within its class, we can also employ the `this` keyword.
+Its usage is similar to that of `self` in Python.
 
-### Exercise: A Jigsaw Puzzle - Drawing a Triangle
+```java
+this.variety; // returns the current instance's variety
+this.age; // returns the current instance's age
+```
 
-The file `TriangleDrawer.stuff` contains a collection of statements. Some of
-the statements, together with some extra right braces, form the body of a main
-method that, when executed, will print the triangle:
+One notable difference, however, is that `this` cannot be reassigned whereas
+`self` in Python can be reassigned.
 
-    *
-    **
-    ***
-    ****
-    *****
-    ******
-    *******
-    ********
-    *********
-    **********
+Outside of the `Potato` class, we can’t use `this` to refer to `eriksPotato` since
+we only use this to refer to the current instance while inside the class.
+Instead, we're trying to refer specifically to `eriksPotato`.
 
-(Each line has one more asterisk than its predecessor; the number of asterisks
-in the last line is the value of the `SIZE` variable. `SIZE` has a hard-coded value,
-which you should experiment with. Feel free to make `SIZE` controlled by a command-line argument!
-However, when you turn it in, make sure that it will run with `SIZE = 10`!)
+We also have a `private` keyword placed in
+front of the `variety` and `age` declaration. This means we cannot access
+the `variety` and `age` via dot notation outside of `Potato.java`. We will see more
+about why we may want to do this in the **Getter and Setter Method** section
+later on.
 
-First, if you are working with a partner, swap which partner is primarily writing 
-the code. For this next part, we are going to need to create a new class, so let's 
-learn how to do this!
+Finally, it's important to stress that even though all instances of `Potato` will
+have the variables `variety` and `age`, their values will be specific to each
+instance of `Potato` - hence the name *instance variable*.
 
-At the top of IntelliJ, you should see "File". Click on it, and then hover over "New"
-and then click on "Java Class". See this reference screenshot:
-![New Java Class](img/NewJavaClass.png)
+### Instance Methods
 
-You will then be prompted to give a name, which in this case you should write `TriangleDrawer.java`. 
-Now, you've learned how to create a new Java class, and are ready to continue on to the 
-next part of the lab! 
+To facilitate behavior, we can define *instance methods*. For example, `Potato`
+has defined in it the `grow()` method.
 
-Next, let us add a main method to the class. As a reminder, the structure of a main method is as follows:
-```java 
+```java
+/** A method that grows the potato. Note it increases its age by 1. */
+public void grow() {
+    System.out.println("Photosynthesis!");
+    this.age = this.age + 1;
+}
+```
+
+Like instance variables, we can access instance methods using dot notation as
+well.
+
+```java
+eriksPotato.grow(); // Erik's potato grows!
+``` 
+
+We also have a few special instance methods prefixed by the words "get" and
+"set". These are aptly named getters and setters, which we'll learn more about
+below!
+
+### Getter and Setter Methods
+
+As we have seen, the `private` keyword limits our ability to access instance
+variables directly. This is called an **access modifier** and we will be
+discussing them in more detail later on in the course.
+
+For now, just know that in general it is good practice to make instance
+variables private. One consequence of making our instance variables private
+is that we must now define instance methods to access them.
+
+This is where we introduce getter and setter methods. Within `Potato` we have
+these methods.
+
+```java
+/** A getter method that returns the potato's type. */
+public String getVariety() {
+    return this.variety;
+}
+
+/** A getter method that returns the potato's age. */
+public int getAge() {
+    return this.age;
+}
+```
+
+The above two blocks are called *getter* methods since they **get** the value
+of their respective instance variables for programs outside of `Potato.java`.
+Of course, due to advancements in genetic modification technology, it is also
+possible to **set** the age of our potato.
+
+```java
+/** A setter method that sets the potato's age to AGE. */
+public void setAge(int age) {
+    this.age = age;
+}
+```
+
+This is called a *setter* method as it allows us to set the value of an instance
+variable.
+
+Interestingly enough, we don't have a setter method for the `variety` instance
+variable. This is because until we develop the technology to support
+spud-transmutation (#PotatoDreams), Erik's Yukon Gold potato will forever remain
+a Yukon Gold potato.
+
+Of course, this is important in an application sense because now external
+programs cannot maliciously change the identity of a potato. Take a look at
+`Potato1.java`
+
+```java
+/* An instance variable representing the potato's species. */
+public String variety;
+/* An instance variable representing the potato's age. */
+public int age;
+```
+
+The `variety` and `age` are public, meaning we can write a program to
+change the identity of Erik's potato.
+
+```java
+/* eriksPotato is an instance with variety = "Yukon Gold" */
+eriksPotato.variety = "Red Pontiac"; // A POTATO IMPOSTER!
+```
+
+The practice of using getters and setters is called *information hiding* and it
+prevents external programs from unintentionally (or intentionally!) changing
+the value of our instance variables.
+
+In one of exercises later, we will be considering a bank account. Without a doubt, we will
+want the balance of our bank account to be private, so that other programs cannot simply set `account.balance = 0;`.
+
+## Box and Pointer Diagrams
+
+Throughout this class it will be extraordinarily helpful to draw pictures of the
+variables in our programs to help us with debugging by visualizing the state and
+changes of objects throughout the code. The diagrams we'll teach you
+to use in this class are often referred to as *box and pointer* diagrams, which are
+similar to the Environment Diagrams you saw in CS 61A.
+
+Let's start off with something simple. When we declare a primitive, we draw a
+box for it, and label the box with the type of primitive, and the name of the
+variable. Here, primitives will be in red boxes. For example,
+
+```java
+int x;
+```
+
+![EmptyInt](img/EmptyInt.jpg)
+
+(We could also have drawn a 0 in the box.)
+When we assign a value to the primitive, we fill in the box with the value of
+the primitive.
+
+```java
+x = 3;
+```
+
+![FullInt](img/FullInt.jpg)
+
+Variables can also refer to objects. For example, a variable can refer to a `Potato`
+instance. We can declare a `Potato` object the same way as we declare an `int`.
+
+```java
+Potato p;
+```
+
+This variable is called a *reference*, because it will refer to an object. When
+we first declare the reference but don't assign an object to it like in the
+code above, we say the reference contains nothing, or `null`. This also occurs
+when an instance variable is not assigned a value in the constructor. Here's
+how we draw it:
+
+![NullRef](img/NullRef.jpg)
+
+Here we're drawing references in green to emphasize that they are different
+from primitives.
+
+Now let's assign a reference to the `Potato` object by calling its
+*constructor*. This *instantiates*, or creates, a new instance of the `Potato` class.
+Instantiating an object via its constructor **always** requires the `new` keyword.
+
+```java
+p = new Potato();
+```
+
+Objects in Box and Pointer Diagrams are each drawn as their own separate boxes. Here, there is a large blue box that represents one instance of the Potato class. Inside the large blue box are smaller boxes that represent the instance variables of the class. In our example, the Potato class has one primitive variable, the int ‘age’, and one object variable, the String `variety`. Therefore there are two smaller boxes in the Potato box. Notice how the value for `age` is inside a red box because it is a primitive, just like int `x`.
+
+![NewObj](img/NewObj.jpg)
+
+Here an object is drawn in blue, to emphasize that it is different from a
+primitive and a reference. We can now store primitives within the object as
+instance variables!
+
+**One critical thing about the object**: unlike the primitive integer, 3, drawn inside
+the box for `x`, the `Potato` object is **not** drawn inside the variable `p`.
+Instead `p` simply contains an arrow that points to the `Potato` object. This is
+why `p` is called a reference or pointer because it just *refers* to the object
+but *does not* contain it. The true value of the variable `p` is a **pointer** to
+a `Potato` object rather than the `Potato` object itself. A pointer is essentially
+just a location in memory where the actual `Potato` object is stored.
+
+This is a very, very important distinction!
+
+Of course, when we call the no argument constructor, it will initialize the `variety`
+to `"Russet Burbank"` and the `age` to `0`. Our diagram looks like the following.
+
+![TwoObjects](img/TwoObjects.jpg)
+
+Is this what you expected?
+
+Remember that a `String` in Java is an object, not a primitive. As a result, the
+`String` instance variable representing the `variety` of the potato must contain
+a pointer to the actual `String` object containing the name we've chosen. For the sake 
+of simplicity we don't show the instance variables of the String object. Although it's very 
+much out of scope for the purposes of this class, you can take a look at the [source code](https://github.com/openjdk/jdk/blob/master/src/java.base/share/classes/java/lang/String.java) for 
+the String class in Java, if you're interested.
+
+{% capture alertContent %}
+For another explanation, you may read
+[Section 2.1](https://joshhug.gitbooks.io/hug61b/content/chap2/chap21.html)
+from the CS 61B textbook,
+starting from the section titled "The Mystery of the Walrus" and stopping
+just before "The Law of the Broken Futon".
+{% endcapture %}
+{% include alert.html type="info" content=alertContent %}
+
+### Discussion: Intuition for Drawing Objects
+
+Discuss with your partner to see if you can come up with intuition as to why
+these diagrams are drawn the way they are:
+
+-   Why does it make sense that objects are not stored inside variables, but are
+    only referred to them?
+-   Why isn't the blue object box labeled with the name of the variable?
+
+There aren't necessarily correct answers to these questions, so just see if you
+can come up with explanations that make sense to you.
+
+## Stack and Heap
+
+When we create objects, our computer allocates space on the *heap*.
+The *heap* is where all objects and arrays live. However, method calls and
+local parameters are stored on the *stack*. Each time a method is called, the
+JVM allocates a *stack frame*, which stores the parameters and local variables
+for that method.
+
+At times, we may only care about the heap and the state of the objects that we
+create. Other times, it will be useful to keep track of the stack frames as
+well.
+
+Let's consider the following code:
+
+```java
 public static void main(String[] args) {
-    // statements go here
+    Potato p = new Potato();
+    int newAge = 20
+    p.setAge(newAge);
 }
 ```
 
-Copy and paste statements from the `TriangleDrawer.stuff` file into the main method of 
-`TriangleDrawer.java`. You'll have to add some right braces in addition to the copied lines 
-that you've chosen and rearranged. (You won't need all the statements. You shouldn't need to use 
-any statement more than once.)
+When the `setAge()` method is called, the stack and heap look like below. 
 
-Many students encounter infinite loops in their first solutions to this
-problem. If you get an infinite loop, be sure to hit `CTRL+C` in your terminal to halt
-execution.
+![StackHeap](img/StackHeap.jpg)
 
-> Hint: So far, we have mostly used the well-named function System.out.println
-> to conduct our printing. However, this function always outputs a new line at the
-> end of its provided string. There is a variant of this function, System.out.print,
-> which does not output a new line. You may find it helpful in this exercise!
+You can also step through the code, line by line to see what effect each line has on the box
+and pointer diagram. Everything under 'Frames' is located on the stack, while everything 
+under objects will be placed on the heap.
 
-### Exercise: Another Jigsaw Puzzle
+{%- capture pvsodemo -%}
+public class Potato {
 
-Make a new Java file called `TriangleDrawer2.java` (you might want to copy and
-paste from `TriangleDrawer.java`). In this file, rewrite the program so that it
-produces the exact same output, but using `for` loops and no `while` loops. If
-you have having trouble, re-read the parts above describing how to convert a
-`while` loop to a `for` loop.
+    private String variety;
+    private int age;
 
-<details markdown="block">
-  <summary markdown="block">
-#### Hint: When do we define variables?
-{: .no_toc}
-  </summary>
-When working with loops, we have to consider scope. In other words, we have to consider when our variables are being created,
-when they are being modified, and when they are inaccessible. Which variables do we want to define within the loop (either in the
-header or the body) and which variables do we want to define outside of the loop (either before or after the loop)?
+    public Potato() {
+        this.variety = "Russet Burbank";
+        this.age = 0;
+    }
 
-For example, consider the `SIZE` variable. When is it being modified? Based on that, where should it be defined?
+    public Potato(String variety, int age) {
+        this.variety = variety;
+        this.age = age;
+    }
 
-</details>
+   
+    public void setAge(int age) {
+        this.age = age;
+    }
+   
+    public static void main(String[] args){
+       Potato p = new Potato();
+       int newAge = 20;
+       p.setAge(newAge);
+   
+   }
+}
 
-## Arrays
+{%- endcapture -%}
+{% include java_visualizer.html embed=true height="500px" code=pvsodemo %}
 
-### Array Definition and Use
 
- An array is an indexed sequence of elements, all of the same type. Real-life
- examples of arrays include the following:
 
-- ducks in a row
-- slices of bread
-- words in this sentence
-- book pages
-- egg cartons
-- chessboards / checkerboards
+The method that is currently executing (at any given point in time) lies on the
+top of the stack. All other stack frames are waiting for the top frame to
+return and be popped off the stack so they can resume execution. When a stack
+frame is popped(when the function returns/completes execution), all of its local variables are lost.
 
-We declare an array variable by giving the type of its elements, a pair of
-square brackets, and the variable name, for example:
+One thing that you may notice is that Java is **pass-by-value**. Methods are
+passed in **copies** of the actual parameters. The original parameters cannot
+be changed by the method. The copies lie in the stack frame.
 
-```java
-int[] values;
-```
+Consider the following code and the stack and heap diagram, right before
+`tryToIncrement` returns.
 
-Note that we don't specify the length of the array in its declaration.
+{%- capture value -%}
+public class passByValue{
 
-Arrays are basically objects with some special syntax. To initialize an array,
-we use the `new` operator as we do with objects; the argument to `new` is the type
-of the array, which includes the length. For example, the statement
+    public static void tryToIncrement(int x) {
+	      x = x + 1;
+	}
+	   
+    public static void main(String[] args) {
+	    int x = 10;
+	    tryToIncrement(x);
+    }
+}
 
-```java
-values = new int[7];
-```
 
-stores a reference to a 7-element integer array in the variable `values`. This
-initializes the array variable itself. If we want to declare and initialize the
-array at the same time, we can:
 
-```java
-int[] values = new int[7];
-```
 
-The elements of the array are indexed from `0` to `(array length) - 1` and the
-element at a particular index can be changed with an assignment statement. For
-example, to set the second element to `4` we write:
+{%- endcapture -%}
+{% include java_visualizer.html code=value %}
 
-```java
-values[1] = 4;
-```
+![PassByValue1](img/PassByValue1.jpg)
 
-For an `int` array, Java will (by default) set all of the elements to `0`.
-Similarly, `double` arrays will be filled with `0.0`, `boolean` with `false`,
-etc. For arrays of references to non-primitive objects (whose precise definition we will
-cover in lab 4), the array will be initialized with `null`.
 
-If you know what every value in your array should be at initialization time,
-you can use this simplified syntax to directly initialize the array to the
-desired values. Note that you don't have to provide the array length because
-you're explicitly telling Java how long your array should be.
+
+
+
+
+Perhaps here is where it becomes apparent that the value for references is not
+the object it references. When we pass a variable into a method, we copy whatever is inside the box of the variable and put that copy into a new box in the method. For primitives, like x, we copy whatever is inside the box for x (in this case 10), and put that data into the stack frame. This means that, like we saw in tryToIncrement(), when we modify primitives in a method we modify the copy of that primitive, not the original.
+For objects, this is different. Remember, in our box and pointer diagrams, the object itself is not stored inside the box for the object variable. Instead, what is stored is a pointer to the object in the heap (represented by an arrow). Therefore, what is copied over is that pointer, not an entirely new copy of the object. In more technical terms, **when we pass in an object, what is copied is not the object itself, but the reference to the object**.
 
 ```java
-int[] oneThroughFive = new int[]{1, 2, 3, 4, 5};
-// This also works but only if you declare and initialize in the same line
-int[] oneThroughFive = {1, 2, 3, 4, 5};
-```
+public static void refresh(Potato p) {
+    p.age = 0;
+}
 
-To access an array element, we first give the name of the array, and then
-supply an index expression for the element we want in square brackets. For
-example, if we want to access the `k`th element of values (0-indexed), we can
-write:
-
-```java
-values[k]
-```
-
-If the value of the index expression is negative or greater than/equal to the
-length of the array, an exception is thrown (negative indexing is not allowed).
-
-Every array has an instance variable named `length` that stores the number of
-elements that array can hold. For the `values` array just defined,
-`values.length` is 7. The length variable can't be changed; once we create an
-array of a given length, we can't shrink or expand that array.
-
-### `for` Statements with Arrays
-
-`for` statements work well with arrays. Consider, for example, an array named
-`values`. It is very common to see code like the following:
-
-```java
-for (int k = 0; k < values.length; k += 1) {
-    // do something with values[k]
+public static void main(String[] args) {
+    Potato potat = new Potato("Red La Soda", 5);
+    refresh(potat);
 }
 ```
 
-### Shortcuts for Incrementing / Decrementing
+![PassByValue2](img/PassByValue2.jpg)
 
-Let `k` be an integer variable. Then the three following statements are
-equivalent in that they all increment `k`.
+{%- capture pvso2 -%}
+public class Potato {
+
+    private String variety;
+    private int age;
+
+    public Potato() {
+        this.variety = "Russet Burbank";
+        this.age = 0;
+    }
+
+    public Potato(String variety, int age) {
+        this.variety = variety;
+        this.age = age;
+    }
+
+   
+    public static void refresh(Potato p) {
+    p.age = 0;
+}
+
+    public static void main(String[] args) {
+        Potato potat = new Potato("Red La Soda", 5);
+        refresh(potat);
+}
+}
+
+{%- endcapture -%}
+{% include java_visualizer.html embed=true height="500px" code=pvso2 %}
+
+What is copied over into the parameter of the `refresh` method is not a copy of
+the Potato object, but a copy of the reference (the arrow) to the Potato Object.
+
+
+
+### `static`
+
+There's something that we've been kind of waving off up until now: the `static`
+keyword. In Java, `static` fields belong to the class instead of a particular
+instance. We call these static fields or class variables. During execution,
+only one instance of a static field exists throughout, no matter how many
+instances of the class are created. You can think of them as living in their
+own special space, away from each instance. Static fields can be referenced the
+same as instance variables from within a instance method. They can also be
+directly referenced as `ClassName.staticVariable`, or by the instance reference
+(although this is not recommended for style). 
+
+The code block below shows some of the different ways in which static and non-static methods and variables interact with each other. Read 
+through the code and the comments to get a sense what is happening. Discuss with your partner about what you think will happen when you run the code. 
+Then, run the code using the link to the Java Visualizer and see if your predictions were correct.
+
+
+{%- capture static -%}
+public class Bicycle {
+
+    // Non-static instance variables, each Bicycle(object) has its own copy
+    private int speed;
+    
+    // Static class variable, shared by all Bicycles(objects)
+    private static int numberOfBicycles = 0;
+
+    /* Constructor, called when we create a new Bicycle object.
+        can reference (use) both static and non-static variables */
+    public Bicycle(int startSpeed) {
+        speed = startSpeed;
+
+        numberOfBicycles += 1;
+    }
+
+    /* Static methods, belong to the class, can only reference (use) static variables and methods. Can not use 'this' in the function body.*/
+    public static int getNumberOfBicycles() {
+        return numberOfBicycles;
+    }
+
+    /* Instance methods, belong to the object, can reference (use) both static and non-static variables and methods. Can use 'this' in the function body. */  
+    public int getSpeed() {
+        return this.speed;
+    }
+        
+    public void speedUp(int increment) {
+        this.speed += increment;
+    }
+
+    public static void main(String[] args){
+        Bicycle b1 = new Bicycle(10); // create a new Bicycle object b1
+        System.out.println("Number of bicycles: " + b1.getNumberOfBicycles()); // valid call to static method using instance reference
+        Bicycle b2 = new Bicycle(10); // create a new Bicycle object b2
+        System.out.println("Number of bicycles: " + b1.getNumberOfBicycles()); // Updated number of bicycles when called from b1
+        System.out.println("Number of bicycles: " + b2.getNumberOfBicycles()); // valid call to same static method using instance reference
+        System.out.println("Number of bicycles: " + Bicycle.getNumberOfBicycles()); // valid call to same static method using class name
+        System.out.println("Speed of b1: " + b1.getSpeed()); // valid call to instance method using instance reference
+        System.out.println("Speed of b2: " + b2.getSpeed()); // valid call to instance method using instance reference
+        // System.out.println("Speed of b1: " + Bicycle.getSpeed()); // invalid call to instance method using class name
+        b1.speedUp(10); // change the speed of b1, b2 is unaffected
+        System.out.println("Number of bicycles: " + getNumberOfBicycles()); // valid call to static method when called from within the class
+        // System.out.println("Speed of b1: " + speed); // invalid call to instance variable from within static method
+        // System.out.println("Speed of b1: " + getSpeed()); // invalid call to instance variable from within static method
+
+    }
+}
+{%- endcapture -%}
+{% include java_visualizer.html code=static %}
+
+We really reccomend you play around with the code above, specifically in the main method, and see what happens when you change things. Use the Java Visualizer to help you understand what is happening.
+You can also read the orcale documentation on [class variables](https://docs.oracle.com/javase/tutorial/java/javaOO/classvars.html) for more information. 
+
+### The True Meaning of `this`
+
+Did you notice that there was something different between the
+`setAge` method and the `refresh` method? Go back to the stack
+and heap diagrams and discuss with your partner the difference. Look at the
+code segments and think about why that may be.
+
+`setAge` is an *instance method*, which means that it must always be called
+through dot notation on an object. Instance methods always have a `this`
+variable, which references the object that the method was called on. In
+contrast, `refresh` is a static method (marked with the `static` keyword).
+Static methods do *not* have a `this` reference in their frame; they belong to
+the class rather than to an instance of the class.
+
+We call being inside a static method during execution being in a *static
+context*. You cannot directly reference instance variables from a static
+context. Instead, you must do so through an object reference (due to the lack
+of a `this` reference). Note that static methods can be called from a static
+context (like in `main`) and do not need to be called with an instance
+associated with them.
+
+
+
+## Exercise: Account Management
+
+The next several exercises involve modifications to the Account class, which models a bank account. You should’ve pulled the skeleton code for this class in the Getting Started section at the beginning of this lab. The file you will be working with is Account.java. Open IntelliJ to access this file.
+
+Tests are also provided in the `tests/` folder, you can run `AccountTest.java` in Intellij
+to check the correctness of your code. 
+
+
+### Task: Modifying Withdrawal Behavior
+
+The `withdraw` method is currently returns `void`. Modify it to
+return a `boolean`: `true` if the withdrawal succeeds (along with actually
+performing the withdrawal) and `false` if it fails.
+
+### Task: Merging Accounts
+
+Implement the `merge` method. This method should transfer all of the money from the
+argument account to the current account. In other words, the argument account
+balance should be zeroed while the current account's balance increases by the
+argument's old balance. We've provided a skeleton of the method in
+`Account.java`.
+
+### Task: Overdraft Protection
+
+A convenient feature of some bank accounts is *overdraft protection*: rather
+than bouncing a check when the balance would go negative, the bank will deduct
+the necessary funds from a second account. One might imagine such a setup for a
+student account, provided the student's parents are willing to cover any
+overdrafts (!). Another use is to have a checking account that is tied to a
+savings account where the savings account covers overdrafts on the checking
+account. In our system, we'll be keeping things simple with only one type of
+account so we don't have to worry about student or savings accounts.
+
+Implement and test overdraft protection for `Account` objects by completing the
+following steps.
+
+1.  Add a `parentAccount` instance variable to the `Account` class; this is the
+    account that will provide the overdraft protection, and it may have
+    overdraft protection of its own.
+2.  Add a two-argument constructor. The first argument will be the initial
+    balance as in the existing code. The second argument will be an `Account`
+    reference with which to initialize the instance variable you defined in step
+    1.
+3.  In the one-argument constructor, set the parent account to `null`. We'd like
+    to emphasize the fact that there is no parent if the one-argument
+    constructor is used by explicitly setting `parentAccount` to `null`.
+4.  Modify the `withdraw` method so that if the requested withdrawal can't be
+    covered by this account, the difference is withdrawn from the parent
+    account. This may trigger overdraft protection for the parent account, and
+    then its parent, and so on. The number of accounts connected in this way may
+    be unlimited. If the account doesn't have a parent or if the parent (and its
+    parents and so forth) can't cover the withdrawal, the `withdraw` method
+    should merely print an error message as before and not change any account
+    balances.
+
+Note: it is important to check if the parent account is null before executing
+any changes to the account.
+
+Here's an example of the desired behavior, with the `Account` object `teresa`
+providing overdraft protection for the `Account` object `dom`. Recall this
+means the `parentAccount` of `dom` is `teresa`.
+
+Suppose, in each scenario below, `omd` has 100 as his balance while `teresa`
+has 500 as their balance.
+
+`dom` attempts to withdraw 50
+: `dom` then has 50 remaining in his balance, while `teresa` still has 500.
+
+`dom` attempts to withdraw 200
+: `dom` then has 0 remaining in his balance, while `teresa` needed to cover
+100 for `dom`, leaving 400 as their balance.
+
+`dom` attempts to withdraw 700
+: return false without changing either balance as the withdrawal is denied due
+to insufficient funds.
+
+{% include alert.html content="
+To test your code, try copy and pasting the `Account` class into the [online
+Java Visualizer](https://cscircles.cemc.uwaterloo.ca/java_visualize/#). Make
+sure to add a `main` method with a few example cases
+like the ones provided above.
 
 ```java
-k = k + 1;
-k += 1;
-k++;
+Account teresa = new Account(500);
+Account dom = new Account(100, crystal);
+teresa.withdraw(50);
+```
+" %}
+
+### Discussion: Merging Revisited
+
+One proposed solution for merging accounts is the following:
+
+```java
+public void merge(Account other) {
+    this.balance = this.balance + other.balance;
+    other = new Account(0);
+}
 ```
 
-Similarly, these three statements all decrement `k` by 1.
+This doesn't work. Explain why not. Highlight the space below to reveal the answer.
 
-```java
-k = k - 1;
-k -= 1;
-k--;
+<p><span style="color:white"><em>When we set `other = new Account(0);`, we lose 
+information regarding the parent account of `other` and this is not intended behavior. </em></span>.</p>
+
+
+### Lists, Sets, and Maps
+
+So far, we have discussed how to build a Java class from the ground up. However, you will not have to rewrite classes for every object you use while coding; there are several abstract data types which are pre-defined by the Java API and each of them come with their own constructor, methods, and variables. We will discuss abstract data types in greater depth later, but let's briefly touch on a few of the most popular:
+
+<table>
+    <thead>
+        <th>Python</th>
+        <th>Java</th>
+    </thead>
+<tr>
+<td markdown="block">
+
+```python
+lst = []
+lst.append("zero")
+lst.append("one")
+lst[0] = "zed"
+print(l[0])
+print(len(l))
+if "one" in lst:
+    print("one in lst")
+
+for elem in lst:
+    print(elem)
+
 ```
 
-Note: The motivation for this shorthand notation is that the operations of
-incrementing and decrementing by 1 are very common. While it is legal to
-increment or decrement variables within larger expressions like
+</td>
+<td markdown="block">
 
 ```java
-System.out.println(values[k++]);
+List<String> lst = new ArrayList<>();
+lst.add("zero");
+lst.add("one");
+lst.set(0, "zed");
+System.out.println(lst.get(0));
+System.out.println(lst.size());
+if (lst.contains("one")) {
+    System.out.println("one in lst");
+}
+for (String elem : lst) {
+    System.out.println(elem);
+}
 ```
 
-this is a risky practice very susceptible to off-by-one errors. Discuss a
-few settings that could lead to OBO errors with your partner. In general,
-we suggest starting with more verbose syntax. Therefore, we ask that you
-only use the `++` or `--` operations on lines **by themselves**.
+</td>
+</tr>
+</table>
 
-### The `break` Statement
+- Java has the `List` interface. We largely use the
+  [`ArrayList`][`ArrayList`] implementation.
+- The `List` interface is _parameterized_ by the type it holds, using the
+  angle brackets `<` and `>`.
+- `List`s, again, do not support slicing or negative indexing.
 
-The `break` statement "breaks out of" a loop (both for and while loops). In
-other words, it stops the execution of the loop body, and continues with the
-statement immediately following the loop. An example of its use would be a
-program segment that searches an array named `values` for a given `value`,
-setting the variable found to true if the value is found and to false if it
-is not in the array.
+[`ArrayList`]: https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/ArrayList.html
+
+<table>
+    <thead>
+        <th>Python</th>
+        <th>Java</th>
+    </thead>
+<tr>
+<td markdown="block">
+
+```python
+s = set()
+s.add(1)
+s.add(1)
+s.add(2)
+s.remove(2)
+print(len(s))
+if 1 in s:
+    print("1 in s")
+
+for elem in s:
+    print(elem)
+
+```
+
+</td>
+<td markdown="block">
 
 ```java
-boolean found = false;
-for (int k = 0; k < values.length; k++) {
-    if (values[k] == value) {
-        found = true;
-        break;
+Set<Integer> set = new HashSet<>();
+set.add(1);
+set.add(1);
+set.add(2);
+set.remove(2);
+System.out.println(set.size());
+if (set.contains(1)) {
+    System.out.println("1 in set");
+}
+for (int elem : set) {
+    System.out.println(elem);
+}
+```
+
+</td>
+</tr>
+</table>
+
+- Java has the `Set` interface. There are two main implementations:
+  [`TreeSet`][], and [`HashSet`][]. `TreeSet` keeps its elements in "sorted"
+  order, and is fast. In contrast, `HashSet` does not have a defined
+  "order", but is (usually) really fast.
+  - We will formalize these notions of "fast" later on in the course when we learn about asymptotic analysis.
+- A `Set` cannot contain duplicate items. If we try to add an item already in the set, nothing happens.
+
+[`TreeSet`]: https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/TreeSet.html
+[`HashSet`]: https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/HashSet.html
+
+<table>
+    <thead>
+        <th>Python</th>
+        <th>Java</th>
+    </thead>
+<tr>
+<td markdown="block">
+
+```python
+d = {}
+d["hello"] = "hi"
+d["hello"] = "goodbye"
+print(d["hello"])
+print(len(d))
+if "hello" in d:
+    print("\"hello\" in d")
+
+for key in d.keys():
+    print(key)
+
+```
+
+</td>
+<td markdown="block">
+
+```java
+Map<String, String> map = new HashMap<>();
+map.put("hello", "hi");
+map.put("hello", "goodbye");
+System.out.println(map.get("hello"));
+System.out.println(map.size());
+if (map.containsKey("hello")) {
+    System.out.println("\"hello\" in map");
+}
+for (String key : map.keySet()) {
+    System.out.println(key);
+}
+```
+
+</td>
+</tr>
+</table>
+
+- Java has the `Map` interface. There are two main implementations:
+  [`TreeMap`][], and [`HashMap`][]. Similarly to sets, `TreeMap` keeps its
+  keys sorted and is fast; `HashMap` has no defined order and is (usually)
+  really fast.
+- A `Map` cannot contain duplicate keys. If we try to add a key already in the map, the value is overwritten.
+- In the angle brackets, we have the "key type" first, followed by the
+  "value type".
+- `Map`s cannot directly be used with the `:` for loop. Typically, we call
+  `keySet` to iterate over a set of the keys, and use those to retrieve the values. One may also iterate over the `entrySet` to get both the keys and values.
+
+[`TreeMap`]: https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/TreeMap.html
+[`HashMap`]: https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/HashMap.html
+
+## Exercise: ADT Practice
+
+In order to get you more familiar with Java syntax and testing, there are a few exercises for you to solve! After you complete the functions, we have provided a handful of tests for you. Although we have provided tests, you are welcome to write your own too! Writing tests is not only crucial for this class but it is one of the most important skills to have in general. It reinforces our understanding of what specific methods are supposed to do and allows us to catch edge cases. You will have more exercises for testing later in tomorrow's lab but we want you to be exposed early on.
+
+
+
+
+## Exercise: Pursuit Curves
+
+You will now create a class representing a pursuit curve.
+
+*Pursuit curves* provide a powerful way to render curves on a computer. The
+traditional method for drawing a path is to analytically define it via some
+algebraic formula like $$y(t) = t^2$$ and trace it point-wise. Consider an
+alternative where we define two points: the *pursuer* and the *pursued*.
+
+Now suppose the pursued point (in black) follows some fixed path $$F(t)$$. Then the
+pursuer (in red) will seek the pursued in the following manner.
+
+![Pursuit](img/pursuit.gif)
+
+We notice that the pursuer always follows the pursued along its tangent, which
+gives some serious first order differential equation vibes. Letting the
+pursuer's path be given by $$x(t)$$, then the closed form solution for its path is
+given by the following equation.
+
+![PursuitMath](img/PursuitMath.jpg)
+
+Of course, we won't require you to solve a differential equation. In fact, let's
+see what your task will be!
+
+### Task: Implementing Pursuit Curves
+
+Implement a simpler version of pursuit curves in order to create a
+cool visual by filling out `lab04/src/Path.java`. An additional
+file `lab04/src/PathHarness.java` is provided containing code that will render
+your code in `Path.java` using Java's graphics framework, uncomment this file after implementing `Path.java`.
+
+Also, testing code has been provided in `lab04/tests/PathTest.java`. You can uncomment this file and run these tests in Intellij.
+
+As with the previous assignments,
+these tests are not entirely comprehensive. Feel free to add whatever testing code you desire.
+
+`Path.java` will represent the path traveled by the pursuer. You will need to
+keep track of the following two points:
+
+-   `curr` will represent where the path currently ends. This will be
+    a Point object.
+
+-   `next` will represent where the path (and thus, `curr`) will travel to next. This
+    will also be a Point object.
+
+Next, you will need to define a constructor that, given an x and y coordinate,
+sets `next` to the starting point (x, y). The constructor may look
+something like this.
+
+```java
+public Path(double x, double y) {
+    // more code goes here!
+}
+```
+
+When the `Path` object is first constructed, `curr`
+can be set to a `Point` instance with any coordinate so long as it is not `null`.
+Try playing around with initial `curr` values to see what you can get!
+
+Finally, you will need to implement the following instance methods.
+
+| method name                      | return type | functionality                      |
+|----------------------------------|-------------|------------------------------------|
+| `getCurrX()`                     | `double`    | Returns the x-coordinate of `curr` |
+| `getCurrY()`                     | `double`    | Returns the y-coordinate of `curr` |
+| `getNextX()`                     | `double`    | Returns the x-coordinate of `next` |
+| `getNextY()`                     | `double`    | Returns the y-coordinate of `next` |
+| `getCurrentPoint()`              | `Point`     | Returns `curr`                     |
+| `setCurrentPoint(Point point)`   | `void`      | Sets `curr` to `point`             |
+| `iterate(double dx, double dy)`  | `void`      | Sets `curr` to `next` and updates the position of `next` to be `curr` with movement defined by `dx` and `dy`.  |
+
+
+
+A note on `iterate(double dx, double dy)`. If you were to implement a pursuit
+curve in full generality, then this is where you would solve a differential
+equation. But again, we won't have you do that. Instead we're giving you $$dx$$
+and $$dy$$ where, `dx` represents the distance moved in the x-direction and `dy` represents the distance moved in the y-direction. 
+
+To summarize your task:
+
+-   Keep track of `curr` and `next`.
+
+-   Implement a constructor taking in a `double x` and `double y`.
+
+-   Implement the methods listed in the table above.
+
+Here are some tips to keep you on the right track!
+
+-   As `curr` and `next` are both `Point` objects, we've provided
+    a class defining `Point`. Make sure to read through and understand what each
+    method and constructor does!
+
+-   When defining `iterate(double dx, double dy)` you may find that your
+    `curr` and `next` are not being set to what they are coded to
+    be. Think about object references and try drawing a box-and-pointer diagram.
+
+{% include alert.html type="info" content="
+If you want to learn more about pursuit curves, [Wolfram's MathWorld provides
+a very interesting read](http://mathworld.wolfram.com/PursuitCurve.html).
+" %}
+
+
+## `.toString` and `.equals`
+
+You may have also noticed the `.toString` and `.equals` methods in the `Point`
+class, which have been copied here for your convenience. Both of these are
+special methods which you will use often throughout the rest of this class.
+
+```java
+public class Point {
+    public double x;
+    public double y;
+
+    public String toString() {
+        return "(" + this.x + ", " + this.y + ")";
     }
 }
 ```
 
-This `break` statement allows us to save computation time. If we find the value within
-the array before the end, we don't waste more time looping through the rest
-of the array.
-
-However, the `break` statement is not always necessary, and code with a lot
-of `break`s can be confusing. Abusing the break statement is often considered
-poor style. When using `break`, first consider if instead it would be more
-appropriate to put another condition in the test.
-
-### The `continue` Statement
-
-The `continue` statement skips the current iteration of the loop body,
-increments the variables in the loop information, then evaluates the loop
-test. This example checks how many 0's there are in array `values`:
+The `toString` method is used by Java to determine how to represent an object
+as a string, like when printing objects to display to the user. In the example
+below, we create a new point at the origin, $$(0, 0)$$. When calling
+`System.out.println`, Java needs to figure out what exactly to print, so it
+invokes the `toString` method which returns `(0.0, 0.0)`. Then, that string is
+displayed to the screen.
 
 ```java
-int count = 0;
-for (int i = 0; i < values.length; i++) {
-    if (values[i] != 0) {
-        continue;
-    }
-    count += 1;
-}
-System.out.println("Number of 0s in values array: " + count);
+Point p = new Point();
+System.out.println(p);  // (0.0, 0.0)
 ```
 
-Similar to the `break` statement, the `continue` allows us to save time by
-skipping sections of the loop. In this case, the `continue` allows us to add
-to the `count` only when there is a 0 in the array. Removing continue will
-give an incorrect output.
-
-The difference between `break` and `continue` is that `break` immediately stops
-the loop and moves on to the code directly following it. In comparison,
-`continue` stops going through the current iteration of the loop body and
-immediately continues on to the next iteration as given by the loop information.
-
-Like with `break`, abusing `continue` is often considered poor style. Try not
-to go crazy with nested `break`s and `continue`s.
-
-Both `break` and `continue` apply to only the closest loop it is enclosed in.
-For instance, in the case of the following nested loop, the `break` will only
-exit out of the inner for loop, not the outer one.
+Likewise, the `equals` method is used whenever a user calls `equals`. We might
+define equality between two points as follows. We first verify if the object passed in 
+is a Point and then check for equality based on the x and y values. 
 
 ```java
-for (int i = 0; i < values.length; i++) {
-    for (int j = i + 1; j < values.length; j++) {
-        if (values[i] == value[j]) {
-            break;
+public class Point {
+    public double x;
+    public double y;
+
+    public boolean equals(Object o) {
+        if (o instanceof Point other){
+            return (this.x == other.x) && (this.y == other.y);
+        }
+        else {
+            return false;
         }
     }
 }
 ```
 
-### Break!
-Speaking of "break" statements, take a second to sip some water, stretch your body, and swap which partner is controlling the keyboard!
+It is very important to understand the difference between the equality and
+identity of objects. If you have not already, read over the
+[Identity and Equality section of the Java guide](../../java/index.md#identity-and-equality).
+ Many tricky bugs can arise from this if you misuse these two related but different concepts.
 
-### Exercise: An Adding Machine Simulator
-
-Consider a program that simulates an old-fashioned adding machine. The user
-types integers as input, one per line. Input should be handled as follows:
-
--   A nonzero value should be added into a subtotal.
-
--   A zero value should print the subtotal and reset it to zero.
-
--   Two consecutive zeroes should print the total of all values inputted, then
-    print out every value that was inputted in sequence (*not* including zeroes)
-    then terminate the program.
-
-Open the associated file `AddingMachine.java` that holds the implementation of
-the above described program. Read through the TODO in the comments provided in the `AddingMachine.java` file.
-For this exercise, you will be asked to "complete" AddingMachine so that it executes as specified in this spec.
-
-Here's an example of how the program should behave.
-
-| *User input* | *Printed output* |
-|:------------:|:----------------:|
-| 0            | subtotal 0       |
-| 5            |                  |
-| 6            |                  |
-| 0            | subtotal 11      |
-| -5           |                  |
-| 5            |                  |
-| 0            | subtotal 0       |
-| 13           |                  |
-| -8           |                  |
-| 0            | subtotal 5       |
-| 0            | total 16         |
-|              | 5                |
-|              | 6                |
-|              | -5               |
-|              | 5                |
-|              | 13               |
-|              | -8               |
-
-There are several things to note. First, look at how the project description
-leads to the implementation. Try testing the implementation with the inputs and
-outputs listed above. Do the steps make sense?
-
-Second, does this program work with all inputs?
-In programming, the person who writes the code can, intentionally or not,
-introduce their own ideas and assumption in the code, some of which can lead to
-problems. Specifically, for the class `AddingMachine.java` we assumed that the
-user will never enter more than `MAXIMUM_NUMBER_OF_INPUTS` non-zero values during
-any run of the program.
-
-Discuss with your partner: is this usually a fair assumption to make? Try
-running the code and supply input that violates this assumption. Does the code
-tell you that you have made an error or does it just crash? This touches on a
-new idea of programming: **robustness**. This refers to code's ability to
-handle incorrect user input. In real life, you'll never have a guarantee like
-this, but you haven't been taught the proper Java to handle an arbitrarily long
-sequence of inputs (yet!).
-
-A few things to take away from this code:
-
--   Always consider what will happen if your user interacts incorrectly with
-    your data.
-
--   To exit the `main` method, execute a `return;` statement somewhere inside
-    the method. Because the `main` method is of type `void`, it can't return a
-    value. Therefore, the appropriate `return` statement doesn't have an
-    argument.
-
--   This code introduces the `Scanner` class. A `Scanner` can be used to read
-    user input. Here the `Scanner` is created with `System.in` as an argument,
-    which means that it is expecting input from the command line.
-
-    -   You can do a variety of things with a `Scanner`, but in this exercise
-        you'll find it most useful to use code like this:
-
-        ```java
-        int k;
-        k = scanner.nextInt();
-        ```
-
-    -   Here, `scanner` reads everything it can from its input and stores the
-        result in an integer `k`. Because `scanner`'s input is the command line,
-        the program will actually stop and wait at this part of the code until
-        the user types in something at the command line and hits enter. For
-        example, if the user types `100`, then the program will store the value
-        `100` in `k` before continuing on.
-
-### Exercise: `insert` & `delete`
-
-Look at the files `ArrayOperations.java` and `ArrayOperationsTest.java`.
-
-Fill in the blanks in the `ArrayOperations` class. Your methods should pass
-the associated tests in `ArrayOperationsTest`.
-
-Note: Before trying to program an algorithm, you should usually try a small
-case by hand. For each of the exercises today, work with your partner to do
-each algorithm by hand before writing any code.
-
--   The `insert` method takes three arguments: an `int` array, a position in the
-    array, and an `int` to put into that position. All the subsequent elements
-    in the array are moved over by one position to make room for the new element.
-    The last value in the array is lost.
-
-For example, let `values` be the array {1, 2, 3, 4, 5}. Calling
-
-```java
-insert(values, 2, 7)
-```
-
-would result in `values` becoming {1, 2, 7, 3, 4}.
-
--   The `delete` method takes two arguments: an `int` array and a position in
-    the array. The subsequent elements are moved down one position, and the
-    value 0 is assigned to the last array element.
-
-For example, let `values` be the array {1, 2, 3, 4, 5}. Calling
-
-```java
-delete(values, 2)
-```
-
-would result in `values` becoming {1, 2, 4, 5, 0}.
-
-For today don't worry about the methods being called with incorrect input.
-
-### Multidimensional Arrays
-
-Having an array of objects is very useful, but often you will want to have an
-array *of arrays* of objects. Java does this in a very natural way. We've
-already learned that to declare an array, we do:
-
-```java
-int[] array;
-```
-
-Similarly, to declare an array of arrays, we do:
-
-```java
-int[][] arrayOfArrays;
-```
-
-When constructing an array of arrays, you *must* declare how many arrays it
-contains (because this is the actual array you are constructing), but you don't
-have to declare the length of each array. To declare an array of 10 arrays, you
-do this:
-
-```java
-int[][] arrayOfArrays = new int[10][];
-```
-
-To construct the first array in the array of arrays, you could do:
-
-```java
-arrayOfArrays[0] = new int[5];
-```
-
-And you could access the first index of the first array as:
-
-```java
-arrayOfArrays[0][0] = 1;
-```
-
-Hopefully this all makes sense. Alternatively, you can fix the length of each
-array in the array of arrays as the same length like this:
-
-```java
-int[][] tenByTenArray = new int[10][10];
-```
-
-You can also directly instantiate an array of arrays with prefilled elements,
-such as:
-
-```java
-{% raw %}
-int[][] oneThroughTen = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
-{% endraw %}
-```
-
-An array of arrays, when the different sub-arrays can be of different sizes, is
-called a *jagged array*. If they are all the same size, it is often convenient
-to forget altogether that you have an array of arrays, and instead to simply
-imagine you had a multi-dimensional array. For instance, you could create a
-3-dimensional array (to represent points in space, for example) like this:
-
-```java
-int[][][] threeDimensionalArray = new int[100][100][100];
-```
-
-This 3D array has 100x100x100 = 1,000,000 different values. Multidimensional
-arrays are extremely useful, and you'll be encountering them a lot.
-
-### Exercise: Catenate
-
-Again, look at the files `ArrayOperations.java` and `ArrayOperationsTest.java`.
-
-Note that, with the provided starter code, the tests specific to this exercise 
-will not pass. This is expected! Implement the related method as described below
-and in the comments and the tests will pass!
-
-Complete the Java function `catenate` so that it
-performs as indicated below and in the comments. Remember that some
-arrays can have zero elements!
-
-Note: Again, before trying to program an algorithm, you should usually try a small
-case by hand. Walk through the algorithm by hand with your partner.
-
-You may find `System.arraycopy` useful for this problem, but you are not
-required to use it. If you are not sure how to use this method, try Googling it!
-
--   The `catenate` method takes in two arguments: integer arrays `A` and `B`.
-    You should return a new array with all of the elements of `A` directly
-    followed by all of the elements in `B`.
-
-For example, let `A` be the array `{1, 2, 3}` and `B` be the array `{4, 5}`.
-Calling
-
-```java
-int[] values = catenate(A, B);
-```
-
-would result in `values` becoming `{1, 2, 3, 4, 5}`.
-
-Again, for today, don't worry about the method being called with incorrect input.
-When you finish this function, all tests in `ArrayOperationsTest.java` should
-compile and pass.
 
 ## Conclusion
 
-### Wrap-Up
+Coding is not easy! Keeping track of what references point to what, modifying code
+(which you first have to understand), and systematically finding bugs are definitely
+not skills that develop overnight. Make sure to practice! You can get your partner
+or another classmate involved and generate variants of the lab exercises to provide
+extra practice.
 
-Today's lab reintroduced a number of concepts in programming (such as loops and
-conditionals) which you have likely seen before, and explained to you how they
-work in Java. The exercises gave you practice both for writing your own code
-from scratch and debugging or interpreting code which has been given to you.
+The exercises on complicated uses of references are easy to produce and
+can be verified online using tools such as
+[Java Visualizer](http://cscircles.cemc.uwaterloo.ca/java_visualize/)
+or by simply running your code through IntelliJ.
+
+The internet is also a great source for more coding practice. Here's a short list
+of websites where you can find problems:
+
+- [Advent of Code](https://adventofcode.com/)
+- [Project Euler](https://projecteuler.net/) (Warning: mathy)
+- [Leetcode](https://leetcode.com/) (very common interview prep)
+
+Many problems you see will rely on things we haven't learned yet. If you see
+a problem that you don't know how to do, don't panic! We'll be covering a lot more 
+data structures in this class that will help you solve them. 
+
+For coding, practice is crucial so make sure to do so! Finally, if you or anyone you know
+is struggling, let a TA know and we'll be more than happy to help.
 
 ### Deliverables
 
-Here's a short recap of what you need to do to finish this lab.
+To quickly recap what you need to do for this lab:
 
-Ensure you have saved, `git add`ed, `git commit`ed, and `git push`ed all of your files!
-Make sure that, if you are working in a partnership, only one of you submits, and adds the 
-other to the submission!
-
--   Submit the following files to Gradescope for grading.
-    - `DateConverter.java`
-    - `TriangleDrawer.java`
-    - `TriangleDrawer2.java`
-    - `AddingMachine.java`
-    - `ArrayOperations.java`
+-   Read through the lab and learn about Java objects and the Golden Rule of
+    Equals. Make sure you understand how to draw box-and-pointer diagrams.
+-   Build good collaboration habits as you work through the provided discussion
+    questions and exercises.
+-   In `lab02/Account.java` edit the behavior of withdrawal to return a boolean
+    then implement account merging and overdraft protection.
+    ([Exercise: Modifying Withdrawal Behavior](#exercise-account-management))
+-   Implement `lab02/src/Path.java`, which keeps track of `currPoint` and
+    `nextPoint` and implements the method `iterate(dx, dy)` using helper methods
+    `getCurrX()`, `getCurrY()`, `getNextX()`, `getNextY()`, `getCurrentPoint()`
+    and `setCurrentPoint(Point point)`.
+    ([Exercise: Pursuit Curves](#exercise-pursuit-curves))
