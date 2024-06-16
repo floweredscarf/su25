@@ -414,9 +414,8 @@ you don't need to get all points in the lab category to still get full credit
 for labs.
 
 **To use a lab slip day, go to the Extensions tab on Beacon. If you have enough
-slip days remaining, you may select your assignment and your new due date.**
-Note that once you apply a slip day to an assignment, you cannot later extend 
-it by even more time.
+slip days remaining, you may select your assignment and your new due date**
+Note that you can only request at most 1 slip day per lab, and once you apply a slip day to an assignment, you cannot later extend it by even more time.
 
 #### Project Lateness
 
