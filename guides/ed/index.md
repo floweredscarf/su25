@@ -26,8 +26,7 @@ targeted, excluded, disrespected, or discriminated against by a student or
 someone from our course staff, please fill out our
 [Incident Report form](https://forms.gle/kvTnbkvhYPZdiKbY6) to report it. If
 you would rather not speak to someone from staff, there are several campus
-offices you may report to instead
-(https://docs.google.com/forms/d/e/1FAIpQLSc4NYHdUJ8IzYA1SoiTinWBybGWkj0mfmdnHAeygAxkZajelQ/viewform).
+offices you may report to instead through [the departmental incident report form](https://docs.google.com/forms/d/e/1FAIpQLSc4NYHdUJ8IzYA1SoiTinWBybGWkj0mfmdnHAeygAxkZajelQ/viewform).
 
 ## Overall Requests
 
@@ -91,23 +90,24 @@ question on Ed, you **must** select an appropriate category.
 
 An overview of the categories is as follows:
 
+Announcements
+: Weekly announcements, survey releases, and important logsitical changes. 
+
 Logistics
 : General questions about what's happening in the course.
 
-Lectures
-: Questions about each lecture's content. This category has a template asking
+Lectures/Instructor Labs
+: Questions about each lecture or instructor lab's content. This category has a template asking
   for the lecture nubmers.
 
-Projects, Labs, Homeworks
-: Questions and requests for debugging help on the assignments. These
-  categoies have subcategories for each assignment in. Each subcategory also
-  has subsubcategories, for distinguishing between private debugging questions
-  (Gitbugs) and various kinds of public questions. For example,
-  `Projects - Project 1 - Gitbugs`, and
-  `Projects - Project 1 - Conceptual (Circular Buffer)`.
+Practical Lab, Projects
+: Questions and requests for debugging help on codig assignments. Each assignment has subcategories for distinguishing between private debugging questions, where Megathreads are for logistics or conceptual questions, and Gitbugs are for debugging questions. 
+   For example,
+  `Projects - Project 0 - Gitbugs (Private)`, and
+  `Projects - Project 0 - Megathread`.
 
-Discussions
-: Questions and conceptual clarifications on discussion worksheets. This
+Theoretical Labs
+: Questions and conceptual clarifications on theoretical lab worksheets. This
   category has a subcategory for each week.
 
 Exams
@@ -115,8 +115,6 @@ Exams
   As we get closer to the exam, we will add additional categories for asking
   questions about previous exams.
 
-Social
-: Looking to form a study group or hold a study session? Post here.
 
 External Announcements
 : Any postings from external groups not affiliated with CS 61B will be posted
@@ -257,5 +255,5 @@ Make code (and stack traces) readable.
 
 If you have a question about a personal matter that you don’t want other
 students to see, please make a private post. Private posts are only seen
-by the course staff. If you want only the head TAs and Josh to see your
-question, please email `cs61b [at] berkeley.edu`{: .blue}
+by the course staff. If you want only the instructors to see your
+question, please email `cs61bl [at] berkeley.edu`{: .blue}
