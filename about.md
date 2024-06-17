@@ -76,8 +76,7 @@ Please note, however, that our ability to support those in other timezones will 
 limited by our need to sleep at night. That means that, if you are on the other side 
 of the world, you may have to be up all night to attend our offerings. We thus do 
 not recommend that you take the course if you will not be physically located in an 
-amenable timezone, although we will not prevent you, and you will still be able to 
-complete the course fully remote.
+amenable timezone, although we will not prevent you. You must take the exams in person. Everything other than exams can be done remotely. If you can't attend the midterm in-person, but can attend the final in-person, please email us.
 
 ### Mental Health & Wellness
 
@@ -96,7 +95,7 @@ depression, difficulty concentrating and/or lack of motivation. Your mental heal
 
 If you're in need of laptops, Wi-Fi hotspots, or other required technologies, check out the [Student Technology Equity Program.](https://technology.berkeley.edu/STEP)
 
-{% include alert.html type="info" content="If you’re experiencing extenuating circumstances impacting your mental health and would like to meet with a member of course staff to work out accommodations within the course, or would like to be connected to more resources, fill out our [Extenuating Circumstances form](#extenuating-cirucmstances). " %}
+{% include alert.html type="info" content="If you’re experiencing extenuating circumstances impacting your mental health and would like to meet with a member of course staff to work out accommodations within the course, or would like to be connected to more resources, fill out our [Extenuating Circumstances form](#extenuating-circumstances). " %}
 
 ### Accommodation
 
@@ -442,7 +441,7 @@ on any assignment.
 
 **To request for a DSP-related extension, go to the "DSP Extensions" section under the Extensions tab on Beacon. We will check your DSP record for extensions related accommodations.**
 
-#### Extenuating Cirucmstances
+#### Extenuating Circumstances
 We define extenuating circumstances as circumstances outside of the student’s control that 
 directly inhibits the student’s ability to complete assignments in a timely manner. Some 
 examples include unforeseen physical/mental health crises, technical issues (broken laptop), 
