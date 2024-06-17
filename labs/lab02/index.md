@@ -1199,14 +1199,8 @@ is struggling, let a TA know and we'll be more than happy to help.
 To quickly recap what you need to do for this lab:
 
 -   Make sure you understand Box and Pointer Diagrams
--   In `Account.java` edit the behavior of withdrawal to return a boolean
-    then implement account merging and overdraft protection.
-    ([Exercise: Modifying Withdrawal Behavior](#exercise-account-management))
+-   `Account.java`
 -   `ListExercises.java`
 -   `MapExercises.java`
--   Implement `src/Path.java`, which keeps track of `currPoint` and
-    `nextPoint` and implements the method `iterate(dx, dy)` using helper methods
-    `getCurrX()`, `getCurrY()`, `getNextX()`, `getNextY()`, `getCurrentPoint()`
-    and `setCurrentPoint(Point point)`.
-    ([Exercise: Pursuit Curves](#exercise-pursuit-curves))
+-   `Path.java`
 -   Start Project 0
