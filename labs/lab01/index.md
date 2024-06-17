@@ -217,92 +217,6 @@ proficient user of the bash terminal!
     key on your keyboard until you see the correct instruction.
     This saves typing time if you are doing repetitive instructions.
 
-### Task: Terminal Test Run
-
-Let's ensure that everything is working.
-
-{% include alert.html content="
-**Tip**: We have a video below that shows what the correct outputs for these commands
-should look like. 
-" %}
-
-1.  First open up your terminal.
-    Check that git is a recognized command by typing the following command:
-
-    ```shell
-    git --version
-    ```
-
-    The version number for git should be printed. If you see "git: command not
-    found", or similar, try opening a new terminal window, restarting your
-    computer, or installing git again.
-
-2.  Second, let's check that `javac` and `java` are working.
-    `javac` and `java` allow *Command Line Compilation*, or in other words,
-    the ability to run Java programs directly from the command line.
-    In practice, most developers run Java programs through an IDE like IntelliJ,
-    so we won't be using command line compilation for much this semester other
-    than testing your setup.
-    Start by running the following commands at your terminal.
-
-    ```shell
-    mkdir ~/temp
-    cd ~/temp
-    ```
-
-
-    1.  In this newly created directory, create an empty file `HelloWorld.java`.
-        
-        ```shell
-        touch HelloWorld.java
-        ```
-        
-        
-    2.  Then, open the file using your operating system's text editor.
-        You can do this from the command line:
-
-        - Mac: `open -e ./HelloWorld.java`
-        - Windows: `notepad ./HelloWorld.java`
-        - Linux: `xdg-open ./HelloWorld.java`
-
-
-    3. Copy paste the following code block into the editor, then save and close. 
-
-        ```java
-        public class HelloWorld {
-            public static void main(String[] args) {
-                System.out.println("Hello world!");
-            }
-        }
-        ```
-
-    4. In your terminal, type `cat HelloWorld.java`. You should see the contents of 
-       the file we just created. 
-     
-    5. In your terminal, enter `ls` (list the files/folders in this directory).
-        You should only see `HelloWorld.java` listed.
-        
-    6.  Run `javac HelloWorld.java`. If this produces any output, then something
-        may be wrong with your setup. Try opening a new terminal window or
-        restarting your computer. If that still doesn't work, see the
-        Troubleshooting section under the directions for your operating system.
-
-    7.  Type `ls`, you should see both `HelloWorld.java`
-        and a freshly created `HelloWorld.class` (the `javac` command created
-        this file).
-
-    8.  Run `java HelloWorld`. It should print out "Hello world!" for you.
-        If it didn't, something is wrong with your setup!
-
-    9.  You're done! You can also delete the "temp" folder and its contents as
-        you please.
-
-    The video below shows what we're hoping for when we run through the steps above.
-    If you see something similar to this, your java setup is complete.
-
-
-    <script id="asciicast-i4kqX0gnASof89lIdE6JzMCyC" src="https://asciinema.org/a/i4kqX0gnASof89lIdE6JzMCyC.js" async ></script> 
-
 ## GitHub and Beacon
 
 Instead of bCourses, CS 61BL uses an in-house system for centralizing your
@@ -838,6 +752,92 @@ With IntelliJ and the plugins installed, we can install the JDK. Follow the step
    to download your JDK version. **Choose a version that is 17 or greater!** Depending on which
    version you choose, make sure that it is compatible with the language level (e.g. if you
    choose SDK 18, choose your language level to be 18). 
+
+### Task: Terminal Test Run
+
+Let's ensure that everything is working.
+
+{% include alert.html content="
+**Tip**: We have a video below that shows what the correct outputs for these commands
+should look like. 
+" %}
+
+1.  First open up your terminal.
+    Check that git is a recognized command by typing the following command:
+
+    ```shell
+    git --version
+    ```
+
+    The version number for git should be printed. If you see "git: command not
+    found", or similar, try opening a new terminal window, restarting your
+    computer, or installing git again.
+
+2.  Second, let's check that `javac` and `java` are working.
+    `javac` and `java` allow *Command Line Compilation*, or in other words,
+    the ability to run Java programs directly from the command line.
+    In practice, most developers run Java programs through an IDE like IntelliJ,
+    so we won't be using command line compilation for much this semester other
+    than testing your setup.
+    Start by running the following commands at your terminal.
+
+    ```shell
+    mkdir ~/temp
+    cd ~/temp
+    ```
+
+
+    1.  In this newly created directory, create an empty file `HelloWorld.java`.
+        
+        ```shell
+        touch HelloWorld.java
+        ```
+        
+        
+    2.  Then, open the file using your operating system's text editor.
+        You can do this from the command line:
+
+        - Mac: `open -e ./HelloWorld.java`
+        - Windows: `notepad ./HelloWorld.java`
+        - Linux: `xdg-open ./HelloWorld.java`
+
+
+    3. Copy paste the following code block into the editor, then save and close. 
+
+        ```java
+        public class HelloWorld {
+            public static void main(String[] args) {
+                System.out.println("Hello world!");
+            }
+        }
+        ```
+
+    4. In your terminal, type `cat HelloWorld.java`. You should see the contents of 
+       the file we just created. 
+     
+    5. In your terminal, enter `ls` (list the files/folders in this directory).
+        You should only see `HelloWorld.java` listed.
+        
+    6.  Run `javac HelloWorld.java`. If this produces any output, then something
+        may be wrong with your setup. Try opening a new terminal window or
+        restarting your computer. If that still doesn't work, see the
+        Troubleshooting section under the directions for your operating system.
+
+    7.  Type `ls`, you should see both `HelloWorld.java`
+        and a freshly created `HelloWorld.class` (the `javac` command created
+        this file).
+
+    8.  Run `java HelloWorld`. It should print out "Hello world!" for you.
+        If it didn't, something is wrong with your setup!
+
+    9.  You're done! You can also delete the "temp" folder and its contents as
+        you please.
+
+    The video below shows what we're hoping for when we run through the steps above.
+    If you see something similar to this, your java setup is complete.
+
+
+    <script id="asciicast-i4kqX0gnASof89lIdE6JzMCyC" src="https://asciinema.org/a/i4kqX0gnASof89lIdE6JzMCyC.js" async ></script> 
 
 ### Creating Projects
 
