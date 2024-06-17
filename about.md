@@ -76,7 +76,7 @@ Please note, however, that our ability to support those in other timezones will 
 limited by our need to sleep at night. That means that, if you are on the other side 
 of the world, you may have to be up all night to attend our offerings. We thus do 
 not recommend that you take the course if you will not be physically located in an 
-amenable timezone, although we will not prevent you. You must take the exams in person. Everything other than exams can be done remotely. If you can't attend the midterm in-person, but can attend the final, please email us.
+amenable timezone, although we will not prevent you. You must take the exams in person. Everything other than exams can be done remotely. If you can't attend the midterm in-person, but can attend the final in-person, please email us.
 
 ### Mental Health & Wellness
 
