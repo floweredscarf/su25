@@ -17,12 +17,12 @@
       published: true
       footer: >
         [Project 0: 2048 Released](/su24/projects/game2048)
-    - title: Arrays and Objects
+    - title: Primitives and Objects
       type: Lecture, Lab
       date: 2024-06-18
       description: >
         <br>
-         [Live Lecture Link]()<br><br>
+         [Live Lecture Link](https://berkeley.zoom.us/my/cs61bl)<br><br>
          Lecture Time: 10-11am PDT<br>
          Location: VLSB 2050<br><br>
          [Slides]()
