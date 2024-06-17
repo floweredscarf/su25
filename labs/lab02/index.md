@@ -23,6 +23,8 @@ adding "/faq" to the end of the URL. The FAQ for Lab 2 is located
 Run `git pull skeleton main` in your repo. You should get a `lab02/` folder.
 For this, and later labs, we strongly recommend opening up the lab in IntelliJ.
 
+**Note:** You may notice after pulling and setting up your workspace that two of the files, `PathHarness.java` and `PathTest.java`, will have orange coffee mugs next to their name instead of a blue circle. This is ok! We will revist those files later in the lab.
+
 Also, please note that this lab expects exposure to programming similar to that 
 obtained in a course like CS 61A. We will begin diving deep into Java, and moving 
 fast. If you are not as comfortable with this material, we recommend you take a 
