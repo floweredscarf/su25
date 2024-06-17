@@ -1,14 +1,48 @@
-#- staff: Ronald Wang
-#  room: "[Zoom Link](https://berkeley.zoom.us/j/95215159658)"
-#  theory: "[Zoom Link](https://berkeley.zoom.us/j/95215159658)"
-#  time: 4 PM - 6 PM
-#  oh_location:  Soda 320
-#  oh_day: Friday
-#  oh_time: 6 PM - 7 PM
-#- staff: Anniyat Karymsak
-#  room: Soda 275
-#  theory: Soda 320
-#  time: 2 PM - 4 PM
-#  oh_location: "[Zoom Link](https://berkeley.zoom.us/my/anniyat)"
-#  oh_day: Thursday
-#  oh_time: 11 AM - 12 PM
+- staff: Ridge Huang
+  room: "[Zoom Link](https://berkeley.zoom.us/j/95739358757)"
+  theory: "[Zoom Link](https://berkeley.zoom.us/j/95739358757)"
+  time: 11 AM - 1 PM
+- staff: Jeffrey Yum
+  room: Soda 277
+  theory: Soda 405
+  time: 11 AM - 1 PM
+- staff: Josh Barua
+  room: Soda 275
+  theory: TBD
+  time: 11 AM - 1 PM
+- staff: Ethan Tam
+  room: TBD
+  theory: Soda 310
+  time: 11 AM - 1 PM
+- staff: Philip Ye
+  room: "[Zoom Link](https://berkeley.zoom.us/j/6087675539)"
+  theory: "[Zoom Link](https://berkeley.zoom.us/j/6087675539)"
+  time: 1 PM - 3 PM
+- staff: Elaine Shu
+  room: Soda 275
+  theory: Soda 405
+  time: 1 PM - 3 PM
+- staff: Anirudh Sreerama
+  room: Soda 277
+  theory: Soda 310
+  time: 1 PM - 3 PM
+- staff: Daniel Wang
+  room: Soda 330
+  theory: Soda 405
+  time: 3 PM - 5 PM
+- staff: Wilson Fung
+  room: Soda 277
+  theory: Soda 310
+  time: 3 PM - 5 PM
+- staff: Stacey Lei
+  room: "[Zoom Link](https://berkeley.zoom.us/j/94648095374)"
+  theory: "[Zoom Link](https://berkeley.zoom.us/j/94648095374)"
+  time: 6 PM - 8 PM
+- staff: Natalia Grodin
+  room: Soda 275
+  theory: Soda 405
+  time: 6 PM - 8 PM
+- staff: Julian Tuazon
+  room: "[Zoom Link TBD]()"
+  theory: "[Zoom Link TBD]()"
+  time: 8 PM - 10 PM
