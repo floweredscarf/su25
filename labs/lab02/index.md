@@ -541,7 +541,7 @@ just before "The Law of the Broken Futon".
 
 ### Discussion: Intuition for Drawing Objects
 
-Discuss with your partner to see if you can come up with intuition as to why
+See if you can come up with intuition as to why
 these diagrams are drawn the way they are:
 
 -   Why does it make sense that objects are not stored inside variables, but are
@@ -639,9 +639,7 @@ same as instance variables from within a instance method. They can also be
 directly referenced as `ClassName.staticVariable`, or by the instance reference
 (although this is not recommended for style). 
 
-The code block below shows some of the different ways in which static and non-static methods and variables interact with each other. Read 
-through the code and the comments to get a sense what is happening. Discuss with your partner about what you think will happen when you run the code. 
-Then, run the code using the link to the Java Visualizer and see if your predictions were correct.
+The code block below shows some of the different ways in which static and non-static methods and variables interact with each other. Read through the code and the comments to get a sense what is happening. Then, run the code using the link to the Java Visualizer and see if your predictions were correct.
 
 
 {%- capture static -%}
@@ -701,8 +699,7 @@ You can also read the orcale documentation on [class variables](https://docs.ora
 ### The True Meaning of `this`
 
 Did you notice that there was something different between the
-`setAge` method and the `refresh` method? Go back to the stack
-and heap diagrams and discuss with your partner the difference. Look at the
+`setAge` method and the `refresh` method? Look at the
 code segments and think about why that may be.
 
 `setAge` is an *instance method*, which means that it must always be called
@@ -1175,8 +1172,7 @@ Your job is to complete Task 1, which asks you to implement the `emptySpaceExist
 
 Coding is not easy! Keeping track of what references point to what, modifying code
 (which you first have to understand), and systematically finding bugs are definitely
-not skills that develop overnight. Make sure to practice! You can get your partner
-or another classmate involved and generate variants of the lab exercises to provide
+not skills that develop overnight. Make sure to practice! You can generate variants of the lab exercises to provide
 extra practice.
 
 The exercises on complicated uses of references are easy to produce and
