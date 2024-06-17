@@ -1033,11 +1033,11 @@ see what your task will be!
 ## Task: Implementing Pursuit Curves
 
 Implement a simpler version of pursuit curves in order to create a
-cool visual by filling out `lab04/src/Path.java`. An additional
-file `lab04/src/PathHarness.java` is provided containing code that will render
+cool visual by filling out `Path.java`. An additional
+file `PathHarness.java` is provided containing code that will render
 your code in `Path.java` using Java's graphics framework, uncomment this file after implementing `Path.java`.
 
-Also, testing code has been provided in `lab04/tests/PathTest.java`. You can uncomment this file and run these tests in Intellij.
+Also, testing code has been provided in `PathTest.java`. You can uncomment this file and run these tests in Intellij.
 
 As with the previous assignments,
 these tests are not entirely comprehensive. Feel free to add whatever testing code you desire.
