@@ -24,7 +24,7 @@
         **Textbook:** [Ch 2](https://cs61b-2.gitbook.io/cs61b-textbook/2.-defining-and-using-classes),
         [Ch 6](https://cs61b-2.gitbook.io/cs61b-textbook/6.-arrays)
       url: labs/lab02
-      published: false
+      published: true
     - title: Observation of Juneteenth
       type: Holiday
       date: 2024-06-19
