@@ -999,7 +999,7 @@ Since Project 0 requires you to manipulate arrays, we have provided some array e
   > **NOTE:** `==` behaves strangely with `String`s, as we discussed in the previous section. You should check strings `s1` and `s2` for equality using `s1.equals(s2)` in Java.
 - `findMinMax`: This method takes an `int[] array` and returns the the positive difference between the maximum element and minimum element of the given array. You may assume the input array is nonempty.
 
-Your task is to complete the exercises in `ArrayExercises.java`, then complete [Task 1](../../projects/game2048/index.md#task-1-empty-space-exists) of the project, which asks you to implement the `emptySpaceExists()` method. We will only be grading your completion of `ArrayExercises.java`, but you will thank yourself later if you take rest of this task seriously and start Project 0!
+Your task is to complete the exercises in `ArrayExercises.java`, then complete [Task 1](../../projects/game2048/index.md#task-1-empty-space-exists) of the project, which asks you to implement the `emptySpaceExists()` method. We will only be grading your completion of `ArrayExercises.java`, but you will thank yourself later if you take the rest of this task seriously and start Project 0!
 
 ## Conclusion
 
