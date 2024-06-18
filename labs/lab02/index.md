@@ -796,6 +796,12 @@ has 500 as their balance.
 : return false without changing either balance as the withdrawal is denied due
 to insufficient funds.
 
+We recommend approaching this problem recursively. Here are some questions that may help you work through the exercise:
+
+1.  If we trigger overdraft protection, what should the new balance of this account be set to after a successful withdrawl?
+2.  If we trigger overdraft protection, how much of the initial withdrawl total will the parent account be responsible for?
+3.  How can you use the return value of `withdraw` to only deduct balance if the parent accounts can complete the withdrawl?
+
 {% include alert.html content="
 To test your code, try copy and pasting the `Account` class into the [online
 Java Visualizer](https://cscircles.cemc.uwaterloo.ca/java_visualize/#). Make
