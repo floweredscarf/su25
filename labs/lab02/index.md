@@ -782,14 +782,14 @@ Here's an example of the desired behavior, with the `Account` object `teresa`
 providing overdraft protection for the `Account` object `dom`. Recall this
 means the `parentAccount` of `dom` is `teresa`.
 
-Suppose, in each scenario below, `omd` has 100 as his balance while `teresa`
+Suppose, in each scenario below, `dom` has 100 as their balance while `teresa`
 has 500 as their balance.
 
 `dom` attempts to withdraw 50
-: `dom` then has 50 remaining in his balance, while `teresa` still has 500.
+: `dom` then has 50 remaining in their balance, while `teresa` still has 500.
 
 `dom` attempts to withdraw 200
-: `dom` then has 0 remaining in his balance, while `teresa` needed to cover
+: `dom` then has 0 remaining in their balance, while `teresa` needed to cover
 100 for `dom`, leaving 400 as their balance.
 
 `dom` attempts to withdraw 700
