@@ -42,8 +42,7 @@ material in these first few weeks of the course, so it's not necessary to have
 a deep understanding of everything just yet.
 
 Unlike later projects, this assignment has a great deal of scaffolding. Future
-assignments will require significantly more independence. For this project, we
-recommend that you work in pairs with a partner from your lab section.
+assignments will require significantly more independence.
 
 ## Overview
 
