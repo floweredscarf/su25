@@ -180,7 +180,7 @@ administrative email address, <cs61bl@berkeley.edu>.
 
 ### Lab Exercises
 
-Each lab assignment is worth 2 points and officialy due **22 hours** after the start of your enrolled lab
+Each lab assignment is worth 2 points and officially due **22 hours** after the start of your enrolled lab
 section (or of your switched section if have received approval from both the TA
 and the instructors). For example, if your lab section is from 4-6 PM, then
 Tuesday’s lab assignment will be due on Wednesday at 2 PM. However, you will have a **2 hour grace period** to submit the assignment without lateness penalty. This grace period is intended to be used for technical difficulties which may arise when submitting to the official deadline. Lab exercises and self-assessments will be graded via online submission to Gradescope.

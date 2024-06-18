@@ -19,7 +19,9 @@
       date: 2024-06-18
       description: >
         <br>
-         [Slides]()
+         [Slides](https://docs.google.com/presentation/d/1i_5YJOAJykc2Wq6AY2zK4PUF3AIfcKgGlyixnzwE1yw/edit#slide=id.p)
+          |
+          [Video Not Ready]()
           |
           [Video](https://bcourses.berkeley.edu/courses/1535549/external_tools/90481)
           |
@@ -36,6 +38,13 @@
     - title: Test Driven Development and Debugging
       type: Lecture, Lab
       date: 2024-06-20
+      description: >
+        <br>
+         [Slides Not Ready]()
+          |
+          [Video Not Ready]()
+          |
+        **Textbook:** [Ch 7](https://cs61b-2.gitbook.io/cs61b-textbook/7.-testing)
       url: labs/lab03
       published: false
       footer: >
