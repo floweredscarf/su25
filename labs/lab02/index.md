@@ -994,7 +994,7 @@ The last exercise of this lab is intended to get you started with Project 0, if 
 Since Project 0 requires you to manipulate arrays, we have provided some array exercises to warm you up. You can find them in the file `ArrayExercises.java` in the skeleton code. It is broken down into the following exercises:
 
 - `makeDice`: This method returns a _new_ `array` of integers `[1, 2, 3, 4, 5, 6]`.
-- `takeOrder`: This method takes in a `String` and returns a _new_ array containing the orders of the customer. If the customer is `Ergun`, you should return an array of Strings `["beyti", "pizza", "hamburger", "tea"]` in that order. If the customer is `Erik`, you should return an array of Strings `["sushi", "pasta", "avocado", "coffee"]`. In any other case, return an empty String array of size 3.
+- `takeOrder`: This method takes in a `String` and returns a _new_ array containing the orders of the customer. If the customer is `Circle`, you should return an array of Strings `["beyti", "pizza", "hamburger", "tea"]` in that order. If the customer is `Erik`, you should return an array of Strings `["sushi", "pasta", "avocado", "coffee"]`. In any other case, return an empty String array of size 3.
   {: .info}
   > **NOTE:** `==` behaves strangely with `String`s, as we discussed in the previous section. You should check strings `s1` and `s2` for equality using `s1.equals(s2)` in Java.
 - `findMinMax`: This method takes an `int[] array` and returns the the positive difference between the maximum element and minimum element of the given array. You may assume the input array is nonempty.
