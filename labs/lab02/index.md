@@ -36,10 +36,10 @@ This lab will focus on Java *primitives* and *objects*. Our goals for this lab w
 be as follows:
 
 -   Learn the different Java primitives and when to use them.
--   Introduce some common Java abstract data types (more in Lab 5) that you will use throughout the course
 -   Learn how to define *classes* and use reference-typed variables.
 -   Learn how to work with *box-and-pointer* diagrams to identify common
     usage errors.
+-   Get some more practice with Arrays
 -   Start Project 0!
 
 ## Primitives
@@ -831,7 +831,6 @@ This doesn't work. Explain why not. Highlight the space below to reveal the answ
 <p><span style="color:white"><em>When we set `other = new Account(0);`, we lose 
 information regarding the parent account of `other` and this is not intended behavior. </em></span>.</p>
 
-
 ## Exercise: Pursuit Curves
 
 You will now create a class representing a pursuit curve.
@@ -988,11 +987,19 @@ identity of objects. If you have not already, read over the
 [Identity and Equality section of the Java guide](../../java/index.md#identity-and-equality).
  Many tricky bugs can arise from this if you misuse these two related but different concepts.
 
-## Task: Starting Project 0
+## Task: Arrays and Project 0
 
-The last exercise of this lab is to start Project 0, if you have not done so already. This is a fast-paced course, and want you to get started early so that you stay on track. Please take a moment to read the [Project 0 Spec](../../projects/game2048/index.md) up to Task 1.
+The last exercise of this lab is intended to get you started with Project 0, if you have not done so already. This is a fast-paced course and want you to stay on track! Please take a moment to read the [Project 0 Spec](../../projects/game2048/index.md) up to Task 1.
 
-Your job is to complete Task 1, which asks you to implement the `emptySpaceExists()` method. There is no graded deliverable associated with this section of the lab, but you will thank yourself later if you take this task seriously and start Project 0!
+Since Project 0 requires you to manipulate arrays, we have provided some array exercises to warm you up. You can find them in the file `ArrayExercises.java` in the skeleton code. It is broken down into the following exercises:
+
+- `makeDice`: This method returns a _new_ `array` of integers `[1, 2, 3, 4, 5, 6]`.
+- `takeOrder`: This method takes in a `String` and returns a _new_ array containing the orders of the customer. If the customer is `Ergun`, you should return an array of Strings `["beyti", "pizza", "hamburger", "tea"]` in that order. If the customer is `Erik`, you should return an array of Strings `["sushi", "pasta", "avocado", "coffee"]`. In any other case, return an empty String array of size 3.
+  {: .info}
+  > **NOTE:** `==` behaves strangely with `String`s, as we discussed in the previous section. You should check strings `s1` and `s2` for equality using `s1.equals(s2)` in Java.
+- `findMinMax`: This method takes an `int[] array` and returns the the positive difference between the maximum element and minimum element of the given array. You may assume the input array is nonempty.
+
+Your task is to complete the exercises in `ArrayExercises.java`, then complete [Task 1](../../projects/game2048/index.md#task-1-empty-space-exists) of the project, which asks you to implement the `emptySpaceExists()` method. We will only be grading your completion of `ArrayExercises.java`, but you will thank yourself later if you take rest of this task seriously and start Project 0!
 
 ## Conclusion
 
@@ -1026,7 +1033,6 @@ To quickly recap what you need to do for this lab:
 
 -   Make sure you understand Box and Pointer Diagrams
 -   `Account.java`
--   `ListExercises.java`
--   `MapExercises.java`
 -   `Path.java`
+-   `ArrayExercises.java`
 -   Start Project 0
