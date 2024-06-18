@@ -120,9 +120,9 @@ double d;
 
 Note that primitives have default values - we'll talk about this later.
 
-So *declaring* an object is like telling Java you have a variable of a certain
+So *declaring* a variable is like telling Java you have a variable of a certain
 type. Java sets aside a little container of memory that can perfectly hold that
-type. Once you've declared an object, *initializing* an object is when you
+type. Once you've declared a variable, *initializing* a variable is when you
 actually put a value inside that little container of memory. We can imagine
 that these little magic memory boxes can only contain objects of a certain
 type. So if you declare a variable of type `int`, and then try to initialize
@@ -211,8 +211,9 @@ We will also be looking at `lab02/src/Potato1.java` later on!
 
 ### Defining a Class
 
-Let's see how to define our `Potato` class. To define a Java class, create a new
-`.java` file and encompass the class's code with the following header:
+We've provided a sample `Potato` class in the skeleton files. The steps in this section show you how we made it!
+
+To define a Java class, we make a new `.java` file and encompass the class's code with the following header:
 
 ```java
 class Potato {
@@ -803,7 +804,7 @@ like the ones provided above.
 
 ```java
 Account teresa = new Account(500);
-Account dom = new Account(100, crystal);
+Account dom = new Account(100, teresa);
 teresa.withdraw(50);
 ```
 " %}
@@ -995,16 +996,16 @@ for (String key : map.keySet()) {
 
 ## Task: ADT Practice
 
-In order to get you more familiar with Java syntax and testing, there are a few exercises for you to solve! After you complete the functions, we have provided a handful of tests for you. Although we have provided tests, you are welcome to write your own too! Writing tests is not only crucial for this class but it is one of the most important skills to have in general. It reinforces our understanding of what specific methods are supposed to do and allows us to catch edge cases. You will have more exercises for testing later in tomorrow's lab but we want you to be exposed early on.
+In order to get you more familiar with Java syntax and testing, there are a few exercises for you to solve! After you complete the functions, we have provided a handful of tests for you. Although we have provided tests, you are welcome to write your own too! Writing tests is not only crucial for this class but it is one of the most important skills to have in general. It reinforces our understanding of what specific methods are supposed to do and allows us to catch edge cases. You will have more exercises for testing later in Thursday's lab but we want you to be exposed early on.
 
 `ListExercises.java` has 2 different methods for you to complete:
 
 - `common`: This method takes two lists `List<Integer> L1`, `List<Integer> L2` and returns a _new_ list containing the items present in both of the two given lists. If there are no common items, it should return an empty list.
-- `countOccurrencesOfC`: This method takes a list and a character `List<String> words`, `char c` and returns the number of occurrences of the given character in a list of strings. If the character does not occur in any of the words, it should return 0.
+- `countOccurrencesOfC`: This method takes a list and a character `List<String> words`, `char c` and returns the number of occurrences of the given character in a list of strings. If the character does not occur in any of the words, it should return 0. You may find the `charAt(int index)` and `length()` methods of String objects useful. To get the `i`th `char` in the String `s`, call `s.charAt(i)`. To access the integer length of `s`, call `s.length()`.
 
 `MapExercises.java` has 2 different methods for you to complete:
 
-- `letterToNum`: This method returns a map from every lower case letter to the number corresponding to its ordering in the alphabet, where 'a' corresponds to 1 and 'z' corresponds to 26.
+- `letterToNum`: This method returns a map from every lower case letter to the number corresponding to its ordering in the alphabet, where 'a' corresponds to 1 and 'z' corresponds to 26. Hint: you can convert between `char`s and `int`s with **casting**, which we will discuss more later. For example, the following syntax evaluates the to character 'b': `(char) ('a' + 1)`. If we wanted to compute the character 'c', we could write: `(char) ('a' + 2)`.
 - `squares`: This method takes a list `List<Integer> nums` and returns a map from the integers in the list to their squares. If the given list is empty, it should return an empty map.
 
 
@@ -1077,7 +1078,7 @@ Finally, you will need to implement the following instance methods.
 | `getNextY()`                     | `double`    | Returns the y-coordinate of `next` |
 | `getCurrentPoint()`              | `Point`     | Returns `curr`                     |
 | `setCurrentPoint(Point point)`   | `void`      | Sets `curr` to `point`             |
-| `iterate(double dx, double dy)`  | `void`      | Sets `curr` to `next` and updates the position of `next` to be `curr` with movement defined by `dx` and `dy`.  |
+| `iterate(double dx, double dy)`  | `void`      | Sets `curr` to `next` and updates the position of `next` to be `next` with movement defined by `dx` and `dy`.  |
 
 
 
