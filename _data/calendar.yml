@@ -36,6 +36,13 @@
     - title: Test Driven Development and Debugging
       type: Lecture, Lab
       date: 2024-06-20
+      description: >
+        <br>
+         [Slides Not Ready]()
+          |
+          [Video Not Ready]()
+          |
+        **Textbook:** [Ch 7](https://cs61b-2.gitbook.io/cs61b-textbook/7.-testing)
       url: labs/lab03
       published: false
       footer: >
