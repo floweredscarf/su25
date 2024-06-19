@@ -401,7 +401,7 @@ To test your understanding, you should complete this [Google Form quiz](https://
 
 ### Testing and Debugging
 
-To test your method, run the tests in `TestTask3.java`. If your implementation is correct, all tests should pass.
+To test your method, run the tests in `TestTask5.java`. If your implementation is correct, all tests should pass.
 
 If your code crashes with a message like this:
 
