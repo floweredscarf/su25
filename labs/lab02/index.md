@@ -857,6 +857,9 @@ see what your task will be!
 
 ## Task: Implementing Pursuit Curves
 
+Here's a getting started video:
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Y04PPs44sAs?si=cKVAzuqhaeOsLdCL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 Implement a simpler version of pursuit curves in order to create a
 cool visual by filling out `Path.java`. An additional
 file `PathHarness.java` is provided containing code that will render
