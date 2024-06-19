@@ -2,7 +2,7 @@
 layout: page
 title: "FAQ - Lab 2: Conditionals, Loops, Arrays"
 categories: lab
-released: false
+released: true
 searchable: true
 ---
 
