@@ -799,7 +799,7 @@ to insufficient funds.
 We recommend approaching this problem recursively. Here are some questions that may help you work through the exercise:
 
 1.  If we trigger overdraft protection, what should the new balance of this account be set to after a successful withdrawal?
-2.  If we trigger overdraft protection, how much of the initial withdrawl total will the parent account be responsible for?
+2.  If we trigger overdraft protection, how much of the initial withdrawal total will the parent account be responsible for?
 3.  How can you use the return value of `withdraw` to only deduct balance if the parent accounts can complete the withdrawal?
 
 {% include alert.html content="
