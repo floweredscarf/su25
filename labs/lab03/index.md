@@ -826,9 +826,7 @@ The skeleton code has more on this.
 You should follow this process for this exercise:
 
 1.  Read over the `Triangle.java` class throughly. The comments above each of the methods explain what
-    the expected behavior of this class will be. Discuss this with your partner
-    to make sure that you both understand this completely before continuing on
-    to the next step.
+    the expected behavior of this class will be. 
 2.  Write tests with Truth assertions in the `TriangleTest.java` file. You should write tests
     which allow you to test all of the methods and behavior in the class. You should think of edge
     cases that buggy implementations of `Triangle.java` methods are likely to fail. 
