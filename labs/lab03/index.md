@@ -615,8 +615,7 @@ our code is completely, fully correct?
 
 One testing principle you can imagine is that test values should exercise every
 statement in the program, since any statement that's not tested may contain a
-bug. Recall the leap year program from [Lab 2](../lab02/index.md) - below is an
-example of how it might be implemented:
+bug. Below is a program that checks whether a given year is a leap year:
 
 ```java
 public static boolean isLeapYear(int year) {
