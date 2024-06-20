@@ -1,41 +1,25 @@
 ---
 layout: page
-title: "FAQ - Lab 4: Primitives and Objects"
+title: "FAQ - Lab 5: Naked Linked Lists"
 categories: lab
-released: false
+released: true
 searchable: true
 ---
-### I'm getting a fatal: Need to specify how to reconcile divergent branches when trying to pull from the skeleton.
 
-Git is trying to figure out how to merge the code in the remote (skeleton)
-and what you have locally. Run `git config --global pull.rebase false`,
-then try pulling again. It should work!
+### In lecture we were talking about IntLists; what are these Linked Lists you speak of?
 
-### I'm getting a NullPointerException in Account.java. What is this?
+Linked List refers to a specific structure: items that are stored in nodes which are aware of the node
+that follows them. Sometimes when we are talking about Linked Lists, we refer to them by specifying the 
+*type* of the item, followed by "List". This means that IntLists are Linked Lists which only hold items of
+type int!
 
-A null pointer exception is occurs when you try accessing a field or method of a null object. 
-For instance, let's say that you try to access a parent account (let's say you called it parent).
-However, sometimes a given account won't have a parent! So, if I try calling parent.getBalance(), since
-parent is a reference to a null object, and null objects don't have methods, you'll get this exception.
+### The internet keeps referring to "value" and "rest" when talking about Linked Lists -- what is that?
 
-You can fix a null pointer exception by first checking to see if the object you're trying to call a method/
-access a field is null.
+There are multiple ways to define and interact with Linked Lists. In this course, we use "item" to refer to the
+data being stored by each node and "next" to refer to the element immediately following the current node. Other implementations,
+however, are also completely valid. It is very likely in searching the internet you will see "item" referred to as "value"
+and "next" referred to as "rest" -- meaning recursive access to the rest or remaining segment of the Linked List.
 
-### All my tests are passing locally, but I'm failing one last test on Gradscope for `Account.java`
+### My code does not change the "value" of any of the nodes -- why am I not passing constructive concatenate?
 
-You're likely not handling overdraft protection correctly. If `JediAccount` has a parent account `EthanAccount`, and
-`JediAccount` has 5 dollars and `EthanAccount` has 10 dollars, trying to withdraw 20 dollars from `JediAccount` should not
-remove the 5 dollars from `JediAccount` since the amount in `JediAccount` and the parent accounts is not enough to cover the withdrawal.
-
-Additionally, remember to return the right boolean for each account!
-
-### So...what's the deal with this iterate method? I don't understand what's going on and need a hint.
-
-For the iterate method, you're going to need to update your two instance variables - `curr` and `next`.
-Note that they're both `Point` objects, so make sure you understand the Point.java class! Updating `curr`
-is pretty simple - you just need to make sure that the x-coordinate of `curr` is assigned to the
-x-coordinate of `next` (and the same for the y-coordinate of `curr`). As for `next`, use `dx` and `dy` to update
-the existing values by adding them (e.g. add `dx` to next's x-coordinate to properly update it).
-Note that x and y are both private variables, so take advantage of the getter methods to help you access them!
-
-<cite>Paraphrased from Shreyas Kallingal</cite>
+Make sure you aren't changing the other element of each node, their "next" pointer! This is a vital part of your Linked List as well!
