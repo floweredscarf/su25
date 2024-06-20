@@ -339,18 +339,35 @@ careful pointer action to create a new `IntList`, build it up, and return it.
 
 ### Exercise: Concatenation
 
-To complete the lab, implement `dcatenate` and `catenate` as described below.
+To complete the lab, you will need to add test for `catenate` and `dcatenate`, and then implement `catenate` and `dcatenate` as described below.
+
 You may find the squaring methods from above to be useful as you write your
 code.
 
+You may also find (lab03)[../lab03/#test-driven-development]'s section on Test Driven Development useful as you write your tests.
+
 ```java
-public static IntList dcatenate(IntList A, IntList B) {
-    // TODO
+@Test
+public void testCatenate() {
+    // TODO: Add tests
 }
 ```
 
 ```java
 public static IntList catenate(IntList A, IntList B) {
+    // TODO
+}
+```
+
+```java
+@Test
+public void testDCatenate() {
+    // TODO: Add tests
+}
+```
+
+```java
+public static IntList dcatenate(IntList A, IntList B) {
     // TODO
 }
 ```
@@ -366,8 +383,9 @@ As an example, if you call either of the methods with two IntLists containing [0
 
 To complete the lab:
 
-- Fill in one of `dcatenate()` or `catenate()`, and run them against our tests.
-  Revise your code until it passes our tests.
+- Write tests for `catenate` and `dcatenate`
+- Fill in one of `dcatenate()` or `catenate()`, and run them against your tests.
+  Revise your code until it passes your tests.
 - Repeat for the method you haven't yet completed. (We recommend you do one
   first and finish it before you start the next, because then you'll be able to
   take advantage of the similar logic).
