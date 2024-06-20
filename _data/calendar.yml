@@ -44,7 +44,7 @@
           |
         **Textbook:** [Ch 7](https://cs61b-2.gitbook.io/cs61b-textbook/7.-testing)
       url: labs/lab03
-      published: false
+      published: true
       footer: >
         Project 0 Checkpoint due **Thursday 6/20, 11:59 PM**
     - title: Introduction to Java Programming
