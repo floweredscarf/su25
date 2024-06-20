@@ -121,7 +121,7 @@ proficient user of the bash terminal!
     cd .
     ```
 
-    This command will change your directory to the current directory (aka.
+    This command will change your directory to the current directory (aka,
     do nothing).
 
 -   `..`: means one parent directory above your current directory

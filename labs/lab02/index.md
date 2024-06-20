@@ -23,7 +23,7 @@ adding "/faq" to the end of the URL. The FAQ for Lab 2 is located
 Run `git pull skeleton main` in your repo. You should get a `lab02/` folder.
 For this, and later labs, we strongly recommend opening up the lab in IntelliJ.
 
-**Note:** You may notice after pulling and setting up your workspace that two of the files, `PathHarness.java` and `PathTest.java`, will have orange coffee mugs next to their name instead of a blue circle. This is ok! We will revist those files later in the lab.
+**Note:** You may notice after pulling and setting up your workspace that two of the files, `PathHarness.java` and `PathTest.java`, will have orange coffee mugs next to their name instead of a blue circle. This is ok! We will revisit those files later in the lab.
 
 Also, please note that this lab expects exposure to programming similar to that 
 obtained in a course like CS 61A. We will begin diving deep into Java, and moving 
@@ -696,8 +696,8 @@ public class Bicycle {
 {%- endcapture -%}
 {% include java_visualizer.html code=static %}
 
-We really reccomend you play around with the code above, specifically in the main method, and see what happens when you change things. Use the Java Visualizer to help you understand what is happening.
-You can also read the orcale documentation on [class variables](https://docs.oracle.com/javase/tutorial/java/javaOO/classvars.html) for more information. 
+We really recommend you play around with the code above, specifically in the main method, and see what happens when you change things. Use the Java Visualizer to help you understand what is happening.
+You can also read the oracle documentation on [class variables](https://docs.oracle.com/javase/tutorial/java/javaOO/classvars.html) for more information. 
 
 ### The True Meaning of `this`
 
