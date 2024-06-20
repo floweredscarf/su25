@@ -864,8 +864,7 @@ out the instructions in the
 [Lab 1 spec](../lab01/index.md#saving-your-work-using-git-and-github) and the
 [Assignment Workflow Guide](../../guides/assignment-workflow#submitting-to-gradescope).
 
-If you worked with a partner, don't forget to add them to your submission on Gradescope (click on the 
-"Group Members" button and add them there).
+If you worked with a partner, remember each of you need a separate submission on Gradescope.
 
 
 ## Acknowledgements
