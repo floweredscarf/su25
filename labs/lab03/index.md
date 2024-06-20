@@ -144,10 +144,7 @@ To see the console output (and type into the console) while debugging, click
 the "Console" tab next to "Debugger" in the top left of the debug window,
 just above the frames. If you want to see everything simultaneously (while
 being more compressed), you can drag the console tab to the far right of the
-bottom panel. [Here's a GIF][console drag] from a previous semester that shows
-this (IntelliJ looks different, but the action is the same.)
-
-[console drag]: https://gfycat.com/SmugAbleAustraliankelpie
+bottom panel. 
 
 ### Reading Stack Traces
 
