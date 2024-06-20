@@ -18,8 +18,9 @@ adding "/faq" to the end of the URL. The FAQ for Lab 03 is located
 To debug a program, you must first know what's wrong. In this lab, you'll get
 some experience with using the debugger to see program state. There are 3 types of bugs that you can encounter in code:
 1. Compiler error: There is some compilation issue (ie. IntelliJ underlines the code in red).
-1. Runtime: There is an exception that occurs while running the program.
-1. Correctness: The program runs without error, but it produces incorrect results.
+2. Runtime: There is an exception that occurs while running the program.
+3. Correctness: The program runs without error, but it produces incorrect results.
+
 When you run into a runtime bug, the error is accompanied by a "stack trace" that details the method
 calls that caused the error in the first place. One of the focuses of this lab
 will be to get you used to reading these stack traces, because they can be
