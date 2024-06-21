@@ -176,7 +176,7 @@ The issue is that the `Truth` library is using the `equals` method of the `Linke
     }
 ```
 
-That is, the equals method simply checks to see if the addresses of the two objects are the same. We want to be able to check whether the two `Deque61B` objects are equal in terms of elements and order so therefore we need a different `equals` method.
+That is, the equals method simply checks to see if the addresses of the two objects are the same. We want to be able to check whether the two `Deque61B` objects are equal in terms of elements and order so therefore we need a different `equals` method. **Note that items within Deque61B objects should be semantically equal. This means that for reference types, you should be using the `equals` method.** 
 
 Override the equals method in the `ArrayDeque61B` and `LinkedListDeque61B` classes. For guidance on writing an `equals` method, see the [lecture slides](https://docs.google.com/presentation/d/1lIR4--P9NrBqRL9xqP_RQYyK1WJBrBEbriLVpatrRqk/edit#slide=id.g4f922fa56b_2_47) or the [lecture code repository](https://github.com/Berkeley-CS61B/lectureCode-sp23/blob/main/lec12_inheritance4/ArraySet.java).
 
