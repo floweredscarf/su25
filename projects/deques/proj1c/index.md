@@ -399,8 +399,6 @@ of which you must implement _completely correctly_ to receive credit.
 4. **`MaxArrayDeque61B` Max (35%)**: Correctly implement `max` in `MaxArrayDeque61B`.
 5. **`GuitarString` (20%)**: Correctly implement the `GuitarString` client class.
 
-In total, Project 1c is worth 10 points.
-
 ### Credits
 
 - Ring buffer figures from [Wikipedia](http://en.wikipedia.org/wiki/Circular_buffer).
