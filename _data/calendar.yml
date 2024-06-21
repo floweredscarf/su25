@@ -50,9 +50,18 @@
     - title: Introduction to Java Programming
       type: Theory
       date: 2024-06-21
-      published: false
+      description: >
+        <br>
+         [Worksheet](https://drive.google.com/file/d/1gJSlCf3UzPOhyiqVOg5MtsaeBPWtltVP/view?usp=sharing)
+          |
+         [Slides](https://docs.google.com/presentation/d/1h3I3HAeOceDIeF14y3o2pHEpWj83W2F646ClBv1q4uM/edit?usp=sharing)
+          |
+         [Solutions not posted]()
+      published: true
       footer: >
         Project 0 due **Sunday 6/23, 11:59 PM**
+      alt-footer: >
+          Quiz 1 due **Monday 6/24, 11:59 PM**
 - week: 2
   days:
     - title: Linked Lists
