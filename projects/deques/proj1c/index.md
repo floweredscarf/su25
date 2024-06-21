@@ -28,7 +28,7 @@ By the end of Project 1C, you will complete the following:
 
 {: .warning}
 >This section assumes you have watched and fully digested the lectures up till
->the Comparison, Exceptions, and Iteration lecture, Lecture 11.
+>the Comparison, Exceptions, and Iteration lecture, Lecture 7.
 
 ### Style
 
@@ -130,7 +130,7 @@ To fix this, you should first modify the `Deque61B` interface so that the declar
 public interface Deque61B<T> extends Iterable<T> {
 ```
 
-Next, implement the `iterator()` method using the techniques described in lecture 11.
+Next, implement the `iterator()` method using the techniques described in lecture 7.
 
 {: .task}
 >**Task**: Implement the `iterator()` method in both `LinkedListDeque61B` and
