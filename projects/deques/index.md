@@ -7,10 +7,9 @@ searchable: true
 ---
 
 
-Quick Links
-------------
-**Please read through this page before clicking on the links below, we've linked them here for your conveienece**.
+### Quick Links
 
+**Please read through this page before clicking on the links below, we've linked them here for your conveienece**.
 
 Here are the links to the 3 sub parts of the project. 
  - [Project 1a](./proj1a) 
@@ -18,13 +17,15 @@ Here are the links to the 3 sub parts of the project.
  - [Project 1c](./proj1c) 
 
 
-Introduction
-------------
-The due date for this project is Sunday, 6/30 at 11:59 PM. You cannot use slip days on projects, though you can turn in up to 2 days
-late for partial credit.
+## Introduction
 
-#### The Deque API
+### Due Dates
 
+The due date for this project is **Sunday, June 30th, 11:59 PM**. You cannot use slip days on projects, though you can turn in up to 2 days late for partial credit.
+
+The Project 1 Checkpoint is worth 1 point and due **Thursday, June 27th, 11:59pm**. You will need to complete Project 1A to complete the checkpoint.
+
+### The Deque API
 
 The double ended queue is very similar to the SLList and AList classes that
 we've discussed in class. Here is a definition from
@@ -59,15 +60,14 @@ on creating and using generic data structures, see [these slides](https://docs.g
 So... we've defined a bunch of methods that any Deque should have. There are two specific ways we want you to implement a Deque (one powered by a Linked List, and the other by an array), but ultimately, they'll have the same methods and external behavior. Have we learned about any programming tools that could enable us to do this? If you said, "Of course, silly, that sounds like an interface", then you would be correct (and we would be silly)!
 
 
-
-
-Project Structure and Grading
-----------------------
+### Project Structure and Grading
 
 This project is divided into 3 sub parts, and there will be separate skeleton files and gradescope assignments for each sub part. The entire project is worth 30 points or 10% of your grade.
+
  - [Project 1a](./proj1a) : You'll be implementing a Deque backed by a linked list. You should start the project here. This part is worth 12 points.
  - [Project 1b](./proj1b) : You'll be implementing a Deque backed by an array. This part is also worth 12 points. 
- - [Project 1c](./proj1c) : You'll be adding extra features and functionality to your Deque implementations and using them for a cool application.  6 points
+ - [Project 1c](./proj1c) : You'll be adding extra features and functionality to your Deque implementations and using them for a cool application. 5 points
 
+Additionally, you must complete the Project 1 Checkpoint (which requires Project 1a to be complete) by **Thursday, June 27th, 11:59pm**. There is a separate Gradescope assignment for the Checkpoint, worth 1 point.
 
 
