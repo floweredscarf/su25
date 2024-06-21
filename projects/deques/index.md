@@ -20,9 +20,8 @@ Here are the links to the 3 sub parts of the project.
 
 Introduction
 ------------
-The due date for this project is Sunday, 07/02 at midnight. You cannot use slip days on projects, though you can turn in up to 2 days
-late for partial credit. If submitting with a partner, **one** of you should submit 
-and add the other to your submission.
+The due date for this project is Sunday, 6/30 at 11:59 PM. You cannot use slip days on projects, though you can turn in up to 2 days
+late for partial credit.
 
 #### The Deque API
 
