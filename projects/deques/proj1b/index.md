@@ -2,7 +2,7 @@
 layout: page # The HTML template to use to render this page.
 title: "Project 1B: ArrayDeque" # Title of page.
 categories: proj
-released: false
+released: true
 toc:
     h_max: 4
 ---
@@ -82,7 +82,7 @@ You see a `proj1b` directory appear in your repo with the following structure:
 ```
 
 If you get some sort of error, STOP and either figure it out by carefully
-reading the [git WTFs](../../guides/git-wtfs.md) or seek help at OH
+reading the [git WTFs](../../../guides/git-wtfs.md) or seek help at OH
 or Ed. You'll potentially save yourself a lot of trouble vs. guess-and-check
 with git commands. If you find yourself trying to use commands recommended by
 Google like `force push`,
