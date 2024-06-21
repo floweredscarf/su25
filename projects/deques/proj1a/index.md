@@ -38,7 +38,7 @@ much less scaffolding.
 
 {: .warning}
 >For this project, you must work alone! Please carefully read the
->[Policy on Collaboration and Cheating](../../policies/index.md#collaboration-and-academic-misconduct)
+>[Policy on Collaboration and Cheating](../../../about.md#Collaboration-and-Academic-Misconduct)
 >to see what this means exactly. In particular, do not look for solutions online.
 >
 >
@@ -52,7 +52,6 @@ much less scaffolding.
 On this project, you will have a max of 4 submission tokens to the autograder, each with a refresh rate of 24 hours. Unlike previous assignments, **not all tests will be provided locally**, so it is up to you to write tests to verify the correctness of your own code. See the [Writing Tests](#writing-tests) section for more details.
 
 {: .danger}
-
 **We will not grant extensions for failing to understand the token limiting policy.** If you have questions, please ask!
 
 ### Style
