@@ -7,7 +7,7 @@ searchable: true
 ---
 ## [FAQ](faq.md)
 
-The FAQ for Lab 6 is located [here](faq.md).
+The FAQ for Lab 5 is located [here](faq.md).
 
 ## Before You Begin
 
@@ -31,7 +31,7 @@ hidden, and it can be accessed by the user only through a documented interface.
 
 ## Enhancement 1: Encapsulation
 
-The implementation of `IntList` that we learned about in [Lab 5](../lab05)
+The implementation of `IntList` that we learned about in [Lab 4](../lab04)
 is impractical to use at scale. In it, the notion of a node in the list and the list itself
 are not separate. This means that someone who wants to use the `IntList` class
 would need to spend a lot of time adding `null` checks and handling errors that
@@ -45,7 +45,7 @@ list, much like an [*abstraction barrier*](http://composingprograms.com/pages/22
 see that this design philosophy of encapsulation will come up over and over
 again for each of the data structures we study in the coming weeks.
 
-Let's update our lab 5 `IntList` with encapsulation, which we will now call
+Let's update our lab 4 `IntList` with encapsulation, which we will now call
 a `SLList` (Singly Linked List).
 Note that in order to emphasize the encapsulation in box-and-pointer diagrams, we
 will be breaking the normal box-and-pointer rule that we don't put Objects
@@ -369,6 +369,5 @@ Though there are no associated deliverables, we **strongly** recommend reading t
 section **twice** as it is useful (*hint: vital*) for the project!!
 
 > Then, if you have any time remaining after you submit this lab, spend some time implementing your
-`LinkedListDeque` for [Project 1](../../projects/deques) with your
-partner while you're still in lab! You should now have all of the necessary skills to tackle the project.
+`LinkedListDeque` for [Project 1](../../projects/deques) in lab! You should now have all of the necessary skills to tackle the project.
 
