@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "FAQ - Lab 5: Linked Lists 2"
+title: "FAQ - Lab 5: Linked Lists Enhancements"
 categories: lab
 released: true
 searchable: true

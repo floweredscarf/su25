@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Lab 6: Linked List Enhancements"
+title: "Lab 5: Linked List Enhancements"
 tags: [Lab, Linked Lists, Testing]
 released: true
 searchable: true
@@ -186,7 +186,7 @@ Add JUnit tests in `SLListTest.java` to cover at least the following three situa
 
 ```java
 public void reverse() {
-    // TODO
+    // TODO: YOUR CODE HERE
 }
 ```
 
