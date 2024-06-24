@@ -85,7 +85,9 @@ public class SLList {
         /**
          * The access modifiers inside a private nested class are irrelevant:
          * both the inner class and the outer class can access these instance
-         * variables and methods. Though making the instance variables of the inner class private is better practice. 
+         * variables and methods. 
+         * Though making the instance variables of the inner class 
+         private is better practice. 
          */
         public int item;
         public IntListNode next;
