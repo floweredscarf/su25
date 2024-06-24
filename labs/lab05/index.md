@@ -37,8 +37,8 @@ hidden, and it can be accessed by the user only through a documented interface.
 
 ## Enhancement 1: Encapsulation
 
-The implementation of `IntList` that we learned about in [Lab 4](../lab04)
-is impractical to use at scale. In it, the notion of a node in the list and the list itself
+The "namke" implementation of `IntList` that we learned fom [Lab 4](../lab04)
+is impractical to use at scale. In it, the idea of a node in the list and the list itself
 are not separate. This means that someone who wants to use the `IntList` class
 would need to spend a lot of time adding `null` checks and handling errors that
 might come as a result of accidentally or intentionally modifying the `item`
@@ -61,13 +61,13 @@ inside other Objects.
 
 ![](img/intlist.png)
 
-All operations on the list are handled through an instance of an `SLList` object, which keeps a single instance variable `head` in order to track the first node in the linked list. The `SLList` object operates directly on the `IntListNode`s that make up the `SLList`. Note that `IntListNode` does not need any methods (other than some utility methods such as `toString()` and `equals()`, which you will use later). The main effect of using encapsulation, by using a reference to the `head` of a list, is allowing users that wants to interact with the `SLList` to know nothing about the internal representation of the list or how the operations will take place. Instead, the users could simply operate on list as a whole and the `SLList` representation itself will take care of the operations, including any null checks, size checks, or further operations.
+All operations on the list are handled through an instance of an `SLList` object, which keeps a single instance variable `head` in order to track the first node in the linked list. The `SLList` object operates directly on the `IntListNode`s that make up the `SLList`. Note that `IntListNode` does not need any methods (other than some utility methods such as `toString()` and `equals()`, which you will use later). The main effect of using encapsulation, by using a reference to the `head` of a list,is hiding the internal representation and operations of the list from users. Instead, the users could simply operate on list as a whole and the `SLList` representation will take care of the operations, including any null checks, size checks, or further operations.
 
 ## Enhancement 2: Sentinel
 
 Although encapsulation shields users of our data structure from having to deal with
 cumbersome null checks, we as the implementors of our linked list class still have to handle them.
-However, we can eliminate null checks and simplify our code greatly with usage of a `sentinel` _node_ instead of a just the `head` pointer. The sentinel node always exists (even when our list is empty), and does not represent an actual node in the list. Its `next` field represents the front of the list, unless the list is empty. The sentinel's `item` is some meaningless value (in this example, we have chosen [42](https://en.wikipedia.org/wiki/42_%28number%29#The_Hitchhiker's_Guide_to_the_Galaxy), but it doesn't matter what its value is; **a sentinel's item should never be accessed**). The last node in the list should have its `next` pointing back at the `sentinel`, and an empty list is represented by just a `sentinel` node whose `next` points back to itself. In a box-and-pointer diagram, a empty singly-linked list with a sentinel looks like this:
+However, we can eliminate null checks and simplify our code greatly with usage of a `sentinel` _node_ instead of the `head` pointer. The sentinel node always exists (even when our list is empty), and does not represent an actual node in the list. Its `next` field represents the front of the list, unless the list is empty. The sentinel's `item` is some meaningless value (in this example, we have chosen [42](https://en.wikipedia.org/wiki/42_%28number%29#The_Hitchhiker's_Guide_to_the_Galaxy), but it doesn't matter what its value is; **a sentinel's item should never be accessed**). The last node in the list should have its `next` pointing back at the `sentinel`, and an empty list is represented by just a `sentinel` node whose `next` points back to itself. In a box-and-pointer diagram, a empty singly-linked list with a sentinel looks like this:
 
 ![](img/emptyintlistsentinel.png)
 
@@ -120,12 +120,9 @@ public class SLList {
 ### `toString` and `equals`
 
 Just like yesterday, we will want a `toString` method so that our linked lists will be displayed
-in a more readable format when using the debugger or if using print lines, and we will also want
-an `equals` method so that our calls to `assertEquals` in our tests will verify whether two lists
-contain the same numbers. Overriding `equals()` allows us to
-define how two objects should be considered equal. Recall that checking equality
-of two objects `a` and `b` with `a == b` defines equality as whether or not `a` and `b` are the
-same reference. Here is an illustration of this difference:
+in a more readable format in the debugger or when printing to the console. We will also want
+an `equals` method that checks whether or not list A and list B have the same content, rather than checking if `A` and `B` refer to the same object. 
+Overriding `equals()` means `assertEquals` in our tests will correctly verify whether two lists contain the same content. Here is an illustration of this difference:
 
 ![](img/equals.png)
 
@@ -145,7 +142,7 @@ In the case that `index` is greater than or equal to the current size of the lis
 
 ```java
 public void add(int index, int x) {
-    // TODO
+    // TODO: YOUR CODE HERE
 }
 ```
 
@@ -160,7 +157,7 @@ Over the next few steps, we're going to be completing the method `reverse` in
 /* Reverses a linked list destructively and assigns sentinel.next to the head of the reversed
 linked list.*/
 public void reverse() {
-    // TODO
+    // TODO: YOUR CODE HERE
 }
 ```
 
@@ -246,7 +243,7 @@ will save you and your future colleagues an enormous amount of time and misery.
 > to learn more about testing philosophy and the conversation around TDD, here
 > are a couple interesting leisure readings:
 >
-> - [TDD is dead. Long live testing.](http://david.heinemeierhansson.com/2014/tdd-is-dead-long-live-testing.html)
+> - [Checking In on the State of TDD](https://redmonk.com/kholterhoff/2023/07/12/checking-in-on-the-state-of-tdd/)
 > - [Why Most Unit Testing is Waste](https://rbcs-us.com/documents/Why-Most-Unit-Testing-is-Waste.pdf)
 > - [A Response to "Why Most Unit Testing is Waste"](https://henrikwarne.com/2014/09/04/a-response-to-why-most-unit-testing-is-waste/)
 
@@ -271,7 +268,7 @@ This adds a bit of complexity to the operations, but allows for constant time in
 >
 > We will consider a constant time operation to be some piece of code or method call, whose runtime (meaning the number of steps the program takes to complete execution) does not depend on the size of the inputs to the function. For insertion, imagine that the size of the input refers to the length of the list. A constant time insertion would thus mean that, regardless of the length of this list, the runtime of an insertion at the front or back of the list would take the same amount of time.
 >
-> Think about how a doubly-linked list will compare to that of a singly-linked list, and discuss with your partner how the doubly-linked list improves these runtimes. Make sure you both understand this concept before continuing.
+> Think about how a doubly-linked list will compare to that of a singly-linked list, and discuss with someone how the doubly-linked list improves these runtimes. Make sure you understand this concept before continuing.
 
 If we are using a sentinel, then it will look like this:
 
@@ -279,6 +276,10 @@ If we are using a sentinel, then it will look like this:
 
 Note that the sentinel's item is marked with an "X", again because that value is irrelevant.
 If our list is of non-primitive items, then we can make it null. If it is of primitive items (like the `int`s we've been using, then it can just be any arbitrary value (since primitives cannot be null)).
+
+Here's a more simplified visualization of the circular structure with DLList: 
+
+![sentine2l](img/sentinel2.png)
 
 With all of these enhancements, the encapsulated doubly-linked list with a sentinel node is typically used in practice as the linked list representation, like in Java's own standard library class, java.util.LinkedList.
 
@@ -366,7 +367,7 @@ Finally, we generalized the code to work with any type of data through the use o
 
 ### Deliverables
 
-As always, ensure you have `git add`ed, `git commit`ed, and `git push`ed all of your required files before submission.
+As always, ensure you have `git add`, `git commit`, and `git push origin main` all of your required files before submission.
 
 - `SLList.java`
 - `SLListTest.java`
