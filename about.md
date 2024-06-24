@@ -518,13 +518,22 @@ have made the wrong choice for guidance.
 [incident reports]: https://sp18.datastructur.es/materials/guides/incident-reports-2017.html
 [AM]: guides/academic-misconduct.md
 
-### Project and Lab Collaboration
+### Lab Collaboration
 
-For both labs and projects, they are designed for learning and evaluating your mastery of the course material. As such, they are intended to be completed primarily **independently** of any other student, particularly when it comes to
+The entire point of labs is to learn, so we emphasize active learning and pair
+programming. For labs, you can work with anyone *in your lab section*, including sharing code. Each student is responsible for submitting to their own gradescope, however. 
+If you decide to work alone, you are
+able to submit individually.
+
+### Project Collaboration
+
+For both projects, they are designed for learning and evaluating your mastery of the course material. As such, they are intended to be completed primarily **independently** of any other student, particularly when it comes to
 writing actual code. However, we do encourage collaborations through discussing high-level strategies, specific syntax issues,
 and solutions to bugs with other students. **You should never be in direct possession code that was not written entirely by you alone.**
 
-Project 3 will be the only exception where formal partnerships are allowed. Details related to partnerships will be released in the project spec. 
+For Project 2, we will allow, but not require partnerships. Details will be released in the project spec. 
+
+Project 3 will be the only project where formal partnerships are required. Details related to partnerships will be released in the project spec. 
 
 
 ### Exam Misconduct
