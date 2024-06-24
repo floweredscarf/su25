@@ -1,8 +1,8 @@
 ---
 layout: page
-title: "Lab 6: Inheritance"
+title: "Lab 6: ADTs and Inheritance"
 tags: [Lab]
-released: false
+released: true
 searchable: true
 ---
 ## [FAQ](faq.md)
@@ -114,6 +114,73 @@ public void thoroughlyConsumeFood(Food food) {
 }
 ```
 The first call allows us to access Animal's eat method and invoke it. In some sense, `super` is like `this` but for the parent class.
+
+In java, subclasses do not directly inherit the constructor of their 
+superclass. Rather, we have to directly reference the constructor of the parent class.
+We do this with the keyword `super`, which is treated as an invocation of the parent 
+class' constructor. Thus, in the parenthesis following `super` you must supply the 
+correct number and type of arguments.
+**This call to super must be the first line of the constructor.**
+Check out the implementation of `GregorianDate.java` for an example of `super` in action.
+
+
+## Exercise: `GregorianDate`
+
+Let's start with an example of an abstract class. `Date.java` is an abstract
+class used to represent calendar dates (we will **ignore** leap years). In addition,
+we have included two classes that extend `Date` that are shown below.
+
+```java
+/**
+ * In a nonleap year in the French Revolutionary Calendar, the first twelve
+ * months have 30 days and month 13 has five days.
+ */
+public class FrenchRevolutionaryDate extends Date {
+
+    public FrenchRevolutionaryDate(int year, int month, int dayOfMonth) {
+        super(year, month, dayOfMonth);
+    }
+
+    @Override
+    public int dayOfYear() {
+        return (month - 1) * 30 + dayOfMonth;
+    }
+
+    ...
+}
+
+public class GregorianDate extends Date {
+
+    private static final int[] MONTH_LENGTHS = {
+        31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
+    };
+
+    public GregorianDate(int year, int month, int dayOfMonth) {
+        super(year, month, dayOfMonth);
+    }
+
+    @Override
+    public int dayOfYear() {
+        int precedingMonthDays = 0;
+        for (int m = 1; m < month; m += 1) {
+            precedingMonthDays += getMonthLength(m);
+        }
+        return precedingMonthDays + dayOfMonth();
+    }
+
+    private static int getMonthLength(int m) {
+        return MONTH_LENGTHS[m - 1];
+    }
+}
+```
+
+Read through the definition of the abstract class `Date`.
+There is an abstract method named `nextDate` in the `Date` class. `nextDate` returns
+the new date that is the result of advancing this date by one day. It should
+not change `this`. Modify `GregorianDate` accordingly so that it follows
+the correct convention for dates. Make sure to test out your methods to be sure
+that they behave as you expect them to!
+
 
 ## Inheritance Chains
 It is completely possible for a subclass to in turn be a superclass for another class! Consider the following example:
@@ -493,8 +560,6 @@ As an exercise, fill out the following table, and click the Solution dropdown wh
 
 </summary>
 
-![Solutions](img/solutions.png)
-
 `a.f()`: The static type is `A`, and the dynamic type is `A`, so there is no confusion
 over this case. We will simply use `A`’s `f()`.
 
@@ -522,14 +587,6 @@ for `A`.
 runtime we run it.
 
 </details>
-
-
-## Exercise: Gradescope assignment 
-For the first part of this lab, you must complete this [Gradescope assignment](https://www.gradescope.com/courses/545060/assignments/2958613).
-The assignment has instant feedback; when you save each question subpart answer, if you filled in the correct answers, an explanation will pop up
-saying "Correct!". If you do not see the explanation box, then your answer was incorrect. 
-You may resubmit as much as many times as you need until the deadline for the lab. Questions 1 and 3 are conceptual checks about inheritance generally. Question 2 is about
-DMS (dynamic method selection) and will require you to look at the `students` directory in the `lab06` files you pulled.
 
 
 ## Abstract Data Types
@@ -742,26 +799,19 @@ These methods are vital when iterating over anything which implements the
 
 [Map]: https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html
 
-<!--
-  TODO: this section is too hard to write, and I can't find good examples.
-  I'm punting on it for SU22 in the interest of getting the lab out for QA.
-  -Ethan
--->
+## Exercise: `CodingChallenges`
 
-<!-- 
-### Task: Choosing Data Representations
+Knowing when, where, and how to use abstract data types is an important skill.
 
-For each of the below scenarios, discuss the following questions with your
-partner:
+For this part, we'll be using abstract data types to help us solve small
+programming challenges. These questions are similar to the kinds of questions
+you might get asked to solve in a technical interview for a software
+engineering position. Complete the methods outlined in `CodingChallenges.java`, and add tests in `CodingChallengesTest.java`.
 
--   What is a good data representation for the scenario?
--   What are some other things that we might want to do with this data?
--   Are these things made straightforward, or difficult by this data
-    representation you chose earlier?
+Note that the first method, `missingNumber`, the input array is **not** in order.
 
--   The CS 61B autograder needs to know which lab a given student is in, to
-    compute the appropriate due date.
--->
+Hint: For `isPermutation`, use `toCharArray`. Look it up if you don't know what it is. 
+
 
 ## Exercise: Implementing Sets
 
@@ -802,7 +852,7 @@ so feel free to add more comprehensive tests to this file.
 
 What are the tradeoffs between these two implementations? Neither one is
 strictly "better" than the other in all situations, but when might we want to
-use one of them? Discuss with your partner.
+use one of them? Discuss with a partner.
 
 ## Aside: Generics and Autoboxing
 
@@ -853,7 +903,8 @@ we can write code against these Java collection types.
 
 For full credit, submit:
 
-- The Lab 6 [Gradescope assignment](https://www.gradescope.com/courses/545060/assignments/2958613).
+- Implement and test `nextDate` in `GregorianData.java`.
+- Implement and test each method in `CodingChallenges.java`.
 - Implement and test each method in `ListSet.java`.
 - Implement and test each method in `BooleanSet.java`.
 
