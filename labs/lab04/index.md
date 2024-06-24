@@ -107,6 +107,8 @@ Depending on your IntelliJ setup, a window should pop up giving you multiple opt
 Choose the `IntListTest` next to the icon with a red and green arrow contained in a rectangle.
 If your implementation is correct, you should pass the `get` method tests.
 
+Hint: Traverse the list until the specified position is reached. Throw an exception if the position is out of bounds.
+
 ### Exercise: `toString` and `equals`
 
 In [Lab 2](../lab02/#exercise-pursuit-curves), we introduced you to the `toString` and `equals` methods and you worked with a `Point` class for your Pursuit Curves that implemented these methods.
@@ -251,6 +253,8 @@ In practice, one approach may be preferred over the other depending on the
 problem you are trying to solve and the specifications of the program. We will talk about such
 trade-offs throughout the rest of the semester!
 
+
+
 ### `dSquareList` Implementation
 
 Here is one possible implementation of `dSquareList`, along with a call to
@@ -336,6 +340,11 @@ iterative version is much messier.
 The iterative versions of non-destructive `IntList` methods are often (but not
 always) quite a bit messier than the recursive versions, since it takes some
 careful pointer action to create a new `IntList`, build it up, and return it.
+
+|           | Destructive              | Non-destructive                              |
+|-----------|--------------------------|----------------------------------------------|
+| What?     | Modify the original list | Return a new list                            |
+| Examples: | `dSquareList`            | `squareListRecursive`, `squareListIterative` |
 
 ### Exercise: Concatenation
 
