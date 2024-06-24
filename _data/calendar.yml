@@ -64,19 +64,19 @@
           Quiz 1 due **Monday 6/24, 11:59 PM**
 - week: 2
   days:
-    - title: Linked Lists
+    - title: Linked Lists 1
       type: Lecture, Lab
       date: 2024-06-24
       url: labs/lab04
-      published: false
+      published: true
       footer: >
         [Project 1: Deques Released](/su24/projects/deques)
-    - title: Abstract Data Types
+    - title: Linked Lists 2
       type: Lecture, Lab
       date: 2024-06-25
       url: labs/lab05
       published: false
-    - title: Inheritance
+    - title: Abstract Data Types and Inheritance
       type: Lecture, Lab
       date: 2024-06-26
       url: labs/lab06
