@@ -69,22 +69,36 @@
       date: 2024-06-24
       url: labs/lab04
       published: true
+      description: >
+        Dwinelle 155 10am - 11am
+        <br>
+         [Slides TBD]()
+          |
+          [Video TBD]()
+          |
+        **Textbook:** [Ch 3](https://cs61b-2.gitbook.io/cs61b-textbook/3.-references-recursion-and-lists) [Ch 4](https://cs61b-2.gitbook.io/cs61b-textbook/4.-sllists) 
       footer: >
         [Project 1: Deques Released](/su24/projects/deques)
     - title: Linked Lists 2
       type: Lecture, Lab
       date: 2024-06-25
       url: labs/lab05
+      description: >
+        Dwinelle 155 10am - 11am
       published: false
     - title: Abstract Data Types and Inheritance
       type: Lecture, Lab
       date: 2024-06-26
       url: labs/lab06
+      description: >
+        Dwinelle 155 10am - 11am
       published: false
     - title: Comparison, Exceptions, and Iteration
       type: Lecture, Lab
       date: 2024-06-27
       url: labs/lab07
+      description: >
+        VLSB 2050 10am - 11am
       published: false
       footer: >
         Project 1 Checkpoint due **Thursday 6/27, 11:59 PM**
