@@ -52,6 +52,17 @@ Wait, but I wrote my program to use static variables. I need to use global state
   as instance variables of the `Repository` class. Try reframing your code in
   terms of instance variables and methods of `Repository`.
 
+### I can't run the tests. I see something like "Test ignored".
+
+From the spec:
+"Tests fail with “This test is not being run in the testing directory. Please see the spec for information on how to fix this.”
+
+To fix: Your JUnit configs are probably messed up. Delete all your existing run configurations by clicking “Run > Edit Configurations”, and clicking the minus. Then, ensure that .idea/runConfigurations contains a file named _template__of_JUnit.xml, with contents: //omitted"
+
+Make sure to also type the information in the red boxes into your run configuration:
+
+![Three commits](image/run_configurations.png)
+
 ## Getting Started (Design Doc)
 
 First, go watch the (excellent) Gitlet lecture!
