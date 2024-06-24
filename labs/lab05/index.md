@@ -6,11 +6,6 @@ released: true
 searchable: true
 ---
 
-{% capture alertContent %}
-**Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
-{% endcapture %}
-{% include alert.html type="warning" content=alertContent%}
-
 ## [FAQ](faq.md)
 
 The FAQ for Lab 5 is located [here](faq.md).
@@ -90,7 +85,7 @@ public class SLList {
         /**
          * The access modifiers inside a private nested class are irrelevant:
          * both the inner class and the outer class can access these instance
-         * variables and methods.
+         * variables and methods. Though making the instance variables of the inner class private is better practice. 
          */
         public int item;
         public IntListNode next;
