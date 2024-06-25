@@ -57,7 +57,7 @@ you should do, but not how.
 
 ### Style
 
-As in Project 1B, **we will be enforcing style**. You must follow the
+As in Project 1A, **we will be enforcing style**. You must follow the
 [style guide](../../../guides/style-guide.md), or you will be penalized on the
 autograder.
 
@@ -71,7 +71,7 @@ Follow the instructions in the
 to get the skeleton code and open it in IntelliJ. For this project, we will be
 working in the **`proj1b`** directory.
 
-You see a `proj1b` directory appear in your repo with the following structure:
+You should see a `proj1b` directory appear in your repo with the following structure:
 
 ```sh
  proj1b
@@ -105,7 +105,7 @@ Start by creating a file called `ArrayDeque61B`. This file should be created
 in the `proj1b/src` directory. To do this, right-click on the `src` directory,
 navigate to "New -> Java Class", and give it the name `ArrayDeque61B`.
 
-Just like you did in Project 1A We want our `ArrayDeque61B` to be able to hold several different types. To enable this, you should edit the declaration of your class so that it reads:
+Just like you did in Project 1A, we want our `ArrayDeque61B` to be able to hold several different types. To enable this, you should edit the declaration of your class so that it reads:
 
 ```java
 public class ArrayDeque61B<T>
