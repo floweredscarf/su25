@@ -74,7 +74,7 @@
         <br>
          [Slides](https://docs.google.com/presentation/d/1CeC4spBbd-nBgkNKjnkvnzlxoOb79UMS8fx2aSsCfPE/edit?usp=drive_link)
           |
-          [Video TBD]()
+          [Video TBD](https://bcourses.berkeley.edu/courses/1535549/external_tools/90481)
           |
         **Textbook:** [Ch 3](https://cs61b-2.gitbook.io/cs61b-textbook/3.-references-recursion-and-lists) [Ch 4](https://cs61b-2.gitbook.io/cs61b-textbook/4.-sllists) 
       footer: >
@@ -83,8 +83,15 @@
       type: Lecture, Lab
       date: 2024-06-25
       url: labs/lab05
+      published: true
       description: >
         Dwinelle 155 10am - 11am
+        <br>
+         [Slides](https://docs.google.com/presentation/d/1ON6AE7SwRmF2crZ1WgC-phWA0bV0tKkHq2U_Y076okY/edit?usp=sharing)
+          |
+          [Video TBD]()
+          |
+        **Textbook:** [Ch 5](https://cs61b-2.gitbook.io/cs61b-textbook/5.-dllists) [Ch 8](https://cs61b-2.gitbook.io/cs61b-textbook/8.-arraylist) 
       published: false
     - title: Abstract Data Types and Inheritance
       type: Lecture, Lab
