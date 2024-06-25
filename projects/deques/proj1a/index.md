@@ -305,7 +305,7 @@ your code is working correctly.
 
 {: .task}
 >**Task**: Implement `addFirst` and `addLast`, and verify that they are correct
->using `addFirstAndAddLastTest` and the Java visualizer.
+>using `addFirstAndAddLastTest` and the Java visualizer. Remember to carefully verify your pointers.
 >
 >---
 >
