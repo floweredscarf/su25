@@ -137,7 +137,8 @@ to ensure that `User` can only be used to compare against other `User`s.
 The natural ordering for `User` is to compare by ID number. If their ID numbers
 are the same, then compare them on their username.
 
-After implementing this, you should be able to sort `User`s:
+After implementing this, you should be able to sort `User`s. The example below is also in the `main` method of your `User` class. Feel free
+to run it as a sanity check.
 
 ```java
 public static void main(String[] args) {
@@ -667,7 +668,7 @@ and drawbacks. What are some of these benefits and drawbacks?
 Here's a quick recap of the tasks you'll need to do to complete this lab:
 
 - Make the `User` class implement `Comparable`.
-- Make `AList` implement `Iterable`.
+- Make `AList` implement `Iterable`, as well as adding your iterator class to the `AList.java` file.
 
 Additionally, you'll need to work with exceptions in Gitlet, so
 understanding those will be helpful as well.
