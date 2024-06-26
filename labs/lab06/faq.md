@@ -7,9 +7,7 @@ searchable: true
 ---
 ## Dynamic method selection is so confusing!
 
-[Here](https://drive.google.com/file/d/1I0vGBk-jF9bd7_SdqQcnbKQVsDDt_geq/view) is Allyson's 
-DMS flowchart from a few semesters ago. You can follow the steps in it methodically
-to figure out how lines compile and run. [Here](https://docs.google.com/presentation/d/1l9kslV4XB46fOOyD-hiXxi4sK-lmtFg9rMHRmS7_S5k/edit?usp=sharing) is Crystal's version, which is typed up.
+[Here](https://docs.google.com/presentation/d/1l9kslV4XB46fOOyD-hiXxi4sK-lmtFg9rMHRmS7_S5k/edit?usp=sharing) is Crystal's DMS Flow chart from a few semesters ago. You can follow steps methodically.
 
 ## `ListSet`
 
