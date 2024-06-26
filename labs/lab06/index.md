@@ -850,11 +850,15 @@ you might get asked to solve in a technical interview for a software
 engineering position. Complete the methods outlined in `CodingChallenges.java`, and add tests in `CodingChallengesTest.java`. Review [Lab 03](../lab03) for how to write tests.
 
 
-
-
 Note that the first method, `missingNumber`, the input array is **not** in order.
 
 Hint: For `isPermutation`, use `toCharArray`. Look it up if you don't know what it is.
+
+Hint: Some of these instantiations might be useful for these problems:
+```java
+Set<Integer> seen = new HashSet<>();
+Map<Character, Integer> characterCounts = new HashMap<>();
+```
 
 ## Exercise: Implementing Sets
 
