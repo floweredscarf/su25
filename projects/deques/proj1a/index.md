@@ -162,6 +162,8 @@ this spec.
 >For the intended experience, follow these steps in order. If you do something
 >else and ask us for help, we will refer you back to these steps.
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/SyhKT2o8odQ?si=sQfyUPsYhRTiaZOa" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ### Creating the File
 
 Start by creating a file called `LinkedListDeque61B`. This file should be created
