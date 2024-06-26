@@ -32,7 +32,7 @@ hidden, and it can be accessed by the user only through a documented interface.
 
 ## Enhancement 1: Encapsulation
 
-The "namke" implementation of `IntList` that we learned fom [Lab 4](../lab04)
+The "naked" implementation of `IntList` that we learned fom [Lab 4](../lab04)
 is impractical to use at scale. In it, the idea of a node in the list and the list itself
 are not separate. This means that someone who wants to use the `IntList` class
 would need to spend a lot of time adding `null` checks and handling errors that
