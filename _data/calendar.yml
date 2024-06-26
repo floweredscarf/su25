@@ -83,15 +83,27 @@
       type: Lecture, Lab
       date: 2024-06-25
       url: labs/lab05
+      published: true
       description: >
         Dwinelle 155 10am - 11am
-      published: false
+        <br>
+         [Slides](https://docs.google.com/presentation/d/1ON6AE7SwRmF2crZ1WgC-phWA0bV0tKkHq2U_Y076okY/edit?usp=sharing)
+          |
+          [Video](https://bcourses.berkeley.edu/courses/1535549/external_tools/90481)
+          |
+        **Textbook:** [Ch 5](https://cs61b-2.gitbook.io/cs61b-textbook/5.-dllists) [Ch 8](https://cs61b-2.gitbook.io/cs61b-textbook/8.-arraylist) 
     - title: Abstract Data Types and Inheritance
       type: Lecture, Lab
       date: 2024-06-26
       url: labs/lab06
       description: >
         Dwinelle 155 10am - 11am
+        <br>
+         [Slides TBD]()
+          |
+          [Video TBD]()
+          |
+        **Textbook:** [Ch 9](https://cs61b-2.gitbook.io/cs61b-textbook/9.-inheritance-i-interface-and-implementation-inheritance) [Ch 10](https://cs61b-2.gitbook.io/cs61b-textbook/10.-inheritance-ii-extends-casting-higher-order-functions) [Ch 16.1](https://cs61b-2.gitbook.io/cs61b-textbook/16.-adts-and-bsts/16.1-abstract-data-types)
       published: false
     - title: Comparison, Exceptions, and Iteration
       type: Lecture, Lab
@@ -99,6 +111,12 @@
       url: labs/lab07
       description: >
         VLSB 2050 10am - 11am
+        <br>
+         [Slides TBD]()
+          |
+          [Video TBD]()
+          |
+        **Textbook:** [Ch 11](https://cs61b-2.gitbook.io/cs61b-textbook/11.-inheritance-iii-subtype-polymorphism-comparators-comparable) [Ch 12](https://cs61b-2.gitbook.io/cs61b-textbook/12.-inheritance-iv-iterators-object-methods) 
       published: false
       footer: >
         Project 1 Checkpoint due **Thursday 6/27, 11:59 PM**
@@ -113,6 +131,14 @@
     - title: Gitlet Introduction
       type: Lecture, Lab
       date: 2024-07-01
+      description: >
+        Dwinelle 155 10am - 11am
+        <br>
+         [Slides TBD]()
+          |
+          [Video TBD]()
+          |
+        **Readings:** [Gitlet Intro Slides](https://cdn-uploads.piazza.com/attach/k5eevxebzpj25b/jqr7jm9igtc7l5/k97ipfmgmb3n/Gitlet_Slides.pdf)
       footer: >
         Project 2: Gitlet Released
       published: false
@@ -120,11 +146,27 @@
       type: Lecture, Lab
       date: 2024-07-02
       url: labs/lab09
+      description: >
+        VLSB 2050 10am - 11am
+        <br>
+         [Slides TBD]()
+          |
+          [Video TBD]()
+          |
+        **Textbook:** [Ch 13](https://cs61b-2.gitbook.io/cs61b-textbook/13.-asymptotics-i) [Ch 15](https://cs61b-2.gitbook.io/cs61b-textbook/15.-asymptotics-ii) 
       published: false
     - title: Introduction to Trees and Traversals
       type: Lecture, Lab
       date: 2024-07-03
       url: labs/lab10
+      description: >
+        Dwinelle 155 10am - 11am
+        <br>
+         [Slides TBD]()
+          |
+          [Video TBD]()
+          |
+        **Textbook:** [Ch 22.1 and 2](https://cs61b-2.gitbook.io/cs61b-textbook/22.-tree-traversals-and-graphs/22.1-tree-recap)
       published: false
     - title: Independence Day
       type: Holiday
@@ -143,11 +185,27 @@
       type: Lecture, Lab
       date: 2024-07-08
       url: labs/lab11
+      description: >
+        Dwinelle 155 10am - 11am
+        <br>
+         [Slides TBD]()
+          |
+          [Video TBD]()
+          |
+        **Readings:** [Gitlet Intro Slides](https://cdn-uploads.piazza.com/attach/k5eevxebzpj25b/jqr7jm9igtc7l5/k97ipfmgmb3n/Gitlet_Slides.pdf)
       published: false
     - title: Balanced Search Trees
       type: Lecture, Lab
       date: 2024-07-09
       url: labs/lab12
+      description: >
+        VLSB 2050 10am - 11am
+        <br>
+         [Slides TBD]()
+          |
+          [Video TBD]()
+          |
+        **Readings:** [Ch 16.2-7](https://cs61b-2.gitbook.io/cs61b-textbook/16.-adts-and-bsts/16.2-binary-search-trees)
       published: false
     - title: Exam Advice and Midterm Review
       type: Lecture, Lab
@@ -170,16 +228,40 @@
       type: Lecture, Lab
       date: 2024-07-15
       url: labs/lab13
+      description: >
+        Dwinelle 155 10am - 11am
+        <br>
+         [Slides TBD]()
+          |
+          [Video TBD]()
+          |
+        **Readings:** [Ch 19](https://cs61b-2.gitbook.io/cs61b-textbook/19.-hashing-i) [Ch 20](https://cs61b-2.gitbook.io/cs61b-textbook/20.-hashing-ii)
       published: false
     - title: Heaps and Priority Queues
       type: Lecture, Lab
       date: 2024-07-16
       url: labs/lab14
+      description: >
+        VLSB 2050 10am - 11am
+        <br>
+         [Slides TBD]()
+          |
+          [Video TBD]()
+          |
+        **Readings:** [Ch 21](https://cs61b-2.gitbook.io/cs61b-textbook/21.-heaps-and-priority-queues)
       published: false
     - title: Disjoint Sets
       type: Lecture, Lab
       date: 2024-07-17
       url: labs/lab15
+      description: >
+        Dwinelle 155 10am - 11am
+        <br>
+         [Slides TBD]()
+          |
+          [Video TBD]()
+          |
+        **Readings:** [Ch 14](https://cs61b-2.gitbook.io/cs61b-textbook/14.-disjoint-sets)
       published: false
     - title: Project 2 Workday
       type: Lab
@@ -197,6 +279,14 @@
       type: Lecture, Lab
       date: 2024-07-22
       url: labs/lab16
+      description: >
+        Dwinelle 155 10am - 11am
+          <br>
+          [Slides TBD]()
+            |
+            [Video TBD]()
+            |
+          **Readings:** Project 3 Spec
       published: false
       footer: >
         Project 3: Build Your Own World Released
@@ -204,16 +294,40 @@
       type: Lecture, Lab
       date: 2024-07-23
       url: labs/lab17
+      description: >
+        VLSB 2050 10am - 11am
+          <br>
+          [Slides TBD]()
+            |
+            [Video TBD]()
+            |
+          **Readings:** [Ch 22.3-4](https://cs61b-2.gitbook.io/cs61b-textbook/22.-tree-traversals-and-graphs/22.3-graphs) [Ch 23](https://cs61b-2.gitbook.io/cs61b-textbook/23.-graph-traversals-and-implementations)
       published: false
     - title: Shortest Paths
       type: Lecture, Lab
       date: 2024-07-24
       url: labs/lab18
+      description: >
+        Dwinelle 10am - 11am
+          <br>
+          [Slides TBD]()
+            |
+            [Video TBD]()
+            |
+          **Readings:** [Ch 24](https://cs61b-2.gitbook.io/cs61b-textbook/24.-shortest-paths)
       published: false
     - title: Minimum Spanning Trees
       type: Lecture, Lab
       date: 2024-07-25
       url: labs/lab19
+      description: >
+        VLSB 2050 10am - 11am
+          <br>
+          [Slides TBD]()
+            |
+            [Video TBD]()
+            |
+          **Readings:** [Ch 25](https://cs61b-2.gitbook.io/cs61b-textbook/25.-minimum-spanning-trees)
       published: false
     - title: Graphs
       type: Theory
@@ -229,15 +343,39 @@
       date: 2024-07-29
       published: false
       url: labs/lab20
+      description: >
+        Dwinelle 155 10am - 11am
+          <br>
+          [Slides TBD]()
+            |
+            [Video TBD]()
+            |
+          **Readings:** [Ch 29](https://cs61b-2.gitbook.io/cs61b-textbook/29.-basic-sorts)
     - title: Quicksort
       type: Lecture, Lab
       date: 2024-07-30
       url: labs/lab21
+      description: >
+        VLSB 2050 10am - 11am
+          <br>
+          [Slides TBD]()
+            |
+            [Video TBD]()
+            |
+          **Readings:** [Ch 30](https://cs61b-2.gitbook.io/cs61b-textbook/30.-quicksort) [Ch 32](https://cs61b-2.gitbook.io/cs61b-textbook/32.-more-quick-sort-sorting-summary) [Ch 34](https://cs61b-2.gitbook.io/cs61b-textbook/34.-sorting-and-algorithmic-bounds)
       published: false
     - title: Radix Sorts
       type: Lecture, Lab
       date: 2024-07-31
       url: labs/lab22
+      description: >
+        Dwinelle 155 10am - 11am
+          <br>
+          [Slides TBD]()
+            |
+            [Video TBD]()
+            |
+          **Readings:** [Ch 35](https://cs61b-2.gitbook.io/cs61b-textbook/35.-radix-sorts) [Ch 36](https://cs61b-2.gitbook.io/cs61b-textbook/36.-sorting-and-data-structures-conclusion)
       published: false
     - title: Project 3 Workday
       type: Lecture, Lab

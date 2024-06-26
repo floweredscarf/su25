@@ -2,7 +2,7 @@
 layout: page
 title: "Lab 7: Comparison, Iteration, and Exceptions"
 tags: [Lab, Comparison, Iteration]
-released: false
+released: true
 searchable: true
 ---
 
@@ -142,11 +142,11 @@ After implementing this, you should be able to sort `User`s:
 ```java
 public static void main(String[] args) {
     User[] users = {
-        new User(2, "Jasmine", ""),
+        new User(2, "Erik", ""),
         new User(4, "Vanessa", ""),
-        new User(5, "David", ""),
-        new User(1, "Jedi", ""),
-        new User(1, "Laksith", "")
+        new User(5, "Natalia", ""),
+        new User(1, "Alex", ""),
+        new User(1, "Circle", "")
     };
     Arrays.sort(users);
     for (User user : users) {
@@ -156,11 +156,11 @@ public static void main(String[] args) {
 ```
 
 ```java
-User{id=1, name=Jedi, email=}
-User{id=1, name=Laksith, email=}
-User{id=2, name=Jasmine, email=}
+User{id=1, name=Alex, email=}
+User{id=1, name=Circle, email=}
+User{id=2, name=Erik, email=}
 User{id=4, name=Vanessa, email=}
-User{id=5, name=David, email=}
+User{id=5, name=Natalia, email=}
 ```
 
 Note that here we use `Arrays.sort` because `users` is an array; if it was a

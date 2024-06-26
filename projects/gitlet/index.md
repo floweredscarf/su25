@@ -18,7 +18,7 @@ adding "/faq" to the end of the URL. The FAQ for Gitlet is located
 **We encourage you all to read the spec and watch the intro videos before starting.** This spec
 is fairly long. The first half is a verbose and detailed description
 of every command you'll support, and the other half is the testing details and
-some words of advice. To help you digest this, we (Su23 staff and the amazing staff
+some words of advice. To help you digest this, we (Su24 staff and the amazing staff
 from throughout history) have prepared many high quality
 videos describing portions of the spec and giving advice on how and where to
 begin. All videos are linked throughout this spec in the relevant location, but
@@ -310,7 +310,7 @@ satisfy:
   referred to as the files in your _working directory_.
 
 - Most commands have runtime or memory usage requirements. You must
-  follow these. We will discuss runtime in Lab 10. Some of the runtimes are
+  follow these. We will discuss runtime in Lab 9. Some of the runtimes are
   described as constant
   "relative to any significant measure". The significant measures are:
   any measure of number or size of files, any measure of number of
@@ -365,7 +365,7 @@ satisfy:
   are ones that potentially overwrite files (that aren't just
   metadata) -- for example, if a user tells Gitlet to restore files to
   older versions, Gitlet may overwrite the current versions of the
-  files. Just FYI. So put on some PPE before testing these commands :)
+  files.
 
 ### The Commands
 
@@ -1036,14 +1036,14 @@ check before doing anything else. Do not change the CWD.
 #### merge
 
 **Depending on how flexibly you have designed the rest of the project,
-the  \~2.8 points ( roughly 10% of the final submission points)
+the  \~3.5 points ( roughly 10% of the final submission points)
 may not be worth the amount of effort it takes to do this section.**
 We're certainly not expecting everyone to do it.
 Our priority will be in helping students complete the main project;
 if you're doing this last section, we expect you to be able to stand on your own a little
 bit more than most students.
 
-**NOTE: `merge` is NOT extra credit. It is part of the 28 points of the full project.**
+**NOTE: `merge` is NOT extra credit. It is part of the 35 points of the full project.**
 
 - **Usage**: `java gitlet.Main merge [branch name]`
 
@@ -1236,12 +1236,12 @@ as well as an [example from the Capers lab](./capers-example.md).
 ## Grader Details
 
 We have two graders for Gitlet: the **checkpoint grader** and the
-**full grader**. Out of the 36 total points available, 8 will come from the
-checkpoint grader and 28 will come from the full grader.
+**full grader**. Out of the 36 total points available, 1 will come from the
+checkpoint grader and 35 will come from the full grader.
 
 ### Checkpoint Grader
 
-**Due Sunday, July 16th at 11:59 PM for 8 points.**
+**Due Sunday, July 7th at 11:59 PM for 1 point.**
 
 Submission to the checkpoint autograder follows the grading for a usual
 project, that is:
@@ -1250,7 +1250,7 @@ project, that is:
 - Within 48 hours of the deadline: 50% penalty
 - More than 48 hours after the deadline: 100% penalty (no credit)
 
-Submit to the `Project 2a: Gitlet Checkpoint` autograder on Gradescope.
+Submit to the `Project 2: Checkpoint` autograder on Gradescope.
 
 It will test:
 
@@ -1277,7 +1277,7 @@ themselves you can simply debug them locally.
 
 ### Full Grader
 
-**Due Friday, July 21st at 11:59 PM for 28 points.**
+**Due Friday, July 21st at 11:59 PM for 35 points.**
 
 The full grader is a more substantial and comprehensive test suite. Like the
 checkpoint, you'll have a maximum capacity of 3 tokens which will refresh every hour.
