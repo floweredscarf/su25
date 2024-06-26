@@ -648,6 +648,11 @@ The `List` implementations that you will use most often is
 [LinkedList]: <https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/LinkedList.html>
 [ArrayList]: <https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/ArrayList.html>
 
+```java
+List<String> = new ArrayList<>();
+List<String> = new LinkedList<>();
+```
+
 ### Sets
 
 When might we want something other than a list? Consider (but don't
@@ -687,6 +692,11 @@ We can allow our code to
 be used by both by writing our method for the `Set` interface, instead
 of for `TreeSet` or for `HashSet`.
 
+```java
+Set<String> = new HashSet<>();
+Set<String> = new TreeSet<>();
+```
+
 ### Maps
 
 Let's modify the above problem slightly:
@@ -717,6 +727,11 @@ often:
 [Map]: <https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/TreeMap.html>
 [TreeMap]: <https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/TreeMap.html>
 [HashMap]: <https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/HashMap.html>
+
+```java
+Map<String, String> = new TreeMap<>();
+Map<Character, Int> = new HashMap<>();
+```
 
 #### More About Maps
 
@@ -806,7 +821,10 @@ Knowing when, where, and how to use abstract data types is an important skill.
 For this part, we'll be using abstract data types to help us solve small
 programming challenges. These questions are similar to the kinds of questions
 you might get asked to solve in a technical interview for a software
-engineering position. Complete the methods outlined in `CodingChallenges.java`, and add tests in `CodingChallengesTest.java`.
+engineering position. Complete the methods outlined in `CodingChallenges.java`, and add tests in `CodingChallengesTest.java`. Review [Lab 03](../lab03) for how to write tests.
+
+
+
 
 Note that the first method, `missingNumber`, the input array is **not** in order.
 
