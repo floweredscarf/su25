@@ -187,12 +187,12 @@ public class GregorianDate extends Date {
 }
 ```
 
-Read through the definition of the abstract class `Date`.
+Read through the definition of the abstract class `Date`. Pay attension to the instance variables. 
 There is an abstract method named `nextDate` in the `Date` class. `nextDate` returns
 the new date that is the result of advancing this date by one day. It should
 not change `this`. Modify `GregorianDate` accordingly so that it follows
 the correct convention for dates. Make sure to test out your methods to be sure
-that they behave as you expect them to!
+that they behave as you expect them to! Check out our initial tests in `GregorianDateTest.java` for how GregorianDate is used.
 
 ## Inheritance Chains
 
