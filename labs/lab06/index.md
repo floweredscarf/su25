@@ -450,7 +450,7 @@ and then assign its dynamic type to be something more specific.
 Since an object is, abstractly speaking, an
 API of methods and variables, any subclasses of that object will meet the
 requirements of the parent class API, and can be assigned that parent type
-statically. Thus, example `b` also is acceptable. Intuitively, a `Cat` can be an `Animal.
+statically. Thus, example `b` also is acceptable. Intuitively, a `Cat` can be an `Animal`.
 It is precisely for this same reason that examples `d`and`e`fail. A`Cat`object
 is more specific than an`Animal`, and could have extensions to the API that an
 `Animal`does not have. Thus, we cannot assign an`Animal`to be a`Cat`— an `Animal`may not be a`Cat`.
