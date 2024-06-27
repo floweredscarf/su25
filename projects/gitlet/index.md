@@ -527,8 +527,8 @@ It will have a single branch: `main`, which
       file (blob) references of its files,
       parent reference, log message, and commit time.
 
-- **Runtime**: Runtime should be constant with respect to any measure
-  of number of commits. Runtime must be no worse than linear with
+- **Runtime**: Runtime should be constant with respect to number of commits. 
+  Runtime must be no worse than linear with
   respect to the total size of files the commit is tracking.
   Additionally, this command has a memory requirement: Committing must
   increase the size of the `.gitlet` directory by no more than the total
