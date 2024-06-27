@@ -997,6 +997,10 @@ check before doing anything else. Do not change the CWD.
   exist.` If you try to remove the branch you're currently on, aborts,
   printing the error message `Cannot remove the current branch.`
 
+- **Differences from real git**: This command is equal to calling 
+  `git branch` with the `-d` option, as in 
+  `git branch -d [remote name] [branch name]`. 
+
 - **Dangerous?**: No
 
 - **Our line count**: ~15
