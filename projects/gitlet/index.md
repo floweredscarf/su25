@@ -833,11 +833,12 @@ Restore is used to revert files back to their previous versions. Depending on th
 - **Failure cases**:
 
     1. If the file does not exist in the previous commit, abort,
-      printing the error message `File does not exist in that
-      commit.` Do not change the CWD.
+      printing the error message `File does not exist in that commit.`
+      Do not change the CWD.
 
-    2. If no commit with the given id exists, print `No commit with
-      that id exists.` Otherwise, if the file does not exist in the given
+    2. If no commit with the given id exists, print 
+      `No commit with that id exists.` 
+      Otherwise, if the file does not exist in the given
       commit, print the same message as for failure case 1. Do not change the
       CWD.
 
