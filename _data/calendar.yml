@@ -112,12 +112,12 @@
       description: >
         VLSB 2050 10am - 11am
         <br>
-         [Slides TBD]()
+         [Slides](https://docs.google.com/presentation/d/1_S363gdL_f0-3DBZC8SxR2YOeyjqaVs3M22cYgUao64/edit)
           |
           [Video TBD]()
           |
         **Textbook:** [Ch 11](https://cs61b-2.gitbook.io/cs61b-textbook/11.-inheritance-iii-subtype-polymorphism-comparators-comparable) [Ch 12](https://cs61b-2.gitbook.io/cs61b-textbook/12.-inheritance-iv-iterators-object-methods) 
-      published: false
+      published: true
       footer: >
         Project 1 Checkpoint due **Thursday 6/27, 11:59 PM**
     - title: Object Oriented Programming and Abstract Data Types
