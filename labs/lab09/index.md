@@ -2,7 +2,7 @@
 layout: page
 title: "Lab 9: Runtime Analysis"
 tags: [Lab, Runtime]
-released: false
+released: true
 searchable: true
 ---
 ## [FAQ](faq.md)
