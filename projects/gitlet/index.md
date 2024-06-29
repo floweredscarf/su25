@@ -827,7 +827,7 @@ Restore is used to revert files back to their previous versions. Depending on th
 
     2. Should be linear with respect to the total size of the files in
       the commit's snapshot. Should be constant with respect to any
-      measure involving number of commits. Should be constant with
+      measure involving number of commits. Should be constant with <!--ryan-qa: any measure of number of commits here--->
       respect to the number of branches.
 
 - **Failure cases**:
@@ -1020,7 +1020,7 @@ check before doing anything else. Do not change the CWD.
 
 - **Runtime**: Should be linear with respect to the total size of
   files tracked by the given commit's snapshot. Should be constant
-  with respect to any measure involving number of commits.
+  with respect to any measure involving number of commits. <!--ryan-qa: any measure of number of commits here--->
 
 - **Failure case**: If no commit with the given id exists, print `No
   commit with that id exists.`  If a working file is untracked in the current
