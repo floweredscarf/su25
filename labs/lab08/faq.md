@@ -2,7 +2,7 @@
 layout: page
 title: "FAQ - Lab 8: Persistence and Gitlet"
 categories: lab
-released: false
+released: true
 searchable: true
 ---
 
