@@ -1867,5 +1867,4 @@ excellent article by Philip Nilsson.
 
 This project was created by Joseph Moghadam.  Modifications in later semesters have been made
 by associated Professors and course staffs. Summer 2021 modification credits go to
-Allyson Park, Sohum Hulyalkar, and Zephyr Omaly. The testing framework using
-JUnit was designed and implemented by Ethan Ordentlich.
+Allyson Park, Sohum Hulyalkar, and Zephyr Omaly. Summer 2024 modification credits go to Erik Kizior and Ryan Yang. The testing framework using JUnit was designed and implemented by Ethan Ordentlich.
