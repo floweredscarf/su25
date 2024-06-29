@@ -2,7 +2,7 @@
 layout: page
 title: "Project 2: Gitlet"
 tags: [Project]
-released: false
+released: true
 searchable: true
 ---
 

@@ -2,7 +2,7 @@
 layout: page
 title: "Gitlet Design Document"
 categories: proj
-released: false
+released: true
 searchable: true
 ---
 
