@@ -527,8 +527,8 @@ It will have a single branch: `main`, which
       file (blob) references of its files,
       parent reference, log message, and commit time.
 
-- **Runtime**: Runtime should be constant with respect to any measure
-  of number of commits. Runtime must be no worse than linear with
+- **Runtime**: Runtime should be constant with respect to the number of commits. 
+  Runtime must be no worse than linear with
   respect to the total size of files the commit is tracking.
   Additionally, this command has a memory requirement: Committing must
   increase the size of the `.gitlet` directory by no more than the total
@@ -826,18 +826,18 @@ Restore is used to revert files back to their previous versions. Depending on th
     1. Should be linear relative to the size of the file being checked out.
 
     2. Should be linear with respect to the total size of the files in
-      the commit's snapshot. Should be constant with respect to any
-      measure involving number of commits. Should be constant with
-      respect to the number of branches.
+      the commit's snapshot. Should be constant with respect to the number of commits. 
+      Should be constant with respect to the number of branches.
 
 - **Failure cases**:
 
     1. If the file does not exist in the previous commit, abort,
-      printing the error message `File does not exist in that
-      commit.` Do not change the CWD.
+      printing the error message `File does not exist in that commit.`
+      Do not change the CWD.
 
-    2. If no commit with the given id exists, print `No commit with
-      that id exists.` Otherwise, if the file does not exist in the given
+    2. If no commit with the given id exists, print 
+      `No commit with that id exists.` 
+      Otherwise, if the file does not exist in the given
       commit, print the same message as for failure case 1. Do not change the
       CWD.
 
@@ -996,6 +996,10 @@ check before doing anything else. Do not change the CWD.
   exist.` If you try to remove the branch you're currently on, aborts,
   printing the error message `Cannot remove the current branch.`
 
+- **Differences from real git**: This command is equal to calling 
+  `git branch` with the `-d` option, as in 
+  `git branch -d [remote name] [branch name]`. 
+
 - **Dangerous?**: No
 
 - **Our line count**: ~15
@@ -1015,7 +1019,7 @@ check before doing anything else. Do not change the CWD.
 
 - **Runtime**: Should be linear with respect to the total size of
   files tracked by the given commit's snapshot. Should be constant
-  with respect to any measure involving number of commits.
+  with respect to the number of commits.
 
 - **Failure case**: If no commit with the given id exists, print `No
   commit with that id exists.`  If a working file is untracked in the current
