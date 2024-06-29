@@ -347,6 +347,20 @@ satisfy:
       but is not in such a directory, print the message `Not in an initialized
       Gitlet directory.`
 
+- Always exit with exit code 0, even in the presence of errors.  This allows
+  us to use other exit codes as an indication that something blew up. This means
+  do not let your code throw any errors, as your program will automatically exit
+  with code 0 if it ran with no errors.
+
+- One clean strategy for handling exceptions in this project is with a 
+  [`try-catch` block](https://www.w3schools.com/java/java_try_catch.asp). 
+  Normally, Java would stop the program and generate an error message if an exception is thrown. 
+  If an excpetion is thrown within a `try` block, however, a `catch` block allows you to
+  execute some code in response. We have provided a class for exceptions
+  called `GitletException` in the skeleton files. If you would like to throw an exception with
+  a particular message, you can use `throw new GitletException("message here")`. To print the
+  message associated with an exception `e`, use `System.out.println(e.getMessage())`.
+
 - Some of the commands have their differences from real Git
   listed. The spec is not exhaustive in listing _all_ differences from
   Git, but it does list some of the bigger or potentially confusing
@@ -355,11 +369,6 @@ satisfy:
 - Do **NOT** print out anything except for what the spec says. Some of
   our autograder tests will break if you print anything more than
   necessary. Yes, this includes spaces and extra newlines.
-
-- Always exit with exit code 0, even in the presence of errors.  This allows
-  us to use other exit codes as an indication that something blew up. This means
-  do not let your code throw any errors, as your program will automatically exit
-  with code 0 if it ran with no errors.
 
 - The spec classifies some commands as "dangerous". Dangerous commands
   are ones that potentially overwrite files (that aren't just
