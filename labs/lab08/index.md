@@ -2,7 +2,7 @@
 layout: page
 title: "Lab 8: Persistence and Gitlet"
 tags: [Lab, Java, Gitlet, Persistence]
-released: false
+released: true
 searchable: true
 ---
 
