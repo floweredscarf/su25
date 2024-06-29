@@ -1886,10 +1886,7 @@ Huang, Yan Zhao, Matthew Chow, especially Alan Yao, Daniel Nguyen, and
 Armani Ferrante for providing feedback on this project. Thanks to git
 for being awesome.
 
-This project was largely inspired by [this][Nilsson Article]
-excellent article by Philip Nilsson.
-
-[Nilsson Article]: <https://blog.jayway.com/2013/03/03/git-is-a-purely-functional-data-structure/>
+This project was largely inspired by an excellent article from Philip Nilsson.
 
 This project was created by Joseph Moghadam.  Modifications in later semesters have been made
 by associated Professors and course staffs. Summer 2021 modification credits go to
