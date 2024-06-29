@@ -1256,12 +1256,7 @@ checkpoint grader and 35 will come from the full grader.
 
 **Due Sunday, July 7th at 11:59 PM for 1 point.**
 
-Submission to the checkpoint autograder follows the grading for a usual
-project, that is:
-
-- Within 24 hours of the deadline: 10% penalty
-- Within 48 hours of the deadline: 50% penalty
-- More than 48 hours after the deadline: 100% penalty (no credit)
+Like previous checkpoints, submission to the checkpoint autograder is a hard deadline.
 
 Submit to the `Project 2: Checkpoint` autograder on Gradescope.
 
@@ -1269,7 +1264,7 @@ It will test:
 
 - Your program compiles.
 - You pass tests `test01_init`, `test02_basicRestore`, `test03_basicLog`,
-  `test04_prevRestore`. These require you to implement:
+  and `test04_prevRestore`. These require you to implement:
   - `init`
   - `add`
   - `commit`
@@ -1303,6 +1298,7 @@ Similar to the checkpoint, the full grader will have English hints on what each
 test does but not the specifics of the test; though since you have the tests
 themselves you can simply debug them locally.
 
+The full grader will consider style and compiler warnings.
 
 ## First Half Closing Note
 
@@ -1861,6 +1857,18 @@ so be sure to update your Design Document and comments _**frequently**_. The mor
 you provide us about your implementation and thinking, the better/faster your response from
 staff will be. Remember we will reject help ticket requests
 that do not have an up-to-date or complete design document.
+
+
+### Deliverables
+
+Project 2 is worth 36 points. It is broken down into the following tasks:
+
+- Design Document (0 points, required to receive assistance from staff)
+- Checkpoint Grader due **July 7, 11:59 PM** (1 point)
+- Full Grader due **July 21, 11:59 PM** (35 points)
+
+Please check the [Grader Details](#grader-details) section for a complete
+description of the autograders.
 
 ## Acknowledgments
 
