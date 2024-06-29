@@ -527,7 +527,7 @@ It will have a single branch: `main`, which
       file (blob) references of its files,
       parent reference, log message, and commit time.
 
-- **Runtime**: Runtime should be constant with respect to number of commits. 
+- **Runtime**: Runtime should be constant with respect to the number of commits. 
   Runtime must be no worse than linear with
   respect to the total size of files the commit is tracking.
   Additionally, this command has a memory requirement: Committing must
@@ -826,9 +826,8 @@ Restore is used to revert files back to their previous versions. Depending on th
     1. Should be linear relative to the size of the file being checked out.
 
     2. Should be linear with respect to the total size of the files in
-      the commit's snapshot. Should be constant with respect to any
-      measure involving number of commits. Should be constant with <!--ryan-qa: any measure of number of commits here--->
-      respect to the number of branches.
+      the commit's snapshot. Should be constant with respect to the number of commits. 
+      Should be constant with respect to the number of branches.
 
 - **Failure cases**:
 
@@ -1020,7 +1019,7 @@ check before doing anything else. Do not change the CWD.
 
 - **Runtime**: Should be linear with respect to the total size of
   files tracked by the given commit's snapshot. Should be constant
-  with respect to any measure involving number of commits. <!--ryan-qa: any measure of number of commits here--->
+  with respect to the number of commits.
 
 - **Failure case**: If no commit with the given id exists, print `No
   commit with that id exists.`  If a working file is untracked in the current
