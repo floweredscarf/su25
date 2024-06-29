@@ -18,7 +18,7 @@ adding "/faq" to the end of the URL. The FAQ for Gitlet is located
 **We encourage you all to read the spec and watch the intro videos before starting.** This spec
 is fairly long. The first half is a verbose and detailed description
 of every command you'll support, and the other half is the testing details and
-some words of advice. To help you digest this, we (Su24 staff and the amazing staff
+some words of advice. To help you digest this, we (SU24 staff and the amazing staff
 from throughout history) have prepared many high quality
 videos describing portions of the spec and giving advice on how and where to
 begin. All videos are linked throughout this spec in the relevant location, but
@@ -47,6 +47,16 @@ As more resources are created, we'll add them here, so refresh often! Shout out 
 of the absolutely amazing CS61B(L) staff who created these wonderful resources throughout the years!
 
 ## Gitlet Summary
+
+### Deadlines
+
+Project 2 is worth 36 points. It consists of the following tasks:
+
+- Design Document (0 points, required to receive assistance from staff)
+- Checkpoint Grader due **July 7, 11:59 PM** (1 point)
+- Full Grader due **July 21, 11:59 PM** (35 points)
+
+This is a very difficult project. **You should start early to stay on track with the course.**
 
 ### Overview
 
@@ -1857,7 +1867,6 @@ so be sure to update your Design Document and comments _**frequently**_. The mor
 you provide us about your implementation and thinking, the better/faster your response from
 staff will be. Remember we will reject help ticket requests
 that do not have an up-to-date or complete design document.
-
 
 ### Deliverables
 
