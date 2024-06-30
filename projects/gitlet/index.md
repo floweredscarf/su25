@@ -2,7 +2,7 @@
 layout: page
 title: "Project 2: Gitlet"
 tags: [Project]
-released: false
+released: true
 searchable: true
 ---
 
@@ -18,7 +18,7 @@ adding "/faq" to the end of the URL. The FAQ for Gitlet is located
 **We encourage you all to read the spec and watch the intro videos before starting.** This spec
 is fairly long. The first half is a verbose and detailed description
 of every command you'll support, and the other half is the testing details and
-some words of advice. To help you digest this, we (Su24 staff and the amazing staff
+some words of advice. To help you digest this, we (SU24 staff and the amazing staff
 from throughout history) have prepared many high quality
 videos describing portions of the spec and giving advice on how and where to
 begin. All videos are linked throughout this spec in the relevant location, but
@@ -47,6 +47,16 @@ As more resources are created, we'll add them here, so refresh often! Shout out 
 of the absolutely amazing CS61B(L) staff who created these wonderful resources throughout the years!
 
 ## Gitlet Summary
+
+### Deadlines
+
+Project 2 is worth 36 points. It consists of the following tasks:
+
+- Design Document (0 points, required to receive assistance from staff)
+- Checkpoint Grader due **July 7, 11:59 PM** (1 point)
+- Full Grader due **July 21, 11:59 PM** (35 points)
+
+This is a very difficult project. **You should start early to stay on track with the course.**
 
 ### Overview
 
@@ -347,6 +357,20 @@ satisfy:
       but is not in such a directory, print the message `Not in an initialized
       Gitlet directory.`
 
+- Always exit with exit code 0, even in the presence of errors.  This allows
+  us to use other exit codes as an indication that something blew up. This means
+  do not let your code throw any errors, as your program will automatically exit
+  with code 0 if it ran with no errors.
+
+- One clean strategy for handling exceptions in this project is with a 
+  [`try-catch` block](https://www.w3schools.com/java/java_try_catch.asp). 
+  Normally, Java would stop the program and generate an error message if an exception is thrown. 
+  If an excpetion is thrown within a `try` block, however, a `catch` block allows you to
+  execute some code in response. We have provided a class for exceptions
+  called `GitletException` in the skeleton files. If you would like to throw an exception with
+  a particular message, you can use `throw new GitletException("message here")`. To print the
+  message associated with an exception `e`, use `System.out.println(e.getMessage())`.
+
 - Some of the commands have their differences from real Git
   listed. The spec is not exhaustive in listing _all_ differences from
   Git, but it does list some of the bigger or potentially confusing
@@ -355,11 +379,6 @@ satisfy:
 - Do **NOT** print out anything except for what the spec says. Some of
   our autograder tests will break if you print anything more than
   necessary. Yes, this includes spaces and extra newlines.
-
-- Always exit with exit code 0, even in the presence of errors.  This allows
-  us to use other exit codes as an indication that something blew up. This means
-  do not let your code throw any errors, as your program will automatically exit
-  with code 0 if it ran with no errors.
 
 - The spec classifies some commands as "dangerous". Dangerous commands
   are ones that potentially overwrite files (that aren't just
@@ -527,8 +546,8 @@ It will have a single branch: `main`, which
       file (blob) references of its files,
       parent reference, log message, and commit time.
 
-- **Runtime**: Runtime should be constant with respect to any measure
-  of number of commits. Runtime must be no worse than linear with
+- **Runtime**: Runtime should be constant with respect to the number of commits. 
+  Runtime must be no worse than linear with
   respect to the total size of files the commit is tracking.
   Additionally, this command has a memory requirement: Committing must
   increase the size of the `.gitlet` directory by no more than the total
@@ -826,18 +845,18 @@ Restore is used to revert files back to their previous versions. Depending on th
     1. Should be linear relative to the size of the file being checked out.
 
     2. Should be linear with respect to the total size of the files in
-      the commit's snapshot. Should be constant with respect to any
-      measure involving number of commits. Should be constant with
-      respect to the number of branches.
+      the commit's snapshot. Should be constant with respect to the number of commits. 
+      Should be constant with respect to the number of branches.
 
 - **Failure cases**:
 
     1. If the file does not exist in the previous commit, abort,
-      printing the error message `File does not exist in that
-      commit.` Do not change the CWD.
+      printing the error message `File does not exist in that commit.`
+      Do not change the CWD.
 
-    2. If no commit with the given id exists, print `No commit with
-      that id exists.` Otherwise, if the file does not exist in the given
+    2. If no commit with the given id exists, print 
+      `No commit with that id exists.` 
+      Otherwise, if the file does not exist in the given
       commit, print the same message as for failure case 1. Do not change the
       CWD.
 
@@ -996,6 +1015,10 @@ check before doing anything else. Do not change the CWD.
   exist.` If you try to remove the branch you're currently on, aborts,
   printing the error message `Cannot remove the current branch.`
 
+- **Differences from real git**: This command is equal to calling 
+  `git branch` with the `-d` option, as in 
+  `git branch -d [remote name] [branch name]`. 
+
 - **Dangerous?**: No
 
 - **Our line count**: ~15
@@ -1015,7 +1038,7 @@ check before doing anything else. Do not change the CWD.
 
 - **Runtime**: Should be linear with respect to the total size of
   files tracked by the given commit's snapshot. Should be constant
-  with respect to any measure involving number of commits.
+  with respect to the number of commits.
 
 - **Failure case**: If no commit with the given id exists, print `No
   commit with that id exists.`  If a working file is untracked in the current
@@ -1243,12 +1266,7 @@ checkpoint grader and 35 will come from the full grader.
 
 **Due Sunday, July 7th at 11:59 PM for 1 point.**
 
-Submission to the checkpoint autograder follows the grading for a usual
-project, that is:
-
-- Within 24 hours of the deadline: 10% penalty
-- Within 48 hours of the deadline: 50% penalty
-- More than 48 hours after the deadline: 100% penalty (no credit)
+Like previous checkpoints, submission to the checkpoint autograder is a hard deadline.
 
 Submit to the `Project 2: Checkpoint` autograder on Gradescope.
 
@@ -1256,7 +1274,7 @@ It will test:
 
 - Your program compiles.
 - You pass tests `test01_init`, `test02_basicRestore`, `test03_basicLog`,
-  `test04_prevRestore`. These require you to implement:
+  and `test04_prevRestore`. These require you to implement:
   - `init`
   - `add`
   - `commit`
@@ -1290,6 +1308,7 @@ Similar to the checkpoint, the full grader will have English hints on what each
 test does but not the specifics of the test; though since you have the tests
 themselves you can simply debug them locally.
 
+The full grader will consider style and compiler warnings.
 
 ## First Half Closing Note
 
@@ -1849,6 +1868,17 @@ you provide us about your implementation and thinking, the better/faster your re
 staff will be. Remember we will reject help ticket requests
 that do not have an up-to-date or complete design document.
 
+### Deliverables
+
+Project 2 is worth 36 points. It is broken down into the following tasks:
+
+- Design Document (0 points, required to receive assistance from staff)
+- Checkpoint Grader due **July 7, 11:59 PM** (1 point)
+- Full Grader due **July 21, 11:59 PM** (35 points)
+
+Please check the [Grader Details](#grader-details) section for a complete
+description of the autograders.
+
 ## Acknowledgments
 
 Thanks to Alicia Luengo, Josh Hug, Sarah Kim, Austin Chen, Andrew
@@ -1856,12 +1886,8 @@ Huang, Yan Zhao, Matthew Chow, especially Alan Yao, Daniel Nguyen, and
 Armani Ferrante for providing feedback on this project. Thanks to git
 for being awesome.
 
-This project was largely inspired by [this][Nilsson Article]
-excellent article by Philip Nilsson.
-
-[Nilsson Article]: <https://blog.jayway.com/2013/03/03/git-is-a-purely-functional-data-structure/>
+This project was largely inspired by an excellent article from Philip Nilsson.
 
 This project was created by Joseph Moghadam.  Modifications in later semesters have been made
 by associated Professors and course staffs. Summer 2021 modification credits go to
-Allyson Park, Sohum Hulyalkar, and Zephyr Omaly. The testing framework using
-JUnit was designed and implemented by Ethan Ordentlich.
+Allyson Park, Sohum Hulyalkar, and Zephyr Omaly. Summer 2024 modification credits go to Erik Kizior, Ryan Yang, Lawrence Wu, and Codey Ma. The testing framework using JUnit was designed and implemented by Ethan Ordentlich.

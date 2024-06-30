@@ -2,7 +2,7 @@
 layout: page
 title: "Lab 8: Persistence and Gitlet"
 tags: [Lab, Java, Gitlet, Persistence]
-released: false
+released: true
 searchable: true
 ---
 
@@ -193,7 +193,7 @@ window. Open up git bash instead.
 If they aren't, please redo the relevant part from
 [Lab 1](../lab01/index.md#task-configure-your-computer).
 
-First, ensure your current working directory is `su23-s*/lab08/capers` or `su23-p***/lab08/capers`.
+First, ensure your current working directory is `su24-s*/lab08/capers` or `su24-p***/lab08/capers`.
 
 While you're here, go ahead and run the `ls` command. You'll see all the
 capers files, but the one we want to focus on is a file called `Main.java`.
@@ -235,7 +235,7 @@ If we were to translate this error to English, it's saying "I don't know what
 so we must use its fully canonical name which is `capers.Main`. To do this:
 
 ```sh
-cd ..                 # takes us up a directory to su23-p***/lab08
+cd ..                 # takes us up a directory to su24-p***/lab08
 java capers.Main
 ```
 
@@ -329,7 +329,7 @@ do operations on those files and directories. In this class, you usually will
 want to be doing operations on files and directories by referring to them to
 their relative paths. You'll want any new files or directories you create to be
 in the same directory as where you run your program (in this lab, the
-`su23-p***/lab08` folder) and not some random place on your computer.
+`su24-p***/lab08` folder) and not some random place on your computer.
 
 [File]: <https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/File.html>
 
@@ -753,7 +753,7 @@ code!
 Branching can be very useful to maintain order in shared repos. Ultimately,
 however, the way you organize your repository is entirely up to you. As a final
 reminder, if throughout this process you get a `detached HEAD state`, check out
-the [git WTFs](https://cs61bl.org/su23/guides/git-wtfs) guide.
+the [git WTFs](https://cs61bl.org/su24/guides/git-wtfs) guide.
 
 </details>
 
