@@ -127,7 +127,7 @@ java Sorter 300
 Compiling and running `Sorter` like above will tell us exactly how long it
 takes to sort an array of 300 randomly chosen elements.
 
-Alternatively, you can set command line arguments in IntelliJ by clicking on the class name next to the green run button on the top left and select "Edit Configurations." After that you can enter command line arguments into the "Program arguments" field.
+Alternatively, you can set command line arguments in IntelliJ by clicking on the class name next to the green run button on the top left and selecting "Edit Configurations." Next, you can enter command line arguments into the "Program arguments" field.
 
 
 
@@ -630,7 +630,7 @@ Discuss with someone *why* each of the following claims are true.
 
 ### Limit Definition
 
-An alternative, calculus-based [limit definition][] is also sometimes useful,
+An alternative, the calculus-based [limit definition][] is also sometimes useful,
 as you can apply L'Hopital's Rule to derive asymptotic simplifications like
 dropping multiplicative constants and additive lower-order terms.
 
@@ -808,7 +808,7 @@ int rectangle(int N, int M) {
 }
 ```
 
-Analyzing this algorithm we see that the outer loop runs $$N$$ times and the inner loop runs $$M$$ times per each iteration of the outer loop. Since each iteration of the inner loop we only do a constant amount of time, we find the resulting runtime to be in $$\Theta(MN)$$.
+Analyzing this algorithm we see that the outer loop runs $$N$$ times and the inner loop runs $$M$$ times per each iteration of the outer loop. Since each iteration of the inner loop only does a constant amount of work, we find the resulting runtime to be in $$\Theta(MN)$$.
 
 ## Analyzing Recursion
 
@@ -866,7 +866,7 @@ multiply by the constant number of operations to find the overall runtime of
 `fib`.
 
 For a tree with branching
-factor $$b$$ and height $$h$$ we can compute the number of nodes as $$b^{h+1}-1$$ (if we think of the root has height 0). For the sake of asymptotic analysis, it is sufficient to use $$b^{h}$$ or $$b^{h+1}$$ as we will below (as an exercise, can you justify why?).
+factor $$b$$ and height $$h$$ we can compute the number of nodes as $$b^{h+1}-1$$ (if we think of the root as height 0). For the sake of asymptotic analysis, it is sufficient to use $$b^{h}$$ or $$b^{h+1}$$ as we will below (as an exercise, can you justify why?).
 
 Spend a little time thinking about the maximum height of this tree: when does the base
 case tell us the tree recursion will stop?
@@ -892,7 +892,7 @@ Plugging into the formula, we get $$2^{\log_{2} N}$$ nodes which simplifies to
 $$N$$. Therefore, $$N$$ nodes performing a constant amount of work each will
 give us an overall runtime in $$\Theta(N)$$.
 
-There is another way to approach this analysis: going level by level. We can see that on the first level of the recursive call tree there is a single node doing a constant amount of work (1). On the second level we double the number of nodes, but each node still is doing a constant amount of work, so the total work on this layer is 1+1=2. Similarly, we can see that the work on level 3 is 4, on level 4 is 8, and so on following the pattern that the work on level $$i$$ is $$2^{i-1}$$. From the analysis above, we know that this tree has $$\log_{2} N$$ levels. Now, to figure out the total work done by the function we just need to sum up all the work done by all of the levels:
+There is another way to approach this analysis: going level by level. We can see that on the first level of the recursive call tree there is a single node doing a constant amount of work (1). On the second level we double the number of nodes, but each node still is doing a constant amount of work, so the total work on this layer is 1+1=2. Similarly, we can see that the work on level 3 is 4, on level 4 is 8, and so on following the pattern that the work on level $$i$$ is $$2^{i}$$. From the analysis above, we know that this tree has $$\log_{2} N$$ levels. Now, to figure out the total work done by the function we just need to sum up all the work done by all of the levels:
 
 $$1 + 2 + 4 + \cdots + 2^{(log_{2} N) - 2} + 2^{(log_{2} N) - 1}$$
 
@@ -1007,6 +1007,7 @@ individually. Once each part of the tree has been analyzed, we can then
 reassemble all the parts to determine the overall runtime of the function.
 5. If the function has a complicated loop, draw a bar chart to map out how much
    work the body of the loop executes for each iteration.
+6. Only consider what happens for very large N. If you see a statement like `if (N < 1) {return 0}` at the top of an algorithm this doesn't mean that we can immediately say the algorithm has a best case runtime in $$\Theta(1)$$.
 
 ### Useful Formulas
 
@@ -1014,7 +1015,7 @@ reassemble all the parts to determine the overall runtime of the function.
 - There are $$N$$ terms in the sequence $$1, 2, 3, 4, \cdots, N$$.
 - $$1 + 2 + 4 + 8 + \cdots + N$$ is in $$\Theta(N)$$.
 - There are $$\log N$$ terms in the sequence $$1, 2, 4, 8, \cdots, N$$.
-- The number of nodes in a complete tree, $$N$$, is equal to $$b^h$$ where
+- The number of nodes in a complete tree, $$N$$, is approximately $$b^h$$ where
   $$b$$ is the *branching factor* and $$h$$ is the *height* of the tree.
 - All logarithms are proportional to each other by the Change of Base formula
   so we can express them generally as just $$\log$$.
