@@ -2,7 +2,7 @@
 layout: page
 title: "FAQ - Lab 9: Asymptotics"
 categories: lab
-released: false
+released: true
 searchable: true
 ---
 ###Nothing yet!
