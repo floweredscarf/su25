@@ -17,15 +17,6 @@ When opening the project in IntelliJ, if it asks you if you want to override the
 
 ## Intro
 
-Here's an optional [intro video](https://youtu.be/XE5IFn721n8) for the lab with
-some explanations of concepts, examples of usage of methods mentioned in the
-spec, and an intro to the coding portion of the lab. It is a very useful video
- but was recorded in Spring 2020 by the wonderful Michelle. Thus, some of the
- information about assignment logistics is out of date or irrelevant (e.g.
- mentions of a "Project 2", which we have not done). All the information in
- the video is covered in the spec and timestamps for topics are in the video
- description.
-
 So far in this class, you have exclusively made programs whose state only
 persists while the program is running, and all traces of the program disappear
 once the program exits. For example, in Project 1, you created two data
