@@ -25,12 +25,13 @@ Pull the files for lab 9 from the skeleton.
 
 ## Learning Goals
 
-> ““““An engineer will do for a dime what any fool will do for a dollar.”
+> “““““An engineer will do for a dime what any fool will do for a dollar.”
 >
 > --- Arthur M. Wellington”
 > --- Paul Hilfinger”
 > --- Zephyr Omaly”
-> --- Laksith Prabu
+> --- Laksith Prabu”
+> --- Dominic Conricode
 
 Efficiency comes in two flavors:
 
@@ -79,7 +80,7 @@ Another algorithm we might use to solve this problem is called *insertion
 sort*. Insertion sort says to sort a list by looping through our list, taking
 out each item we find, and putting it into a new list in the correct order.
 
-Several websites like [VisuAlgo][], [Sorting.at][], [Sorting Algorithms][], and
+Several websites like [VisuAlgo][], [Sorting Algorithms][], and
 [USF][] have developed some animations that can help us visualize these sorting
 algorithms.  Spend a little time playing around with these demos to get an
 understanding of how much time it takes for bubble sort or insertion sort to
@@ -88,7 +89,6 @@ course, but for now, try to get a feeling of how long each algorithm takes to
 sort a list. How many comparison does each sort need? And how many swaps?
 
 [VisuAlgo]: http://visualgo.net/sorting
-[Sorting.at]: http://sorting.at/
 [Sorting Algorithms]: https://www.toptal.com/developers/sorting-algorithms/
 [USF]: http://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html
 
@@ -127,7 +127,23 @@ java Sorter 300
 Compiling and running `Sorter` like above will tell us exactly how long it
 takes to sort an array of 300 randomly chosen elements.
 
-By compiling and running `Sorter.java` with different arguments, compile it, and then determine the size
+Alternatively, you can set command line arguments in IntelliJ by clicking on the class name next to the green run button on the top left and selecting "Edit Configurations." Next, you can enter command line arguments into the "Program arguments" field.
+
+
+
+<details markdown="block">
+  <summary markdown="block">
+#### Visual guide: adding program arguments
+{: .no_toc}
+  </summary>
+
+![Edit run configurations](img/edit_configurations.png)
+
+![Set command line arguments](img/set_command_line_args.png)
+
+</details>
+
+By compiling and running `Sorter.java` with different arguments, determine the size
 of the smallest array that needs 1 second (1000 milliseconds) to sort. An answer within 100 elements is fine.
 
 You may notice that other students in lab end up with different timing results
@@ -379,7 +395,7 @@ That took... a while.
 > and we'll be relying on the example developed in this and the previous
 > part to build a solid definition for asymptotic notation. If you're
 > not fully comfortable with any of the material so far, now is the perfect
-> time to review it with your partner, an academic intern or your TA!
+> time to review it with someone in your lab or your TA!
 
 Producing step count figures even for those relatively simple program segments took a **lot**
 of work. But normally we don't actually need an exact step count but rather
@@ -389,12 +405,19 @@ In most cases, we only care about what happens for very large $$N$$ as that's
 where the differences between algorithms and their execution time really become
 limiting factors in the scalability of a program.
 
-Why is this? Debate with your partner. Then, highlight the next line for our
-thoughts:
-<span style="color:white">When our $$N$$ is really small, no reasonable function
+Why is this? Debate with someone in your lab. Then, see our thoughts below
+
+<details markdown="block">
+  <summary markdown="block">
+#### Our take
+{: .no_toc}
+  </summary>
+When our $$N$$ is really small, no reasonable function
 will take a long time to execute! Imagine a program that takes $$N^{12}$$ steps
 to execute. When $$N=3$$, it doesn't really matter! But when
-$$N \gg 3$$ ($$N$$ much larger than 3) we might start to get really impatient (or the universe might end)!</span>
+$$N \gg 3$$ ($$N$$ much larger than 3) we might start to get really impatient (or the universe might end)!
+
+</details>
 
 We want to consider what
 types of algorithms would best handle big amounts of data, such as in the
@@ -580,7 +603,7 @@ We can return to our simplified example to again show why we prefer a theta boun
 
 ### Back to Big Theta
 
-Now that we have learned big-Omega and big O notation, where does big theta fall into this? We already said that big theta means *roughly equal*, but what does that mean? Given we have defined big-O as an *upper bound* and big-Omega as a *lower bound*, what happens if the tightest big-O bound
+Now that we have learned big-Omega and big-O notation, where does big theta fall into this? We already said that big theta means *roughly equal*, but what does that mean? Given we have defined big-O as an *upper bound* and big-Omega as a *lower bound*, what happens if the tightest big-O bound
 is in the same family as the tightest big-Omega bound? This means the code is both
 upper bounded **AND** lower bounded by the same family of functions! This is what we mean by **equal**.
 
@@ -594,7 +617,7 @@ A theta bound only exists if the tightest big-O bound is equal to the tightest b
 
 [Chapter 8.4 from Runtime Analysis Subtleties]: https://joshhug.gitbooks.io/hug61b/content/chap8/chap84.html#runtime-analysis-subtleties
 
-Discuss with your partner *why* each of the following claims are true.
+Discuss with someone *why* each of the following claims are true.
 
 - `removeZeroes` is in $$\Omega(1)$$.
 - `removeZeroes` is in $$\Omega(N)$$.
@@ -607,14 +630,14 @@ Discuss with your partner *why* each of the following claims are true.
 
 ### Limit Definition
 
-An alternative, calculus-based [limit definition][] is also sometimes useful,
+An alternative, the calculus-based [limit definition][] is also sometimes useful,
 as you can apply L'Hopital's Rule to derive asymptotic simplifications like
 dropping multiplicative constants and additive lower-order terms.
 
 We generally won't use this too often though, as the first definition provides
 a more useful and intuitive visualization of the lower and upper bounds.
 
-[limit definition]: https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-042j-mathematics-for-computer-science-spring-2015/readings/MIT6_042JS15_Session24.pdf#page=2
+[limit definition]: https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-spring-2015/resources/mit6_042js15_session24/
 
 ## Common Orders of Growth
 
@@ -625,7 +648,7 @@ fastest growth.
 - **Logarithmic time** or proportional to $$\log N$$.
 - **Linear time** or proportional to $$N$$.
 - **Linearithmic time** or proportional to $$N \log N$$.
-- **Quadratic/polynomial time** or proportional to $$N^{2}$$.
+- **Polynomial time** or proportional to $$N^{k}$$ for some constant $$k$$.
 - **Exponential time** or proportional to $$k^{N}$$ for some constant $$k$$.
 - **Factorial time** or proportional to $$N!$$ ($$N$$ factorial).
 
@@ -664,8 +687,8 @@ Change of Base Formula
 Algorithms for which the running time is logarithmic are those where processing
 discards a large proportion of values in each iterations. The binary search
 algorithm is an example. We can use binary search in order to guess a number
-that a person in thinking. In each iteration, the algorithm discards half the
-possible values for the searched-for number, repeatedly dividing the size of
+that a person is thinking of. In each iteration, we guess a number and are told whether the number they're thinking of is higher or lower than our guess. The algorithm then discards half the
+possible values for the searched-for number, repeating the process in the other half. Thus, we continually divide the size of
 the problem by 2 until there is only one value left.
 
 For example, say you started with a range of 1024 numbers in the number
@@ -713,7 +736,7 @@ long repeatedSum(int[] values) {
 ```
 
 In `repeatedSum`, we're given an array of `values` of length N. We want to take
-the repeated sum over the array as defined by the following sequence of `j`'s.
+the repeated sum over the array as defined by the following sequences of values `j` takes on:
 
 - $$0, 1, 2, 3, \cdots, N - 1$$
 - $$1, 2, 3, 4, \cdots, N - 1$$
@@ -768,6 +791,24 @@ described by the following summation:
 $$1 + 2 + 3 + ... + N = \frac{N(N + 1)}{2}$$ or, roughly, $$\frac{N^{2}}{2}$$
 which is in $$\Theta(N^{2})$$. It's useful to know both the formula as well as
 its derivation through the chart above.
+
+## Multivariate Analysis
+
+Sometimes we care about how the runtime of an algorithm will grow with respect to multiple variables. As an example, consider the `rectangle` function below that computes the area of a rectangle with side lengths `N` and `M`.
+
+```java
+int rectangle(int N, int M) {
+    int area = 0;
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < M; j++) {
+            area += 1;
+        }
+    }
+    return area;
+}
+```
+
+Analyzing this algorithm we see that the outer loop runs $$N$$ times and the inner loop runs $$M$$ times per each iteration of the outer loop. Since each iteration of the inner loop only does a constant amount of work, we find the resulting runtime to be in $$\Theta(MN)$$.
 
 ## Analyzing Recursion
 
@@ -824,9 +865,10 @@ we can come up with a scheme to count all the nodes, then we can simply
 multiply by the constant number of operations to find the overall runtime of
 `fib`.
 
-Remember that the number of nodes in a tree is calculated as the branching
-factor, $$b$$, raised to the height of the tree, $$h$$, or $$b^{h}$$. Spend a
-little time thinking about the maximum height of this tree: when does the base
+For a tree with branching
+factor $$b$$ and height $$h$$ we can compute the number of nodes as $$b^{h+1}-1$$ (if we think of the root as height 0). For the sake of asymptotic analysis, it is sufficient to use $$b^{h}$$ or $$b^{h+1}$$ as we will below (as an exercise, can you justify why?).
+
+Spend a little time thinking about the maximum height of this tree: when does the base
 case tell us the tree recursion will stop?
 
 > Note that the counting the number of nodes in this recursive call tree for `fib` ends up being a little tricky because the tree is not symmetric i.e. each of the two recursive calls made from one call to `fib` are not the same.
@@ -850,15 +892,25 @@ Plugging into the formula, we get $$2^{\log_{2} N}$$ nodes which simplifies to
 $$N$$. Therefore, $$N$$ nodes performing a constant amount of work each will
 give us an overall runtime in $$\Theta(N)$$.
 
+There is another way to approach this analysis: going level by level. We can see that on the first level of the recursive call tree there is a single node doing a constant amount of work (1). On the second level we double the number of nodes, but each node still is doing a constant amount of work, so the total work on this layer is 1+1=2. Similarly, we can see that the work on level 3 is 4, on level 4 is 8, and so on following the pattern that the work on level $$i$$ is $$2^{i}$$. From the analysis above, we know that this tree has $$\log_{2} N$$ levels. Now, to figure out the total work done by the function we just need to sum up all the work done by all of the levels:
+
+$$1 + 2 + 4 + \cdots + 2^{(log_{2} N) - 2} + 2^{(log_{2} N) - 1}$$
+
+$$ = 1 + 2 + 4 + \cdots + \frac{N}{4} + \frac{N}{2}$$
+
+This is a geometric sum which is dominated by its last element. Here, the last element is larger than all of the elements that came before it combined (Exercise: prove this to yourself. As a hint, try out the first few powers of 2). This allows us to say the overall runtime is proportional to the last term giving us an overall runtime in $$\Theta(N)$$
+
+It will not always be the case that each layer in a recursive call tree will have the same amount of summed work, nor will it always be the case that each node in a recursive call tree will do the same amount of work. You will have to use the techniques at your disposal to solve these problems, which is a skill that takes time and practice to develop.
+
 In general, for a recursion tree, we can think of the total work as:
 
 $$\sum_{\text{layers}} \frac{\text{nodes}}{\text{layer}
 }\frac{\text{work}}{\text{node}}$$
 
-For `mitosis`, we have $$\lg N$$ layers,
-$$2^i$$ nodes in layer $$i$$, with $$1$$ work per node. Thus we see the summation will be as follows, which matches the quantity we just calculated:
+For `mitosis`, we have $$\log N$$ levels,
+$$2^(i-1)$$ nodes in layer $$i$$, with $$1$$ work per node. Thus we see the summation will be as follows, which matches the quantity we just calculated:
 
-$$\sum_{i = 0}^{\lg N} 2^i (1)$$
+$$\sum_{i = 0}^{\log N} 2^i (1)$$
 
 ## Recap
 
@@ -955,6 +1007,7 @@ individually. Once each part of the tree has been analyzed, we can then
 reassemble all the parts to determine the overall runtime of the function.
 5. If the function has a complicated loop, draw a bar chart to map out how much
    work the body of the loop executes for each iteration.
+6. Only consider what happens for very large N. If you see a statement like `if (N < 1) {return 0}` at the top of an algorithm this doesn't mean that we can immediately say the algorithm has a best case runtime in $$\Theta(1)$$.
 
 ### Useful Formulas
 
@@ -962,7 +1015,7 @@ reassemble all the parts to determine the overall runtime of the function.
 - There are $$N$$ terms in the sequence $$1, 2, 3, 4, \cdots, N$$.
 - $$1 + 2 + 4 + 8 + \cdots + N$$ is in $$\Theta(N)$$.
 - There are $$\log N$$ terms in the sequence $$1, 2, 4, 8, \cdots, N$$.
-- The number of nodes in a complete tree, $$N$$, is equal to $$b^h$$ where
+- The number of nodes in a complete tree, $$N$$, is approximately $$b^h$$ where
   $$b$$ is the *branching factor* and $$h$$ is the *height* of the tree.
 - All logarithms are proportional to each other by the Change of Base formula
   so we can express them generally as just $$\log$$.
