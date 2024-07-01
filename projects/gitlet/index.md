@@ -170,7 +170,7 @@ head pointer is the pointer at the front of the current branch.
 
 That's it for our brief overview of the Gitlet system! Don't worry if
 you don't fully understand it yet; the section above was just to give
-you a high level picture of what its meant to do. A detailed spec of
+you a high level picture of what it's meant to do. A detailed spec of
 what you're supposed to do for this project follows this section.
 
 But a last word here: commit trees are
