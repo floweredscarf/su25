@@ -2,7 +2,7 @@
 layout: page
 title: "Capers Design Document Example" # Title of page.
 categories: proj
-released: false # you have to also change this to true to release.
+released: true
 searchable: true
 ---
 
