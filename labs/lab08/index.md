@@ -544,6 +544,22 @@ description of what they do.
 
 Each FIXME should take at most around 8 lines, but many are fewer.
 
+### Useful `Utils` Functions
+
+For this lab and Gitlet, we provide you with a `Utils` class that has many
+useful helper functions for file operations. Some of the methods that you
+may find useful are:
+
+-   `writeContents` - writes out strings/byte arrays to a file
+-   `readContentsAsString` - reads in a file as a string
+-   `readContents` - reads in a file as a byte array
+-   `writeObject` - writes a serializable object to a file
+-   `readObject` - reads in a serializable object from a file. You can get a
+    `Class` object by using `<Class name>.class`, e.g. `Dog.class`.
+-   `join` - joins together strings or files into a path. e.g.
+    `Utils.join(".capers", "dogs")` would give you a `File` object with the path
+    of `.capers/dogs`
+
 ### Running from Terminal
 
 The easiest way to run and test your program is to compile it in terminal with
@@ -564,22 +580,6 @@ spaces as the argument, you will want to put it in quotes, e.g.
 
 If running in IntelliJ, you will need to use Run > Edit Configurations >
 Program Arguments to add the command line arguments.
-
-### Useful `Utils` Functions
-
-For this lab and Gitlet, we provide you with a `Utils` class that has many
-useful helper functions for file operations. Some of the methods that you
-may find useful are:
-
--   `writeContents` - writes out strings/byte arrays to a file
--   `readContentsAsString` - reads in a file as a string
--   `readContents` - reads in a file as a byte array
--   `writeObject` - writes a serializable object to a file
--   `readObject` - reads in a serializable object from a file. You can get a
-    `Class` object by using `<Class name>.class`, e.g. `Dog.class`.
--   `join` - joins together strings or files into a path. e.g.
-    `Utils.join(".capers", "dogs")` would give you a `File` object with the path
-    of `.capers/dogs`
 
 ### Command-Line Testing
 
