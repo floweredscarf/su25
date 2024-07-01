@@ -138,6 +138,7 @@
     - title: Gitlet Introduction
       type: Lecture, Lab
       date: 2024-07-01
+      url: labs/lab08
       description: >
         Dwinelle 155 10am - 11am
         <br>
@@ -147,8 +148,8 @@
           |
         **Readings:** [Gitlet Intro Slides](https://cdn-uploads.piazza.com/attach/k5eevxebzpj25b/jqr7jm9igtc7l5/k97ipfmgmb3n/Gitlet_Slides.pdf)
       footer: >
-        Project 2: Gitlet Released
-      published: false
+        [Project 2: Gitlet Released](/su24/projects/gitlet)
+      published: true
     - title: Asymptotics and Measuring Code Efficiency
       type: Lecture, Lab
       date: 2024-07-02
