@@ -1288,6 +1288,7 @@ It will test:
   - `restore -- [file name]`
   - `restore [commit id] --  [file name]`
   - `log`
+- You pass style checks
 
 In addition, it will comment on (but not score):
 
