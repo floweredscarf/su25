@@ -1097,7 +1097,7 @@ bit more than most students.
       we do nothing; the merge is complete, and the operation ends with the
       message `Given branch is an ancestor of the current branch.`
       If the split point is the current branch, then the effect is to
-      check out the given branch, and the operation
+      switch to the given branch, and the operation
       ends after printing the message `Current branch fast-forwarded.`
       Otherwise, we continue
       with the steps below.
