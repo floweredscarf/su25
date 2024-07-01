@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Partnership Guide
-author: Zepher Omaly, Laksith Prabu 
+author: Zepher Omaly, Laksith Prabu, Alex Kassil
 tags: [Guide]
 released: true
 ---
@@ -16,6 +16,19 @@ Further, you learn more than you would on your own through collaboration.
 - Working with someone else helps you identify your own strengths and weaknesses.
 
 Finally, collaboration not only can be helpful to learning, but fun! You can make new friends who will make good partners in future courses and supporters both on campus and beyond.
+
+## Establishing a partnership
+
+1. Go to [https://beacon.datastructur.es/partnerships/](https://beacon.datastructur.es/partnerships/) and select "Add a partner".
+2. Read the *whole* partnership collaboration guide (this guide!!)
+3. Get your partners CS61BL github id (for example, if your partner's github repository is at su24-s1, the id is `s1`).
+4. Generate and share the magic link with the partner.
+5. This will create a new repository `su24-p***` (Notice the p for partner!) that both partners have access to. Set it up the same way you set up your individual repository in [lab01](../labs/lab01), and collaborate together.
+6. Add your partner on gradescope for any submissions you make.
+
+## Where are partners allowed?
+
+Project 2 and Project 3.
 
 
 ## What is the best way to collaborate?
@@ -73,19 +86,6 @@ B. We do not recommend doing this because each of you will only learn part of
 the material for that assignment. This will leave you less prepared on exams
 and future assignments.
 
-Taking turns on assignments
-: In this work style, in a pair of students named A and B, student A would do
-Homework X, then B would do Homework X+1, A would do Homework X+2, and so on.
-You should not do this, since each partner is expected to make a significant
-contribution toward solving the assignment.  You should not claim to be part of
-a pair submission if you did not contribute significantly to help solve that
-problem. Moreover, your TAs may ask you to explain aspects of the
-submission during lab check-offs. By doing this each of you will only learn
-half of the course material in detail. The assignments are by far the best
-vehicle for you to learn how to program effectively and truly come to
-understand the course material. Only completing half of them will leave you
-much less prepared to do well on exams and future assignments.
-
 One person does all of the work
 : You should not do this, since each partner is expected to make a significant
 contribution toward solving each assignment. You should not claim to be part of
@@ -99,7 +99,7 @@ material.
 Our suggested partnership workflow
 -----------------------------------------------------
 
-For all assignments and projects, we recommend doing pair programming for as much as possible. This means that you and your partner should work togeather in person (or be on a Zoom call),
+For all projects, we recommend doing pair programming for as much as possible. This means that you and your partner should work togeather in person (or be on a Zoom call),
 where one person is typing and both are collectively deciding what to write. Some benefits
 of pair programming are:
 * Both partners are on the same page and understand all parts of the project
@@ -132,40 +132,35 @@ use force push, even if a post you found on Stack Overflow says to do it!**
 
 ### Are there any constraints about whom I can work with?
 
-Your partner must be another student in your lab section and who is
-taking the course for the same grading basis (e.g. letter grade, P/NP, Audit).
-If your desired partner is in a different section, then one of you should
-request to switch into their partner's section so that you may attend together.
+No, but we highly recommend it is someone in your lab section, as then you can both ask your TA questions about the project, and work together when we give time in labs to work on the projects.
 
 ### How can I find a partner?
 
-The first week your lab TA will have you work with different people in your lab section
-so that you can get to know a few people. Starting with week two, you will choose
-a partner to work with. You may also ask the lab staff if you need help finding someone else in
-your section to partner with.
+Find someone in your lab section to partner with. You can also post on Edstem looking for a partner, or ask your Lab TA for help finding a partner.
 
 ### How do we submit/get grades as a pair?
 
 One partner submits via the Gradescope UI and then selects their partner for the submission. Note that, the submitting partner **must** add their partner to the final submission for every assignment, as partnerships do not carry over between submission in Gradescope. **Please do not make seperate individual submissions on gradescope with the same partner repo as you'll be flagged for misconduct but our auto-grading system.**
 ![Add Partner](img/gradescope_p1.png)
 ![Select Partner](img/gradescope_p2.png)
-### For how long am I committed to working with my partner?
-You can change partners for every lab assignment and project.  
 
 ### Can I dissolve my partnership?
 Yes, you can! If you're having difficulty working with your partner please talk to your TA about it and they will guide you on how you can dissolve a partnership to either work alone or setup a new one. 
-Barring extreme circumstances, you cannot be assigned a new partner during a project. Each project lasts only a couple weeks, so time is of the essence.
+Barring extreme circumstances, you cannot be assigned a new partner during a project. Each partner project lasts only a couple weeks, so time is of the essence.
 Hopefully, even if there is some dissatisfaction with your partner, the two of you
 can still complete the work and learn.
 If you are having trouble working
 with your partner, please talk to your TA as soon as possible; we want to make things right in the best
 way possible.
 
+Dissolving a partnership will result in each partner needing to submit their own individual submission. 
+
+
 ### May I work alone?
 Yes you may choose to work alone! However, remember that CS61BL is a class designed for partner-based work and you might find some of the later assignments more time consuming than intended when working alone. 
 
 ### May we work in a group of three?
-No. TAs with an odd number of student in their lab will choose who the group of three is if necessary. 
+No.
 
 ## My partner was a bad partner...
 

@@ -46,6 +46,12 @@ content of the assignment has been slightly modified. " %}
 As more resources are created, we'll add them here, so refresh often! Shout out to all
 of the absolutely amazing CS61B(L) staff who created these wonderful resources throughout the years!
 
+## Partnerships
+
+You are either allowed to work on this project alone (using your su24-s\*\*\* repository), or with one partner (using a new partnership repository su24-p\*\*\*).
+
+See the [guide here](../../guides/partnership-guide) for how establish a partnership.
+
 ## Gitlet Summary
 
 ### Deadlines
