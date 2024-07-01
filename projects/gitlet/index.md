@@ -986,9 +986,9 @@ branch is the current branch (see Failure cases below).
 
 - **Runtime**: Should be constant relative to any significant measure.
 
-- **Failure cases**: If no branch with that name exists, print No such branch exists. If that branch is the current branch,
+- **Failure cases**: If no branch with that name exists, print `No such branch exists.` If that branch is the current branch,
 print No need to switch to the current branch. If a working file is untracked in the current branch and would be overwritten 
-by the switch, print There is an untracked file in the way; delete it, or add and commit it first. and exit; perform this 
+by the switch, print `There is an untracked file in the way; delete it, or add and commit it first.` and exit; perform this 
 check before doing anything else. Do not change the CWD.
 
 - **Dangerous?**: No
