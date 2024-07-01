@@ -984,7 +984,8 @@ at the end of this command, the given branch will now be considered the current 
 in the current branch but are not present in the checked-out branch are deleted. The staging area is cleared, unless the checked-out 
 branch is the current branch (see Failure cases below).
 
-- **Runtime**: Should be constant relative to any significant measure.
+- **Runtime**: Should be constant relative to the number of branches, and linear in the number of files tracked by the Commit being
+switched to.
 
 - **Failure cases**: If no branch with that name exists, print `No such branch exists.` If that branch is the current branch,
 print `No need to switch to the current branch.` If a working file is untracked in the current branch and would be overwritten 
