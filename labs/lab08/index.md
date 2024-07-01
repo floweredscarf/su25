@@ -15,6 +15,8 @@ adding "/faq" to the end of the URL. The FAQ for Lab 8 is located
 ## Before you Begin
 When opening the project in IntelliJ, if it asks you if you want to override the .idea folder, do not override it. We have provided you with an IntelliJ configuration for this lab.
 
+If you are having issues with your Java setup, please refer to [Lab 01](../lab01/index.md) or ask your TA for help.
+
 ## Intro
 
 So far in this class, you have exclusively made programs whose state only
@@ -248,7 +250,7 @@ arguments, simply add them in the call to `java`:
 $ java capers.Main story "this is a single argument"
 ```
 
-As demonstrated, you can have a space in one of your elements of `String[] args`
+As demonstrated, you can have spaces in one of your elements of `String[] args`
 by wrapping that argument in quotation marks.
 
 In the above execution, the `String[] args` variable had these contents:
@@ -752,7 +754,7 @@ the [git WTFs](https://cs61bl.org/su24/guides/git-wtfs) guide.
 
 You should have made changes in `capers/Main.java` and `capers/Dog.java` such that all functionality is implemented as specified in the "Suggested Order of Completion" section.
 **You should not be submitting a .capers data folder. Do not use `git add .` or
-`git add -A` to add your files. git add your files one by one**. One partner
+`git add -A` to add your files. git add your files one by one**. You
 can submit the lab as always, through the Gradescope interface after
 committing and pushing such as:
 
@@ -761,7 +763,6 @@ git commit -m "submitting lab08. So ready for Gitlet!!"
 git push origin main
 ```
 
-You can then go to Gradescope, submit, and add your partner to your submission.
 There is no style check for this lab.
 
 ## Credits
