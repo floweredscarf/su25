@@ -16,7 +16,7 @@ Because it's *so* much easier for students to collaborate on.
 Please use the following format for your Gitlet design document. We suggest that your design
 document be written in
 [Markdown](https://www.markdownguide.org/basic-syntax/), a language that allows
-you to nicely format and style a text file.
+you to nicely format and style a text file. We provided a starting off point for your design doc in `proj2/gitlet-design.md`. 
 Organize your design document in a way that will make it easy for you
 or a course-staff member to read.  
 
