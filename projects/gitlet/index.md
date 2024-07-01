@@ -481,7 +481,7 @@ It will have a single branch: `main`, which
 
 - **Our line count**: ~20
 
-- **Suggested Lecture(s)**: Lecture 3 (Gitlet and SWE, Inheritance)
+- **Suggested Lecture(s)**: Lecture 8 (Gitlet Introduction)
 
 ----------------------------------------
 
@@ -572,7 +572,7 @@ It will have a single branch: `main`, which
 
 - **Our line count**: ~35
 
-- **Suggested Lecture(s)**: Lecture 3 (Gitlet and SWE, Inheritance)
+- **Suggested Lecture(s)**: Lecture 8 (Gitlet Introduction)
 
 Here's a picture of before-and-after commit:
 
