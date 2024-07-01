@@ -591,7 +591,7 @@ Here's a picture of before-and-after commit:
 
 - **Runtime**: Should run in constant time relative to any significant measure.
 
-- **Failure cases**: If the file is neither staged nor tracked by the
+- **Failure cases**: If the file is not staged for addition and not tracked by the
   head commit, print the error message `No reason to remove the file.`
 
 - **Dangerous?**: Yes (although if you use our utility methods, you will only
