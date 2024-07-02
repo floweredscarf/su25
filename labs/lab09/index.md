@@ -274,7 +274,7 @@ condition, and the increment) count too!
 
 Now consider code for the `remove` method, which removes the item at a given position of an array `values` by shifting over all the remaining elements. We notice here that things become slightly more complicated as the number of steps performed matters both on `pos` and `len`, the number of items contained in `values`. We now count the number of steps performed in terms of these two variables.
 
-> This example assumes that you are using an array to back an some kind of list. This idea is similar to Project 1, but this implementation is not circular. Also assume that the length of the underlying array is much larger than length and will not have an effect on the runtime of this program.
+> This example assumes that you are using an array to back some kind of list. This idea is similar to Project 1, but this implementation is not circular. Also assume that the length of the underlying array is much larger than length and will not have an effect on the runtime of this program.
 >
 > The list will have the instance variables `values` which is the array backing the list and `len` which corresponds to the number of items actually contained in the list (not necessarily the same as `values.length`).
 
@@ -318,7 +318,7 @@ requires in total:
 If all these operations take roughly the same amount of time, the total is `5 *
 (len - pos)`. Notice how we write the number of statements as a *function of the input arguments*.
 
-> Although `len` is not a parameter of the `remove` method it is still considered to be an input as its value effects the number of steps.
+> Although `len` is not a parameter of the `remove` method it is still considered to be an input as its value affects the number of steps.
 >
 > More formally we can also see that since `remove` is a non-static method, we are implicitly passing in the variable `this` to our `remove` method. This means that the variables `this.values` and `this.length` are also passed in.
 
