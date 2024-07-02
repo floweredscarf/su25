@@ -144,7 +144,7 @@ Alternatively, you can set command line arguments in IntelliJ by clicking on the
 </details>
 
 By compiling and running `Sorter.java` with different arguments, determine the size
-of the smallest array that needs 1 second (1000 milliseconds) to sort. An answer within 100 elements is fine.
+of the smallest array that needs 1 second (1000 milliseconds) to sort.
 
 You may notice that other students in lab end up with different timing results
 and a different number of elements. What factors might contribute to these differences?
@@ -652,6 +652,8 @@ fastest growth.
 - **Exponential time** or proportional to $$k^{N}$$ for some constant $$k$$.
 - **Factorial time** or proportional to $$N!$$ ($$N$$ factorial).
 
+![Orders of Growth](img/orders-of-growth.png)
+
 ### Logarithmic Algorithms
 
 First, if you are shaky on the properties of logarithms, I suggest looking through
@@ -839,7 +841,7 @@ Instead, let's try another strategy: drawing call trees. Like the charting
 approach we used for iteration earlier, the *call tree* will reduce the
 complexity of the problem and allow us to find the overall runtime of the
 program on large values of $$N$$ by taking the tree recursion out of the
-problem. Consider the call tree for `fib` below.
+problem. We will draw each call to the function as a node with its input size within the node, and recursive calls are drawn as children of a node. Consider the call tree for `fib` below.
 
 ```java
 int fib(int N) {
@@ -857,7 +859,7 @@ calls to `fib(n - 1)` and `fib(n - 2)` are modeled as the two *children* of the
 root node. We say that this tree has a *branching factor* of two as each node
 contains two children. It takes a constant number of instructions to evaluate
 the conditional, addition operator, and the return statement as denoted by the
-`1`.
+`1` to the upper-right of each node. (Note that you may see call trees with Nodes' input size and work performed in opposite positions. Be sure to understand what the numbers in your call tree represent.)
 
 We can see this pattern occurs for all nodes in the tree: each node performs
 the same constant number of operations if we don't consider recursive calls. If
@@ -938,7 +940,7 @@ function of its input size. For example, inserting at the beginning of
 ArrayList on an old computer might take $$R(N) = 0.0001N$$ seconds, where $$N$$
 is the size of the list.
 
-    For example, if the runtime of two algorithms is $$R_1(N) = N^2$$, and
+For example, if the runtime of two algorithms is $$R_1(N) = N^2$$, and
 $$R_2(N) = 5000 + N$$, we'd say algorithm $$R_2$$ is better, even though
 $$R_1$$ is much faster for small $$N$$.
 
@@ -1001,13 +1003,13 @@ in the code that might invalidate our findings for larger inputs?
 observations.
 4. If the function is recursive, draw a call tree to map out the recursive
    calls. Within each node, denote how much work that specific node does. Then,
-   note the total (sum) work done on each *level*. This breaks the problem down into
-   smaller parts that we can analyze
-individually. Once each part of the tree has been analyzed, we can then
-reassemble all the parts to determine the overall runtime of the function.
+   note the total (sum) work done on each *level*. You should also find the height
+   of the recursive call tree. This breaks the problem down into
+   smaller parts that we can analyze individually. Once each part of the tree has been analyzed, we can then
+   reassemble all the parts to determine the overall runtime of the function.
 5. If the function has a complicated loop, draw a bar chart to map out how much
    work the body of the loop executes for each iteration.
-6. Only consider what happens for very large N. If you see a statement like `if (N < 1) {return 0}` at the top of an algorithm this doesn't mean that we can immediately say the algorithm has a best case runtime in $$\Theta(1)$$.
+6. **Only consider what happens for very large N.** If you see a statement like `if (N < 1) {return 0}` at the top of an algorithm this doesn't mean that we can immediately say the algorithm has a best case runtime in $$\Theta(1)$$. This is a *very* common mistake.
 
 ### Useful Formulas
 
@@ -1028,7 +1030,7 @@ visual model! I personally recommend Desmos or WolframAlpha.
 A quick recap of what you need to do to finish today's lab.
 
 - Look through the `Timer` class and try timing the algorithm in `Sorter.java`
-  for different inputs. Discuss with your neighbors what you and your partner
+  for different inputs. Discuss with your neighbors what you
 came up with.
 - Read through the content on asymptotic analysis (big-theta, O, and omega)
   focusing on how to handle logarithmic, iterative, and recursive algorithms.
