@@ -18,13 +18,74 @@ As usual, pull the skeleton code.
 
 ## Learning Goals
 
-In this lab, you'll learn about building data structures
+In this lab, you'll continue to practice coding up binary trees and learn about building data structures
 that rely on comparisons. This
 technique will be widely used in the remainder of the class.
 
 Please note that if you are on a Windows computer, the "\n" newline characters in
 `BinaryTreeTest.java` should be replaced with "\r\n" for local testing. 
 This issue will not affect the AG.
+
+## Recall: Binary Trees
+
+We'll now move on from trees and explore a common, special case of the tree data
+structure: the binary tree. A binary tree is a tree in which each node has at
+most two children. Normally it has two separate variables `left` and
+`right` for the left and right children of the binary tree.
+
+## Exercise: `BinaryTree`
+
+The file `BinaryTree.java` defines a `BinaryTree` class and a `TreeNode` class.
+First, read over the code and then implement the following three methods.
+
+Note: you may use the `sampleTreeX` methods to generate sample trees to test the
+functions that you write. In addition, consider writing your own methods to
+generate more trees to test your code.
+
+### Exercise 1: `height`
+
+First, if you have a partner, switch which partner is coding if you haven't recently.
+
+Implement the `height` method in the `BinaryTree` class. The height of an empty tree is
+0; the height of a one-node tree is 1; the height of any other tree is 1 + the
+greater of the heights of the two children.
+
+### Exercise 2: `isCompletelyBalanced`
+
+Add an `isCompletelyBalanced` method for the `BinaryTree` class. A tree with no
+nodes and a tree with one node are both completely balanced; any other tree is
+completely balanced if and only if the height of its left child is equal to the
+height of its right child, and its left and right children are also completely
+balanced. Make sure you test your code with trees of height 3 or more to ensure
+that your code works!
+
+### Exercise 3: `fibTree`
+
+This exercise deals with "Fibonacci trees", trees that represents the recursive
+call structure of the Fibonacci computation. (The Fibonacci sequence is defined
+as follows: $$F_0 = 0, F_1 = 1$$, and each subsequent number in the sequence is
+the sum of the previous two.) The root of a Fibonacci tree should contain the
+value of the `N`th Fibonacci number, the left subtree should be the tree
+representing the computation of the `N-1`th Fibonacci number, and the right
+subtree should be the tree representing the computation of the `N-2`th
+Fibonacci number. The two exceptions to this rule are when we pass in 0 or 1 to
+the `fibTree` method. The first few Fibonacci trees appear below.
+
+| Function     | Tree                           |
+|--------------|--------------------------------|
+| `fibtree(0)` |![fibtree-0](img/fibtree-0.png) |
+| `fibtree(1)` |![fibtree-1](img/fibtree-1.png) |
+| `fibtree(2)` |![fibtree-2](img/fibtree-2.png) |
+| `fibtree(3)` |![fibtree-3](img/fibtree-3.png) |
+| `fibtree(4)` |![fibtree-4](img/fibtree-4.png) |
+| `fibtree(5)` |![fibtree-5](img/fibtree-5.png) |
+
+Write the static `fibTree` method in `BinaryTree` that takes in a non-negative
+integer `N`, and returns a `BinaryTree` that stores the `N`-th Fibonacci value
+using the representation above.
+
+Remember how we've been delegating structuring all our methods so far for the
+best code!
 
 ## Comparisons
 
