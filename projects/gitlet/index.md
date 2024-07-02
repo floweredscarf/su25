@@ -371,7 +371,7 @@ satisfy:
 - One clean strategy for handling exceptions in this project is with a 
   [`try-catch` block](https://www.w3schools.com/java/java_try_catch.asp). 
   Normally, Java would stop the program and generate an error message if an exception is thrown. 
-  If an excpetion is thrown within a `try` block, however, a `catch` block allows you to
+  If an exception is thrown within a `try` block, however, a `catch` block allows you to
   execute some code in response. We have provided a class for exceptions
   called `GitletException` in the skeleton files. If you would like to throw an exception with
   a particular message, you can use `throw new GitletException("message here")`. To print the

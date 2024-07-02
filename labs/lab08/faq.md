@@ -86,3 +86,11 @@ filesystem by writing those changes back into the appropriate files.
 
 This is a spec and unit test shortcoming. Delete the line you added in `capers.Main`,
 `System.out.println("args: " + Arrays.toString(args));`.
+
+### Why is my CapersTest.java file red? ###
+
+Sometimes, IntelliJ might not properly recognize your testing folder, which is usually labeled as `tests/`. Click on and highlight the `CapersTest.java` file, click on File -> Project Structure -> Libraries, and add `library-su24`.
+
+### My JDK is not being recognized! ###
+
+If you are using a JDK > 21, change your JDK and level to any version between 17 and 21. After doing so, if this error still persists, click on File -> Invalidate Caches and reset.
