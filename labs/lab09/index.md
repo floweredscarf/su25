@@ -790,8 +790,8 @@ $$\Theta(N^{2})$$.
 We can verify this result mathematically by noticing that the sequence can be
 described by the following summation:
 
-$$1 + 2 + 3 + ... + N = \frac{N(N + 1)}{2}$$ or, roughly, $$\frac{N^{2}}{2}$$
-which is in $$\Theta(N^{2})$$. It's useful to know both the formula as well as
+$$1 + 2 + 3 + ... + N = \frac{N(N + 1)}{2}$$,
+which after dropping lower order terms and multiplicative constants we see is in $$\Theta(N^{2})$$. It's useful to know both the formula as well as
 its derivation through the chart above.
 
 ## Multivariate Analysis
@@ -859,7 +859,7 @@ calls to `fib(n - 1)` and `fib(n - 2)` are modeled as the two *children* of the
 root node. We say that this tree has a *branching factor* of two as each node
 contains two children. It takes a constant number of instructions to evaluate
 the conditional, addition operator, and the return statement as denoted by the
-`1` to the upper-right of each node. (Note that you may see call trees with Nodes' input size and work performed in opposite positions. Be sure to understand what the numbers in your call tree represent.)
+`1` to the upper-right of each node. (Note that you may see call trees with nodes' input size and work performed in opposite positions. Be sure to understand what the numbers in your call tree represent.)
 
 We can see this pattern occurs for all nodes in the tree: each node performs
 the same constant number of operations if we don't consider recursive calls. If
@@ -938,9 +938,7 @@ often say that one algorithm is better than another simply because of how it
 scales. By scaling, we mean how the runtime of a piece of code grows as a
 function of its input size. For example, inserting at the beginning of
 ArrayList on an old computer might take $$R(N) = 0.0001N$$ seconds, where $$N$$
-is the size of the list.
-
-For example, if the runtime of two algorithms is $$R_1(N) = N^2$$, and
+is the size of the list. For example, if the runtime of two algorithms is $$R_1(N) = N^2$$, and
 $$R_2(N) = 5000 + N$$, we'd say algorithm $$R_2$$ is better, even though
 $$R_1$$ is much faster for small $$N$$.
 
