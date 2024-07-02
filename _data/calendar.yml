@@ -162,7 +162,7 @@
           [Video TBD]()
           |
         **Textbook:** [Ch 13](https://cs61b-2.gitbook.io/cs61b-textbook/13.-asymptotics-i) [Ch 15](https://cs61b-2.gitbook.io/cs61b-textbook/15.-asymptotics-ii) 
-      published: false
+      published: true
     - title: Introduction to Trees and Traversals
       type: Lecture, Lab
       date: 2024-07-03
