@@ -15,16 +15,9 @@ adding "/faq" to the end of the URL. The FAQ for Lab 8 is located
 ## Before you Begin
 When opening the project in IntelliJ, if it asks you if you want to override the .idea folder, do not override it. We have provided you with an IntelliJ configuration for this lab.
 
-## Intro
+If you are having issues with your Java setup, please refer to [Lab 01](../lab01/index.md) or ask your TA for help.
 
-Here's an optional [intro video](https://youtu.be/XE5IFn721n8) for the lab with
-some explanations of concepts, examples of usage of methods mentioned in the
-spec, and an intro to the coding portion of the lab. It is a very useful video
- but was recorded in Spring 2020 by the wonderful Michelle. Thus, some of the
- information about assignment logistics is out of date or irrelevant (e.g.
- mentions of a "Project 2", which we have not done). All the information in
- the video is covered in the spec and timestamps for topics are in the video
- description.
+## Intro
 
 So far in this class, you have exclusively made programs whose state only
 persists while the program is running, and all traces of the program disappear
@@ -257,7 +250,7 @@ arguments, simply add them in the call to `java`:
 $ java capers.Main story "this is a single argument"
 ```
 
-As demonstrated, you can have a space in one of your elements of `String[] args`
+As demonstrated, you can have spaces in one of your elements of `String[] args`
 by wrapping that argument in quotation marks.
 
 In the above execution, the `String[] args` variable had these contents:
@@ -553,6 +546,22 @@ description of what they do.
 
 Each FIXME should take at most around 8 lines, but many are fewer.
 
+### Useful `Utils` Functions
+
+For this lab and Gitlet, we provide you with a `Utils` class that has many
+useful helper functions for file operations. Some of the methods that you
+may find useful are:
+
+-   `writeContents` - writes out strings/byte arrays to a file
+-   `readContentsAsString` - reads in a file as a string
+-   `readContents` - reads in a file as a byte array
+-   `writeObject` - writes a serializable object to a file
+-   `readObject` - reads in a serializable object from a file. You can get a
+    `Class` object by using `<Class name>.class`, e.g. `Dog.class`.
+-   `join` - joins together strings or files into a path. e.g.
+    `Utils.join(".capers", "dogs")` would give you a `File` object with the path
+    of `.capers/dogs`
+
 ### Running from Terminal
 
 The easiest way to run and test your program is to compile it in terminal with
@@ -573,22 +582,6 @@ spaces as the argument, you will want to put it in quotes, e.g.
 
 If running in IntelliJ, you will need to use Run > Edit Configurations >
 Program Arguments to add the command line arguments.
-
-### Useful `Utils` Functions
-
-For this lab and Gitlet, we provide you with a `Utils` class that has many
-useful helper functions for file operations. Some of the methods that you
-may find useful are:
-
--   `writeContents` - writes out strings/byte arrays to a file
--   `readContentsAsString` - reads in a file as a string
--   `readContents` - reads in a file as a byte array
--   `writeObject` - writes a serializable object to a file
--   `readObject` - reads in a serializable object from a file. You can get a
-    `Class` object by using `<Class name>.class`, e.g. `Dog.class`.
--   `join` - joins together strings or files into a path. e.g.
-    `Utils.join(".capers", "dogs")` would give you a `File` object with the path
-    of `.capers/dogs`
 
 ### Command-Line Testing
 
@@ -761,7 +754,7 @@ the [git WTFs](https://cs61bl.org/su24/guides/git-wtfs) guide.
 
 You should have made changes in `capers/Main.java` and `capers/Dog.java` such that all functionality is implemented as specified in the "Suggested Order of Completion" section.
 **You should not be submitting a .capers data folder. Do not use `git add .` or
-`git add -A` to add your files. git add your files one by one**. One partner
+`git add -A` to add your files. git add your files one by one**. You
 can submit the lab as always, through the Gradescope interface after
 committing and pushing such as:
 
@@ -770,7 +763,6 @@ git commit -m "submitting lab08. So ready for Gitlet!!"
 git push origin main
 ```
 
-You can then go to Gradescope, submit, and add your partner to your submission.
 There is no style check for this lab.
 
 ## Credits

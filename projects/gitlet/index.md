@@ -46,6 +46,12 @@ content of the assignment has been slightly modified. " %}
 As more resources are created, we'll add them here, so refresh often! Shout out to all
 of the absolutely amazing CS61B(L) staff who created these wonderful resources throughout the years!
 
+## Partnerships
+
+You are either allowed to work on this project alone (using your su24-s\*\*\* repository), or with one partner (using a new partnership repository su24-p\*\*\*).
+
+See the [guide here](../../guides/partnership-guide) for how establish a partnership.
+
 ## Gitlet Summary
 
 ### Deadlines
@@ -170,7 +176,7 @@ head pointer is the pointer at the front of the current branch.
 
 That's it for our brief overview of the Gitlet system! Don't worry if
 you don't fully understand it yet; the section above was just to give
-you a high level picture of what its meant to do. A detailed spec of
+you a high level picture of what it's meant to do. A detailed spec of
 what you're supposed to do for this project follows this section.
 
 But a last word here: commit trees are
@@ -365,7 +371,7 @@ satisfy:
 - One clean strategy for handling exceptions in this project is with a 
   [`try-catch` block](https://www.w3schools.com/java/java_try_catch.asp). 
   Normally, Java would stop the program and generate an error message if an exception is thrown. 
-  If an excpetion is thrown within a `try` block, however, a `catch` block allows you to
+  If an exception is thrown within a `try` block, however, a `catch` block allows you to
   execute some code in response. We have provided a class for exceptions
   called `GitletException` in the skeleton files. If you would like to throw an exception with
   a particular message, you can use `throw new GitletException("message here")`. To print the
@@ -481,7 +487,7 @@ It will have a single branch: `main`, which
 
 - **Our line count**: ~20
 
-- **Suggested Lecture(s)**: Lecture 3 (Gitlet and SWE, Inheritance)
+- **Suggested Lecture(s)**: Lecture 8 (Gitlet Introduction)
 
 ----------------------------------------
 
@@ -572,7 +578,7 @@ It will have a single branch: `main`, which
 
 - **Our line count**: ~35
 
-- **Suggested Lecture(s)**: Lecture 3 (Gitlet and SWE, Inheritance)
+- **Suggested Lecture(s)**: Lecture 8 (Gitlet Introduction)
 
 Here's a picture of before-and-after commit:
 
@@ -591,7 +597,7 @@ Here's a picture of before-and-after commit:
 
 - **Runtime**: Should run in constant time relative to any significant measure.
 
-- **Failure cases**: If the file is neither staged nor tracked by the
+- **Failure cases**: If the file is not staged for addition and not tracked by the
   head commit, print the error message `No reason to remove the file.`
 
 - **Dangerous?**: Yes (although if you use our utility methods, you will only
@@ -984,11 +990,12 @@ at the end of this command, the given branch will now be considered the current 
 in the current branch but are not present in the checked-out branch are deleted. The staging area is cleared, unless the checked-out 
 branch is the current branch (see Failure cases below).
 
-- **Runtime**: Should be constant relative to any significant measure.
+- **Runtime**: Should be constant relative to the number of branches, and linear in the number of files tracked by the Commit being
+switched to.
 
-- **Failure cases**: If no branch with that name exists, print No such branch exists. If that branch is the current branch,
-print No need to switch to the current branch. If a working file is untracked in the current branch and would be overwritten 
-by the switch, print There is an untracked file in the way; delete it, or add and commit it first. and exit; perform this 
+- **Failure cases**: If no branch with that name exists, print `No such branch exists.` If that branch is the current branch,
+print `No need to switch to the current branch.` If a working file is untracked in the current branch and would be overwritten 
+by the switch, print `There is an untracked file in the way; delete it, or add and commit it first.` and exit; perform this 
 check before doing anything else. Do not change the CWD.
 
 - **Dangerous?**: No
@@ -1097,7 +1104,7 @@ bit more than most students.
       we do nothing; the merge is complete, and the operation ends with the
       message `Given branch is an ancestor of the current branch.`
       If the split point is the current branch, then the effect is to
-      check out the given branch, and the operation
+      switch to the given branch, and the operation
       ends after printing the message `Current branch fast-forwarded.`
       Otherwise, we continue
       with the steps below.
@@ -1281,6 +1288,7 @@ It will test:
   - `restore -- [file name]`
   - `restore [commit id] --  [file name]`
   - `log`
+- You pass style checks
 
 In addition, it will comment on (but not score):
 
