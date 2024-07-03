@@ -2,7 +2,7 @@
 layout: page
 title: "Lab 11: Binary Search Trees"
 tags: [Lab, Java, Binary Search Trees, Binary Trees]
-released: false
+released: true
 searchable: true
 ---
 
@@ -115,7 +115,7 @@ class.
 
 ## Binary Search
 
-Suppose we have a sorted array of *comparable* elements, and we want to see if a certain element is in the array. How can we use `compareTo()` to achieve an efficient implementation? Before reading the next section, pause here and discuss approaches with your partner!
+Suppose we have a sorted array of *comparable* elements, and we want to see if a certain element is in the array. How can we use `compareTo()` to achieve an efficient implementation? Before reading the next section, pause here and discuss approaches with your peers!
 
 
 We can employ the well
@@ -151,7 +151,7 @@ from consideration at each iteration are greyed out.
 : ![Search](img/binary-search-4.png)
 
 What would be the worst case running time of a search for `k`?
-Highlight the next line for the answer *after* discussing with your partner:
+Highlight the next line for the answer *after* discussing with your peers:
 
 <p><span style="color:white"><em>Since (roughly) half the elements are removed from consideration at each step,
 the worst-case running time is proportional to log_2(N), where N is the
@@ -221,7 +221,7 @@ in lab 8.
 Unfortunately, the use of a binary search tree does not guarantee efficient search.
 
 What would be the worst case runtime possible for a single call to `contains()`
-on a valid BST? Discuss with your partner and highlight the next line for the answer.
+on a valid BST? Discuss with your peers and highlight the next line for the answer.
 <p><span style="color:white"><em> 	Θ(n) </em></span>.</p>
 
 For example, the tree
@@ -266,7 +266,7 @@ a node with one child, and a node with two children.
 [USFCA]: https://www.cs.usfca.edu/~galles/visualization/BST.html
 
 Note that this animation deletes from the BST by swapping with the inorder
-*predecessor* rather than the inorder successor. Convince your partner that this is
+*predecessor* rather than the inorder successor. Convince your peers that this is
 essentially equivalent.
 
 ## Exercises: BST Implementation
@@ -351,10 +351,6 @@ which takes a `Comparable` object as an argument and adds it to the tree *if and
 only if it isn't already there*.  The trees you create with the `add` method
 will thus not contain any duplicate elements.
 
-You'll notice that the `TreeNode` class has a `size` instance variable, which 
-keeps track of the sizes of the subtree rooted at that `TreeNode`. Don't forget
-to update this variable as necessary in `add`!
-
 *Hint*: You should be able to do this in a similar way to the `contains` method.
 When you're done with both, you can write a JUnit test suite to test your code.
 Don't forget edge cases!
@@ -417,7 +413,7 @@ delete the node that originally contained 5.
 
 Suppose `node` is the root node in a BST with both a left child and a right
 child. Will `sucNode`, the inorder successor of `node`, ALWAYS have a null
-left child? Discuss this with your partner.
+left child? Discuss this with your peers.
 
 We've implemented a `delete` method for you already. Take a look at it and
 **understand how it works**.
@@ -456,6 +452,5 @@ Here's a quick recap of what you need to do to complete this lab!
    - `printInorder()`
 - Understand the `delete` method of the `BinarySearchTree`.
 
-Submit all of these to Gradescope and don't forget to add your partner to the submission
-if you worked with one.
+Submit all of these to Gradescope.
 
