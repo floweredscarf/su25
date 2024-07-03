@@ -172,12 +172,12 @@
       description: >
         Dwinelle 155 10am - 11am
         <br>
-         [Slides TBD]()
+         [Slides](https://docs.google.com/presentation/d/1fvvLabHesXwyZfFzNw-jnQ6CF2OhBtJo0-qcePu1Jas/edit?usp=sharing)
           |
-          [Video TBD]()
+          [Video](https://bcourses.berkeley.edu/courses/1535549/external_tools/90481)
           |
         **Textbook:** [Ch 22.1 and 2](https://cs61b-2.gitbook.io/cs61b-textbook/22.-tree-traversals-and-graphs/22.1-tree-recap)
-      published: false
+      published: true
     - title: Independence Day
       type: Holiday
       date: 2024-07-04

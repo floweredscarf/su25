@@ -6,12 +6,6 @@ released: true
 searchable: true
 ---
 
-## [FAQ](faq.md)
-
-Each assignment will have an FAQ linked at the top. You can also access it by
-adding "/faq" to the end of the URL. The FAQ for Lab 10 is located
-[here](faq.md).
-
 ## Introduction
 
 As usual, pull the files from the skeleton and open the Lab 10 directory in IntelliJ.
