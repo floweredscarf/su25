@@ -133,6 +133,8 @@
       published: true
       footer: >
         Project 1 due **Sunday 6/30, 11:59 PM**
+      alt-footer: >
+          Quiz 2 due **Monday 7/1, 11:59 PM**
 - week: 3
   days:
     - title: Gitlet Introduction
@@ -187,6 +189,8 @@
       published: false
       footer: >
         Project 2 Checkpoint due **Sunday 7/07, 11:59 PM**
+      alt-footer: >
+        Quiz 3 due **Monday 7/8, 11:59 PM**
 - week: 4
   days:
     - title: Binary Search Trees
@@ -213,7 +217,7 @@
           |
           [Video TBD]()
           |
-        **Readings:** [Ch 16.2-7](https://cs61b-2.gitbook.io/cs61b-textbook/16.-adts-and-bsts/16.2-binary-search-trees)
+        **Readings:** [Ch 17](https://cs61b-2.gitbook.io/cs61b-textbook/17.-b-trees) [Ch 18](https://cs61b-2.gitbook.io/cs61b-textbook/18.-red-black-trees)
       published: false
     - title: Exam Advice and Midterm Review
       type: Lecture, Lab
@@ -230,6 +234,8 @@
         7pm - 9pm<br><br>
       date: 2024-07-12
       published: false
+      footer: >
+        Quiz 4 [Optional]
 - week: 5
   days:
     - title: Hashing
@@ -281,6 +287,8 @@
       published: false
       footer: >
         Project 2 due **Sunday 7/21, 11:59 PM**
+      alt-footer: >
+        Quiz 5 due **Monday 7/22, 11:59 PM**
 - week: 6
   days:
     - title: Build Your Own World Introduction
@@ -344,6 +352,8 @@
       published: false
       footer: >
         Project 3 Checkpoint due **Sunday 7/21, 11:59 PM**
+      alt-footer: >
+        Quiz 6 due **Monday 7/29, 11:59 PM**
 - week: 7
   days:
     - title: Sorting
@@ -395,6 +405,8 @@
       published: false
       footer: >
         Project 3 due **Sunday 8/04, 11:59 PM**
+      alt-footer: >
+        Quiz 7 due **Monday 8/5, 11:59 PM**
 - week: 8
   days:
     - title: Ask Us Anything and BYOW Presentations
