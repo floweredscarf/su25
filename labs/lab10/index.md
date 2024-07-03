@@ -97,24 +97,24 @@ most two children. Normally it has two separate variables `left` and
 ## Traversals
 
 The remainder of this lab will cover the key ideas related to
-traversing the notes of a tree structure. Before we go over the traversals themselves, let's first breifly review some
-of the core idees behind recursion and recursive programming!
+traversing the notes of a tree structure. Before we go over the traversals themselves, let's first briefly review some
+of the core ideas behind recursion and recursive programming!
 
 ### Recursion: A Review
 One interpretation of recursive programming is **the clever utilization of the recursive call stack to help us perform certain tasks and operations.** Specifically, there is usually an exploration of relationship between the different stack frames of the recursive call stack. 
 
 There are two types of patterns that we commonly see:
 - Void Recursive Methods: **There is no explicit pass of information between frames of the recursive call stack.** Or in other words, the recursive function doesn’t have a return value, and the operation is usually done while utilizing the execution order that follow the mechanisms of the recursive call stack.  
-- Non-void Recursive Methods: **There is an explicit pass of information between frames of the recursive call stack.** Specifically, the infomration is passed as return values from one frame to another, and operations are done by utilizing information from a "parent frame" (the previous recursive call) or "child frame" (the subsequent recursive call).
+- Non-void Recursive Methods: **There is an explicit pass of information between frames of the recursive call stack.** Specifically, the information is passed as return values from one frame to another, and operations are done by utilizing information from a "parent frame" (the previous recursive call) or "child frame" (the subsequent recursive call).
 
 ### Things to keep in mind when working with recursion:
 A recursive function usually consists of two components: 
 - The recursive call, which operates on other stack frames.
 - The rest of the function, which operates on the current stack frame. 
 
-Then naturally, these quesitons are will be important to keep in mind when working with recursion: 
+Then naturally, these questions are will be important to keep in mind when working with recursion: 
 - Where should I put the recursive call relative to the code for my current stack frame?
-- what is the relationship between the outcome of the recursive call and the code for my current stack frame?
+- What is the relationship between the outcome of the recursive call and the code for my current stack frame?
 
 ### Linked List Traversal
 To better understand the recursive logic behind tree traversals, it's helpful to first look at a simpler example using a familiar data structure that is also inherently recursive: linked lists. Given the linked list below, how can we utilize the recursive call stack and traverse all items in the linked list? 
@@ -177,7 +177,7 @@ Notice how the code of current stack frame (i.e. printing the value of the node)
 ### Tree Traversals
 Extending from the linked list example above, we can see how the items can be visited in different orders by placing the print statement in different positions relative to the recursive calls of binary trees. 
 
-Specifically,three processing sequences for nodes in a binary tree occur commonly enough to
+Specifically, three processing sequences for nodes in a binary tree occur commonly enough to
 have names:
 
 - **preorder**: process the root, process the left subtree (in preorder),
