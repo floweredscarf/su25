@@ -119,7 +119,7 @@ Then naturally, these questions are will be important to keep in mind when worki
 ### Linked List Traversal
 To better understand the recursive logic behind tree traversals, it's helpful to first look at a simpler example using a familiar data structure that is also inherently recursive: linked lists. Given the linked list below, how can we utilize the recursive call stack and traverse all items in the linked list? 
 
-[Linked List diagram here: 1 -> 2 -> 3]
+1 -> 2 -> 3
 
 Assuming our linked list is built with "Node" objects that have two instance variable:"val" and "next" (pointer to the next node), a traverse method that prints the values from the head of the linked list to the tail might look something this: 
 
