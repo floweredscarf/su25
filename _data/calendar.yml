@@ -186,14 +186,14 @@
     - title: Asymptotics and Trees
       type: Theory
       date: 2024-07-05
-       description: >
+      description: >
         <br>
          [Worksheet](https://drive.google.com/file/d/1OVGh6vCkg_XiDrr0mSjkp_AQJ7b44WNC/view?usp=drive_link)
           |
          [Slides](https://docs.google.com/presentation/d/1hJAwupZPK5TjXWZtCpV4dlM-_R325zS2vkKIx6AbV2M/edit?usp=drive_link)
           |
          [Solutions Not Released]()
-      published: false
+      published: true
       footer: >
         Project 2 Checkpoint due **Sunday 7/07, 11:59 PM**
       alt-footer: >
