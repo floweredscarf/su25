@@ -22,10 +22,6 @@ In this lab, you'll continue to practice coding up binary trees and learn about 
 that rely on comparisons. This
 technique will be widely used in the remainder of the class.
 
-Please note that if you are on a Windows computer, the "\n" newline characters in
-`BinaryTreeTest.java` should be replaced with "\r\n" for local testing. 
-This issue will not affect the AG.
-
 ## Recall: Binary Trees
 
 We'll now move on from trees and explore a common, special case of the tree data
@@ -36,11 +32,12 @@ most two children. Normally it has two separate variables `left` and
 ## Exercise: `BinaryTree`
 
 The file `BinaryTree.java` defines a `BinaryTree` class and a `TreeNode` class.
-First, read over the code and then implement the following three methods.
+First, read over the code, as well as the implementations for `printPreorder` and `printInorder`.
 
-Note: you may use the `sampleTreeX` methods to generate sample trees to test the
-functions that you write. In addition, consider writing your own methods to
-generate more trees to test your code.
+Then, read over methods that generate sample trees (`sampleTreeX` methods) and try running the `main` method to understand how it works.
+In addition, consider adding more test cases to the `BinaryTreeTest.java`.
+
+Once you have understood the code, you can start working on the exercises below.
 
 ### Exercise 1: `height`
 
@@ -84,8 +81,9 @@ Write the static `fibTree` method in `BinaryTree` that takes in a non-negative
 integer `N`, and returns a `BinaryTree` that stores the `N`-th Fibonacci value
 using the representation above.
 
-Remember how we've been delegating structuring all our methods so far for the
-best code!
+{% include alert.html type="info" content=' You should be using recursion for these problems, and you should be adding your helper methods with modified arguments. Refer to the tree traversal code for reference!
+
+Furthermore, because `fibTree` is a static method that returns a `BinaryTree`, your helper method must be static as well!' %}
 
 ## Comparisons
 
@@ -440,16 +438,18 @@ algorithm using this idea that runs in time proportional to `d`, where `d` is
 the depth of the tree?
 
 
-### Deliverables
+## Deliverables
 
 Here's a quick recap of what you need to do to complete this lab!
 
+
+- Complete the following methods in `BinaryTree.java`:
+   - `height()`
+   - `isCompletelyBalanced()`
+   - `fibTree(int N)`
 - Complete the following methods in `BinarySearchTree.java`:
     - `contains(T key)`
     - `add(T key)`
-
-- Complete the following methods in `BinaryTree.java`:
-   - `printInorder()`
 - Understand the `delete` method of the `BinarySearchTree`.
 
 Submit all of these to Gradescope.
