@@ -2,7 +2,7 @@
 layout: page
 title: "Lab 12: Balanced Search Trees"
 tags: [Lab, Balanced Search Trees]
-released: false
+released: true
 searchable: true
 toc:
   h_max: 4
