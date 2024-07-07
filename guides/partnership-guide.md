@@ -58,10 +58,6 @@ having one person dominate the work.
 In this work style, the two of you would be physically apart but would
 collaborate by communicating online and sharing code using git.
 
-You can create a shared Workspace on Ed to write code in a format similar
-to Google Docs. It allows you to edit the code together and share a terminal.
-Note that there is no git integration, so you will have to copy
-your files over manually. 
 
 ### Do the assignment individually, and then compare solutions
 

@@ -2,7 +2,7 @@
 layout: page
 title: "Lab 11: Binary Search Trees"
 tags: [Lab, Java, Binary Search Trees, Binary Trees]
-released: false
+released: true
 searchable: true
 ---
 
@@ -18,13 +18,72 @@ As usual, pull the skeleton code.
 
 ## Learning Goals
 
-In this lab, you'll learn about building data structures
+In this lab, you'll continue to practice coding up binary trees and learn about building data structures
 that rely on comparisons. This
 technique will be widely used in the remainder of the class.
 
-Please note that if you are on a Windows computer, the "\n" newline characters in
-`BinaryTreeTest.java` should be replaced with "\r\n" for local testing. 
-This issue will not affect the AG.
+## Recall: Binary Trees
+
+We'll now move on from trees and explore a common, special case of the tree data
+structure: the binary tree. A binary tree is a tree in which each node has at
+most two children. Normally it has two separate variables `left` and
+`right` for the left and right children of the binary tree.
+
+## Exercise: `BinaryTree`
+
+The file `BinaryTree.java` defines a `BinaryTree` class and a `TreeNode` class.
+First, read over the code, as well as the implementations for `printPreorder` and `printInorder`.
+
+Then, read over methods that generate sample trees (`sampleTreeX` methods) and try running the `main` method to understand how it works.
+In addition, consider adding more test cases to the `BinaryTreeTest.java`.
+
+Once you have understood the code, you can start working on the exercises below.
+
+### Exercise 1: `height`
+
+First, if you have a partner, switch which partner is coding if you haven't recently.
+
+Implement the `height` method in the `BinaryTree` class. The height of an empty tree is
+0; the height of a one-node tree is 1; the height of any other tree is 1 + the
+greater of the heights of the two children.
+
+### Exercise 2: `isCompletelyBalanced`
+
+Add an `isCompletelyBalanced` method for the `BinaryTree` class. A tree with no
+nodes and a tree with one node are both completely balanced; any other tree is
+completely balanced if and only if the height of its left child is equal to the
+height of its right child, and its left and right children are also completely
+balanced. Make sure you test your code with trees of height 3 or more to ensure
+that your code works!
+
+### Exercise 3: `fibTree`
+
+This exercise deals with "Fibonacci trees", trees that represents the recursive
+call structure of the Fibonacci computation. (The Fibonacci sequence is defined
+as follows: $$F_0 = 0, F_1 = 1$$, and each subsequent number in the sequence is
+the sum of the previous two.) The root of a Fibonacci tree should contain the
+value of the `N`th Fibonacci number, the left subtree should be the tree
+representing the computation of the `N-1`th Fibonacci number, and the right
+subtree should be the tree representing the computation of the `N-2`th
+Fibonacci number. The two exceptions to this rule are when we pass in 0 or 1 to
+the `fibTree` method. The first few Fibonacci trees appear below.
+
+| Function     | Tree                           |
+|--------------|--------------------------------|
+| `fibtree(0)` |![fibtree-0](img/fibtree-0.png) |
+| `fibtree(1)` |![fibtree-1](img/fibtree-1.png) |
+| `fibtree(2)` |![fibtree-2](img/fibtree-2.png) |
+| `fibtree(3)` |![fibtree-3](img/fibtree-3.png) |
+| `fibtree(4)` |![fibtree-4](img/fibtree-4.png) |
+| `fibtree(5)` |![fibtree-5](img/fibtree-5.png) |
+
+Write the static `fibTree` method in `BinaryTree` that takes in a non-negative
+integer `N`, and returns a `BinaryTree` that stores the `N`-th Fibonacci value
+using the representation above.
+
+{% include alert.html type="info" content=' You should be using recursion for these problems, and you should be adding your helper methods with modified arguments. Refer to the tree traversal code for reference!
+
+Furthermore, because `fibTree` is a static method that returns a `BinaryTree`, your helper method must be static as well!' %}
 
 ## Comparisons
 
@@ -54,7 +113,7 @@ class.
 
 ## Binary Search
 
-Suppose we have a sorted array of *comparable* elements, and we want to see if a certain element is in the array. How can we use `compareTo()` to achieve an efficient implementation? Before reading the next section, pause here and discuss approaches with your partner!
+Suppose we have a sorted array of *comparable* elements, and we want to see if a certain element is in the array. How can we use `compareTo()` to achieve an efficient implementation? Before reading the next section, pause here and discuss approaches with your peers!
 
 
 We can employ the well
@@ -90,7 +149,7 @@ from consideration at each iteration are greyed out.
 : ![Search](img/binary-search-4.png)
 
 What would be the worst case running time of a search for `k`?
-Highlight the next line for the answer *after* discussing with your partner:
+Highlight the next line for the answer *after* discussing with your peers:
 
 <p><span style="color:white"><em>Since (roughly) half the elements are removed from consideration at each step,
 the worst-case running time is proportional to log_2(N), where N is the
@@ -160,7 +219,7 @@ in lab 8.
 Unfortunately, the use of a binary search tree does not guarantee efficient search.
 
 What would be the worst case runtime possible for a single call to `contains()`
-on a valid BST? Discuss with your partner and highlight the next line for the answer.
+on a valid BST? Discuss with your peers and highlight the next line for the answer.
 <p><span style="color:white"><em> 	Θ(n) </em></span>.</p>
 
 For example, the tree
@@ -205,7 +264,7 @@ a node with one child, and a node with two children.
 [USFCA]: https://www.cs.usfca.edu/~galles/visualization/BST.html
 
 Note that this animation deletes from the BST by swapping with the inorder
-*predecessor* rather than the inorder successor. Convince your partner that this is
+*predecessor* rather than the inorder successor. Convince your peers that this is
 essentially equivalent.
 
 ## Exercises: BST Implementation
@@ -290,10 +349,6 @@ which takes a `Comparable` object as an argument and adds it to the tree *if and
 only if it isn't already there*.  The trees you create with the `add` method
 will thus not contain any duplicate elements.
 
-You'll notice that the `TreeNode` class has a `size` instance variable, which 
-keeps track of the sizes of the subtree rooted at that `TreeNode`. Don't forget
-to update this variable as necessary in `add`!
-
 *Hint*: You should be able to do this in a similar way to the `contains` method.
 When you're done with both, you can write a JUnit test suite to test your code.
 Don't forget edge cases!
@@ -356,7 +411,7 @@ delete the node that originally contained 5.
 
 Suppose `node` is the root node in a BST with both a left child and a right
 child. Will `sucNode`, the inorder successor of `node`, ALWAYS have a null
-left child? Discuss this with your partner.
+left child? Discuss this with your peers.
 
 We've implemented a `delete` method for you already. Take a look at it and
 **understand how it works**.
@@ -383,18 +438,19 @@ algorithm using this idea that runs in time proportional to `d`, where `d` is
 the depth of the tree?
 
 
-### Deliverables
+## Deliverables
 
 Here's a quick recap of what you need to do to complete this lab!
 
+
+- Complete the following methods in `BinaryTree.java`:
+   - `height()`
+   - `isCompletelyBalanced()`
+   - `fibTree(int N)`
 - Complete the following methods in `BinarySearchTree.java`:
     - `contains(T key)`
     - `add(T key)`
-
-- Complete the following methods in `BinaryTree.java`:
-   - `printInorder()`
 - Understand the `delete` method of the `BinarySearchTree`.
 
-Submit all of these to Gradescope and don't forget to add your partner to the submission
-if you worked with one.
+Submit all of these to Gradescope.
 

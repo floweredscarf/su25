@@ -848,7 +848,7 @@ Restore is used to revert files back to their previous versions. Depending on th
 
 - **Runtimes**:
 
-    1. Should be linear relative to the size of the file being checked out.
+    1. Should be linear relative to the size of the file being restored.
 
     2. Should be linear with respect to the total size of the files in
       the commit's snapshot. Should be constant with respect to the number of commits. 
@@ -987,7 +987,7 @@ tests won't work!
 - **Description**: Switches to the branch with the given name. Takes all files in the commit at the head of the given branch, 
 and puts them in the working directory, overwriting the versions of the files that are already there if they exist. Also, 
 at the end of this command, the given branch will now be considered the current branch (HEAD). Any files that are tracked 
-in the current branch but are not present in the checked-out branch are deleted. The staging area is cleared, unless the checked-out 
+in the current branch but are not present in the branch you are switching to are deleted. The staging area is cleared, unless the given 
 branch is the current branch (see Failure cases below).
 
 - **Runtime**: Should be constant relative to the number of branches, and linear in the number of files tracked by the Commit being
@@ -1112,7 +1112,7 @@ bit more than most students.
     1. Any files that have been _modified_ in the given branch since
       the split point, but not modified in the current branch since
       the split point should be changed to their versions in the given
-      branch (checked out from the commit at the front of the given
+      branch (restored from the commit at the front of the given
       branch). These files should then all be automatically staged.
       To clarify, if a file is "modified in the given branch since the
       split point" this means the version of the file as it exists in
@@ -1135,7 +1135,7 @@ bit more than most students.
       present only in the current branch should remain as they are.
 
     5. Any files that were not present at the split point and are
-      present only in the given branch should be checked out and
+      present only in the given branch should be restored and
       staged.
 
     6. Any files present at the split point, unmodified in the current

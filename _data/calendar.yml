@@ -130,9 +130,11 @@
          [Slides](https://docs.google.com/presentation/d/1qRNwO0VVOiCwAwSVUdPKrsTeSy2HK1Zmy4-RS5_KCrY/edit?usp=sharing)
           |
          [Solutions](https://drive.google.com/file/d/1Xn0lEDtDesFNY_6jkU-yrrqE2jD3HFMb/view?usp=sharing)
-      published: false
+      published: true
       footer: >
         Project 1 due **Sunday 6/30, 11:59 PM**
+      alt-footer: >
+          Quiz 2 due **Monday 7/1, 11:59 PM**
 - week: 3
   days:
     - title: Gitlet Introduction
@@ -157,12 +159,12 @@
       description: >
         VLSB 2050 10am - 11am
         <br>
-         [Slides TBD]()
+         [Slides](https://docs.google.com/presentation/d/1mMEY6wil-N3R-5OEQww7GSxT-FY-EbVJvJl7Ru1VlSg/edit?usp=sharing)
           |
-          [Video TBD]()
+          [Video](https://bcourses.berkeley.edu/courses/1535549/external_tools/90481)
           |
         **Textbook:** [Ch 13](https://cs61b-2.gitbook.io/cs61b-textbook/13.-asymptotics-i) [Ch 15](https://cs61b-2.gitbook.io/cs61b-textbook/15.-asymptotics-ii) 
-      published: false
+      published: true
     - title: Introduction to Trees and Traversals
       type: Lecture, Lab
       date: 2024-07-03
@@ -170,12 +172,12 @@
       description: >
         Dwinelle 155 10am - 11am
         <br>
-         [Slides TBD]()
+         [Slides](https://docs.google.com/presentation/d/1fvvLabHesXwyZfFzNw-jnQ6CF2OhBtJo0-qcePu1Jas/edit?usp=sharing)
           |
-          [Video TBD]()
+          [Video](https://bcourses.berkeley.edu/courses/1535549/external_tools/90481)
           |
         **Textbook:** [Ch 22.1 and 2](https://cs61b-2.gitbook.io/cs61b-textbook/22.-tree-traversals-and-graphs/22.1-tree-recap)
-      published: false
+      published: true
     - title: Independence Day
       type: Holiday
       date: 2024-07-04
@@ -184,9 +186,18 @@
     - title: Asymptotics and Trees
       type: Theory
       date: 2024-07-05
-      published: false
+      description: >
+        <br>
+         [Worksheet](https://drive.google.com/file/d/1OVGh6vCkg_XiDrr0mSjkp_AQJ7b44WNC/view?usp=drive_link)
+          |
+         [Slides](https://docs.google.com/presentation/d/1hJAwupZPK5TjXWZtCpV4dlM-_R325zS2vkKIx6AbV2M/edit?usp=drive_link)
+          |
+         [Solutions](https://drive.google.com/file/d/1Jxk7LvypnGb0mDr3PJ3NKXPj_lHVL3MM/view?usp=sharing)
+      published: true
       footer: >
         Project 2 Checkpoint due **Sunday 7/07, 11:59 PM**
+      alt-footer: >
+        Quiz 3 due **Monday 7/8, 11:59 PM**
 - week: 4
   days:
     - title: Binary Search Trees
@@ -213,7 +224,7 @@
           |
           [Video TBD]()
           |
-        **Readings:** [Ch 16.2-7](https://cs61b-2.gitbook.io/cs61b-textbook/16.-adts-and-bsts/16.2-binary-search-trees)
+        **Readings:** [Ch 17](https://cs61b-2.gitbook.io/cs61b-textbook/17.-b-trees) [Ch 18](https://cs61b-2.gitbook.io/cs61b-textbook/18.-red-black-trees)
       published: false
     - title: Exam Advice and Midterm Review
       type: Lecture, Lab
@@ -230,6 +241,8 @@
         7pm - 9pm<br><br>
       date: 2024-07-12
       published: false
+      footer: >
+        Quiz 4 [Optional]
 - week: 5
   days:
     - title: Hashing
@@ -281,6 +294,8 @@
       published: false
       footer: >
         Project 2 due **Sunday 7/21, 11:59 PM**
+      alt-footer: >
+        Quiz 5 due **Monday 7/22, 11:59 PM**
 - week: 6
   days:
     - title: Build Your Own World Introduction
@@ -344,6 +359,8 @@
       published: false
       footer: >
         Project 3 Checkpoint due **Sunday 7/21, 11:59 PM**
+      alt-footer: >
+        Quiz 6 due **Monday 7/29, 11:59 PM**
 - week: 7
   days:
     - title: Sorting
@@ -395,6 +412,8 @@
       published: false
       footer: >
         Project 3 due **Sunday 8/04, 11:59 PM**
+      alt-footer: >
+        Quiz 7 due **Monday 8/5, 11:59 PM**
 - week: 8
   days:
     - title: Ask Us Anything and BYOW Presentations

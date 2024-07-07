@@ -2,15 +2,9 @@
 layout: page
 title: "Lab 10: Trees and Traversals"
 tags: [Lab, Trees, Binary Trees, Iterators, DFS, BFS, Traversals]
-released: false
+released: true
 searchable: true
 ---
-
-## [FAQ](faq.md)
-
-Each assignment will have an FAQ linked at the top. You can also access it by
-adding "/faq" to the end of the URL. The FAQ for Lab 10 is located
-[here](faq.md).
 
 ## Introduction
 
@@ -87,167 +81,144 @@ solution. Unlike linked lists, trees can have one or more children which can mak
 iterative approaches more difficult (this ultimately depends on the structure /
 implementation of your tree).
 
-## Amoeba Family Tree
-
-An amoeba family tree is an example of our above definition of a tree that you will
-be working with for this lab. It is simpler than a normal family tree because amoebas
-do not need partners in order to reproduce. An amoeba has one parent, zero or more 
-siblings, and zero or more children. An amoeba also has a name.
-
-Below is the skeleton code for an `Amoeba`. The full code is located in the
-`AmoebaFamily.java` file.
-
-```java
-class Amoeba {
-    public String name;
-    public Amoeba parent;
-    public ArrayList<Amoeba> children;
-}
-```
-
-And below is a box and pointer diagram of our `Amoeba`.
-
-![amoeba-bp](img/amoeba-bp.jpg)
-
-Amoebas (or amoebae) live dull lives. All they do is reproduce, so all we need
-to keep track of them are the following methods:
-
-```java
-/* Creates an AmoebaFamily, where the first Amoeba's name is NAME. */
-public AmoebaFamily(String name) {
-    root = new Amoeba(name, null);
-}
-
-/* Adds a new Amoeba with childName to this AmoebaFamily as the youngest
-   child of the Amoeba named parentName. This AmoebaFamily must contain an
-   Amoeba named parentName. */
-public void addChild(String parentName, String childName) {
-    if (root != null) {
-        root.addChildHelper(parentName, childName);
-    }
-}
-```
-
-The `Amoeba` objects are the nodes of our tree, represented by the
-`AmoebaFamily` object. You will find that most of the methods of this
-`AmoebaFamily` will be implemented through recursive helper methods of the
-`Amoeba` class.
-
-> This organization structure should feel similar. Before for our `DLList` we had the 
-> `DLList` class and within it the inner class `Node`. The `DLList` 
-> encapsulated the recursive structure of the `Node`s. Now we will have our
-> `AmoebaFamily` which will encapsulate the recursive structure of the 
-> `Amoeba`s.
-
-### Void Recursive Methods
-
-In the `AmoebaFamily` class, we provide the method `addChild` to add a new
-`Amoeba` to the `AmoebaFamily` tree. The method implements a general traversal
-of the tree using a void recursive method in the `Amoeba` class. Read through
-this method and related functionality to get an understanding of how we are 
-traversing and manipulating the Object.
-
-### Non-void Recursive Methods
-
-So far, the methods we've seen for the `AmoebaFamily` class have not returned
-anything; they have only been modifying the state of the `AmoebaFamily`. We will
-be able to do cooler things if we can return values, and the next example will
-take advantage of this.
-
-## Exercise: `longestName`
-
-Implement the `longestName` method in the `AmoebaFamily` class. Make this as
-similar to `longestNameLength` as possible. You will find that these non-void
-recursive methods follow a specific pattern, one that you will likely draw upon
-again when solving problems that you face in the future.
-
-You will not need to use `longestNameLength` directly in your implementation of
-`longestName`.
-
 ## Binary Trees
 
 We'll now move on from trees and explore a common, special case of the tree data
 structure: the binary tree. A binary tree is a tree in which each node has at
-most two children. Rather than store the children in an `ArrayList` as was done
-in `Amoeba` nodes, one normally just has two separate variables `left` and
+most two children. Normally it has two separate variables `left` and
 `right` for the left and right children of the binary tree.
-
-## Exercise: `BinaryTree`
-
-The file `BinaryTree.java` defines a `BinaryTree` class and a `TreeNode` class.
-First, read over the code and then implement the following three methods.
-
-Note: you may use the `sampleTreeX` methods to generate sample trees to test the
-functions that you write. In addition, consider writing your own methods to
-generate more trees to test your code.
-
-### Exercise 1: `height`
-
-First, if you have a partner, switch which partner is coding if you haven't recently.
-
-Implement the `height` method in the `BinaryTree` class. The height of an empty tree is
-0; the height of a one-node tree is 1; the height of any other tree is 1 + the
-greater of the heights of the two children.
-
-### Exercise 2: `isCompletelyBalanced`
-
-Add an `isCompletelyBalanced` method for the `BinaryTree` class. A tree with no
-nodes and a tree with one node are both completely balanced; any other tree is
-completely balanced if and only if the height of its left child is equal to the
-height of its right child, and its left and right children are also completely
-balanced. Make sure you test your code with trees of height 3 or more to ensure
-that your code works!
-
-### Exercise 3: `fibTree`
-
-This exercise deals with "Fibonacci trees", trees that represents the recursive
-call structure of the Fibonacci computation. (The Fibonacci sequence is defined
-as follows: $$F_0 = 0, F_1 = 1$$, and each subsequent number in the sequence is
-the sum of the previous two.) The root of a Fibonacci tree should contain the
-value of the `N`th Fibonacci number, the left subtree should be the tree
-representing the computation of the `N-1`th Fibonacci number, and the right
-subtree should be the tree representing the computation of the `N-2`th
-Fibonacci number. The two exceptions to this rule are when we pass in 0 or 1 to
-the `fibTree` method. The first few Fibonacci trees appear below.
-
-| Function     | Tree                           |
-|--------------|--------------------------------|
-| `fibtree(0)` |![fibtree-0](img/fibtree-0.png) |
-| `fibtree(1)` |![fibtree-1](img/fibtree-1.png) |
-| `fibtree(2)` |![fibtree-2](img/fibtree-2.png) |
-| `fibtree(3)` |![fibtree-3](img/fibtree-3.png) |
-| `fibtree(4)` |![fibtree-4](img/fibtree-4.png) |
-| `fibtree(5)` |![fibtree-5](img/fibtree-5.png) |
-
-Write the static `fibTree` method in `BinaryTree` that takes in a non-negative
-integer `N`, and returns a `BinaryTree` that stores the `N`-th Fibonacci value
-using the representation above.
-
-Remember how we've been delegating structuring all our methods so far for the
-best code!
 
 ## Traversals
 
-The remainder of this lab will cover the tools and techniques related to
-traversing the notes of a tree structure.
+The remainder of this lab will cover the key ideas related to
+traversing the notes of a tree structure. Before we go over the traversals themselves, let's first briefly review some
+of the core ideas behind recursion and recursive programming!
 
-Three processing sequences for nodes in a binary tree occur commonly enough to
+### Recursion: A Review
+One interpretation of recursive programming is **the clever utilization of the recursive call stack to help us perform certain tasks and operations.** Specifically, there is usually an exploration of relationship between the different stack frames of the recursive call stack. 
+
+There are two types of patterns that we commonly see:
+- Void Recursive Methods: **There is no explicit pass of information between frames of the recursive call stack.** Or in other words, the recursive function doesn’t have a return value, and the operation is usually done while utilizing the execution order that follow the mechanisms of the recursive call stack.  
+- Non-void Recursive Methods: **There is an explicit pass of information between frames of the recursive call stack.** Specifically, the information is passed as return values from one frame to another, and operations are done by utilizing information from a "parent frame" (the previous recursive call) or "child frame" (the subsequent recursive call).
+
+### Things to keep in mind when working with recursion:
+A recursive function usually consists of two components: 
+- The recursive call, which operates on other stack frames.
+- The rest of the function, which operates on the current stack frame. 
+
+Then naturally, these questions are will be important to keep in mind when working with recursion: 
+- Where should I put the recursive call relative to the code for my current stack frame?
+- What is the relationship between the outcome of the recursive call and the code for my current stack frame?
+
+### Linked List Traversal
+To better understand the recursive logic behind tree traversals, it's helpful to first look at a simpler example using a familiar data structure that is also inherently recursive: linked lists. Given the linked list below, how can we utilize the recursive call stack and traverse all items in the linked list? 
+
+1 -> 2 -> 3
+
+Assuming our linked list is built with "Node" objects that have two instance variable:"val" and "next" (pointer to the next node), a traverse method that prints the values from the head of the linked list to the tail might look something this: 
+
+```java
+traverse(Node node) {
+	if (node == null) {
+		return;
+	}
+    //preorder position 
+    print(node.val);
+	traverse(node.next);
+}
+```
+Let's take a look at what its call stack will look like, as well as the order of the printed outputs:
+```java
+traverse(node)
+    print(node.val): 1
+	traverse(node.next)
+        print(node.next.val): 2
+		traverse(node.next.next)
+            print(node.next.next.val):3
+			traverse(null)
+		traverse(node.next.next)
+	traverse(node.next)
+traverse(node) 
+```
+Notice how the code of current stack frame (i.e. printing the value of the node) is executed **BEFORE** the recursive call is returned, and the printed outputs are: 1, 2, 3. 
+
+Now what if we want to print the values in reverse order? Turns out, we can achieve that exact effect by simply changing the position of the print statement with the recursive call!
+```java
+traverse(Node node) {
+	if (node == null) {
+		return;
+	}
+	traverse(node.next);
+    //postorder position 
+    print(node.val);
+}
+```
+The recursive call stack and the order of printed outputs:
+```java
+traverse(node)
+	traverse(node.next)
+		traverse(node.next.next)
+			traverse(null)
+		traverse(node.next.next)
+        print(node.next.next.val):3
+	traverse(node.next)
+    print(node.next.val): 2
+traverse(node) 
+print(node.val): 1
+```
+Notice how the code of current stack frame (i.e. printing the value of the node) is executed **AFTER** the recursive call is returned, and the printed outputs are: 3, 2, 1. 
+
+### Tree Traversals
+Extending from the linked list example above, we can see how the items can be visited in different orders by placing the print statement in different positions relative to the recursive calls of binary trees. 
+
+Specifically, three processing sequences for nodes in a binary tree occur commonly enough to
 have names:
 
 - **preorder**: process the root, process the left subtree (in preorder),
   process the right subtree (in preorder)
+  ```java
+  traverse(Node TreeNode) {
+	if (TreeNode == null) {
+		return;
+	}
+    print(TreeNode.val);
+	traverse(TreeNode.left);
+	traverse(TreeNode.right);
+}
+  ```
 
 - **postorder**: process the left subtree (in postorder), process the right
-  subtree (in postorder), process the root.
-
+  subtree (in postorder), process the root. 
+  ```java 
+  traverse(Node TreeNode) {
+	if (TreeNode == null) {
+		return;
+	}
+	traverse(TreeNode.left);
+	traverse(TreeNode.right);
+    print(TreeNode.val);
+}
+  ```
 - **inorder**: process the left subtree (in inorder), process the root, process
   the right subtree (in inorder).
+    ```java 
+  traverse(Node TreeNode) {
+	if (TreeNode == null) {
+		return;
+	}
+	traverse(TreeNode.left);
+    print(TreeNode.val);
+	traverse(TreeNode.right);
+}
+  ```
 
-> Note that for preorder and postorder, it can often be equally valid to process
-> the right and then the left, although it depends on the application. In this 
-> course we will typically assume that the processing will be done left and then 
-> right unless we specify otherwise. On most exams we will be precise in what 
-> order nodes will be processed.
+Note that for preorder and postorder, it can often be equally valid to process
+the right and then the left, although it depends on the application. In this 
+course we will typically assume that the processing will be done left and then right unless we specify otherwise. On most exams we will be precise in what 
+order nodes will be processed.
+
+{% include alert.html type="info" content=" Note that for preorder and postorder, it can often be equally valid to process
+the right and then the left, although it depends on the application. In this course we will typically assume that the processing will be done left and then right unless we specify otherwise. On most exams we will be precise in what order nodes will be processed." %}
 
 ## Exercise: Processing Sequences
 
@@ -301,41 +272,6 @@ restricted. Queue operations include:
 As a result, we often refer to queues as processing in FIFO (first-in,
 first-out) ordering.
 
-## Exercise: Stacks and Queues
-
-### Exercise 1
-
-Suppose that the following sequence of operations is executed using an initially
-empty **stack**. What ends up in the stack? 
-
-    push A
-    push B
-    pop
-    push C
-    push D
-    pop
-    push E
-    pop
-
-Answer below (highlight to reveal) Note the ordering is such that the bottom of the stack is to the left and the top of the stack is to the right:
-<div style="color: white;">Answer: A C</div>
-
-### Exercise 2
-
-Suppose that the following sequence of operations is executed using an initially
-empty **queue**. What ends up in the queue?
-
-    add A
-    add B
-    remove
-    add C
-    add D
-    remove
-    add E
-    remove
-
-Answer below (highlight to reveal) Note the ordering is such that the front of the queue is to the left and the back of the queue is to the right:
-<div style="color: white;">Answer: D E</div>
 
 ## Stacks and Queues: Building a Tree Iterator
 
@@ -428,47 +364,88 @@ public class DepthFirstIterator implements Iterator<TreeNode> {
     }
 }
 ```
+{% include alert.html type="task" content="
+**Task**: Complete the conceptual exercises for the topics covered above on gradescope!
+" %}
 
-## Exercise: Stack Contents
+## Optinonal Coding Practice: Amoeba Family Tree
 
-For the following exercises, assume that we push the right child before the left
-child of a node onto the fringe.
+{% include alert.html type="info" content=" The following exercises are optional and are provided in the skeleton only as a reference for you to practice some recursive programming on your own! You can find the relevant files in the src and tests folders.  " %}
 
-### Exercise 1
+An amoeba family tree is an example of our above definition of a tree that you will
+be working with for this lab. It is simpler than a normal family tree because amoebas
+do not need partners in order to reproduce. An amoeba has one parent, zero or more 
+siblings, and zero or more children. An amoeba also has a name.
 
-What numbers are on the stack when element 4 in the tree below has just been
-returned by `next`?
-
-![tree-3](img/tree-3.png)
-
-Answer below (highlight to reveal) Note the ordering is such that the front of the queue is to the left and the back of the queue is to the right:
-<div style="color: white;">Answer: 5</div>
-
-### Exercise 2
-
-For the same image above, what numbers are on the stack when element 6 in the
-tree below has just been returned by `next`?
-
-Answer below (highlight to reveal) Note the ordering is such that the front of the queue is to the left and the back of the queue is to the right:
-<div style="color: white;">Answer: 7 8 9</div>
-
-### Exercise 3
-
-Suppose the `next` code pushes the left child onto the stack before the right:
+Below is the skeleton code for an `Amoeba`. The full code is located in the
+`AmoebaFamily.java` file.
 
 ```java
-if (node.left != null) {
-    fringe.push(node.left);
-}
-if (node.right != null) {
-    fringe.push(node.right);
+class Amoeba {
+    public String name;
+    public Amoeba parent;
+    public ArrayList<Amoeba> children;
 }
 ```
 
-In what order are the elements of the tree above returned?
+And below is a box and pointer diagram of our `Amoeba`.
 
-Answer below (highlight to reveal):
-<div style="color: white;">Answer: 1 5 9 11 10 6 8 7 2 4 3</div>
+![amoeba-bp](img/amoeba-bp.jpg)
+
+Amoebas (or amoebae) live dull lives. All they do is reproduce, so all we need
+to keep track of them are the following methods:
+
+```java
+/* Creates an AmoebaFamily, where the first Amoeba's name is NAME. */
+public AmoebaFamily(String name) {
+    root = new Amoeba(name, null);
+}
+
+/* Adds a new Amoeba with childName to this AmoebaFamily as the youngest
+   child of the Amoeba named parentName. This AmoebaFamily must contain an
+   Amoeba named parentName. */
+public void addChild(String parentName, String childName) {
+    if (root != null) {
+        root.addChildHelper(parentName, childName);
+    }
+}
+```
+
+The `Amoeba` objects are the nodes of our tree, represented by the
+`AmoebaFamily` object. You will find that most of the methods of this
+`AmoebaFamily` will be implemented through recursive helper methods of the
+`Amoeba` class.
+
+> This organization structure should feel similar. Before for our `DLList` we had the 
+> `DLList` class and within it the inner class `Node`. The `DLList` 
+> encapsulated the recursive structure of the `Node`s. Now we will have our
+> `AmoebaFamily` which will encapsulate the recursive structure of the 
+> `Amoeba`s.
+
+### Void Recursive Methods
+
+In the `AmoebaFamily` class, we provide the method `addChild` to add a new
+`Amoeba` to the `AmoebaFamily` tree. The method implements a general traversal
+of the tree using a void recursive method in the `Amoeba` class. Read through
+this method and related functionality to get an understanding of how we are 
+traversing and manipulating the Object.
+
+### Non-void Recursive Methods
+
+So far, the methods we've seen for the `AmoebaFamily` class have not returned
+anything; they have only been modifying the state of the `AmoebaFamily`. We will
+be able to do cooler things if we can return values, and the next example will
+take advantage of this.
+
+## Exercise: `longestName`
+
+Implement the `longestName` method in the `AmoebaFamily` class. Make this as
+similar to `longestNameLength` as possible. You will find that these non-void
+recursive methods follow a specific pattern, one that you will likely draw upon
+again when solving problems that you face in the future.
+
+You will not need to use `longestNameLength` directly in your implementation of
+`longestName`.
 
 ## Optional Exercise: Tree Iterators
 
@@ -552,13 +529,5 @@ The next lab will cover binary search trees. You may find Shewchuk's notes on
 
 To finish this lab, make sure to finish the following:
 
-- Read through the lab and understand how the `AmoebaFamily` and `BinaryTree`s
-  work. Make sure to also read through the section on Stacks and Queues.
-- Read through and understand the conceptual exercises. Discuss your answers with
-  your partner or neighbor.
-- Complete the following methods in `AmoebaFamily`:
-    - `public String longestName()`
-- Complete the following methods in `BinaryTree`:
-    - `public int height()`
-    - `public boolean isCompletelyBalanced()`
-    - `public static BinaryTree fibTree()`
+- Read through the lab spec and understand obtain a good understanding of these topics: tree definitions, traversals, stacks and queues.
+- Complete the lab 10 assignment on gradescope. **There is no coding submission required for this lab.**
