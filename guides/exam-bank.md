@@ -6,7 +6,7 @@ released: true
 searchable: true
 ---
 
-To sort and filter exam questions, access our problem bank [**here**](topical_exam_resources.md).
+To sort and filter exam questions, access our problem bank [**here**](https://sp24.datastructur.es/resources/exams/topical_exam_resources/).
 
 ## Past Exams
 
