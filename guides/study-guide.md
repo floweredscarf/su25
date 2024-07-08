@@ -90,7 +90,7 @@ This is a very effective way to truly test if you understand a topic conceptuall
 
 ### Do AND review practice exams 
 
-“Do practice exams” is probably the most common tip for successful exam prep. We suggest you take a practice exam when you first start studying, and use the results of this practice exam to guide the rest of your studying. 
+“Do practice exams” is probably the most common tip for successful exam prep. We suggest you take a [practice exam](./exam-bank) when you first start studying, and use the results of this practice exam to guide the rest of your studying. 
 
 In order to truly maximize its effectiveness to help you prepare for the exams, reviewing the exams is also crucial. 
 
@@ -116,7 +116,7 @@ If you need additional guidance on understanding a concept or approach, feel fre
 
 ### Problem Bank
 
-If you want to practice more problems based on specific topics, the  [problem bank](../topical_exam_resources) is a great resource. (Shoutout to our amazing TAs who put this together!)
+If you want to practice more problems based on specific topics, the  [problem bank](https://sp24.datastructur.es/resources/exams/topical_exam_resources/) is a great resource. (Shoutout to our amazing TAs who put this together!)
 
 You can filter and choose specific past exam problems based on topic, difficulty, and type. The solution and walkthrough video are also linked in the problem bank, so it is an amazing asynchronous exam prep resource. 
 
