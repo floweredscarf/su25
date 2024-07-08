@@ -1,4 +1,11 @@
-{: .info}
+---
+layout: page
+title: Exam Bank
+tags: [Exam, Resources]
+released: true
+searchable: true
+---
+
 To sort and filter exam questions, access our problem bank [**here**](topical_exam_resources.md).
 
 ## Past Exams
