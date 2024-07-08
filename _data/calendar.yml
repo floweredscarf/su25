@@ -207,12 +207,12 @@
       description: >
         Dwinelle 155 10am - 11am
         <br>
-         [Slides TBD]()
+         [Slides](https://docs.google.com/presentation/d/1zWZqBOSeiVBUjCm0OxWJu7p_YsqqKfm2t8-a35BmiPw/edit?usp=sharing)
           |
-          [Video TBD]()
+          [Video](https://bcourses.berkeley.edu/courses/1535549/external_tools/90481)
           |
         **Readings:** [Ch 16.2-7](https://cs61b-2.gitbook.io/cs61b-textbook/16.-adts-and-bsts/16.2-binary-search-trees)
-      published: false
+      published: true
     - title: Balanced Search Trees
       type: Lecture, Lab
       date: 2024-07-09
