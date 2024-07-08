@@ -40,3 +40,19 @@ staffers:
     the violin and writing in my free time. If you guys ever want to talk about anything
     feel free to shoot me a message!'
   p1: assets/img/staff/ryan.jpg
+- name: Jai Bhatia
+  email: jaibhatia@berkeley.edu
+  biography: 'Pronouns: he/him/his<br><br>Hi I''m Jai, a sophomore studying computer 
+    science from Vancouver, Canada! When I''m not teaching 61B, I like to play hockey and 
+    enjoy some chipotle. My favourite past exam for 61B has to be Spring 2023 Midterm 2, 
+    that one was pretty cool.'
+  p1: assets/img/staff/jai.jpg  
+- name: Ayati Sharma
+  email: ayati.sharma@berkeley.edu
+  biography: 'Pronouns: she/her<br><br>Hi, I''m Ayati! I''m a rising senior from India 
+  studying CS & Linguistics. This is my 5th time teaching 61B(L) and I''m excited to meet everyone. 
+  I love reading historical fiction and learning about the brain! I''m currently trying to explore as 
+  many museums as possible this summer. This was one of my favourite classes and I hope you all enjoy 
+  it as much as I did! Feel free to reach out anytime :D'
+  p1: assets/img/staff/ayati.png 
+
