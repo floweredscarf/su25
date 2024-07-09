@@ -231,6 +231,8 @@ Here's a summary of different cases you might encounter when performing
 push-up insertion. Each of these cases can be explained by upholding the
 binary search invariant.
 
+Note: the end results of the cases on the right side (push-up when parent is a 3-node) will require the parent to push-up and split again. 
+
 ![insert-summary](img/23-insert-summary.png){: style="max-height: 400px;" }
 
 <cite>Diagram from Sedgewick's Algorithms, 4th ed.</cite>
