@@ -407,6 +407,9 @@ Some further tips for writing this method if you are stuck:
 
 ## Inserting Into LLRB Trees
 
+> [!NOTE]
+> To gain a deeper understanding of the operations below and why they work, check out the [lecture slides](https://docs.google.com/presentation/d/1cLtmQeQhTuk6p41t57WasBGv1_RDTsbIMkEACrAHtPY/edit#slide=id.g13c3869d32c_0_1884) starting at slide 83.
+
 Insertion into LLRB trees starts off with the regular binary search tree
 insertion algorithm, where we search to find the appropriate leaf location. Then we insert the element as a red node (recall in a 2-3 tree we always insert an element by stuffing it into an existing node).
 Placing the node can break the red-black tree
