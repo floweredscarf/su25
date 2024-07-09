@@ -18,8 +18,8 @@
       - heading: Past Exams
         body: |
             - [**Exam Studying Guide**](guides/study-guide)
-            - CS 61B: [HKN](https://hkn.eecs.berkeley.edu/exams/course/cs/61b), [TBP](https://tbp.berkeley.edu/courses/cs/61B/)
-            - CS 61BL: [HKN](https://hkn.eecs.berkeley.edu/exams/course/cs/61bl), [TBP](https://tbp.berkeley.edu/courses/cs/61BL/)
+            - [CS 61B Exam Bank](guides/exam-bank)
+            - [CS 61B Topical Exam Resources](https://sp24.datastructur.es/resources/exams/topical_exam_resources/)
             - [COS 226 (Princeton)](http://www.cs.princeton.edu/courses/archive/spring18/cos226/exams.php)
 - title: Staff Resources
   groups:
