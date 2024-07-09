@@ -225,7 +225,7 @@
           [Video TBD]()
           |
         **Readings:** [Ch 17](https://cs61b-2.gitbook.io/cs61b-textbook/17.-b-trees) [Ch 18](https://cs61b-2.gitbook.io/cs61b-textbook/18.-red-black-trees)
-      published: false
+      published: true
     - title: Exam Advice and Midterm Review
       type: Lecture, Lab
       date: 2024-07-10
