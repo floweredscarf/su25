@@ -243,6 +243,12 @@
       published: false
       footer: >
         Quiz 4 [Optional]
+      alt-footer: >
+        Optional Theoretical Lab 4:
+        <br>
+         [Worksheet](https://drive.google.com/file/d/1C6mlY7lJFK97ttE0TmjtOy4u0KgInAmB/view?usp=drive_link)
+          |
+         [Solutions](https://drive.google.com/file/d/14nIk53bWws80JlZ78gwB4-TJhTXqHNE4/view?usp=sharing)
 - week: 5
   days:
     - title: Hashing
