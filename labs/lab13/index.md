@@ -184,7 +184,7 @@ public boolean containsKey(K key);
 public V get(K key);
 public void put(K key, V value);
 public V remove(K key);
-public boolean rmove(K key, V value);
+public boolean remove(K key, V value);
 ```
 
 In order to be a Map, we have to determine how to represent a key
