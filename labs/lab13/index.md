@@ -2,7 +2,7 @@
 layout: page
 title: "Lab 13: Hash Tables"
 tags: [Lab, Hash Tables]
-released: false
+released: true
 searchable: true
 ---
 
@@ -108,7 +108,7 @@ keys and values, and what index each key corresponds to:
 | "Jedi"     | "Tsang"         | 9           |
 | "Noah"     | "Adhikari"      | 13          |
 | "Ryan"     | "Nuqui"         | 17          |
-| "Zephyr"   | "Omaly"        | 25          |
+| "Zephyr"   | "Omaly"         | 25          |
 
 We can define this conversion in a *hash function*, whose job, when given a key,
 is to return a specific integer for that key. In this case, the hash function
@@ -350,7 +350,7 @@ array index mapping.
 | "Jedi"     | "Tsang"         | 9           |
 | "Noah"     | "Adhikari"      | 13          |
 | "Ryan"     | "Nuqui"         | 17          |
-| "Zephyr"   | "Omaly"        | 25          |
+| "Zephyr"   | "Omaly"         | 25          |
 
 If we simply try to add all the elements in the table above to the map, what
 will happen?
@@ -478,7 +478,7 @@ formally define our statement "this same object `O`" above? Technically, the onl
 we consider `B` to be pointing to the same thing as `A` is because of the `.equals()` method!
 This is starting to sound an awful lot like the determinism requirement, huh!
 
-The properties of a **good** hash function is less defined, but here are some
+The properties of a **good** hash function are less defined, but here are some
 properties that are important for a good hash function (this is a non-exhaustive
 list):
 
