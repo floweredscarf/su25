@@ -17,7 +17,7 @@ adding "/faq" to the end of the URL. The FAQ for Lab 13 is located
 
 As usual, pull the files from the skeleton and make a new IntelliJ project.
 
-This lab is on the long side, so make sure to pair program!
+This lab is on the long side, so it may be useful to program with a partner!
 
 Similarly, the provided `HashMapTest` is fairly limited. We will discuss the suggested
 testing steps below, but **ensure you are creating your own tests** for all versions
