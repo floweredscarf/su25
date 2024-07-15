@@ -450,7 +450,7 @@ family emergency, etc.
 If you’re experiencing extenuating circumstances impacting your mental health and would like
 to meet with a member of course staff to work out accommodations within the course, or would 
 like to be connected to more resources, you can set up a meeting with us 
-[**here**](https://forms.gle/5SguirrAShQTniS68).
+[**here**](https://forms.gle/QnYufRchWc7dFdKZ8).
 
 {% include alert.html type="danger" content=" We will not be considering retroactive 
 submissions to the extenuating circumstances form. **This means that you should proactively submit to the form before the assignment’s deadline to be considered.** Exceptions will only be made in extreme cases. " %}
