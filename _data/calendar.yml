@@ -270,7 +270,7 @@
           [Video TBD]()
           |
         **Readings:** [Ch 19](https://cs61b-2.gitbook.io/cs61b-textbook/19.-hashing-i) [Ch 20](https://cs61b-2.gitbook.io/cs61b-textbook/20.-hashing-ii)
-      published: false
+      published: true
     - title: Heaps and Priority Queues
       type: Lecture, Lab
       date: 2024-07-16
