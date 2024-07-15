@@ -2,7 +2,7 @@
 layout: page
 title: "Lab 14: Heaps and Priority Queues"
 tags: [Lab, Heaps, Priority Queues]
-released: false
+released: true
 searchable: true
 ---
 
@@ -11,6 +11,10 @@ searchable: true
 Each assignment will have an FAQ linked at the top. You can also access it by
 adding "/faq" to the end of the URL. The FAQ for Lab 14 is located
 [here](faq.md).
+
+## Use the Debugger!
+
+Data structures labs can be tricky, so make sure to use the debugger to help! If you need a refresher on how to use the debugger, check out the lab 3 spec [debugging guide](/su24/labs/lab03/#debugger-overview).
 
 ## Before You Begin
 
@@ -43,8 +47,8 @@ or a *priority value*.
 Throughout this lab, we will be making a distinction between the *priority* and
 the *priority value*. *Priority* is how important an item is to the priority
 queue, while *priority value* is the value associated with each item inserted.
-The element with the *highest priority* may not always have the *highest
-priority value*.
+**The element with the highest priority may not always have the highest
+priority value.**
 
 Let's take a look at two examples.
 
@@ -496,7 +500,7 @@ Before moving on to the next section, we suggest that you test your code! We
 have provided a blank `MinHeapTest.java` file for you to put any JUnit tests
 you'd like to ensure the correctness of your methods.
 
-## Exercise: `update` and `contains`
+## (Optional) Exercise: `update` and `contains`
 
 We have two more methods that we would like to implement (`contains` and
 `update`) whose behaviors are described below:
@@ -590,7 +594,8 @@ public int size();
 For the `changePriority` method, use the `update` method from the `MinHeap`
 class. The `contains` method has already been implemented for you.
 
-Note: you shouldn't have to write too much code in this file. Remember that your
+Note: **Do not just copy over what you have in `MinHeap.java`!
+You shouldn't have to write too much code in this file. Remember that your
 `MinHeap` will do most of the work for you! Our solution only requires 5 line
 changes from the provided skeleton. It is of course fine if you use more lines
 but you should not be writing long functions for this. Instead, rely on the
@@ -733,4 +738,5 @@ computer to run at what times.
 To receive credit for this lab:
 
 - Complete `MinHeap.java`
+   - `update` and `contains` are optional. The others are required.
 - Complete `MinHeapPQ.java`
