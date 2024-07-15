@@ -231,6 +231,8 @@ Here's a summary of different cases you might encounter when performing
 push-up insertion. Each of these cases can be explained by upholding the
 binary search invariant.
 
+Note: the end results of the cases on the right side (push-up when parent is a 3-node) will require the parent to push-up and split again. 
+
 ![insert-summary](img/23-insert-summary.png){: style="max-height: 400px;" }
 
 <cite>Diagram from Sedgewick's Algorithms, 4th ed.</cite>
@@ -406,6 +408,10 @@ Some further tips for writing this method if you are stuck:
   returning the black node.
 
 ## Inserting Into LLRB Trees
+
+{% include alert.html type="info" content="
+To gain a deeper understanding of the operations below and why they work, check out the [lecture slides](https://docs.google.com/presentation/d/1cLtmQeQhTuk6p41t57WasBGv1_RDTsbIMkEACrAHtPY/edit#slide=id.g13c3869d32c_0_1884) starting at slide 83.
+" %}
 
 Insertion into LLRB trees starts off with the regular binary search tree
 insertion algorithm, where we search to find the appropriate leaf location. Then we insert the element as a red node (recall in a 2-3 tree we always insert an element by stuffing it into an existing node).
