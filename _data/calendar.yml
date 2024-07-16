@@ -229,13 +229,13 @@
     - title: Exam Advice and Midterm Review
       type: Lecture, Lab
       date: 2024-07-10
-      published: false
+      published: true
       description: >
         VLSB 2050 10am - 11am
         <br>
          [Slides](https://docs.google.com/presentation/d/1oTtjnivgJPz-E1_QvmjyhS_dLY3RogKakd7pa3rM3KM/edit#slide=id.g276e9a8ae63_0_0)
           |
-          [Video TBD]()
+          [Video](https://bcourses.berkeley.edu/courses/1535549/external_tools/90481)
           |
     - title: Exam Study Day
       date: 2024-07-11
@@ -265,12 +265,12 @@
       description: >
         Dwinelle 155 10am - 11am
         <br>
-         [Slides TBD]()
+         [Slides](https://docs.google.com/presentation/d/1BGO5SZmyE8MkppxI9frTrwsshgALFKuWs29U0XkJo9s/edit?usp=sharing)
           |
-          [Video TBD]()
+          [Video](https://bcourses.berkeley.edu/courses/1535549/external_tools/90481)
           |
         **Readings:** [Ch 19](https://cs61b-2.gitbook.io/cs61b-textbook/19.-hashing-i) [Ch 20](https://cs61b-2.gitbook.io/cs61b-textbook/20.-hashing-ii)
-      published: false
+      published: true
     - title: Heaps and Priority Queues
       type: Lecture, Lab
       date: 2024-07-16

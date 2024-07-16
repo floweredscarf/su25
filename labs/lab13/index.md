@@ -2,7 +2,7 @@
 layout: page
 title: "Lab 13: Hash Tables"
 tags: [Lab, Hash Tables]
-released: false
+released: true
 searchable: true
 ---
 
@@ -17,7 +17,7 @@ adding "/faq" to the end of the URL. The FAQ for Lab 13 is located
 
 As usual, pull the files from the skeleton and make a new IntelliJ project.
 
-This lab is on the long side, so make sure to pair program!
+This lab is on the long side, so it may be useful to program with a partner!
 
 Similarly, the provided `HashMapTest` is fairly limited. We will discuss the suggested
 testing steps below, but **ensure you are creating your own tests** for all versions
@@ -108,7 +108,7 @@ keys and values, and what index each key corresponds to:
 | "Jedi"     | "Tsang"         | 9           |
 | "Noah"     | "Adhikari"      | 13          |
 | "Ryan"     | "Nuqui"         | 17          |
-| "Zephyr"   | "Omaly"        | 25          |
+| "Zephyr"   | "Omaly"         | 25          |
 
 We can define this conversion in a *hash function*, whose job, when given a key,
 is to return a specific integer for that key. In this case, the hash function
@@ -184,7 +184,7 @@ public boolean containsKey(K key);
 public V get(K key);
 public void put(K key, V value);
 public V remove(K key);
-public boolean rmove(K key, V value);
+public boolean remove(K key, V value);
 ```
 
 In order to be a Map, we have to determine how to represent a key
@@ -350,7 +350,7 @@ array index mapping.
 | "Jedi"     | "Tsang"         | 9           |
 | "Noah"     | "Adhikari"      | 13          |
 | "Ryan"     | "Nuqui"         | 17          |
-| "Zephyr"   | "Omaly"        | 25          |
+| "Zephyr"   | "Omaly"         | 25          |
 
 If we simply try to add all the elements in the table above to the map, what
 will happen?
@@ -478,7 +478,7 @@ formally define our statement "this same object `O`" above? Technically, the onl
 we consider `B` to be pointing to the same thing as `A` is because of the `.equals()` method!
 This is starting to sound an awful lot like the determinism requirement, huh!
 
-The properties of a **good** hash function is less defined, but here are some
+The properties of a **good** hash function are less defined, but here are some
 properties that are important for a good hash function (this is a non-exhaustive
 list):
 
@@ -543,7 +543,7 @@ which is below the maximum load factor.
 Update your map to include the automatic resizing feature described
 above. For the purposes of this assignment, only implement resizing upwards from
 smaller arrays to larger arrays. (Java's `HashMap` also resizes downward if
-enough entries are removed from the map.) **Note that the default load factor for this implemntation should be 0.75.**
+enough entries are removed from the map.) **Note that the default load factor for this implementation should be 0.75.**
 
 To do this, you will need add a method to keep track of the size of your
 map (size is the number of items inside the map, not the length of

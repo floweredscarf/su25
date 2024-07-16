@@ -2,7 +2,7 @@
 layout: page
 title: "Lab 14: Heaps and Priority Queues"
 tags: [Lab, Heaps, Priority Queues]
-released: false
+released: true
 searchable: true
 ---
 
@@ -12,6 +12,10 @@ Each assignment will have an FAQ linked at the top. You can also access it by
 adding "/faq" to the end of the URL. The FAQ for Lab 14 is located
 [here](faq.md).
 
+## Use the Debugger!
+
+Data structures labs can be tricky, so make sure to use the debugger to help! If you need a refresher on how to use the debugger, check out the lab 3 spec [debugging guide](/su24/labs/lab03/#debugger-overview).
+
 ## Before You Begin
 
 As usual, pull the files from the skeleton and open them in IntelliJ.
@@ -19,6 +23,11 @@ As usual, pull the files from the skeleton and open them in IntelliJ.
 ## Overview
 
 In this lab, we will be implementing the Priority Queue, a data structure that automatically orders the data in it according to a certain priority value. To implement the priority queue, we will implement it using the heap, which is a tree-like structure that enforces an ordering based on priority going down the layers.
+
+
+{% include alert.html type="info" content="
+If you are having trouble seeing some of the images linked in this spec, try turning off dark mode -- some of the images may not be visible in dark mode.
+" %}
 
 ## Priority
 
@@ -43,8 +52,8 @@ or a *priority value*.
 Throughout this lab, we will be making a distinction between the *priority* and
 the *priority value*. *Priority* is how important an item is to the priority
 queue, while *priority value* is the value associated with each item inserted.
-The element with the *highest priority* may not always have the *highest
-priority value*.
+**The element with the highest priority may not always have the highest
+priority value.**
 
 Let's take a look at two examples.
 
@@ -122,14 +131,14 @@ Answers (click to expand):
 </summary>
 
 1. Unordered linked list:
-   - inserting takes $$\Theta(1)$$
-   - polling takes $$\Theta(N)$$
+   - inserting takes $$\Theta(1)$$ - one can just insert to the end or the beginning, which would take constant time.
+   - polling takes $$\Theta(N)$$ - one needs to iterate through the entire list to find the smallest element.
 1. Ordered linked list
-   - inserting takes $$\Theta(N)$$
-   - polling takes $$\Theta(1)$$
+   - inserting takes $$\Theta(N)$$ - one needs to iterate through the entire list to find the correct position to insert the element.
+   - polling takes $$\Theta(1)$$ - one can just remove the first element, which would take constant time.
 1. Balanced binary search tree
-   - inserting takes $$\Theta(\log N)$$
-   - polling takes $$\Theta(\log N)$$
+   - inserting takes $$\Theta(\log N)$$ - one can insert an element into a balanced binary search tree in $$\Theta(\log N)$$ time.
+   - polling takes $$\Theta(\log N)$$ - one can find the smallest element in a balance binary search tree by traversing to the leftmost node, which would take $$\Theta(\log N)$$ time.
 
 </details>
 
@@ -496,7 +505,7 @@ Before moving on to the next section, we suggest that you test your code! We
 have provided a blank `MinHeapTest.java` file for you to put any JUnit tests
 you'd like to ensure the correctness of your methods.
 
-## Exercise: `update` and `contains`
+## (Optional) Exercise: `update` and `contains`
 
 We have two more methods that we would like to implement (`contains` and
 `update`) whose behaviors are described below:
@@ -577,20 +586,21 @@ tests! **Long live TDD!** Just like with `MinHeap`, we have provided a blank `Mi
 file so you can write JUnit tests to ensure your code is working properly.
 
 Then, implement the remaining methods of the interface (duplicated below) of the
-`MinHeapPQ` class:
+`MinHeapPQ` class, except for the optional `update` method.
 
 ```java
 public T peek();
 public void insert(T item, double priority);
 public T poll();
-public void changePriority(T item, double priority);
 public int size();
+public void changePriority(T item, double priority); // Optional
 ```
 
 For the `changePriority` method, use the `update` method from the `MinHeap`
 class. The `contains` method has already been implemented for you.
 
-Note: you shouldn't have to write too much code in this file. Remember that your
+Note: **Do not just copy over what you have in `MinHeap.java`!
+You shouldn't have to write too much code in this file. Remember that your
 `MinHeap` will do most of the work for you! Our solution only requires 5 line
 changes from the provided skeleton. It is of course fine if you use more lines
 but you should not be writing long functions for this. Instead, rely on the
@@ -609,7 +619,7 @@ still return false. However, according to the Javadocs for
 It is strongly recommended, but not strictly required that `(x.compareTo(y) == 0)
 == (x.equals(y))`. Generally speaking, any class that implements the Comparable
 interface and violates this condition should clearly indicate this fact. We will
-require this from you in CS61BL, but it is vital to know this requirement
+not require this from you in CS61BL, but it is vital to know this requirement
 does not hold for real world programmers!
 " %}
 
@@ -733,4 +743,23 @@ computer to run at what times.
 To receive credit for this lab:
 
 - Complete `MinHeap.java`
+   - Representation:
+      - `private int getLeftOf(int index);`
+      - `private int getRightOf(int index);`
+      - `private int getParentOf(int index);`
+      - `private int min(int index1, int index2);`
+   - Operations:
+      - `public E findMin();`
+      - `private void bubbleUp(int index);`
+      - `private void bubbleDown(int index);`
+      - `public void insert(E element);`
+      - `public int size();`
+      - `public E removeMin();`
+      - Optional: `public void update(E element);`
+      - Optional: `public boolean contains(E element);`
 - Complete `MinHeapPQ.java`
+   - `public T peek();`
+   - `public void insert(T item, double priority);`
+   - `public T poll();`
+   - `public int size();`
+   - Optional: `public void changePriority(T item, double priority);`
