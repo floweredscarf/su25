@@ -283,7 +283,7 @@
           [Video TBD]()
           |
         **Readings:** [Ch 21](https://cs61b-2.gitbook.io/cs61b-textbook/21.-heaps-and-priority-queues)
-      published: false
+      published: true
     - title: Disjoint Sets
       type: Lecture, Lab
       date: 2024-07-17
