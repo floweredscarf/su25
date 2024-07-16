@@ -2,7 +2,7 @@
 layout: page
 title: "Lab 15: Disjoint Sets"
 tags: [Lab, Disjoint Sets]
-released: false
+released: true
 ---
 
 ## [FAQ](faq.md)
@@ -88,16 +88,17 @@ of the set, which is why the set numbers are 0, 3, and 5. By looking at the seco
 This approach uses the quick-find algorithm, prioritizing the runtime of the
 `find` operation but making the `union` operations slow. But, how fast is the
 `find` operation in the worst case, and how slow is the `union` operation in the
-worst case? Discuss with your partner, then check your answers below. Hint:
+worst case? Discuss with a partner or think on your own, then check your answers below. Hint:
 Think about the example above, and try out some `find` and `union` operations
 yourself!
 
-Answer below (highlight to reveal):
-<div style="color: white; background: white;">
-1. Worst-case runtime for quick-find data structure's <code style="background: white">find</code> with N items: Theta(1).<br>
-2. Worst-case runtime for quick-find data structure's <code style="background: white">union</code> with N items: Theta(N).
-</div>
-
+<details markdown="block">
+  <summary markdown="block">
+Answers below:
+</summary>
+1. Worst-case runtime for quick-find data structure's <code>find</code> with N items: Theta(1).<br>
+2. Worst-case runtime for quick-find data structure's <code>union</code> with N items: Theta(N).
+</details>
 ### Quick Union
 
 Suppose we prioritize making the `union` operation fast instead. One way we can
@@ -210,13 +211,15 @@ of `union` operations that will result in the maximum height vs. the minimum hei
 3. What is the best-case height for a `HeightedQuickUnion` containing 6 items?
 4. What is the worst-case height for a `HeightedQuickUnion` containing 6 items?
 
-Answer below (highlight to reveal):
-<div style="color: white; background: white;">
+<details markdown="block">
+  <summary markdown="block">
+Answers below:
+</summary>
 1. 2<br>
 2. 3<br>
 3. 2<br>
 4. 3<br>
-</div>
+</details>
 
 ### Path Compression
 
@@ -279,7 +282,7 @@ Our `UnionFind` uses only non-negative values as the items in our set.
 
 How can we use the data structure that we created above to keep track of
 different values, such as all integers or companies undergoing mergers and
-acquisitions? Discuss with your partner.
+acquisitions? Discuss with a partner.
 
 ## Recap
 
@@ -360,4 +363,4 @@ that we inhabit, $$\log^* N$$ is at most 5.
 To receive credit for this lab:
 
 - Complete the implementation of `UnionFind.java`
-- Submit to Gradescope with your partner, as normal.
+- Submit to Gradescope, as normal.
