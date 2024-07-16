@@ -586,14 +586,14 @@ tests! **Long live TDD!** Just like with `MinHeap`, we have provided a blank `Mi
 file so you can write JUnit tests to ensure your code is working properly.
 
 Then, implement the remaining methods of the interface (duplicated below) of the
-`MinHeapPQ` class:
+`MinHeapPQ` class, except for the optional `update` method.
 
 ```java
 public T peek();
 public void insert(T item, double priority);
 public T poll();
-public void changePriority(T item, double priority);
 public int size();
+public void changePriority(T item, double priority); // Optional
 ```
 
 For the `changePriority` method, use the `update` method from the `MinHeap`
@@ -743,5 +743,23 @@ computer to run at what times.
 To receive credit for this lab:
 
 - Complete `MinHeap.java`
-   - `update` and `contains` are optional. The others are required.
+   - Representation:
+      - `private int getLeftOf(int index);`
+      - `private int getRightOf(int index);`
+      - `private int getParentOf(int index);`
+      - `private int min(int index1, int index2);`
+   - Operations:
+      - `public E findMin();`
+      - `private void bubbleUp(int index);`
+      - `private void bubbleDown(int index);`
+      - `public void insert(E element);`
+      - `public int size();`
+      - `public E removeMin();`
+      - Optional: `public void update(E element);`
+      - Optional: `public boolean contains(E element);`
 - Complete `MinHeapPQ.java`
+   - `public T peek();`
+   - `public void insert(T item, double priority);`
+   - `public T poll();`
+   - `public int size();`
+   - Optional: `public void changePriority(T item, double priority);`
