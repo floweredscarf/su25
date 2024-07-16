@@ -24,6 +24,11 @@ As usual, pull the files from the skeleton and open them in IntelliJ.
 
 In this lab, we will be implementing the Priority Queue, a data structure that automatically orders the data in it according to a certain priority value. To implement the priority queue, we will implement it using the heap, which is a tree-like structure that enforces an ordering based on priority going down the layers.
 
+
+{% include alert.html type="info" content="
+If you are having trouble seeing some of the images linked in this spec, try turning off dark mode -- some of the images may not be visible in dark mode.
+" %}
+
 ## Priority
 
 We've learned about a few abstract data types already,
@@ -126,14 +131,14 @@ Answers (click to expand):
 </summary>
 
 1. Unordered linked list:
-   - inserting takes $$\Theta(1)$$
-   - polling takes $$\Theta(N)$$
+   - inserting takes $$\Theta(1)$$ - one can just insert to the end or the beginning, which would take constant time.
+   - polling takes $$\Theta(N)$$ - one needs to iterate through the entire list to find the smallest element.
 1. Ordered linked list
-   - inserting takes $$\Theta(N)$$
-   - polling takes $$\Theta(1)$$
+   - inserting takes $$\Theta(N)$$ - one needs to iterate through the entire list to find the correct position to insert the element.
+   - polling takes $$\Theta(1)$$ - one can just remove the first element, which would take constant time.
 1. Balanced binary search tree
-   - inserting takes $$\Theta(\log N)$$
-   - polling takes $$\Theta(\log N)$$
+   - inserting takes $$\Theta(\log N)$$ - one can insert an element into a balanced binary search tree in $$\Theta(\log N)$$ time.
+   - polling takes $$\Theta(\log N)$$ - one can find the smallest element in a balance binary search tree by traversing to the leftmost node, which would take $$\Theta(\log N)$$ time.
 
 </details>
 
@@ -614,7 +619,7 @@ still return false. However, according to the Javadocs for
 It is strongly recommended, but not strictly required that `(x.compareTo(y) == 0)
 == (x.equals(y))`. Generally speaking, any class that implements the Comparable
 interface and violates this condition should clearly indicate this fact. We will
-require this from you in CS61BL, but it is vital to know this requirement
+not require this from you in CS61BL, but it is vital to know this requirement
 does not hold for real world programmers!
 " %}
 
