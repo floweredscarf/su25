@@ -184,7 +184,7 @@ public boolean containsKey(K key);
 public V get(K key);
 public void put(K key, V value);
 public V remove(K key);
-public boolean rmove(K key, V value);
+public boolean remove(K key, V value);
 ```
 
 In order to be a Map, we have to determine how to represent a key
@@ -543,7 +543,7 @@ which is below the maximum load factor.
 Update your map to include the automatic resizing feature described
 above. For the purposes of this assignment, only implement resizing upwards from
 smaller arrays to larger arrays. (Java's `HashMap` also resizes downward if
-enough entries are removed from the map.) **Note that the default load factor for this implemntation should be 0.75.**
+enough entries are removed from the map.) **Note that the default load factor for this implementation should be 0.75.**
 
 To do this, you will need add a method to keep track of the size of your
 map (size is the number of items inside the map, not the length of
