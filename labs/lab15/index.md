@@ -22,6 +22,8 @@ As usual, pull the files from the skeleton and make a new IntelliJ project.
 
     git pull skeleton main
 
+Feel free to jump right into coding, and then go back and read the spec when confused on what to code next!
+
 ## Disjoint Sets
 
 Suppose we have a collection of companies that have gone under mergers or
@@ -96,8 +98,8 @@ yourself!
   <summary markdown="block">
 Answers below:
 </summary>
-1. Worst-case runtime for quick-find data structure's <code>find</code> with N items: Theta(1).<br>
-2. Worst-case runtime for quick-find data structure's <code>union</code> with N items: Theta(N).
+1. Worst-case runtime for quick-find data structure's <code>find</code> with N items: Theta(1). Just the array lookup. <br>
+2. Worst-case runtime for quick-find data structure's <code>union</code> with N items: Theta(N). Need to loop through potentially all array elements to reassign values. Consider unioning the (n-1) elements with 1 element.
 </details>
 ### Quick Union
 
@@ -246,6 +248,10 @@ larger than 4. That means for any practical purpose, a weighted quick union data
 structure with path compression has `find` operations that take constant time on
 average!
 
+![path-compression](img/path-compression.png)
+
+<!-- credit: https://www.slideshare.net/slideshow/time-complexity-of-union-find-55858534/55858534 -->
+
 > It is important to note that even though this operation can be considered
 > constant time for all practically sized inputs, we should not describe
 > this whole data structure as constant time. We could say something like,
@@ -264,7 +270,7 @@ We will now implement our own disjoint sets data structure. When you open up
 implementations.
 
 Read the documentation to get an understanding of what methods need to be filled
-out. Remember to implement both optimizations discussed above, and take note of
+out. Remember to implement both optimizations discussed above, so **Weighted Quick Union with Path Compression**, and take note of
 the tie-breaking scheme that is described in the comments of some of the
 methods. This scheme is done for autograding purposes and is chosen arbitrarily.
 In addition, remember to ensure that the inputs to your functions are within
@@ -348,8 +354,7 @@ Results in tree heights of $$\log N$$.
 
   Warning: if the two trees have the same size, the book code has the opposite
 convention as quick union and sets the root of the second tree to point to the
-root of the first tree. This isn't terribly important (you won't be tested on
-trivial details like these).
+root of the first tree. This isn't terribly important.
 
 Weighted quick union with path compression
 : When `find` is called, every node along the way is made to point at the root.
