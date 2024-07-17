@@ -185,7 +185,7 @@ depth of any element $$x$$ only increases when the tree $$T_1$$ that contains
 $$x$$ is placed below another tree $$T_2$$. When that happens, the size of the
 resulting tree will be at least double the size of $$T_1$$ because $$size(T_2)
 \ge size(T_1)$$. The tree that contains only $$x$$ can double its size at most
-$$\log N$$ times until we have reached a total of $$N$$ items.
+$$\log N$$ times until we have reached a total of $$N$$ items. Check the [textbook](https://cs61b-2.gitbook.io/cs61b-textbook/14.-disjoint-sets/14.4-weighted-quick-union-wqu) for a more detailed look.
 
 See the following visual for some intuition on how this works:
 ![Weighted Quick Union](img/weighted.png)
