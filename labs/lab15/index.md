@@ -180,12 +180,7 @@ one, breaking ties arbitrarily. We call this **weighted quick union**.
 Because we are now using "union by size", the maximum depth of any item will be
 in $$O(\log N)$$, where $$N$$ is the number of items stored in the data
 structure. This is a great improvement over the linear time runtime of the
-unoptimized quick union. Some brief intuition for this depth is because the
-depth of any element $$x$$ only increases when the tree $$T_1$$ that contains
-$$x$$ is placed below another tree $$T_2$$. When that happens, the size of the
-resulting tree will be at least double the size of $$T_1$$ because $$size(T_2)
-\ge size(T_1)$$. The tree that contains only $$x$$ can double its size at most
-$$\log N$$ times until we have reached a total of $$N$$ items. Check the [textbook](https://cs61b-2.gitbook.io/cs61b-textbook/14.-disjoint-sets/14.4-weighted-quick-union-wqu) for a more detailed look.
+unoptimized quick union. Check the [textbook](https://cs61b-2.gitbook.io/cs61b-textbook/14.-disjoint-sets/14.4-weighted-quick-union-wqu) for a more detailed look on why.
 
 See the following visual for some intuition on how this works:
 ![Weighted Quick Union](img/weighted.png)
