@@ -194,7 +194,7 @@ See the following visual for some intuition on how this works:
 Define a *fully connected* `DisjointSets` object as one in which `connected` returns
 `true` for any arguments, due to prior calls to `union`.
 
-> We have not directly discussed `connected` yet, but you think about how this could
+> We have not directly discussed `connected` yet, but you should think about how this could
 > be implemented. How could we use the `find` operation to check if two different
 > elements are part of the same set.
 
