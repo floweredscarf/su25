@@ -304,7 +304,14 @@
     - title: Hashing, Heaps, and Union Find
       type: Theory
       date: 2024-07-19
-      published: false
+      description: >
+        <br>
+         [Worksheet](https://drive.google.com/file/d/1ImyWK27824f4_pqIb6kp_d2j78a8TxrH/view?usp=sharing)
+          |
+         [Slides](https://docs.google.com/presentation/d/13gUwZuerbmHy1t3kqO0cdke_cfTXe_s1qiTnzk1Wo-A/edit?usp=sharing)
+          |
+         [Solutions Not Out](https://drive.google.com/file/d/1Jxk7LvypnGb0mDr3PJ3NKXPj_lHVL3MM/view?usp=sharing)
+      published: true
       footer: >
         Project 2 due **Sunday 7/21, 11:59 PM**
       alt-footer: >
@@ -368,7 +375,13 @@
     - title: Graphs
       type: Theory
       date: 2024-07-26
-      published: false
+      description: >
+        <br>
+         [Worksheet Not Out]()
+          |
+         [Slides Not Out]()
+          |
+         [Solutions Not Out]()
       published: false
       footer: >
         Project 3 Checkpoint due **Sunday 7/28, 11:59 PM**
@@ -422,6 +435,13 @@
     - title: Sorting
       type: Theory
       date: 2024-08-02
+      description: >
+        <br>
+         [Worksheet Not Out]()
+          |
+         [Slides Not Out]()
+          |
+         [Solutions Not Out]()
       published: false
       footer: >
         Project 3 due **Sunday 8/04, 11:59 PM**
