@@ -2,7 +2,7 @@
 layout: page
 title: "Project 3 Lab Demo Checkoff Script"
 categories: proj
-released: false
+released: true
 ---
 
 ## Project 3 Lab Demo Checkoff Script

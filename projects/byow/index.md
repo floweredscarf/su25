@@ -2,7 +2,7 @@
 layout: page # The HTML template to use to render this page.
 title: "Project 3: CS61BYoW"
 categories: proj
-released: false
+released: true
 ---
 
 ## [FAQ](faq.md)

@@ -2,7 +2,7 @@
 layout: page
 title: "FAQ - Project 3: BYOW"
 categories: proj
-released: false
+released: true
 searchable: true
 toc:
   h_max: 4
