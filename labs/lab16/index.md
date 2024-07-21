@@ -2,17 +2,17 @@
 layout: page
 title: "Lab 16: BYOW Introduction"
 categories: lab
-released: false
+released: true
 
 ---
 
 ## [FAQ](faq.md)
 
 Each assignment will have an FAQ linked at the top. You can also access it by
-adding "/faq" to the end of the URL. The FAQ for Lab 19 is located
+adding "/faq" to the end of the URL. The FAQ for Lab 16 is located
 [here](faq.md).
 
-This lab is divided into two main parts–"Plus World" and "Memory Game". Both will help you with Project 3: Build your own World (BYOW).
+This lab is divided into two main parts– "Plus World" and "Memory Game". Both will help you with Project 3: Build your own World (BYOW).
 The first part will teach you how to use a set of "tiles" to generate shapes on your screen. This will apply to building the rooms, hallways, and other features of your world in Project 3. The second part will teach you more about how to use the StdDraw package to make a fun text-based game. This will help you build the main menu and other text-based elements of Project 3. It will also teach you how to achieve user interactivity, which is vital to Project 3!
 
 Pre-lab
@@ -26,7 +26,7 @@ Some steps to complete before getting started on this lab:
 
 - Understand that project 3 will be a marathon and not a sprint. Don't wait until the last minute. You and your partner should start thinking about your design NOW.
 
-Your lab today will be graded by completing a checkoff with a TA or AI during lab. This means you should try to finish the required parts of the lab ASAP, to avoid a long line to get checked off. This lab is due **26 hours from the start of your lab section** instead of the usual 22 hours, this will allow you to get checked off the next day if necessary. 
+Your lab today will be graded by completing a checkoff with a TA or AI during lab. This means you should try to finish the required parts of the lab ASAP, to avoid a long line to get checked off. This lab is due **24 hours from the start of your lab section with a 2 hour grace period,** instead of the usual 22 hours. This will allow you to get checked off the next day if necessary. 
 
 Plus World Introduction
 --------------------------------
@@ -229,7 +229,7 @@ We've provided you with one very helpful method: drawFrame. It uses the `StdDraw
 
 This is what `drawFrame` does for us. We know we need to display strings on the screen and they should be noticeable. It clears the canvas, sets the font to be large and bold, draws the input string so that it is centered on the canvas, and then shows the canvas on the screen. It also displays some other information like the round number, and whether the player should currently be typing in an answer or watching for the next round. In your `startGame()` method you'll write in more of the logic to make this actually work. Try running the `main` method of MemoryGame right now, and you'll see what this all looks like so far.
 
-**Discuss with your partner how the methods you see here can apply to your BYOW project. What does each line do? Do you think you could use these yourself?**
+**Discuss with a partner how the methods you see here can apply to your BYOW project. What does each line do? Do you think you could use these yourself?**
 
 This would be a good time to look at the [StdDraw](https://introcs.cs.princeton.edu/java/stdlib/javadoc/StdDraw.html) API and figure out exactly how it works. Some useful methods to look at include:
 
@@ -289,7 +289,7 @@ After you’ve done this you should be able to run `MemoryGame.java` and play yo
 
 ## Submission
 
-To get credit for this lab, you'll have to do a checkoff during lab, with either your TA or an AI. You will be asked to show that you can generate a single plus (or a whole tesselaton), and that you can play your memory game. Once you complete your checkoff, your TA/AI should give you a magic word, which you can type it into magicword.txt. You will be solely graded off if your magic word is present. This is remniscent of how you will be graded for BYOW: though part of the project will be autograded, your final product will be graded in a checkoff with a staff member so you can show off your creative finished project!
+To get credit for this lab, you'll have to do a checkoff during lab, with either your TA or an AI. You will be asked to show that you can generate a single plus at various sizings (or a whole tesselaton), and that you can play your memory game. Once you complete your checkoff, your TA/AI should give you a magic word, which you can type it into magicword.txt. You will be solely graded off if your magic word is present. This is remniscent of how you will be graded for BYOW: though part of the project will be autograded, your final product will be graded in a checkoff with a staff member so you can show off your creative finished project!
 
 If you want to get checked off outside of lab hours you can make a private Ed **Question** thread under Labs - Lab16 - Checkoff and make sure you follow the instructions on the template. 
 
