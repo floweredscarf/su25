@@ -330,9 +330,9 @@
             [Video TBD]()
             |
           **Readings:** Project 3 Spec
-      published: false
+      published: true
       footer: >
-        Project 3: Build Your Own World Released
+        [Project 3: Build Your Own World Released](/su24/projects/byow)
     - title: Graphs
       type: Lecture, Lab
       date: 2024-07-23
