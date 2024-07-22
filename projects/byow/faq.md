@@ -77,7 +77,7 @@ You do not need to worry about replay strings that contain multiple saves or cha
 
 ## Autograder Errors
 
-### Why is the 3A autograder saying "Could not initialize class edu.princeton.cs.algs4.StdDraw"?
+### Why is the autograder saying "Could not initialize class edu.princeton.cs.algs4.StdDraw"?
 
 Somewhere in your code, your `getWorldFromInput` method tries to use the `StdDraw` class which is not allowed. For example if you call `TERenderer.initialize()`, you are using `StdDraw`. No `StdDraw` window should open when you call `getWorldFromInput`. We've seen some students whose code only opens a `StdDraw` window for some seeds, so look very carefully.
 
@@ -115,18 +115,14 @@ Sure. In this case, `getWorldFromInput` should return only the part of the world
 
 Yes, but you'll need to create a fourth main menu option. Your project must support exactly the API described in this spec. That is, "N23123S" must always create a new world with the seed 23123, and must not ask for any additional input from the user.
 
-### Do I need Main Menu for 3A Autograder or 3A Manual Checkoff?
+### Do I need Main Menu for the Phase I Autograder?
 
 No, we won't grade you on that.
-
-### Can I resubmit 3A Checkoff form?
-
-Yes. But if you resubmit after the deadline, that would not be valid.
 
 ### Are there any live checkoffs?
 
 Yes, sign ups will be released on Ed at a later date.
 
-### Would it be possible to get points back if we lost some points during 3A checkoff?
+### Would it be possible to get points back if we lost some points in either autograder?
 
-Yes, there will be some instructions about it later on in the 3C script!
+Yes, there will be some instructions about it later on in the checkoff script!

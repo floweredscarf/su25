@@ -32,12 +32,12 @@ Project 3 is worth 36 points. There are several key deadlines for this assignmen
   - Read and understand the [partnership guidelines](https://cs61bl.org/su24/guides/partnership-guide) before starting the assignment.
   - When group repos are released, you **must accept your GitHub invitation**, otherwise they will expire after a week.
 - **Project 3 Checkpoint (2 pts): Due 7/28 at 11:59 PM**
-  - Phase I: World Generation, due on Gradescope
+  - Phase I: World Generation, due on Gradescope.
 - **Project 3 Autograder (1 pt): Due 8/4 at 11:59 PM**
-  - Phase II: Interactivity, due on Gradescope
-- **Project 3 Partner Reflection (1 pt)**:
-  - Must submit the [Projct 3 Reflection Form](https://forms.gle/RUWapL4ayzHvYgzs5) by 8/4, 11:59 PM.
-- **Project 3 Checkoffs (32 pts): 8/5 in Practical Lab Sections**
+  - Phase II: Interactivity, due on Gradescope.
+- **Project 3 Partner Reflection (1 pt): Due 8/4, 11:59 PM**:
+  - Must submit the [Projct 3 Reflection Form](https://forms.gle/RUWapL4ayzHvYgzs5).
+- **Project 3 Checkoffs (31 pts): 8/5 in Practical Lab Sections**
   - Must submit Project 3 [Pre-Checkoff Form](https://forms.gle/ZR9fBy8qTRNQVmtc8) before signing up, due 8/4 at 11:59 PM.
   - All group members must arrive on time, otherwise a 20% late penalty will be applied to the group.
 
@@ -91,7 +91,7 @@ This is an open-ended project. As you can see, we gave you just one file called 
 The last package `Utils` contains everything that you might need to implement your `World.java` class.
 
 - `RandomUtils.java` - Provides handful of functions that might be useful.
-- `FileUtils.java` - Library of simple file operations. You can find related APIs [here](https://docs.oracle.com/javase/8/docs/api/java/io/File.html) and [here](https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html). Be sure to look at lab09 for a refresher on how this works.
+- `FileUtils.java` - Library of simple file operations. You can find related APIs [here](https://docs.oracle.com/javase/8/docs/api/java/io/File.html) and [here](https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html). Be sure to look at Lab 8 or Project 2 for a refresher on how this works.
 
 This project makes heavy use of `StdDraw`, which is a package that has basic graphics rendering capabilities.
 Additionally, it supports user interaction with keyboard and mouse clicks. You will likely need to consult the API
@@ -296,7 +296,7 @@ of your project must include:
 As an example of the bare minimum, the simple interface below displays a grid of tiles and a HUD that displays the
 description of the tile under the mouse pointer (click image for higher resolution):
 
-[![mouseover_example1](img/valid_UI.png)](img/valid_UI.png)
+[![mouseover_example1](img/mouseover_example1.png)](img/mouseover_example1.png)
 
 You may include additional features if you choose. In the example below (click image for higher resolution), as with the
 previous example, the mouse cursor is currently over a wall, so the HUD displays the text "wall" in the top right.
@@ -416,9 +416,11 @@ If you do not complete a primary feature, your ambition score will be capped at 
 
 Under the description of some primary features, we’ve provided some GIFS that would score full points on their respective ambition point items to help clear any confusions. Yours do not need to look exactly like the examples given.
 
+You are not restricted to the features listed below. If you have an idea for a feature that is not listed, please make a post on Ed and we will tell you if it qualifies as a primary or secondary feature. In addition, we will actively be updating [this document](https://docs.google.com/document/d/1I_cWgzQvK8oCpJ1wr-c1f2IR1rLwtdb2hFBBDP39h-Y/edit?usp=sharing) with clarifications about our current policy on ambition features. Please check back frequently if you have questions.
+
 ##### 8 Point Primary Features
 
-- Create a system so that the tile renderer only displays tiles on the screen that are within the line of sight of the avatar. **The line of sight must be able to be toggled on and off with a keypress, otherwise it will interfere with checkoffs.**
+- Create a system so that the tile renderer only displays tiles on the screen that are within the line of sight of the avatar. **The line of sight must be able to be toggled on and off with a keypress, otherwise it will interfere with checkoffs.** Please check the [Ambition Feature Clarifications](https://docs.google.com/document/d/1I_cWgzQvK8oCpJ1wr-c1f2IR1rLwtdb2hFBBDP39h-Y/edit?usp=sharing) for additional requirements for this feature.
 
 [![line-of-sight](img/line-of-sight.gif)](img/line-of-sight.gif)
 
@@ -485,7 +487,7 @@ reading the entire spec since there are a lot of details which are not captured 
 - Must have pseudo-randomly generated worlds/variety in worlds, i.e. the world should be different for every seed.
 - All generated worlds must include all the visual features described in 3A above.
 - Users must be able to move around in the world using W, A, S, and D keys.
-- Users must be able to press ":Q" to quit, and after starting the program up again, the L option on the main menu
+- Users must be able to press ":Q" and ":q" to quit, and after starting the program up again, the L option on the main menu
   should load the world state **exactly as it was before**.
 - All random events should be pseudorandom. That is, your program gives deterministic behavior given a seed.
 - Users must be able to interact through string inputs using `getWorldFromInput`, and behavior other than accepting input and drawing to
