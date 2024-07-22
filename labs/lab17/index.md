@@ -98,7 +98,7 @@ a directed graph appears below.
 
 ![directed-graph](img/directed-graph.png)
 
-Every undirected graph is a directed graph, but the converse is not true.
+Any undirected edge can be represented with 2 directed edges. This means every undirected graph is a directed graph, but the converse is not true. 
 
 ### Graph Definitions
 
@@ -108,17 +108,17 @@ might come in handy while discussing graphs.
 | Term                | Definition                                                                                      |
 |---------------------|-------------------------------------------------------------------------------------------------|
 | Adjacent            | A vertex `u` is *adjacent* to a vertex `v` if `u` has an edge connecting to `v`.                |
+| Path                | A *path* is a sequence of edges from one vertex to another where no edge or vertex is repeated. |
 | Connected           | A graph is *connected* if every vertex has a path to all other vertices.                        |
 | Neighbor            | A vertex `u` is a *neighbor* of a vertex `v` if they are adjacent.                              |
 | Incident to an edge | A vertex that is an endpoint of an edge is *incident* to it                                     |
 | Indegree            | A vertex `v`'s *indegree* is the number of vertices `u` where a directed edge from `u` to `v` exists.             |
 | Outdegree            | A vertex `v`'s *outdegree* is the number of vertices `u` where a directed edge from `v` to `u` exists.             |
 | Degree            | A vertex `v`'s *degree* is the number of vertices adjacent to it. Note the we calculate the degree of a vertex for undirected graphs, and indegree/outdegree for directed graphs.             |
-| Path                | A *path* is a sequence of edges from one vertex to another where no edge or vertex is repeated. |
 | Cycle               | A *cycle* is a path that ends at the same vertex where it originally started.                   |
 
 ## Exercise: Edge vs. Vertex Count
-For the following questions, discuss your solution with your partner. Verify your answer **afterwards** by highlighting the space after the question.
+For the following questions, discuss your solution with someone in your lab. Verify your answer **afterwards** by highlighting the space after the question.
 
 ### Exercise 1
 
@@ -133,6 +133,15 @@ $$N, N^2, N(N-1), \frac{N(N-1)}{2}$$
 
 Solution:
 <p><span style="color:white"><em> N(N-1)</em></span>.</p>
+
+<details markdown="block">
+  <summary markdown="block">
+#### Solution
+{: .no_toc}
+  </summary>
+$N(N-1)$
+There are $N$ vertices and each one can have an edge to the other $N-1$ vertices.
+</details>
 
 ### Exercise 2
 
@@ -150,6 +159,15 @@ Options:
 Solution:
 <p><span style="color:white"><em> half as many edges </em></span>.</p>
 
+<details markdown="block">
+  <summary markdown="block">
+#### Solution
+{: .no_toc}
+  </summary>
+$N(N-1)$
+Half as many edges. Every pair of directed edges u->v, v->u can be represented with a single undirected edge.
+</details>
+
 ### Exercise 3
 
 What's the *minimum* number of edges that a connected undirected graph with N
@@ -161,6 +179,15 @@ $$N - 1, N, N^2, N(N-1), \frac{N(N-1)}{2}$$
 
 Solution:
 <p><span style="color:white"><em> N-1 </em></span>.</p>
+
+<details markdown="block">
+  <summary markdown="block">
+#### Solution
+{: .no_toc}
+  </summary>
+$N-1$
+A graph with 1 vertex needs 0 edges to be connected. Every time you add a new vertex you need minimum one new edge to connect it.
+</details>
 
 ## Graph Representation
 
