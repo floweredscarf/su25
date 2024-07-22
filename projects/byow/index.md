@@ -32,12 +32,13 @@ Project 3 is worth 36 points. There are several key deadlines for this assignmen
   - Read and understand the [partnership guidelines](https://cs61bl.org/su24/guides/partnership-guide) before starting the assignment.
   - When group repos are released, you **must accept your GitHub invitation**, otherwise they will expire after a week.
 - **Project 3 Checkpoint (2 pts): Due 7/28 at 11:59 PM**
-  - Phase I: World Generation Autograder, due on Gradescope
+  - Phase I: World Generation, due on Gradescope
 - **Project 3 Autograder (1 pt): Due 8/4 at 11:59 PM**
-  - Phase II: Interactivity Autograder, due on Gradescope
+  - Phase II: Interactivity, due on Gradescope
+- **Project 3 Partner Reflection (1 pt)**:
+  - Must submit the [Projct 3 Reflection Form](https://forms.gle/RUWapL4ayzHvYgzs5) by 8/4, 11:59 PM.
 - **Project 3 Checkoffs (32 pts): 8/5 in Practical Lab Sections**
-  - Ambition & Demos Checkoff (31 pts): Must complete the [Pre-Checkoff Form](https://forms.gle/ZR9fBy8qTRNQVmtc8) before attending.
-  - Project 3 Partner Reflection (1 pt): Due at [Projct 3 Reflection Form](https://forms.gle/RUWapL4ayzHvYgzs5).
+  - Must submit Project 3 [Pre-Checkoff Form](https://forms.gle/ZR9fBy8qTRNQVmtc8) before signing up, due 8/4 at 11:59 PM.
   - All group members must arrive on time, otherwise a 20% late penalty will be applied to the group.
 
 **Beware: you cannot submit any part of Project 3 late without extenuating circumstances**. All submissions after the deadline will result in a score of 0. We do not have the same extension policy as previous assignments, so get started early.
@@ -508,13 +509,16 @@ Autograders: 3 points.
  - Phase 1: 2 points.
  - Phase 2: 1 points.
 
-In addition, you'll also submit [the Pre-Checkoff Form](https://forms.gle/cuRHCQqXtWbv2JfC7) by **your demo time slot** when you've
+If you do not earn full points on the autograders, you can clobber them with your final checkoff score.
+
+We will also have a brief partnership reflection assignment worth 1 point. You are required to make a submission to the [Project 3 Reflection Form](https://forms.gle/RUWapL4ayzHvYgzs5) by **Sunday 8/4, 11:59 pm pacific time.**
+
+In addition, you'll also submit [the Pre-Checkoff Form](https://forms.gle/cuRHCQqXtWbv2JfC7) when you've
 completed the project and sign up for a checkoff time slot with your TA by **Sunday 8/4, 11:59 pm pacific time** (instructions to do so will be released on Ed). Note that this is the same time as your autograder submission for Phase 2 is due. **If you do not submit this form and sign up for a checkoff then you will receive a 0 on the checkoff portion of the project.** Only one of your partners needs to submit the form, but you should write the responses together. 
 
-Checkoff demo (submitting [the Pre-Checkoff Form](https://forms.gle/cuRHCQqXtWbv2JfC7) and then attending a checkoff with your TA): 32 points.
+Checkoff demo (submitting [the Pre-Checkoff Form](https://forms.gle/cuRHCQqXtWbv2JfC7) and then attending a checkoff with your TA): 31 points.
  - 12 points: Ambition features.
  - 19 points: Obeying base spec for phase 1 and phase 2.
- - 1 point: Submitting the [Projct 3 Reflection Form](https://forms.gle/RUWapL4ayzHvYgzs5)
 
 **You'll also need to identify a commit** so we can grade it. You should:
 
@@ -524,7 +528,7 @@ Checkoff demo (submitting [the Pre-Checkoff Form](https://forms.gle/cuRHCQqXtWbv
    to. But if you need to comment some lines out to pass the autograder and then uncomment them for the checkoff, that's
    OK. You can use
    `git log` to help you here. Copy this SHA and save it somewhere.
-2. Ensure that this commit is before the deadline, and run your code from this commit to double-check that it is indeed
+2. Ensure that this commit is before the Phase II deadline, and run your code from this commit to double-check that it is indeed
    the commit you'd like graded. If your commit was from after the deadline, you'll receive a 50% penalty.
 3. Paste it carefully into the form submission.
 4. **Do not ignore step 3**. If you paste the incorrect SHA, we'll grade an incorrect version of your code, and if you
@@ -578,6 +582,8 @@ The Phase II Grader is due on **Sunday, August 4th at 11:59 PM** for 1 point. It
 - `getWorldFromInput` creates the same world even with saving and loading throughout the input string
 
 **Remember to add your partner as a group member when submitting to the autograder.**
+
+In addition, we will clobber the score you receive on the autograders with your final checkoff.
 
 ## Getting Help ##
 
