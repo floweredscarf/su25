@@ -519,8 +519,9 @@ In addition, you'll also submit [the Pre-Checkoff Form](https://forms.gle/cuRHCQ
 completed the project and sign up for a checkoff time slot with your TA by **Sunday 8/4, 11:59 pm pacific time** (instructions to do so will be released on Ed). Note that this is the same time as your autograder submission for Phase 2 is due. **If you do not submit this form and sign up for a checkoff then you will receive a 0 on the checkoff portion of the project.** Only one of your partners needs to submit the form, but you should write the responses together. 
 
 Checkoff demo (submitting [the Pre-Checkoff Form](https://forms.gle/cuRHCQqXtWbv2JfC7) and then attending a checkoff with your TA): 31 points.
+ - 11 points: Basic Functionality
+ - 8 points: Randomness
  - 12 points: Ambition features.
- - 19 points: Obeying base spec for phase 1 and phase 2.
 
 **You'll also need to identify a commit** so we can grade it. You should:
 
