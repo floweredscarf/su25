@@ -32,12 +32,12 @@ Project 3 is worth 36 points. There are several key deadlines for this assignmen
   - Read and understand the [partnership guidelines](https://cs61bl.org/su24/guides/partnership-guide) before starting the assignment.
   - When group repos are released, you **must accept your GitHub invitation**, otherwise they will expire after a week.
 - **Project 3 Checkpoint (2 pts): Due 7/28 at 11:59 PM**
-  - Phase I: World Generation, due on Gradescope
+  - Phase I: World Generation, due on Gradescope.
 - **Project 3 Autograder (1 pt): Due 8/4 at 11:59 PM**
-  - Phase II: Interactivity, due on Gradescope
-- **Project 3 Partner Reflection (1 pt)**:
-  - Must submit the [Projct 3 Reflection Form](https://forms.gle/RUWapL4ayzHvYgzs5) by 8/4, 11:59 PM.
-- **Project 3 Checkoffs (32 pts): 8/5 in Practical Lab Sections**
+  - Phase II: Interactivity, due on Gradescope.
+- **Project 3 Partner Reflection (1 pt): Due 8/4, 11:59 PM**:
+  - Must submit the [Projct 3 Reflection Form](https://forms.gle/RUWapL4ayzHvYgzs5).
+- **Project 3 Checkoffs (31 pts): 8/5 in Practical Lab Sections**
   - Must submit Project 3 [Pre-Checkoff Form](https://forms.gle/ZR9fBy8qTRNQVmtc8) before signing up, due 8/4 at 11:59 PM.
   - All group members must arrive on time, otherwise a 20% late penalty will be applied to the group.
 
@@ -296,7 +296,7 @@ of your project must include:
 As an example of the bare minimum, the simple interface below displays a grid of tiles and a HUD that displays the
 description of the tile under the mouse pointer (click image for higher resolution):
 
-[![mouseover_example1](img/valid_UI.png)](img/valid_UI.png)
+[![mouseover_example1](img/mouseover_example1.png)](img/mouseover_example1.png)
 
 You may include additional features if you choose. In the example below (click image for higher resolution), as with the
 previous example, the mouse cursor is currently over a wall, so the HUD displays the text "wall" in the top right.
