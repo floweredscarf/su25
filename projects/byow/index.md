@@ -18,8 +18,7 @@ In Project 3, you will create an engine for generating explorable worlds. This i
 This project will require you a great deal of exploration and experimentation. Searching the web for
 answers (**not solutions from past semesters**) should be a regular activity throughout this process. Please know that there
 are no right and wrong answers, as this is a very open-ended project. However, there are some implementations and ideas that
-are better than others. It is ok and expected that you will go through several iterations before settling on something that you deem "good".
-That is, this project is about **software engineering**.
+are better than others. It is ok and expected that you will go through several iterations before settling on something that you deem "good". That is, this project is about **software engineering**.
 
 You're not required to use any of the fancy data structures or concepts from class (A\*, MSTs, Disjoint Sets, etc). This project is about software engineering, not about data structures or algorithms. The data structures and algorithms we've learned about in class will make your code significantly simpler and more efficient, but please don't use things *just* because we learned about them in class. Only use these tools if you feel comfortable using them in your implementation.
 
@@ -30,15 +29,15 @@ A video playlist (from Spring 2018) discussing tips for working on this project 
 Project 3 is worth 36 points. There are several key deadlines for this assignment:
 
 - **Team formation (1 pt): Due 7/21 at 5:00 PM**
-  - Read and understand the [partnership guidelines](https://sp24.datastructur.es/resources/guides/partnerships/) before starting the assignment.
+  - Read and understand the [partnership guidelines](https://cs61bl.org/su24/guides/partnership-guide) before starting the assignment.
   - When group repos are released, you **must accept your GitHub invitation**, otherwise they will expire after a week.
 - **Project 3 Checkpoint (2 pts): Due 7/28 at 11:59 PM**
   - Phase I: World Generation Autograder, due on Gradescope
 - **Project 3 Autograder (1 pt): Due 8/4 at 11:59 PM**
   - Phase II: Interactivity Autograder, due on Gradescope
 - **Project 3 Checkoffs (32 pts): 8/5 in Practical Lab Sections**
-  - Ambition & Demos Checkoff (31 pts): Must complete [Ambition Checkoff Form](https://forms.gle/oj8sFgt28aGce41u5) before
-  - Project 3 Partner Reflection (1 pt): Due at [Projct 3 Reflection Form](https://forms.gle/Tdq2V8UP11fCEbpN8)
+  - Ambition & Demos Checkoff (31 pts): Must complete the [Pre-Checkoff Form](https://forms.gle/ZR9fBy8qTRNQVmtc8) before attending.
+  - Project 3 Partner Reflection (1 pt): Due at [Projct 3 Reflection Form](https://forms.gle/RUWapL4ayzHvYgzs5).
   - All group members must arrive on time, otherwise a 20% late penalty will be applied to the group.
 
 **Beware: you cannot submit any part of Project 3 late without extenuating circumstances**. This is because we are at the end of the semester. We do not have the same extension policy as previous assignments, so get started early.
@@ -199,7 +198,7 @@ methods of navigation if you so choose.
 
 After pressing N on the keyboard for "new world", the user should be prompted to enter a "random seed", which is a long
 value of their choosing. This long data type will be used to generate the world randomly (as described later and in lab
-12). The UI should show the seed value that the user has entered so far. After the user has pressed the final number in
+16). The UI should show the seed value that the user has entered so far. After the user has pressed the final number in
 their seed, they should press S to tell the system that they've entered the entire seed that they want. Your world
 generator should be able to handle any positive seed up to 9,223,372,036,854,775,807. There is no defined behavior for
 seeds larger than this.
@@ -500,21 +499,19 @@ reading the entire spec since there are a lot of details which are not captured 
 
 ## Submission and Grading
 
-As usual, we'll have a grader for this project on Gradescope. **Remember to add your partner as a group member to your Gradescope submission.**
+As usual, we'll have two graders for this project on Gradescope. **Remember to add your partner as a group member to your Gradescope submission.**
 
-Details regarding the synchronous checkoff are TBD.
-
-In addition, you'll also submit [this form](https://forms.gle/eD3WmxwGpTxErhAp9) by **your demo time slot** when you've
-completed the project and [sign up](https://docs.google.com/spreadsheets/d/1n98-Q_qVAMXWE9o3guiJ2vsLqh4zjQQj3jKNA8JQ7sc/edit?usp=sharing) for a checkoff time slot with your TA by **Sunday 8/4, 11:59 pm pacific time**. Note that this is the same time as your autograder submission for Phase 2 is due. **If you do not submit this form and sign up for a checkoff then you will receive a 0 on the checkoff portion of the project.** Only one of your partners needs to submit the form, but you should write the responses together. 
-
-Autograder points: 3 points.
+Autograders: 3 points.
  - Phase 1: 2 points.
  - Phase 2: 1 points.
 
-Checkoff demo (submitting [this form](https://forms.gle/eD3WmxwGpTxErhAp9) and then attending a checkoff with your TA): 32 points.
- - 12 points: Ambition points.
+In addition, you'll also submit [the Pre-Checkoff Form](https://forms.gle/cuRHCQqXtWbv2JfC7) by **your demo time slot** when you've
+completed the project and sign up for a checkoff time slot with your TA by **Sunday 8/4, 11:59 pm pacific time** (instructions to do so will be released on Ed). Note that this is the same time as your autograder submission for Phase 2 is due. **If you do not submit this form and sign up for a checkoff then you will receive a 0 on the checkoff portion of the project.** Only one of your partners needs to submit the form, but you should write the responses together. 
+
+Checkoff demo (submitting [the Pre-Checkoff Form](https://forms.gle/cuRHCQqXtWbv2JfC7) and then attending a checkoff with your TA): 32 points.
+ - 12 points: Ambition features.
  - 19 points: Obeying base spec for phase 1 and phase 2.
- - 1 point: Submitting the [Projct 3 Reflection Form](https://forms.gle/Tdq2V8UP11fCEbpN8)
+ - 1 point: Submitting the [Projct 3 Reflection Form](https://forms.gle/RUWapL4ayzHvYgzs5)
 
 **You'll also need identify a commit** so we can grade it. You should:
 
@@ -553,7 +550,7 @@ Once you've ensured that you have:
 3. Identified the commit you want graded (see previous section)
 4. **Ensure you only use libraries in `library-su24` or `java.*`**
 
-**then you are ready to submit the [Project 3 Checkoff Form](https://forms.gle/idHdLNoqanTsU9Gs5).**
+**then you are ready to submit the [Project 3 Pre-Checkoff Form](https://forms.gle/bNzBgGwWZCN8XcLQ6).**
 
 ## Autograder Details ##
 
