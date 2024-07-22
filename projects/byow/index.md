@@ -41,7 +41,7 @@ Project 3 is worth 36 points. There are several key deadlines for this assignmen
   - Must submit Project 3 [Pre-Checkoff Form](https://forms.gle/ZR9fBy8qTRNQVmtc8) before signing up, due 8/4 at 11:59 PM.
   - All group members must arrive on time, otherwise a 20% late penalty will be applied to the group.
 
-**Beware: you cannot submit any part of Project 3 late without extenuating circumstances**. All submissions after the deadline will result in a score of 0. We do not have the same extension policy as previous assignments, so get started early.
+**Beware: you cannot submit to either Project 3 autograder late, and they cannot be extended**. All submissions after the deadline will result in a score of 0. The final checkoff can be extended if you have extenuating circumstances. We do not have the same extension policy as previous assignments, so get started early.
 
 In your Gradescope submission for Phase II, your code should also have "Ambition" features. We will be asking for your Gradescope submission ID from Phase II in the Pre-Checkoff form.
 
