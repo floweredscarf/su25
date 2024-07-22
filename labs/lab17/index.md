@@ -118,7 +118,7 @@ might come in handy while discussing graphs.
 | Cycle               | A *cycle* is a path that ends at the same vertex where it originally started.                   |
 
 ## Exercise: Edge vs. Vertex Count
-For the following questions, discuss your solution with someone in your lab. Verify your answer **afterwards** by highlighting the space after the question.
+For the following questions, discuss your solution with someone in your lab.
 
 ### Exercise 1
 
@@ -131,16 +131,12 @@ Options:
 
 $$N, N^2, N(N-1), \frac{N(N-1)}{2}$$
 
-Solution:
-<p><span style="color:white"><em> N(N-1)</em></span>.</p>
-
 <details markdown="block">
   <summary markdown="block">
 #### Solution
 {: .no_toc}
   </summary>
-$N(N-1)$
-There are $N$ vertices and each one can have an edge to the other $N-1$ vertices.
+N(N-1). There are N vertices and each one can have an edge to each of the other N-1 vertices.
 </details>
 
 ### Exercise 2
@@ -156,15 +152,11 @@ Options:
 - the same number of edges
 - twice as many edges
 
-Solution:
-<p><span style="color:white"><em> half as many edges </em></span>.</p>
-
 <details markdown="block">
   <summary markdown="block">
 #### Solution
 {: .no_toc}
   </summary>
-$N(N-1)$
 Half as many edges. Every pair of directed edges u->v, v->u can be represented with a single undirected edge.
 </details>
 
@@ -177,16 +169,12 @@ Options:
 
 $$N - 1, N, N^2, N(N-1), \frac{N(N-1)}{2}$$
 
-Solution:
-<p><span style="color:white"><em> N-1 </em></span>.</p>
-
 <details markdown="block">
   <summary markdown="block">
 #### Solution
 {: .no_toc}
   </summary>
-$N-1$
-A graph with 1 vertex needs 0 edges to be connected. Every time you add a new vertex you need minimum one new edge to connect it.
+N-1. A graph with 1 vertex needs 0 edges to be connected. Every time you add a new vertex you need minimum one new edge to connect it. 
 </details>
 
 ## Graph Representation
@@ -197,11 +185,10 @@ a computer. We want to be able to get quick answers for the following questions
 about a graph:
 
 - Are given vertices `u` and `v` adjacent?
-- Is vertex `v` incident to a particular edge `e`?
 - What vertices are adjacent to `v`?
 - What edges are incident to `v`?
 
-Most of today's lab will involve thinking about how fast and how efficient each
+The next portion of today's lab will involve thinking about how fast and how efficient each
 of these operations is using different representations of a graph.
 
 Imagine that we want to represent a graph that looks like this:
@@ -215,24 +202,24 @@ represents one of the vertices in the graph. Each of these positions point to a
 list. These lists are called adjacency lists, as each element in the list
 represents a neighbor of the vertex.
 
-The array of adjacency lists that represents the above graph looks like this:
+The array of adjacency lists (using linked lists) that represents the above graph looks like this:
 
 ![adjacency-list](img/adjacency-list.png)
 
 Another data structure we could use to represent the edges in a graph is called
 an *adjacency matrix*. In this data structure, we have a two dimensional array
 of size $$N \times N$$ (where $$N$$ is the number of vertices) which contains
-boolean values. The (*i*, *j*)th entry of this matrix is true when there is an
-edge from *i* to *j* and false when no edge exists. Thus, each vertex has a row
-and a column in the matrix, and the value in that table says true or false
-whether or not that edge exists.
+boolean values. The entry (*i*, *j*) in this matrix is true when there is an
+edge from *i* to *j*, and false when no such edge exists. Thus, each vertex has a row
+and a column in the matrix, and the boolean values in that row/column represent the existence of outgoing/incoming
+edges to/from each other vertex.
 
 The adjacency matrix that represents the above graph looks like this:
 
 ![adjacency-matrix](img/adjacency-matrix.png)
 
 What will this matrix will look like for an *undirected* graph? Discuss with
-your partner. Considering drawing out the matrix and trying to notice some
+someone in your lab. Considering drawing out the matrix and trying to notice some
 patterns.
 
 ## Discussion: Representation
@@ -243,12 +230,11 @@ the graph, and each of `Vertex` will contain pointers to the `Vertex` objects of
 their neighbors. This may seem like the most straightforward approach: aren't
 the adjacency list and adjacency matrix roundabout in comparison?
 
-Discuss with your partner reasons for why the adjacency list or adjacency matrix
-might be preferred for a graph.
+Discuss with someone in your lab reasons for why the adjacency list or adjacency matrix
+might be preferred for a graph. Consider the runtime of our desired graph operations.
 
 Additionally, we could also represent a tree using an adjacency matrix or list.
-Discuss with your partner reasons for why an adjacency list or adjacency matrix
-might not be preferred for a tree.
+Discuss why an adjacency list or adjacency matrix might not be preferred for a tree.
 
 Now, which is generally more efficient: an adjacency matrix or an array of adjacency
 lists?
@@ -344,9 +330,18 @@ for (Vertex neighbor: v.neighbors) {
     }  
 }
 ```
-Would this change work? Discuss with your partner, and highlight the lines below to see the answer.
+Would this change work? Discuss, and highlight the lines below to see the answer.
 
 <p><span style="color:white"><em> Yes this would work although it is convention to check that the popped vertex is not yet visited. </em></span>.</p>
+
+<details markdown="block">
+  <summary markdown="block">
+#### Answer:
+{: .no_toc}
+  </summary>
+$N(N-1)$
+Yes, this would work. Although it is convention to check that the popped vertex is not yet visited.
+</details>
 
 Note that the choice of data structure for the fringe can change. As with tree
 traversal, we can visit vertices in depth-first or breadth-first order merely by
@@ -499,11 +494,11 @@ dependencies between any two vertices.
 
 Why can we only perform topological sorts on DAG's? Think about the two
 properties of DAG's and how that relates with our "to-do list" analogy. Discuss
-your thoughts with your partner.
+your thoughts with someone in your lab.
 
 ### The Topological Sort Algorithm
 
-The algorithm for taking a graph and finding a topological sort uses an array
+One algorithm for taking a graph and finding a topological sort uses an array
 named `currentInDegree` with one element per vertex. `currentInDegree[v]` is
 initialized with the in-degree of each vertex `v`.
 
