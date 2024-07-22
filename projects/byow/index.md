@@ -42,7 +42,7 @@ Project 3 is worth 36 points. There are several key deadlines for this assignmen
 
 **Beware: you cannot submit any part of Project 3 late without extenuating circumstances**. This is because we are at the end of the semester. We do not have the same extension policy as previous assignments, so get started early.
 
-Since you need to be manually checked off for the "Ambition" part, we made a division between "Interactivity" and "Ambition & Demos". In your Gradescope submission for 3B, your code should also have "Ambition" features because we will be asking for your Gradescope submission ID from 3B in the 3C Form.
+In your Gradescope submission for Phase II, your code should also have "Ambition" features. We will be asking for your Gradescope submission ID from Phase II in the Pre-Checkoff form.
 
 Now on to the assignment spec!
 
