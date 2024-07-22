@@ -2,7 +2,7 @@
 layout: page
 title: "Lab 17: Graphs"
 tags: [Lab, Graphs]
-released: false
+released: true
 searchable: true
 ---
 

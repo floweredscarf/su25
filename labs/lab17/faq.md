@@ -2,7 +2,7 @@
 layout: page
 title: "FAQ - Lab 17: Graphs"
 categories: lab
-released: false
+released: true
 searchable: true
 ---
 
