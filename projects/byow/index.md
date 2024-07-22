@@ -40,7 +40,7 @@ Project 3 is worth 36 points. There are several key deadlines for this assignmen
   - Project 3 Partner Reflection (1 pt): Due at [Projct 3 Reflection Form](https://forms.gle/RUWapL4ayzHvYgzs5).
   - All group members must arrive on time, otherwise a 20% late penalty will be applied to the group.
 
-**Beware: you cannot submit any part of Project 3 late without extenuating circumstances**. This is because we are at the end of the semester. We do not have the same extension policy as previous assignments, so get started early.
+**Beware: you cannot submit any part of Project 3 late without extenuating circumstances**. All submissions after the deadline will result in a score of 0. We do not have the same extension policy as previous assignments, so get started early.
 
 In your Gradescope submission for Phase II, your code should also have "Ambition" features. We will be asking for your Gradescope submission ID from Phase II in the Pre-Checkoff form.
 
@@ -80,7 +80,7 @@ The other package `Core` contains everything unrelated to tiles. We recommend th
 this project in the `Core` package, though this is not required. The `Core` package comes with the following
 classes:
 
-- `AutograderBuddy.java` - Provides two methods for interacting with your system. `TETile[][] getWorldFromInput(String input)` simulates the game without rendering by returning the world that would result if the input string had been typed on the keyboard. You should fill this out for autograder.
+- `AutograderBuddy.java` - Provides two methods for interacting with your system. `TETile[][] getWorldFromInput(String input)` simulates the game **without rendering** by returning the world that would result if the input string had been typed on the keyboard. You should fill this out for autograder.
 - `Main.java` - How the user starts the entire system. Reads command line arguments and calls the appropriate function
   in `World.java`.
 - `World.java` - YOUR WORLD!
@@ -101,7 +101,6 @@ Your project should only use standard java libraries (imported from java.\*) or 
 repo and `library-su24`. Your final submission for 3B and 3C should not use any external libraries other than the ones provided in the
 skeleton.
 
-{: .warning}
 > Do NOT use static variables unless they have the final keyword! In 2018, many students ran into major
 > debugging issues by trying to use static variables. Static non-final variables add a huge amount of complexity to a
 > system. Additionally, do not call `System.exit()` in `getWorldFromInput` as this will cause the autograder to exit
@@ -157,8 +156,7 @@ The tile rendering engine we provide takes in a 2D array of `TETile` objects and
 this `TETile[][] world` for now. **`world[0][0]` corresponds to the bottom left tile of the world.** The first coordinate is
 the x coordinate, e.g. `world[9][0]` refers to the tile 9 spaces over to the right from the bottom left tile. The second
 coordinate is the y coordinate, and the value increases as we move upwards, e.g. `world[0][5]` is 5 tiles up from the
-bottom left tile. All values should be non-null, i.e. make sure to fill them all in before calling `renderFrame`. **Make
-sure you understand the orientation of the world grid!** If you're unsure, write short sample programs that draw to the
+bottom left tile. All values should be non-null, i.e. make sure to fill them all in before calling `renderFrame`. **Make sure you understand the orientation of the world grid!** If you're unsure, write short sample programs that draw to the
 grid to deepen your understanding. **If you mix up x vs. y or up vs. down, you're going to have an incredibly confusing time debugging.**
 
 We have provided a small set of default tiles in `Tileset.java` and these should serve as a good example of how to
@@ -225,9 +223,12 @@ Worlds should be visibly different for different seeds provided to the program. 
 
 ### Design Document
 
-Since we did not provide you with any significant skeleton code for Project 3, and since the project is very open ended, we expect that BYOW implementations will vary a fair amount between students. In order for the course staff to provide you with support for this project, we request that you have a design document that reflects the current state of your project. We will not be able to process your Gitbugs, if you do not provide us with an up-to-date design document. We will also not be able to provide sufficient help in office hours or lab for questions that are specific to your implementation if you don't have an up-to-date design document. It is not feasible for us to try to understand your design remotely otherwise. So, before you submit a Gitbug, make sure that the design document in your `proj3` folder reflects the current state of your project.
+Since we did not provide you with any significant skeleton code for Project 3, and since the project is very open ended, we expect that BYOW implementations will vary a fair amount between students. In order for course staff to provide you with support for this project, we request that you have a design document that reflects the current state of your project. We will not be able to process your Gitbugs, if you do not provide us with an up-to-date design document. We will also not be able to provide sufficient help in office hours or lab for questions that are specific to your implementation if you don't have an up-to-date design document. It is not feasible for us to try to understand your design remotely otherwise. So, before you submit a Gitbug, make sure that the design document in your `proj3` folder reflects the current state of your project.
 
 Note that this is an exercise that is meant to help you, and to help us give you the best support possible. We highly encourage you to keep an up-to-date design document while working on this project. Having access to a design document in office hours or lab for example, may save you time explaining your implementation to an instructor or TA.
+
+**Putting effort into your design document before coding will save you many hours of work. Although it is not part of your grade, spending time to think about a good design is one of the best ways to ensure your success.**
+
 Design documents are important tools for software engineers. In a nutshell, these are documents that describe the structure of a program: the conceptual modules it comprises, the abstractions (classes in an object-oriented program) it uses, the implementation strategies (data structures and algorithms) each class uses, and how these modules and abstractions interact with each other.
 
 Writing down a design for a program helps us plan out a project, organize ideas, and notice strategic design flaws before writing any code. Additionally, while working on a large-scale project like BYOW, having access to a design document may help you during the development process, as you will often need to reason about how multiple components of your program interact with each other.
@@ -407,6 +408,8 @@ not. The only difference is whether the world state is saved or not as a side ef
 #### Ambition Score
 
 12 points of your project score will be based on features of your choosing, which we call your "ambition score". These will be evaluated as a part of the checkoff. The big idea is that beyond the base requirements of this project, we want you to try to polish your product a bit more and add some cool features. Below is a list of features worth either 8 points (primary feature) or 4 points (secondary feature). From these two categories, you are required to implement at least one primary feature in order to get full credit. You can get half credit on an ambition feature. This "ambition" category is only worth 12 points. If you do 14 points worth, you do not get extra credit. However, feel free to add as many features as you'd like if you have the time and inclination.
+
+If you do not complete a primary feature, your ambition score will be capped at 4 points.
 
 **Your project must still meet the basic requirements described above!** For example, if you allow the user to use mouse clicks, the project should still allow keyboard based movement!
 
