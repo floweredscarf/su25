@@ -99,8 +99,7 @@ specification for `StdDraw` at some points in the project, which can be
 found [here](https://introcs.cs.princeton.edu/java/stdlib/javadoc/StdDraw.html).
 
 Your project should only use standard java libraries (imported from java.\*) or any libraries we provided with your
-repo and `library-su24`. Your final submission for 3B and 3C should not use any external libraries other than the ones provided in the
-skeleton.
+repo and `library-su24`. Your final submission for Phase II and the Project 3 Checkoff should not use any external libraries other than the ones provided in the skeleton.
 
 > Do NOT use static variables unless they have the final keyword! In 2018, many students ran into major
 > debugging issues by trying to use static variables. Static non-final variables add a huge amount of complexity to a
@@ -347,7 +346,7 @@ real life, since that would not be captured in an input string and would not lea
 that string vs. providing input with the keyboard. Keeping track of the number of turns that have elapsed is a perfectly
 reasonable mechanic, and might be an interesting thing to include in your world, e.g. maybe the world grows steadily
 darker with each step. You're welcome to include other key presses like allowing the user to press space bar in
-order to wait one turn. The real time behavior is for the autograder. Feel free to ignore real time requirement for 3C and modify your code for that.
+order to wait one turn. The real time behavior is for the autograder. Feel free to ignore real time requirement for the Checkoff and modify your code for that.
 
 #### Saving and Loading
 
@@ -485,7 +484,7 @@ reading the entire spec since there are a lot of details which are not captured 
   should be generated and displayed.
 - The UI should show the numbers entered so far when the user is giving the seed.
 - Must have pseudo-randomly generated worlds/variety in worlds, i.e. the world should be different for every seed.
-- All generated worlds must include all the visual features described in 3A above.
+- All generated worlds must include all the visual features described in Phase I above.
 - Users must be able to move around in the world using W, A, S, and D keys.
 - Users must be able to press ":Q" and ":q" to quit, and after starting the program up again, the L option on the main menu
   should load the world state **exactly as it was before**.
