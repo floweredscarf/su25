@@ -30,7 +30,6 @@ Finally, collaboration not only can be helpful to learning, but fun! You can mak
 
 Project 2 and Project 3.
 
-
 ## What is the best way to collaborate?
 
 The exact work style you use with your partner is up to you. There are several

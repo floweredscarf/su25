@@ -13,7 +13,7 @@ adding "/faq" to the end of the URL. The FAQ for Build your Own World
 
 ## Introduction ##
 
-In Project 3, you will create an engine for generating explorable worlds. This is a large design project that will require you and one partner (highly recommended) to work through every stage of development from ideation to presentation. The goal of this project is to teach you how to handle a larger piece of code with little starter code in the hopes of emulating something like a product development cycle. In accordance with this, the grading of this project will be different from other projects. Since there is no notion of "the correct answer" when it comes to world design and implementation, you will be assessed much like a performance review you might receive at an internship or job in addition to a very general autograder.  While this means you will be graded slightly subjectively, we promise to be pretty nice bosses and will respect you as any boss should respect their hard working employees. *Please* talk to us if you feel the grading scheme feels unfair.
+In Project 3, you will create an engine for generating explorable worlds. This is a large design project that will require you and one partner to work through every stage of development from ideation to presentation. The goal of this project is to teach you how to handle a larger piece of code with little starter code in the hopes of emulating something like a product development cycle. In accordance with this, the grading of this project will be different from other projects. Since there is no notion of "the correct answer" when it comes to world design and implementation, you will be assessed much like a performance review you might receive at an internship or job in addition to a very general autograder.  While this means you will be graded slightly subjectively, we promise to be pretty nice bosses and will respect you as any boss should respect their hard working employees. *Please* talk to us if you feel the grading scheme feels unfair.
 
 This project will require you a great deal of exploration and experimentation. Searching the web for
 answers (**not solutions from past semesters**) should be a regular activity throughout this process. Please know that there
@@ -513,7 +513,7 @@ Checkoff demo (submitting [the Pre-Checkoff Form](https://forms.gle/cuRHCQqXtWbv
  - 19 points: Obeying base spec for phase 1 and phase 2.
  - 1 point: Submitting the [Projct 3 Reflection Form](https://forms.gle/RUWapL4ayzHvYgzs5)
 
-**You'll also need identify a commit** so we can grade it. You should:
+**You'll also need to identify a commit** so we can grade it. You should:
 
 1. Identify the SHA of the commit that you'd like us to grade for the demo.
    **This SHA must be from the same as the commit you submitted to Gradescope**. It's OK if they're not exactly the
