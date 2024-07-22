@@ -2,7 +2,7 @@
 layout: page
 title: "FAQ - Lab 16: BYOW Intro"
 categories: lab
-released: false
+released: true
 searchable: true
 ---
 
