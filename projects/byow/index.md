@@ -91,7 +91,7 @@ This is an open-ended project. As you can see, we gave you just one file called 
 The last package `Utils` contains everything that you might need to implement your `World.java` class.
 
 - `RandomUtils.java` - Provides handful of functions that might be useful.
-- `FileUtils.java` - Library of simple file operations. You can find related APIs [here](https://docs.oracle.com/javase/8/docs/api/java/io/File.html) and [here](https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html). Be sure to look at lab09 for a refresher on how this works.
+- `FileUtils.java` - Library of simple file operations. You can find related APIs [here](https://docs.oracle.com/javase/8/docs/api/java/io/File.html) and [here](https://docs.oracle.com/javase/8/docs/api/java/nio/file/Files.html). Be sure to look at Lab 8 or Project 2 for a refresher on how this works.
 
 This project makes heavy use of `StdDraw`, which is a package that has basic graphics rendering capabilities.
 Additionally, it supports user interaction with keyboard and mouse clicks. You will likely need to consult the API
