@@ -330,16 +330,13 @@ for (Vertex neighbor: v.neighbors) {
     }  
 }
 ```
-Would this change work? Discuss, and highlight the lines below to see the answer.
-
-<p><span style="color:white"><em> Yes this would work although it is convention to check that the popped vertex is not yet visited. </em></span>.</p>
+Would this change work?
 
 <details markdown="block">
   <summary markdown="block">
 #### Answer:
 {: .no_toc}
   </summary>
-$N(N-1)$
 Yes, this would work. Although it is convention to check that the popped vertex is not yet visited.
 </details>
 
