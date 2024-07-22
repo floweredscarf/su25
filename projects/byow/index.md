@@ -416,9 +416,11 @@ If you do not complete a primary feature, your ambition score will be capped at 
 
 Under the description of some primary features, we’ve provided some GIFS that would score full points on their respective ambition point items to help clear any confusions. Yours do not need to look exactly like the examples given.
 
+You are not restricted to the features listed below. If you have an idea for a feature that is not listed, please make a post on Ed and we will tell you if it qualifies as a primary or secondary feature. In addition, we will actively be updating [this document](https://docs.google.com/document/d/1I_cWgzQvK8oCpJ1wr-c1f2IR1rLwtdb2hFBBDP39h-Y/edit?usp=sharing) with clarifications about our current policy on ambition features. Please check back frequently if you have questions.
+
 ##### 8 Point Primary Features
 
-- Create a system so that the tile renderer only displays tiles on the screen that are within the line of sight of the avatar. **The line of sight must be able to be toggled on and off with a keypress, otherwise it will interfere with checkoffs.**
+- Create a system so that the tile renderer only displays tiles on the screen that are within the line of sight of the avatar. **The line of sight must be able to be toggled on and off with a keypress, otherwise it will interfere with checkoffs.** Please check the [Ambition Feature Clarifications](https://docs.google.com/document/d/1I_cWgzQvK8oCpJ1wr-c1f2IR1rLwtdb2hFBBDP39h-Y/edit?usp=sharing) for additional requirements for this feature.
 
 [![line-of-sight](img/line-of-sight.gif)](img/line-of-sight.gif)
 
@@ -485,7 +487,7 @@ reading the entire spec since there are a lot of details which are not captured 
 - Must have pseudo-randomly generated worlds/variety in worlds, i.e. the world should be different for every seed.
 - All generated worlds must include all the visual features described in 3A above.
 - Users must be able to move around in the world using W, A, S, and D keys.
-- Users must be able to press ":Q" to quit, and after starting the program up again, the L option on the main menu
+- Users must be able to press ":Q" and ":q" to quit, and after starting the program up again, the L option on the main menu
   should load the world state **exactly as it was before**.
 - All random events should be pseudorandom. That is, your program gives deterministic behavior given a seed.
 - Users must be able to interact through string inputs using `getWorldFromInput`, and behavior other than accepting input and drawing to
