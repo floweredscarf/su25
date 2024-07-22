@@ -26,7 +26,7 @@ Some steps to complete before getting started on this lab:
 
 - Understand that project 3 will be a marathon and not a sprint. Don't wait until the last minute. You and your partner should start thinking about your design NOW.
 
-Your lab today will be graded by completing a checkoff with a TA or AI during lab. This means you should try to finish the required parts of the lab ASAP, to avoid a long line to get checked off. This lab is due **24 hours from the start of your lab section with a 2 hour grace period,** instead of the usual 22 hours. This will allow you to get checked off the next day if necessary. 
+Your lab today will be graded by completing a checkoff with your TA during lab. This means you should try to finish the required parts of the lab ASAP, to avoid a long line to get checked off. This lab is due **24 hours from the start of your lab section with a 2 hour grace period,** instead of the usual 22 hours. This will allow you to get checked off the next day if necessary. 
 
 Plus World Introduction
 --------------------------------
@@ -235,7 +235,7 @@ This would be a good time to look at the [StdDraw](https://introcs.cs.princeton.
 
 - [`StdDraw.setFont`](https://introcs.cs.princeton.edu/java/stdlib/javadoc/StdDraw.html#setFont(java.awt.Font))
 - [`StdDraw.clear`](https://introcs.cs.princeton.edu/java/stdlib/javadoc/StdDraw.html#clear())
-- [`StdDraw.text`](https://introcs.cs.princeton.edu/java/stdlib/javadoc/StdDraw.html#text(double,%20double,%20java.lang.String))
+- [`StdDraw.text`](https://introcs.cs.princeton.edu/java/stdlib/javadoc/StdDraw.html#text(double,double,java.lang.String))
 - [`StdDraw.setPenColor`](https://introcs.cs.princeton.edu/java/stdlib/javadoc/StdDraw.html#setPenColor(java.awt.Color))
 - [`StdDraw.show`](https://introcs.cs.princeton.edu/java/stdlib/javadoc/StdDraw.html#show())
 
@@ -289,7 +289,14 @@ After you’ve done this you should be able to run `MemoryGame.java` and play yo
 
 ## Submission
 
-To get credit for this lab, you'll have to do a checkoff during lab, with either your TA or an AI. You will be asked to show that you can generate a single plus at various sizings (or a whole tesselaton), and that you can play your memory game. Once you complete your checkoff, your TA/AI should give you a magic word, which you can type it into magicword.txt. You will be solely graded off if your magic word is present. This is remniscent of how you will be graded for BYOW: though part of the project will be autograded, your final product will be graded in a checkoff with a staff member so you can show off your creative finished project!
+- Complete `PlusWorld.java` 
+- Complete the following methods in `MemoryGame.java`:
+    - `generateRandomString`
+    - `flashSequence`
+    - `solicitNCharsInput` 
+    - `startGame`
+
+To get credit for this lab, you'll have to do a checkoff during lab with your TA . You will be asked to show that you can generate a single plus at various sizings (or a whole tesselaton), and that you can play your memory game. Once you complete your checkoff, your TA should give you a magic word, which you can type it into magicword.txt. You will be solely graded off if your magic word is present. This is remniscent of how you will be graded for BYOW: though part of the project will be autograded, your final product will be graded in a checkoff with a staff member so you can show off your creative finished project!
 
 If you want to get checked off outside of lab hours you can make a private Ed **Question** thread under Labs - Lab16 - Checkoff and make sure you follow the instructions on the template. 
 
