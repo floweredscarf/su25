@@ -45,7 +45,6 @@ directory) if you want to follow along and simulate your checkoff.
 2. One partner should designate their laptop as the "check-in laptop", and already have a terminal window in their `su24-proj3-g***/proj3`. Their Git should be in a clean
    state (git status should be clean), IntelliJ should be open, and the Project 3 main menu
    should be running.
-
    - If any of these requirements are not fulfilled, you may not receive a grade for Proj3 checkoff.
 
 3. Run "git log" and make sure that the HEAD commit is a commit from before the deadline. Run "pwd". Make sure the path
@@ -54,23 +53,30 @@ directory) if you want to follow along and simulate your checkoff.
 5. Check that hitting "n" lets player type in a seed.
 6. Check that typing numbers and hitting "s" starts the world.
 7. Check that the floor and walls are distinguishable.
-8. Check that there are at least 2 structures which can be considered hallways. (1 or 2 wide)
-9. Check that the world contains a turning hallway. If the current world doesn't have a turning hallway, ask the students to generate a world that has a turning hallway.
-10. Check that there are a few rectangular structures which can be considered rooms, which are connected via hallways
+8. Check that there are structures which can be considered hallways. (1 or 2 wide)
+9. Check that there are a few rectangular structures which can be considered rooms, which are connected via hallways
+10. Check that the world contains a turning hallway. If the current world doesn't have a turning hallway, ask the students to generate a world that has a turning hallway.
 11. Check WASD moves the player up, left, down, right.
 12. Check that hovering over three tiles displays three different names (it is OK if a key press is needed for the mouse
     hover text to update).
-13. Check that the HUD does not flicker.
-14. Check that moving into walls stops the player without errors.
-15. Check that typing in ":Q" stops the game. At this point, memorize how the state of the world looks like. You can ask
+13. Check that moving into walls stops the player without errors.
+14. Check that typing in ":Q" stops the game. At this point, memorize how the state of the world looks like. You can ask
     the student to take a screenshot or take one yourself.
-16. After restarting the program, test the load/save feature: Check that pressing "L" starts a world with no additional
+15. After restarting the program, test the load/save feature: Check that pressing "L" starts a world with no additional
     input.
-17. Check that the world layout is exactly the same as it was before closing the world.
-18. Check that the basic commands (WASD, etc.) still work.
-19. Quit and reload the world again, and make sure basic commands still work.
-20. Check that "q" alone doesn't terminate the game.
-21. Generate 3-5 worlds and look for how varied they are. Select one tier based on how much variety you feel their
+16. Check that the world layout is exactly the same as it was before closing the world.
+17. Check that the basic commands (WASD, etc.) still work.
+18. Quit and reload the world again (this time with ":q" and "l"), and make sure basic commands still work.
+19. Check that "q" alone doesn't terminate the game.
+
+At this point, we will apply various deductions for interactivity bugs, including but not limited to:
+- Flashing the world before loading
+- Frequent/distracting flickering HUD or world
+- :Q returns to the main menu instead of exiting
+- Avatar moves but floors disappear when it does
+- Mouse hover does not display names, just coordinates
+
+20. Generate 3-5 worlds and look for how varied they are. Select one tier based on how much variety you feel their
     worlds have.
 
 - Full credit - each world generated looks significantly different and you feel like you'd see something new when you
@@ -80,6 +86,10 @@ directory) if you want to follow along and simulate your checkoff.
 - No credit - Worlds are identical most of the time or the changes in the room have no effect on the player
   experience/how they explore the world. (e.g. the world is the same each time, with only changes in the color of the
   floor)
+
+At this point, we will apply various deductions for world generation bugs, including but not limited to:
+- Dead-end hallway
+- Detached room
 
 21. The grader will then ask you to show all the ambition points you've attempted, and will determine whether you
     receive full or half credit for those items.
@@ -91,56 +101,54 @@ directory) if you want to follow along and simulate your checkoff.
 They will then grade each requirement of the game. Each requirement can either be evaluated as full points, half points,
 or zero points.
 
-### Basic World Functionality (X points total)
+### Basic World Functionality (11 points total)
 
 #### The TA will run your project and will check for the following features:
 
-- The world has a main menu screen with a New World, Load, and Quit option (1 point)
+- The world has a main menu screen with a New World, Load, and Quit option (0.125 point)
 
-- The TA will hit "n" or "N" (they may do either) and check that the world prompts for a seed (1 point)
+- The TA will hit "n" or "N" (they may do either) and check that the world prompts for a seed (0.125 point)
 
 - The TA should type in a few random numbers and hit "s" or "S" (they may do either) which should immediately start the
-  world. The TA should also be able to see the numbers you are typing on the screen. (2 points)
+  world. The TA should also be able to see the numbers you are typing on the screen. (0.25 points)
 
 #### At this point, the program should be running and there should be a visible world.
 
-- World has visually distinct walls and floors (2 points)
+- World has visually distinct walls and floors (0.5 points)
 
-- World has at least two hallways which are 1 tile wide (1 point)
+- Check that there are structures which can be considered hallways. (1.25 point)
 
-- World has at least 1 hallway containing a turn in it. If current world doesn't, ask students to generate a world that has a turning hallway. (1 point)
+- World has some number of rooms that are connected via hallways (1 point)
 
-- World has some number of rooms that are connected via hallways (6 points)
+- World has at least 1 hallway containing a turn in it. If current world doesn't, ask students to generate a world that has a turning hallway. (1.25 point)
 
 #### The TA will now try the basic commands that should be available during gameplay.
 
-- TA should hit the W, A, S, and D keys randomly and check the player movement is consistent with the key pressed (2 points)
+- TA should hit the W, A, S, and D keys randomly and check the player movement is consistent with the key pressed (0.5 points)
 
 - TA should hover over 3 different tiles and make sure their names show up somewhere on screen and that the names make
-  sense (3 points)
+  sense (1.25 points)
 
-- TA should verify that the HUD does not flicker (2 points)
-
-- TA should move into a wall and make sure the player stops at the wall instead of moving into it (2 points)
+- TA should move into a wall and make sure the player stops at the wall instead of moving into it (0.25 points)
 
 - TA should type ":q" or ":Q" (they may do either) which should quit the world and close the program. TA should remember
-  the world layout at this point (2 points)
+  the world layout at this point (0.25 points)
 
 #### The program is now closed, and we will test the load feature.
 
 #### The TA will run the world again after it has been closed and the main menu should appear again.
 
-- TA should hit "l" or "L" and the world should immediately start (2 points)
+- TA should hit "l" or "L" and the world should immediately start (0.75 points)
 
-- TA should check that the world layout is exactly as it was before closing the world (2.5 points)
+- TA should check that the world layout is exactly as it was before closing the world (1 points)
 
-- TA will run through the basic commands again (listed above) to make sure the world still works (2.5 points)
+- TA will run through the basic commands again (listed above) to make sure the world still works (0.75 points)
 
-- TA will quit and load again and make sure that the basic commands work (2.5 points).
+- TA will quit and load again and make sure that the basic commands work (1 point).
 
-- TA will check that "q" or "Q" alone does not quit the game (2.5 points).
+- TA will check that "q" or "Q" alone does not quit the game (0.75 points).
 
-### Randomness (X points total)
+### Randomness (8 points total)
 
 - The TA should close the world again and will begin testing to see if worlds are randomly generated.
 
@@ -158,13 +166,13 @@ or zero points.
 
 The grading breakdown is as follows:
 
-- 20 points TBD: The worlds are mainly random, as described by the above section.
+- 8 points: The worlds are mainly random, as described by the above section.
 
-- 10 points TBD: The worlds exhibit a few random elements, but generally look the same
+- 4 points: The worlds exhibit a few random elements, but generally look the same
 
 - 0 points: The worlds contain no random elements.
 
-### Ambition Points (max points 12)
+### Ambition Points (12 points total)
 
 - The student should state and demonstrate the features that are in the Ambition category. You should be very explicit
   about how to "activate" or use that feature.
