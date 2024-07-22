@@ -5,9 +5,9 @@ categories: proj
 released: true
 ---
 
-## Project 3C Lab Demo Checkoff Script 
+## Project 3 Lab Demo Checkoff Script 
 
-Project 3C Demos will be conducted during lab.
+Project 3 Checkoffs will be conducted during lab.
 
 To prepare for the demos, we will have you and your partner fill out a form in which you will detail all of your
 ambition features as well as clear and concise instructions on how to use these features. This is the Proj3 Checkoff
