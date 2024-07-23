@@ -12,4 +12,3 @@ Lecture + OH Zoom: [https://berkeley.zoom.us/my/cs61bl](https://berkeley.zoom.us
 
 You can find all lecture recordings [here](https://bcourses.berkeley.edu/courses/1535549/external_tools/90481)!
 
-[Week 3 survey](https://forms.gle/ugEzMdCbo9k1CEvp9 ) is released and due at 11:59 PM on 7/9. 

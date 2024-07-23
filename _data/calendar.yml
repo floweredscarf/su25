@@ -278,12 +278,12 @@
       description: >
         VLSB 2050 10am - 11am
         <br>
-         [Slides TBD]()
+         [Slides](https://docs.google.com/presentation/d/15CLvVUc2OMl5AS4GJqoNTMzMfRp3DfS8ecwIVsC1QXU/edit?usp=sharing)
           |
-          [Video TBD]()
+          [Video](https://bcourses.berkeley.edu/courses/1535549/external_tools/90481)
           |
         **Readings:** [Ch 21](https://cs61b-2.gitbook.io/cs61b-textbook/21.-heaps-and-priority-queues)
-      published: false
+      published: true
     - title: Disjoint Sets
       type: Lecture, Lab
       date: 2024-07-17
@@ -291,12 +291,12 @@
       description: >
         Dwinelle 155 10am - 11am
         <br>
-         [Slides TBD]()
+         [Slides](https://docs.google.com/presentation/d/1dQWnsQw295wcTMhWdje45X9VIDDfT21F_A4uJ3LNKdU/edit#slide=id.g2784bbd8d8c_0_694)
           |
-          [Video TBD]()
+          [Video](https://berkeley.zoom.us/rec/share/K4HoWoWg3R0sJm8liS55lCkXGErFVRW0GUt_Y8BK6Qr8w1Txu4hFEe8YvBioFpm4.AeI1Ner2EIhr2svG)
           |
         **Readings:** [Ch 14](https://cs61b-2.gitbook.io/cs61b-textbook/14.-disjoint-sets)
-      published: false
+      published: true
     - title: Project 2 Workday
       type: Lab
       date: 2024-07-18
@@ -304,7 +304,14 @@
     - title: Hashing, Heaps, and Union Find
       type: Theory
       date: 2024-07-19
-      published: false
+      description: >
+        <br>
+         [Worksheet](https://drive.google.com/file/d/1ImyWK27824f4_pqIb6kp_d2j78a8TxrH/view?usp=sharing)
+          |
+         [Slides](https://docs.google.com/presentation/d/13gUwZuerbmHy1t3kqO0cdke_cfTXe_s1qiTnzk1Wo-A/edit?usp=sharing)
+          |
+         [Solutions](https://drive.google.com/file/d/12pQYI0aS2Ddr-Eo7iSFwnRlGI6vwziPf/view?usp=sharing)
+      published: true
       footer: >
         Project 2 due **Sunday 7/21, 11:59 PM**
       alt-footer: >
@@ -318,14 +325,14 @@
       description: >
         Dwinelle 155 10am - 11am
           <br>
-          [Slides TBD]()
+          [Slides](https://docs.google.com/presentation/d/18C7jAFKPb2jFA7vrnuXBRy3iiSsVIg3FniIUi3nF598/edit#slide=id.g259debed4f4_0_196)
             |
-            [Video TBD]()
+            [Video](https://bcourses.berkeley.edu/courses/1535549/external_tools/90481)
             |
           **Readings:** Project 3 Spec
-      published: false
+      published: true
       footer: >
-        Project 3: Build Your Own World Released
+        [Project 3: Build Your Own World Released](/su24/projects/byow)
     - title: Graphs
       type: Lecture, Lab
       date: 2024-07-23
@@ -333,12 +340,12 @@
       description: >
         VLSB 2050 10am - 11am
           <br>
-          [Slides TBD]()
+          [Slides](https://docs.google.com/presentation/d/1yWILp3Zi_hhyIHVazbxQrs2iOzPzstb6ePbL5htY5Lk/edit#slide=id.g2318110c70d_0_58)
             |
-            [Video TBD]()
+            [Video](https://bcourses.berkeley.edu/courses/1535549/external_tools/90481)
             |
           **Readings:** [Ch 22.3-4](https://cs61b-2.gitbook.io/cs61b-textbook/22.-tree-traversals-and-graphs/22.3-graphs) [Ch 23](https://cs61b-2.gitbook.io/cs61b-textbook/23.-graph-traversals-and-implementations)
-      published: false
+      published: true
     - title: Shortest Paths
       type: Lecture, Lab
       date: 2024-07-24
@@ -368,10 +375,16 @@
     - title: Graphs
       type: Theory
       date: 2024-07-26
-      published: false
+      description: >
+        <br>
+         [Worksheet Not Out]()
+          |
+         [Slides Not Out]()
+          |
+         [Solutions Not Out]()
       published: false
       footer: >
-        Project 3 Checkpoint due **Sunday 7/21, 11:59 PM**
+        Project 3 Checkpoint due **Sunday 7/28, 11:59 PM**
       alt-footer: >
         Quiz 6 due **Monday 7/29, 11:59 PM**
 - week: 7
@@ -422,6 +435,13 @@
     - title: Sorting
       type: Theory
       date: 2024-08-02
+      description: >
+        <br>
+         [Worksheet Not Out]()
+          |
+         [Slides Not Out]()
+          |
+         [Solutions Not Out]()
       published: false
       footer: >
         Project 3 due **Sunday 8/04, 11:59 PM**
@@ -429,11 +449,11 @@
         Quiz 7 due **Monday 8/5, 11:59 PM**
 - week: 8
   days:
-    - title: Ask Us Anything and BYOW Presentations
+    - title: Ask Us Anything Lecture and BYOW Presentations Lab
       type: Lecture, Lab
       date: 2024-08-05
       published: false
-    - title: Special Topics and Final Exam Review
+    - title: Special Topics Lecture and Final Exam Review Lab
       type: Lecture, Lab
       date: 2024-08-06
       published: false

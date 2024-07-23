@@ -2,7 +2,7 @@
 layout: page
 title: "Lab 15: Disjoint Sets"
 tags: [Lab, Disjoint Sets]
-released: false
+released: true
 ---
 
 ## [FAQ](faq.md)
@@ -21,6 +21,8 @@ some minimum spanning tree algorithms.
 As usual, pull the files from the skeleton and make a new IntelliJ project.
 
     git pull skeleton main
+
+Feel free to jump right into coding, and then go back and read the spec when confused on what to code next!
 
 ## Disjoint Sets
 
@@ -88,16 +90,17 @@ of the set, which is why the set numbers are 0, 3, and 5. By looking at the seco
 This approach uses the quick-find algorithm, prioritizing the runtime of the
 `find` operation but making the `union` operations slow. But, how fast is the
 `find` operation in the worst case, and how slow is the `union` operation in the
-worst case? Discuss with your partner, then check your answers below. Hint:
+worst case? Discuss with a partner or think on your own, then check your answers below. Hint:
 Think about the example above, and try out some `find` and `union` operations
 yourself!
 
-Answer below (highlight to reveal):
-<div style="color: white; background: white;">
-1. Worst-case runtime for quick-find data structure's <code style="background: white">find</code> with N items: Theta(1).<br>
-2. Worst-case runtime for quick-find data structure's <code style="background: white">union</code> with N items: Theta(N).
-</div>
-
+<details markdown="block">
+  <summary markdown="block">
+Answers below:
+</summary>
+1. Worst-case runtime for quick-find data structure's <code>find</code> with N items: Theta(1). Just the array lookup. <br>
+2. Worst-case runtime for quick-find data structure's <code>union</code> with N items: Theta(N). Need to loop through potentially all array elements to reassign values. Consider unioning the (n-1) elements with 1 element.
+</details>
 ### Quick Union
 
 Suppose we prioritize making the `union` operation fast instead. One way we can
@@ -177,12 +180,7 @@ one, breaking ties arbitrarily. We call this **weighted quick union**.
 Because we are now using "union by size", the maximum depth of any item will be
 in $$O(\log N)$$, where $$N$$ is the number of items stored in the data
 structure. This is a great improvement over the linear time runtime of the
-unoptimized quick union. Some brief intuition for this depth is because the
-depth of any element $$x$$ only increases when the tree $$T_1$$ that contains
-$$x$$ is placed below another tree $$T_2$$. When that happens, the size of the
-resulting tree will be at least double the size of $$T_1$$ because $$size(T_2)
-\ge size(T_1)$$. The tree that contains only $$x$$ can double its size at most
-$$\log N$$ times until we have reached a total of $$N$$ items.
+unoptimized quick union. Check the [textbook](https://cs61b-2.gitbook.io/cs61b-textbook/14.-disjoint-sets/14.4-weighted-quick-union-wqu) for a more detailed look on why.
 
 See the following visual for some intuition on how this works:
 ![Weighted Quick Union](img/weighted.png)
@@ -191,7 +189,7 @@ See the following visual for some intuition on how this works:
 Define a *fully connected* `DisjointSets` object as one in which `connected` returns
 `true` for any arguments, due to prior calls to `union`.
 
-> We have not directly discussed `connected` yet, but you think about how this could
+> We have not directly discussed `connected` yet, but you should think about how this could
 > be implemented. How could we use the `find` operation to check if two different
 > elements are part of the same set.
 
@@ -210,13 +208,15 @@ of `union` operations that will result in the maximum height vs. the minimum hei
 3. What is the best-case height for a `HeightedQuickUnion` containing 6 items?
 4. What is the worst-case height for a `HeightedQuickUnion` containing 6 items?
 
-Answer below (highlight to reveal):
-<div style="color: white; background: white;">
+<details markdown="block">
+  <summary markdown="block">
+Answers below:
+</summary>
 1. 2<br>
 2. 3<br>
 3. 2<br>
 4. 3<br>
-</div>
+</details>
 
 ### Path Compression
 
@@ -243,6 +243,10 @@ larger than 4. That means for any practical purpose, a weighted quick union data
 structure with path compression has `find` operations that take constant time on
 average!
 
+![path-compression](img/path-compression.png)
+
+<!-- credit: https://www.slideshare.net/slideshow/time-complexity-of-union-find-55858534/55858534 -->
+
 > It is important to note that even though this operation can be considered
 > constant time for all practically sized inputs, we should not describe
 > this whole data structure as constant time. We could say something like,
@@ -261,7 +265,7 @@ We will now implement our own disjoint sets data structure. When you open up
 implementations.
 
 Read the documentation to get an understanding of what methods need to be filled
-out. Remember to implement both optimizations discussed above, and take note of
+out. Remember to implement both optimizations discussed above, so **Weighted Quick Union with Path Compression**, and take note of
 the tie-breaking scheme that is described in the comments of some of the
 methods. This scheme is done for autograding purposes and is chosen arbitrarily.
 In addition, remember to ensure that the inputs to your functions are within
@@ -279,7 +283,7 @@ Our `UnionFind` uses only non-negative values as the items in our set.
 
 How can we use the data structure that we created above to keep track of
 different values, such as all integers or companies undergoing mergers and
-acquisitions? Discuss with your partner.
+acquisitions? Discuss with a partner.
 
 ## Recap
 
@@ -345,8 +349,7 @@ Results in tree heights of $$\log N$$.
 
   Warning: if the two trees have the same size, the book code has the opposite
 convention as quick union and sets the root of the second tree to point to the
-root of the first tree. This isn't terribly important (you won't be tested on
-trivial details like these).
+root of the first tree. This isn't terribly important.
 
 Weighted quick union with path compression
 : When `find` is called, every node along the way is made to point at the root.
@@ -360,4 +363,4 @@ that we inhabit, $$\log^* N$$ is at most 5.
 To receive credit for this lab:
 
 - Complete the implementation of `UnionFind.java`
-- Submit to Gradescope with your partner, as normal.
+- Submit to Gradescope, as normal.

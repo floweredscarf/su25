@@ -599,12 +599,10 @@ public void changePriority(T item, double priority); // Optional
 For the `changePriority` method, use the `update` method from the `MinHeap`
 class. The `contains` method has already been implemented for you.
 
-Note: **Do not just copy over what you have in `MinHeap.java`!
+**Note: Do not just copy over what you have in `MinHeap.java`!**
 You shouldn't have to write too much code in this file. Remember that your
-`MinHeap` will do most of the work for you! Our solution only requires 5 line
-changes from the provided skeleton. It is of course fine if you use more lines
-but you should not be writing long functions for this. Instead, rely on the
-corresponding `MinHeap` methods.
+`MinHeap` will do most of the work for you! It is of course fine if you add necessary edge case checks, but you should rely on the
+corresponding `MinHeap` methods as much as possible.
 
 ### `compareTo()` vs `.equals()`
 
