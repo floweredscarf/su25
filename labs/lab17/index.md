@@ -107,7 +107,7 @@ might come in handy while discussing graphs.
 
 | Term                | Definition                                                                                      |
 |---------------------|-------------------------------------------------------------------------------------------------|
-| Adjacent            | A vertex `u` is *adjacent* to a vertex `v` if `u` has an edge connecting to `v`.                |
+| Adjacent            | A vertex `u` is *adjacent* to a vertex `v` if `v` has an edge connecting to `u`.                |
 | Path                | A *path* is a sequence of edges from one vertex to another where no edge or vertex is repeated. |
 | Connected           | A graph is *connected* if every vertex has a path to all other vertices.                        |
 | Neighbor            | A vertex `u` is a *neighbor* of a vertex `v` if they are adjacent.                              |
