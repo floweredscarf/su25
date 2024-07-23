@@ -178,6 +178,17 @@ $$i$$ and the `Edge` object with minimum weight that connects vertex $$i$$ to
 the MST. Consider maintaining a map called `distFromTree` that will keep this
 mapping between integers (vertex numbers) and `Edge` objects.
 
+### Handling Edge Cases in `prims`
+
+Sometimes, a graph may not have a minimum spanning tree. For example, if the graph is not connected, then there is no way to create a spanning tree that includes all vertices.
+In this case, the `prims` method should return `null`.
+
+Try running Prim's on the graph below, and see what happens!
+
+![alt text](image.png)
+
+Recall how Prim only explores along existing edges. If there are no more edges to explore, then the `while (fringe is not empty)` condition does not hold. Now, consider checking the number of edges in your MST. Typically, a graph with $$V$$ vertices will have $$V - 1$$ edges in its MST. If so, under what conditions can we say it's not possible to find the MST?
+
 ### Testing
 
 To test the code that you have just written, we have included a directory named
@@ -266,9 +277,8 @@ $$G$$ will be an item in our data structure. Whenever we add an edge $$(u, w)$$
 to $$T$$, we can `union` the sets that $$u$$ and $$w$$ belong to. To check if
 there is already a path connecting $$u$$ and $$w$$, we can call `find` on both
 of them and see if they are part of the same set. Using this data structure,
-what is the runtime of Kruskal's algorithm? (Note, this assumes that graph
-creation is in constant time. If it is not, then we must take that into
-consideration as well.)
+what is the runtime of Kruskal's algorithm? (Note, this does account for the time used
+when creating the graph, just the time used in the algorithm itself.)
 
 Discuss this with your partner.
 
@@ -294,6 +304,25 @@ Now, implement Kruskal's algorithm using disjoint sets by filling out the method
 to test your implementation of Kruskal's algorithm. For the disjoint set data
 structure, you may import the `WeightedQuickUnionUF` class but you may also
 use your implementation from [Lab 15](../lab15/index.md).
+
+{% include alert.html type="info" content="
+You may wonder how to sort the edges in Kruskal's algorithm. If you look at the provided skeleton more closely, the `Edge` class implements `Comparable`, and our graph
+stores the edges in a `TreeSet`, in the instance variable called `allEdges`.
+" %}
+
+### Handling Edge Cases in `kruskals`
+
+Similar to `prims`, if the graph is not connected, there is no way to create a spanning tree that includes all vertices. In this case, the `kruskals` method should return `null`. Try running Kruskal's on the graph below, and see what happens!
+
+![alt text](image.png)
+
+Recall that the general logic of Kruskal's is to add edges in increasing order of weight. Think about the following questions:
+
+(1) After we iterated over all edges and checked all of them, how many edges should we have in a graph if we were to let the edges picked form a spanning tree?
+
+(2) In the example graph above, how many edges do we actually have at the end?
+
+(3) Based on this, how would you generalize the condition for when a graph is not connected when running Kruskal's? 
 
 <!-- ## Conclusion
 
