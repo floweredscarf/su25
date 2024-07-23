@@ -340,12 +340,12 @@
       description: >
         VLSB 2050 10am - 11am
           <br>
-          [Slides TBD]()
+          [Slides](https://docs.google.com/presentation/d/1yWILp3Zi_hhyIHVazbxQrs2iOzPzstb6ePbL5htY5Lk/edit#slide=id.g2318110c70d_0_58)
             |
             [Video TBD]()
             |
           **Readings:** [Ch 22.3-4](https://cs61b-2.gitbook.io/cs61b-textbook/22.-tree-traversals-and-graphs/22.3-graphs) [Ch 23](https://cs61b-2.gitbook.io/cs61b-textbook/23.-graph-traversals-and-implementations)
-      published: false
+      published: true
     - title: Shortest Paths
       type: Lecture, Lab
       date: 2024-07-24
