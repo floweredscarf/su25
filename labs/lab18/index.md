@@ -13,8 +13,13 @@ adding "/faq" to the end of the URL. The FAQ for Lab 18 is located
 
 ## Introduction
 
-Pull the skeleton, as usual. Copy the contents of `Graph.java` file from the
-last lab into `src/Graph.java`. 
+Pull the skeleton, as usual. Copy your implementation of the following methods of `Graph.java` file from the
+last lab into `src/Graph.java`:
+- addEdge
+- addUndirectedEdge
+- isAdjacent
+- neighbors
+- inDegree
 
 ## More Graph Algorithms
 
@@ -292,23 +297,22 @@ Additionally, it may be useful to write a `getEdge` method, that will return the
 `Edge` object corresponding to the input variables. Here's the header:
 
 ```java
-public Edge getEdge(int u, int v) {
+private Edge getEdge(int v1, int v2) {
     // TODO: YOUR CODE HERE
     return null;
 }
 ```
 
 *Hint*: At a certain point in Dijkstra's algorithm, you have to change the value
-of nodes in the fringe. Java's `PriorityQueue` does not support this operation
-directly, but we can add a new entry into the `PriorityQueue` that contains the
-updated value (and will always be dequeued before any previous entries). Then,
+of nodes in the fringe. Java's [`PriorityQueue`](https://docs.oracle.com/javase/7/docs/api/java/util/PriorityQueue.html)
+does not support this operation directly, but **we can add a new entry into the `PriorityQueue` that contains the updated value (and will always be dequeued before any previous entries).** Then,
 by tracking which nodes have been visited already, you can simply ignore any
 copies after the first copy dequeued.
 
 Additionally, adding the vertices to our `PriorityQueue` fringe directly won't
 be enough. Our vertices are integers, so the `PriorityQueue` will order them by
 their *natural ordering*. Write a comparator to change the ordering of the
-vertices.
+vertices. **You may find [this constructor](https://docs.oracle.com/javase/7/docs/api/java/util/PriorityQueue.html#PriorityQueue(int,%20java.util.Comparator)) of Java's `PriorityQueue` helpful.**
 
 ### Runtime
 
