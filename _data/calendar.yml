@@ -358,7 +358,7 @@
             [Video TBD]()
             |
           **Readings:** [Ch 24](https://cs61b-2.gitbook.io/cs61b-textbook/24.-shortest-paths)
-      published: false
+      published: true
     - title: Minimum Spanning Trees
       type: Lecture, Lab
       date: 2024-07-25
