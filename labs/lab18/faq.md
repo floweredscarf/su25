@@ -2,8 +2,8 @@
 layout: page
 title: "FAQ - Lab 18: Graph Algorithms"
 categories: lab
-released: false
+released: true
 searchable: true
 ---
 
-### Nothing yet!
+### Nothing at the moment!
