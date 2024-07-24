@@ -159,7 +159,7 @@ While Loop: Loop until the fringe is empty.
 
   3. Then, for each neighbor `w` of `v`, do the following:
 
-     1. As an optimization, if `w` has been visited already, skip it (*Dijkstra's Algorithm* visits vertices in distance-order from the root, so if we are revisiting a node, we have already found a a shorter path that gets us there).
+     1. As an optimization, if `w` has been visited already, skip it (*Dijkstra's Algorithm* visits vertices in distance-order from the root, so if we are revisiting a node, we have already found a shorter path that gets us there).
 
      2. If `w` is not in the fringe (or another way to think of it - it's
         distance is infinity or undefined in our distance mapping), add it to
