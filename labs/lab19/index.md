@@ -2,7 +2,7 @@
 layout: page
 title: "Lab 19: Minimum Spanning Trees"
 tags: [Lab, MSTs]
-released: false
+released: true
 searchable: true
 ---
 
