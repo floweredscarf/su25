@@ -99,11 +99,11 @@ Prim's algorithm is a [*greedy algorithm*](https://simple.wikipedia.org/wiki/Gre
 that constructs an MST, $$T$$, from some graph $$G$$ as follows:
 
 1. Create a new empty graph $$T$$, where $$T$$ will be the resulting MST.
-2. Choose an arbitrary starting vertex in $$G$$ and add that vertex to $$T$$.
-3. Repeatedly add the smallest edge of $$G$$ that has exactly one vertex inside $$T$$ to
-   $$T$$. Let's call this edge $$e$$. After adding $$e$$, we will also add the
-   vertex on $$e$$ not in $$T$$ to $$T$$.
-4. Continue until $$T$$ has $$V - 1$$ edges.
+2. Choose an arbitrary starting vertex in graph $$G$$ and add that vertex to graph $$T$$.
+3. Repeatedly add the smallest edge of graph $$G$$, that has exactly one vertex inside graph $$T$$ to
+   $$T$$. Let's call this edge $$e$$. After adding edge $$e$$, we will also add the
+   vertex on edge $$e$$ that is not in graph $$T$$ to $$T$$.
+4. Continue until graph $$T$$ has $$V - 1$$ edges.
 
 Now, why does Prim's algorithm work? The answer is the cut property. At any
 given point in the algorithm, the two sets of vertices that make up the cut are:
@@ -314,7 +314,7 @@ stores the edges in a `TreeSet`, in the instance variable called `allEdges`.
 
 Similar to `prims`, if the graph is not connected, there is no way to create a spanning tree that includes all vertices. In this case, the `kruskals` method should return `null`. Try running Kruskal's on the graph below, and see what happens!
 
-![alt text](image.png)
+![alt text](img/disjoint-graph.png)
 
 Recall that the general logic of Kruskal's is to add edges in increasing order of weight. Think about the following questions:
 
@@ -333,7 +333,7 @@ to take note of the visual difference in running these algorithms!
 [Prim's algorithm]: https://www.youtube.com/watch?v=6uq0cQZOyoY
 [Kruskal's algorithm]: https://www.youtube.com/watch?v=ggLyKfBTABo -->
 
-### Deliverables
+## Deliverables
 
 As usual, remember to add, commit, push, submit, and add your partner on
 Gradescope.

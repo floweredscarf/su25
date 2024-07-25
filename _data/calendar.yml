@@ -366,12 +366,12 @@
       description: >
         VLSB 2050 10am - 11am
           <br>
-          [Slides TBD]()
+          [Slides](https://docs.google.com/presentation/d/1bHC2Za9K3Sclj75c1c-HMdsbu07021iUCsKwU42xoKM/edit)
             |
-            [Video TBD]()
+            [Video](https://bcourses.berkeley.edu/courses/1535549/external_tools/90481)
             |
           **Readings:** [Ch 25](https://cs61b-2.gitbook.io/cs61b-textbook/25.-minimum-spanning-trees)
-      published: false
+      published: true
     - title: Graphs
       type: Theory
       date: 2024-07-26
