@@ -389,8 +389,8 @@
         Quiz 6 due **Monday 7/29, 11:59 PM**
 - week: 7
   days:
-    - title: Sorting
-      type: Lecture, Lab
+    - title: Sorting (No lab assignment, Project 3 workday)
+      type: Lecture
       date: 2024-07-29
       published: false
       url: labs/lab20
@@ -402,7 +402,7 @@
             [Video TBD]()
             |
           **Readings:** [Ch 29](https://cs61b-2.gitbook.io/cs61b-textbook/29.-basic-sorts)
-    - title: Quicksort
+    - title: Quicksort (Comparison sorts lab)
       type: Lecture, Lab
       date: 2024-07-30
       url: labs/lab21
