@@ -185,7 +185,7 @@ In this case, the `prims` method should return `null`.
 
 Try running Prim's on the graph below, and see what happens!
 
-![alt text](image.png)
+![disjoint graph example](img/disjoint-graph.png)
 
 Recall how Prim only explores along existing edges. If there are no more edges to explore, then the `while (fringe is not empty)` condition does not hold. Now, consider checking the number of edges in your MST. Typically, a graph with $$V$$ vertices will have $$V - 1$$ edges in its MST. If so, under what conditions can we say it's not possible to find the MST?
 
