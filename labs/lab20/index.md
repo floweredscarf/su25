@@ -173,7 +173,7 @@ What is the runtime of running insertion sort on the type of array you identifie
 Theta(N^2)
 </details>
 
-### Exercise: `InsertionSort`
+### Non-Coding Exercise: `InsertionSort`
 
 Read the solution `sort()` in `InsertionSort.java` and understand the provided helper methods.
 
@@ -210,7 +210,7 @@ Hence, we have an $$\Theta(N^2)$$ algorithm, equivalent to insertion sort's
 normal case. But notice that selection sort *doesn't* have a better case, while
 insertion sort does.
 
-### Exercise: `SelectionSort`
+### Non-Coding Exercise: `SelectionSort`
 
 Read the solution to `sort()` and understand the helper methods in `SelectionSort.java`.
 
@@ -335,6 +335,135 @@ To test your understanding of merge sort, fill out the `sort` method in
 This method should be non-destructive, so the original `int[] arr` should not be
 modified.
 
+## Quicksort
+
+Another example of dividing and conquering is the *quicksort* algorithm, which
+proceeds as follows:
+
+1. Split the collection to be sorted into three collections by *partitioning*
+   around a *pivot* (or "divider"). One collection consists of elements smaller
+   than the pivot, the second collection consists of elements equal to the
+   pivot, and the third consists of elements greater than or equal to the pivot.
+2. Recursively call quicksort on each collection.
+3. Merge the sorted collections by concatenation.
+
+Specifically, this version of quicksort is called "three-way partitioning
+quicksort" due to the three partitions that the algorithm makes on every call.
+
+Here's an example of how this might work, sorting an array containing 3, 1, 4,
+5, 9, 2, 8, 6.
+
+![Quicksort](img/quicksort.png)
+
+1. Choose 3 as the pivot. (We'll explore how to choose the pivot shortly.)
+2. Put 4, 5, 9, 8, and 6 into the "large" collection and 1 and 2 into the
+   "small" collection. No elements go in the "equal" collection.
+3. Sort the large collection into 4, 5, 6, 8, 9; sort the small collection into
+   1, 2; combine the two collections with the pivot to get 1, 2, 3, 4, 5, 6, 8,
+   9.
+
+Depending on the implementation, quicksort is not stable because when we move
+elements to the left and right of our pivot the relative ordering of equal
+elements can change.
+
+Before moving on to the next part of the lab, check out [this video](https://www.youtube.com/watch?v=7cjXkEW1STY&t=1h24m55s) to solidify your understanding of quicksort. Note this was taken from summer 2021's lecture, so you can stop after the section on quicksort. That is, you can stop at 1:41:00. 
+
+## Exercise: `quicksort`
+
+To test your understanding of quicksort, fill out the `sort` method in
+`QuickSort.java`. Be sure to take advantage of the helper `partition` method!
+
+This method is destructive, where the original `int[] arr` should be
+modified.
+
+## Discussion: Quicksort
+
+### Discussion 1: Runtime
+
+First, let's consider the best-case scenario where each partition divides a
+range optimally in half. Using some of the strategies picked up from the merge
+sort analysis, we can determine that quicksort's best case asymptotic runtime
+behavior is $$O(N \log N)$$. Discuss with your partner why this is the case, and
+any differences between quicksort's best case runtime and merge sort's runtime.
+
+However, quicksort is faster in practice and tends to have better constant
+factors (which aren't included in the big-Oh analysis). To see this, let's
+examine exactly how quicksort works.
+
+We know concatenation for linked lists can be done in constant time, and for arrays it can be done in linear time.
+Partitioning can be done in time proportional to the number of elements $$N$$. 
+If the partitioning is optimal and splits each range more or less in half,
+we have a similar logarithmic division of levels downward
+like in merge sort. On each division, we still do the same linear amount of work
+as we need to decide whether each element is greater or less than the pivot.
+
+However, once we've reached the base case, we don't need as many steps to
+reassemble the sorted collection. Remember that with merge sort, while each list
+of one element is sorted, the entire set of one-element
+lists is not necessarily in order, which is why there are $$\log N$$ steps to
+merge upwards in merge sort. This isn't the case with quicksort as each element
+*is* in order. Thus, merging in quicksort is simply one level of linear-time
+concatenation.
+
+Unlike merge sort, quicksort has a worst-case runtime different from its
+best-case runtime. Suppose we always choose the first element in a range as our
+pivot. Then, which of the following conditions would cause the worst-case
+runtime for quicksort? Discuss with your partner, and verify your understanding
+by highlighting the line below for the answer.
+
+<p><span style="color:white"><em>Sorted or Reverse Sorted Array. This is because
+  the pivot will always be an extreme value (the largest or smallest unsorted value)
+  and we will thus have N recursive calls, rather than log(n).</em></span></p>
+
+What is the runtime of running quicksort on this array?
+
+<p><span style="color:white"><em>Theta(N^2)</em></span></p>
+
+Under these conditions, does this special case of quicksort remind you of any
+other sorting algorithm we've discussed in this lab? Discuss with your partner.
+
+We see that quicksort's worst case scenario is pretty bad... You might be wondering why we'd even bother with it then! However, though it's outside the scope of this class for you to prove why, we can show that on *average*, quicksort has $$O(N \log(N))$$ runtime! In practice, quicksort ends up being very fast.
+
+### Discussion 2: Choosing a Pivot
+
+Given a random collection of integers, what's the best possible choice of pivot
+for quicksort that will break the problem down into $$\log N$$ levels? Discuss
+with your partner and describe an algorithm to find this pivot element. What is
+its runtime? It's okay if you think your solution isn't the most efficient.
+
+## Quicksort in Practice
+
+How fast was the pivot-finding algorithm that you came up with? Finding the
+exact median of our elements may take so much time that it may not help the
+overall runtime of quicksort at all. It may be worth it to choose an approximate
+median, if we can do so really quickly. Options include picking a random
+element, or picking the median of the first, middle, and last elements. These
+will at least avoid the worst case we discussed above.
+
+In practice, quicksort turns out to be the fastest of the general-purpose
+sorting algorithms we have covered so far. For example, it tends to have better
+constant factors than that of merge sort. For this reason, Java uses this
+algorithm for sorting arrays of **primitive types**, such as `int`s or `float`s.
+With some tuning, the most likely worst-case scenarios are avoided, and the
+average case performance is excellent.
+
+Here are some improvements to the quicksort algorithm as implemented in the Java
+standard library:
+
+- When there are only a few items in a sub-collection (near the base case of the
+  recursion), insertion sort is used instead.
+- For larger arrays, more effort is expended on finding a good pivot.
+- Various machine-dependent methods are used to optimize the partitioning
+  algorithm and the `swap` operation.
+- [Dual pivots](https://www.geeksforgeeks.org/dual-pivot-quicksort/)
+
+For **object types**, however, Java uses a hybrid of *merge sort and insertion
+sort* called "Timsort" instead of quicksort. Can you come up with an explanation
+as to why? *Hint*: Think about stability!
+ 
+
+To learn more about the performance difference between Quicksort and Mergesort, watch this video [Quicksort versus Mergesort](https://www.youtube.com/watch?v=es2T6KY45cA)
+
 ### Timing
 
 So far we've measured the speed and efficiency of our algorithms by theoretically
@@ -353,38 +482,67 @@ Here's the result of running the test on one of our computers:
 ![Sorting Algos Timing Test Results](./img/times.png)
 
 Notice how by the time we reach an array size of 1000000, Selection Sort and Insertion Sort 
-take more than a minute to run while Heap Sort manages to sort the same array in just over
+take more than a minute to run while Heap Sort and Merge Sort manages to sort the same array in just over
 one-tenth of a second!  
 
-If the tests are taking too long on your computer, try lowering the bounds
-provided in the class.
+If you run it multiple times, you will also notice that Quicksort's runtime varies more than others---you are seeing
+the different pivot's runtime on this algorithm's performance in action! 
 
-### Summary
+Please note that the result you see my be different from the picture above. 
+If the tests are taking too long on your computer, try lowering the bounds provided in the class.
+
+## Summary
+
+In this lab, we learned about more comparison-based algorithms for sorting
+collections. Within comparison-based algorithms, we examined two different
+paradigms for sorting:
+
+1. Simple sorts like **insertion sort** and **selection sort** which
+   demonstrated algorithms that maintained a sorted section and moved unsorted
+   elements into this sorted section one-by-one. With optimization like **heapsort** or the right conditions (relatively sorted list in the case of insertion
+   sort), these simple sorts can be fast!
+2. Divide and conquer sorts like **merge sort** and **quicksort**. These
+   algorithms take a different approach to sorting: we instead take advantage of
+   the fact that collections of one element are sorted with respect to
+   themselves.  Using recursive procedures, we can break larger sorting problems
+   into smaller subsequences that can be sorted individually and quickly
+   recombined to produce a sorting of the original collection.
 
 Here are several online resources for visualizing sorting algorithms. If you're
 having trouble understanding these sorts, use these resources as tools to help
 build intuition about how each sort works.
 
 - [VisuAlgo][]
+- [Sorting.at][]
 - [Sorting Algorithms Animations][]
 - [USF Comparison of Sorting Algorithms](http://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html)
 - [AlgoRhythmics][]: sorting demos through folk dance including
-  [insertion sort][] and [selection sort][]
+  [insertion sort][], [selection sort][], [merge sort][], and [quicksort][]
 
 [VisuAlgo]: http://visualgo.net/sorting
+[Sorting.at]: http://sorting.at/
 [Sorting Algorithms Animations]: http://www.sorting-algorithms.com/
 [USF Comparison of Sorting Algorithms]: http://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html
 [AlgoRhythmics]: https://www.youtube.com/user/AlgoRythmics/videos
 [insertion sort]: https://www.youtube.com/watch?v=ROalU379l3U
 [selection sort]: https://www.youtube.com/watch?v=Ns4TPTC8whw
+[merge sort]: https://www.youtube.com/watch?v=XaqR3G*NVoo
+[quicksort]: https://www.youtube.com/watch?v=ywWBy6J5gz8
 
-To summarize the sorts that we've learned, take a look at the following table:
+To summarize the sorts that we've learned, take a look at the following table. If you'd like a refresher on what it means
+for a sort to be stable or in place, please revisit the [lab 20 spec](../lab20) from yesterday:
 
 |                | Best Case Runtime    | Worst Case Runtime   | Stable  | In Place | Notes |
 |----------------|----------------------|----------------------|---------|----------|-------|
 | [Insertion Sort](https://youtu.be/JtS5yGftYZ8) | $$\Theta(N)$$        | $$\Theta(N^2)$$      | Yes     | Yes | |
 | [Selection Sort](https://youtu.be/yZtvSYeTQi4) | $$\Theta(N^2)$$      | $$\Theta(N^2)$$      | No      | Yes | Can be made stable under certain conditions. |
-| [Heap Sort](https://youtu.be/WuuQqsDftGU)      | $$\Theta(N)$$ | $$\Theta(N \log N)$$ | No      | Yes | If all elements are equal then runtime is $$\Theta(N)$$. In all other cases the runtime is $$\Theta(N \log N)$$. Hard to make stable. |
+| [Heap Sort](https://youtu.be/WuuQqsDftGU)      | $$\Theta(N \log N)$$ | $$\Theta(N \log N)$$ | No      | Yes | If all elements are equal then runtime is $$\Theta(N)$$. Hard to make stable. |
+| [Merge Sort](https://youtu.be/JJrAzmJcMh0)     | $$\Theta(N \log N)$$ | $$\Theta(N \log N)$$ | Yes     | Not usually. Typical implementations are not, and making it in-place is terribly complicated. | An optimized sort called "Timsort" is used by Java for arrays of reference types. |
+| [Quicksort](https://www.youtube.com/watch?v=7cjXkEW1STY&t=1h24m55s)      | $$\Theta(N \log N)$$ | $$\Theta(N^2)$$      | Depends | Most implementations use log(N) additional space for the recursive stack frames | Stability and runtime depend on partitioning strategy; three-way partition quicksort is stable. If all elements are equal, then the runtime using three-way partition quicksort is $$\Theta(N)$$. Used by Java for arrays of primitive types. Fastest in practice. |
+
+> You may have noticed that there seems to be a lower bound on how fast our sorting algorithms can go. For *comparison* based sorts, we can prove the best we can do is $$O(N\log(N))$$. You can watch a very brief video explanation [here](https://www.youtube.com/watch?v=j4Lmzhs6r-Y&list=PLNF4Mv5EsHj4QLTEw3uz42vJGKblD9usL&index=3) at timestamp 11:42. You can also read a more in-depth [proof](https://www.cs.cmu.edu/~avrim/451f11/lectures/lect0913.pdf), if you're into that kind of thing. Tomorrow, we'll learn about *counting* sorts, which can do even better when we're able to use them.
+
+
 
 
 
@@ -394,3 +552,4 @@ To get credit for this lab:
 - Complete the following classes:
     - `HeapSort.java`
     - `MergeSort.java`
+    - `QuickSort.java`
