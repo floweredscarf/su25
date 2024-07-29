@@ -604,7 +604,7 @@ will be implementing the following procedure regarding receiving help during lab
 
 ## Large Language Models (LLMs) ##
 
-For Project 3, it's OK to use large language models (LLMs) like ChatGPT, Bard, Bing, CoPilot, etc. however you want, with the important note that any code generated must be explicitly cited as being AI generated.
+For Phase II of Project 3, it's OK to use large language models (LLMs) like ChatGPT, Bard, Bing, CoPilot, etc. however you want, with the important note that any code generated must be explicitly cited as being AI generated.
 
 If you want LLMs to be useful for project 3, you're going to want to give them small tasks. You should think of LLMs as assistant programmers you've hired to help you out on your project — they're very fast and sloppy programmers who have little common sense, and they often need very specific directions to be useful.
 
