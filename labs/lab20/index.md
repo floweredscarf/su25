@@ -1,8 +1,8 @@
 ---
 layout: page
-title: "Lab 20: Comparison-Based Sorts 1"
+title: "Lab 20: Comparison-Based Sorts"
 tags: [Lab, Sorting, Comparison]
-released: false
+released: true
 searchable: true
 ---
 
@@ -175,7 +175,7 @@ Theta(N^2)
 
 ### Exercise: `InsertionSort`
 
-Complete `sort()` in `InsertionSort.java` using the provided helper methods.
+Read the solution `sort()` in `InsertionSort.java` and understand the provided helper methods.
 
 ## Selection Sort
 
@@ -212,7 +212,7 @@ insertion sort does.
 
 ### Exercise: `SelectionSort`
 
-Complete `sort()` and suggested helper methods in `SelectionSort.java`.
+Read the solution to `sort()` and understand the helper methods in `SelectionSort.java`.
 
 ## HeapSort
 
@@ -265,6 +265,75 @@ of scope for this class. You can take a look at this <u><a href="https://stackov
 Complete `sort()` and suggested helper methods in `HeapSort.java`. The heap in this lab is rooted at index 0 instead of 1 as we're using it to sort through a pre-existing array. 
 We've provided the appropriate `getLeftChild` and `getRightChild` methods as part of the skeleton, so you don't have to worry about this in your implementation. 
 
+
+## New Idea: "Divide and Conquer"
+
+The first few sorting algorithms we've previously introduced work by iterating through each
+item in the collection one-by-one. With insertion sort and selection sort, both
+maintain a "sorted section" and an "unsorted section" and gradually sort the
+entire collection by moving elements over from the unsorted section into the
+sorted section. Another approach to sorting is by way of *divide and conquer*.
+Divide and conquer takes advantage of the fact that empty collections or
+one-element collections are already sorted. This essentially forms the base case
+for a recursive procedure that breaks the collection down into smaller pieces
+before merging adjacent pieces to form a completely sorted
+collection.
+
+The idea behind divide and conquer can be broken down into the following 3-step
+procedure.
+
+1. Split the elements to be sorted into two collections.
+2. Sort each collection recursively.
+3. Combine the sorted collections.
+
+Compared to selection sort, which involves comparing every element with *every
+other element*, divide and conquer can reduce the number of unnecessary
+comparisons between elements by sorting or enforcing order on sub-ranges of the
+full collection. The runtime advantage of divide and conquer comes largely from
+the fact that merging already-sorted sequences is very fast.
+
+Two algorithms that apply this approach are *merge sort* and *quicksort*.
+
+## Merge Sort
+
+Merge sort works by executing the following procedure until the base case of an
+empty or one-element collection is reached.
+
+1. Split the collection to be sorted in half.
+2. Recursively call merge sort on each half.
+3. Merge the sorted half-lists.
+
+The reason merge sort is fast is because merging two lists that are already
+sorted takes linear time proportional to the sum of the lengths of the two
+lists. In addition, splitting the collection in half requires a single pass
+through the elements. The processing pattern is depicted in the diagram below.
+
+![Merge Sort](img/mergesort.png)
+
+Each level in the diagram is a collection of processes that all together run in
+linear time. Since there are $$2 \log N$$ levels with each level doing work
+proportional to $$N$$, the total time is proportional to $$N \log N$$.
+
+To be specific, each level does work proportional to $$N$$ because of the merging process, 
+which happens in a zipper-like fashion. Given two sorted lists, `merge` should continually
+compare the first elements of both lists and interweave the elements into a singular sorted list.
+For example, given the lists [2, 6, 7] and [1, 4, 5, 8], `merge` compares the front of both lists (1 and 2). Because
+1 < 2, 1 is moved into the next open spot (in this case, the first position) of the overall sorted list. Note
+that 2 does not enter the overall list, because we now must effectively compare [2, 6, 7] with [4, 5, 8] and repeat the process
+until there are no more elements that need to be compared and merged.
+
+Merge sort is stable as long as we make sure when merging two halves together
+that we favor equal elements in the left half.
+
+Now, watch [this video](https://youtu.be/JJrAzmJcMh0) on `mergeSort` before attempting the exercise below!
+
+## Exercise: `mergeSort`
+
+To test your understanding of merge sort, fill out the `sort` method in
+`MergeSort.java`. Be sure to take advantage of the helper `merge` method!
+
+This method should be non-destructive, so the original `int[] arr` should not be
+modified.
 
 ### Timing
 
@@ -323,6 +392,5 @@ To summarize the sorts that we've learned, take a look at the following table:
 
 To get credit for this lab:
 - Complete the following classes:
-    - `InsertionSort.java`
-    - `SelectionSort.java`
     - `HeapSort.java`
+    - `MergeSort.java`
