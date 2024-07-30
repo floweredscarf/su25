@@ -82,7 +82,7 @@ Original collection:
     bat
     ant
 
-Sort by alphabetical order:
+First, sort by alphabetical order:
 
     ant
     bat
@@ -91,7 +91,7 @@ Sort by alphabetical order:
     giraffe
     octopus
 
-**Stable** sort by length of string:
+Second, **stable** sort by length of string:
 
     ant
     bat
@@ -100,7 +100,7 @@ Sort by alphabetical order:
     giraffe
     octopus
 
-Now the collection is sorted by length and elements with the same length are in
+After the two sort calls on the same list, now the collection is sorted by length and elements with the same length are in
 alphabetical order with each other. If our sorting algorithm was not stable,
 then we would potentially lose the alphabetical information we achieved in the
 previous sort.
