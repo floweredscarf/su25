@@ -392,8 +392,7 @@
     - title: Sorting (No lab assignment, Project 3 workday)
       type: Lecture
       date: 2024-07-29
-      published: false
-      url: labs/lab20
+      published: true
       description: >
         Dwinelle 155 10am - 11am
           <br>
@@ -405,7 +404,7 @@
     - title: Quicksort (Comparison sorts lab)
       type: Lecture, Lab
       date: 2024-07-30
-      url: labs/lab21
+      url: labs/lab20
       description: >
         VLSB 2050 10am - 11am
           <br>
@@ -414,7 +413,7 @@
             [Video TBD]()
             |
           **Readings:** [Ch 30](https://cs61b-2.gitbook.io/cs61b-textbook/30.-quicksort) [Ch 32](https://cs61b-2.gitbook.io/cs61b-textbook/32.-more-quick-sort-sorting-summary) [Ch 34](https://cs61b-2.gitbook.io/cs61b-textbook/34.-sorting-and-algorithmic-bounds)
-      published: false
+      published: true
     - title: Radix Sorts
       type: Lecture, Lab
       date: 2024-07-31

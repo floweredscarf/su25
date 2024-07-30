@@ -115,7 +115,7 @@ Note that the definition of in-place can vary–though in our class we say only 
 
 ## Discussion: Sorting by Hand
 
-With your partner, discuss how you would sort a hand of 13 playing cards if you
+With a partner, discuss how you would sort a hand of 13 playing cards if you
 are dealt the cards one-by-one. Your hand should end up sorted first by suit,
 and then by rank within each suit.
 
@@ -123,7 +123,7 @@ Then discuss how you would sort a pile of 300 CS 61BL exams by student ID. If
 it's different than your card-sorting algorithm of the previous step, explain
 why.
 
-Afterwards, discuss with your partner and roughly describe an algorithm to formalize your sort.
+Afterwards, discuss with a partner and roughly describe an algorithm to formalize your sort.
 Can you tell if one is faster than the other? How so?
 
 ## Insertion Sort
@@ -383,7 +383,7 @@ modified.
 First, let's consider the best-case scenario where each partition divides a
 range optimally in half. Using some of the strategies picked up from the merge
 sort analysis, we can determine that quicksort's best case asymptotic runtime
-behavior is $$O(N \log N)$$. Discuss with your partner why this is the case, and
+behavior is $$O(N \log N)$$. Discuss with a partner why this is the case, and
 any differences between quicksort's best case runtime and merge sort's runtime.
 
 However, quicksort is faster in practice and tends to have better constant
@@ -408,7 +408,7 @@ concatenation.
 Unlike merge sort, quicksort has a worst-case runtime different from its
 best-case runtime. Suppose we always choose the first element in a range as our
 pivot. Then, which of the following conditions would cause the worst-case
-runtime for quicksort? Discuss with your partner, and verify your understanding
+runtime for quicksort? Discuss with a partner, and verify your understanding
 by highlighting the line below for the answer.
 
 <p><span style="color:white"><em>Sorted or Reverse Sorted Array. This is because
@@ -420,7 +420,7 @@ What is the runtime of running quicksort on this array?
 <p><span style="color:white"><em>Theta(N^2)</em></span></p>
 
 Under these conditions, does this special case of quicksort remind you of any
-other sorting algorithm we've discussed in this lab? Discuss with your partner.
+other sorting algorithm we've discussed in this lab? Discuss with a partner.
 
 We see that quicksort's worst case scenario is pretty bad... You might be wondering why we'd even bother with it then! However, though it's outside the scope of this class for you to prove why, we can show that on *average*, quicksort has $$O(N \log(N))$$ runtime! In practice, quicksort ends up being very fast.
 
@@ -428,7 +428,7 @@ We see that quicksort's worst case scenario is pretty bad... You might be wonder
 
 Given a random collection of integers, what's the best possible choice of pivot
 for quicksort that will break the problem down into $$\log N$$ levels? Discuss
-with your partner and describe an algorithm to find this pivot element. What is
+with a partner and describe an algorithm to find this pivot element. What is
 its runtime? It's okay if you think your solution isn't the most efficient.
 
 ## Quicksort in Practice
