@@ -529,8 +529,7 @@ build intuition about how each sort works.
 [merge sort]: https://www.youtube.com/watch?v=XaqR3G*NVoo
 [quicksort]: https://www.youtube.com/watch?v=ywWBy6J5gz8
 
-To summarize the sorts that we've learned, take a look at the following table. If you'd like a refresher on what it means
-for a sort to be stable or in place, please revisit the [lab 20 spec](../lab20) from yesterday:
+To summarize the sorts that we've learned, take a look at the following table. 
 
 |                | Best Case Runtime    | Worst Case Runtime   | Stable  | In Place | Notes |
 |----------------|----------------------|----------------------|---------|----------|-------|
