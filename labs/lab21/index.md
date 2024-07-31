@@ -21,7 +21,7 @@ For demos of the algorithms discussed in this lab, look [here](https://inst.eecs
 
 This lab is very reading-heavy, with fairly short coding sections. You should 
 try to fully understand each section before moving on. If you have any confusion, 
-clarify with an AI or your TA!
+clarify with your TA!
 
 ## Average-Case Runtimes
 
