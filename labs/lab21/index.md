@@ -179,7 +179,7 @@ true/false decision, we make a k-way decision?
 ## A Linear Time Sort
 
 Before diving in, we recommend **watching [this](https://youtu.be/tWZhdFzVqXY) 
-video** on LSD sort made by last summer's instructor and counting sort to 
+video** on LSD sort made by a past summer's instructor and counting sort to 
 introduce the ideas in the following sections.
 
 Suppose we have an array of a million `String`s, but we happen to know that
@@ -291,9 +291,7 @@ numbers form a radix-2 system; decimal notation is radix-10. Radix sorts examine
 elements in passes, and a radix sort might have one pass for the rightmost
 digit, one for the next-to-rightmost digit, and so on.
 
-We'll now describe radix sort in detail. We already described a
-procedure similar to radix sort when talking about sorting in a library catalog
-in the last lab. In radix sort, we will pretend each digit is a separate key,
+We'll now describe radix sort in detail. In radix sort, we will pretend each digit is a separate key,
 and then we sort on all the keys at once, with the higher digits taking
 precedence over the lower ones.
 
