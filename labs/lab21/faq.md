@@ -2,7 +2,7 @@
 layout: page
 title: "FAQ - lab 21: Counting-Based Sorts"
 categories: lab
-released: false
+released: true
 searchable: true
 ---
 
