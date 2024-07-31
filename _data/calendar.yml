@@ -417,7 +417,7 @@
     - title: Radix Sorts
       type: Lecture, Lab
       date: 2024-07-31
-      url: labs/lab22
+      url: labs/lab21
       description: >
         Dwinelle 155 10am - 11am
           <br>
@@ -426,7 +426,7 @@
             [Video TBD]()
             |
           **Readings:** [Ch 35](https://cs61b-2.gitbook.io/cs61b-textbook/35.-radix-sorts) [Ch 36](https://cs61b-2.gitbook.io/cs61b-textbook/36.-sorting-and-data-structures-conclusion)
-      published: false
+      published: true
     - title: Project 3 Workday
       type: Lecture, Lab
       date: 2024-08-01
