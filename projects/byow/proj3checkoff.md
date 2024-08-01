@@ -69,7 +69,7 @@ directory) if you want to follow along and simulate your checkoff.
 18. Quit and reload the world again (this time with ":q" and "l"), and make sure basic commands still work.
 19. Check that "q" alone doesn't terminate the game.
 
-At this point, we will apply various deductions for interactivity bugs, including but not limited to:
+At this point, we will apply various deductions (-1) for interactivity bugs, including but not limited to:
 - Flashing the world before loading
 - Frequent/distracting flickering HUD or world
 - :Q returns to the main menu instead of exiting
@@ -87,7 +87,7 @@ At this point, we will apply various deductions for interactivity bugs, includin
   experience/how they explore the world. (e.g. the world is the same each time, with only changes in the color of the
   floor)
 
-At this point, we will apply various deductions for world generation bugs, including but not limited to:
+At this point, we will apply various deductions (-2) for world generation bugs, including but not limited to:
 - Dead-end hallway
 - Detached room
 
