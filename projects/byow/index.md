@@ -515,7 +515,7 @@ If you do not earn full points on the autograders, you can clobber them with you
 We will also have a brief partnership reflection assignment worth 1 point. You are required to make a submission to the [Project 3 Reflection Form](https://forms.gle/RUWapL4ayzHvYgzs5) by **Sunday 8/4, 11:59 pm pacific time.**
 
 In addition, you'll also submit [the Pre-Checkoff Form](https://forms.gle/cuRHCQqXtWbv2JfC7) when you've
-completed the project and sign up for a checkoff time slot with your TA by **Sunday 8/4, 11:59 pm pacific time** (instructions to do so will be released on Ed). Note that this is the same time as your autograder submission for Phase 2 is due. **If you do not submit this form and sign up for a checkoff then you will receive a 0 on the checkoff portion of the project.** Only one of your partners needs to submit the form, but you should write the responses together. 
+completed the project by **Sunday 8/4, 11:59 pm pacific time**. Checkoff demos will be held on in your assigned lab section on Monday 8/5. Note that this is the same time as your autograder submission for Phase 2 is due. **If you do not submit this form and sign up for a checkoff then you will receive a 0 on the checkoff portion of the project.** Only one of your partners needs to submit the form, but you should write the responses together. 
 
 Checkoff demo (submitting [the Pre-Checkoff Form](https://forms.gle/cuRHCQqXtWbv2JfC7) and then attending a checkoff with your TA): 31 points.
  - 11 points: Basic Functionality
