@@ -36,7 +36,7 @@ An incomplete grants you additional time on assignments that you may not have be
 - Especially if you're taking an incomplete on the final, you'll be completing the incomplete work in parallel with your usual coursework.
 - You will not be able to receive an incomplete on a project assignment if you have/had a misconduct case for the assignment.
 - You will not be able to receive an incomplete on the final if you take the exam this summer. 
-- As per university policy, **if you have 12 units of incomplete grade at any instance of your academic career at Berkeley, you will not be allowed to enroll in classes next semester.**
+- As per university policy from [L&S](https://lsadvising.berkeley.edu/policies/incomplete-grades) and [College of Engineering](https://engineering.berkeley.edu/students/undergraduate-guide/policies-procedures/grades/), **if you have 12+ units of incomplete grade at any instance of your academic career at Berkeley, you will not be allowed to enroll in classes next semester.**
 
 ## Requesting an incomplete
 
