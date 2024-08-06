@@ -10,12 +10,10 @@ released: true
 
 Incomplete grades allow you to complete coursework after the semester if you were unable to finish them due to extenuating circumstances. You will have an Incomplete (I) grade for the semester and receive extended completion deadlines to submit the incomplete assignments. After resolving the incomplete, your letter grade will be calculated and submitted. If you're interested in taking an incomplete, please first read through the registrar's website [here](https://registrar.berkeley.edu/faculty-staff/grading/incomplete-grades/).
 
-Note on cal central grades
-
 A couple important requirements from the website:
 
 - "Students who fail to turn in all required work cannot request an I grade unless they have been unable to finish because of circumstances beyond their control."
-- Your work must be of "passing quality", meaning that completing the projects you're taking an incomplete for would bring you to at least a passing grade in the course. The grade bins can be found in [the syllabus](/su24/about#grading).
+- Your work must be of "passing quality", meaning that completing the projects and/or taking the exam you're taking an incomplete for would bring you to at least a passing grade in the course. The grade bins can be found in [the syllabus](/su24/about#grading).
 
 In CS61B, you may receive an incomplete on at most **2 projects** or **1 project/1 exam**. If you received an incomplete on projects, you will be completing and submitting the project assignment from this summer not the one from the incomplete resolution semester. 
 
