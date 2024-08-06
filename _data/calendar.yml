@@ -459,10 +459,17 @@
             [Video](https://bcourses.berkeley.edu/courses/1535549/external_tools/90481)
             |
       published: false
-    - title: Special Topics Lecture and Final Exam Review Lab
+    - title: Game Development Lecture and Final Exam Review Lab
       type: Lecture, Lab
       date: 2024-08-06
-      published: false
+      description: >
+        VLSB 2050 10am - 11am
+          <br>
+          [Slides](https://docs.google.com/presentation/d/1DW_61T8p-mYu_r5BKWV5vBuPdHGb8LCgGEHZidncuQU/edit?usp=sharing)
+            |
+            [Video]()
+            |
+      published: true
     - title: Special Topics Lecture
       type: Lecture
       date: 2024-08-07
