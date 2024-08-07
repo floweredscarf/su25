@@ -470,10 +470,17 @@
             [Video]()
             |
       published: true
-    - title: Special Topics Lecture
+    - title: 61Behind the Scenes Lecture 
       type: Lecture
       date: 2024-08-07
-      published: false
+      description: >
+        Dwinelle 155 10am - 11am
+          <br>
+          [Slides](https://docs.google.com/presentation/d/1yAsm_1K6WGd6xFNg3TkNNqh17YrfZ5acOw-inugmRJ4/edit?usp=sharing)
+            |
+            [Video]()
+            |
+      published: true
     - title: Final Exam
       type: Exam
       description: >
