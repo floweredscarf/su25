@@ -12,6 +12,7 @@ Lectures are 9:00 AM - 10:00 AM PT:
 - Tuesday & Thursday in TBD
 
 Midterm: Fri, 7/18, 7-9PM Pacific in Dwinelle 155
+
 Final: Tue, 8/12, 3-6PM Pacific in Dwinelle 155
 
 Lecture + OH Zoom: [https://berkeley.zoom.us/my/cs61bl](https://berkeley.zoom.us/my/cs61bl)
