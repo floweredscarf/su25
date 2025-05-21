@@ -1,10 +1,10 @@
 # Site settings
-title: CS 61BL Summer 2024
+title: CS 61BL Summer 2025
 email: cs61bl@berkeley.edu
 description: Data Structures & Programming Methodology
 keywords: CS 61BL, Computer Science, CS, 61BL, Data Structures, Programming Methodology, UC Berkeley, EECS
 url: https://cs61bl.org
-baseurl: /su24
+baseurl: /su25
 permalink: /:year/:month/:day
 avatar: assets/img/cs61bl.png
 
