@@ -1,4 +1,4 @@
----
+<!-- ---
 name: EvanBot
 pronouns: any/all
 role: TA with role
@@ -8,4 +8,4 @@ lead: Head TA
 spaaccess: True
 ---
 
-Likes pancakes. Dislikes C code.
+Likes pancakes. Dislikes C code. -->
