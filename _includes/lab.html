@@ -1,0 +1,71 @@
+{%- comment -%}
+  - This code renders one lab box on the syllabus.
+  - See labs.yml for how to feed information into this template.
+{%- endcomment -%}
+
+{%- comment -%}
+  If you don't want lab boxes to alternate colors per week,
+  then remove class="{{ include.is_even }}" below.
+{%- endcomment -%}
+
+{%- if include.element.theoretical -%}
+  <td class="{{ include.is_even }}" rowspan="{{ include.rowspan }}" style="background-color: rgba(255, 183, 237, 0.122);">
+{%- else -%}
+  <td class="{{ include.is_even }}" rowspan="{{ include.rowspan }}">
+{%- endif -%}
+
+{%- comment -%}
+  - TODO: Currently using nonumber to figure out when not to display links. Is there a cleaner way?
+  - TODO: Currently using "due" to figure out whether to display HW.
+    Is there a cleaner way?
+{%- endcomment -%}
+{%- if include.element.nonumber -%}
+  {%- assign title = include.element.title | markdownify -%}
+{%- else -%}
+  {%- capture title -%}
+    Lab {{ include.number }}: {{ include.element.title }}
+  {%- endcapture -%}
+{%- endif -%}
+{%- if include.element.link -%}
+  <a href="{{ include.element.link }}">{{ title }}</a>
+{%- else -%}
+  {{ title }}
+{%- endif -%}
+{%- if include.element.due -%}
+  <br>
+  (due {{ include.element.due }})
+{%- endif -%}
+
+{%- assign links_array = "" | split: "/" -%}
+
+{%- if include.element.theoretical -%}
+    <a href="{{ include.element.worksheet }}">Worksheet</a>
+    {%- if include.element.solutions -%}
+      &nbsp;/ <a href="{{ include.element.solutions }}">Solutions</a>
+    {%- endif -%}
+{%- endif -%}
+
+{%- capture slides -%}
+  {%- if include.element.slides != "" -%}
+    <a href="{{ include.element.slides }}">Slides</a>
+  {%- endif -%}
+{%- endcapture -%}
+{%- if include.element.slides -%}
+  {% assign links_array = links_array | push: slides %}
+{%- endif -%}
+
+{%- capture video -%}
+  {%- if include.element.video -%}
+    <a href="{{ include.element.video }}">Video</a>
+  {%- endif -%}
+{%- endcapture -%}
+{%- if include.element.video -%}
+  {% assign links_array = links_array | push: video %}
+{%- endif -%}
+
+  <br>
+{%- for link in links_array -%}
+  {{ link }}
+  {%- unless forloop.last %}{{}} / {{}}{% endunless -%}
+{%- endfor -%}
+</td>

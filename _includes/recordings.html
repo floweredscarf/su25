@@ -1,0 +1,9 @@
+<td class="{{ include.is_even }}" rowspan="{{ include.rowspan }}">
+
+{%- if include.element.link -%}
+    <a href="{{ include.element.link }}">Link ({{ include.element.title }})</a>
+{%- else -%}
+    <a href="{{ include.element.link }}" class="disabled"></a>
+{%- endif -%}
+
+</td>

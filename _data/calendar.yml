@@ -1,492 +1,138 @@
-- week: 1
-  days:
-    - title: Introduction to Java, Git, and Setup
-      type: Lecture, Lab
-      date: 2024-06-17
-      description: >
-        <br>
-         [Slides](https://docs.google.com/presentation/d/1Eci0ko521eAnEmbcJU12exLmVBIrAkQnVSO-8U1mzz0/edit?usp=drive_link)
-          |
-          [Video](https://bcourses.berkeley.edu/courses/1535549/external_tools/90481)
-          |
-         **Textbook:** [Ch 1](https://cs61b-2.gitbook.io/cs61b-textbook/1.-introduction)
-      url: labs/lab01
-      published: true
-      footer: >
-        [Project 0: 2048 Released](/su24/projects/game2048)
-    - title: Primitives and Objects
-      type: Lecture, Lab
-      date: 2024-06-18
-      description: >
-        <br>
-         [Slides](https://docs.google.com/presentation/d/1i_5YJOAJykc2Wq6AY2zK4PUF3AIfcKgGlyixnzwE1yw/edit#slide=id.p)
-          |
-          [Video](https://bcourses.berkeley.edu/courses/1535549/external_tools/90481)
-          |
-        **Textbook:** [Ch 2](https://cs61b-2.gitbook.io/cs61b-textbook/2.-defining-and-using-classes),
-        [Ch 6](https://cs61b-2.gitbook.io/cs61b-textbook/6.-arrays)
-      url: labs/lab02
-      published: true
-    - title: Observation of Juneteenth
-      type: Holiday
-      date: 2024-06-19
-      description: >
-        Nothing to attend, pre-semester survey due at 11:59 PM<br><br>
-      published: false
-    - title: Test Driven Development and Debugging
-      type: Lecture, Lab
-      date: 2024-06-20
-      description: >
-        <br>
-         [Slides](https://docs.google.com/presentation/d/1zsCWAXqL_r_Nc_6lVlb6MP3ygL475lLc-yuaxFlta-M/edit?usp=sharing)
-          |
-          [Video](https://bcourses.berkeley.edu/courses/1535549/external_tools/90481)
-          |
-        **Textbook:** [Ch 7](https://cs61b-2.gitbook.io/cs61b-textbook/7.-testing)
-      url: labs/lab03
-      published: true
-      footer: >
-        Project 0 Checkpoint due **Thursday 6/20, 11:59 PM**
-    - title: Introduction to Java Programming
-      type: Theory
-      date: 2024-06-21
-      description: >
-        <br>
-         [Worksheet](https://drive.google.com/file/d/1gJSlCf3UzPOhyiqVOg5MtsaeBPWtltVP/view?usp=sharing)
-          |
-         [Slides](https://docs.google.com/presentation/d/1h3I3HAeOceDIeF14y3o2pHEpWj83W2F646ClBv1q4uM/edit?usp=sharing)
-          |
-         [Solutions](https://drive.google.com/file/d/1GMJUf-MPohF77rf9Ow0-63LDwvxt8xyQ/view?usp=drivesdk)
-      published: true
-      footer: >
-        Project 0 due **Sunday 6/23, 11:59 PM**
-      alt-footer: >
-          Quiz 1 due **Monday 6/24, 11:59 PM**
-- week: 2
-  days:
-    - title: Linked Lists 1
-      type: Lecture, Lab
-      date: 2024-06-24
-      url: labs/lab04
-      published: true
-      description: >
-        Dwinelle 155 10am - 11am
-        <br>
-         [Slides](https://docs.google.com/presentation/d/1CeC4spBbd-nBgkNKjnkvnzlxoOb79UMS8fx2aSsCfPE/edit?usp=drive_link)
-          |
-          [Video](https://bcourses.berkeley.edu/courses/1535549/external_tools/90481)
-          |
-        **Textbook:** [Ch 3](https://cs61b-2.gitbook.io/cs61b-textbook/3.-references-recursion-and-lists) [Ch 4](https://cs61b-2.gitbook.io/cs61b-textbook/4.-sllists) 
-      footer: >
-        [Project 1: Deques Released](/su24/projects/deques)
-    - title: Linked Lists 2
-      type: Lecture, Lab
-      date: 2024-06-25
-      url: labs/lab05
-      published: true
-      description: >
-        Dwinelle 155 10am - 11am
-        <br>
-         [Slides](https://docs.google.com/presentation/d/1ON6AE7SwRmF2crZ1WgC-phWA0bV0tKkHq2U_Y076okY/edit?usp=sharing)
-          |
-          [Video](https://bcourses.berkeley.edu/courses/1535549/external_tools/90481)
-          |
-        **Textbook:** [Ch 5](https://cs61b-2.gitbook.io/cs61b-textbook/5.-dllists) [Ch 8](https://cs61b-2.gitbook.io/cs61b-textbook/8.-arraylist) 
-    - title: Abstract Data Types and Inheritance
-      type: Lecture, Lab
-      date: 2024-06-26
-      url: labs/lab06
-      description: >
-        Dwinelle 155 10am - 11am
-        <br>
-         [Slides](https://docs.google.com/presentation/d/1IbLpo_z-AsysLLJaV7g1W5xPhy7MoMMoy776xMi3Nlo/edit?usp=drive_link)
-          |
-          [Video](https://berkeley.zoom.us/rec/share/GCSrQXSj2cEap98BAcuRrgOp6wAMyywl3oYgvf3bw6OPaMJkRXixK0SOAoXhtlbf.NZ3heANqDhKTF5rC)
-          |
-        **Textbook:** [Ch 9](https://cs61b-2.gitbook.io/cs61b-textbook/9.-inheritance-i-interface-and-implementation-inheritance) [Ch 10](https://cs61b-2.gitbook.io/cs61b-textbook/10.-inheritance-ii-extends-casting-higher-order-functions) [Ch 16.1](https://cs61b-2.gitbook.io/cs61b-textbook/16.-adts-and-bsts/16.1-abstract-data-types)
-      published: true
-    - title: Comparison, Exceptions, and Iteration
-      type: Lecture, Lab
-      date: 2024-06-27
-      url: labs/lab07
-      description: >
-        VLSB 2050 10am - 11am
-        <br>
-         [Slides](https://docs.google.com/presentation/d/1_S363gdL_f0-3DBZC8SxR2YOeyjqaVs3M22cYgUao64/edit)
-          |
-          [Video](https://bcourses.berkeley.edu/courses/1535549/external_tools/90481)
-          |
-        **Textbook:** [Ch 11](https://cs61b-2.gitbook.io/cs61b-textbook/11.-inheritance-iii-subtype-polymorphism-comparators-comparable) [Ch 12](https://cs61b-2.gitbook.io/cs61b-textbook/12.-inheritance-iv-iterators-object-methods) 
-      published: true
-      footer: >
-        Project 1 Checkpoint due **Thursday 6/27, 11:59 PM**
-    - title: Object Oriented Programming and Abstract Data Types
-      type: Theory
-      date: 2024-06-28
-      description: >
-        <br>
-         [Worksheet](https://drive.google.com/file/d/1e-hJMsw48hXqtkg4Kj__fCCbmczJzKqz/view?usp=sharing)
-          |
-         [Slides](https://docs.google.com/presentation/d/1qRNwO0VVOiCwAwSVUdPKrsTeSy2HK1Zmy4-RS5_KCrY/edit?usp=sharing)
-          |
-         [Solutions](https://drive.google.com/file/d/1Xn0lEDtDesFNY_6jkU-yrrqE2jD3HFMb/view?usp=sharing)
-      published: true
-      footer: >
-        Project 1 due **Sunday 6/30, 11:59 PM**
-      alt-footer: >
-          Quiz 2 due **Monday 7/1, 11:59 PM**
-- week: 3
-  days:
-    - title: Gitlet Introduction
-      type: Lecture, Lab
-      date: 2024-07-01
-      url: labs/lab08
-      description: >
-        Dwinelle 155 10am - 11am
-        <br>
-         [Slides](https://docs.google.com/presentation/d/1y8rqoNNkiO77MebYg-a3K3pXwqP9eKBh1heB_Z0vgKs/edit#slide=id.g256defcd46f_0_72)
-          |
-          [Video](https://bcourses.berkeley.edu/courses/1535549/external_tools/90481)
-          |
-        **Readings:** [Gitlet Intro Slides](https://cdn-uploads.piazza.com/attach/k5eevxebzpj25b/jqr7jm9igtc7l5/k97ipfmgmb3n/Gitlet_Slides.pdf)
-      footer: >
-        [Project 2: Gitlet Released](/su24/projects/gitlet)
-      published: true
-    - title: Asymptotics and Measuring Code Efficiency
-      type: Lecture, Lab
-      date: 2024-07-02
-      url: labs/lab09
-      description: >
-        VLSB 2050 10am - 11am
-        <br>
-         [Slides](https://docs.google.com/presentation/d/1mMEY6wil-N3R-5OEQww7GSxT-FY-EbVJvJl7Ru1VlSg/edit?usp=sharing)
-          |
-          [Video](https://bcourses.berkeley.edu/courses/1535549/external_tools/90481)
-          |
-        **Textbook:** [Ch 13](https://cs61b-2.gitbook.io/cs61b-textbook/13.-asymptotics-i) [Ch 15](https://cs61b-2.gitbook.io/cs61b-textbook/15.-asymptotics-ii) 
-      published: true
-    - title: Introduction to Trees and Traversals
-      type: Lecture, Lab
-      date: 2024-07-03
-      url: labs/lab10
-      description: >
-        Dwinelle 155 10am - 11am
-        <br>
-         [Slides](https://docs.google.com/presentation/d/1fvvLabHesXwyZfFzNw-jnQ6CF2OhBtJo0-qcePu1Jas/edit?usp=sharing)
-          |
-          [Video](https://bcourses.berkeley.edu/courses/1535549/external_tools/90481)
-          |
-        **Textbook:** [Ch 22.1 and 2](https://cs61b-2.gitbook.io/cs61b-textbook/22.-tree-traversals-and-graphs/22.1-tree-recap)
-      published: true
-    - title: Independence Day
-      type: Holiday
-      date: 2024-07-04
-      description: >
-        Nothing due and nothing to attend<br><br>
-    - title: Asymptotics and Trees
-      type: Theory
-      date: 2024-07-05
-      description: >
-        <br>
-         [Worksheet](https://drive.google.com/file/d/1OVGh6vCkg_XiDrr0mSjkp_AQJ7b44WNC/view?usp=drive_link)
-          |
-         [Slides](https://docs.google.com/presentation/d/1hJAwupZPK5TjXWZtCpV4dlM-_R325zS2vkKIx6AbV2M/edit?usp=drive_link)
-          |
-         [Solutions](https://drive.google.com/file/d/1Jxk7LvypnGb0mDr3PJ3NKXPj_lHVL3MM/view?usp=sharing)
-      published: true
-      footer: >
-        Project 2 Checkpoint due **Sunday 7/07, 11:59 PM**
-      alt-footer: >
-        Quiz 3 due **Monday 7/8, 11:59 PM**
-- week: 4
-  days:
-    - title: Binary Search Trees
-      type: Lecture, Lab
-      date: 2024-07-08
-      url: labs/lab11
-      description: >
-        Dwinelle 155 10am - 11am
-        <br>
-         [Slides](https://docs.google.com/presentation/d/1zWZqBOSeiVBUjCm0OxWJu7p_YsqqKfm2t8-a35BmiPw/edit?usp=sharing)
-          |
-          [Video](https://bcourses.berkeley.edu/courses/1535549/external_tools/90481)
-          |
-        **Readings:** [Ch 16.2-7](https://cs61b-2.gitbook.io/cs61b-textbook/16.-adts-and-bsts/16.2-binary-search-trees)
-      published: true
-    - title: Balanced Search Trees
-      type: Lecture, Lab
-      date: 2024-07-09
-      url: labs/lab12
-      description: >
-        VLSB 2050 10am - 11am
-        <br>
-         [Slides](https://docs.google.com/presentation/d/1cLtmQeQhTuk6p41t57WasBGv1_RDTsbIMkEACrAHtPY/edit#slide=id.ge2d06e10f1_0_229)
-          |
-          [Video](https://bcourses.berkeley.edu/courses/1535549/external_tools/90481)
-          |
-        **Readings:** [Ch 17](https://cs61b-2.gitbook.io/cs61b-textbook/17.-b-trees) [Ch 18](https://cs61b-2.gitbook.io/cs61b-textbook/18.-red-black-trees)
-      published: true
-    - title: Exam Advice and Midterm Review
-      type: Lecture, Lab
-      date: 2024-07-10
-      published: true
-      description: >
-        VLSB 2050 10am - 11am
-        <br>
-         [Slides](https://docs.google.com/presentation/d/1oTtjnivgJPz-E1_QvmjyhS_dLY3RogKakd7pa3rM3KM/edit#slide=id.g276e9a8ae63_0_0)
-          |
-          [Video](https://bcourses.berkeley.edu/courses/1535549/external_tools/90481)
-          |
-    - title: Exam Study Day
-      date: 2024-07-11
-      description: >
-        No Lecture and No Lab<br><br>
-      published: false
-    - title: Midterm
-      type: Exam
-      description: >
-        7pm - 9pm<br><br>
-      date: 2024-07-12
-      published: false
-      footer: >
-        Quiz 4 [Optional]
-      alt-footer: >
-        Optional Theoretical Lab 4:
-        <br>
-         [Worksheet](https://drive.google.com/file/d/1C6mlY7lJFK97ttE0TmjtOy4u0KgInAmB/view?usp=drive_link)
-          |
-         [Solutions](https://drive.google.com/file/d/14nIk53bWws80JlZ78gwB4-TJhTXqHNE4/view?usp=sharing)
-- week: 5
-  days:
-    - title: Hashing
-      type: Lecture, Lab
-      date: 2024-07-15
-      url: labs/lab13
-      description: >
-        Dwinelle 155 10am - 11am
-        <br>
-         [Slides](https://docs.google.com/presentation/d/1BGO5SZmyE8MkppxI9frTrwsshgALFKuWs29U0XkJo9s/edit?usp=sharing)
-          |
-          [Video](https://bcourses.berkeley.edu/courses/1535549/external_tools/90481)
-          |
-        **Readings:** [Ch 19](https://cs61b-2.gitbook.io/cs61b-textbook/19.-hashing-i) [Ch 20](https://cs61b-2.gitbook.io/cs61b-textbook/20.-hashing-ii)
-      published: true
-    - title: Heaps and Priority Queues
-      type: Lecture, Lab
-      date: 2024-07-16
-      url: labs/lab14
-      description: >
-        VLSB 2050 10am - 11am
-        <br>
-         [Slides](https://docs.google.com/presentation/d/15CLvVUc2OMl5AS4GJqoNTMzMfRp3DfS8ecwIVsC1QXU/edit?usp=sharing)
-          |
-          [Video](https://bcourses.berkeley.edu/courses/1535549/external_tools/90481)
-          |
-        **Readings:** [Ch 21](https://cs61b-2.gitbook.io/cs61b-textbook/21.-heaps-and-priority-queues)
-      published: true
-    - title: Disjoint Sets
-      type: Lecture, Lab
-      date: 2024-07-17
-      url: labs/lab15
-      description: >
-        Dwinelle 155 10am - 11am
-        <br>
-         [Slides](https://docs.google.com/presentation/d/1dQWnsQw295wcTMhWdje45X9VIDDfT21F_A4uJ3LNKdU/edit#slide=id.g2784bbd8d8c_0_694)
-          |
-          [Video](https://berkeley.zoom.us/rec/share/K4HoWoWg3R0sJm8liS55lCkXGErFVRW0GUt_Y8BK6Qr8w1Txu4hFEe8YvBioFpm4.AeI1Ner2EIhr2svG)
-          |
-        **Readings:** [Ch 14](https://cs61b-2.gitbook.io/cs61b-textbook/14.-disjoint-sets)
-      published: true
-    - title: Project 2 Workday
-      type: Lab
-      date: 2024-07-18
-      published: false
-    - title: Hashing, Heaps, and Union Find
-      type: Theory
-      date: 2024-07-19
-      description: >
-        <br>
-         [Worksheet](https://drive.google.com/file/d/1ImyWK27824f4_pqIb6kp_d2j78a8TxrH/view?usp=sharing)
-          |
-         [Slides](https://docs.google.com/presentation/d/13gUwZuerbmHy1t3kqO0cdke_cfTXe_s1qiTnzk1Wo-A/edit?usp=sharing)
-          |
-         [Solutions](https://drive.google.com/file/d/12pQYI0aS2Ddr-Eo7iSFwnRlGI6vwziPf/view?usp=sharing)
-      published: true
-      footer: >
-        Project 2 due **Sunday 7/21, 11:59 PM**
-      alt-footer: >
-        Quiz 5 due **Monday 7/22, 11:59 PM**
-- week: 6
-  days:
-    - title: Build Your Own World Introduction
-      type: Lecture, Lab
-      date: 2024-07-22
-      url: labs/lab16
-      description: >
-        Dwinelle 155 10am - 11am
-          <br>
-          [Slides](https://docs.google.com/presentation/d/18C7jAFKPb2jFA7vrnuXBRy3iiSsVIg3FniIUi3nF598/edit#slide=id.g259debed4f4_0_196)
-            |
-            [Video](https://bcourses.berkeley.edu/courses/1535549/external_tools/90481)
-            |
-          **Readings:** Project 3 Spec
-      published: true
-      footer: >
-        [Project 3: Build Your Own World Released](/su24/projects/byow)
-    - title: Graphs
-      type: Lecture, Lab
-      date: 2024-07-23
-      url: labs/lab17
-      description: >
-        VLSB 2050 10am - 11am
-          <br>
-          [Slides](https://docs.google.com/presentation/d/1yWILp3Zi_hhyIHVazbxQrs2iOzPzstb6ePbL5htY5Lk/edit#slide=id.g2318110c70d_0_58)
-            |
-            [Video](https://bcourses.berkeley.edu/courses/1535549/external_tools/90481)
-            |
-          **Readings:** [Ch 22.3-4](https://cs61b-2.gitbook.io/cs61b-textbook/22.-tree-traversals-and-graphs/22.3-graphs) [Ch 23](https://cs61b-2.gitbook.io/cs61b-textbook/23.-graph-traversals-and-implementations)
-      published: true
-    - title: Shortest Paths
-      type: Lecture, Lab
-      date: 2024-07-24
-      url: labs/lab18
-      description: >
-        Dwinelle 10am - 11am
-          <br>
-          [Slides](https://docs.google.com/presentation/d/1G4WHJK9sFXFWblVi7EWYj7Q8OYIsyfuyup-g4cUuVlU/edit?usp=sharing)
-            |
-            [Video](https://bcourses.berkeley.edu/courses/1535549/external_tools/90481)
-            |
-          **Readings:** [Ch 24](https://cs61b-2.gitbook.io/cs61b-textbook/24.-shortest-paths)
-      published: true
-    - title: Minimum Spanning Trees
-      type: Lecture, Lab
-      date: 2024-07-25
-      url: labs/lab19
-      description: >
-        VLSB 2050 10am - 11am
-          <br>
-          [Slides](https://docs.google.com/presentation/d/1bHC2Za9K3Sclj75c1c-HMdsbu07021iUCsKwU42xoKM/edit)
-            |
-            [Video](https://bcourses.berkeley.edu/courses/1535549/external_tools/90481)
-            |
-          **Readings:** [Ch 25](https://cs61b-2.gitbook.io/cs61b-textbook/25.-minimum-spanning-trees)
-      published: true
-    - title: Graphs
-      type: Theory
-      date: 2024-07-26
-      description: >
-        <br>
-         [Worksheet](https://drive.google.com/file/d/1KNv7ZgTrCSTxpieUcLboSC-gCfLHtKj6/view?usp=sharing)
-          |
-         [Slides](https://docs.google.com/presentation/d/1TPsWcTC6bJfuYEFH5J4W3JfqYSPu3jTm1BfqoUuw1dc/edit?usp=sharing)
-          |
-         [Solutions](https://drive.google.com/file/d/1rilxGigei3XjERqP0deV0gsWArCWFJcc/view?usp=sharing)
-      published: true
-      footer: >
-        Project 3 Checkpoint due **Sunday 7/28, 11:59 PM**
-      alt-footer: >
-        Quiz 6 due **Monday 7/29, 11:59 PM**
-- week: 7
-  days:
-    - title: Sorting (No lab assignment, Project 3 workday)
-      type: Lecture
-      date: 2024-07-29
-      published: true
-      description: >
-        Dwinelle 155 10am - 11am
-          <br>
-          [Slides](https://docs.google.com/presentation/d/1FCJ6-b9SYwx8gKphSWZQWeLKJgEYuIb7svZdiz6tI04/edit?usp=sharing)
-            |
-            [Video](https://bcourses.berkeley.edu/courses/1535549/external_tools/90481)
-            |
-          **Readings:** [Ch 29](https://cs61b-2.gitbook.io/cs61b-textbook/29.-basic-sorts)
-    - title: Quicksort (Comparison sorts lab)
-      type: Lecture, Lab
-      date: 2024-07-30
-      url: labs/lab20
-      description: >
-        VLSB 2050 10am - 11am
-          <br>
-          [Slides](https://docs.google.com/presentation/d/1qB75-wIzF0X_JMV8sOqXWRw6G2tS8PiD8n0g-Tul9Yk/edit?usp=sharing)
-            |
-            [Video](https://bcourses.berkeley.edu/courses/1535549/external_tools/90481)
-            |
-          **Readings:** [Ch 30](https://cs61b-2.gitbook.io/cs61b-textbook/30.-quicksort) [Ch 32](https://cs61b-2.gitbook.io/cs61b-textbook/32.-more-quick-sort-sorting-summary) [Ch 34](https://cs61b-2.gitbook.io/cs61b-textbook/34.-sorting-and-algorithmic-bounds)
-      published: true
-    - title: Radix Sorts
-      type: Lecture, Lab
-      date: 2024-07-31
-      url: labs/lab21
-      description: >
-        Dwinelle 155 10am - 11am
-          <br>
-          [Slides](https://docs.google.com/presentation/d/1TVdtwdEVCqvXp738eJQWOmukLTyYBengt-mRQgRwQjQ/edit?usp=sharing)
-            |
-            [Video](https://bcourses.berkeley.edu/courses/1535549/external_tools/90481)
-            |
-          **Readings:** [Ch 35](https://cs61b-2.gitbook.io/cs61b-textbook/35.-radix-sorts) [Ch 36](https://cs61b-2.gitbook.io/cs61b-textbook/36.-sorting-and-data-structures-conclusion)
-      published: true
-    - title: Project 3 Workday
-      type: Lecture, Lab
-      date: 2024-08-01
-      published: false
-    - title: Sorting
-      type: Theory
-      date: 2024-08-02
-      description: >
-        <br>
-         [Worksheet](https://drive.google.com/file/d/19C_nHIkd4HvaBBYpFajPVlsbUCxdP-n2/view?usp=sharing)
-          |
-         [Slides](https://docs.google.com/presentation/d/10tK_7nZ5DsggeVMPEKwS2AwqHF8m1tpWgC4ezZki9fM/edit?usp=sharing)
-          |
-         [Solutions](https://drive.google.com/file/d/1QkGKcTl9vG_JB71ps5zcIRBo5nZ81mhj/view?usp=sharing)
-      published: false
-      footer: >
-        Project 3 due **Sunday 8/04, 11:59 PM**
-      alt-footer: >
-        Quiz 7 due **Monday 8/5, 11:59 PM**
-- week: 8
-  days:
-    - title: Software Engineering Lecture and BYOW Presentations Lab
-      type: Lecture, Lab
-      date: 2024-08-05
-      description: >
-        Dwinelle 155 10am - 11am
-          <br>
-          [Slides](https://docs.google.com/presentation/d/18QCbVrj_GlBSso327YeNM31CtJkb4SNFYxzRWo5BnUQ/edit#slide=id.g2e749388f62_0_116)
-            |
-            [Video](https://bcourses.berkeley.edu/courses/1535549/external_tools/90481)
-            |
-      published: false
-    - title: Game Development Lecture and Final Exam Review Lab
-      type: Lecture, Lab
-      date: 2024-08-06
-      description: >
-        VLSB 2050 10am - 11am
-          <br>
-          [Slides](https://docs.google.com/presentation/d/1DW_61T8p-mYu_r5BKWV5vBuPdHGb8LCgGEHZidncuQU/edit?usp=sharing)
-            |
-            [Video]()
-            |
-      published: true
-    - title: 61Behind the Scenes Lecture 
-      type: Lecture
-      date: 2024-08-07
-      description: >
-        Dwinelle 155 10am - 11am
-          <br>
-          [Slides](https://docs.google.com/presentation/d/1yAsm_1K6WGd6xFNg3TkNNqh17YrfZ5acOw-inugmRJ4/edit?usp=sharing)
-            |
-            [Video](https://bcourses.berkeley.edu/courses/1535549/external_tools/90481)
-            |
-      published: true
-    - title: Final Exam
-      type: Exam
-      description: >
-        6pm - 9pm<br><br>
-      url: exams/final
-      date: 2024-08-08
-      published: false
-    - title: No Class
-      date: 2024-08-09
+# - google_api_key:
+#    - Follow the steps on https://fullcalendar.io/docs/v4/google-calendar
+#      until "Getting Set Up" to obtain the google_api_key.
+# - For the other 3 fields, you'll need to open the calendar settings:
+#   - Go to https://calendar.google.com
+#   - Click the 3 dots next to the calendar name in the left side-bar
+#   - Click "Settings and sharing"
+# - google_calendar_id:
+#   - Go to calendar settings (see above)
+#   - Scroll to "Integrate calendar"
+#   - Copy "Calendar ID"
+#   - The thing you copy should look like c_c12345@group.calendar.google.com
+# - google_calendar_embed_link:
+#   - Go to calendar settings (see above)
+#   - Scroll to "Integrate calendar"
+#   - Copy "Public URL to this calendar"
+#   - The URL you copy should have calendar/embed?src=c_ in it
+# - google_calendar_add_link:
+#   - Go to calendar settings (see above)
+#   - Scroll to "Access permissions for events"
+#   - Click "Get shareable link"
+#   - Copy the URL with calendar/u/0?cid= in it
+
+google_api_key: None
+google_calendar_id: None
+
+google_calendar_embed_link: None
+google_calendar_add_link: None
+
+# - Google Calendar events should all be prefixed "[CS101 SP25]" so that students
+#   adding it to their calendar see "[CS101 SP25] Lecture" instead of just "Lecture".
+# - But, on the website itself, students should just see "Lecture" instead of
+#   "[CS101 SP25]" in front of all the calendar events, to avoid clutter.
+# - Put the common prefix here so that the JS in calendar.html will remove the prefix
+#   when rendering the website.
+# - Note the trailing space is included here too, so that "[CS101 SP25] Lecture"
+#   becomes "Lecture", not " Lecture".
+remove_prefix: "[CS101 SP25] "
+
+# You can set up your own categories that are filtered and colored as you choose. Every
+# event can only be matched to one category. The order that entries are provided in below
+# is the order that categories will be applied in.
+# Defaults are provided below, but each category consists of the following properties:
+# - "name": What should appear on the button that filters the category. If you'd like
+#   multiple colors to match to one button, use the same "name" for both categories.
+# - "match": A regular expression reprsenting which event names should be matched to
+#   this category
+# - "lightTheme" / "darkTheme": The colors you'd like to display in light and dark mode
+#   - "--event-background": The background color
+#   - "--event-foreground": The foreground color
+#   - "--event-border-color": The color of the border
+# A note about accessibility: The default colors we provide are already vetted to make sure
+# they meet contrast requirements. If you are going to add new colors, please make sure they
+# are WCAG AA(A) compliant by using https://webaim.org/resources/contrastchecker/.
+#
+# To use the default coloring, please title your events as follows:
+# - OH: Include "Office Hours" in the name
+# - Lecture: Include "Lecture" in the name
+# - Discussion: Include "Discussion" in the name
+#   - If you have special discussion names, we've also created different coloring for
+#     - Bridge
+#     - Exam Prep
+# - Project Party: Include "Project" and "Party" in the name (for instance, "Project 1 Party" works)
+# - Exam: Include "Exam", "Quest", "Midterm", "MT", or "Final" in the name
+# - Review Session: Include "Review Session" in the name
+categories:
+  - name: "Office Hours"
+    match: "instructor"
+    lightTheme:
+      --event-background: "#BDF1FC"
+      --event-border-color: "#108DA6"
+    darkTheme:
+      --event-background: "#0B5260"
+      --event-border-color: "#BDF1FC"
+  - name: "Office Hours"
+    match: "office hours"
+    lightTheme:
+      --event-background: "#C0E1D2"
+      --event-border-color: "#1E6142"
+    darkTheme:
+      --event-background: "#164B32"
+      --event-border-color: "#C0E1D2"
+  - name: "Lecture"
+    match: "lecture"
+    lightTheme:
+      --event-background: "#CAC8EB"
+      --event-border-color: "#363187"
+    darkTheme:
+      --event-background: "#363197"
+      --event-border-color: "#CAC8EB"
+  - name: "Discussion"
+    match: "bridge"
+    lightTheme:
+      --event-background: "#EAB59E"
+      --event-border-color: "#B43600"
+    darkTheme:
+      --event-background: "#7A2500"
+      --event-border-color: "#EAB59E"
+  - name: "Discussion"
+    match: "exam prep"
+    lightTheme:
+      --event-background: "#F4EFC3"
+      --event-border-color: "#B4B11C"
+    darkTheme:
+      --event-background: "#4C4B10"
+      --event-border-color: "#F4EFC3"
+  - name: "Discussion"
+    match: "discussion"
+    lightTheme:
+      --event-background: "#ECD9C9"
+      --event-border-color: "#8D5C32"
+    darkTheme:
+      --event-background: "#6A4625"
+      --event-border-color: "#ECD9C9"
+  - name: "Project Party"
+    match: "(?=.*project)(?=.*party)"
+    lightTheme:
+      --event-background: "#EBC8EB"
+      --event-border-color: "#873179"
+    darkTheme:
+      --event-background: "#4D134D"
+      --event-border-color: "#EBC8EB"
+  - name: "Exam"
+    match: "exam|quest|midterm|mt|final"
+    lightTheme:
+      --event-background: "#E2E2E2"
+      --event-border-color: "#A5A5A5"
+    darkTheme:
+      --event-background: "#363187"
+      --event-border-color: "#CAC8EB"
+  - name: "Review Session"
+    match: "review session"
+    lightTheme:
+      --event-background: "#EBC8EB"
+      --event-border-color: "#873179"
+    darkTheme:
+      --event-background: "#4D134D"
+      --event-border-color: "#EBC8EB"

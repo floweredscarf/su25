@@ -1,0 +1,23 @@
+---
+layout: default
+---
+
+{% if site.data.projects.projects[page.project_index].released != true %}
+<p class="warning">
+    This spec is in an unreleased state. This warning message will go away once it's been fully updated for the current semester.
+</p>
+{% endif %}
+
+{% capture content %}
+{{ content }}
+{% endcapture %}
+<div class="project">
+    <div class="content-container">
+        {% if page.has_right_toc %}
+            <nav class="content-nav nav-list js-toc" aria-label="In-page navigation">
+                {% include toc.html html=content sanitize=true item_class="nav-list-item" anchor_class="nav-list-link" h_min=1 h_max=3 %}
+            </nav>
+        {% endif %}
+        <div class="content">{{ content }}</div>
+    </div>
+</div>

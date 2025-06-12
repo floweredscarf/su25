@@ -1,9 +1,12 @@
 ---
 layout: page
-title: "Lab 7: Comparison, Iteration, and Exceptions"
-tags: [Lab, Comparison, Iteration]
+title: >-
+  Lab 07: Comparison, Iteration, and Exceptions
+has_children: true
+parent: Labs
+has_toc: false
+has_right_toc: true
 released: true
-searchable: true
 ---
 
 ## [FAQ](faq.md)

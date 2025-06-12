@@ -1,9 +1,12 @@
 ---
 layout: page
-title: "Lab 2: Intro to Objects and Primitives"
-tags: [Lab, Java]
+title: >-
+  Lab 02: Intro to Objects and Primitives
+has_children: true
+parent: Labs
+has_toc: false
+has_right_toc: true
 released: true
-searchable: true
 ---
 
 {% capture alertContent %}

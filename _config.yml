@@ -1,34 +1,124 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole site, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing these this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
+
 # Site settings
-title: CS 61BL Summer 2025
-email: cs61bl@berkeley.edu
-description: Data Structures & Programming Methodology
-keywords: CS 61BL, Computer Science, CS, 61BL, Data Structures, Programming Methodology, UC Berkeley, EECS
-url: https://cs61bl.org
-baseurl: /su25
-permalink: /:year/:month/:day
-avatar: assets/img/cs61bl.png
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.github_repo }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+title: CS 61BL Su25
+description: Data Structures and Programming Methodology at UC Berkeley
+baseurl: '' # the subpath of your site, e.g. /blog
+url: https://cs61bl.org/
+exclude: ["Gemfile", "Gemfile.lock", "LICENSE", "vendor"]
+staff_email: 'CS61BL@berkeley.edu'
 
-# Resources
-github: https://github.com/cs61bl
+# Heading settings
+lecture:
+  time: "MW 9-10am"
+  location:
+      name: "Evans 10"
+      link: ""
+heading_links:
+  - text: "Zoom"
+    url: ""
+  - text: "Playlist"
+    url: ""
+lecture_prefix: "csXXX-sp25-lec"
 
-# Build settings
-markdown: kramdown
-highlighter: rouge
-sass:
-    sass_dir: _sass
-    style: compressed
+# Theme settings
+remote_theme: just-the-docs/just-the-docs@v0.8.2
+color_scheme: light
+search_enabled: true
+heading_anchors: true
+permalink: pretty
+aux_links:
+  Dark Mode:
+    - '#'
+  Ed:
+    - 'https://edstem.org'
+  OH Queue:
+    - 'https://oh.cs161.org'
+  Source Code on GitHub:
+    - 'https://github.com/cs161-staff/course-site-template'
+footer_content:
+
+# Collections for website data
+collections:
+  staffers:
+  modules:
+  schedules:
+  announcements:
+# Default layouts for each collection type
+defaults:
+  - scope:
+      path: ''
+      type: staffers
+    values:
+      layout: staffer
+      subpath: '/assets/staff/'
+  - scope:
+      path: ''
+      type: modules
+    values:
+      layout: module
+  - scope:
+      path: ''
+      type: schedules
+    values:
+      layout: schedule
+  - scope:
+      path: ''
+      type: announcements
+    values:
+      layout: announcement
+
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  startings: []
+  blanklines: false
+  profile: false
+
 plugins:
-    - jekyll-relative-links
-    - jekyll-redirect-from
-    - jekyll-seo-tag
-tz: -0700
-timezone: America/Los_Angeles
-exclude:
-    - Gemfile
-    - Gemfile.lock
-    - README.md
-    - '**/README.md'
-    - Makefile
-    - .vscode
-port: 8000
+  - jekyll-seo-tag
 
+color_scheme: wider
+
+callouts:
+  warning:
+    title: Warning
+    color: yellow
+  story: # CS 161 custom config for story
+    title: Story
+    color: blue
+  example: # CS 161 custom config for proj2
+    title: Example
+    color: blue
+  question: # CS 161 custom config for proj2
+    title: Design Question
+    color: green
+
+# For copy button on code
+enable_copy_code_button: true
+
+# CS 188 custom config variable
+# Set this to true at the start of semesters to show a warning on the homepage
+under_construction: true
+
+# Set this to true to show a warning telling people on the waitlist to check FAQs
+waitlist_warning: false
+
+# Set this to true if discussion times are uncertain (populates on calendar.md)
+discussions_under_construction: false
+
+# Set this to true to archive the semester
+outdated: false

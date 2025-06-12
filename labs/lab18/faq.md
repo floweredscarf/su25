@@ -1,9 +1,12 @@
 ---
 layout: page
-title: "FAQ - Lab 18: Graph Algorithms"
-categories: lab
+title: >-
+  FAQ
+parent: >-
+  Lab 18: Build Your Own World Introduction
+grand_parent: Labs
+has_right_toc: true
 released: true
-searchable: true
 ---
 
-### Nothing at the moment!
+### Nothing yet!

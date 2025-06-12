@@ -1,9 +1,12 @@
 ---
 layout: page
-title: "FAQ - Lab 03: Debugging & Test-Driven Development"
-categories: lab
+title: >-
+  FAQ
+parent: >-
+  Lab 03: Debugging & Test-Driven Development
+grand_parent: Labs
+has_right_toc: true
 released: true
-searchable: true
 ---
 
 ## I'm getting merge conflicts after re-pulling the skeleton

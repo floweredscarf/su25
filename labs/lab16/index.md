@@ -1,302 +1,362 @@
 ---
 layout: page
-title: "Lab 16: BYOW Introduction"
-categories: lab
+title: >-
+  Lab 16: Shortest Path Trees
+has_children: true
+parent: Labs
+has_toc: false
+has_right_toc: true
 released: true
-
 ---
 
 ## [FAQ](faq.md)
 
 Each assignment will have an FAQ linked at the top. You can also access it by
-adding "/faq" to the end of the URL. The FAQ for Lab 16 is located
+adding "/faq" to the end of the URL. The FAQ for Lab 18 is located
 [here](faq.md).
 
-This lab is divided into two main parts– "Plus World" and "Memory Game". Both will help you with Project 3: Build your own World (BYOW).
-The first part will teach you how to use a set of "tiles" to generate shapes on your screen. This will apply to building the rooms, hallways, and other features of your world in Project 3. The second part will teach you more about how to use the StdDraw package to make a fun text-based game. This will help you build the main menu and other text-based elements of Project 3. It will also teach you how to achieve user interactivity, which is vital to Project 3!
+## Introduction
 
-Pre-lab
--------------------------------
+Pull the skeleton, as usual. Copy your implementation of the following methods of `Graph.java` file from the
+last lab into `src/Graph.java`:
+- addEdge
+- addUndirectedEdge
+- isAdjacent
+- neighbors
+- inDegree
 
-Some steps to complete before getting started on this lab:
+## More Graph Algorithms
 
-- As usual, use `git pull skeleton main`
+Last lab, we introduced graphs and their representations, and then we moved to
+basic graph iteration. A variety of algorithms for processing graphs are based
+on this kind of iteration, and we've already seen the following algorithms:
 
-- Watch a previous semester's project 3 getting started video [at this link](https://youtu.be/zgdNWICEb_M). Note the name and API have changed slightly, but the bigger picture still applies.
+- Determining if a path exists between two different vertices
+- Finding a path between two different vertices
+- Topological sorting
 
-- Understand that project 3 will be a marathon and not a sprint. Don't wait until the last minute. You and your partner should start thinking about your design NOW.
+None of these algorithms depended on the fringe representation. Either
+depth-first traversal (using a stack) or breadth-first traversal (using a queue)
+would have worked.
 
-Your lab today will be graded by completing a checkoff with your TA during lab. This means you should try to finish the required parts of the lab ASAP, to avoid a long line to get checked off. This lab is due **24 hours from the start of your lab section with a 2 hour grace period,** instead of the usual 22 hours. This will allow you to get checked off the next day if necessary. 
+We're now going to investigate an algorithm where the ordering of the fringe
+*does* matter. But first...
 
-Plus World Introduction
---------------------------------
+### Storing Extra Information
 
-In the first half of this lab, you and your partner will learn some basic techniques and tools that will be helpful for project 3.
+Recall the exercise from last lab where you determined the path from a `start`
+vertex to a `stop` vertex. A solution to this exercise involved building a
+traversal, and then filtering the vertices that were not on the path. Here was
+the suggested procedure:
 
-Part I: Meet the Tile Rendering Engine
---------------------------------
+> Then, trace back from the finish vertex to the start, by first finding a
+> visited vertex `u` for which `(u, finish)` is an edge, then a vertex `v`
+> visited earlier than `u` for which `(v, u)` is an edge, and so on, finally
+> finding a vertex `w` for which `(start, w)` is an edge (`isAdjacent` may be
+> useful here!). Collecting all these vertices in the correct sequence produces
+> the desired path.
 
-#### Boring World
+Instead of searching for the previous vertex along the path in all of the
+visited nodes like we did last lab, we can create predecessor links. If each
+fringe element contains a vertex and its predecessor along the traversed path,
+we can make the construction of the path more efficient. This is an example
+where it is useful to store *extra information* in the fringe along with a
+vertex.
 
-Open the up the skeleton and check out the `BoringWorldDemo` file in `PlusWorld`. Try running it and you should see a window appear that looks like the following:
+### Associating Distances with Edges
 
-![boring world](img/boringWorld.png)
+In graph applications we've dealt with so far, edges were used only to connect
+vertices. A given pair of vertices were either connected by an edge or they
+were not. Other applications, however, process edges with *weights*, which are
+numeric values associated with each edge. Remember that in an application, an
+edge just represents some kind of relationship between two vertices, so the
+weight of the edge could represent something like the strength, weakness, or
+cost of that relationship.
 
-This world consists of empty space, except for the rectangular block near the bottom middle. The code to generate this world consists of three main parts:
- - Initializing the tile rendering engine.
- - Generating a two dimensional `TETile[][]` array.
- - Using the tile rendering engine to display the `TETile[][]` array.
+In today's exercises, the weight associated with an edge will represent the
+*distance* between the vertices connected by the edge. In other algorithms, a
+weight might represent the cost of traversing an edge or the time needed to
+process the edge.
 
-The API for the tile rendering engine is simple. After creating a `TERenderer` object, you simply need to call the `initialize` method, specifying the width and height of your world, where the width and height are given in terms of the number of tiles. Each tile is 16 pixels by 16 pixels, so for example, if we called `ter.initialize(10, 20)`, we'd end up with a world that is 10 tiles wide and 20 tiles tall, or equivalently 160 pixels wide and 320 pixels tall. For this lab, you don't need to think about pixels, though you'll eventually need to when you start building the user interface for Project 3.
+A graph with edge weights is shown below.
 
-`TETile` objects are also quite simple. You can either build them from scratch using the `TETile` constructor (see `TETile.java`), or you can choose from a palette of pregenerated tiles in the file `Tileset.java`. For example, the code from `BoringWorldDemo.java` below generates a 2D array of tiles and fills them with the pregenerated tile given by `Tileset.NOTHING`.
+![weighted-graph](img/weighted-graph.png)
+
+Observe the weights on the edges (the small numbers in the diagram), and note
+that in a directed graph, the weight of an edge `(v, w)` doesn't have to be equal to the weight of
+the edge `(w, v)`, its reverse.
+
+## Shortest Paths
+
+A common problem involving a graph with weighted edges is to find the *shortest path* between two vertices. This means to find the sequence of edges from one
+vertex to the other such that the sum of weights along the path is smallest. Note that though Breadth First Search might be able to find a path with the least number of edges, it's not capable of finding a shortest path based off the total edge weight.
+
+This is a core problem found in real life mapping applications. Say you want
+directions from one location to another. Your mapping software will try to find
+the shortest path from your location (a vertex), to another location (another
+vertex). Different paths in the graph may have different lengths and different
+amounts of traffic, which could be the weights of the paths. You would want
+your software to find the shortest, or fastest, path for you.
+
+### Discussion: Shortest Path
+
+For the graph pictured above, what is the shortest path that connects vertex 0 with vertex 2?
+
+<details>
+<summary>Click to reveal answer!</summary>
+0 4 1 2
+</details>
+
+For the graph pictured above, what is the shortest path that connects vertex 2
+with vertex 1?
+
+<details>
+<summary>Click to reveal answer!</summary>
+2 3 0 4 1
+</details>
+
+For the graph pictured above, what is the shortest path that connects vertex 1
+with vertex 0?
+
+<details>
+<summary>Click to reveal answer!</summary>
+1 4 3 0
+</details>
+
+## Dijkstra's Algorithm
+
+How did you do on the shortest path self-test? It's pretty tricky, right?
+Luckily, there is an algorithm devised by Edsger Dijkstra (usually referred to
+as *Dijkstra's Algorithm*), that can find the shortest paths on a graph, and
+not just for a pair of vertices $$(0, 2)$$, but all the shortest paths from a
+start vertex `s` to *every other vertex reachable from `s`*. The algorithm is
+somewhat tedious for humans to do by hand, but it isn't too inefficient for
+computers.
+
+Below is an overview of the algorithm. The algorithm below finds the
+shortest paths from a starting vertex to all other nodes in a graph, also known
+as a **shortest paths tree**. To just find the shortest path between two
+specified vertices `s` and `t`, simply terminate the algorithm after `t` has
+been visited.
+
+We will use a priority queue for our fringe. Here, we're using a min priority queue, because we want to prioritize visiting nodes with *smaller* total distance from the start point.
+
+Initialization:
+  1. Maintain a mapping, from vertices to their distance from the start vertex.
+     This will be used by the fringe to determine the next vertex to visit.
+     We will use a priority queue to implement this fringe. Here, an item's priority is its distance from the start vertex.
+  2. Add the start vertex to the fringe with distance/priority zero.
+  3. All other nodes can be left out of the fringe. If a node is not in the
+     fringe, assume it has distance infinity.
+  4. For each vertex, keep track of which other node is the predecessor for the
+     node along the shortest path found.
+
+While Loop: Loop until the fringe is empty.
+
+  1. Let `v` be the vertex in the fringe with the shortest distance to the
+     start (or the highest priority).  Remove and hold onto `v`.
+     * Dijkstra's visits vertices that are closest to the start first, thanks to our priority queue. Then if we have just popped `v` off the queue, it must have been the next closest vertex from the start. This means that there is no possible shorter path to get to  `v` through any vertices still on the queue, because they're all farther from the start than `v`! **So whenever we visit a vertex, we know we've found the shortest possible path to that vertex.** You can find more in depth proofs of this [online](https://web.cs.ucdavis.edu/~amenta/w10/dijkstra.pdf).
+
+  2. If `v` is the destination vertex, terminate now (this is optional and depends
+     on whether you want to find a path to one goal or to all others). Otherwise,
+     mark it as visited. Any visited vertices should not be visited again.
+
+  3. Then, for each neighbor `w` of `v`, do the following:
+
+     1. As an optimization, if `w` has been visited already, skip it (*Dijkstra's Algorithm* visits vertices in distance-order from the root, so if we are revisiting a node, we have already found a shorter path that gets us there).
+
+     2. If `w` is not in the fringe (or another way to think of it - it's
+        distance is infinity or undefined in our distance mapping), add it to
+the fringe (with the appropriate distance and previous pointers).
+
+     3. Otherwise, `w`'s distance might need updating if the path through `v`
+        to `w` is a shorter path than what we've seen so far. If that is indeed
+the case, replace the distance for `w`'s fringe entry with the distance from
+`start` to `v` plus the weight of the edge `(v, w)`, and replace its
+predecessor with `v`.  If you are using a `java.util.PriorityQueue`, you will
+need to call `add` or `offer` again so that the priority updates correctly - do
+not call `remove` as this takes linear time.
+
+Every time a vertex is dequeued from the fringe, that vertex's shortest path has
+been found and it is finalized. The algorithm ends when the stop vertex is
+returned by `next`. Follow the predecessors to reconstruct the path.
+
+> * We can't guarantee the correctness of Dijkstra's algorithm on graphs with
+> negative edge weights*! Consider why this is the case. In CS 170, you'll learn
+> about the Bellman-Ford algorithm, which solves the same single-source
+> shortest paths problem for graphs with negative edge weights too.
+
+### Dijkstra's Algorithm Animation
+
+Dijkstra's algorithm is pretty complicated to explain in text, so it might help
+you to see **[an animation of it](http://youtu.be/8Ls1RqHCOPw)**.
+
+As you watch the video, think about the following questions with your partner:
+
+- In the animation you just watched, how can you tell what vertices were
+  currently in the fringe for a given step?
+- In the animation you just watched, after the algorithm has been run through,
+  how can you look at the chart and figure out what the shortest path from
+$$A$$ to $$H$$ is?
+
+Note that in this video, the fringe is initialized by putting all the vertices
+into it at the beginning with their distance set to infinity. While this is also
+a valid way to run Dijkstra's algorithm for finding shortest paths (and one of
+the original ways it was defined), this is inefficient for large graphs.
+Semantically, it is the same to think of any vertex not in the fringe as having
+infinite distance, as a path to it has not yet been found.
+
+## Exercise: Dijkstra's Algorithm
+
+With your partner, run Dijkstra's algorithm by hand on the pictured graph below,
+finding the shortest path from vertex 0 to vertex 4. Keep track of what the
+fringe contains at every step.
+
+![SampleDijkstra's](img/koffman12.26.png)
+
+We recommend keeping track of a table like in the animation. Also, please make
+sure you know what the fringe contains at each step.
+
+Answer below. Each of the entries is listed as "<dist> (<from>)" e.g.
+if there was a listing for vertex 2 that was "3 (4)" it means that for this iteration
+the distance to vertex 2 is 3 and the path to that comes from vertex 4. Also asterisks
+denote vertices which have been removed from the fringe and should no longer be
+considered.
+<details>
+<summary>Cilck to reveal answer!</summary>
+<table style="max-width: 500px; width: 100%">
+  <tr>
+    <th>Iteration</th>
+    <th>0</th>
+    <th>1</th>
+    <th>2</th>
+    <th>3</th>
+    <th>4</th>
+  </tr>
+  <tr>
+    <td>0</td>
+    <td>0 (0)</td>
+    <td><script type="math/tex">\infty</script> (-)</td>
+    <td><script type="math/tex">\infty</script> (-)</td>
+    <td><script type="math/tex">\infty</script> (-)</td>
+    <td><script type="math/tex">\infty</script> (-)</td>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>0 (0)*</td>
+    <td>10 (0)</td>
+    <td><script type="math/tex">\infty</script> (-)</td>
+    <td>30 (0)</td>
+    <td>100 (0)</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>0 (0)*</td>
+    <td>10 (0)*</td>
+    <td>60 (1)</td>
+    <td>30 (0)</td>
+    <td>100 (0)</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>0 (0)*</td>
+    <td>10 (0)*</td>
+    <td>50 (3)</td>
+    <td>30 (0)*</td>
+    <td>90 (3)</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>0 (0)*</td>
+    <td>10 (0)*</td>
+    <td>50 (3)*</td>
+    <td>30 (0)*</td>
+    <td>60 (2)</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>0 (0)*</td>
+    <td>10 (0)*</td>
+    <td>50 (3)*</td>
+    <td>30 (0)*</td>
+    <td>60 (2)*</td>
+  </tr>
+</table>
+</details>
+
+## Exercise: `shortestPath`
+
+Add Dijkstra's algorithm to `Graph.java` from yesterday. Here's the method
+header:
 
 ```java
-TETile[][] world = new TETile[WIDTH][HEIGHT];
-for (int x = 0; x < WIDTH; x += 1) {
-    for (int y = 0; y < HEIGHT; y += 1) {
-        world[x][y] = Tileset.NOTHING;
-    }
+public List<Integer> shortestPath(int start, int stop) {
+    // TODO: YOUR CODE HERE
+    return null;
 }
 ```
 
-Of course, we can overwrite existing tiles. For example, the code below from `BoringWorld.java` creates a 14 x 4 tile region made up of the pregenerated tile `Tileset.WALL` and writes it over some of the `NOTHING` tiles created by the loop code shown immediately above.
+For this method, you will need to refer to each `Edge` object's `weight` field.
+Additionally, it may be useful to write a `getEdge` method, that will return the
+`Edge` object corresponding to the input variables. Here's the header:
 
 ```java
-for (int x = 20; x < 35; x += 1) {
-    for (int y = 5; y < 10; y += 1) {
-        world[x][y] = Tileset.WALL;
-    }
+private Edge getEdge(int v1, int v2) {
+    // TODO: YOUR CODE HERE
+    return null;
 }
 ```
-{% include alert.html type="info" content="
-The x and y values in the array are similar to what you would see on a graph. (0,0) would be the bottom left tile in your world. In the case of BoringWorld we draw a rectangle at around (20, 5) which is close to the bottom middle. 
-" %}
 
-The last step in rendering is to simply call `ter.renderFrame(world)`, where `ter` is a `TERenderer` object. Changes made to the tiles array will not appear on the screen until you call the `renderFrame` method.
+*Hint*: At a certain point in Dijkstra's algorithm, you have to change the value
+of nodes in the fringe. Java's [`PriorityQueue`](https://docs.oracle.com/javase/7/docs/api/java/util/PriorityQueue.html)
+does not support this operation directly, but **we can add a new entry into the `PriorityQueue` that contains the updated value (and will always be dequeued before any previous entries).** Then,
+by tracking which nodes have been visited already, you can simply ignore any
+copies after the first copy dequeued.
 
-Try changing the tile specified to something else in the `Tileset` class other than `WALL` and see what happens. Also experiment with changing the constants in the loop and see how the world changes.
+Additionally, adding the vertices to our `PriorityQueue` fringe directly won't
+be enough. Our vertices are integers, so the `PriorityQueue` will order them by
+their *natural ordering*. Write a comparator to change the ordering of the
+vertices. **You may find [this constructor](https://docs.oracle.com/javase/7/docs/api/java/util/PriorityQueue.html#PriorityQueue(int,%20java.util.Comparator)) of Java's `PriorityQueue` helpful.**
 
+### Runtime
 
-{% include alert.html type="warning" content="
-**Note**: Tiles themselves are immutable! You cannot do something like
-`world[x][y].character = 'X'`.
-" %}
+Implemented properly using a priority queue backed by a binary heap, Dijkstra's
+algorithm should run in `O((|V| + |E|) log |V|)` time. This is because at all
+times our heap size remains a polynomial factor of `|V|` (even with lazy
+removal, our heap size never exceeds `|V|^2`), and we make at most `|V|`
+dequeues and `|E|` updates requiring heap operations.
 
-{% include alert.html type="info" content="
-Why do we initialize the world to `Tileset.NOTHING`, rather than just leaving it
-untouched? The reason is that the `renderFrame` method will not draw any tiles
-that are `null`. If you don't initialize the world to `Tileset.NOTHING`, you'll
-get a `NullPointerException` when you try to call `renderFrame`.
-" %}
+For connected graphs, the runtime can be simplified to `O(|E| log |V|)`, as the
+number of edges must be at least `|V| - 1`. Using alternative implementations of
+the priority queue can lead to increased or decreased runtimes.
 
-#### Random World
+## A* search
+Sometimes, we know more about a graph than just the edge weights. If we're looking for the shortest path from `s` to `t`, we might have an *estimate* of how far any other vertex is to `t`. For example, imagine you're in Berkeley, and you want to know the shortest path to Daly City. The two nearest vertices to Berkeley are San Francsico and Oakland. Oakland is a little closer to your starting point, but you can estimate that San Francisco is ultimately closer to the goal.  If we were using Dijkstra's right now, we'd still go to Oakland first, since Dijkstra's only considers how close something is to the start. With A* though, we can take into account our estimate, and go to San Francisco first!
 
-Now open up `RandomWorldDemo.java`. Try running it and you should see something like this:
+This estimate is found by using a *heuristic*. In A*, our heuristic function is some way to calculate an approximate distance of any given vertex to a goal.
 
-![random world](img/randomWorld.png)
 
-This world is sheer chaos -- walls and flowers everywhere! If you look at the `RandomWorldDemo.java` file, you'll
-see that we're doing a few new things:
- - We create and use an object of type `Random` that is a "[pseudorandom number generator](https://en.wikipedia.org/wiki/Pseudorandom_number_generator)".
- - We use a new type of conditional called a switch statement.
- - We have delegated work to functions instead of doing everything in main.
+A* runs extremely similar to Dijkstra's. The primary difference is that for a vertex `v`, its priority in the priority queue is the sum of the known distance from `s` to `v`, and the estimated distance from `v` to the goal, `t`. By doing so, each node is prioritized by what we believe the total path will be if we go through that node. This makes sense when considering that the path lengths should add up: `dist(s, v) + dist(v, t) = dist(s, t)`.
 
-A random number generator does exactly what its name suggests, it produces an infinite stream of numbers that appear to be randomly ordered. The `Random` class provides the ability to produce *pseudorandom* numbers for us in Java.  For example, the following code generates and prints 3 random integers:
+So by looking at the priority queue this way, we are first looking at paths we think will have the lowest *total* distance, not just the lowest distance so far. However, if our heuristic is completely misguided, then our judgements will be wrong. **We say that an A\* is only guaranteed to find the correct shortest path if the heuristic is *admissive* and *consistent*.**
+* *Admissive* means that the heuristic never OVERestimates the real distance to the goal. Consider that if our heuristic was not admissive, we might be deterred from visiting a vertex that was actually involved in the correct shortest path.
+* *Consistent* means the the heuristic never has huge logical gaps between any neighboring vertices. Consider if I told you Berkeley was an estimated 500 miles from Daly City, and San Francisco was an estimated 5 miles away from Daly City. Similarly to how we know edge weights in a graph, we also know that the distance from Berkeley to San Francisco is 13 miles. But then our estimations for the distances to Daly City make no sense, and are completely *inconsistent*!
 
-```java
-Random r = new Random(1000);
-System.out.println(r.nextInt());
-System.out.println(r.nextInt());
-System.out.println(r.nextInt());
-```
+You'll learn more about A* in theoretical lab!
 
-We call `Random` a *pseudorandom* number generator because it isn't truly random. Underneath the hood, it uses cool math to take the previously generated number and calculate the next number. We won't go into the details of this math, but see [Wikipedia](https://en.wikipedia.org/wiki/Pseudorandom_number_generator) if you're curious. Importantly, the sequence generated is deterministic, and the way we get different sequences is by choosing what is called a "seed". If you start up a pseudorandom generator with a particular seed, you are guaranteed to get the exact sequence of random values.
+## Optional Applications
 
-In the above code snippet, the seed is the input to the `Random` constructor, so 1000 in this case. Having control over the seed is pretty useful since it allows us to indirectly control the output of the random number generator. If we provide the same seed to the constructor, we will get the same sequence values. For example, the code below prints 4 random numbers, then prints the SAME 4 random numbers again. Since the seed is different than the previous code snippet, the 4 numbers will likely be different than the 3 numbers printed above. This is super helpful in Project 3, as it will give us deterministic randomness: you worlds look totally random, but you can recreate them consistently for debugging (and grading) purposes.
+Graphs have very real applications! For example, some approaches to BYOW that we've seen in the past have used graph algorithms. We can also use graphs to solve other problems in
+computer science such as:
 
-```java
-Random r = new Random(82731);
-System.out.println(r.nextInt());
-System.out.println(r.nextInt());
-System.out.println(r.nextInt());
-System.out.println(r.nextInt());
-r = new Random(82731);
-System.out.println(r.nextInt());
-System.out.println(r.nextInt());
-System.out.println(r.nextInt());
-System.out.println(r.nextInt());
-```
+- [Garbage Collection][], the problem of managing memory in Java.
+- Search engines utilize algorithms (most famously, Google's [PageRank][]) to
+  sovle the problem of organizing information on the internet and making
+efficient queries on the data to return the best results.
 
-In the case a seed is not provided by the user/programmer, i.e. `Random r = new Random()`, random number generators select a seed using some value that changes frequently and produces a lot of unique values, such as the current time and date. Seeds can be generated in all sorts of other stranger ways, such as [using a wall full of lava lamps](https://www.popularmechanics.com/technology/security/news/a28921/lava-lamp-security-cloudflare/).
+[Garbage Collection]: https://inst.eecs.berkeley.edu/~cs61b/fa17/materials/lectures/lect37.pdf
+[PageRank]: https://en.wikipedia.org/wiki/PageRank
 
-For now, `RandomWorldDemo` uses a hard coded seed, namely 2873123, so it will always generate the exact same random world. You can change the seed if you want to see other random worlds, though given how chaotic the world is, it probably won't be very interesting.
+## Deliverables
 
-The final and most important thing is that rather than doing everything in `main`, **our code delegates work to functions with clearly defined behavior**. This is critically important for your project 3 experience! You're
-going to want to constantly identify small subtasks that can be solved with clearly defined methods. Furthermore, your methods should form a hierarchy of abstractions! We'll see how this can be useful in the final part of this lab.
-
-Part II: Use the Tile Rendering Engine
---------------------------------
-
-#### Plus World Intro
-
-Above, we've seen how we can draw a world and generate randomness. Your task for the first half of lab is to use the tile generator we've seen to make a plus shape, like below.
-
-![single plus](img/singlePlus.png)
-
- Optionally, you can take these plus shapes, and form a beautiful (and randomized) tesselation like below.
-
-![example world](img/exampleSideLength4.png)
-
-In the actual Project 3, you'll be generating random worlds as well, although in
-the project, they will be indoor spaces instead of open landscapes. While this
-lab task does not directly apply to the project, it will familiarize you with important
-libraries including our Tile Rendering engine, and also help you think about how you can take
-complex drawing tasks and break them into simpler pieces.
-
-Your should be able to draw differently sized plus signs. The picture above is of size-4 plusses,
-and below we see a world consisting of size-1, size-2, and size-3 plusses, respectively.
-
-![example world size 1](img/exampleSideLength1.png)
-
-![example world size 2](img/exampleSideLength2.png)
-
-![example world size 3](img/exampleSideLength3.png)
-
-#### Drawing A Single Plus
-
-The only task you are required to do for this section of the lab is to draw a single plus. Tesselating them to fill the whole screen is a cool but optional task. Your class is completely blank, but you're encouraged to reference `BoringWorld` and `RandomWorld` to get an idea of how to set up the class! Once you've done the setup to make an empty world, start by trying to create a method `addPlus` that adds a plus of size `s` to a given position in the world.
-
-Here, we see the size is the tile width for one "leg" of the plus. There are many ways to break down a plus. You could think of it as three rows, where the middle row is wider. You could think of it as 5 squares: top, bottom, left, right, and center. You could view it as neither! The way you define the "position" of a plus is also up to you! For this lab, we won't care about where in the map your plus is, the TA will just check that you've made one at all.
-
-```
-                       aaa
-           aa          aaa
-           aa          aaa
-  a      aaaaaa     aaaaaaaaa
- aaa     aaaaaa     aaaaaaaaa
-  a        aa       aaaaaaaaa
-           aa          aaa
-                       aaa
-                       aaa
-```
-
-To verify that your `addPlus` method works, write a short main method and verify that things looked OK.  Unfortunately, writing a `JUnit` test to verify that you've properly drawn a plus is just as hard as drawing the plus itself, so you won't be able to build confidence in your `addPlus` method in a nice way like you can with simpler methods.
-
-Note that even deciding the `addPlus` method signature is a non-trivial task! This exercise will give you a glimpse into the kind of decision-making and design thinking you will have to do in Project 3.
-
-Deciding what classes you need for this lab, just like Proj3, is entirely up to you! One example class you might add is a `Point` class, to represent coordinates in your world. You can also think about making a `Plus` class. This will require some careful thinking about what a `Plus` object is in this program, what it should know about itself (i.e. what are its instance variables), and what it can do (i.e. its public instance methods). This is what a lot of your work on Project 3 is going to look like! 
-
-There are many different ways to approach this problem, and that's what makes it so interesting.
-
-
-#### Extra: Drawing A Tesselation of Plusses
-
-Once you have code that can draw a single plus, you can try to tessellate them to form a world, like shown in the example images earlier. Do NOT attempt this until finishing the Memory Game in the next part of the lab. You should prioritize finish drawing the single plus and memory game, as this is what your TA will check for. It is in your best interest to do the checkoff ASAP and avoid a long wait, as things tend to get more chaotic right before the deadline.
-
-As with drawing a single plus, there are a huge number of ways to draw a tesselation. The most important part is to identify helper methods that will be useful for the task!
-
-You should absolutely not try to do something like do everything in a nested for loop with no helper methods. While it is technically possible to do this, **you will melt your brain.** In this project, it is **absolutely vital** that you avoid the temptation to always work at a "low level". Without hierarchical abstraction, your **mind will transform into a pile of goo** under the weight of all the complexity.
-
-By writing very well-defined, nicely commented helper methods, you also make it physically possible to get help from course staff. During office hours for this project, TAs will be limited to ten minutes per pair, and will not be allowed to spend a long time getting to know the intricacies of your code. They are there for high level guidance, as well as help debugging when you've really exhausted all your options.
-
-As a hint for one possible solution, look for repeating patterns in a given tesselation. If you look at a single plus in a tesselation, when does it "repeat" itself? How many squares do you have to move over until you find another plus at that same height in the image?
-
-
-Memory Game Introduction
---------------------------------
-We can now move onto the second half of this lab! In preparation for making your game, we will use `StdDraw` and `java.util.Random` to construct a simple memory game. This game is much like the electronic toy [Simon](https://en.wikipedia.org/wiki/Simon_(game)), but on a computer and with a keyboard instead of with 4 colored buttons. The goal of the game will be to type in a randomly generated target string of characters after it is briefly displayed on the screen one letter at a time. The target string starts off as a single letter, but for each successful string entered, the game gets harder by making the target string longer.
-
-Eventually we want `MemoryGame.java` to have a main method which will launch a playable memory game, but instead of jumping straight into the implementation of the game, it is good to try and break down what tasks you will need to perform in order to run a game. For this memory game it would looks something like:
-1. Create the game window
-2. Randomly generate a target string
-3. Display target string on screen one character at a time
-4. Wait for player input until they type in as many characters as there are in the target
-5. Repeat from step 2 if player input matches the target string except with a longer random target string. If no match, print a game over message and exit.
-
-In general, good coding practice is to first build small procedures with explicit purposes and then compose more complex methods using the basic ones. Eventually, you’ll be able to build up something as complicated as a game or text editor using just a few lines in your main method. If you take a look at `MemoryGame.java` you will see that we have written in a few method headers which will each handle one of the above tasks. This process of identifying the steps of your game and breaking it apart into individual methods is highly recommended for project 3. It will give you a clear path forward in development and also provide clear breaks for unit tests.
-
-By the end of the lab, you'll have something that functions like the below GIF:
-
-![Memory Game Example](img/memory-game-example.gif)
-
-## Providing arguments to `main`
-The main method will request that the user provides a command line argument: a seed for the random String generation. To provide a command line argument to the `main` method while running your program in Intellij, use Run > Edit Configurations > Program Arguments. You can then type in a number in that box to be passed to your program and used as your seed.
-
-## `drawFrame`
-
-We've provided you with one very helpful method: drawFrame. It uses the `StdDraw` library from Princeton, which you will have to get comfortable with for Project 3. In PlusWorld, our tile engine was actually secretly using `StdDraw` under the hood to draw up all the tiles! Now, we will use `StdDraw` directly. We use the `StdDraw` library because it is rather light and easy to get started with, but there are a few quirks of the library you should be aware of while working with it. Notably, when we want to change what is displayed on the screen, we have to clear the entire screen and redraw everything we want to show up. Because of this, it is incredibly useful to have a method which first clears the canvas, draws everything necessary for the next frame, and then shows the canvas.
-
-This is what `drawFrame` does for us. We know we need to display strings on the screen and they should be noticeable. It clears the canvas, sets the font to be large and bold, draws the input string so that it is centered on the canvas, and then shows the canvas on the screen. It also displays some other information like the round number, and whether the player should currently be typing in an answer or watching for the next round. In your `startGame()` method you'll write in more of the logic to make this actually work. Try running the `main` method of MemoryGame right now, and you'll see what this all looks like so far.
-
-**Discuss with a partner how the methods you see here can apply to your BYOW project. What does each line do? Do you think you could use these yourself?**
-
-This would be a good time to look at the [StdDraw](https://introcs.cs.princeton.edu/java/stdlib/javadoc/StdDraw.html) API and figure out exactly how it works. Some useful methods to look at include:
-
-- [`StdDraw.setFont`](https://introcs.cs.princeton.edu/java/stdlib/javadoc/StdDraw.html#setFont(java.awt.Font))
-- [`StdDraw.clear`](https://introcs.cs.princeton.edu/java/stdlib/javadoc/StdDraw.html#clear())
-- [`StdDraw.text`](https://introcs.cs.princeton.edu/java/stdlib/javadoc/StdDraw.html#text(double,double,java.lang.String))
-- [`StdDraw.setPenColor`](https://introcs.cs.princeton.edu/java/stdlib/javadoc/StdDraw.html#setPenColor(java.awt.Color))
-- [`StdDraw.show`](https://introcs.cs.princeton.edu/java/stdlib/javadoc/StdDraw.html#show())
-
-## `generateRandomString`
-
-First task: we need to be able to randomly generate a string of a specified length. Briefly mentioned above, this random generation should be done using `java.util.Random`.
-
-Look at the `MemoryGame` constructor, and see how it creates a `Random` object which uses the first program argument as the seed. After that, complete `generateRandomString` so that it produces a random string using your `Random` object that is the length specified by the input `n`. Since we only want to produce strings of lowercase characters, the private `CHARACTERS` field has been provided for your convenience.
-
-You can choose to either use the methods of `java.util.Random` or use our helpful utility methods in `byow.Core.RandomUtils`. All of the utility methods take in a `Random` object as a parameter, so they do all use the relevant `java.util.Random` method under the hood: you can take a look if you're curious how these utilities work!
-
-You might find yourself having issues with working with variables of type `char` and `String`. Here are three useful things you should know about them:
-
-1. In Java, a `Character` or `char` is wrapped with single quotes `'B'` whereas `String` objects are wrapped with double quotes `"and can be longer"`.
-
-2. You can add a `char` to a `String` with the `+` operator:
-
-```java
-String favClass = "CS 61" + 'B';
-```
-
-3. You can convert a `char` to a `String` via:
-```java
-String B = Character.toString('B');
-```
-
-## `flashSequence`
-
-Using what we’ve built so far and the provided `drawFrame`, we need to define a procedure which presents the target string one character at a time. Write `flashSequence` so that it takes the input string and displays one character at a time centered on the screen. Each character should be visible on the screen for 1 second and there should be a brief 0.5 second break between characters where the screen is blank.
-
-## `solicitNCharsInput`
-
-After displaying the target string one character at a time, we need to wait for the player to type in their string. For this task, we will have to use `StdDraw`’s key listening API to read in what the player typed. The methods of interest in this lab are `hasNextKeyTyped` and `nextKeyTyped`. They interact with a queue `StdDraw` uses to store all the keys the user has pressed and released. `hasNextKeyTyped` looks to see if there is any keystroke left in the queue while `nextKeyTyped` removes the key at the front of the queue and returns it. Note that `nextKeyTyped` returns the key as a `char` - this is another quirk of `StdDraw` and prevents us from using any keys on the keyboard which do not correspond to a `char` value.
-
-Once you’ve familiarized yourself with how `StdDraw` handles inputs from the keyboard, write `solicitNCharsInput` which reads `n` keystrokes using `StdDraw` and returns the string corresponding to those keystrokes. Also, the string built up so far should appear centered on the screen as keys are being typed by the user so that they can see what they’ve hit so far.
-
-## `startGame`
-
-We’re almost there! Now that we have defined all of our subprocesses, it is time to put them together and run our game. The `startGame` method should launch our game and begin the loop of gameplay until the player fails to type in the target string. The code for `startGame` should look like a translation of the following process into code:
-
-1. Start the game at round 1
-2. Display the message “Round: “ followed by the round number in the center of the screen
-3. Generate a random string of length equal to the current round number
-4. Display the random string one letter at a time
-5. Wait for the player to type in a string the same length as the target string
-6. Check to see if the player got it correct
-  - If they got it correct, repeat from step 2 after increasing the round by 1
-  - If they got it wrong, end the game and display the message “Game Over! You made it to round:” followed by the round number they failed in the center of the screen
-
-After you’ve done this you should be able to run `MemoryGame.java` and play your game! It’s somewhat bare bones and definitely not pretty, but you can play with the StdDraw methods and see how they change the appearance. Graphic design is our passion...
-
-## Submission
-
-- Complete `PlusWorld.java` 
-- Complete the following methods in `MemoryGame.java`:
-    - `generateRandomString`
-    - `flashSequence`
-    - `solicitNCharsInput` 
-    - `startGame`
-
-To get credit for this lab, you'll have to do a checkoff during lab with your TA . You will be asked to show that you can generate a single plus at various sizings (or a whole tesselaton), and that you can play your memory game. Once you complete your checkoff, your TA should give you a magic word, which you can type it into magicword.txt. You will be solely graded off if your magic word is present. This is remniscent of how you will be graded for BYOW: though part of the project will be autograded, your final product will be graded in a checkoff with a staff member so you can show off your creative finished project!
-
-If you want to get checked off outside of lab hours you can make a private Ed **Question** thread under Labs - Lab16 - Checkoff and make sure you follow the instructions on the template. 
-
+- Complete the `shortestPath` method in `Graph.java`.

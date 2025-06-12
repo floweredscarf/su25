@@ -1,0 +1,52 @@
+#####################################
+# Instructions for updating website #
+#####################################
+
+# Discussion filepaths are all formatted based on the discussion number.
+# Pad discussion numbers, e.g. discussion 2 uses "02", not "2".
+# For example, the files for discussion 2 should be placed at:
+#   - /assets/discussions/disc02-regular.pdf
+#   - /assets/discussions/disc02-regular-sols.pdf
+#   - /assets/discussions/disc02-examprep.pdf
+#   - /assets/discussions/disc02-examprep-sols.pdf
+
+# To upload discussion worksheets and solutions to the website, just
+# put the files in assets/discussions using the filenames above.
+
+# If you need to manually put something in the discussion cell
+# (e.g. links to multiple worksheets for exam review weeks), there's
+# an override field that you can use. Anything you put in the override
+# field will be converted to Markdown.
+
+
+#####################################
+# Additional documentation          #
+#####################################
+
+# Each element in the array corresponds to one box on the website.
+# This includes boxes that are blank or don't have a discussion.
+# By default, each box spans 2 rows (edit the default in syllabus.yml).
+# To override this, use the "rowspan" attribute to resize a box.
+
+# The website automatically numbers each element in the array.
+# To skip numbering (e.g. for a "no discussion" box), add
+# "nonumber: True" as an attribute.
+
+# We currently assume that every week has both regular and exam-prep
+# sections. If that's not true, update discussion.html.
+
+# If released=True, the worksheet will populate
+# If regular_video has a link and sols_released=True, the solutions and videos will populate
+# whether to display links to worksheets.
+
+discussions:
+  - title: "First Discussion"
+    released: True
+    sols_released: True
+    regular_video: "https://www.youtube.com/watch?v=FMLe4g8wGXE"
+    rowspan: 1
+  - title: "Discussion Title"
+    released: True
+    sols_released: False
+    regular_video: ""
+    examprep_video: ""

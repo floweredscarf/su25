@@ -1,22 +1,17 @@
 ---
 layout: page
-title: "FAQ - Lab 20: Comparison-Based Sorts 1"
-categories: lab
+title: >-
+  FAQ
+parent: >-
+  Lab 20: Counting Sorts
+grand_parent: Labs
+has_right_toc: true
 released: true
-searchable: true
 ---
-
 
 ### Where can I find all of the videos?
 
-Insertion Sort Wrap-up: https://youtu.be/JtS5yGftYZ8
+Puppy Cat Dog proof of N Log N lower bound: https://www.youtube.com/watch?v=ByjmA0x_D2A
 
 
-Selection Sort Wrap-up: https://youtu.be/yZtvSYeTQi4
-
-
-HeapSort Introduction: https://www.youtube.com/watch?v=H5kAcmGOn4Q
-
-
-HeapSort Wrap-up: https://youtu.be/WuuQqsDftGU
-
+Sohum's LSD introduction: https://youtu.be/tWZhdFzVqXY

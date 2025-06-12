@@ -1,9 +1,12 @@
 ---
 layout: page
-title: "Lab 4: Naked Linked Lists"
-tags: [Lab, Linked Lists, Debugging, Testing]
+title: >-
+  Lab 04: Linked Lists
+has_children: true
+parent: Labs
+has_toc: false
+has_right_toc: true
 released: true
-searchable: true
 ---
 
 ## [FAQ](faq.md)

@@ -1,10 +1,12 @@
 ---
 layout: page
-title: "Lab 03: Debugging & Test-Driven Development"
-categories: lab
+title: >-
+  Lab 03: Debugging & Test-Driven Development
+has_children: true
+parent: Labs
+has_toc: false
+has_right_toc: true
 released: true
-toc:
-    h_max: 4
 ---
 
 ## [FAQ](faq.md)

@@ -1,9 +1,12 @@
 ---
 layout: page
-title: "FAQ - Lab 6: ADTs and Inheritance"
-categories: lab
+title: >-
+  FAQ
+parent: >-
+  Lab 06: Inheritance
+grand_parent: Labs
+has_right_toc: true
 released: true
-searchable: true
 ---
 ## Dynamic method selection is so confusing!
 

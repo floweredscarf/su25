@@ -1,9 +1,12 @@
 ---
 layout: page
-title: "FAQ - Lab 1: Java & Git"
-categories: lab
+title: >-
+  FAQ
+parent: >-
+  Lab 01: Conditionals, Loops, and Arrays (Optional)
+grand_parent: Labs
+has_right_toc: true
 released: true
-searchable: true
 ---
 
 ### When I try to push, I get the error "failed to push some refs"
