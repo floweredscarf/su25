@@ -5,7 +5,7 @@ role: Tutor
 spaaccess: True
 dspdata: True
 email: noahadhikari@berkeley.edu
-photo: evanbot.jpg
+photo: noah_adhikari.jpg
 ---
 
 
