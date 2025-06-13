@@ -5,7 +5,7 @@ role: Instructor
 spaaccess: false
 dspdata: false
 email: dkoh135@berkeley.edu
-photo: evanbot.jpg
+photo: dennis_koh.jpeg
 ---
 
 
