@@ -1,0 +1,83 @@
+{%- comment -%}
+- This code renders one lecture box on the syllabus.
+- See lectures.yml for how to feed information into this template.
+{%- endcomment -%}
+
+{%- comment -%}
+If you don't want lecture boxes to alternate colors per week,
+then remove class="{{ include.is_even }}" below.
+{%- endcomment -%}
+<td class="{{ include.is_even }}" rowspan="{{ include.rowspan }}">
+
+  {%- comment -%}
+  - Build filenames automatically from the lecture number.
+  - First pad lecture number (2-->02), then create a base filepath,
+  then create filenames (see lectures.yml for more on filenames).
+  {%- endcomment -%}
+  {%- assign filenumber = include.number | prepend: '00' | slice: -2, 2 -%}
+  {%- assign slides_path = "/assets/lectures/" | append: site.lecture_prefix | append: filenumber | append: ".pdf" -%}
+
+  {%- comment -%}
+  - Automatically check if files exist.
+  {%- endcomment -%}
+  {%- assign slides_exists = false -%}
+  {%- for page in site.static_files -%}
+  {%- if page.path == slides_path -%}
+  {%- assign slides_exists = true -%}
+  {%- endif -%}
+  {%- endfor -%}
+
+  {%- comment -%}
+  - Slightly hacky way to ensure slides links don't show when there's nonumber.
+  {%- endcomment -%}
+  {%- if include.element.nonumber -%}
+  {%- assign slides_exists = false -%}
+  {%- endif -%}
+
+  {%- if include.element.nonumber -%}
+  {{ include.element.title | markdownify }}
+  {%- elsif include.element.title -%}
+  {{ include.number }}. {{ include.element.title }}
+  {%- endif -%}
+
+  {%- if include.element.slides or slides_exists or include.element.recording or include.element.readings.size > 0 -%}
+  <br>
+  {%- if include.element.slides -%}
+  <a href="{{ include.element.slides }}" aria-label="Slides for Lecture {{ include.number }} ({{ include.element.title }})">Slides</a>
+    {%- if include.element.recording or include.element.readings.size > 0 -%}
+    {{}} / {{}}
+    {%- endif -%}
+  {%- elsif slides_exists -%}
+  <a href="{{ slides_path | relative_url }}" aria-label="Slides for Lecture {{ include.number }} ({{ include.element.title }})">Slides</a>
+    {%- if include.element.recording or include.element.readings.size > 0 -%}
+    {{}} / {{}}
+    {%- endif -%}
+  {%- endif -%}
+  {%- if include.element.recording -%}
+  <a href="{{ include.element.recording }}" aria-label="Recording for Lecture {{ include.number }} ({{ include.element.title }})">Recording</a>
+  {%- if include.element.readings.size > 0 -%}
+  {{}} / {{}}
+  {%- endif -%}
+  {%- endif -%}
+  {%- for reading in include.element.readings -%}
+  <a href="{{ reading.link }}">
+    {%- if reading.textbook -%}
+    Ch. {{ reading.textbook }}
+    {%- else -%}
+    {{ reading.name }}
+    {%- endif -%}
+  </a>
+  {% if forloop.last == false %}
+  {{}} / {{}}
+  {% endif %}
+  {%- endfor -%}
+  {%- endif -%}
+
+  {%- comment -%}
+  - In case we want to display anything extra (e.g. extra link) in the box.
+  {%- endcomment -%}
+  {%- if include.element.extra -%}
+  <br>
+  {{ include.element.extra | markdownify }}
+  {%- endif -%}
+</td>

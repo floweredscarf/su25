@@ -1,9 +1,12 @@
 ---
 layout: page
-title: "FAQ - Lab 4: Naked Linked Lists"
-categories: lab
+title: >-
+  FAQ - Lab 04
+parent: >-
+  Lab 04: Linked Lists
+grand_parent: Labs
+has_right_toc: true
 released: true
-searchable: true
 ---
 
 ### In lecture we were talking about IntLists; what are these Linked Lists you speak of?

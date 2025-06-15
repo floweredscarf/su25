@@ -1,0 +1,103 @@
+#####################################
+# Instructions for updating website #
+#####################################
+
+# To add a project to the website:
+# 1. Upload any necessary files to /assets/projects.
+# 2. Put the project spec in the projects folder (if not already there).
+# 3. In this file, uncomment the "link" attribute to display a link to the spec.
+
+
+#####################################
+# Additional documentation          #
+#####################################
+
+# Each element in the array corresponds to one box on the website.
+# This includes boxes that are blank or don't have a homework.
+
+# The website automatically numbers each element in the array.
+# To skip numbering (e.g. for a blank box), add
+# "nonumber: True" as an attribute.
+
+projects:
+  # - rowspan: 1
+  #   nonumber: True
+  #   classes:
+  #     - blank
+  # - title: "Project 1"
+  #   link: "/proj1/"
+  #   released: True
+  #   rowspan: 3
+  #   due: "09/06"
+  #   classes:
+  #     - proj1 # adds the purple background
+  - title: "Project 0: 2048 Checkpoint"
+    due: "6/26"
+    link: "/projects/proj0/"
+    released: True
+    rowspan: 4
+    classes:
+      - proj1
+  - title: "Project 0: 2048"
+    due: "6/29"
+    link: "/projects/proj0/"
+    released: True
+    rowspan: 1
+    classes:
+      - proj1
+  - title: "Project 1: Deques Checkpoint"
+    due: "7/3"
+    link: "/projects/proj1/"
+    released: True
+    rowspan: 4
+    classes:
+      - proj2
+    # nonumber: True
+  - title: "Project 1: Deques"
+    due: "7/6"
+    link: "/projects/proj1/"
+    released: True
+    rowspan: 1
+    classes:
+      - proj2
+    # nonumber: True
+  # - rowspan: 4
+  #   nonumber: True
+  #   classes:
+  #     - blank
+  - title: "Project 2A: NGrams"
+    due: "7/13"
+    link: "/projects/proj2a/"
+    released: True
+    rowspan: 5
+    classes:
+      - proj1
+    # nonumber: True
+  - title: "Project 2B: Wordnet"
+    link: projects/proj2b
+    released: True
+    due: "7/27"
+    rowspan: 10
+    classes:
+      - proj1
+    # nonumber: True
+  - title: "Project 3A: World Generation"
+    due: "8/3"
+    link: projects/proj3
+    released: True
+    rowspan: 5
+    classes:
+      - proj2
+    # nonumber: True
+  - title: "Project 3B: Interactivity"
+    due: "8/10"
+    link: projects/proj3/proj3b
+    released: True
+    rowspan: 5
+    classes:
+      - proj2
+    # nonumber: True
+  - rowspan: 10
+    nonumber: True
+    classes:
+      - blank

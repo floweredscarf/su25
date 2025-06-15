@@ -1,0 +1,98 @@
+{%- comment -%}
+  - This code renders one discussion box on the syllabus.
+  - See discussions.yml for how to feed information into this template.
+{%- endcomment -%}
+
+{%- comment -%}
+  If you don't want discussion boxes to alternate colors per week,
+  then remove class="{{ include.is_even }}" below.
+{%- endcomment -%}
+<td class="{{ include.is_even }}" rowspan="{{ include.rowspan }}">
+
+{%- comment -%}
+  Render title with or without number, depending on the "nonumber" attribute.
+{%- endcomment -%}
+{%- if include.element.nonumber -%}
+  {{ include.element.title }}
+{%- elsif include.element.title -%}
+  {{ include.number }}. {{ include.element.title }}
+{%- endif -%}
+
+{%- comment -%}
+  - Build filenames automatically from the discussion number.
+  - First pad discussion number (2-->02), then create a base filepath,
+    then create filenames (see discussion.yml for more on filenames).
+{%- endcomment -%}
+{%- assign filenumber = include.number | prepend: '00' | slice: -2, 2 -%}
+{%- assign filename_base = "/assets/discussions/disc" | append: filenumber -%}
+{%- assign filename_regular = filename_base | append: "-regular.pdf" -%}
+{%- assign filename_regular_solutions = filename_base | append: "-regular-sols.pdf" -%}
+{%- assign filename_examprep = filename_base | append: "-examprep.pdf" -%}
+{%- assign filename_examprep_solutions = filename_base | append: "-examprep-sols.pdf" -%}
+
+{%- comment -%}
+  - Automatically check if files exist.
+{%- endcomment -%}
+{%- assign regular_exists = false -%}
+{%- assign regular_solutions_exists = false -%}
+{%- assign examprep_exists = false -%}
+{%- assign examprep_solutions_exists = false -%}
+{%- for page in site.static_files -%}
+  {%- if page.path == filename_regular -%}
+    {%- assign regular_exists = true -%}
+  {%- endif -%}
+  {%- if page.path == filename_regular_solutions -%}
+    {%- assign regular_solutions_exists = true -%}
+  {%- endif -%}
+  {%- if page.path == filename_examprep -%}
+    {%- assign examprep_exists = true -%}
+  {%- endif -%}
+  {%- if page.path == filename_examprep_solutions -%}
+    {%- assign examprep_solutions_exists = true -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- comment -%}
+  - TODO: Currently using nonumber to figure out when not to auto-check for files.
+    Is there a cleaner way?
+{%- endcomment -%}
+{%- if include.element.nonumber -%}
+{%- elsif include.element.override -%}
+  <br>
+  {{ include.element.override | markdownify }}
+{%- elsif examprep_solutions_exists or regular_solutions_exists -%}
+  <br>
+  {%- if regular_solutions_exists and include.element.released -%}
+    {%- if include.element.has_slides -%}
+      <a href="{{ include.element.slides | relative_url }}" aria-label="Slides for Discussion {{ include.number }} ({{ include.element.title }})">Slides</a> / <a href="{{ filename_regular | relative_url }}" aria-label="Worksheet for Discussion {{ include.number }} ({{ include.element.title }})">Worksheet</a>
+    {%- else -%}
+      <a href="{{ filename_regular | relative_url }}" aria-label="Worksheet for Discussion {{ include.number }} ({{ include.element.title }})">Worksheet</a>
+    {%- endif -%}
+    {%- if include.element.sols_released and include.element.regular_video -%}
+      &nbsp;/ <a href="{{ filename_regular_solutions | relative_url }}" aria-label="Solutions for Discussion {{ include.number }} ({{ include.element.title }})">Solutions</a> / <a href="{{ include.element.regular_video | relative_url }}" aria-label="Video for Discussion {{ include.number }} ({{ include.element.title }})">Video</a>
+    {%- endif -%}
+  {%- endif -%}
+  {%- if examprep_solutions_exists and include.element.released -%}
+    <br>
+    <a href="{{ filename_examprep | relative_url }}" aria-label="Worksheet for Exam Prep {{ include.number }} ({{ include.element.title }})">Exam Prep</a>
+    {%- if include.element.sols_released and include.element.examprep_video -%}
+      &nbsp;/ <a href="{{ filename_examprep_solutions | relative_url }}" aria-label="Solutions for Exam Prep {{ include.number }} ({{ include.element.title }})">Solutions</a> / <a href="{{ include.element.examprep_video | relative_url }}" aria-label="Video for Exam Prep {{ include.number }} ({{ include.element.title }})">Video</a>
+    {%- endif -%}
+  {%- endif -%}
+{%- elsif examprep_exists or regular_exists -%}
+  {%- if regular_exists -%}
+    <br>
+    <a href="{{ filename_regular | relative_url }}" aria-label="Worksheet for Discussion {{ include.number }} ({{ include.element.title }})">Worksheet</a>
+    {%- if include.element.regular_video and include.element.sols_released -%}
+      &nbsp;/ <a href="{{ include.element.regular_video | relative_url }}" aria-label="Video for Discussion {{ include.number }} ({{ include.element.title }})">Video</a>
+    {%- endif -%}
+  {%- endif -%}
+  {%- if examprep_exists -%}
+    <br>
+    <a href="{{ filename_examprep | relative_url }}" aria-label="Worksheet for Exam Prep {{ include.number }} ({{ include.element.title }})">Exam Prep</a>
+    {%- if include.element.examprep_video and include.element.sols_released  -%}
+      &nbsp;/ <a href="{{ include.element.examprep_video | relative_url }}" aria-label="Video for Exam Prep {{ include.number }} ({{ include.element.title }})">Video</a>
+    {%- endif -%}
+  {%- endif -%}
+{%- endif -%}
+</td>

@@ -1,0 +1,87 @@
+#####################################
+# Instructions for updating website #
+#####################################
+
+# Written HW filepaths are all formatted based on the HW number.
+# Pad HW numbers, e.g. HW2 uses "02", not "2".
+# For example, the files for written HW2 should be placed at:
+#   - assets/homeworks/hw02.pdf
+#   - assets/homeworks/hw02-sols.pdf
+
+# To upload homework to the website:
+# 1. In this file, add the link to the electronic Gradescope assignment.
+# 2. Put the files in assets/homeworks using the filenames above.
+
+
+#####################################
+# Additional documentation          #
+#####################################
+
+# Each element in the array corresponds to one box on the website.
+# This includes boxes that are blank or don't have a homework.
+
+# The website automatically numbers each element in the array.
+# To skip numbering (e.g. for a blank box), add
+# "nonumber: True" as an attribute.
+
+#####################################
+# Content                           #
+#####################################
+
+# HW1: Course policies, course accounts (edstem, inst eecs,security principles), c stack layout
+# HW2: Canaries, printf oracle, crypto block cipher modes
+# HW3: Padding oracle
+# HW4: Symmetric-key encryption, hashing, PRNGs, DHE, Signatures, Certificates, Passwords
+# HW5: web attacks, proj2 spec stuff (remove), sql injection lab
+# HW6: networking thru TLS
+# HW7: potpourri
+
+# homeworks:
+#   - hw_link: "https://TODO"
+#     due: "9/6"
+#     rowspan: 3
+
+homeworks:
+  - title: "Homework 0A"
+    due: "1/24"
+    hw_link: "homeworks/hw0/hw0a"
+    rowspan: 2
+    # nonumber: True
+  - title: "Homework 0B"
+    due: "1/29"
+    hw_link: "homeworks/hw0/hw0b"
+    rowspan: 1
+    # nonumber: True
+  - title: "Homework 1"
+    due: "02/7"
+    hw_link: https://www.gradescope.com/courses/961758
+    rowspan: 5
+    # nonumber: True
+  - rowspan: 8
+    nonumber: True
+    classes:
+      - blank
+  - title: "Homework 2"
+    due: "03/07"
+    hw_link: "homeworks/hw2"
+    rowspan: 5
+    # nonumber: True
+  - title: "Homework 3"
+    due: "04/04"
+    hw_link:
+    rowspan: 13
+    # nonumber: True
+  - rowspan: 3
+    nonumber: True
+    classes:
+      - blank
+  - title: "Homework 4"
+    due: "05/04"
+    hw_link: https://www.gradescope.com/courses/961758/assignments/6164006/submissions
+    # link:
+    rowspan: 10
+    # nonumber: True
+  - rowspan: 5
+    nonumber: True
+    classes:
+      - blank

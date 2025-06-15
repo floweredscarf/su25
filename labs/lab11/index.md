@@ -1,456 +1,668 @@
 ---
 layout: page
-title: "Lab 11: Binary Search Trees"
-tags: [Lab, Java, Binary Search Trees, Binary Trees]
+title: >-
+  Lab 11: Balanced Search Trees
+has_children: true
+parent: Labs
+has_toc: false
+has_right_toc: true
 released: true
-searchable: true
 ---
 
 ## [FAQ](faq.md)
 
 Each assignment will have an FAQ linked at the top. You can also access it by
-adding "/faq" to the end of the URL. The FAQ for Lab 11 is located
+adding "/faq" to the end of the URL. The FAQ for Lab 12 is located
 [here](faq.md).
 
 ## Before You Begin
 
-As usual, pull the skeleton code.
+As usual, pull the Lab 12 files from the skeleton and open them in in IntelliJ.
 
 ## Learning Goals
 
-In this lab, you'll continue to practice coding up binary trees and learn about building data structures
-that rely on comparisons. This
-technique will be widely used in the remainder of the class.
+In this lab, we will:
 
-## Recall: Binary Trees
+- Describe balanced search trees and compare them to regular binary search trees;
+- Describe the properties and algorithms for 2-3 trees
+- Connect 2-3 tree concepts to red-black trees
+- Implement a left-leaning red-black tree
 
-We'll now move on from trees and explore a common, special case of the tree data
-structure: the binary tree. A binary tree is a tree in which each node has at
-most two children. Normally it has two separate variables `left` and
-`right` for the left and right children of the binary tree.
+## Introduction
 
-## Exercise: `BinaryTree`
+Over the past few labs, we have analyzed the performance of algorithms for
+access and insertion into binary search trees. However, our analyses often
+made the assumption that the trees were *balanced*.
 
-The file `BinaryTree.java` defines a `BinaryTree` class and a `TreeNode` class.
-First, read over the code, as well as the implementations for `printPreorder` and `printInorder`.
+Informally, a tree being "balanced" means that the paths from root to every leaf
+are all roughly the same length. Any algorithm that looks once at each
+level of the tree -- such as searching for a value in a binary search tree --
+only looks at as many elements as the number of levels in the tree. As we discovered previously,
+the smallest number of levels we can have is logarithmic with respect to the number
+of nodes.
 
-Then, read over methods that generate sample trees (`sampleTreeX` methods) and try running the `main` method to understand how it works.
-In addition, consider adding more test cases to the `BinaryTreeTest.java`.
+Balanced trees keep our number of levels in this efficient number of levels and prevents the worst case scenarios where we have spindly, unbalanced trees, which have a number of levels which is linear with respect to the number of nodes.
 
-Once you have understood the code, you can start working on the exercises below.
+We've seen how we can create these best-case and worst-case heights with an ordinary binary search tree. Now we'll explore how we can keep our tree closer to the best-case height.
 
-### Exercise 1: `height`
+There are two approaches we can take to make trees balanced:
 
-First, if you have a partner, switch which partner is coding if you haven't recently.
+Incremental balancing
+: At each insertion or deletion we do a bit of work to keep the tree balanced.
 
-Implement the `height` method in the `BinaryTree` class. The height of an empty tree is
-0; the height of a one-node tree is 1; the height of any other tree is 1 + the
-greater of the heights of the two children.
+All-at-once balancing
+: We don't do anything to keep the tree balanced until it gets too lopsided,
+  then we completely rebalance the tree.
 
-### Exercise 2: `isCompletelyBalanced`
+We will only look at trees that perform incremental balancing.
 
-Add an `isCompletelyBalanced` method for the `BinaryTree` class. A tree with no
-nodes and a tree with one node are both completely balanced; any other tree is
-completely balanced if and only if the height of its left child is equal to the
-height of its right child, and its left and right children are also completely
-balanced. Make sure you test your code with trees of height 3 or more to ensure
-that your code works!
+<!--
+I'm leaving a comment here for future instructors, but:
 
-### Exercise 3: `fibTree`
+Try moving from (BST; B-Tree; RB tree) to (BST; AVL). You can spend some time
+on proving the self-balancing properties, instead of handwaving them away!
 
-This exercise deals with "Fibonacci trees", trees that represents the recursive
-call structure of the Fibonacci computation. (The Fibonacci sequence is defined
-as follows: $$F_0 = 0, F_1 = 1$$, and each subsequent number in the sequence is
-the sum of the previous two.) The root of a Fibonacci tree should contain the
-value of the `N`th Fibonacci number, the left subtree should be the tree
-representing the computation of the `N-1`th Fibonacci number, and the right
-subtree should be the tree representing the computation of the `N-2`th
-Fibonacci number. The two exceptions to this rule are when we pass in 0 or 1 to
-the `fibTree` method. The first few Fibonacci trees appear below.
+More seriously, introducing and throwing away B-Trees without coding them
+or describing why they justify the complexity is not ideal. Don't throw away
+the main motivation, constant-factor improvements! Of course, that isn't
+appropriate for an intro data structures class -- so cut it out entirely.
 
-| Function     | Tree                           |
-|--------------|--------------------------------|
-| `fibtree(0)` |![fibtree-0](img/fibtree-0.png) |
-| `fibtree(1)` |![fibtree-1](img/fibtree-1.png) |
-| `fibtree(2)` |![fibtree-2](img/fibtree-2.png) |
-| `fibtree(3)` |![fibtree-3](img/fibtree-3.png) |
-| `fibtree(4)` |![fibtree-4](img/fibtree-4.png) |
-| `fibtree(5)` |![fibtree-5](img/fibtree-5.png) |
+Then, without B-trees forcing RB trees, you can replace them with AVL trees,
+which you can prove more easily. (And justify more intuitively -- AVL tree
+rotations are uncolored, so you can just focus on the gravitational effects.)
 
-Write the static `fibTree` method in `BinaryTree` that takes in a non-negative
-integer `N`, and returns a `BinaryTree` that stores the `N`-th Fibonacci value
-using the representation above.
+Probably not possible, but could be interesting!
+-Ethan
 
-{% include alert.html type="info" content=' You should be using recursion for these problems, and you should be adding your helper methods with modified arguments. Refer to the tree traversal code for reference!
+Sorry, Ethan... ended up revamping the lab to be better with llrb before reading this.
+Punt to next summer.
+-Laksith
 
-Furthermore, because `fibTree` is a static method that returns a `BinaryTree`, your helper method must be static as well!' %}
+Sorry, Ethan (again)... didn't see this suggestion until it was too late. Shared in slack in case any future instructors take an interest!
+-Dom
+-->
 
-## Comparisons
+## 2-3 Trees
 
-Here are a few key details from `compareTo`, slightly adapted:
+In a binary search tree, each tree node contains exactly one element. In a B-tree, instead of storing a single element per node, we will store *multiple* elements per node! A **2-3 tree** is a B-tree where a
+nodes can contain up to two elements.
 
-> Compares this object with the specified object for order. Returns a negative
-> integer or a positive integer if this object is less than
-> or greater than the specified object, respectively. Note that it can be any negative
-> or positive integer, not -1 and 1 necessarily.
+In a 2-3 tree each non-leaf node
+has either 2 or 3 children. Additionally, any non-leaf node **must** have
+one more child than element. That means that a node with 1 element must have
+2 children, and a node with 2 elements must have 3 children.
 
-There are other requirements that usually just happen naturally with a
-reasonable implementation, but are still important to specify:
+We refer to a node with N children as an "N-node", so a node with
+1 element and 2 children would be called a 2-node, and a node with 2 elements and 3
+children would be called a 3-node.
 
-> The implementer must also ensure that the relation is transitive:
-> `x.compareTo(y) > 0 && y.compareTo(z) > 0` implies `x.compareTo(z) > 0`.
->
-> It is strongly recommended, but not strictly required that `x.compareTo(y) ==
-> 0` is equivalent to `x.equals(y)`. Generally speaking, any class that
-> implements the `Comparable` interface and violates this condition should
-> clearly indicate this fact. The recommended language is "Note: this class has
-> a natural ordering that is inconsistent with equals."
+Additionally, there are ordering invariants similar to the binary
+search tree. Nodes with 1 element and 2 children have the same invariant as a
+binary search tree, where elements in the left subtree must all be smaller; and
+elements in the right subtree must all be greater.
 
-Typically, a class will compare to objects of the same type as itself (although
-it does not strictly have to). Doing so means data structures that require
-ordering (like sorted lists, and in the future, search trees) can contain the
-class.
+We can extend this to 3-nodes as well. First, the left element inside the node must be smaller than
+the right element inside the node. Nodes in the left subtree must be less
+than the smaller element; nodes in the middle subtree must be between the two elements;
+and nodes in the right subtree must be greater than the larger element.
 
-## Binary Search
+As in binary search trees, these ordering invariants must recursively hold.
+For this lab we won't worry about what to do with equal elements.
 
-Suppose we have a sorted array of *comparable* elements, and we want to see if a certain element is in the array. How can we use `compareTo()` to achieve an efficient implementation? Before reading the next section, pause here and discuss approaches with your peers!
+Here's an example of a 2-3 tree:
 
+![23-tree](img/23tree-1.svg){: height="200"}
 
-We can employ the well
-known divide-and-conquer algorithm known as **binary search**. Used with an
-array where `low`, `mid`, and `high` are array indices, binary search assumes that the
-elements of the array are **sorted** in increasing order, and executes the following:
+### Exercise: Searching a 2-3 Tree
 
-1. Set `low` to 0 and `high` to the length of the array minus 1. The value
-   we're looking for — we'll call it `k`— will be somewhere between position
-   `low` and position `high` if it's in the array.
-2. While `low` $$\leq$$ `high`, do one of the following:
-    - Compute `mid`, the *middle* of the range `[low, high]`, and see if that's
-      `k`. If so, return **`true`**.
-    - Otherwise, we can cut the range of possible positions for `k` in half, by
-      setting `high` to `mid - 1` or by setting `low` to `mid + 1`, depending on
-      the result of the comparison.
-3. If the loop terminates with `low > high`, we know that `k` is not in the
-   array, so we return **`false`.
+We can take advantage of the ordering property to construct a search algorithm
+similar to the search algorithm for binary search trees. Assume that within
+a node, we check elements from left to right.
 
-The diagrams below portray a search if `k` was equal to 25. Elements removed
-from consideration at each iteration are greyed out.
+Discuss the following with someone in your lab, based on the tree above:
 
-`low = 0`, `mid = 7`, `high = 14` 
-: ![Search](img/binary-search-1.png)
+1. What is the order in which we check elements when we search for 7 (a element in the tree)?
+2. What is the order in which we check elements when we search for 13 (a element not in the tree)?
 
-`low = 0`, `mid = 3`, `high = 6`
-: ![Search](img/binary-search-2.png)
+<details markdown="block">
+<summary markdown="block">
+**Answers (click to view):**
+</summary>
+1.  Check 5, see that it's greater. Check 9, see that it's smaller, explore to
+    the middle child. Check 7, see that we've found the element.
+2.  Check 5, see that it's greater. Check 9, see that it's greater, explore to
+    the right child. Check 10, see that it's greater. Check 12, see that it's
+    greater. No more children, so conclude that it's not in the tree.
+</details>
 
-`low = 4`, `mid = 5`, `high = 6`
-: ![Search](img/binary-search-3.png)
+### Insertion into a 2-3 Tree
 
-`low = 4`, `mid = 4`, `high = 4` 
-: ![Search](img/binary-search-4.png)
+Although searching in a 2-3 tree is like searching in a BST, inserting a new
+item is a little different.
 
-What would be the worst case running time of a search for `k`?
-Highlight the next line for the answer *after* discussing with your peers:
+Similar to a BST, we *always* insert the new element in a leaf node. We must find the
+correct place for the element that we insert to go by traversing down the tree,
+and then insert the new element into the appropriate place in the existing leaf.
+However, unlike in a BST, we can "stuff" more elements into the nodes in a 2-3
+tree.
 
-<p><span style="color:white"><em>Since (roughly) half the elements are removed from consideration at each step,
-the worst-case running time is proportional to log_2(N), where N is the
-number of elements in the array.</em></span>.</p>
+#### Basic Insertion
 
+Suppose we have the 2-3 tree from above:
 
-## Binary Search Trees
+![exampleTree](img/23tree-1.svg){: style="max-height: 200px;" }
 
-The binary search algorithm suggests a way to organize keys in an explicitly
-linked tree, as indicated in the diagram below.
+If we were to insert 8 into the tree, we first traverse down the tree until
+we find the proper leaf node to insert it into: the 7 node. This node only has one element in it, so we can still fit another. Since 8 is larger
+than 7, we insert it to the right of the 7.
 
-![Array to BST](img/array-to-bst2.png)
+![insert11](img/23tree-2.svg){: style="max-height: 200px;" }
 
-Notice that as we searched for 25 in the example above, we essentially traversed 
-this tree from 41 to 25!
+#### Push-Up Insertion
 
-The data structure that results is called a **binary search tree** (BST). Given
-that the root value (one of the keys to be stored) is $$k$$, a binary search
-tree is organized as follows:
+However, what if the leaf node we choose to insert into already has 2 elements? Even
+though we'd like to put the new item there, it won't fit because nodes can have
+no more than 2 elements. What should we do?
 
-- Put all the keys that are smaller than $$k$$ into a binary search tree, and
-  let that tree be $$k$$'s left subtree.
-- Put all the keys that are larger than $$k$$ into a binary search tree, and let
-  that tree be $$k$$'s right subtree.
+Consider the following 2-3 tree:
 
-This organization assumes that there are no duplicate keys among those to be
-stored.
+![insert-small](img/23tree-small.svg){: style="max-height: 200px;" }
 
-### `contains`
+Let's try to insert 4. We see that it needs to go into the leaf
+node to the left with elements [1, 3]. We start by *temporarily* violating the
+3-element limitation, and "overstuffing" this node so that it has elements [1, 3, 4].
 
-It's important to note that in a binary search tree, each subtree is also a
-binary search tree. This suggests a recursive rather than an iterative approach for
-implementing many methods and the `contains` method is no different. In
-pseudocode, here is an outline of the helper method of the `contains` method,
-`containsHelper(TreeNode t, T key)`:
+![insert-small](img/23tree-small-2.svg){: style="max-height: 200px;" }
 
-1. An empty tree cannot contain anything, so if `t` is `null` return `false`.
-2. If `key` is equal to `t.item`, return `true`.
-3. If `key < t.item`, `key` must be in the left subtree if it's in the
-   BST at all, so return the result of searching for it in the left
-   subtree.
-4. Otherwise it must be in the right subtree, so return the result of searching
-   for `key` in the right subtree.
+We need to "split" this node with 3 elements, so that all nodes continue to have
+1 or 2 elements. One way to do that could be to create a subtree, by moving the
+middle node "up", and splitting the remaining nodes.
 
-{% include alert.html type="warning" content='    
-Note: that the type of `key` is `T`, which is the generic type of the
-`BinaryTree` class.' %}
+![insert-small](img/23tree-small-bad.svg){: style="max-height: 250px;" }
 
-This algorithm can go all the way down to a leaf to determine its answer. Thus
-in the worst case, the number of comparisons is proportional to $$d$$, the depth
-of the tree. In a balanced tree (more on that next lab), you can expect the
-depth of the tree to be proportional to $$\log N$$ in the worst case, where
-$$N$$ is the number of nodes in the tree.
+**However, this makes some of the leaves (1 and 4) be further from the root
+than other leaves (7 and 9).** We want to keep our tree as *balanced* as
+possible, so we want to keep our leaves at the same height. To fix this,
+instead of keeping the middle element separate, we "push it up" to the parent node:
 
-### Use of `Comparable` objects
+![insert-small](img/23tree-small-fixed.svg){: style="max-height: 200px;" }
 
-Finding a value in the tree will require "less than", "greater than", and
-"equals" comparisons. Since the operators < and > don't work with
-objects, we have to use method calls for comparisons.
+The tree invariants now hold, so we're done! Note that the other two elements in
+the overstuffed node (1 and 4) have become separate children of the newly
+expanded node with elements 3 and 5.
 
-The Java convention for this situation is to have the values stored in the tree
-be objects that implement the `Comparable` interface, which you learned about
-in lab 8.
+#### Push-Up Insertion... Again
 
-### Balance and Imbalance
+You may have noticed a problem in the previous section. What if this push-up
+causes the parent node to have too many elements? When the parent node has too many
+elements, we need to push up and split again -- which may cause another
+overstuffing, and so on.
 
-Unfortunately, the use of a binary search tree does not guarantee efficient search.
+Let's insert 8 into the tree we finished with last time:
 
-What would be the worst case runtime possible for a single call to `contains()`
-on a valid BST? Discuss with your peers and highlight the next line for the answer.
-<p><span style="color:white"><em> 	Θ(n) </em></span>.</p>
+![insert-small](img/23tree-10.svg){: style="max-height: 200px;" }
 
-For example, the tree
+Since we have an overstuffed node, we need to split and push up:
 
-![Unbalanced BST](img/unbalanced-bst.png)
+![insert-small](img/23tree-10.svg){: style="max-height: 200px;" }
 
-is a binary search tree in which search proceeds in the same runtime as a linked
-list. We thus are forced to consider the *balance* of a binary search tree.
-Informally, a balanced tree has subtrees that are roughly equal in size and
-depth. Next lab, we will encounter specific algorithms for maintaining balance
-in a binary search tree. Until then, we will work under the possibly unwarranted
-assumption that we don't need to worry much about balance.
+When we create an overstuffed node that temporarily has 3 elements, it has 4
+children, since all nodes have 1 more child than element.
 
-One can [prove (optional to read, but an important fact to know)][prove],
-incidentally, that search in a BST of $$$$N$$$$ keys will
-require only about $$$$2 \ln N$$$$ comparisons (where $$$$\ln$$$$ is the "natural log"
-of $$$$N$$$$) if the keys are inserted in **random** order. Well-balanced trees are
-common, and degenerate trees are rare.
+![insert-small](img/23tree-11.svg){: style="max-height: 200px;" }
 
-[prove]: http://opendatastructures.org/versions/edition-0.1d/ods-java/node40.html
+When we reach the root node, we don't have a parent node to push up into.
+Instead, we push up the middle node (as usual), and create a new layer.
+This does not cause any of the leaves to be at different heights from the root.
+We're making a new root, and pushing down all leaves equally!
 
-### Insertion into a BST
+![insert-small](img/23tree-12.svg){: style="max-height: 250px;" }
 
-If we have 4 nodes in our binary search tree, there are actually 14 different
-BST's you could make. Correspondingly, there are typically a bunch of places in
-a BST that a key to be inserted might go, anywhere from the root down to a leaf.
-Given below are two trees; the tree on the right shows one possible way to
-insert the key 41 into the tree on the left.
+Wait, what happened to the 4 children from the split node -- why did they go
+*there*? Remember the binary search tree-like invariant. After we pull up
+5 and have 3 and 8 be split into separate children, we must maintain the
+ordering invariant. The subtree rooted at 4 could contain any elements "between
+3 and 5". To keep that true, we put 4's subtree in the new tree where it could
+still contain any elements between 3 and 5 -- to the left of 5, then to the right
+of 3.
 
-| ![t1](img/bst.png) |  ![t2](img/bst-and-41.png)  |
+#### Push-Up Insertion Summary
 
-However, to minimize restructuring of the tree and the creation of internal
-nodes, we choose in the following exercise to insert a new key only as a new
-*leaf*.
+Here's a summary of different cases you might encounter when performing
+push-up insertion. Each of these cases can be explained by upholding the
+binary search invariant.
 
-[USFCA put together a BST visualization][USFCA] interactive animation to help
-you visualize the BST insertion and deletion algorithms. Try inserting a key
-that ends up as a right child and another key that ends up as a left child. Add
-some more nodes to the tree, then delete some of them: a node with no children,
-a node with one child, and a node with two children.
+Note: the end results of the cases on the right side (push-up when parent is a 3-node) will require the parent to push-up and split again. 
 
-[USFCA]: https://www.cs.usfca.edu/~galles/visualization/BST.html
+![insert-summary](img/23-insert-summary.png){: style="max-height: 400px;" }
 
-Note that this animation deletes from the BST by swapping with the inorder
-*predecessor* rather than the inorder successor. Convince your peers that this is
-essentially equivalent.
+<cite>Diagram from Sedgewick's Algorithms, 4th ed.</cite>
 
-## Exercises: BST Implementation
+### Exercise: Growing a 2-3 Tree
 
-Now it's time to start writing code! As you go, don't forget to write JUnit
-tests.
+1.  Insert 10, 11, 12, and 13 in order into the final 2-3 tree above.
+    Then, compare your answer with someone else in your lab.
 
-Since binary search trees share many of the characteristics of regular binary
-trees, we can define the `BinarySearchTree` class using inheritance from a
-provided `BinaryTree` class.
+2.  Suppose the elements 1, 2, 3, 4, 5, 6, 7, 8, 9, and 10 are inserted sequentially
+    into an initially empty 2-3 tree. Which insertion causes the second split
+    to take place?
 
-### Exercise 1: Testing Utilities
+    Try to add these elements to an empty tree, and discuss your result with your
+    another person.
 
-As always, we will start by ensuring our ability to test our code. In BinaryTree.java, 
-you can find a `print()` method that serves as the foundation for BinaryTreeTest.java. Any test run
-right now will fail, because `printInorder()` has not been implemented.
+{% include alert.html content="
+If you want to check your work, consider using [this visualization tool][] from
+the University of San Francisco. Make sure to set the degree of the tree
+appropriately. They have a few more interesting visualizations on their site
+if you want to use as a resource at a later point.
 
-Implement both:
-``` java 
-/* Print the values in the tree in inorder. */
-public void printInorder() {
-```
-in `BinaryTree` and
-```java
-/* Prints the nodes of the BinaryTree in inorder. Used for your testing. */
-private void printInorder() {
-```
-in `BinaryTree.TreeNode` to allow for our tests to function. 
+To get the starting tree for (1), a sequence of insertions is
+3, 5, 7, 1, 9, 4, 8.
 
-### Binary Search Tree
+[this visualization tool]: https://www.cs.usfca.edu/~galles/visualization/BTree.html
+" %}
 
-The `BinarySearchTree` class is defined as follows:
+### Discuss: 2-3 Tree Balancing
 
-```java
-public class BinarySearchTree<T extends Comparable<T>> extends BinaryTree<T>
-```
+With the insertion procedure given above, why are 2-3 trees self-balancing?
+Can a leaf ever be further from the root than another? Are we guaranteed any runtimes for insertion or search?
+Discuss with someone in your lab or your TA.
 
-This class definition is a slightly more complicated use of generic types than
-you have seen before in lab. Previously, you saw things like `BinaryTree<T>`,
-which meant that the `BinaryTree` class had a generic type `T` that could be any
-class, interface, or abstract class that extends `Object`. In this case,
-`BinarySearchTree<T extends Comparable<T>>` means that the `BinarySearchTree`
-class has a generic type `T` that can be any class, interface, or abstract class
-that implements the `Comparable<T>` interface. In this case, `Comparable<T>` is
-used because the `Comparable` interface itself uses generic types (much like the
-`Iterable` and `Iterator` interfaces).
+## Left-Leaning Red-Black Trees
 
-Take a look through the `BinarySearchTree` and `BinaryTree` classes, and
-familiarize yourself with the methods that are available to you.
+We saw that 2-3 trees are balanced, guaranteeing that a path from the root to
+any leaf is $$O(\log N)$$ in a tree with $$N$$ elements. However, 2-3 trees are notoriously difficult and
+cumbersome to code, with numerous corner cases for common operations. They are
+commonly used and have significant (out-of-scope) benefits, but they also
+have drawbacks.
 
-### Exercise 2: `contains`
+We turn our attention to a related data structure, the red-black tree (in fact,
+the tree behind Java's `TreeSet` and `TreeMap`). A **red-black tree** at its
+core is just a binary search tree, but there are a few additional invariants
+related to "coloring" each node red or black. This "coloring" creates a
+1-1 mapping between 2-3 trees and red-black trees! **In other words, every 2-3 tree
+corresponds to exactly one red-black tree, and vice-versa.**
 
-Now, we will implement the `contains` method. We will use the following method
-signature:
+The consequence is quite astounding: red-black trees maintain the balance of
+2-3 trees while inheriting all normal binary search tree operations (a red-black
+tree *is* a binary search tree after all) with additional housekeeping. These
+qualities, self-balancing combined with relative ease of binary search operations,
+is why Java's `TreeMap` and `TreeSet` are implemented as red-black trees!
 
-```java
-public boolean contains(T key)
-```
+We will concern ourselves with a specific subset of red-black trees:
+left-leaning red-black trees, or LLRB trees.
 
-which takes a `Comparable` object `T` as an argument and checks whether the tree
-contains it.
+### 2-3 Trees &harr; LLRB Trees
 
-Recall that `Comparable` objects provide an `int compareTo` method that returns:
+Notice that a 2-3 tree can have 1 or 2 elements per node, with 2 or 3 children
+respectively. We would like to use a standard binary tree to be able to
+represent a 2-3 tree. It is straightforward to represent nodes with 1 element --
+they are regular nodes, with one element and two children. However, how do we
+represent nodes with two elements?
 
-- a negative integer if this object is less than the argument,
-- a positive integer if this object is greater than the argument, and
-- 0 if the two objects have equal values.
+We split the two elements into two nodes, and *color* them to indicate they are connected:
 
-Depending on whether you take a recursive or iterative approach, you may need to
-define a helper method. If you're stuck, take a look at the pseudocode that we
-described above!
+![](img/RBtree-1.svg){: style="max-height: 350px;" }
 
-### Exercise 3: `add`
+Note the location of the child subtrees. Here, we've colored `a`
+**red**{: style="color: red;"}, to indicate that it is in the same 2-3 tree
+node as its parent. We color all other nodes **black** to indicate that
+they are in a different 2-3 tree node from their parent. Note that you may also
+see LLRB trees represented using red links between connected nodes (rather than the
+child node being colored red). 
 
-We will now define an `add` method. We will use the following method signature:
+In this way, we also see that each 2-3 tree node corresponds to exactly
+one black node (and vice-versa).
 
-```java
-public void add(T key)
-```
+Note that `a` could have been on top, with `b` being a child on the
+right. This is also technically valid! However, to simplify the cases we
+later consider, we always put the single red child on the left. This is what
+makes these trees *left-leaning*.
 
-which takes a `Comparable` object as an argument and adds it to the tree *if and
-only if it isn't already there*.  The trees you create with the `add` method
-will thus not contain any duplicate elements.
+Here's a full 2-3 tree translated into the corresponding LLRB tree:
 
-*Hint*: You should be able to do this in a similar way to the `contains` method.
-When you're done with both, you can write a JUnit test suite to test your code.
-Don't forget edge cases!
+![](img/23tree-RBtree.svg){: style="max-height: 350px;" }
 
-### Optional Exercise 4: Optional Constructor
+### LLRB Tree Properties
 
-For additional practice constructing Binary Trees, implement
-```java
-public BinaryTree(ArrayList<T> pre,  ArrayList<T> in)
-  ```
-which constructs a Binary Tree given the preorder traversal (pre) and inorder
-traversal (in) provided as ArrayList arguments in `BinaryTree.java`. We recommend a recursive approach.
+We can now specify some properties of LLRB trees that allow us to define
+them independently. In particular, we use the one-to-one mapping between
+valid LLRB trees and 2-3 trees to derive some of these properties.
 
-## Discussion: BST Deletion
+The root node must be colored black.
+: Our interpretation of red nodes is that they are in the same 2-3 node as
+  their parent. The root node has no parent, so it cannot be red.
 
-We've covered `add`ing to a BST and `contains` in a BST. But how about deletion?
+If a node has one red child, it must be on the left.
+: This makes the tree left-leaning.
 
-When inserting a key, we were allowed to choose where in the tree it should go.
-The deletion operation doesn't appear to allow us that flexibility; deletion of
-some keys will be easy (leaves or keys with only one child), but our deletion
-method has to be able to delete *any* key from the tree.
+No node can have two red children.
+: If a node has two red children, then both children are in the same 2-3 node
+  as the parent. This means that the corresponding 2-3 node contains 3 elements,
+  which is not allowed.
 
-Here are a bunch of binary search trees that might result from deleting the root
-of the tree
+No red node can have a red parent; or every red node's parent is black.
+: If a red node has a red parent, then both the red child and red parent are in
+  the same 2-3 node as the red parent's parent. This means that the
+  corresponding 2-3 node contains 3 elements, which is not allowed.
 
-![BST](img/small-bst.png)
+In a balanced LLRB tree, every path from the root to null goes through the same number of black nodes.
+: In a balanced 2-3 tree, every leaf node is the same distance from the root.
+  We also know that every black node in an LLRB tree corresponds to exactly one
+  node in the equivalent 2-3 tree. Therefore, every leaf node in an LLRB tree
+  is the same number of black nodes from the root, just as every leaf node
+  in a 2-3 tree is the same distance from the root. This stricter invariant of Root-to-Null
+  (rather than just saying Root-to-Leaf) avoids invalid trees like below: 
 
-Which ones do you think are reasonable?
+  ![insert-summary](img/root-to-null.png){: style="max-height: 200px;" }
 
-| ![Tree](img/bst-delete-1.png) | ![Tree](img/bst-delete-2.png) | ![Tree](img/bst-delete-3.png) | ![Tree](img/bst-delete-4.png) |
-| ![Tree](img/bst-delete-5.png) | ![Tree](img/bst-delete-6.png) | ![Tree](img/bst-delete-7.png) | ![Tree](img/bst-delete-8.png) |
-| ![Tree](img/bst-delete-9.png) | ![Tree](img/bst-delete-10.png) | ![Tree](img/bst-delete-11.png) | ![Tree](img/bst-delete-12.png) |
+### Discussion: LLRB Tree Properties
 
-### A Good Way to Delete a Key
+Given the height of a 2-3 tree, what is the maximum height of the corresponding
+LLRB tree? Discuss with your someone in your lab.
 
-The following algorithm for deletion has the advantage of minimizing
-restructuring and unbalancing of the tree. The method returns the tree that
-results from the removal.
+Then, discuss which of the following binary search tree
+operations we can use on red-black trees without any modification.
 
-1. Find the node to be removed. We'll call it `remNode`. If it's a leaf, remove
-   it immediately by returning `null`. If it has only one child, remove it by
-   returning the other child node.
-2. Otherwise, remove the *inorder successor* of `remNode` OR remove the *inorder predecessor*, copy its `item` into
-   `remNode`, and return `remNode`.
+1. Insertion
+2. Deletion
+3. Search (is `k` in the tree?)
+4. Range Queries (return all items between `a` and `b`)
 
-What is an *inorder successor*?  It is the node that would appear **AFTER** the
-`remNode` if you were to do an inorder traversal of the tree.
+<details markdown="block">
+<summary markdown="block">
+**Answers (click to view):**
+</summary>
+The tallest LLRB tree that we can get from a 2-3 tree is by stacking 3-nodes,
+which contain a black node on top of a red node. The maximum height of the LLRB tree
+is therefore double the height of the corresponding 2-3 tree.
 
-An example is diagrammed below. The node to remove is the node containing 4. It
-has two children, so it's not an easy node to remove. We locate the node with
-4's inorder successor, namely 5. The node containing 5 has no children, so it's
-easy to delete. We copy the 5 into the node that formerly contained 4, and
-delete the node that originally contained 5.
+We can perform searches and range queries just like for binary search trees,
+since these don't modify the tree structure. However, we must change our
+insertion and deletion algorithms to uphold the invariants we just discussed.
+</details>
 
-| Before                              | After                                 |
-|-------------------------------------|---------------------------------------|
-| ![bst-pre-del](img/bst-pre-del.png) | ![bst-post-del](img/bst-post-del.png) |
+### Exercise: Constructor
 
-### Inorder Successor
+Read the code in `RedBlackTree.java` and `TwoThreeTree.java`.
 
-Suppose `node` is the root node in a BST with both a left child and a right
-child. Will `sucNode`, the inorder successor of `node`, ALWAYS have a null
-left child? Discuss this with your peers.
+Then, in `RedBlackTree.java`, implement `buildRedBlackTree` which returns the
+root node of the red-black tree which has a one-to-one mapping to the given
+2-3 tree. **For a 2-3 tree node with 2 elements in a node, you must create
+a left-leaning red child to pass the autograder tests.** 
 
-We've implemented a `delete` method for you already. Take a look at it and
-**understand how it works**.
+If you're stuck, refer to the example conversions shown above to help you write
+this method!
 
-## The Engineer's Tradeoff
+Some further tips for writing this method if you are stuck:
 
-Consider the problem of finding the `k`th largest key in a binary search tree.
-An obvious way of doing this is to use the inorder enumeration from this week's
-lab; we could call `nextElement` until we get the desired key. If `k` is near
-the number of keys `N` in the tree, however, that algorithm's running time is
-proportional to `N`. We'd like to do better. But how?
+- You should be filling in the two cases which correspond to a 2-node and a
+  3-node. For a 2-node, you should need to make one new `RBTreeNode` object.
+  For a 3-node, you should need to make two new `RBTreeNode` objects.
+- You should rely on the `getItemAt` and `getChildAt` methods from the `Node` class
+  which will return the appropriate items and children `Node`s.
+- Your code should involve the same number of recursive calls to `buildRedBlackTree`
+  as the number of children in the `Node` you are translating, e.g. two recursive
+  calls for a 2-node and three recursive nodes for a 3-node.
+- For both cases you should only make one of the `RBTreeNode`s be a black
+  node. For the cases where you have more than one `RBTreeNode` make sure that you are
+  returning the black node.
 
-If you haven't yet noticed, this class is all about tradeoffs---finding the
-delicate balance between two conflicting factors to perfectly suit a certain
-task. Choosing an appropriate data structure is one tradeoff: an algorithm that
-requires quick access to a certain piece of information would perform better on
-an array, but an algorithm that uses many insert and delete operations would
-probably do better in a linked list. Sacrificing a shorter running time in
-exchange for more memory space, or vice versa, is another.
+## Inserting Into LLRB Trees
 
-For this problem, we can reduce the runtime of the `k`th largest key by storing
-in each node the size of the tree rooted at that node. Can you design an
-algorithm using this idea that runs in time proportional to `d`, where `d` is
-the depth of the tree?
+{% include alert.html type="info" content="
+To gain a deeper understanding of the operations below and why they work, check out the [lecture slides](https://docs.google.com/presentation/d/1cLtmQeQhTuk6p41t57WasBGv1_RDTsbIMkEACrAHtPY/edit#slide=id.g13c3869d32c_0_1884) starting at slide 83.
+" %}
 
+Insertion into LLRB trees starts off with the regular binary search tree
+insertion algorithm, where we search to find the appropriate leaf location. Then we insert the element as a red node (recall in a 2-3 tree we always insert an element by stuffing it into an existing node).
+Placing the node can break the red-black tree
+invariants, so we need additional operations that can "restore" the red-black
+tree properties. We know that there is a one-to-one correspondence of valid
+red-black trees to 2-3 trees. Let's use this correspondence to try to derive
+these operations.
+
+Throughout:
+
+- Our newly added node will have the element `x`. We will use letters, such as `a`
+  and `b` to represent the other relevant values. They are ordered among each
+  other (`a < b`), but assume that `x`'s value is whatever it needs to be to be
+  in the right location.
+- Our newly added node will be red. When we add to a 2-3 tree, we always stuff
+  leaf before splitting -- therefore, our new node is in the same 2-3 node as
+  its parent LLRB node.
+
+### Case: Only Child of a Black Node
+
+Since a black node corresponds to a 2-node with 1 element, there are two possible
+places that the new red node could end up, depending on its value:
+
+![](img/RBtree-2.svg){: style="max-height: 200px;" }
+
+This case is fine, since the red child is on the left. No further action is
+needed.
+
+However, what if `x > a`? Then,
+
+![](img/RBtree-3.svg){: style="max-height: 200px;" }
+
+This is *violation* of the invariant that a single red child is on the left.
+It seems like we want these nodes to be "turned" the other way, with `x` as
+the parent and `a` as the red child -- moving `a` and `x` to the left.
+To do this, we use the operation "**rotate left**" on the parent node `a`.
+
+![](img/RBtree-4.svg){: style="max-height: 300px;" }
+
+Here's a few things to notice about this "rotation":
+
+- The root of the subtree has changed from `a` to `b`.
+- `a` and `b` have moved to the "left".
+- The two nodes swap colors so that the new root is the same color as the old root.
+- The reorganized subtree still satisfies the binary search property.
+
+Applying the rotation to the violation above by rotating left on `a`, we get:
+
+![](img/RBtree-5.svg){: style="max-height: 200px;" }
+
+### Cases: Second Child of a Black Node or Child of a Red Node
+
+Here, we have three sub-cases for when the new element is added to a 2-3 tree leaf
+node that already contains two elements. This will cause a node split, which we
+will have to represent somehow.
+
+#### Case: Largest of Three
+
+In this case, `x` is the largest of the three values in the node, so it is
+placed as the right red child:
+
+![](img/RBtree-6.svg){: style="max-height: 250px;" }
+
+As there are 3 elements in the 2-3 node, we need to split it. `b` is pushed up,
+and `a` and `x` become their own nodes. Since `a` and `x` become their own
+nodes, we convert their colors to **black**. Additionally, since `b` may be
+pushed up to become a member of another node, we convert its color to
+**red**{: style="color: red;"}. This operation is called "**color flip**".
+
+Here, we apply the color flip operation on `b`; flipping its color and its
+childrens' colors.
+
+![](img/RBtree-7.svg){: style="max-height: 250px;" }
+
+We will return to this configuration later.
+
+#### Case: Smallest of Three
+
+In this case, `x` is the smallest of the three values in the node, so it is
+placed as the left red child of the existing red child:
+
+![](img/RBtree-8.svg){: style="max-height: 250px;" }
+
+Since this is imbalanced to the *left*, perhaps we can rotate *right*. Let's
+adjust our earlier "rotate left" operation to have the opposite
+"**rotate right**" operation.
+
+![](img/RBtree-9.svg){: style="max-height: 250px;" }
+
+Rotating right is the opposite of rotating left! It will give us back the
+original subtree if applied to the new root.
+
+In this case, we rotate right on `b`:
+
+![](img/RBtree-10.svg){: style="max-height: 250px;" }
+
+At this point, we notice that it's the same pattern as the previous case, so
+we apply a color flip to `a`.
+
+#### Case: Middle of Three
+
+In this case, `x` is the middle of the three values in the node, so it is
+placed as the right red child of the existing red child:
+
+![](img/RBtree-11.svg){: style="max-height: 250px;" }
+
+Rotating left on `a`, we get:
+
+![](img/RBtree-12.svg){: style="max-height: 250px;" }
+
+Here, we have the previous case again, so we know that we can rotate right on
+`b` and apply a color flip to the root, `x`.
+
+#### Upward Propagation
+
+Hold on -- each of these three cases ended up in a color flip. What if the
+subtree we modified was a *right subtree*, and the rest of the tree looked like
+this:
+
+![](img/RBtree-13.svg){: style="max-height: 250px;" }
+
+Just like how pushing up a element in a 2-3 tree may result in overstuffing
+the parent node, performing these transformations may *also* violate an LLRB
+invariant, giving us one of these three cases again. We resolve
+these cases until we either:
+
+- Do not have any broken invariants
+- Flip the root's color
+
+In the second case, we must remember to flip the root back to black. This is
+equivalent to forming a new layer in the 2-3 tree.
+
+### LLRB Insertion Summary
+
+We discussed three operations that we can use to "fix" the LLRB invariants
+after inserting a node.
+
+We have two rotations, that can be used to move a right child or left child
+up into their parent's position:
+
+![](img/RBtree-14.svg){: style="max-height: 250px;" }
+
+We also have the color flip operation:
+
+![](img/RBtree-7.svg){: style="max-height: 250px;" }
+
+## LLRB Tree Implementation
+
+### Exercise: Rotations
+
+Now we have seen that we can rotate the tree to balance it without violating the
+binary search tree invariants. Now, we will implement it ourselves!
+
+In `RedBlackTree.java`, implement `rotateRight` and `rotateLeft`. For your
+implementation, make the new root have the color of the old root, and color the
+old root red.
+
+*Hint*: The two operations are symmetric. Should the code significantly differ?
+If you find yourself stuck, take a look at the examples that are shown above!
+
+### Exercise: Color Flip
+
+Now we consider the color flip operation that is essential to LLRB tree
+implementation. Given a node, this operation simply flips the color of itself,
+and the left and right children. However simple it may look now, we will examine
+its consequences later on.
+
+Implement the `flipColors` method in `RedBlackTree.java`.
+
+### Exercise: `insert`
+
+Now, we will implement `insert` in `RedBlackTree.java`. We have provided you
+with most of the logic structure, so all you need to do is deal with normal
+binary search tree insertion and handle the "second child" case
+from the above section two. **Make sure you follow
+the steps from all the cases very carefully!** The root of the `RedBlackTree`
+should always be black.
+
+Use the helper methods that have already been provided for you in the skeleton
+files (`flipColors` and `isRed`) and your `rotateRight` and `rotateLeft`
+methods to simplify the code writing!
+
+If you're stuck, write a recursive helper method similar to how we've seen
+`insert` implemented in previous labs!
+
+- What should the return value be? (*Hint*: It's not `void`.)
+- What should the arguments be?
+
+In addition, think about the similarities between the cases presented above, and
+think about how you can integrate those similarities to simplify your code.
+Feel free to discuss all these points with other students in your lab and your TA.
+
+### Discussion: `insert` Runtime
+
+We have seen that even though LLRB trees guarantee that the tree will be almost
+balanced, the LLRB tree `insert` operation requires many rotations and color
+flips. Examine the procedure for `insert` and convince yourself
+that `insert` still takes $$O(\log N)$$ as in balanced binary search trees.
+
+*Hint:* How long is the path from root to the new leaf? For each node along the
+path, are additional operations limited to some constant number? What does that
+mean?
+
+<details markdown="block">
+<summary markdown="block">
+## (Optional) Other Balanced Trees
+</summary>
+
+Balanced search is a very important problem in computer science which has garnered
+many unique and diverse solutions. We have chose two common solutions to the
+problem to explore in depth. It is also useful to know about other alternatives
+but we will not expect you to understand how they work. Two other interesting
+solutions to this problem are presented below. 
+
+### AVL Trees
+{: .no_toc}
+
+**AVL trees** (named after their Russian inventors, Adelson-Velsky and
+Landis) are height-balanced binary search trees, in which information about tree
+height is stored in each node along with the item. Restructuring of an AVL tree
+after insertion is done via a familiar process of *rotation*, but without color
+changes.
+
+### Splay Trees
+{: .no_toc}
+
+Another type of self-balancing BST is called the **splay tree**. Like other
+self-balancing trees (AVL, red-black), a splay tree uses rotations to keep
+itself balanced. However, for a splay tree, the notion of what it means to be
+balanced is different. A splay tree doesn't care about differing heights of
+subtrees, so its shape is less constrained. All a splay tree cares about is that
+*recently accessed* nodes are near the top. Upon insertion or access of an item,
+the tree is adjusted so that item is at the top. Upon deletion, the item is
+first brought to the top and then deleted.
+
+{% include alert.html type="info" content="
+If you would like to do some more reading about either of these trees, their
+Wikipedia articles are a great place to start. Remember, these are both
+optional and therefore out of scope for the course.
+
+- [AVL Trees](https://en.wikipedia.org/wiki/AVL_tree)
+- [Splay Trees](https://en.wikipedia.org/wiki/Splay_tree)
+" %}
+</details>
 
 ## Deliverables
 
-Here's a quick recap of what you need to do to complete this lab!
-
-
-- Complete the following methods in `BinaryTree.java`:
-   - `height()`
-   - `isCompletelyBalanced()`
-   - `fibTree(int N)`
-- Complete the following methods in `BinarySearchTree.java`:
-    - `contains(T key)`
-    - `add(T key)`
-- Understand the `delete` method of the `BinarySearchTree`.
-
-Submit all of these to Gradescope.
-
+- Complete the following methods in `RedBlackTree.java`:
+    - `buildRedBlackTree`
+    - `flipColors`
+    - `rotateRight` and `rotateLeft`
+    - `insert`

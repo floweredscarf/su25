@@ -1,9 +1,12 @@
 ---
 layout: page
-title: "Lab 6: ADTs and Inheritance"
-tags: [Lab]
+title: >-
+  Lab 06: Inheritance
+has_children: true
+parent: Labs
+has_toc: false
+has_right_toc: true
 released: true
-searchable: true
 ---
 
 ## [FAQ](faq.md)

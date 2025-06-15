@@ -1,16 +1,21 @@
 ---
 layout: page
-title: "Lab 1: Java & Git"
-tags: [Lab, Java, Git]
+title: >-
+  Lab 01: Conditionals, Loops, and Arrays (Optional)
+nav: 1
+has_children: true
+parent: Labs
+has_toc: false
+has_right_toc: true
 released: true
-searchable: true
 ---
 
 ## [FAQ](faq.md)
 
 Each assignment will have an FAQ linked at the top. You can also access it by
 adding "/faq" to the end of the URL. The FAQ for Lab 1 is located
-[here](faq.md).
+[here](faq.md). 
+**The FAQ (frequently asked questions) is a list of compiled questions and errors that students often run into, so refer to this page first before reaching out to staff.**
 
 ## Learning Goals
 

@@ -1,9 +1,12 @@
 ---
 layout: page
-title: "FAQ - Lab 2: Conditionals, Loops, Arrays"
-categories: lab
+title: >-
+  FAQ
+parent: >-
+  Lab 02: Intro to Objects and Primitives
+grand_parent: Labs
+has_right_toc: true
 released: true
-searchable: true
 ---
 
 ### I am confused about the conceptual content covered in today's lab.

@@ -1,0 +1,199 @@
+{%- comment -%}
+  - This code renders one lecture box on the syllabus.
+  - See lectures.yml for how to feed information into this template.
+{%- endcomment -%}
+
+{%- comment -%}
+  If you don't want lecture boxes to alternate colors per week,
+  then remove class="{{ include.is_even }}" below.
+{%- endcomment -%}
+<td class="{{ include.is_even }} {{ include.classes | join ' ' }}" rowspan="{{ include.rowspan }}">
+
+{%- comment -%}
+  - Build filenames automatically from the lecture number.
+  - First pad lecture number (2-->02), then create a base filepath,
+    then create filenames (see lectures.yml for more on filenames).
+{%- endcomment -%}
+{%- assign filenumber = include.number | prepend: '00' | slice: -2, 2 -%}
+{%- assign slides_path = "/assets/lectures/lec" | append: filenumber | append: ".pdf" -%}
+
+{%- comment -%}
+  - Automatically check if files exist.
+  - This is commented out because it's slow, and CS 61B slides are on Google
+    Drive, not in the website repo, so it's also useless. ~peyrin Nov 2024
+{%- endcomment -%}
+{%- comment -%}
+{%- assign slides_exists = false -%}
+{%- for page in site.static_files -%}
+  {%- if page.path == slides_path -%}
+    {%- assign slides_exists = true -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- endcomment -%}
+
+{%- comment -%}
+  - Slightly hacky way to ensure slides links don't show when there's nonumber.
+  - Commented out (see note above). ~peyrin Nov 2024
+{%- endcomment -%}
+{%- comment -%}
+{%- if include.element.nonumber -%}
+  {%- assign slides_exists = false -%}
+{%- endif -%}
+{%- endcomment -%}
+
+{%- comment -%}
+  - TODO: ensure that we label optional lectures as optional.
+{%- endcomment -%}
+
+
+{%- capture title -%}
+  {%- if include.element.nonumber -%}
+    {{ include.element.title | markdownify }}
+  {%- elsif include.element.title -%}
+    {{ include.number }}. {{ include.element.title }}
+  {%- endif -%}
+{%- endcapture -%}
+{%- if include.element.slides != "" and include.element.slides != nil -%}
+  <a href="{{ include.element.slides }}" class="schedule-title">{{ title }}</a>
+{%- else -%}
+  <span class="schedule-title">{{ title }}</span>
+{%- endif -%}
+
+{%- assign links_array = "" | split: "/" -%}
+
+{%- capture video -%}
+  {%- if include.element.video != "" -%}
+    <a href="{{ include.element.video }}">Video</a>
+  {%- else -%}
+    <a href="{{ include.element.video }}" class="disabled">Video</a>
+  {%- endif -%}
+{%- endcapture -%}
+{%- if include.element.video != nil -%}
+  {% assign links_array = links_array | push: video %}
+{%- endif -%}
+
+{%- capture quiz -%}
+  {%- if include.element.quiz != "" -%}
+    <a href="{{ include.element.quiz }}">Pacing</a>
+  {%- else -%}
+    <a href="{{ include.element.quiz }}" class="disabled">Pacing</a>
+  {%- endif -%}
+{%- endcapture -%}
+{%- if include.element.quiz != nil -%}
+  {% assign links_array = links_array | push: quiz %}
+{%- endif -%}
+
+<!-- begin added -->
+{%- assign links_chapter_array = "" | split: "/" -%}
+{%- if include.element.readings != "" -%}
+    {%- for reading in include.element.readings -%}
+        {%- capture chapter -%}
+            <a href="{{ reading.link }}">{{ reading.title }}</a>{% unless forloop.last %}, {% endunless %}
+            <!-- <a href="{{ include.element2.reading }}">Reading</a> -->
+        {%- endcapture -%}
+        {% assign links_chapter_array = links_chapter_array | push: chapter %}
+    {%- endfor -%}
+{%- else -%}
+    <a href="{{ include.element.reading }}" class="disabled">Reading</a>
+{%- endif -%}
+<!-- end added -->
+
+{%- if links_array.size > 0 -%}
+<br>
+{%- endif -%}
+{%- for link in links_array -%}
+  {{ link }}
+  {%- unless links_chapter_array == "" %}{{}} / {{}}{% endunless -%}
+{%- endfor -%}
+
+<!-- begin added -->
+{%- if links_chapter_array.size > 0 -%}
+    <span> Textbook: </span>
+    {%- for link in links_chapter_array -%}
+    {{ link }}
+    <!-- {%- unless forloop.last %}{{}} / {{}}{% endunless -%} -->
+    {%- endfor -%}
+{%- endif -%}
+<!-- end added -->
+
+<br><br>
+
+<!-- copied code for second lecture -->
+{%- capture title -%}
+  {%- if include.element2.nonumber -%}
+    {{ include.element2.title | markdownify }}
+  {%- elsif include.element2.title -%}
+    {{ include.number2 }}. {{ include.element2.title }}
+  {%- endif -%}
+{%- endcapture -%}
+{%- if include.element2.slides != "" and include.element2.slides != nil -%}
+  <a href="{{ include.element2.slides }}" class="schedule-title">{{ title }}</a>
+{%- else -%}
+  <span class="schedule-title">{{ title }}</span>
+{%- endif -%}
+
+{%- assign links_array = "" | split: "/" -%}
+
+{%- capture video -%}
+  {%- if include.element2.video != "" -%}
+    <a href="{{ include.element2.video }}">Video</a>
+  {%- else -%}
+    <a href="{{ include.element2.video }}" class="disabled">Video</a>
+  {%- endif -%}
+{%- endcapture -%}
+{%- if include.element2.video != nil -%}
+  {% assign links_array = links_array | push: video %}
+{%- endif -%}
+
+{%- capture quiz -%}
+  {%- if include.element2.quiz != "" -%}
+    <a href="{{ include.element2.quiz }}">Pacing</a>
+  {%- else -%}
+    <a href="{{ include.element2.quiz }}" class="disabled">Pacing</a>
+  {%- endif -%}
+{%- endcapture -%}
+{%- if include.element2.quiz != nil -%}
+  {% assign links_array = links_array | push: quiz %}
+{%- endif -%}
+
+<!-- begin added -->
+{%- assign links_chapter_array = "" | split: "/" -%}
+{%- if include.element2.readings != "" -%}
+    {%- for reading in include.element2.readings -%}
+        {%- capture chapter -%}
+            <a href="{{ reading.link }}">{{ reading.title }}</a>{% unless forloop.last %}, {% endunless %}
+            <!-- <a href="{{ include.element2.reading }}">Reading</a> -->
+        {%- endcapture -%}
+        {% assign links_chapter_array = links_chapter_array | push: chapter %}
+    {%- endfor -%}
+{%- else -%}
+    <a href="{{ include.element2.reading }}" class="disabled">Reading</a>
+{%- endif -%}
+<!-- end added -->
+
+{%- if links_array.size > 0 -%}
+<br>
+{%- endif -%}
+{%- for link in links_array -%}
+  {{ link }}
+  {%- unless links_chapter_array == "" %}{{}} / {{}}{% endunless -%}
+{%- endfor -%}
+
+<!-- begin added -->
+{%- if links_chapter_array.size > 0 -%}
+    <span> Textbook: </span>
+    {%- for link in links_chapter_array -%}
+    {{ link }}
+    <!-- {%- unless forloop.last %}{{}} / {{}}{% endunless -%} -->
+    {%- endfor -%}
+{%- endif -%}
+<!-- end added -->
+
+{%- comment -%}
+  - In case we want to display anything extra (e.g. extra link) in the box.
+{%- endcomment -%}
+{%- if include.element.extra -%}
+<br>
+{{ include.element.extra | markdownify }}
+{%- endif -%}
+</td>

@@ -1,9 +1,12 @@
 ---
 layout: page
-title: "FAQ - Lab 16: BYOW Intro"
-categories: lab
+title: >-
+  FAQ
+parent: >-
+  Lab 16: Shortest Path Trees
+grand_parent: Labs
+has_right_toc: true
 released: true
-searchable: true
 ---
 
-### Nothing yet!
+### Nothing at the moment!

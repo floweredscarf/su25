@@ -1,14 +1,14 @@
 ---
 layout: page
-title: "FAQ - Lab 12: Balanced Search Trees"
-categories: lab
+title: >-
+  FAQ
+parent: >-
+  Lab 12: Hashing
+grand_parent: Labs
+has_right_toc: true
 released: true
-searchable: true
 ---
 
-### Why does the root of an LLRB tree always need to be black?
+### I'm getting an error with the size of the underlying array.
 
-Check out the [LLRB Properties](index.md#llrb-tree-properties) section in the
-spec. The root node could technically be colored red and considered to be a
-special case, but for consistency with the other nodes and LLRB tree
-properties, we choose to require that it is colored black.
+Change the size of the underlying array to 16, instead of 26.

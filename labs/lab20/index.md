@@ -1,15 +1,18 @@
 ---
 layout: page
-title: "Lab 20: Comparison-Based Sorts"
-tags: [Lab, Sorting, Comparison]
+title: >-
+  Lab 20: Counting Sorts
+has_children: true
+parent: Labs
+has_toc: false
+has_right_toc: true
 released: true
-searchable: true
 ---
 
 ## [FAQ](faq.md)
 
 Each assignment will have an FAQ linked at the top. You can also access it by
-adding "/faq" to the end of the URL. The FAQ for Lab 20 is located
+adding "/faq" to the end of the URL. The FAQ for lab 21 is located
 [here](faq.md).
 
 
@@ -17,538 +20,464 @@ adding "/faq" to the end of the URL. The FAQ for Lab 20 is located
 
 As usual, pull the files from the skeleton and make a new IntelliJ project.
 
-In today's lab, we'll be discussing **sorting**, algorithms for rearranging elements
-in a collection to be in a specific order. There are many problems you can more easily solve with a sorted collection, including performing binary search in $$O(\log N)$$ time,
-efficiently identifying adjacent pairs within a list, finding the $$k^{th}$$
-largest element, and so forth.
+For demos of the algorithms discussed in this lab, look [here](https://inst.eecs.berkeley.edu//~cs61b/fa17/materials/demos/)
 
-There are several kinds of sorting algorithms, each of which is appropriate for
-different situations. At the highest level, we will distinguish between two
-types of sorting algorithms:
+This lab is very reading-heavy, with fairly short coding sections. You should 
+try to fully understand each section before moving on. If you have any confusion, 
+clarify with your TA!
 
-- **Comparison-based sorts**, which rely on making pairwise comparisons between
-  elements.
-- **Counting-based sorts**, which group elements based on their individual
-  digits before sorting and combining each group. Counting sorts do not need to
-  compare individual elements to each other.
+## Average-Case Runtimes
 
-In this lab and the following lab, we will discuss several **comparison-based sorts** including
-*insertion sort*, *selection sort*, *heap sort*, *merge sort* and *quick sort*. Why all the
-different sorts? Each sort has a different set of advantages and disadvantages:
-under certain conditions, one sort may be faster than the other, or one sort may
-take less memory than the other, and so forth. When working with large datasets
-(or even medium and small datasets), choosing the right sorting algorithm can
-make a big difference. Along the way, we'll develop an intuition for how each
-sort works by exploring examples and writing our own implementations of each
-sort.
+Before we talk about the topics of today's lab, let's talk about insertion sort
+and quicksort's runtime in the "average" case.
 
-[Here](https://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html) is a nice
-visualizer for some of the sorts we are going to cover today and tomorrow. 
+<details markdown="block">
+  <summary markdown="block">
+## Runtime Summaries (Optional, but HIGHLY Suggested)
+  </summary>
 
-## Order and Stability
+### Insertion Sort
+{: .no_toc}
+Let's consider first the case of insertion sort, and define the idea of an
+*inversion*. An inversion is a pair of elements $$j$$ and $$k$$ such that $$j$$
+is less than $$k$$ but $$j$$ comes after $$k$$ in the input array. That is,
+$$j$$ and $$k$$ are out of order.
 
-To put elements in order implies that we can enforce an ordering between any two
-elements. Given any two elements in a list, according to **total order**, we
-should be able to decide which of the two elements is *larger* or *smaller* than
-the other.
+This means that the maximum number of inversions in an array is bounded by the
+number of pairs, and is $$\frac{N(N - 1)}{2}$$.
 
-However, it's also possible that neither element is necessarily larger or
-smaller than the other. For instance, if we wish to determine the ordering
-between two strings, `["sorting", "example"]`, and we want to order by the
-*length of the string*, it's not clear which one should come first because both
-strings are of the same length 7.
+For every inversion, insertion sort needs to make one swap. Convince yourself
+that this is true with an example: in the array `[1, 3, 4, 2]`, there are two
+inversions, `(3, 2)` and `(4, 2)`, and the key 2 needs to be swapped backward
+twice to be in place. Thus the runtime of insertion sort is $$\Theta(N + k)$$,
+where $$k$$ is the number of inversions. Hence, if $$k$$ is small, linear, or
+even linearithmic, insertion sort runs quickly (just as fast as, or even faster
+than, merge sort and quicksort).
 
-In this case, we can defer to the notion of **stability**: if a sort is stable,
-then it will preserve the relative orderings between elements in the list. In
-the above example then, the resultant array will be `["sorting", "example"]` in
-a *stable sort* rather than `["example", "sorting"]` as is possible in an
-*unstable sort*. Remember that, according to our total order by the *length of the strings*, the second list is still considered correctly sorted even though
-the relative order of equivalent elements is not preserved.
+How many inversions are in an average array? Every pair of numbers has an equal
+chance of being either inverted or not inverted, so the number of inversions is
+uniformly distributed between 0 and $$\frac{N(N - 1)}{2}$$; thus the expected
+(average) number of inversions is precisely the middle, $$\frac{N(N - 1)}{4}$$.
+This value is in $$\Theta(N^2)$$, so insertion sort's average case runtime is
+$$\Theta(N^2)$$.
 
-What is the benefit of stable sorting? It allows us to **sort values based off multiple attributes.** For example, we could stably sort a library catalog by
-alphabetical order, then by genre, author, etc. Without stable sorting, we are not guaranteed that the relative ordering of the previous sorts
-would persist so it is possible that the catalog would only be sorted by our
-last sort.
+### Quicksort
+{: .no_toc}
 
-Consider the following example where we sort a list of animals by alphabetical
-order and then length of string.
+The average case runtime of quicksort depends on the pivot chosen. Recall that
+in the best case, the pivot chosen is the median, meaning 50% of the elements
+are on either side of the pivot after partitioning.
 
-Original collection:
+The worst possible pivot is the smallest or largest element of the array,
+meaning 0% or 100% of the elements are on either side of the pivot after
+partitioning.
 
-    cow
-    giraffe
-    octopus
-    cheetah
-    bat
-    ant
+Assuming the choice of pivot is uniformly random, the split obtained is uniformly
+random between 50/50 and 0/100. That means in the average case, we expect a
+split of 25/75. This gives a recursion tree of height $$\log_\frac{4}{3}(N)$$
+where each level does $$N$$ work. Then quicksort still takes $$O(N \log N)$$
+time in the average case.
 
-First, sort by alphabetical order:
+How often does the bad-pivot case come up if we pick pivots uniformly at random?
+If we consider half of the array as bad pivots, as the array gets longer, the
+probability of picking a bad pivot for every recursive call to quicksort
+exponentially decreases.
 
-    ant
-    bat
-    cheetah
-    cow
-    giraffe
-    octopus
+For an array of length 30, the probability of picking all bad pivots is
+$$\frac{1}{2}^{30} = 9.3 \cdot 10^{-10}$$, which is approximately the same as
+winning the Powerball: $$3.3 \cdot 10^{-9}$$.
 
-Second, **stable** sort by length of string:
+For an array of length 100, the probability of picking all bad pivots,
+$$7.8 \cdot 10^{-31}$$, is so low that if we ran quicksort every second for 100
+billion years, we'd still have a significantly better chance of trying to win the
+lottery in one ticket.
 
-    ant
-    bat
-    cow
-    cheetah
-    giraffe
-    octopus
-
-After the two sort calls on the same list, now the collection is sorted by length and elements with the same length are in
-alphabetical order with each other. If our sorting algorithm was not stable,
-then we would potentially lose the alphabetical information we achieved in the
-previous sort.
-
-## Space Complexity
-
-Thus far, in this class, we've mostly talked about time complexity. Similarly to how we can do asymptotic analysis for runtime, we can also analyze how much *space* (i.e. memory) a given algorithm uses. For sorting algorithms, one common trait we look for is if the algorithm is **in-place**.
-
-Any sorting algorithm that takes in an input of size N is going to have to work with some amount of memory proportional to N to store the size of the input itself. An in-place algorithm is one that doesn't use a significant amount of *additional* memory. In this class, this means that the algorithm must use a constant amount of additional memory (for example, a few variables to keep track of your current index or something). Another way to think about it is if we can do the entire algorithm within the original given list, without creating an additional data structure. All the algorithms we discuss today are in-place and do not need to create another data structure. 
-
-Note that the definition of in-place can vary–though in our class we say only a constant amount of space counts, some measures say using a logarithmic amount is okay. If you see other articles online, just be wary!
-
-## Discussion: Sorting by Hand
-
-With a partner, discuss how you would sort a hand of 13 playing cards if you
-are dealt the cards one-by-one. Your hand should end up sorted first by suit,
-and then by rank within each suit.
-
-Then discuss how you would sort a pile of 300 CS 61BL exams by student ID. If
-it's different than your card-sorting algorithm of the previous step, explain
-why.
-
-Afterwards, discuss with a partner and roughly describe an algorithm to formalize your sort.
-Can you tell if one is faster than the other? How so?
-
-## Insertion Sort
-
-The first comparison-based sort we'll learn is called an *insertion sort*. The
-basic idea for insertion sort can be formally summed up by this pseudocode: 
-
-    for each element in the collection:
-        while the previous element is smaller than the element:
-            swap the two elements
-
-You might have intuitively come up with insertion sort when we asked you how to sort cards. This is like when you sort cards by continually putting the next card in the right spot in a group of sorted cards that you're holding.
-
-Note that insertion sort is stable. We never swap elements if they are equal so
-the relative order of equal elements is preserved.
-
-Now that you've read the above explanation, we recommend watching this [video](https://youtu.be/JtS5yGftYZ8) to solidify your understanding.
-
-### Discussion: Runtime
-
-For the following questions, discuss with your peers and verify your
-answers.
-
-Assume we have an array of $$N$$ integers. What would the array have to look
-like before we ran insertion sort that would make insertion sort run the
-fastest, i.e. minimizing the number of steps needed?
-
-<details><summary> Click to reveal answer! </summary>
-Sorted List
+Of course, there's the chance you pick something in between, and the analysis
+can get far more complicated, especially with variants of quicksort. For
+practical purposes, in this course, we treat quicksort like it's in $$O(N \log N)$$.
+For a more in-depth treatment, sign up for CS174!
 </details>
 
-What is the runtime of running insertion sort on this array?
 
-<details><summary> Click to reveal answer! </summary>
-Theta(N)
-</details>
+## A Sorting Lower Bound
 
-What type of initial ordering of a list would maximize the number of comparisons and result in the slowest runtime?
+Is it possible to do better than $$O(N \log N)$$ in the worst case for these
+comparison-based sorts?
 
-<details><summary> Click to reveal answer! </summary>
-Reverse Sorted Array
-</details>
+Suppose we have a scrambled array of $$N$$ numbers, with each number from $$1$$
+to $$N$$ occurring once. How many possible orders can the numbers be in?
 
-What is the runtime of running insertion sort on the type of array you identified above?
+The answer is $$N!$$, where $$N! = 1 * 2 * 3 * \dots * (N - 2) * (N - 1) * N$$.
+Here's why: the first number in the array can be anything from $$1$$ to $$N$$,
+yielding $$N$$ possibilities. Once the first number is chosen, the second number
+can be any of the remaining $$N - 1$$ numbers, so there are $$N(N - 1)$$
+possible choices of the first two numbers. The third number can be any of the
+remaining $$N - 2$$ numbers, yielding $$N * (N - 1) * (N - 2)$$ possibilities
+for the first three numbers. We can continue this reasoning to get a total of
+$$N!$$ arrangements of the numbers $$1$$ to $$N$$.
 
-<details><summary> Click to reveal answer! </summary>
-Theta(N^2)
-</details>
+Each different order is called a *permutation* of the numbers, and there are
+$$N!$$ possible permutations. You will learn much more about permutations in CS70.
 
-### Non-Coding Exercise: `InsertionSort`
+Observe that if $$N$$ > 0,
 
-Read the solution `sort()` in `InsertionSort.java` and understand the provided helper methods.
+$$N! = 1 * 2 * \dots * (N - 1) * N \leq N * N * N * \dots * N * N * N = N^N$$
 
-## Selection Sort
+and (supposing $$N$$ is even)
 
-Selection sort on a collection of $$N$$ elements can be described by the
-following pseudocode:
+$$N! = 1 * 2 * \dots * (N - 1) * N \geq \frac{N}{2} * (\frac{N}{2} + 1) * \dots * (N - 1) * N \geq \frac{N}{2}^{\frac{N}{2}}$$
 
-    for each element in the collection:
-        find the smallest remaining element, E, in the *unsorted* part of the array
-        remove E and add E to the end of the *sorted* part of the array
-        repeat unsorted collection's original length number of times (or repeat until unsorted collection has no more elements)
+so
 
+$$\frac{N}{2}^{\frac{N}{2}} \leq N! \leq N^N$$
 
-In selection sort we swap the minimum element in the unsorted
-collection with the element at the beginning of the unsorted collection. This can
-rearrange the relative ordering of equal elements. Thus, selection sort is
-unstable.
+Now let's look at the logarithms of both these values:
 
-After reading the above, we recommend watching this [video](https://youtu.be/yZtvSYeTQi4) on selection sort!
+$$\log(\frac{N}{2}^{\frac{N}{2}}) = \frac{N}{2} \log (\frac{N}{2})$$
 
+$$\log (N^N) = N \log N$$
 
-### Disussion: Runtime
+Both of these values are in $$\Theta(N \log N)$$. Hence, $$\log(N!)$$ is also in
+$$\Theta(N \log N)$$.
 
-Now, let's determine the asymptotic runtime of selection sort. One may observe
-that, in the first iteration of the loop, we will look through all $$N$$
-elements of the array to find the minimum element. On the next iteration, we
-will look through $$N - 1$$ elements to find the minimum. On the next, we'll
-look through  $$N - 2$$ elements, and so on.  Thus, the total amount of work
-will be the $$N + (N - 1) + ... + 1$$, no matter what the ordering of elements
-in the array or linked list prior to sorting.
+A *comparison-based sort* is one in which all decisions are based on comparing
+keys (generally done by "if" statements). All actions taken by the sorting
+algorithm are based on the results of a sequence of true/false questions. All
+of the sorting algorithms we have studied so far are comparison-based.
 
-Hence, we have an $$\Theta(N^2)$$ algorithm, equivalent to insertion sort's
-normal case. But notice that selection sort *doesn't* have a better case, while
-insertion sort does.
+Suppose that two computers run the *same* sorting algorithm at the same time on
+two *different* inputs. Suppose that every time one computer executes an "if"
+statement and finds it true, the other computer executes the same "if"
+statement and also finds it true; likewise, when one computer executes an "if"
+and finds it false, so does the other. Then both computers perform exactly the
+same data movements (e.g. swapping the numbers at indices i and j) in exactly
+the same order, so they both permute their inputs in *exactly* the same way.
 
-### Non-Coding Exercise: `SelectionSort`
+A correct sorting algorithm must generate a *different* sequence of true/false
+answers for each different permutation of $$1$$ to $$N$$, because it takes a
+different sequence of data movements to sort each permutation. There are $$N!$$
+different permutations, thus $$N!$$ different sequences of true/false answers.
 
-Read the solution to `sort()` and understand the helper methods in `SelectionSort.java`.
+If a sorting algorithm asks $$d$$ true/false questions, it generates less than
+or equal to $$2^d$$ different sequences of true/false answers. If it correctly
+sorts every permutation of $$1$$ to $$N$$, then $$N! \leq 2^d$$, so $$\log_2(N!) \leq d$$, 
+and $$d$$ is in $$\Omega(N \log N)$$. The algorithm spends
+$$\Omega(d)$$ time asking these $$d$$ questions. Hence,
 
-## HeapSort
+**EVERY comparison-based sorting algorithm takes $$\Omega(N \log N)$$ worst-case
+time.**
 
-Recall the basic structure for selection sort
+If we haven't convinced you of this fact, watch [this](https://www.youtube.com/watch?v=ByjmA0x_D2A)
+video from Hug on the amazing game "puppy cat dog".
 
-    for each element in the collection:
-        find the smallest remaining element, E, in the unsorted collection
-        remove E and add E to the end of the sorted collection
+This is an amazing claim, because it doesn't just analyze one algorithm. It
+says that of the thousands of comparison-based sorting algorithms that haven't
+even been invented yet, not one of them has any hope of beating $$O(N \log N)$$
+time for all inputs of length $$N$$.
 
-Adding something to the end of a sorted array or linked list can be done in
-constant time. What hurt our runtime was finding the smallest element in the
-collection, which always took linear time in an array.
+In the worst case, a comparison-based sort (with 2-way decisions) must take at
+least $$\Omega(N \log N)$$ time. But what if instead of making a 2-way
+true/false decision, we make a k-way decision?
 
-Is there a data structure we can use that allows us to find and remove the
-smallest element quickly? A heap will! 
+## A Linear Time Sort
 
-We'll modify our approach to make it better suited for a heap by removing the 
-largest element and placing it at the end of the array. Here's the pseudocode for 
-HeapSort:
-   
-    construct a max heap from the given collection by bubbling down every
-    element from the end of the collection 
-    while there are elements remaining in the heap (unsorted part of the collection)
-        swap the root of the heap with the last element
-        bubble down the new root till the end of the heap
+Before diving in, we recommend **watching [this](https://youtu.be/tWZhdFzVqXY) 
+video** on LSD sort made by a past summer's instructor and counting sort to 
+introduce the ideas in the following sections.
 
-HeapSort is not stable because the heap operations (recall `bubbleUp` and
-`bubbleDown`) can change the relative order of equal elements.
+Suppose we have an array of a million `String`s, but we happen to know that
+there are only three different varieties of `String`s in it: "cat", "dog", and
+"person". We want to sort this array to put all the cats first, then all the
+dogs, then the people. How would we do it? We could use merge sort or quicksort
+and get a runtime proportional to $$N \log N$$, where $$N$$ is roughly one
+million, but can we do better?
 
-Once again, wrap up learning about HeapSort with this helpful [video](https://youtu.be/WuuQqsDftGU).
+We can propose an algorithm called **counting sort**. For the above example, it
+works like this:
 
-### Disussion: Runtime
+1. First, let's create an integer array of size three called the `counts` array.
+   This array will count the total number of each `String`, where "cat" will
+   correspond to `counts[0]`, "dog" will correspond to `counts[1]`, and "person"
+   will correspond to `counts[2]`.
 
-Now, let's determine the runtime of heap sort. Removal of the largest element from a
-heap of $$N$$ elements can be done in time proportional to $$\log N$$, allowing
-us to sort our elements in $$O(N \log N)$$ time. 
-We can also build a heap in $$O(N \log N)$$ time by calling bubble down on every element. 
-This step is only done once, so it doesn't make our overall runtime worse than $$O(N \log N)$$
-that we previously established. So, once the heap is created, sorting can be
-done in $$O(N \log N)$$.
+2. Then, let's iterate through the input array and update the `counts` array.
+   Every time you find "cat", "dog", or "person", increment `counts[0]`,
+   `counts[1]`, and `counts[2]` by 1 respectively. As an example, the result
+   could be this: ![counts-array](img/counts-array.jpg)
 
-<details><summary> Out of scope note:</summary>
-The tighter runtime for building the heap is actually O(N) but it doesn't affect the 
-overall runtime. The actual calculation for the run time of heap sort is complicated and out
-of scope for this class. You can take a look at this <u><a href="https://stackoverflow.com/a/18742428">stackoverflow answer</a></u> for more a formal calculation of this runtime.
-</details>
+3. Next, let's create a new `String` array called `sorted` that will eventually
+   be your sorted array. ![sorted-array](img/sorted-array.jpg)
 
-### Exercise: `HeapSort`
+4. Now, based on our `counts` array, can we tell where the first "dog" would
+   go in the new array? How about the first "person"? To do this, we should
+   create a new array called `starts` that holds this information. We can get
+   this by scanning through the counts array and finding the total number of
+   items to the left of index `i`. For our example, the result is:
+   ![starts-array](img/starts-array.jpg)
 
-Complete `sort()` and suggested helper methods in `HeapSort.java`. The heap in this lab is rooted at index 0 instead of 1 as we're using it to sort through a pre-existing array. 
-We've provided the appropriate `getLeftChild` and `getRightChild` methods as part of the skeleton, so you don't have to worry about this in your implementation. 
+5. Now iterate through all of our `String`s, and put them into the right spot.
+   When we find the first "cat", it goes in `sorted[starts[0]]`. When we find
+   the first "dog", it goes in `sorted[starts[1]]`. What about when we find the
+   second "dog"? It should go in `sorted[starts[1]+1]`! Or, an alternative: we
+   can just increment `starts[1]` every time we put a "dog". Then, the next
+   "dog" will always go in `sorted[starts[1]]`.
 
+Here's what everything would look like after completing the algorithm. Notice
+that the values of `starts` have been incremented along the way.
 
-## New Idea: "Divide and Conquer"
+![done-array](img/done-array.jpg)
 
-The first few sorting algorithms we've previously introduced work by iterating through each
-item in the collection one-by-one. With insertion sort and selection sort, both
-maintain a "sorted section" and an "unsorted section" and gradually sort the
-entire collection by moving elements over from the unsorted section into the
-sorted section. Another approach to sorting is by way of *divide and conquer*.
-Divide and conquer takes advantage of the fact that empty collections or
-one-element collections are already sorted. This essentially forms the base case
-for a recursive procedure that breaks the collection down into smaller pieces
-before merging adjacent pieces to form a completely sorted
-collection.
+This written explanation of counting sort may seem complicated, so it is highly recommended 
+that you take a look
+at this [counting sort visualization][] before you proceed, as it might make this algorithm more
+intuitive.
 
-The idea behind divide and conquer can be broken down into the following 3-step
-procedure.
+[counting sort visualization]: https://www.cs.usfca.edu/~galles/visualization/CountingSort.html
 
-1. Split the elements to be sorted into two collections.
-2. Sort each collection recursively.
-3. Combine the sorted collections.
+## Exercise: Counting Sort
 
-Compared to selection sort, which involves comparing every element with *every
-other element*, divide and conquer can reduce the number of unnecessary
-comparisons between elements by sorting or enforcing order on sub-ranges of the
-full collection. The runtime advantage of divide and conquer comes largely from
-the fact that merging already-sorted sequences is very fast.
+### Exercise 1: `countingSort`
 
-Two algorithms that apply this approach are *merge sort* and *quicksort*.
+Implement the `countingSort` method in `DistributionSorts.java`. Assume the only
+integers it will receive are 0, 1, 2, 3, 4, 5, 6, 7, 8, and 9.
 
-## Merge Sort
+Refer to the above steps if you're having trouble with this method!
 
-Merge sort works by executing the following procedure until the base case of an
-empty or one-element collection is reached.
+### Exercise 2: Runtime
 
-1. Split the collection to be sorted in half.
-2. Recursively call merge sort on each half.
-3. Merge the sorted half-lists.
+Inspect the counting sort method you just wrote. What is its runtime? Consider
+the following two variables:
 
-The reason merge sort is fast is because merging two lists that are already
-sorted takes linear time proportional to the sum of the lengths of the two
-lists. In addition, splitting the collection in half requires a single pass
-through the elements. The processing pattern is depicted in the diagram below.
+- `N`: the number of items in the array
+- `K`: the variety of possible items (in the code you wrote, `K` is the constant
+  10, but treat it as a variable for this question).
 
-![Merge Sort](img/mergesort.png)
+$$N, NK, N^2K, N + K, N^2 + K$$
 
-Each level in the diagram is a collection of processes that all together run in
-linear time. Since there are $$2 \log N$$ levels with each level doing work
-proportional to $$N$$, the total time is proportional to $$N \log N$$.
+Discuss with your partner, then highlight the next line for the answer:
+<p><span style="color:white"> N + K </span>.</p>
 
-To be specific, each level does work proportional to $$N$$ because of the merging process, 
-which happens in a zipper-like fashion. Given two sorted lists, `merge` should continually
-compare the first elements of both lists and interweave the elements into a singular sorted list.
-For example, given the lists [2, 6, 7] and [1, 4, 5, 8], `merge` compares the front of both lists (1 and 2). Because
-1 < 2, 1 is moved into the next open spot (in this case, the first position) of the overall sorted list. Note
-that 2 does not enter the overall list, because we now must effectively compare [2, 6, 7] with [4, 5, 8] and repeat the process
-until there are no more elements that need to be compared and merged.
+### Runtime: Counting Sort
 
-Merge sort is stable as long as we make sure when merging two halves together
-that we favor equal elements in the left half.
+Wow, look at that runtime! Does this mean counting sort is a strict improvement
+from quicksort? Not quite, because counting sort has two major weaknesses:
 
-Now, watch [this video](https://youtu.be/JJrAzmJcMh0) on `mergeSort` before attempting the exercise below!
+- It can only be used to sort *discrete* values. A set of values is discrete if each item
+is distinct from every other item.
+- It will fail if $$K$$ is too large, because creating the intermediate `counts`
+  array (of size $$K$$) will be too slow.
 
-## Exercise: `mergeSort`
+The latter point turns out to be a fatal weakness for counting sort. The range
+of all possible integers in Java is just too large for counting sort to be
+practical in general circumstances.
 
-To test your understanding of merge sort, fill out the `sort` method in
-`MergeSort.java`. Be sure to take advantage of the helper `merge` method!
+Suddenly, counting sort seems completely useless. However, with some
+modifications that we'll see in a little bit, we can come up with a pretty good
+sorting algorithm!
 
-This method should be non-destructive, so the original `int[] arr` should not be
-modified.
+## Radix Sort
 
-## Quicksort
+Aside from counting sort, all the sorting methods we've seen so far are
+comparison-based, that is, they use comparisons to determine whether two
+elements are out of order. We also saw the proof that any comparison-based sort
+needs *at least* $$\Omega(N \log N)$$ comparisons to sort $$N$$ elements in the
+worst case. However, there are sorting methods that don't depend on comparisons
+that allow sorting of $$N$$ elements in time proportional to $$N$$. Counting
+sort was one, but turned out to be impractical.
 
-Another example of dividing and conquering is the *quicksort* algorithm, which
-proceeds as follows:
+However, we now have all the ingredients necessary to describe *radix sort*,
+another linear-time non-comparison sort that can be practical.
 
-1. Split the collection to be sorted into three collections by *partitioning*
-   around a *pivot* (or "divider"). One collection consists of elements smaller
-   than the pivot, the second collection consists of elements equal to the
-   pivot, and the third consists of elements greater than or equal to the pivot.
-2. Recursively call quicksort on each collection.
-3. Merge the sorted collections by concatenation.
+Let's first define the word, radix. The *radix* of a number system is the number
+of values a single digit can take on (also called the base of a number). Binary
+numbers form a radix-2 system; decimal notation is radix-10. Radix sorts examine
+elements in passes, and a radix sort might have one pass for the rightmost
+digit, one for the next-to-rightmost digit, and so on.
 
-Specifically, this version of quicksort is called "three-way partitioning
-quicksort" due to the three partitions that the algorithm makes on every call.
+We'll now describe radix sort in detail. In radix sort, we will pretend each digit is a separate key,
+and then we sort on all the keys at once, with the higher digits taking
+precedence over the lower ones.
 
-Here's an example of how this might work, sorting an array containing 3, 1, 4,
-5, 9, 2, 8, 6.
+Here are two good strategies to approach sorting on multiple keys:
 
-![Quicksort](img/quicksort.png)
+- First sort everything on the least important key. Then sort everything on the
+  next key. Continue, until you reach the highest key. **Note: This strategy
+  requires the sorts to be stable.**
+- First sort everything on the high key. Group all the items with the same high
+  key into buckets. Recursively radix sort each bucket on the next highest key.
+  Concatenate your buckets back together.
 
-1. Choose 3 as the pivot. (We'll explore how to choose the pivot shortly.)
-2. Put 4, 5, 9, 8, and 6 into the "large" collection and 1 and 2 into the
-   "small" collection. No elements go in the "equal" collection.
-3. Sort the large collection into 4, 5, 6, 8, 9; sort the small collection into
-   1, 2; combine the two collections with the pivot to get 1, 2, 3, 4, 5, 6, 8,
-   9.
+Here's an example of using the first strategy. Imagine we have the following
+numbers we wish to sort:
 
-Depending on the implementation, quicksort is not stable because when we move
-elements to the left and right of our pivot the relative ordering of equal
-elements can change.
+356, 112, 904, 294, 209, 820, 394, 810
 
-Before moving on to the next part of the lab, check out [this video](https://www.youtube.com/watch?v=7cjXkEW1STY&t=1h24m55s) to solidify your understanding of quicksort. Note this was taken from summer 2021's lecture, so you can stop after the section on quicksort. That is, you can stop at 1:41:00. 
+First, we sort them by the first digit:
 
-## Exercise: `quicksort`
+82**0**, 81**0**, 11**2**, 90**4**, 29**4**, 39**4**, 35**6**, 20**9**
 
-To test your understanding of quicksort, fill out the `sort` method in
-`QuickSort.java`. Be sure to take advantage of the helper `partition` method!
+Then we sort them by the second digit, keeping numbers with the same second
+digit in their order from the previous step:
 
-This method is destructive, where the original `int[] arr` should be
-modified.
+9**0**4, 2**0**9, 8**1**0, 1**1**2, 8**2**0, 3**5**6, 2**9**4, 3**9**4
 
-## Discussion: Quicksort
+Finally, we sort by the third digit, keeping numbers with the same third digit
+in their order from the previous step:
 
-### Discussion 1: Runtime
+**1**12, **2**09, **2**94, **3**56, **3**94, **8**10, **8**20, **9**04
 
-First, let's consider the best-case scenario where each partition divides a
-range optimally in half. Using some of the strategies picked up from the merge
-sort analysis, we can determine that quicksort's best case asymptotic runtime
-behavior is $$O(N \log N)$$. Discuss with a partner why this is the case, and
-any differences between quicksort's best case runtime and merge sort's runtime.
+All done!
 
-However, quicksort is faster in practice and tends to have better constant
-factors (which aren't included in the big-Oh analysis). To see this, let's
-examine exactly how quicksort works.
+Hopefully it's not hard to see how these can be extended to more than three
+digits. This strategy is known as *LSD radix sort*. The second strategy is
+called *MSD radix sort*. LSD and MSD stand for *least significant digit* and
+*most significant digit* respectively, reflecting the order in which the digits
+are considered.
 
-We know concatenation for linked lists can be done in constant time, and for arrays it can be done in linear time.
-Partitioning can be done in time proportional to the number of elements $$N$$. 
-If the partitioning is optimal and splits each range more or less in half,
-we have a similar logarithmic division of levels downward
-like in merge sort. On each division, we still do the same linear amount of work
-as we need to decide whether each element is greater or less than the pivot.
+Here's some pseudocode for the first strategy:
 
-However, once we've reached the base case, we don't need as many steps to
-reassemble the sorted collection. Remember that with merge sort, while each list
-of one element is sorted, the entire set of one-element
-lists is not necessarily in order, which is why there are $$\log N$$ steps to
-merge upwards in merge sort. This isn't the case with quicksort as each element
-*is* in order. Thus, merging in quicksort is simply one level of linear-time
-concatenation.
+```java
+public static void LSDRadixSort(int[] arr) {
+    for (int d = 0; d < numDigitsInAnInteger; d++) {
+        stableSortOnDigit(arr, d);
+    }
+}
+```
 
-Unlike merge sort, quicksort has a worst-case runtime different from its
-best-case runtime. Suppose we always choose the first element in a range as our
-pivot. Then, which of the following conditions would cause the worst-case
-runtime for quicksort? Discuss with a partner, and verify your understanding
-by highlighting the line below for the answer.
+(the 0th digit is the smallest digit, or the one furthest to the right in the
+number)
 
-<p><span style="color:white"><em>Sorted or Reverse Sorted Array. This is because
-  the pivot will always be an extreme value (the largest or smallest unsorted value)
-  and we will thus have N recursive calls, rather than log(n).</em></span></p>
+### Radix Sort's Helper Method
 
-What is the runtime of running quicksort on this array?
+Notice that both LSD and MSD radix sort call another sort as a helper method (in
+LSD's case, it must be a stable sort). Which sort should we use for this helper
+method? Insertion sort? Merge sort? Those would work. However, notice one key
+property of this helper sort: It only sorts based on a single digit. And a
+single digit can only take 10 possible values (for radix-10 systems). This means
+we're doing a sort where the variety of things to sort is small. Do we know a
+sort that's good for this? It's counting sort! Counting sort turns out to be
+useful as a helper method to radix sort when it comes to sorting the elements by
+a particular digit.
 
-<p><span style="color:white"><em>Theta(N^2)</em></span></p>
+## Exercise: `LSDRadixSort`
 
-Under these conditions, does this special case of quicksort remind you of any
-other sorting algorithm we've discussed in this lab? Discuss with a partner.
+Now that you've learned what radix sort is, it's time to try it out yourself. Complete the `lsdRadixSort` method in `DistributionSorts.java` by implementing
+the `countingSortOnDigit` method. You won't be able to reuse your `countingSort`
+from before verbatim because you need a method to do counting sort only
+considering one digit, but you will be able to use something very similar.
 
-We see that quicksort's worst case scenario is pretty bad... You might be wondering why we'd even bother with it then! However, though it's outside the scope of this class for you to prove why, we can show that on *average*, quicksort has $$O(N \log(N))$$ runtime! In practice, quicksort ends up being very fast.
-
-### Discussion 2: Choosing a Pivot
-
-Given a random collection of integers, what's the best possible choice of pivot
-for quicksort that will break the problem down into $$\log N$$ levels? Discuss
-with a partner and describe an algorithm to find this pivot element. What is
-its runtime? It's okay if you think your solution isn't the most efficient.
-
-## Quicksort in Practice
-
-How fast was the pivot-finding algorithm that you came up with? Finding the
-exact median of our elements may take so much time that it may not help the
-overall runtime of quicksort at all. It may be worth it to choose an approximate
-median, if we can do so really quickly. Options include picking a random
-element, or picking the median of the first, middle, and last elements. These
-will at least avoid the worst case we discussed above.
-
-In practice, quicksort turns out to be the fastest of the general-purpose
-sorting algorithms we have covered so far. For example, it tends to have better
-constant factors than that of merge sort. For this reason, Java uses this
-algorithm for sorting arrays of **primitive types**, such as `int`s or `float`s.
-With some tuning, the most likely worst-case scenarios are avoided, and the
-average case performance is excellent.
-
-Here are some improvements to the quicksort algorithm as implemented in the Java
-standard library:
-
-- When there are only a few items in a sub-collection (near the base case of the
-  recursion), insertion sort is used instead.
-- For larger arrays, more effort is expended on finding a good pivot.
-- Various machine-dependent methods are used to optimize the partitioning
-  algorithm and the `swap` operation.
-- [Dual pivots](https://www.geeksforgeeks.org/dual-pivot-quicksort/)
-
-For **object types**, however, Java uses a hybrid of *merge sort and insertion
-sort* called "Timsort" instead of quicksort. Can you come up with an explanation
-as to why? *Hint*: Think about stability!
- 
-
-To learn more about the performance difference between Quicksort and Mergesort, watch this video [Quicksort versus Mergesort](https://www.youtube.com/watch?v=es2T6KY45cA)
-
-### Timing
-
-So far we've measured the speed and efficiency of our algorithms by theoretically
-performing asymptotic analysis on them. Another (less formal) way of determining 
-the speed of a given program is to test it on a variety of inputs and measure 
-the time it takes for each one. This is called a timing experiment, and we 
-refer to this process as finding the efficiency of a program empirically. 
-In this lab, we will be doing some timing experiments to see how the different sorting 
-classes you implemented in this lab perform.
-
-Open `TimingTest.java` and run it's `main` method. This class will sort random arrays of
-different sizes using the sorting algorithms you implemented and plot the results. 
-
-Here's the result of running the test on one of our computers:
-
-![Sorting Algos Timing Test Results](./img/times.png)
-
-Notice how by the time we reach an array size of 1000000, Selection Sort and Insertion Sort 
-take more than a minute to run while Heap Sort and Merge Sort manages to sort the same array in just over
-one-tenth of a second!  
-
-If you run it multiple times, you will also notice that Quicksort's runtime varies more than others---you are seeing
-the different pivot's runtime on this algorithm's performance in action! 
-
-Please note that the result you see my be different from the picture above. 
-If the tests are taking too long on your computer, try lowering the bounds provided in the class.
-
-## Summary
-
-In this lab, we learned about more comparison-based algorithms for sorting
-collections. Within comparison-based algorithms, we examined two different
-paradigms for sorting:
-
-1. Simple sorts like **insertion sort** and **selection sort** which
-   demonstrated algorithms that maintained a sorted section and moved unsorted
-   elements into this sorted section one-by-one. With optimization like **heapsort** or the right conditions (relatively sorted list in the case of insertion
-   sort), these simple sorts can be fast!
-2. Divide and conquer sorts like **merge sort** and **quicksort**. These
-   algorithms take a different approach to sorting: we instead take advantage of
-   the fact that collections of one element are sorted with respect to
-   themselves.  Using recursive procedures, we can break larger sorting problems
-   into smaller subsequences that can be sorted individually and quickly
-   recombined to produce a sorting of the original collection.
-
-Here are several online resources for visualizing sorting algorithms. If you're
-having trouble understanding these sorts, use these resources as tools to help
-build intuition about how each sort works.
-
-- [VisuAlgo][]
-- [Sorting.at][]
-- [Sorting Algorithms Animations][]
-- [USF Comparison of Sorting Algorithms](http://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html)
-- [AlgoRhythmics][]: sorting demos through folk dance including
-  [insertion sort][], [selection sort][], [merge sort][], and [quicksort][]
-
-[VisuAlgo]: http://visualgo.net/sorting
-[Sorting.at]: http://sorting.at/
-[Sorting Algorithms Animations]: http://www.sorting-algorithms.com/
-[USF Comparison of Sorting Algorithms]: http://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html
-[AlgoRhythmics]: https://www.youtube.com/user/AlgoRythmics/videos
-[insertion sort]: https://www.youtube.com/watch?v=ROalU379l3U
-[selection sort]: https://www.youtube.com/watch?v=Ns4TPTC8whw
-[merge sort]: https://www.youtube.com/watch?v=XaqR3G*NVoo
-[quicksort]: https://www.youtube.com/watch?v=ywWBy6J5gz8
-
-To summarize the sorts that we've learned, take a look at the following table. 
-
-|                | Best Case Runtime    | Worst Case Runtime   | Stable  | In Place | Notes |
-|----------------|----------------------|----------------------|---------|----------|-------|
-| [Insertion Sort](https://youtu.be/JtS5yGftYZ8) | $$\Theta(N)$$        | $$\Theta(N^2)$$      | Yes     | Yes | |
-| [Selection Sort](https://youtu.be/yZtvSYeTQi4) | $$\Theta(N^2)$$      | $$\Theta(N^2)$$      | No      | Yes | Can be made stable under certain conditions. |
-| [Heap Sort](https://youtu.be/WuuQqsDftGU)      | $$\Theta(N \log N)$$ | $$\Theta(N \log N)$$ | No      | Yes | If all elements are equal then runtime is $$\Theta(N)$$. Hard to make stable. |
-| [Merge Sort](https://youtu.be/JJrAzmJcMh0)     | $$\Theta(N \log N)$$ | $$\Theta(N \log N)$$ | Yes     | Not usually. Typical implementations are not, and making it in-place is terribly complicated. | An optimized sort called "Timsort" is used by Java for arrays of reference types. |
-| [Quicksort](https://www.youtube.com/watch?v=7cjXkEW1STY&t=1h24m55s)      | $$\Theta(N \log N)$$ | $$\Theta(N^2)$$      | Depends | Most implementations use log(N) additional space for the recursive stack frames | Stability and runtime depend on partitioning strategy; three-way partition quicksort is stable. If all elements are equal, then the runtime using three-way partition quicksort is $$\Theta(N)$$. Used by Java for arrays of primitive types. Fastest in practice. |
-
-> You may have noticed that there seems to be a lower bound on how fast our sorting algorithms can go. For *comparison* based sorts, we can prove the best we can do is $$O(N\log(N))$$. You can watch a very brief video explanation [here](https://www.youtube.com/watch?v=j4Lmzhs6r-Y&list=PLNF4Mv5EsHj4QLTEw3uz42vJGKblD9usL&index=3) at timestamp 11:42. You can also read a more in-depth [proof](https://www.cs.cmu.edu/~avrim/451f11/lectures/lect0913.pdf), if you're into that kind of thing. Tomorrow, we'll learn about *counting* sorts, which can do even better when we're able to use them.
-
-
-
-
+Disclaimer: Radix sort is commonly implemented at a lower level than base-10,
+such as with bits (base-2) or bytes (base-16). This is because everything on
+your computer is represented with bits. Through bit operations, it is quicker to
+isolate a single bit or byte than to get a base-10 digit. However, because we
+don't teach you about bits in this course, you should do your LSD radix sort in
+base-10 because these types of numbers should be more familiar to you. As you move
+through the world of computing, you will likely see this referenced in real-world
+applications of Radix sort!
+
+### Runtime: LSD Radix Sort
+
+To analyze the runtime of radix sort, examine the pseudocode given for LSD radix
+sort. From this, we can tell that its runtime is proportional to
+`numDigitsInAnInteger` * (the runtime of `stableSortOnDigit`).
+
+Let's call `numDigitsInAnInteger` the variable $$D$$, which is the max number of
+digits that an integer in our input array has. Next, remember that we decided
+`stableSortOnDigit` is really counting sort, which has runtime proportional to
+$$N + K$$, where $$K$$ is the number of possible digits, in this case 10. This
+means the total runtime of LSD radix sort is $$O(D(N + K))$$!
+
+## Discussion: MSD Radix Sort
+
+Though you will not be implementing MSD Radix sort, understanding how it works 
+is in scope for this course!
+
+To get comfortable, attempt problem 2 from the [Spring 2021 Exam Prep 13 Worksheet](https://sp21.datastructur.es/materials/discussion/examprep13.pdf) 
+and **watch [this](https://youtu.be/8zgZ0yvdfvg)** video to understand the 
+solution and get a review of MSD radix sort.
+
+With this understanding of how MSD sort works, what is its runtime? How does it differ from LSD radix sort's
+runtime? Discuss with your partner.
+
+Hint: Unlike LSD radix sort, it will be important to distinguish best-case and worst-case runtimes for MSD.
+
+Highlight below to see the answer:
+<p><span style="color:white"> 
+Best Case: Theta(N + K) 
+Worst Case: Theta(D(N + K))
+</span>.</p>
+
+
+### Advanced Runtime and Radix Selection
+
+Let's go back and analyze the LSD radix sort runtime (despite the best-case
+runtime of MSD radix sort, LSD radix sort is typically better in practice). You
+may have noticed that there's a balance between $$K$$, the number of digits
+(also known as the radix), and $$D$$, the number of passes needed. In fact,
+they're related in this way: let us call $$L$$ the length of the longest number
+in digits. Then $$K \cdot D$$ is proportional to $$L$$.
+
+For example, let's say that we have the radix-10 numbers  100, 999, 200, 320. In
+radix-10, they are all of length 3, and we would require 3 passes of counting
+sort. However, if we took those same numbers and now use radix-1000, then we
+examine more of the numbers, all 3 of the base-10 digits, and we only require
+one pass of counting sort. In fact, in radix-1000, the numbers we used are only
+of length 1.
+
+In fact, in practice we shouldn't be using decimal digits at all - radixes are
+typically a power of two. This is because everything is represented as *bits*,
+and as mentioned previously, bit operators are significantly faster than modulo
+operators, and we can pull out the bits we need if our radix is a power of two.
+
+Without further knowledge of bits, it's difficult to analyze the runtime
+further, but we'll proceed anyways - you can read up on bits on your own time.
+Suppose our radix is $$K$$. Then each pass of counting sort inspects $$\lg K$$
+bits; if the longest number has *b* bits, then the number of passes $$D =
+\frac{b}{\lg K}$$. This doesn't change our runtime of LSD radix sort from $$O(D
+\cdot (N + K))$$.
+
+Here's the trick: we can choose $$K$$ to be larger than in our exercises (10).
+In fact, let's choose $$K$$ to be in $$O(N)$$ (that way each pass counting sort
+will run in $$O(N)$$. We want $$K$$ to be large enough to keep the number of
+passes small. Thus the number of passes needed becomes $$D \in O(\frac{b}{\lg
+(N)})$$.
+
+This means our true runtime must be $$O(N)$$ if $$b$$ is less than $$\lg N$$ or
+otherwise $$O(N \cdot \frac{b}{\lg N})$$, (plug our choices for $$D$$ and $$K$$
+into the runtime for LSD radix sort above to see why that's the case). For very
+typical things we might sort, like `int`s, or `long`s, $$b$$ is a constant, and
+thus radix sort is guaranteed linear time. For other types, as long as $$b$$ is
+in $$O(\lg N)$$, this remains in guaranteed linear time. It's worth noting that
+because it takes $$\lg N$$ bits to represent N items, this is a very reasonable
+model of growth for typical things that might be sorted - as long as your input
+is not distributed scarcely.
+
+## Conclusion
+
+Linear-time sorts have their advantages and disadvantages. While they have
+fantastic speed guarantees theoretically, the overhead associated with a linear
+time sort means that for input lists of *shorter length*, low overhead
+comparison-based sorts like quicksort can perform better in practice. For more
+specialized mathematical computations, like in geometry, machine learning, and
+graphics, for example, radix sort finds use.
+
+In modern libraries like Java and Python's standard library, a new type of sort,
+TimSort, is used. It's a hybrid sort between merge sort and insertion sort that
+also has a linear-time guarantee - if the input data is sorted, or almost
+sorted, it performs in linear time. In practice, on real-world inputs, it's
+shown to be very powerful and has been a staple in standard library comparison
+sorts.
 
 ### Deliverables
 
-To get credit for this lab:
-- Complete the following classes:
-    - `HeapSort.java`
-    - `MergeSort.java`
-    - `QuickSort.java`
+To receive credit for this lab:
+- Complete the following methods of `DistributionSorts.java`:
+  - `countingSort`
+  - `countingSortOnDigit`
+
+### Credit
+
+Credit to Jonathan Shewchuk for his [notes][] on the lower bound of
+comparison-based sorting algorithms.
+
+[notes]: https://people.eecs.berkeley.edu/~jrs/61b/lec/34

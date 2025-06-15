@@ -1,0 +1,19 @@
+<td class="{{ include.element.classes | join ' ' }}" rowspan="{{ include.rowspan }}"> 
+{%- if include.element.nonumber -%}
+  {{ include.element.title }}
+{%- else -%}
+  {%- if include.element.link -%}
+  <a href="{{ include.element.link | relative_url }}">{{ include.element.title }}</a>
+  {%- else -%}
+  {{ include.element.title }}
+  {%- endif -%}
+  {%- if include.element.due -%}
+  <br>
+  (due {{ include.element.due | date: "%m/%d" }})
+  {%- endif -%}
+  {%- elsif include.element.due -%}
+  Project {{ include.number }} {{ include.element.title }}
+  <br>
+  (due {{ include.element.due | date: "%m/%d" }})
+{%- endif -%}
+</td>

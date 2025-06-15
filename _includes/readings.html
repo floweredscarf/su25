@@ -1,0 +1,5 @@
+<td class="{{ include.is_even }}" rowspan="{{ include.rowspan }}">
+{%- if include.element.textbook -%}
+  {{ include.element.textbook | markdownify }}
+{%- endif -%}
+</td>

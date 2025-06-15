@@ -1,9 +1,12 @@
 ---
 layout: page
-title: "FAQ - Lab 7: Comparison, Iteration, and Exceptions"
-categories: lab
-released: false
-searchable: true
+title: >-
+  FAQ
+parent: >-
+  Lab 07: Comparison, Iteration, and Exceptions
+grand_parent: Labs
+has_right_toc: true
+released: true
 ---
 
 ## Nothing yet!
