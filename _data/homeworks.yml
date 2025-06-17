@@ -71,35 +71,55 @@
 #     - schedule-purple
 
 homeworks:
-  - title: "" # blank for auto-numbering as "HW1"
-    link: ""
+  - title: "Homework 0A"
+    link: "homeworks/hw0/hw0a"
     show_links: true
-    due: "2025/01/24"
-    parts:
-      - name: "Part A"
-        link: "https://www.gradescope.com/courses/942380/assignments/5689760"
-      - name: "Part B"
-        link: "https://www.gradescope.com/courses/942380/assignments/5689747"
-    rowspan: "1"
-  - title: "" # blank for auto-numbering as "HW2"
-    link: ""
+    due: "2025/1/24"
+    rowspan: 2
+    classes:
+      - "schedule-yellow"
+  - title: "Homework 0B"
+    link: "homeworks/hw0/hw0b"
     show_links: true
-    due: "2025/01/31"
-    parts:
-      - name: "Part A"
-        link: "https://www.gradescope.com/courses/942380/assignments/5732755"
-      - name: "Part B"
-        link: "https://www.gradescope.com/courses/942380/assignments/5732760"
-  - title: "No Homework"
-    nonumber: true
-  - title: "" # blank for auto-numbering as "HW3"
-    link: ""
-    show_links: false # since this is false, links don't show
-    due: "2025/02/14"
-    parts:
-      - name: "Part A"
-        link: "https://www.gradescope.com/courses/942380/assignments/5788266"
-      - name: "Part B"
-        link: "https://www.gradescope.com/courses/942380/assignments/5788277"
-    rowspan: "3" # because this week has an extra row for the midterm
-  - nonumber: true # blank box in Week 5 (otherwise you get auto-numbered "HW4")
+    due: "2025/1/29"
+    rowspan: 1
+    classes:
+      - "schedule-yellow"
+  - nonumber: true
+    rowspan: 2
+  - title: "Homework 1"
+    link: "https://www.gradescope.com/courses/961758/assignments/5698332"
+    show_links: true
+    due: "2025/02/7"
+    rowspan: 3
+    classes:
+      - "schedule-yellow"
+  - nonumber: true
+    rowspan: 8
+  - title: "Homework 2"
+    link: "homeworks/hw2"
+    show_links: true
+    due: "2025/03/07"
+    rowspan: 5
+    classes:
+      - "schedule-yellow"
+  - nonumber: true
+    rowspan: 9
+  - title: "Homework 3"
+    link: "https://www.gradescope.com/courses/961758/assignments/5967008"
+    show_links: true
+    due: "2025/04/04"
+    rowspan: 4
+    classes:
+      - "schedule-yellow"
+  - nonumber: true
+    rowspan: 9
+  - title: "Homework 4"
+    link: "https://www.gradescope.com/courses/961758/assignments/6164006"
+    show_links: true
+    due: "2025/05/04"
+    rowspan: 3
+    classes:
+      - "schedule-yellow"
+  - nonumber: true
+    rowspan: 6
