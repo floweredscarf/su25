@@ -2,7 +2,6 @@
 layout: page
 title: Git WTFS
 parent: Troubleshooting
-has_right_toc: true
 description: >-
   Git Weird Technical Failure Scenarios
 ---

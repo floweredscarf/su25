@@ -2,7 +2,6 @@
 layout: page
 title: IntelliJ WTFS
 parent: Troubleshooting
-has_right_toc: true
 description: >-
   IntelliJ Weird Technical Failure Scenarios
 ---
