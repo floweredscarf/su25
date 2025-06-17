@@ -29,18 +29,48 @@
 # This is not recommended, because the "Week" column isn't really meant for long text.
 
 week_extra:
-  - name: ""
-    link: ""
-    show_extra: true
-  - name: "Survey"
+  - name: "Survey" # week 1
     link: "https://forms.gle/FFTFQmv2UJqooukH7"
     show_extra: true
-  - name: ""
-    link: ""
+  - name: "Survey" # week 2
+    link: "https://forms.gle/CacfMhK8MhPAt1vf6"
     show_extra: true
-  - name: "Survey"
+  - name: "Survey" # week 3
+    link: "https://forms.gle/bqLvxWhf1nzzRDrUA"
+    show_extra: true
+  - name: "Survey" # week 4
     link: "https://forms.gle/LeAN3ud6sejxEy5z7"
     show_extra: true
-  - name: "Survey"
+  - name: "Survey" # week 5
     link: "https://forms.gle/vMq7Qu8RGPQ2pDwj8"
     show_extra: true
+  - name: "Survey" # week 6
+    link: "https://forms.gle/xQiovC19W31f338QA"
+    show_extra: true
+  - name: "Survey" # week 7
+    link: "https://forms.gle/c193r3KunaHoko2N9"
+    show_extra: true
+  - name: "Survey" # week 8
+    link: "https://forms.gle/RZ6nS6Mfyvg11q2Y7"
+    show_extra: true
+  - name: "Survey" # week 9
+    link: "https://forms.gle/Jvh43aGTC3Aa4L216"
+    show_extra: true
+  - name: "Survey" # week 10
+    link: "https://forms.gle/Zuzbw5JhvsmzqfBp9"
+    show_extra: true
+  - show_extra: false # week 11
+  - name: "Survey" # week 12
+    link: "https://forms.gle/pkYGFC3gttsB3jGf7"
+    show_extra: true
+  - name: "Survey" # week 13
+    link: "https://forms.gle/G11C3ci2Hk83JKgg9"
+    show_extra: true
+  - name: "Survey" # week 14
+    link: "https://forms.gle/dB8D5zrh7Unxmu3P9"
+    show_extra: true
+  - name: "Survey" # week 15
+    link: "https://forms.gle/DR7FCkMobo1pSrASA"
+    show_extra: true
+  - show_extra: false # week 16
+  - show_extra: false # week 17
