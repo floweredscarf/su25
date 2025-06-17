@@ -68,45 +68,68 @@
 #   extra: "[Special PDF](https://www.google.com)"
 #   rowspan: 3
 #   classes:
-#     - schedule-purple
+#     - schedule-green
 
 projects:
-  - title: "Project 1A"
-    link: "/proj1/deliverables"
-    show_links: true
-    due: "2025/01/29"
-    # "parts" can also be used for other recurring text in the boxes, like slides.
-    parts:
-      - name: "Slides"
-        link: "https://docs.google.com/presentation/d/1RM9EOWqfaNzy9FP-Ud22fS3xz7xIQDFBXQe0jrEN5rQ"
-    rowspan: "2"
-    classes:
-      - schedule-yellow # adds the yellow background
   - nonumber: true
-    rowspan: "1"
-  - title: "Project 1B"
-    link: "/proj1"
+    rowspan: 1
+  - title: "Mini-Project 0: 2048"
+    link: "/projects/proj0"
     show_links: true
-    due: "2025/02/12"
-    parts:
-      - name: "Slides"
-        link: "https://docs.google.com/presentation/d/1kwgVU2BIG5BOvkKF1JWrXf62zJnzIki5UrTTCzMeVs4"
-    rowspan: "4"
+    due: "2025/02/3"
     classes:
-      - schedule-blue # adds the blue background
-  - title: "Project 2"
-    link: "/proj2"
+      - "schedule-green"
+    rowspan: 5
+  - title: "Project 1A: LinkedListDeque"
+    link: "/projects/proj1a"
+    show_links: true
+    due: "2025/02/10"
+    classes:
+      - "schedule-green"
+    rowspan: 3
+  - title: "Project 1B: ArrayDeque, Deque"
+    link: "/projects/proj1b"
     show_links: true
     due: "2025/02/19"
-    parts:
-      - name: "Slides"
-        link: "https://docs.google.com/presentation/d/1bn1QHK7nLbirGsEKct5UTf2vp2k7NOTaMSuu9lZW0yU"
-    # "extra" should be for one-off links. For recurring links, use "parts" instead.
-    extra: |
-      [Extra link](https://www.google.com)
-    rowspan: "2"
     classes:
-      - schedule-green # adds the green background
-  - nonumber: true # blank box in Week 5
-    rowspan: "2"
-  
+      - "schedule-green"
+    rowspan: 4
+  - nonumber: true
+    rowspan: 4
+  - title: "Project 2A: NGrams"
+    link: "/projects/proj2a"
+    show_links: true
+    due: "2025/03/12"
+    classes:
+      - "schedule-green"
+    rowspan: 6
+  - title: "Project 2B: Checkpoint"
+    link: "/projects/proj2b"
+    rowspan: 4
+    show_links: true
+    due: "2025/03/21"
+    classes:
+      - "schedule-green"
+  - title: "Project 2B: Wordnet"
+    link: "/projects/proj2b"
+    show_links: true
+    due: "2025/04/04"
+    classes:
+      - "schedule-green"
+    rowspan: 7
+  - title: "Project 3A: World Generation"
+    link: "/projects/proj3/proj3a"
+    show_links: true
+    due: "2025/04/18"
+    classes:
+      - "schedule-green"
+    rowspan: 6
+  - title: "Project 3B: Interactivity"
+    link: "/projects/proj3/proj3b"
+    show_links: true
+    due: "2025/04/29"
+    classes:
+      - "schedule-green"
+    rowspan: 3
+  - nonumber: true
+    rowspan: 10
