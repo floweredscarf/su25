@@ -23,6 +23,8 @@ In this lab, we will set up the software that we will use throughout the
 course: the terminal, git, java, IntelliJ, etc. We will also look at a small
 Java program and learn a little bit about Java syntax.
 
+To see what you need to complete for full credit on this lab, skip to the [Deliverables section](#deliverables) below.
+
 ## Before You Begin
 
 **Welcome to CS 61BL!**
