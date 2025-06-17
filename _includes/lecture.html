@@ -51,6 +51,23 @@
 {%- endif -%}
 
 {%- comment -%}
+  - [CS61B] Moved readings rendering to after the lecture title.
+    Wrapped readings in parentheses after lecture title.
+    Added dashes to percent tags to remove whitespace in the "forloop.last" if-case.
+    ~peyrin Jun 2025
+{%- endcomment -%}
+{%- if include.element.readings != nil -%}
+  &nbsp;(
+  {%- for reading in include.element.readings -%}
+    <a href="{{ reading.link | relative_url }}">{{ reading.name }}</a>
+    {%- if forloop.last == false -%}
+      {{}} / {{}}
+    {%- endif -%}
+  {%- endfor -%}
+  )
+{%- endif -%}
+
+{%- comment -%}
   - Each element of this array will hold an HTML link, e.g.
     ["Slides", "Video", "Recording"]
 {%- endcomment -%}
@@ -121,23 +138,29 @@
 {%- comment -%}
   - Slash between slides/video/recording/quiz and readings.
   - If you would like newline between these and readings, change this.
+  - [CS61B] Moved readings so commenting this out. ~peyrin Jun 2025
 {%- endcomment -%}
+{%- comment -%}
 {%- if include.element.readings.size > 0 -%}
 &nbsp;/&nbsp;
 {%- endif -%}
+{%- endcomment -%}
 
 {%- comment -%}
   - Render readings.
   - If you would like readings to appear elsewhere, change this.
   - The character inside the "forloop.last" if-case is the delimiter.
     Here, it's a slash, but you can change it to a slash or something else.
+  - [CS61B] Moved readings so commenting this out. ~peyrin Jun 2025
 {%- endcomment -%}
+{%- comment -%}
 {%- for reading in include.element.readings -%}
   <a href="{{ reading.link | relative_url }}">{{ reading.name }}</a>
   {% if forloop.last == false %}
     {{}} / {{}}
   {% endif %}
 {%- endfor -%}
+{%- endcomment -%}
 
 {%- comment -%}
   - In case we want to display anything extra (e.g. extra link) in the box.
