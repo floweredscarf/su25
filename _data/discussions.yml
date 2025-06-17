@@ -99,7 +99,7 @@
 #   It should still be /assets/discussions/cs161-sp25,
 #   not /sp25/assets/discussions/cs161-sp25.
 discussion_filename_bases:
-  path: "/assets/discussions/cs101-sp25"
+  path: "/assets/discussions/cs61b-sp25"
   regular_slug: "disc"
   examprep_slug: "examprep"
   bridge_slug: "bridge"
@@ -107,40 +107,128 @@ discussion_filename_bases:
   examprep_name: "Exam Prep"
   bridge_name: "Bridge"
 
+
+    
 discussions:
-  - title: "Welcome"
-    show_worksheet: true
-    show_sols: true
-    show_videos: true
-    show_slides: true
-    regular_video: "https://www.youtube.com/watch?v=FMLe4g8wGXE"
-    examprep_video: ""
-    regular_slides: "https://cs161.org"
-    examprep_slides: ""
-    extra: |
-      [61C Review Video](https://www.youtube.com/watch?v=WVhKJqCqwyE)
-    rowspan: 1
-  - title: "Security Principles and x86"
-    show_worksheet: true
-    show_sols: true
-    show_videos: true
-    show_slides: true
-    regular_video: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX_ecmDFIpyrCBwaVD5oMiP5"
-    examprep_video: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX8BHDozB7T9J32Lf5T4a_G1"
-    regular_slides: ""
-    examprep_slides: ""
   - title: "No Discussion"
-    nonumber: true # skips assigning a number to this box
-  - title: "Memory Safety"
-    # Notice that solutions and videos aren't being linked, even though the solution PDFs
-    # and video links exist, because the "show" fields are set to false.
-    # Also, show_slides is true but there are no slides linked, so nothing is linked.
+    nonumber: true
+    rowspan: "2"
+  - title: "Introduction to Java"
     show_worksheet: true
-    show_sols: false
-    show_videos: false
+    show_sols: true
+    show_videos: true
     show_slides: true
-    regular_video: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX8JTBNVlgRogrYsfHG7k6ql"
-    examprep_video: "https://www.youtube.com/playlist?list=PLfBkt1-_BHX8JTBNVlgRogrYsfHG7k6ql"
-    regular_slides: ""
-    examprep_slides: ""
-    rowspan: "3" # because this week has an extra row for the midterm
+    regular_video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRobydmi0jaICLlTv0q_lDhT"
+    examprep_video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRoH8ytpcjLoFCkM0v2FVp6C"
+    regular_slides: "https://docs.google.com/presentation/d/1J2Ld-5qg536HA8jyB9-IeoD1hFcF9sJegqIeg2ncLs4"
+    examprep_slides: "https://docs.google.com/presentation/d/1awV2DnjW0zedBjmwWjbFNpVI0Yg3ghyhX9IDuKQ_keE"
+  - title: "Scope, Static, Linked Lists, Arrays"
+    show_worksheet: true
+    show_sols: true
+    show_videos: true
+    show_slides: true
+    regular_video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRpemggJcC8s64Om7XBMmmWZ"
+    examprep_video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRpPzSP6eDAJLsqxHbAqhgkX"
+    regular_slides: "https://docs.google.com/presentation/d/12fU-6_vBT-BzOOcvMgf6G26bqo4F1czR3pAxhu0-YZg"
+    examprep_slides: "https://docs.google.com/presentation/d/175Z0P9u0YQQ4dP51KftXCrS3k3JcQoI-q4oMqGEo3T4"
+  - title: "Interface Inheritance, Comparables/Comparators, Generic Functions "
+    show_worksheet: true
+    show_sols: true
+    show_videos: true
+    show_slides: true
+    regular_video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRpZCnCD8f6-j3WJQS_rbBe4"
+    examprep_video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRo32RBXkS7LFlMNNIgF618Q"
+    regular_slides: "https://docs.google.com/presentation/d/1xpH8CpZHEKVaWtSNnnro59IhgXrVoQG4PAXDVNvm_lQ"
+    examprep_slides: "https://docs.google.com/presentation/d/1Q0vg7T3kJHiSVVFXaw6uBzfaFDm6CxVLwXoKMmd3k5Q"
+  - title: "Iterators, Iterables, Asymptotics"
+    show_worksheet: true
+    show_sols: true
+    show_videos: true
+    show_slides: true
+    regular_video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRosONixmTTQnspn7fLOV4-Y"
+    examprep_video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRqOkhLqRr1OoRCpUKvlqm_P"
+    regular_slides: "https://docs.google.com/presentation/d/1B_HtHOpRRFpeNCab2kaZEjuqIYwSa5cSWweNfIv7iTM"
+    examprep_slides: "https://docs.google.com/presentation/d/13wi-eo4T52oK8tgDvWqrcm7IXgYSK56ecoQnxd-VQJE"
+    rowspan: "4"
+  - title: "Asymptotics II"
+    show_worksheet: true
+    show_sols: true
+    show_videos: true
+    show_slides: true
+    regular_video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRpqWL31oiZlmcka8zFyT5uM"
+    examprep_video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRpebKdnwkYKIkyCBNzNXAHW"
+    regular_slides: "https://docs.google.com/presentation/d/1TZ2Rf1ALjd6OyBiqS75jbpTcTgyU9vUFx5RJNKAyeB4"
+    examprep_slides: "https://docs.google.com/presentation/d/1uZnhJu9WRhX_hsWzk5tMT3kaUPRKE1gQqTzMV-Qbmt4"
+  - title: "Disjoint Sets, ADTs, BSTs"
+    show_worksheet: true
+    show_sols: true
+    show_videos: true
+    show_slides: true
+    regular_video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRpBCAx-EGDwnOY4YW0zwczO"
+    examprep_video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRonJvfbSeiELXQ5TcvrAO1U"
+    regular_slides: "https://docs.google.com/presentation/d/1GOYRLWkNWVC69-_tZk1ihRrkS7J0nWaWwDZS5IxAKsg"
+    examprep_slides: "https://docs.google.com/presentation/d/1HeHgNNYqY48wgZLMtEH_vNVWQykNdSYGkMwwzb11NW8"
+  - title: "B-Trees, LLRBs, Hashing"
+    show_worksheet: true
+    show_sols: true
+    show_videos: true
+    show_slides: true
+    regular_video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRrjXIJbf0eFsWeUnD6RsfYa"
+    examprep_video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRoIGRoR3H0WHl2AmxCgcxTN"
+    regular_slides: "https://docs.google.com/presentation/d/1GiIA7wwloRRh2SKJayNrqWrs1mV_lZ3JYLhLDL2zlDA"
+    examprep_slides: "https://docs.google.com/presentation/d/14Ohpg1_tKwY-H3SOZfqxq_Jg1zIcJwFPsTjC1f7oy6M"
+  - title: "Graphs, Heaps"
+    show_worksheet: true
+    show_sols: true
+    show_videos: true
+    show_slides: true
+    regular_video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRrdIn4Jnf_aI1Hgw5m-wrL2"
+    examprep_video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRqWGEpy-S22SMXVVxtkqmmT"
+    regular_slides: "https://docs.google.com/presentation/d/1YY9YOZxbsWX4WzfDxXFIItV0ADlqLo57ikPGAR_Gn_c"
+    examprep_slides: "https://docs.google.com/presentation/d/1UKGsqrKq-X1sJxnZXvI7RUatdituOAOyHZuLA4ep43A"
+  - title: "No Discussion"
+    nonumber: true
+  - title: "Shortest Paths, MSTs"
+    show_worksheet: true
+    show_sols: true
+    show_videos: true
+    show_slides: true
+    regular_video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRp0SkHfIO9HavzXht0K9mOA"
+    examprep_video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRqhMYH6tRt4bru5HxoWta9G"
+    regular_slides: "https://docs.google.com/presentation/d/18Ix5jKoVXeSkQkKKTfVz5C9W9YLPPjL6RDkWKG0FisY"
+    examprep_slides: "https://docs.google.com/presentation/d/1_Qy30oN3EBey_iWDaWGYMZAHI1mODLSn6aWJIl3Dkz4"
+    rowspan: "4"
+  - title: "Graphs II, Tries"
+    show_worksheet: true
+    show_sols: true
+    show_videos: true
+    show_slides: true
+    regular_video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRrD3GyILak06gbTN0rbKJat"
+    examprep_video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRoboeJhEoJbAb7U_W7KBvoj"
+    regular_slides: "https://docs.google.com/presentation/d/10ArskQi2InnyyZwTo8Yo6flZmMAWhPGCbuOYVsTZFNA"
+    examprep_slides: "https://docs.google.com/presentation/d/1lJB4c3eYi_S6zxJa0HRypVM7Y1Y8z_RirxDlp6fVm04"
+  - title: "Sorting"
+    show_worksheet: true
+    show_sols: true
+    show_videos: true
+    show_slides: true
+    regular_video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRqxJ0qF1CglXRb-Qb-oNOgs"
+    examprep_video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRrxu6rDIFiBjifethxW7gSl"
+    regular_slides: "https://docs.google.com/presentation/d/18GxCUP6-s8bD24wzeOw3JTyyFZ-Kcle9QFhkW0wThGY"
+    examprep_slides: "https://docs.google.com/presentation/d/1D1g0tzp91nGcERs9w6pH847cPJOvbnvcEBXwDD-R618"
+  - title: "Sorting II"
+    show_worksheet: true
+    show_sols: true
+    show_videos: true
+    show_slides: true
+    regular_video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRrpqJ8WTjbBOwSNFg54wQDT"
+    examprep_video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRoenwS-qOt7TtocoDP-qXo4"
+    regular_slides: "https://docs.google.com/presentation/d/1igNhdJwbrF6WxuV67BfateU9I4diqAZeErFhxbTvvFY"
+    examprep_slides: "https://docs.google.com/presentation/d/1LbXSL9oC-TjhiU9s6CIKRKrwrEBCcBAkkoQ2yZnAAyw"
+  - title: "Goodbye, Fun"
+    show_worksheet: true
+    show_sols: true
+    show_videos: true
+    show_slides: true
+  - title: "No Discussion"
+    nonumber: true
