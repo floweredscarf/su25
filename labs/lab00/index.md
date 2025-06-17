@@ -35,7 +35,7 @@ and setup these first few days. **Don't be discouraged**, and make sure to ask
 for help if you're stuck! The best place to ask for help is during your actual
 lab time. If you attempt to do this outside of that time and run into any
 problems, please ask them on Ed. For more information on using Ed in this course, 
-read through our [Ed Policies and Guidelines](../../guides/ed/).
+read through our [Ed Policies and Guidelines](../../resources/guides/ed/).
 
 {% capture alertContent %}
 If ever something isn't working, or a screen that should show up isn't showing
@@ -235,7 +235,7 @@ repository ("repo"), which you will need to submit all coding assignments.
 1.  Create an account at [GitHub.com](https://github.com/). If you already have
     an account, you do not need to create a new one.
 1.  Go to
-    [the Beacon website](https://su24.beacon.datastructur.es/register/)
+    [the Beacon website](https://beacon.datastructur.es/)
     and you'll be guided through a few steps to complete your GitHub repository
     registration. Please follow them carefully! You must be logged in to your
     Berkeley account to complete the Google Form quiz. If any errors occur while
@@ -252,10 +252,10 @@ repository ("repo"), which you will need to submit all coding assignments.
 ### Your Repository
 
 Your repository will have a name containing a number that is unique to you!
-For instance, if your repo is called "`su24-s42`", you'll be able to visit your
-private repository at <https://github.com/Berkeley-CS61B-Student/su24-s42>
-(when logged into GitHub). **If your repo number is not "42" this link will not
-work for you.** Replace "42" with your own to see your repo on Github.
+For instance, if your repo is called "`su25-s12`", you'll be able to visit your
+private repository at <https://github.com/Berkeley-CS61B-Student/su25-s12>
+(when logged into GitHub). **If your repo number is not "12" this link will not
+work for you.** Replace "12" with your own to see your repo on Github.
 
 Additionally, the instructors, TAs, and tutors will be able to view your
 repository. This means you can (and should!) link to your code when creating
@@ -280,11 +280,11 @@ in much greater detail but, for now, let's just get a working knowledge of how
 to use git.
 
 Before you proceed, **read sections up to the Remote Repositories section of
-the [Using Git Guide](../../guides/using-git.md)**.
+the [Using Git Guide](../../resources/guides/git.md)**.
 
 {% include alert.html content="
 Do not proceed until you have read sections up to the **Remote Repositories**
-section of the **[Using Git Guide](../../guides/using-git.md)**. You do not need to
+section of the **[Using Git Guide](../../resources/guides/git.md)**. You do not need to
 read past that.
 " %}
 
@@ -341,9 +341,9 @@ directories, etc., refer back to
 
 
 1.  Create a directory called `lab01-checkoff` (`mkdir`). You can put this directory
-    anywhere on your computer (unless you have already cloned your `su24-s***`
+    anywhere on your computer (unless you have already cloned your `su25-s***`
     repository, in which case, you **should not put this directory inside of
-    your `su24-s***` repo)**.
+    your `su25-s***` repo)**.
 2.  Move into the `lab01-checkoff` directory (`cd`), and initialize a git repository
     in this directory (`git init`).
 3.  Create a file called `61b.txt` in any way you'd like (`touch`). In this text file,
@@ -411,7 +411,7 @@ First, run the following command in your terminal. It will print out any SSH key
 and generate a new one if none exists: 
 
 ```shell
-curl -sS https://cs61bl.org/su24/labs/lab01/get-ssh-key.sh | bash 
+curl -sS https://cs61bl.org/su25/labs/lab01/get-ssh-key.sh | bash 
 ```
 
 {% include alert.html content="
@@ -452,7 +452,7 @@ Hi USERNAME! You've successfully authenticated, but GitHub does not provide shel
 
 You should now be successfully authenticated with Github and good to go!
 
-#### Clone your `su24-s***` Git Repository
+#### Clone your `su25-s***` Git Repository
 
 Navigate to the spot in your folders on your computer that you'd like to start
 your repository. In the example below, we're assuming you want all your stuff
@@ -467,7 +467,7 @@ Enter the following command to clone your GitHub repo. Make sure to replace the
 were assigned through Beacon, not your lab section number).
 
 ```shell
-git clone git@github.com:Berkeley-CS61B-Student/su24-s***.git
+git clone git@github.com:Berkeley-CS61B-Student/su25-s***.git
 ```
 
 {% capture alertContent %}
@@ -480,7 +480,7 @@ that there are no files in the repo, which is what we expect here.
 Move into your newly created repo!
 
 ```shell
-cd su24-s***
+cd su25-s***
 ```
 
 Make sure that we're working with the branch name we expect, `main`:
@@ -495,7 +495,7 @@ within the newly created repository folder when you continue with these
 commands.) Enter the following command to add the `skeleton` remote.
 
 ```shell
-git remote add skeleton https://github.com/cs61bl/skeleton-su24.git
+git remote add skeleton https://github.com/cs61bl/skeleton-su25.git
 ```
 
 Listing the remotes should now show both the `origin` and `skeleton` remotes.
@@ -506,7 +506,7 @@ git remote -v
 
 {% include alert.html content="
 If you see an error like `fatal: not a git repository` make sure you have
-properly moved into the `su24-s***` directory using `cd`.
+properly moved into the `su25-s***` directory using `cd`.
 " %}
 
 ### Getting the Skeleton
@@ -555,7 +555,7 @@ git push origin main
 You can verify that this was successful by checking your repository online on
 GitHub's website. It should contain the updated `magic_word.txt` file. If it
 doesn't, make sure that your `add` and `commit` were successful. In particular,
-make sure that you are in your repo, `su24-***`.
+make sure that you are in your repo, `su25-***`.
 
 {% include alert.html type="task" content="
 **Task**: Follow the instructions above to push your magic word to GitHub, and
@@ -616,24 +616,24 @@ dependency management is a bit of a mess, so we instead provide a
 git repo that contains all the dependencies that we will use in this course.
 
 {% include alert.html type="danger" content="
-First, **move out of your `su24-s***` repo with `cd ..`**. Failing to do so can
+First, **move out of your `su25-s***` repo with `cd ..`**. Failing to do so can
 cause many headaches later.
 " %}
 
 Then, run:
 
 ```shell
-git clone https://github.com/cs61bl/library-su24
+git clone https://github.com/cs61bl/library-su25
 ```
 
-Below is shown the directory structure of `library-su24`. Look inside the
-folder using `ls library-su24` and make sure you see the `.jar` files
+Below is shown the directory structure of `library-su25`. Look inside the
+folder using `ls library-su25` and make sure you see the `.jar` files
 listed below. There are many more, but we only list the first few. If you're
 using your operating system's file explorer, the `jar` part might not show up
 in the filenames, and that's OK.
 
 ```console
-library-su24
+library-su25
 ├── algs4.jar
 ├── animated-gif-lib-1.4.jar
 ├── antlr4-runtime-4.11.1.jar
@@ -674,7 +674,7 @@ to some common problems.
 the git exercise:**
 
 1.  You have successfully created your local repo for the class on your own
-    machine. This is the `su24-s***` repository you earlier.
+    machine. This is the `su25-s***` repository you earlier.
 2.  You have pulled from the skeleton, and you have a `lab01` directory.
 
 ### Installing IntelliJ
@@ -751,7 +751,7 @@ With IntelliJ and the plugins installed, we can install the JDK. Follow the step
 1. Start up IntelliJ. If you have no projects open, click the “Open” button. If you have a project currently open,
    navigate to “File –> Open”.
 2. Find and choose the directory of your current assignment. For example, for Lab 1, you would select the 
-   lab01 directory inside your `su24-s***`. 
+   lab01 directory inside your `su25-s***`. 
 3. Navigate to the “File -> Project Structure” menu, and make sure you are in the Project tab. Then, follow 
    the instructions [Set up the project JDK](https://www.jetbrains.com/help/idea/sdk.html#set-up-jdk)
    to download your JDK version. **Choose a version that is 17 or greater!** Depending on which
