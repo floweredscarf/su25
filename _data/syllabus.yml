@@ -80,11 +80,11 @@ project_alternate_color: false
 #######################################################
 
 # Edit the widths of columns here.
-week_width: "3%"
-date_width: "8%"
-lecture_width: "37%"
+week_width: "6%"
+date_width: "7%"
+lecture_width: "30%"
 readings_width: "0%" # unused by CS 61B, see syllabus.html to use this
 discussion_width: "20%"
-labs_width: "12%" # unused by 161's templated, enabled by CS 61B
-homework_width: "10%"
-project_width: "10%"
+labs_width: "13%" # unused by 161's template, enabled by CS 61B
+homework_width: "12%"
+project_width: "12%"

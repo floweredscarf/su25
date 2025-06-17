@@ -26,10 +26,15 @@
     This overrides the automatic numbering.
   - If no title exists, write "Project 3", where the number comes from
     automatic numbering in syllabus.html.
+  - [CS61B] Enabled auto-numbering by changing this line:
+    "{{ include.element.title }}"
+    to this line:
+    "Lab {{ include.number }}:<br> {{ include.element.title }}"
+    ~peyrin Jun 2025
 {%- endcomment -%}
 {%- capture assignment_title -%}
   {%- if include.element.title and include.element.title != empty -%}
-    {{ include.element.title }}
+    Lab {{ include.number }}:<br> {{ include.element.title }}
   {%- else -%}
     HW{{ include.number }}
   {%- endif -%}

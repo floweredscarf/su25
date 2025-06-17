@@ -69,17 +69,79 @@
 #     - schedule-purple
 
 labs:
-  - title: "Lab 1"
-    link: "/proj1/"
+  - title: "Setup, Git"
+    link: "/labs/lab01"
     show_links: true
-    due: "09/06"
+    due: "2025/1/24"
     parts:
-      - name: "Part A"
-        link: "/proj1/part-a"
-      - name: "Part B"
-        link: "/proj1/part-b"
-    extra: "[Special PDF](https://www.google.com)"
-    rowspan: 3
-    classes:
-      - proj1 # adds the purple background
-  - nonumber: true
+      - name: "Slides"
+        link: "https://docs.google.com/presentation/d/1RM9EOWqfaNzy9FP-Ud22fS3xz7xIQDFBXQe0jrEN5rQ"
+    rowspan: 2
+  - title: "Debugging"
+    link: "/labs/lab02"
+    show_links: true
+    due: "2025/1/31"
+    parts:
+      - name: "Slides"
+        link: "https://docs.google.com/presentation/d/1kwgVU2BIG5BOvkKF1JWrXf62zJnzIki5UrTTCzMeVs4"
+  - title: "Debugging (Part 2)"
+    link: "/labs/lab03"
+    show_links: true
+    due: "2025/2/07"
+    parts:
+      - name: "Slides"
+        link: "https://docs.google.com/presentation/d/1bn1QHK7nLbirGsEKct5UTf2vp2k7NOTaMSuu9lZW0yU"
+  - title: "Git"
+    link: "/labs/lab04"
+    show_links: true
+    due: "2025/2/14"
+    parts:
+      - name: "Slides"
+        link: "https://docs.google.com/presentation/d/1RoacUp7UAinLPNNUO4q8mNxTxR4_HYKYhIxeKiPd6B8"
+  - title: "No Lab"
+    nonumber: True
+    rowspan: 4
+  - title: "Project 1 Review"
+    link: "/labs/lab05"
+    show_links: true
+    due: "2025/02/28"
+    slides:
+  - title: "BSTMap"
+    link: "/labs/lab06"
+    show_links: true
+    due: "2025/03/07"
+    parts:
+      - name: "Slides"
+        link: "https://docs.google.com/presentation/d/1NylZ2TfB8SP41Y34WIFPt7sWsZRxYmTqDuc_iPPMt_4"
+  - title: "HashMaps"
+    link: "/labs/lab07"
+    show_links: true
+    due: "2025/3/14"
+    parts:
+      - name: "Slides"
+        link: "https://docs.google.com/presentation/d/1dVc25JVkJxwI6HpiJIVDW_rGFSQ2_wRxVAfSP_lrLTY"
+  - title: "LLRBs"
+    link: "/labs/lab08"
+    show_links: true
+    due: "2025/3/21"
+    parts:
+      - name: "Slides"
+        link: "https://docs.google.com/presentation/d/1qmqaKQx4FygknF2kJ-NTimsfk01SmgCUd4JmxjhXbiM"
+  - title: "No Lab"
+    nonumber: True
+  - title: "Introduction to Project 3 (Optional)"
+    link: "/labs/lab09"
+    show_links: true
+    rowspan: 4
+  - title: "Tetris (Optional)"
+    link: "/labs/lab10"
+    show_links: true
+  - title: "Project 3 Workday"
+    nonumber: True
+  - title: "Project 3 Workday"
+    nonumber: True
+  - title: "Project 3 Demos"
+    nonumber: True
+  - title: "No Lab"
+    nonumber: True
+  - nonumber: True
