@@ -17,13 +17,13 @@ released: true
 ## [FAQ](faq.md)
 
 Each assignment will have an FAQ linked at the top. You can also access it by
-adding "/faq" to the end of the URL. The FAQ for Lab 2 is located
+adding "/faq" to the end of the URL. The FAQ for Lab 3 is located
 [here](faq.md).
 
 
 ## Before You Begin
 
-Run `git pull skeleton main` in your repo. You should get a `lab02/` folder.
+Run `git pull skeleton main` in your repo. You should get a `lab03/` folder.
 For this, and later labs, we strongly recommend opening up the lab in IntelliJ.
 
 **Note:** You may notice after pulling and setting up your workspace that two of the files, `PathHarness.java` and `PathTest.java`, will have orange coffee mugs next to their name instead of a blue circle. This is ok! We will revisit those files later in the lab.
@@ -160,7 +160,7 @@ implement a `Potato` class in Java.
 ### Example
 
 For this section, we will be using the Potato code found below. This can also be found in
-`lab02/src/Potato.java`.
+`lab03/src/Potato.java`.
 
 ```java
 public class Potato {
@@ -210,7 +210,7 @@ public class Potato {
 }
 ```
 
-We will also be looking at `lab02/src/Potato1.java` later on!
+We will also be looking at `lab03/src/Potato1.java` later on!
 
 ### Defining a Class
 
