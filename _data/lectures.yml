@@ -312,7 +312,7 @@ lectures:
     # quiz: ""
     readings:
     classes:
-      - optional          
+      - schedule-red          
   - title: "Merge Sort, Insertion Sort, and Quick Sort"
     slides: "https://docs.google.com/presentation/d/18CSlgRlld1Kgg1YzjhjzthP9A6bF_XUTt2fhepjJDDs"
     video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRqsfDWZNS86oYmHFY6UKA2t"
@@ -327,12 +327,12 @@ lectures:
     recording: "https://youtu.be/CPScOCVoU1E"
     # quiz: ""
     classes:
-      - optional      
+      - schedule-red      
   - title: "Software Engineering III - Project 3"
     slides: "https://docs.google.com/presentation/d/1UDAmYmWRnIgrm5-JgM6gWZd0uje8bAKm_xrt_x2_ZbE"
     recording: "https://youtu.be/PA0ineqGrZA"
     classes:
-      - optional
+      - schedule-red
   - title: "More Quicksort, Quick Select, Stability"
     slides: "https://docs.google.com/presentation/d/1oOS_OHUIwYiTN7MVRbDCK1-cwZmx5OCNgj3UCZPXTLY"
     video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRrHHQP93qqc_QBNBF_WEQLy"
@@ -353,7 +353,7 @@ lectures:
     slides: "https://docs.google.com/presentation/d/1yXqrOWwGeDqvcUAJ2BVkZ-r4M7cRqgwwXGQA0wMn-kA"
     recording: "https://youtu.be/2BDrDRCJpSs"
     classes:
-      - optional
+      - schedule-red
   - title: "Radix Sorts"
     slides: "https://docs.google.com/presentation/d/1v2ZzzGLOv-U7QxIk2si7YDdjQtUi_JRlVzlWGkh3PmA/"
     video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRr4cg5TeJZplLTlOVmMNE0d"
@@ -378,7 +378,7 @@ lectures:
       - name: "Ch. 38"
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/38.-compression-and-complexity"
     classes:
-      - optional
+      - schedule-red
   - title: "P vs NP [Optional]"
     slides: "https://docs.google.com/presentation/d/1SHCz2_Lzr6tPrZ1jWTi9YsuAvqbxJtJQ3k2vgo64pCE/edit"
     video:
@@ -387,12 +387,12 @@ lectures:
       - name: "Ch. 39"
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/39.-compression-complexity-p-np"
     classes:
-      - optional
+      - schedule-red
   - title: "Summary, Fun [Optional]"
     slides: "https://docs.google.com/presentation/d/1U9ljZcRX3zYHRw4IesdqD4KMRCqig6UGjXdmYC1bE7I/edit?usp=sharing"
     recording: "https://youtu.be/wIL8ELdtgBo"
     classes:
-      - optional
+      - schedule-red
   - title: "No Lecture (RRR Week)"
     rowspan: 3
     nonumber: True
