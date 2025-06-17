@@ -1,0 +1,34 @@
+{%- comment -%}
+- This code renders one project box on the syllabus.
+- See lectures.yml for how to feed information into this template.
+- include.element is a Liquid object (like a dictionary) representing one
+  entry of lectures.yml. You can access specific fields of this object with
+  syntax like include.element.readings.
+- Note: By default, this file is not used in CS161's course-site-template repo.
+  However, if you want a separate "Readings" column on the website, then go to
+  syllabus.html and uncomment out some things.
+- For simplicity, this code is identical to the code in lectures.html that renders
+  readings in the "Lectures" box.
+{%- endcomment -%}
+
+{%- comment -%}
+  - Use syllabus.yml to toggle whether readings boxes alternate colors
+    per week.
+{%- endcomment -%}
+{%- if site.data.syllabus.readings_alternate_color -%}
+  <td class="{{ include.is_even }} {{ include.element.classes | join ' ' }}" rowspan="{{ include.rowspan }}">
+{%- else -%}
+  <td class="{{ include.element.classes | join ' ' }}" rowspan="{{ include.rowspan }}">
+{%- endif -%}
+
+{%- comment -%}
+- The character inside the "forloop.last" if-case is the delimiter.
+  Here, it's a linebreak, but you can change it to a slash or something else.
+{%- endcomment -%}
+{%- for reading in include.element.readings -%}
+  <a href="{{ reading.link | relative_url }}">{{ reading.name }}</a>
+  {% if forloop.last == false %}
+    <br>
+  {% endif %}
+{%- endfor -%}
+</td>
