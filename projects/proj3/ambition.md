@@ -49,23 +49,23 @@ Doing both of these steps will allow anyone who has your project on their laptop
 
 - **Line of Sight**: Create a system so that the tile renderer only displays tiles on the screen that are within the line of sight of the avatar. The line of sight must be able to be toggled on and off with a keypress.
 
-    [![line-of-sight](../assets/proj3b/line-of-sight.gif)](../assets/proj3b/line-of-sight.gif)
+    [![line-of-sight](../assets/proj3b/line-of-sight.webp)](../assets/proj3b/line-of-sight.webp)
 
 - **Light Sources**: Add the ability for light sources to affect how the world is rendered, with at least one light source that can be turned on and off with a keypress. The intensity of the light must diminish in a gradient as the distance from the source increases. Light sources should fill a majority of the room it belongs to, and light should not pass through walls.
 
-    [![toggle-lights](../assets/proj3b/toggle-lights.gif)](../assets/proj3b/toggle-lights.gif)
+    [![toggle-lights](../assets/proj3b/toggle-lights.webp)](../assets/proj3b/toggle-lights.webp)
 
 - **Pathfinder**: Add entities which chase the avatar/other entities by use of a search algorithm from class, with a toggle to display their projected path. Implementing more than one pathfinding algorithm will NOT count as a second primary feature.
 
-    [![enemy](../assets/proj3b/enemy.gif)](../assets/proj3b/enemy.gif)
+    [![enemy](../assets/proj3b/enemy.webp)](../assets/proj3b/enemy.webp)
 
 - **Encounters**: Create a system for “encounters”, where a new interface appears when the avatar interacts with entities in the world, returning the avatar to the original interface when the encounter ends (e.g. Pokémon). It's okay if save/load is not available during encounters.
 
-    [![encounter](../assets/proj3b/encounter.gif)](../assets/proj3b/encounter.gif)
+    [![encounter](../assets/proj3b/encounter.webp)](../assets/proj3b/encounter.webp)
 
 - **Perspective**: Add the ability for the user to change the perspective of their view (first-person, isometric 2.5D, 3D, etc.) (We've never seen anyone do isometric 2.5D or full 3D before! The Nintendo 64 game '[Kirby 64 - The Crystal Shards](https://www.youtube.com/watch?v=5uu2TWli-_M)' is an example of what an isometric 2.5D world looks like). One particularly interesting example is [Dorottya Urmossy and David Yang's Fall 2022 submission](https://www.youtube.com/watch?v=XJBQYucuAKc&t=94s), which is a 2.5D first-person view, i.e. the world is 3D but the entities are 2D. 
 
-    [![perspective](../assets/proj3b/perspective.gif)](../assets/proj3b/perspective.gif)
+    [![perspective](../assets/proj3b/perspective.webp)](../assets/proj3b/perspective.webp)
 
 - **Battle System**: Implement a battle system that allows players to interact with moving enemies and obstacles. Assign the player a health value, place collectibles that restore health around the map, and create randomly-moving enemies/objects that inflict damage on and receive damage from the player.
 
