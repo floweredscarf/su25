@@ -160,7 +160,7 @@ This indicates you're using the Vim text editor. To save and quit, type `:wq` - 
 
 If you see a message like this:
 
-![Git swapfile warning](./img/git-swapfile.png)
+![Git swapfile warning](../git-wtfs-img/git-swapfile.png)
 
 Git previously opened Vim (a terminal text editor) for you to enter a commit message, but Vim crashed, possibly because you got confused and killed Vim by closing the terminal.
 
@@ -264,7 +264,7 @@ After running that command, try pulling again, and the error message should go a
 
     In the picture below, the current directory is `/Users/peyrin/Downloads/fa24-s12345`.
 
-    ![Output of pwd](./img/pwd.png)
+    ![Output of pwd](../git-wtfs-img/pwd.png)
 
 3. In IntelliJ, the location of your repo is shown in gray text in the top-left of the sidebar.
 
@@ -272,7 +272,7 @@ After running that command, try pulling again, and the error message should go a
 
     Note: In filepaths, `~` is shorthand for `/Users/your-username`, which is your Home folder (which contains folders like Documents, Downloads, etc.). So the current directory is equivalently `/Users/peyrin/Downloads/fa24-s12345`.
 
-    ![IntelliJ pwd](./img/pwd3.png)
+    ![IntelliJ pwd](../git-wtfs-img/pwd3.png)
 
 4. One common place to find a duplicate repo is in your home folder: `~` or equivalently, `/Users/your-username`.
 
@@ -287,7 +287,7 @@ After running that command, try pulling again, and the error message should go a
             # ...possibly including a duplicate repo?
     ```
 
-    ![pwd in home directory](./img/pwd2.png)
+    ![pwd in home directory](../git-wtfs-img/pwd2.png)
 
 **Fix:** You should manually copy all of your latest changes into one copy. (You can do this in a file explorer like Finder or Windows Explorer.)
 
