@@ -10,7 +10,7 @@ hide_right_toc: true
 {%- assign instructor_msg = "Instructors" -%}
 {%- endif -%}
 
-<img align="right" alt="161 lock logo" width="85px" src="{{ site.baseurl }}/assets/images/logo.png">
+<img align="right" alt="61B bee logo" width="150px" src="{{ "/assets/images/bee.webp" | relative_url }}">
 
 # {{ site.title }}
 

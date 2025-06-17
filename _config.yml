@@ -25,8 +25,8 @@
 
 # - Jekyll default variables.
 # - For the title on the homepage, the name people see in the browser tab, etc.
-title: "Course Name"
-description: "Course Name at School Name"
+title: "CS 61B Spring 2025"
+description: "Data Structures at UC Berkeley"
 
 # - Jekyll default variable.
 # - The subpath of your site, e.g. /blog
@@ -40,39 +40,41 @@ baseurl: ""
 
 # - Jekyll default variable.
 # - The full URL of your homepage.
-url: "https://template.cs161.org"
+url: "https://sp25.datastructur.es"
 
 # - Used in _includes/title.html
 # - Path to an image to display in the sidebar (or top bar on mobile). Leave blank to omit.
-logo: '/assets/images/logo.png'
+logo: '/assets/images/bee.webp'
 
 # - Used in _includes/title.html
 # - Optional text that replaces site.title at the top of the sidebar when set.
 # - If logo is set and shorthand_text is left blank, the logo will take up 100% of the space.
-shorthand_text: 'Course Name'
+shorthand_text: 'CS 61B SP25'
 
 # - Can be used throughout the website (e.g. project specs).
 # - Example: In the spec, write "Pull from the skeleton-{{ site.semester_slug }} repo."
 #   This will automatically update to "skeleton-fa24" or "skeleton-sp25" each semester.
-semester_slug: sp25
-semester_full: Spring 2025
+semester_slug: "sp25"
+semester_full: "Spring 2025"
 
 # - Updates the top line of the homepage, i.e. the one that says
 #   "Instructor: EvanBot / Lecture: TuTh, 12:30–2:00 PM, Wheeler 150 [Zoom, Playlist]"
 # - Note: Instructor is pulled from the _staffers folder.
 lecture:
-  time: "TuTh, 12:30–2:00 PM"
+  time: "MWF, 1–2 PM"
   location:
-      name: "Wheeler 150"
+      name: "VLSB 2050"
       link: ""
 heading_links:
   - text: "Zoom"
-    url: "https://berkeley.zoom.us"
+    url: "https://berkeley.zoom.us/j/93199123002?pwd=htjep2P7Omg9nwdDWZp2GvQaDMNkvl.1"
   - text: "Playlist"
-    url: "https://www.youtube.com/playlist?list=PLp8QV47qJEg4fg0UAZzU2FeuZrs6XMjkK"
+    url: "https://www.youtube.com/playlist?list=PLnp31xXvnfRoUqOjlnhHzmYravacOPD8p"
+  - text: "Code"
+    url: "https://github.com/Berkeley-CS61B/lectureCode-sp25"
 
 # - Used on staff.md to show students the staff email.
-staff_email: "evanbot@berkeley.edu"
+staff_email: "cs61b@berkeley.edu"
 
 # - Use this to show/hide the "announcements" feature on the homepage.
 # - Add your weekly announcements in the _announcements folder.
@@ -97,7 +99,7 @@ outdated: false
 # - Ideally this is a URL that always redirects to your current semester, e.g.
 #   https://cs161.org or https://inst.eecs.berkeley.edu/~cs188
 # - This is only used in _layouts/page.html and _layouts/project.html.
-latest_sem: "https://template.cs161.org"
+latest_sem: "https://datastructur.es"
 
 
 #######################################################
@@ -110,11 +112,13 @@ aux_links:
   Dark Mode:
     - '#'
   Ed:
-    - 'https://edstem.org'
+    - 'https://edstem.org/us/courses/74627/'
   OH Queue:
-    - 'https://oh.cs161.org'
-  Source Code on GitHub:
-    - 'https://github.com/cs161-staff/course-site-template'
+    - 'https://cs61b-oh.eecs.berkeley.edu/'
+  Beacon:
+    - 'https://beacon.datastructur.es/'
+  Student Support:
+    - 'https://forms.gle/d9ckyW8CiNv3EM4k8'
 
 
 #######################################################
@@ -141,9 +145,6 @@ callouts:
   danger: 
     title: Danger
     color: red
-  story: # CS 161 custom config for story
-    title: Story
-    color: blue
 
 #######################################################
 # Config for Right Table of Contents                  #
