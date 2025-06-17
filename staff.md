@@ -61,8 +61,6 @@ hide_right_toc: true
 # Staff
 {% if site.staff_email and site.staff_email != '' and site.staff_email != 'None' %}
 For logistics and administrative questions, please email <a href="mailto:{{site.staff_email}}">{{site.staff_email}}</a>.
-Access to these emails is denoted by the `Staff Email Access` tag. Future instructors and
-head TAs may also be able to read emails here, but we can delete emails upon request.
 
 If you have a non-course related question, you can view staff emails by pressing the button below:
 
@@ -70,6 +68,11 @@ If you have a non-course related question, you can view staff emails by pressing
   <button id="email-trigger" class="btn btn-outline-primary">Show Emails</button>
 </div>
 {% endif %}
+
+<br>
+- **CS61B@**: Can see or respond to emails for [cs61b@berkeley.edu](mailto:cs61b@berkeley.edu)
+- **DSP**: Can see the DSP letter of accommodations (knowing whether or not a student is DSP does not count as DSP access).
+- **Student Support**: Can see student support meeting notes, extenuating circumstances form responses, and see/respond to emails for [cs61b-student-support@berkeley.edu](mailto:cs61b-student-support@berkeley.edu)
 
 {% if extra_instructors or instructors %}
 ## Instructors

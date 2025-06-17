@@ -25,10 +25,13 @@
 # By default, staff members are rendered in a single column.
 # If you want to render staff members in two columns, set this to 2.
 # Numbers above 2 are not currently supported. To add more columns, see _sass/custom/staffer.scss.
-staff_columns: 1
+staff_columns: 2
 
 # Determines the text to display for the DSP access tag.
-dsp_text: 'DSP Data Access'
+dsp_text: "DSP Data"
 
 # Determines the text to display for the staff email access tag.
-spa_text: 'Staff Email Access'
+spa_text: "cs61b@"
+
+# [CS61B] Text for student support access tag. ~peyrin Jun 2025
+student_support_text: "Student Support"

@@ -25,6 +25,12 @@
       {%- if page.spaaccess -%}
         <span class="staffer-pronouns">{{ site.data.staff.spa_text }}</span>
       {%- endif -%}
+      {%- comment -%}
+        [CS61B] Added a third tag for student support. ~peyrin Jun 2025
+      {%- endcomment -%}
+      {%- if page.studentsupport -%}
+        <span class="staffer-pronouns">{{ site.data.staff.student_support_text }}</span>
+      {%- endif -%}
       {%- for tag in page.tags -%}
         <span class="staffer-pronouns">{{ tag }}</span>
       {%- endfor -%}
