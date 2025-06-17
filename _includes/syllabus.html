@@ -56,7 +56,7 @@
         <th style="width:{{ site.data.syllabus.lecture_width }}">Lecture</th>
         {% comment %}<th style="width:{{ site.data.syllabus.readings_width }}">Readings</th>{% endcomment %}
         <th style="width:{{ site.data.syllabus.discussion_width }}">Discussion</th>
-        {% comment %}<th style="width:{{ site.data.syllabus.labs_width }}">Labs</th>{% endcomment %}
+        <th style="width:{{ site.data.syllabus.labs_width }}">Labs</th>
         <th style="width:{{ site.data.syllabus.homework_width }}">HW</th>
         <th style="width:{{ site.data.syllabus.project_width }}">Project</th>
       </tr>
@@ -325,8 +325,8 @@
               swapping out the column names.
               - This is commented out because the template defaults to not using labs.
               If your class has labs, uncomment.
+              - [CS61B] Uncommented this because we have labs. ~peyrin Jun 2025
             {%- endcomment -%}
-            {%- comment -%}
               {%- if lab_rowspan == 0 -%}
               {%- assign lab_element = site.data.labs.labs[lab_index] -%}
               {%- if lab_element.rowspan -%}
@@ -343,7 +343,6 @@
               {%- else -%}
               {%- assign lab_rowspan = lab_rowspan | plus:-1 -%}
               {%- endif -%}
-            {%- endcomment -%}
 
             {%- comment -%}
               - Render the homework column.
