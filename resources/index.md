@@ -160,4 +160,4 @@ The **[Student Technology Equity Program (STEP)](https://studenttech.berkeley.ed
 </tbody>
 </table>
 
-For semesters older than 2012, please see [https://inst.eecs.berkeley.edu/~cs61b/archives](https://inst.eecs.berkeley.edu/~cs61b/archives).
+For semesters older than 2012, please see [https://inst.eecs.berkeley.edu/~cs61b/archives.html](https://inst.eecs.berkeley.edu/~cs61b/archives.html) and [https://inst.eecs.berkeley.edu/~cs61bl/archives.html](https://inst.eecs.berkeley.edu/~cs61bl/archives.html)
