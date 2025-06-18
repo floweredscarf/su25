@@ -42,7 +42,6 @@ be as follows:
 -   Learn how to define *classes* and use reference-typed variables.
 -   Learn how to work with *box-and-pointer* diagrams to identify common
     usage errors.
--   Get some more practice with Arrays
 
 ## Primitives
 
@@ -843,14 +842,14 @@ algebraic formula like $$y(t) = t^2$$ and trace it point-wise. Consider an
 alternative where we define two points: the *pursuer* and the *pursued*.
 
 Now suppose the pursued point (in black) follows some fixed path $$F(t)$$. Then the
-pursuer (in red) will seek the pursued in the following manner.
+pursuer (in red) will seek the pursued in the following manner:
 
 ![Pursuit](img/pursuit.gif)
 
 We notice that the pursuer always follows the pursued along its tangent, which
 gives some serious first order differential equation vibes. Letting the
 pursuer's path be given by $$x(t)$$, then the closed form solution for its path is
-given by the following equation.
+given by the following equation:
 
 ![PursuitMath](img/PursuitMath.jpg)
 
