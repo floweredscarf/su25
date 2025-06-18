@@ -517,7 +517,7 @@ following example. Follow along each of the steps in IntelliJ.
 
     -   Edit your `CounterTest.java` as follows:
 
-        -   In `testIncrement`, put the code
+        -   In the test for `increment`, put the code
 
             ```java
             Counter c = new Counter();
@@ -527,7 +527,7 @@ following example. Follow along each of the steps in IntelliJ.
             assertWithMessage("Counter value is not 2.").that(c.value()).isEqualTo(2);
             ```
 
-        -   In `testReset`, put the code
+        -   In the test for `reset`, put the code
 
             ```java
             Counter c = new Counter();
@@ -821,17 +821,15 @@ In this lab, we discussed:
 ## Deliverables and Scoring
 
 The lab is out of 2 points. There are no hidden tests on Gradescope. If you
-pass all the local required tests (not including the optional ones) and write comprehensive tests in `TriangleTest.java`, 
-you will receive full credit on the lab.
+pass all the local required tests and write comprehensive tests in `TriangleTest.java`, you will receive full credit on the lab.
 
-- Find the first 2 passwords in `BombMain.java`. 
-- (Optional) Find the 3rd password in `BombMain.java`. 
+- Find the three passwords in `BombMain.java`.
 - Write tests in `TriangleTest.java` that pass on the correct `Triangle.java` implementation and fail on buggy `Triangle.java` implementations. 
 
 
 ## Submission
 
-Just as you did in Lab 1, add, commit, then push your Lab 3 code to GitHub.
+Just as you did in Lab 1, add, commit, then push your Lab 4 code to GitHub.
 Then, submit to Gradescope to test your code. If you need a refresher, check
 out the instructions in the
 [Lab 1 spec](../lab01/index.md#saving-your-work-using-git-and-github) and the
