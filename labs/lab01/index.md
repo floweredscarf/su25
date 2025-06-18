@@ -543,12 +543,31 @@ You will then be prompted to give a name, which in this case you should write `T
 Now, you've learned how to create a new Java class, and are ready to continue on to the 
 next part of the lab! 
 
-Next, let us add a main method to the class. As a reminder, the structure of a main method is as follows:
+Next, let us add a `drawTriangle` method to the class, as such:
 ```java 
-public static void main(String[] args) {
-    // statements go here
+public static void drawTriangle() {
+    // your code here
 }
 ```
+
+Let's add a main method to the class:
+```java 
+public static void main(String[] args) {
+    // your code here
+}
+```
+
+Inside the main method, let's add a line to call the `drawTriangle` method:
+```java 
+public static void main(String[] args) {
+    drawTriangle();
+}
+```
+
+Now, you should be able to see a green arrow pop up on the `public static void main` line. Clicking this green arrow will allow you to run the main method, which in turn calls the `drawTriangle` method. In the below example, the `drawTriangle` prints out `"hello cs61bl!`, which we can see is outputted in the console when we run main. \n
+![New Java Class](img/drawTriangle.png)
+
+You can visually check the output of your `drawTriangle` method by running main like above. Tests are also provided in the tests/ folder; you can run TriangleDrawerTest.java in Intellij to check the correctness of your code. For this particular question, the given tests aren't as useful (since it asks you to visually check your code output), but the test files will be much more relevant in future labs and other assignments.
 
 Copy and paste statements from the `TriangleDrawer.stuff` file into the main method of 
 `TriangleDrawer.java`. You'll have to add some right braces in addition to the copied lines 
@@ -584,93 +603,6 @@ header or the body) and which variables do we want to define outside of the loop
 For example, consider the `SIZE` variable. When is it being modified? Based on that, where should it be defined?
 
 </details>
-
-## Task: An Adding Machine Simulator
-
-Consider a program that simulates an old-fashioned adding machine. The user
-types integers as input, one per line. Input should be handled as follows:
-
--   A nonzero value should be added into a subtotal.
-
--   A zero value should print the subtotal and reset it to zero.
-
--   Two consecutive zeroes should print the total of all values inputted, then
-    print out every value that was inputted in sequence (*not* including zeroes)
-    then terminate the program.
-
-Open the associated file `AddingMachine.java` that holds the implementation of
-the above described program. Read through the TODO in the comments provided in the `AddingMachine.java` file.
-For this exercise, you will be asked to "complete" AddingMachine so that it executes as specified in this spec.
-
-Here's an example of how the program should behave.
-
-| *User input* | *Printed output* |
-|:------------:|:----------------:|
-| 0            | subtotal 0       |
-| 5            |                  |
-| 6            |                  |
-| 0            | subtotal 11      |
-| -5           |                  |
-| 5            |                  |
-| 0            | subtotal 0       |
-| 13           |                  |
-| -8           |                  |
-| 0            | subtotal 5       |
-| 0            | total 16         |
-|              | 5                |
-|              | 6                |
-|              | -5               |
-|              | 5                |
-|              | 13               |
-|              | -8               |
-
-There are several things to note. First, look at how the project description
-leads to the implementation. Try testing the implementation with the inputs and
-outputs listed above. Do the steps make sense?
-
-Second, does this program work with all inputs?
-In programming, the person who writes the code can, intentionally or not,
-introduce their own ideas and assumption in the code, some of which can lead to
-problems. Specifically, for the class `AddingMachine.java` we assumed that the
-user will never enter more than `MAXIMUM_NUMBER_OF_INPUTS` non-zero values during
-any run of the program.
-
-Is this usually a fair assumption to make? Try
-running the code and supply input that violates this assumption. Does the code
-tell you that you have made an error or does it just crash? This touches on a
-new idea of programming: **robustness**. This refers to code's ability to
-handle incorrect user input. In real life, you'll never have a guarantee like
-this, but you haven't been taught the proper Java to handle an arbitrarily long
-sequence of inputs (yet!).
-
-A few things to take away from this code:
-
--   Always consider what will happen if your user interacts incorrectly with
-    your data.
-
--   To exit the `main` method, execute a `return;` statement somewhere inside
-    the method. Because the `main` method is of type `void`, it can't return a
-    value. Therefore, the appropriate `return` statement doesn't have an
-    argument.
-
--   This code introduces the `Scanner` class. A `Scanner` can be used to read
-    user input. Here the `Scanner` is created with `System.in` as an argument,
-    which means that it is expecting input from the command line.
-
-    -   You can do a variety of things with a `Scanner`, but in this exercise
-        you'll find it most useful to use code like this:
-
-        ```java
-        int k;
-        k = scanner.nextInt();
-        ```
-
-    -   Here, `scanner` reads everything it can from its input and stores the
-        result in an integer `k`. Because `scanner`'s input is the command line,
-        the program will actually stop and wait at this part of the code until
-        the user types in something at the command line and hits enter. For
-        example, if the user types `100`, then the program will store the value
-        `100` in `k` before continuing on.
 
 ## Task: Array Exercises
 
