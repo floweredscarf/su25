@@ -1,7 +1,7 @@
 ---
 layout: page
 title: >-
-  Lab 03: Debugging & Test-Driven Development
+  Lab 03: Intro to Objects and Primitives
 has_children: true
 parent: Labs
 has_toc: false
@@ -9,866 +9,1019 @@ has_right_toc: true
 released: true
 ---
 
+{% capture alertContent %}
+**Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
+{% endcapture %}
+{% include alert.html type="warning" content=alertContent%}
+
 ## [FAQ](faq.md)
 
 Each assignment will have an FAQ linked at the top. You can also access it by
-adding "/faq" to the end of the URL. The FAQ for Lab 03 is located
+adding "/faq" to the end of the URL. The FAQ for Lab 3 is located
 [here](faq.md).
 
-## Introduction
 
-To debug a program, you must first know what's wrong. In this lab, you'll get
-some experience with using the debugger to see program state. There are 3 types of bugs that you can encounter in code:
-1. Compiler error: There is some compilation issue (ie. IntelliJ underlines the code in red).
-2. Runtime: There is an exception that occurs while running the program.
-3. Correctness: The program runs without error, but it produces incorrect results.
+## Before You Begin
 
-When you run into a runtime bug, the error is accompanied by a "stack trace" that details the method
-calls that caused the error in the first place. One of the focuses of this lab
-will be to get you used to reading these stack traces, because they can be
-**super** helpful in debugging your own code.
+Run `git pull skeleton main` in your repo. You should get a `lab03/` folder.
+For this, and later labs, we strongly recommend opening up the lab in IntelliJ.
 
-After you've gotten practice debugging, you'll explore TDD (test-driven development), 
-a good practice industry-standard approach in which you design and write test cases before 
-writing the actual code they test.
+**Note:** You may notice after pulling and setting up your workspace that two of the files, `PathHarness.java` and `PathTest.java`, will have orange coffee mugs next to their name instead of a blue circle. This is ok! We will revisit those files later in the lab.
 
-### Setup
+Also, please note that this lab expects exposure to programming similar to that 
+obtained in a course like CS 61A. We will begin diving deep into Java, and moving 
+fast. If you are not as comfortable with this material, we recommend you take a 
+look at this [Java Crash Course](https://cs61bl.org/su23/java/) as supplemental material.
 
-Follow the
-[assignment workflow instructions](../../guides/assignment-workflow#getting-the-skeleton)
-to get the assignment and open it in IntelliJ.
+### Learning Goals
 
-### Goals and Outcomes
+This lab will focus on Java *primitives* and *objects*. Our goals for this lab will
+be as follows:
 
-In this lab, you will enhance your code debugging and testing abilities by defusing a
-(programmatic) bomb and practicing test-driven development. We’ll guide
-you through this process, but the intention is to make this a realistic
-debugging and testing experience.
+-   Learn the different Java primitives and when to use them.
+-   Learn how to define *classes* and use reference-typed variables.
+-   Learn how to work with *box-and-pointer* diagrams to identify common
+    usage errors.
+-   Get some more practice with Arrays
 
-By the end of this lab, you will…
+## Primitives
 
-- Be able to use the debugger and visualizer to inspect program state.
-- Be able to interpret stack traces.
-- Be better able to approach debugging code.
-- Have learned about some common Java bugs and errors.
-- Have better testing practices when developing.
-
-## `Bomb`
-
-The `BombMain` class calls the various `phase` methods of the `Bomb` class.
-Your job is to figure out what the passwords to each of these phrases is by
-*using the IntelliJ debugger*.
-
-{% include alert.html type="danger" content="
-The code is written so that you can't find the password just by reading it. For
-this lab, you are **forbidden** from editing the `Bomb` code, whether to add
-print statements or otherwise modify it. The autograder tests will use our version of `Bomb`.
-
-The point of this exercise is to get comfortable using tools that will help you
-a lot down the road. Please take it seriously!
-" %}
-
-### Interactive Debugging vs. Print Debugging
-
-So far, you might have practiced debugging by using print statements to
-see the values of certain variables as a program runs. When placed
-strategically, the output from printing might help make the bugs obvious or
-narrow down their cause. This method is called **print debugging**. While print
-debugging can be very useful, it has a few disadvantages:
-
-- It requires you to modify your code, and clean it up after.
-- It's tedious to decide and write out exactly what you want to print.
-- Printing isn't always formatted nicely.
-
-In this lab, we'll show you a new technique, **interactive debugging** --
-debugging by using an interactive tool, or a debugger. We'll focus on IntelliJ's
-built-in debugger.
-
-### Debugger Overview
-
-#### Breakpoints
-
-Before starting the IntelliJ debugger, you should set a few **breakpoints**.
-Breakpoints mark places in your code where you can *suspend* the program while
-debugging and examine its state. This:
-
--   Doesn't require you to modify your code or clean it up after, since
-    breakpoints are ignored in normal execution.
--   Lets you see *all* the variables without needing to write print statements.
--   Lets IntelliJ display everything in a structured manner
-
-To set a breakpoint, click the area just to the right of the line number.
-
-![code breakpoints](img/code_breakpoints.png){: style="max-height: 325px;" }
-
-A red circle or diamond should appear where you clicked. If nothing appears,
-make sure that you click next to a line with code. When the debugger reaches
-this point in the program, it will pause **before** the execution of the line or
-method. Click the breakpoint again to remove it.
-
-#### Running the Debugger
-
-Once you've set some breakpoints, you're ready to start a debugging session!
-Click on the green triangle next to the class or test you want to debug (in test
-files there may be two green triangles). Instead of clicking the green triangle
-to run, click the
-![debug](img/debug.png){: .inline } debug option:
-
-![run debugger](img/run_debugger.png){: style="max-height: 325px;" }
-
-The selected program should run until it hits its first breakpoint. A debugger
-window should also appear on the bottom of the interface, where the console was.
-
-![debugger session](img/debugger_session.png){: style="max-height: 325px;" }
-
-On the left, you will be able to see all current method calls and on the right,
-you will be able to see the values of instantiated variables at this point in
-the program (they will also be shown in gray text in the editor). For instances
-of classes, you can click the dropdown to expand them and look at their fields.
-
-In the debugger, you have a few options:
-
--   Learn something from the displayed values, identify what's wrong, and fix
-    your bug! Click the stop button ![stop](img/stop.png){: .inline } to stop the debug session.
--   Click the resume button ![resume](img/resume.png){: .inline } to resume the program (until it
-    hits another breakpoint or terminates).
--   Click the step over button ![step over](img/step-over.png){: .inline } to advance the program by
-    one line of code.
-    -   The step into button ![step into](img/step-into.png){: .inline } does something similar, but
-        it will step into any method called in the current line, while
-        the step over button ![step over](img/step-over.png){: .inline } will step over it.
-    -   The step out button ![step out](img/step-out.png){: .inline } will advance the program until
-        after it returns from the current method.
--   If you accidentally step too far and want to start the session over, click the rerun button
-    ![rerun](img/rerun.png){: .inline }.
-
-To see the console output (and type into the console) while debugging, click
-the "Console" tab next to "Debugger" in the top left of the debug window,
-just above the frames. If you want to see everything simultaneously (while
-being more compressed), you can drag the console tab to the far right of the
-bottom panel. 
-
-### Reading Stack Traces
-
-When a *runtime error* occurs in Java, a stack trace is printed to the console
-to provide information on where the error occurred and what steps the program
-took to get there. When running `Bomb` for the first time, your stack
-trace will look something like this:
-
-![stack trace](img/npe_stack_trace.png){: style="max-height: 325;" }
-
-The first thing to note is what kind of error occurred; this is shown at the
-first line of the stack trace. In this case, our code threw a
-`NullPointerException`.
-
-For some exceptions, including `NullPointerException`s, Java will give you an
-explanation. Here, `password` is `null`, so we can't invoke (call) a method on
-it.
-
-The lines beneath it represent the sequence of methods the program took to
-arrive at the error: the first line in the list is where the error occurred
-and the line beneath it represents the line of code that called the method
-which threw the error, and so on.
-
-You can click on **`blue text`**{: .blue} to navigate to that file and line.
-
-### `Bomb` Introduction (Phase 0)
-
-{% include alert.html type="info" content="
-For this lab, we will be providing hints. Please **only use them if
-you're stuck!** You'll get much more out of the exercises if you try to solve
-them on your own first.
-" %}
-
-{% include alert.html type="task" content="
-**Task**: Set a breakpoint at `phase0` and use the debugger to find the password
-for `phase0` and replace the `phase0` argument accordingly in
-`bomb/BombMain.java`. 
-" %}
-
- Once you've found the correct password, running the code (not in debug mode)
- should output "You passed phase 0 with the password \<password\>!" instead of
- "Phase 0 went BOOM!"
-
-<details markdown="block">
-<summary markdown="block">
-
-**`phase0` Method Breakdown**
-
-</summary>
-
-The `phase0` method first generates a secret String `correctPassword` (you don't
-need to understand how `shufflePassword` works). The `password` passed in from
-`BombMain` is then compared against `correctPassword`. The goal of this phase is
-to use the debugger to find the value of `correctPassword` and pass in a
-`password` that matches that value!
-
-</details>
-
-### Visualizer (Phase 1)
-
-While being able to see variable values is great, sometimes we have data that's
-not the easiest to inspect. The Java Visualizer shows a box-and-pointer diagram of
-the variables in your program, which is much better suited for large objects with a lot of data. 
-To use the visualizer, run the debugger until you stop at a breakpoint, then click
-the "Java Visualizer" tab.
-
-The password for phase 1 is an `int[]`, not a `String`.
-
-{% include alert.html type="task" content="
-**Task**: Set a breakpoint at `phase1` and use the Java Visualizer
-to find the password for `phase1` and replace the `phase1` argument accordingly
-in `bomb/BombMain.java`. 
-" %}
-
-<details markdown="block">
-<summary markdown="block">
-
-**`phase1` Method Breakdown**
-
-</summary>
-
-The `phase1` method generates a secret `int[]` called `correctArrPassword`
-(similar to the previous phase, you don't need to understand how
-`shufflePasswordArr` works). The `password` (in the form of an `int[]`)
-passed in from `BombMain` is then compared against the `correctArrPassword`
-for equality. The goal of this phase is to use the debugger's Java Visualizer to
-find the structure and value of the `correctArrPassword`'s `int[]` and pass
-in a `password` that matches it!
-
-</details>
-
-### Optional Challenge: Conditional Breakpoints (Phase 2)
-
-{% include alert.html type="info" content="
-Although phase 2 is optional, we **highly** recommend that you do it if you have time
-because conditional breakpoints are very useful!
-" %}
-
-Sometimes you may want to have your program pause only on certain conditions.
-To do so, create a breakpoint at the line of interest and open the
-"Edit breakpoint" menu by right-clicking the breakpoint icon itself. There,
-you can enter a boolean condition such that the program will only pause at this
-breakpoint if the condition is true.
-
-Another thing you can do is to set breakpoints for exceptions in Java. If your
-program is crashing, you can have the debugger pause where the exception is
-thrown and display the state of your program. To do so, click
-![view breakpoint](img/view-breakpoints.png){: .inline }
-in the debugger window and press the plus icon to create a "Java Exception
-Breakpoint". In the window that should appear, enter the name of the exception
-that your program is throwing.
-
-{% include alert.html type="task" content="
-**Task**: Set a breakpoint at `phase2` and use the debugger to find the password
-for `phase2` and replace the `phase2` argument accordingly in
-`bomb/BombMain.java`. Remember, don't edit `Bomb.java`!
-
-***
-
-**Note**: The password isn't given explicitly like in the previous phases.
-Rather, your task is to construct an input so that the `boolean correct`
-variable is set to `true` after `phase2` is run.
-
-***
-
-**Tip**: After you pass phase 0 and phase 1, before you change anything else for phase 2,
-try running `BombMain.java`. You'll see that the program  will exit with an `ArrayIndexOutOfBoundsException`,
-and resultant stack trace, which means that the code is trying to access an array at an index that does not fit within
-the bounds of the array. Revisit the [Reading Stack Traces](./#reading-stack-traces) section if you need a refresher on 
-stack traces.
-" %}
-
-<details markdown="block">
-<summary markdown="block">
-
-**Hint 1**
-
-</summary>
-
-You may want to look up Java's `split` method for `String`s if you're unsure
-of what it does.
-
-</details>
-
-<details markdown="block">
-<summary markdown="block">
-
-**Hint 2**
-
-</summary>
-
-You don't necessarily need to construct the password in one line of code.
-
-</details>
-
-<details markdown="block">
-<summary markdown="block">
-
-**Hint 3**
-
-</summary>
-
-You'll need to build the password in pieces so that the `split` method will cause
-the correct number be in the right spot. 
-
-</details>
-
-<details markdown="block">
-<summary markdown="block">
-
-**Hint 4**
-
-</summary>
-
-After you've constructed a sufficiently long `String` so that `1337` is a valid
-index, set a conditional breakpoint inside the for loop that pauses the program
-when `i` is close to `1337`. Then step until you find the password.
-
-</details>
-
-<details markdown="block">
-<summary markdown="block">
-
-**`phase2` Method Breakdown**
-
-</summary>
-
-The `phase2` method takes in your `password` from `BombMain` and splits it by
-spaces into the `passwordPieces` array. For example, if your password is `"1 2
-3"`, then `passwordPieces` will be equivalent to `{"1", "2", "3"}`.
-
-The method then adds 100,000 random integers to a `Set` called `numbers`. It
-then loops through them using a for-each loop, incrementing a variable `i` as it
-goes along. On the 1338th iteration (because Java is zero-indexed, `i == 1337`
-on iteration 1338), we check whether the integer at the 1337th index of the
-`passwordPieces` array is equal to the current `number`.
-</details>
-
-***
-
-At this point, you should be able to run the tests in `tests/bomb/BombTest.java`
-and have all of them pass with a green checkmark.
-
-### Recap: Debugging
-
-By this point you should understand the following tools:
-
-- Breakpoints
-- Step Over
-- Step Into
-- Step Out (though you might not have actually used it in this lab)
-- Resume
-- Conditional breakpoints
-
-However, this is simply scratching the surface of the features of the debugger!
-Feel free to experiment and search around online for more help.
-
-Some useful features include:
-
--   Remember that
-    [**Watches**](https://www.jetbrains.com/help/idea/examining-suspended-program.html#watches)
-    tab? Why not read into what that does?
--   Or try out the incredibly handy
-    [**Evaluate Expressions**](https://www.jetbrains.com/help/idea/examining-suspended-program.html#evaluating-expressions)
-    calculator button (the last button on the row of step into/over/out buttons)?
--   Or perhaps look deeper into breakpoints, and
-    [**Exception Breakpoints**](https://www.jetbrains.com/help/idea/using-breakpoints.html#exception-breakpoints)
-    which can pause the debugger right _before_ your program is about to crash.
-
-We won't always use all of these tools, but knowing that they exist and making
-the debugger part of your toolkit is incredibly useful.
-
-## Testing Your Code with Truth
-
-In the rest of the lab, you will be officially introduced to Google's [Truth](https://truth.dev/) 
-assertions library. It provides an intuitive way to write repeatable tests, which substantially reduces the tedium of testing
-your code. Many of your lab submissions for the rest of the course will include
-a Truth testing file and all of our autograders are written using Truth or JUnit.
-
-You may already be familiar with JUnit, a common Java testing framework. Both
-Truth and JUnit make easy an approach to programming called test-driven development
-(TDD). TDD is a popular approach in industry in which you design and write test cases
-before writing the code they test. We will encourage it in the remainder of CS
-61BL, starting by leading you through the steps of the construction of a class
-representing measurements (feet, yards, inches).
-
-In 61BL, we will use Truth assertions inside JUnit framework tests instead of JUnit assertions for the following reasons:
-
-- Better failure messages for lists.
-- Easier to read and write tests.
-- Larger assertions library out of the box.
-
-We often write tests using the Arrange-Act-Assert pattern:
-
-1.  **Arrange** the test case, such as instantiating the data structure or
-    filling it with elements.
-2.  **Act** by performing the behavior you want to test.
-3.  **Assert** the result of the action in (2).
-
-We will often have multiple "act" and "assert" steps in a single test method
-to reduce the amount of boilerplate (repeated) code.
-
-
-#### Truth Assertions
-
-A Truth assertion takes the following format:
+As you may have noticed, when initializing a variable in Java you must put the
+type next to it. Notice that this is different than Python, where you can simply assign
+any arbitrary data type to a variable name.
 
 ```java
-assertThat(actual).isEqualTo(expected);
+int number = 10;
 ```
 
-To add a message to the assertion that displays upon failure, we can instead use:
+The above line tells Java that the variable `number` is an **integer** that
+holds the value `10`. A variable’s type tells us what kind of data is stored in that variable. In the case of the variable `number`, its data type is an integer. In Java, there are a predefined set of *primitive types*.
+
+-   **boolean** : a `boolean` represents the two possible values of `true` and `false`.
+
+-   **byte** : a `byte` represents an 8-bit signed integer.
+
+-   **short** : a `short` represents a 16-bit signed integer.
+
+-   **int** : an `int` represents a 32-bit signed integer. This is the most commonly
+    used integer type and can hold values between -2,147,483,648 to
+    2,147,483,647 inclusive.
+
+-   **long** : a `long` represents a 64-bit signed integer. Sometimes when we need to
+    express large integral numbers we will use this as it ranges from
+    -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807.
+
+-   **float** : a `float` represents a 32-bit single precision floating point
+    number. *Floating point numbers* can approximate a range of real numbers
+    including integers, decimals, and special values like infinity. Floating point
+    numbers can only represent a finite number of the infinitely many numbers in
+    existence. Anything that cannot be represented is encoded as "NaN", which stands
+    for "Not a Number". **How float determines what numbers can be represented is a 61C topic. For the purposes of this class, you can work under the assumption that every number can be represented as a float.**
+
+-   **double** : a `double` represents a 64-bit double precision floating point
+    number. Most of our decimal numbers will use this type as it provides
+    greater precision.
+
+-   **char** : a `char` represents an [ASCII](https://www.asciitable.com/) letter (like the English alphabet).
+
+These words are *reserved* in Java. That is, we cannot use `int` and
+`double` in any other context besides declaring a variable of that type. Note
+that all primitives begin with a lowercase letter.
+
+Declaring a primitive is very simple. For example, if we wanted to declare a
+double, we can write the following.
 
 ```java
-assertWithMessage("actual is not expected")
-    .that(actual)
-    .isEqualTo(expected);
+double pi = 3.14;
 ```
 
-We can use things other than `isEqualTo`, depending on the type of `actual`.
-For example, if `actual` is a `List`, we could do the following to check its
-contents without constructing a new `List`:
+Certain primitives require an extra letter after the initial value. For example,
+to declare a `long` or a `float`, we write the following. Notice the `L` and
+the `f` that signify the end of the value.
 
 ```java
-assertThat(actualList)
-    .containsExactly(0, 1, 2, 3)
-    .inOrder();
+long num = 9223372036854775807L;
+float num2 = 42.0f;
 ```
 
-If we had a `List` or other reference object, we could use:
+Finally, we can declare a `char` using a **single-quoted literal**. For example, if
+we want to initialize variable `a` to the letter "a", we would write the following.
 
 ```java
-assertThat(actualList)
-    .containsExactlyElementsIn(expected)  // `expected` is a List
-    .inOrder();
+char a = 'a';
 ```
 
-Truth has many assertions, including `isNull` and `isNotNull`; and
-`isTrue` and `isFalse` for `boolean`s. IntelliJ's autocomplete will often give
-you suggestions for which assertion you can use.
-
-#### Example Test
-
-Let's break down an example test:
+We need not always initialize the value of a primitive. Sometimes, we don't
+care about the value at that point in time, and only need a variable to use in
+later code. We do so by *declaring* the following:
 
 ```java
-@Test
-/** In this test, we use only one assertThat statement. 
-    *  In other words, the tedious work of adding the extra assertThat statements isn't worth it. */
-public void arrTest() {
-    int[] arr = new int[3]; // arr is [0, 0, 0] because elements of int[] are initially set to 0
-    
-    arr[0] = 42; // after this we expect: [42, 0, 0]
-    arr[1] = 27; // after this we expect: [42, 27, 0]
-    arr[2] = 961; // after this we expect: [42, 27, 961]
-        
-    assertThat(arr).asList().containsExactly(42, 27, 961).inOrder();
-}
+char a;
+double d;
 ```
 
--   `@Test` tells Java that this is method is a *test*, and should be run when
-    we run tests.
--   **Arrange**: We construct a new `int[]` called `arr`, and set 3 elements in it at indices 0, 1, and 2.
--   **Act**: We call `asList` on the result of `assertThat(arr)`, which turns the assertion object into a list and implicitly depends on the
-      earlier sets to the array.
--   **Assert**: We use a Truth assertion to check that the object created from `asList` contains
-    specific elements in a specific order.
+Note that primitives have default values - we'll talk about this later.
 
-
-### Task: Using IntelliJ to Write Tests
-
-{% include alert.html type="warning" content="
-Similar to the debugging exercises, this section will not be graded, but it is
-recommended that you complete this exercise either now or sometime over the
-next few days. Testing is an equally important skill to learn as it will
-be used extensively throughout the rest of our class (in labs, projects, and
-exams).
-
-Past that, in industry, testing your code is a huge part of what you will do as
-a software engineer. Writing code is incomplete without a solid set of tests to
-verify its fault tolerance and accuracy.
-
-**Untested code is broken code.**
-" %}
-
-One of the many great features about IntelliJ is that it can be used to start
-generating JUnit tests, which we will use as a skeleton for our Truth assertions. We will illustrate how it can be used with the
-following example. Follow along each of the steps in IntelliJ.
-
-1.  Navigate to `Counter.java`. In it, you will see an instance variable `myCount`, some instance methods (`increment()`, `reset()`, `value()`),
-    and the constructor, defined as `public Counter() { myCount = 0; }`.
-    As a quick refresher, the constructor creates an instance of the `Counter` class and initializes
-    its `myCount` instance variable (attribute) to 0. We'll talk more about objects in depth next week; for now, 
-    we just want you to pay attention to the flow of how tests are generated, and for which methods.
-
-2.  Make a new JUnit Test Case:
-
-    -   **Click** on the class name in the `Counter.java` file and select
-        **"Navigate -> Test"**. Alternatively, you can use
-        <kbd>CTRL</kbd> / <kbd>CMD</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd>.
-
-        ![Navigate to Test](img/navigate-test.png)
-
-    -   Click **"Create New Test..."**. If you are asked to create test in the
-        same source root, click **"Ok"**.
-
-        ![Create Counter Test](img/create-new-test.png)
-
-    -   Name the JUnit Test Case `CounterTest`. Select "JUnit 4" as the testing
-        library. Next check the boxes for the `increment()` and `reset()`
-        functions.
-
-        ![Make Counter Test](img/make-counter-test.png)
-
-    -   You should see a file similar to the following:
-
-        ```java
-        import org.junit.Test;
-
-        import static org.junit.Assert.*;
-
-        public class CounterTest {
-
-            @Test
-            public void increment() {
-            }
-
-            @Test
-            public void reset() {
-            }
-        }
-        ```
-    -   **At this point, we have a nice skeleton testing setup, but we don't want to use
-        JUnit assertions. Replace the `import static org.junit.Assert.*;` line at the 
-        top with `import static com.google.common.truth.Truth.assertWithMessage;` so that we 
-        can use Truth assertions.**
-
-    -   Edit your `CounterTest.java` as follows:
-
-        -   In `testIncrement`, put the code
-
-            ```java
-            Counter c = new Counter();
-            c.increment();
-            assertWithMessage("Counter value is not 1.").that(c.value()).isEqualTo(1);
-            c.increment();
-            assertWithMessage("Counter value is not 2.").that(c.value()).isEqualTo(2);
-            ```
-
-        -   In `testReset`, put the code
-
-            ```java
-            Counter c = new Counter();
-            c.increment();
-            c.reset();
-            assertWithMessage("Counter value is not 0 after reset.").that(c.value()).isEqualTo(0);
-            ```
-
-        -   IntelliJ doesn't generate constructor tests. Add one:
-
-            ```java
-            @Test
-            public void testConstructor() {
-                Counter c = new Counter();
-                assertWithMessage("Counter value is not 0 upon instantiation.").that(c.value()).isEqualTo(0);
-            }
-            ```
-
-3.  Run your tests individually; they should all pass. You should also be able to run your full
-    test file (test case) and see that all tests pass.
-
-4.  We have shown you what it looks like to pass a test, but what happens if
-    you fail? Intentionally introduce an error into one of the `CounterTest`
-    methods, asserting for example that the value of a freshly-built `Counter`
-    object should be 7. Run the test again and observe the error messages
-    that result.
-
-## Testing Principles
-
-### Test-Driven Development
-
-_Test-driven development_ is a development process that involves designing test
-cases for program features before designing the code that implements those
-features. The work flow is:
-
-1.  Write test cases that demonstrate what you want your program to be
-    able to do. As the code isn't written yet, most tests should fail.
-2.  Write as little code as possible so that all the tests are passed.
-3.  Clean up the code as necessary. Recheck that all tests still pass.
-
-### Test Effectiveness
-
-Unsurprisingly, there are effective tests and ineffective tests. The presence
-of tests alone does not mean that those tests are doing anything:
+So *declaring* a variable is like telling Java you have a variable of a certain
+type. Java sets aside a little container of memory that can perfectly hold that
+type. Once you've declared a variable, *initializing* a variable is when you
+actually put a value inside that little container of memory. We can imagine
+that these little magic memory boxes can only contain objects of a certain
+type. So if you declare a variable of type `int`, and then try to initialize
+its value to `false`, your code won't compile because `false` is not an `int`!
 
 ```java
-@Test
-public static void uselessTest() {
-    assertThat(true).isEqualTo(true);
-}
+int a;
+int b;
+a = 61; //This line will compile with no errors
+b = false; //This line will error during compilation as 'b' is of type int and not boolean
 ```
 
-Given a codebase, and tests for that codebase, how can we evaluate how "good"
-the tests are? In other words, how much confidence do our tests give us that
-our code is completely, fully correct?
+## Objects
 
-#### Statement Coverage
+Java is an *object-oriented* language. This means that everything we want to
+represent in Java is defined in terms of *objects*.
 
-One testing principle you can imagine is that test values should exercise every
-statement in the program, since any statement that's not tested may contain a
-bug. Below is a program that checks whether a given year is a leap year:
+Objects are bundles of code that define the *state* and *behavior* of the
+construct we wish to represent. Suppose we wish to represent a potato. A potato's
+state can be described by its *variety* and *age*, and it also has behaviors such as
+*grow* and *flower*.
+
+Now suppose Erik and Alex both have potatoes; Erik has a Yukon Gold and Alex has
+a Red Pontiac. Even though Erik and Alex have different varieties of potatoes, they are
+both still potatoes. They each have an age, color and variety. Critically, we can
+describe an entire group of Potatoes with a set of common descriptors.
+
+In Java we define an Object via its *Class*. Erik's Yukon Gold and Alex's Red
+Pontiac would then be called *instances* of the `Potato` class. Let's see how we can
+implement a `Potato` class in Java.
+
+### Example
+
+For this section, we will be using the Potato code found below. This can also be found in
+`lab03/src/Potato.java`.
 
 ```java
-public static boolean isLeapYear(int year) {
-    if (year % 400 == 0) {
-        return true;
-    } else if (year % 100 == 0) {
-        return false;
-    } else if (year % 4 == 0) {
-        return true;
-    } else {
-        return false;
+public class Potato {
+
+    /* An instance variable representing the potato's species. */
+    private String variety;
+    /* An instance variable representing the potato's age. */
+    private int age;
+
+    /** A constructor that returns a very young russet burbank potato. */
+    public Potato() {
+        this.variety = "Russet Burbank";
+        this.age = 0;
+    }
+
+    /** A constructor that allows you to specify its variety and age. */
+    public Potato(String variety, int age) {
+        this.variety = variety;
+        this.age = age;
+    }
+
+    /** A getter method that returns the potato's type. */
+    public String getVariety() {
+        return this.variety;
+    }
+
+    /** A getter method that returns the potato's age. */
+    public int getAge() {
+        return this.age;
+    }
+
+    /** A setter method that sets the potato's age to AGE. */
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    /** A method that grows the potato. Note it increases its age by 1. */
+    public void grow() {
+        System.out.println("Photosynthesis!");
+        this.age = this.age + 1;
+    }
+
+    /** Did you know potatoes can flower? No? Neither did I... */
+    public void flower() {
+        System.out.println("I am now a beautiful potato");
     }
 }
 ```
 
-The code contains four cases, exactly one of which is executed for any
-particular value of year. Thus we must test this code with at least one year
-value per case, so at least four values of year are needed for testing:
+We will also be looking at `lab03/src/Potato1.java` later on!
 
-- a year that's divisible by 400;
-- a year that's divisible by 100 but not by 400;
-- a year that's divisible by 4 but not by 100;
-- a year that's not divisible by 4.
+### Defining a Class
 
-This approach by itself is insufficient as we will see below.
+We've provided a sample `Potato` class in the skeleton files. The steps in this section show you how we made it!
 
-#### Path Coverage
-
-To augment this first principle, we'll say we need to test various _paths_
-through the program. For example, suppose our program had two consecutive `if`
-statements:
+To define a Java class, we make a new `.java` file and encompass the class's code with the following header:
 
 ```java
-if ( ... ) {
-    ...
-}
-if ( ... ) {
-    ...
+class Potato {
+    /** Potato code goes here! */
 }
 ```
 
-There are two possibilities for each if case: `true` or `false`.
-Thus there are four paths through the two statements, corresponding to the four
-possibilities
+There are two things to keep in mind when writing Java classes.
 
-- `true`, `true`
-- `true`, `false`
-- `false`, `true`
-- `false`, `false`
+-   Java requires the class name to be the same as the file name. This is why
+    the `Potato` class is written in `Potato.java`.
 
-The following example shows why statement coverage is not a guarantee of
-correctness:
+-   By convention, the name of a class always begin with a capital letter and is generally
+    named using camel case (ex: `ThisIsCamelCase`)
+
+### Constructors
+
+Now, to initialize a `Potato` object, we must call its *constructor*. The
+constructor is a special method that creates and returns a new instance of your
+class. This method is where we will initialize all the variables associated
+with the class's instance. Unlike other methods, there is **no** return type in
+the constructor's signature, and it **must** have the same name as the class itself.
+Although we do not specify a return type in the method name and there is no return statement, the constructor creates an instance of the class and returns it. This is a unique property of constructor methods.
+
+It's possible to define a constructor that takes in no arguments.
+
+```java
+public Potato() {
+    this.variety = "Russet Burbank";
+    this.age = 0;
+}
+```
+
+Creating a constructor that takes in no arguments lets us create a default case. Here, if the user doesn’t give us the type or age of the potato, we’re telling the computer to set the type to “Russet Burbank” and age to 0 by default. 
+
+However, we can also give our user the option to specify arguments in our constructor.
+
+```java
+public Potato(String variety, int age) {
+    this.variety = variety;
+    this.age = age;
+}
+```
+
+This constructor returns a `Potato` with its `variety` and `age` set to the
+values given as arguments. Now we can construct potatoes such as erik's 3
+year old Yukon Gold potato.
+
+We will discuss how to declare objects in more detail during the **Boxes and Pointer Diagrams**
+section.
 
 {% include alert.html content="
-A `year` value of 2000 causes all the statements in the below program segment
-to be executed, giving 100% statement coverage. However, there may be a bug in
-this code it will not catch.
+**Caveat:** if no constructors are defined in the object file, then the Java compiler
+will provide a *default constructor* that accepts no argument. However, if a constructor
+is defined, then the compiler will **not** provide a *default constructor*. Read more
+about it [here](https://docs.oracle.com/javase/tutorial/java/javaOO/constructors.html).
 " %}
 
-<!-- TODO: see https://cs61bl.org/su17/materials/lab/lab08/lab08.html#testing-principle-1
-and bring the bug introduction exercise back.
- -->
+### Instance Variables
+
+Instance variables allow us to represent the state of an object and can be both
+primitives or objects. The "has a" test is an easy way to see if something should
+be an instance variable of an object. For example, a potato has an age and variety.
+Thus, within our `Potato` class, we see that there are two
+instance variables: `variety` and `age`.
 
 ```java
-public static boolean isLeapYear(int year) {
-    isLeapYear = true;
-    if (year % 4 == 0) {
-        isLeapYear = true;
-    }
-    if (year % 100 == 0) {
-        isLeapYear = false;
-    }
-    if (year % 400 == 0) {
-        isLeapYear = true;
-    }
-    return isLeapYear;
+/* An instance variable representing the potato's species. */
+private String variety;
+/* An instance variable representing the potato's age. */
+private int age;
+```
+
+As with any other variable, we must declare what type it is. The `String` keyword
+tells us `variety` is a string object and `int` tells us the age is an integer
+primitive.
+
+Instance variables have *default values* that correspond to the type of the
+variable. If instance variables are not initialized in the constructor or
+elsewhere with a value, they will initially contain the default. These defaults
+will correspond to a zero value. `0` for `int`, `float`, `double`, etc. `false`
+for `boolean`, and `null` for `Object` types. **However, it is not good practice
+to rely on default values, as it makes it harder to understand your code.**
+Instead, you should explicitly initialize your instance variables.
+
+We can (usually) access the age and variety of the Potato via dot notation.
+This is similar to Python's dot notation, which you may have encountered in CS 61A.
+
+```java
+Potato eriksPotato = new Potato("Yukon Gold", 3); // erik's potato!
+eriksPotato.variety; // returns the variety of erik's potato
+eriksPotato.age; // returns the age of erik's potato
+```
+
+Notice that we had to first instantiate a new `Potato` object before we could
+access `variety` or `age`. The order of the variables that we pass into the
+`new Potato` call must match the order of the parameters of the constructor.
+Remember that *instance variables* are particular to the object.
+Thus we need to create an object first in order to have `variety` and `age`.
+Also notice that we have both *declared* and *instantiated* `eriksPotato`
+within the same line to make our code a little more compact. 
+
+Doing something like:
+
+```java
+Potato eriksPotato;
+eriksPotato = new Potato("Yukon Gold", 3);
+```
+
+is practically the same. You may want to declare a variable before instantiating it
+if the initial assignment of the variable should not be set (e.g. we don't know that 
+Erik's potato is currently 3 years old).
+
+When writing object code within its class, we can also employ the `this` keyword.
+Its usage is similar to that of `self` in Python.
+
+```java
+this.variety; // returns the current instance's variety
+this.age; // returns the current instance's age
+```
+
+One notable difference, however, is that `this` cannot be reassigned whereas
+`self` in Python can be reassigned.
+
+Outside of the `Potato` class, we can’t use `this` to refer to `eriksPotato` since
+we only use this to refer to the current instance while inside the class.
+Instead, we're trying to refer specifically to `eriksPotato`.
+
+We also have a `private` keyword placed in
+front of the `variety` and `age` declaration. This means we cannot access
+the `variety` and `age` via dot notation outside of `Potato.java`. We will see more
+about why we may want to do this in the **Getter and Setter Method** section
+later on.
+
+Finally, it's important to stress that even though all instances of `Potato` will
+have the variables `variety` and `age`, their values will be specific to each
+instance of `Potato` - hence the name *instance variable*.
+
+### Instance Methods
+
+To facilitate behavior, we can define *instance methods*. For example, `Potato`
+has defined in it the `grow()` method.
+
+```java
+/** A method that grows the potato. Note it increases its age by 1. */
+public void grow() {
+    System.out.println("Photosynthesis!");
+    this.age = this.age + 1;
 }
 ```
 
-From the previous discussion, it looks like we need _eight_ tests,
-corresponding to the eight paths through the three `if` statements. They are listed below.
+Like instance variables, we can access instance methods using dot notation as
+well.
 
 ```java
-    year % 4 == 0, year % 100 == 0, and year % 400 == 0  // (which just means that year % 400 == 0)
-    year % 4 == 0, year % 100 == 0, and year % 400 != 0
-    year % 4 == 0, year % 100 != 0, and year % 400 == 0  // (not possible)
-    year % 4 == 0, year % 100 != 0, and year % 400 != 0
-    year % 4 != 0, year % 100 == 0, and year % 400 == 0  // (not possible)
-    year % 4 != 0, year % 100 == 0, and year % 400 != 0  // (not possible)
-    year % 4 != 0, year % 100 != 0, and year % 400 == 0  // (not possible)
-    year % 4 != 0, year % 100 != 0, and year % 400 != 0  // (equivalently, year % 4 != 0)
+eriksPotato.grow(); // Erik's potato grows!
+``` 
+
+We also have a few special instance methods prefixed by the words "get" and
+"set". These are aptly named getters and setters, which we'll learn more about
+below!
+
+### Getter and Setter Methods
+
+As we have seen, the `private` keyword limits our ability to access instance
+variables directly. This is called an **access modifier** and we will be
+discussing them in more detail later on in the course.
+
+For now, just know that in general it is good practice to make instance
+variables private. One consequence of making our instance variables private
+is that we must now define instance methods to access them.
+
+This is where we introduce getter and setter methods. Within `Potato` we have
+these methods.
+
+```java
+/** A getter method that returns the potato's type. */
+public String getVariety() {
+    return this.variety;
+}
+
+/** A getter method that returns the potato's age. */
+public int getAge() {
+    return this.age;
+}
 ```
 
-Notice that some of the tests are logically impossible, and so we don't need to
-use them. This leaves the _four_ tests we needed to write.
+The above two blocks are called *getter* methods since they **get** the value
+of their respective instance variables for programs outside of `Potato.java`.
+Of course, due to advancements in genetic modification technology, it is also
+possible to **set** the age of our potato.
 
-### Testing Loops
+```java
+/** A setter method that sets the potato's age to AGE. */
+public void setAge(int age) {
+    this.age = age;
+}
+```
 
-Loops can vastly increase the number of logical paths through the code, making
-it impractical to test all paths. Here are some guidelines for testing loops,
-drawn from _Program Development in Java_ by Barbara Liskov and John Guttag, a
-book used in previous CS 61B offerings.
+This is called a *setter* method as it allows us to set the value of an instance
+variable.
 
--   For loops with a fixed amount of iteration, we use two iterations. We choose
-    to go through the loop twice rather than once because failing to
-    reinitialize after the first time through a loop is a common programming
-    error. We also make certain to include among our tests all possible ways
-    to terminate the loop.
--   For loops with a variable amount of iteration, we include zero, one, and
-    two iterations, and in addition, we include test cases for all possible
-    ways to terminate the loop. The zero iteration case is another situation
-    that is likely to be a source of program error.
+Interestingly enough, we don't have a setter method for the `variety` instance
+variable. This is because until we develop the technology to support
+spud-transmutation (#PotatoDreams), Erik's Yukon Gold potato will forever remain
+a Yukon Gold potato.
 
-> Liskov and Guttag also say: This approximation to path-complete testing is, of
-> course, far from fail-safe. Like engineers' induction "One, two, three—that's
-> good enough for me," it frequently uncovers errors but offers no guarantees.
+Of course, this is important in an application sense because now external
+programs cannot maliciously change the identity of a potato. Take a look at
+`Potato1.java`
 
-### Black-box Testing
+```java
+/* An instance variable representing the potato's species. */
+public String variety;
+/* An instance variable representing the potato's age. */
+public int age;
+```
 
-All the testing principles discussed so far focused on testing features of the
-code. Since they assume that we can see into the program, these techniques are
-collectively referred to as _glass-box_ testing, as if our code is transparent.
+The `variety` and `age` are public, meaning we can write a program to
+change the identity of Erik's potato.
 
-Another testing approach is called _black-box_ testing. It involves generating
-test cases based only on the problem specification, not on the code itself.
-There are several big advantages of this approach:
+```java
+/* eriksPotato is an instance with variety = "Yukon Gold" */
+eriksPotato.variety = "Red Pontiac"; // A POTATO IMPOSTER!
+```
 
--   The test generation is not biased by knowledge of the code. For instance, a
-    program author might mistakenly conclude that a given situation is
-    logically impossible and fail to include tests for that situation; a
-    black-box tester would be less likely to fall into this trap.
+The practice of using getters and setters is called *information hiding* and it
+prevents external programs from unintentionally (or intentionally!) changing
+the value of our instance variables.
 
--   Since black-box tests are generated from the problem specification, they
-    can be used without change when the program implementation is modified.
+In one of exercises later, we will be considering a bank account. Without a doubt, we will
+want the balance of our bank account to be private, so that other programs cannot simply set `account.balance = 0;`.
 
--   The results of a black-box test should make sense to someone unfamiliar
-    with the code.
+## Box and Pointer Diagrams
 
--   Black-box tests can be easily designed before the program is written, so
-    they go hand-in-hand with test-driven development.
+Throughout this class it will be extraordinarily helpful to draw pictures of the
+variables in our programs to help us with debugging by visualizing the state and
+changes of objects throughout the code. The diagrams we'll teach you
+to use in this class are often referred to as *box and pointer* diagrams, which are
+similar to the Environment Diagrams you saw in CS 61A.
 
-In black-box testing as in glass-box testing, we try to test all possibilities
-of the specification. These include typical cases as well as _boundary_ cases,
-which represent situations that are extreme in some way, e.g. where a value is
-as large or as small as possible.
+Let's start off with something simple. When we declare a primitive, we draw a
+box for it, and label the box with the type of primitive, and the name of the
+variable. Here, primitives will be in red boxes. For example,
 
-There are often a variety of features whose "boundaries" should be considered.
-For example, in the `DateConverter` program, boundary cases would include not
-only dates in the first and last months of the year, but also the first and
-last dates of each month, etc.
+```java
+int x;
+```
+
+![EmptyInt](img/EmptyInt.jpg)
+
+(We could also have drawn a 0 in the box.)
+When we assign a value to the primitive, we fill in the box with the value of
+the primitive.
+
+```java
+x = 3;
+```
+
+![FullInt](img/FullInt.jpg)
+
+Variables can also refer to objects. For example, a variable can refer to a `Potato`
+instance. We can declare a `Potato` object the same way as we declare an `int`.
+
+```java
+Potato p;
+```
+
+This variable is called a *reference*, because it will refer to an object. When
+we first declare the reference but don't assign an object to it like in the
+code above, we say the reference contains nothing, or `null`. This also occurs
+when an instance variable is not assigned a value in the constructor. Here's
+how we draw it:
+
+![NullRef](img/NullRef.jpg)
+
+Here we're drawing references in green to emphasize that they are different
+from primitives.
+
+Now let's assign a reference to the `Potato` object by calling its
+*constructor*. This *instantiates*, or creates, a new instance of the `Potato` class.
+Instantiating an object via its constructor **always** requires the `new` keyword.
+
+```java
+p = new Potato();
+```
+
+Objects in Box and Pointer Diagrams are each drawn as their own separate boxes. Here, there is a large blue box that represents one instance of the Potato class. Inside the large blue box are smaller boxes that represent the instance variables of the class. In our example, the Potato class has one primitive variable, the int ‘age’, and one object variable, the String `variety`. Therefore there are two smaller boxes in the Potato box. Notice how the value for `age` is inside a red box because it is a primitive, just like int `x`.
+
+![NewObj](img/NewObj.jpg)
+
+Here an object is drawn in blue, to emphasize that it is different from a
+primitive and a reference. We can now store primitives within the object as
+instance variables!
+
+**One critical thing about the object**: unlike the primitive integer, 3, drawn inside
+the box for `x`, the `Potato` object is **not** drawn inside the variable `p`.
+Instead `p` simply contains an arrow that points to the `Potato` object. This is
+why `p` is called a reference or pointer because it just *refers* to the object
+but *does not* contain it. The true value of the variable `p` is a **pointer** to
+a `Potato` object rather than the `Potato` object itself. A pointer is essentially
+just a location in memory where the actual `Potato` object is stored.
+
+This is a very, very important distinction!
+
+Of course, when we call the no argument constructor, it will initialize the `variety`
+to `"Russet Burbank"` and the `age` to `0`. Our diagram looks like the following.
+
+![TwoObjects](img/TwoObjects.jpg)
+
+Is this what you expected?
+
+Remember that a `String` in Java is an object, not a primitive. As a result, the
+`String` instance variable representing the `variety` of the potato must contain
+a pointer to the actual `String` object containing the name we've chosen. For the sake 
+of simplicity we don't show the instance variables of the String object. Although it's very 
+much out of scope for the purposes of this class, you can take a look at the [source code](https://github.com/openjdk/jdk/blob/master/src/java.base/share/classes/java/lang/String.java) for 
+the String class in Java, if you're interested.
 
 {% capture alertContent %}
-Whenever you write a program, try to think of any boundary cases. These cases,
-although potentially rare, are a common source of error. The safest thing to do
-is brainstorm as many unique ones as you can then write tests which test each
-unique boundary case.
+For another explanation, you may read
+[Section 2.1](https://joshhug.gitbooks.io/hug61b/content/chap2/chap21.html)
+from the CS 61B textbook,
+starting from the section titled "The Mystery of the Walrus" and stopping
+just before "The Law of the Broken Futon".
 {% endcapture %}
-{% include alert.html content=alertContent %}
+{% include alert.html type="info" content=alertContent %}
+
+### Discussion: Intuition for Drawing Objects
+
+See if you can come up with intuition as to why
+these diagrams are drawn the way they are:
+
+-   Why does it make sense that objects are not stored inside variables, but are
+    only referred to them?
+-   Why isn't the blue object box labeled with the name of the variable?
+
+There aren't necessarily correct answers to these questions, so just see if you
+can come up with explanations that make sense to you.
+
+## Pass-by-Value
+
+Java is **pass-by-value**. Methods are
+given **copies** of the actual parameters during execution. The original parameters cannot
+be changed by the method.
+
+Consider the following code, right before
+`tryToIncrement` returns.
+
+{%- capture value -%}
+public class passByValue{
+
+    public static void tryToIncrement(int x) {
+	      x = x + 1;
+	}
+	   
+    public static void main(String[] args) {
+	    int x = 10;
+	    tryToIncrement(x);
+    }
+}
+
+{%- endcapture -%}
+{% include java_visualizer.html code=value %}
+
+![PassByValue1](img/PassByValue1.jpg)
+
+When we pass a variable into a method, we copy whatever is inside the box of the variable and put that copy into a new box in the method. For primitives, like x, we copy whatever is inside the box for x (in this case 10), and put that data into the method's **stack frame**, the space in memory that this method uses to track its variables. This means that, like we saw in tryToIncrement(), when we modify primitives in a method we modify the copy of that primitive, not the original.
+For objects, this is different. Remember, in our box and pointer diagrams, the object itself is not stored inside the box for the object variable. Instead, what is stored is a pointer to the object in memory (represented by an arrow). Therefore, what is copied over is that pointer, not an entirely new copy of the object. In more technical terms, **when we pass in an object, what is copied is not the object itself, but the reference to the object**.
+
+```java
+public static void refresh(Potato p) {
+    p.age = 0;
+}
+
+public static void main(String[] args) {
+    Potato potat = new Potato("Red La Soda", 5);
+    refresh(potat);
+}
+```
+
+![PassByValue2](img/PassByValue2.jpg)
+
+{%- capture pvso2 -%}
+public class Potato {
+
+    private String variety;
+    private int age;
+
+    public Potato() {
+        this.variety = "Russet Burbank";
+        this.age = 0;
+    }
+
+    public Potato(String variety, int age) {
+        this.variety = variety;
+        this.age = age;
+    }
+
+   
+    public static void refresh(Potato p) {
+    p.age = 0;
+}
+
+    public static void main(String[] args) {
+        Potato potat = new Potato("Red La Soda", 5);
+        refresh(potat);
+}
+}
+
+{%- endcapture -%}
+{% include java_visualizer.html embed=true height="500px" code=pvso2 %}
+
+What is copied over into the parameter of the `refresh` method is not a copy of
+the Potato object, but a copy of the reference (the arrow) to the Potato Object.
+
+### `static`
+
+There's something that we've been kind of waving off up until now: the `static`
+keyword. In Java, `static` fields belong to the class instead of a particular
+instance. We call these static fields or class variables. During execution,
+only one instance of a static field exists throughout, no matter how many
+instances of the class are created. You can think of them as living in their
+own special space, away from each instance. Static fields can be referenced the
+same as instance variables from within a instance method. They can also be
+directly referenced as `ClassName.staticVariable`, or by the instance reference
+(although this is not recommended for style). 
+
+The code block below shows some of the different ways in which static and non-static methods and variables interact with each other. Read through the code and the comments to get a sense what is happening. Then, run the code using the link to the Java Visualizer and see if your predictions were correct.
 
 
-### Parting Advice on Testing
+{%- capture static -%}
+public class Bicycle {
 
-As you progress through the course, you will hopefully improve your testing
-skills! Here are some last bits of advice for now.
+    // Non-static instance variables, each Bicycle(object) has its own copy
+    private int speed;
+    
+    // Static class variable, shared by all Bicycles(objects)
+    private static int numberOfBicycles = 0;
 
--   Write tests as if you were testing your _worst enemy's_ code. You're
-    generally too familiar with your own code and might read a given line as
-    containing what you meant to write rather than what you did write. Don't
-    fall into the trap of hoping not to find bugs in your own code.
+    /* Constructor, called when we create a new Bicycle object.
+        can reference (use) both static and non-static variables */
+    public Bicycle(int startSpeed) {
+        speed = startSpeed;
 
--   Test your program with values that are as simple as possible. If the
-    program is supposed to work for a set of 1000 data values, make sure it
-    works on a set of 3 values first.
+        numberOfBicycles += 1;
+    }
 
--   Wrapping a loop around your code may allow you to test it with multiple
-    values in a single run.
+    /* Static methods, belong to the class, can only reference (use) static variables and methods. Can not use 'this' in the function body.*/
+    public static int getNumberOfBicycles() {
+        return numberOfBicycles;
+    }
 
--   Make sure you know how your program is _supposed_ to behave on a given set
-    of test data. Often lazy programmers try a test and just scan through it
-    thinking that it "looks right". Such a programmer might later be
-    embarrassed to find out that they computed a product cost that's greater
-    than the national debt or a quantity that's greater than the number of
-    atoms in the universe.
+    /* Instance methods, belong to the object, can reference (use) both static and non-static variables and methods. Can use 'this' in the function body. */  
+    public int getSpeed() {
+        return this.speed;
+    }
+        
+    public void speedUp(int increment) {
+        this.speed += increment;
+    }
 
--   Make sure to cover _both_ the common cases and the extreme, edge or
-    boundary cases. Forgetting one or the other (or both!) can cause you to
-    miss critical bugs in your code.
+    public static void main(String[] args){
+        Bicycle b1 = new Bicycle(10); // create a new Bicycle object b1
+        System.out.println("Number of bicycles: " + b1.getNumberOfBicycles()); // valid call to static method using instance reference
+        Bicycle b2 = new Bicycle(10); // create a new Bicycle object b2
+        System.out.println("Number of bicycles: " + b1.getNumberOfBicycles()); // Updated number of bicycles when called from b1
+        System.out.println("Number of bicycles: " + b2.getNumberOfBicycles()); // valid call to same static method using instance reference
+        System.out.println("Number of bicycles: " + Bicycle.getNumberOfBicycles()); // valid call to same static method using class name
+        System.out.println("Speed of b1: " + b1.getSpeed()); // valid call to instance method using instance reference
+        System.out.println("Speed of b2: " + b2.getSpeed()); // valid call to instance method using instance reference
+        // System.out.println("Speed of b1: " + Bicycle.getSpeed()); // invalid call to instance method using class name
+        b1.speedUp(10); // change the speed of b1, b2 is unaffected
+        System.out.println("Number of bicycles: " + getNumberOfBicycles()); // valid call to static method when called from within the class
+        // System.out.println("Speed of b1: " + speed); // invalid call to instance variable from within static method
+        // System.out.println("Speed of b1: " + getSpeed()); // invalid call to instance variable from within static method
 
-## Exercise: Testing a Triangle Class
+    }
+}
+{%- endcapture -%}
+{% include java_visualizer.html code=static %}
 
-{% include alert.html type="danger" content="
-This section will be graded. All points for this part of the
-lab will be derived from writing tests in `TriangleTest.java`. Note that 
-you will not be able to run the tests you write in this file locally; you
-must submit to the autograder to run on our implementations of `Triangle.java`.
+We really recommend you play around with the code above, specifically in the main method, and see what happens when you change things. Use the Java Visualizer to help you understand what is happening.
+You can also read the oracle documentation on [class variables](https://docs.oracle.com/javase/tutorial/java/javaOO/classvars.html) for more information. 
+
+### The True Meaning of `this`
+
+Did you notice that there was something different between the
+`setAge` method and the `refresh` method? Look at the
+code segments and think about why that may be.
+
+`setAge` is an *instance method*, which means that it must always be called
+through dot notation on an object. Instance methods always have a `this`
+variable, which references the object that the method was called on. In
+contrast, `refresh` is a static method (marked with the `static` keyword).
+Static methods do *not* have a `this` reference in their frame; they belong to
+the class rather than to an instance of the class.
+
+We call being inside a static method during execution being in a *static
+context*. You cannot directly reference instance variables from a static
+context. Instead, you must do so through an object reference (due to the lack
+of a `this` reference). Note that static methods can be called from a static
+context (like in `main`) and do not need to be called with an instance
+associated with them.
+
+
+## Exercise: Account Management
+
+The next several exercises involve modifications to the Account class, which models a bank account. You should’ve pulled the skeleton code for this class in the Getting Started section at the beginning of this lab. The file you will be working with is Account.java. Open IntelliJ to access this file.
+
+Tests are also provided in the `tests/` folder, you can run `AccountTest.java` in Intellij
+to check the correctness of your code. 
+
+
+### Task: Modifying Withdrawal Behavior
+
+The `withdraw` method is currently returns `void`. Modify it to
+return a `boolean`: `true` if the withdrawal succeeds (along with actually
+performing the withdrawal) and `false` if it fails.
+
+### Task: Merging Accounts
+
+Implement the `merge` method. This method should transfer all of the money from the
+argument account to the current account. In other words, the argument account
+balance should be zeroed while the current account's balance increases by the
+argument's old balance. We've provided a skeleton of the method in
+`Account.java`.
+
+### Task: Overdraft Protection
+
+A convenient feature of some bank accounts is *overdraft protection*: rather
+than bouncing a check when the balance would go negative, the bank will deduct
+the necessary funds from a second account. One might imagine such a setup for a
+student account, provided the student's parents are willing to cover any
+overdrafts (!). Another use is to have a checking account that is tied to a
+savings account where the savings account covers overdrafts on the checking
+account. In our system, we'll be keeping things simple with only one type of
+account so we don't have to worry about student or savings accounts.
+
+Implement and test overdraft protection for `Account` objects by completing the
+following steps.
+
+1.  Add a `parentAccount` instance variable to the `Account` class; this is the
+    account that will provide the overdraft protection, and it may have
+    overdraft protection of its own.
+2.  Add a two-argument constructor. The first argument will be the initial
+    balance as in the existing code. The second argument will be an `Account`
+    reference with which to initialize the instance variable you defined in step
+    1.
+3.  In the one-argument constructor, set the parent account to `null`. We'd like
+    to emphasize the fact that there is no parent if the one-argument
+    constructor is used by explicitly setting `parentAccount` to `null`.
+4.  Modify the `withdraw` method so that if the requested withdrawal can't be
+    covered by this account, the difference is withdrawn from the parent
+    account. This may trigger overdraft protection for the parent account, and
+    then its parent, and so on. The number of accounts connected in this way may
+    be unlimited. If the account doesn't have a parent or if the parent (and its
+    parents and so forth) can't cover the withdrawal, the `withdraw` method
+    should merely print an error message as before and not change any account
+    balances.
+
+Note: it is important to check if the parent account is null before executing
+any changes to the account.
+
+Here's an example of the desired behavior, with the `Account` object `teresa`
+providing overdraft protection for the `Account` object `dom`. Recall this
+means the `parentAccount` of `dom` is `teresa`.
+
+Suppose, in each scenario below, `dom` has 100 as their balance while `teresa`
+has 500 as their balance.
+
+`dom` attempts to withdraw 50
+: `dom` then has 50 remaining in their balance, while `teresa` still has 500.
+
+`dom` attempts to withdraw 200
+: `dom` then has 0 remaining in their balance, while `teresa` needed to cover
+100 for `dom`, leaving 400 as their balance.
+
+`dom` attempts to withdraw 700
+: return false without changing either balance as the withdrawal is denied due
+to insufficient funds.
+
+We recommend approaching this problem recursively. Here are some questions that may help you work through the exercise:
+
+1.  If we trigger overdraft protection, what should the new balance of this account be set to after a successful withdrawal?
+2.  If we trigger overdraft protection, how much of the initial withdrawal total will the parent account be responsible for?
+3.  How can you use the return value of `withdraw` to only deduct balance if the parent accounts can complete the withdrawal?
+
+{% include alert.html content="
+To test your code, try copy and pasting the `Account` class into the [online
+Java Visualizer](https://cscircles.cemc.uwaterloo.ca/java_visualize/#). Make
+sure to add a `main` method with a few example cases
+like the ones provided above.
+
+```java
+Account teresa = new Account(500);
+Account dom = new Account(100, teresa);
+teresa.withdraw(50);
+```
 " %}
 
-Now, you're going to be writing the code and a whole file of
-tests with Truth assertions for the `Triangle` class. Your goal is to write comprehensive tests
-that pass on a correct implementation of the `Triangle` methods, but fail on incorrect implementations of `Triangle`
-methods. 
+### Discussion: Merging Revisited
 
-You'll notice that `Triangle.java` and `TriangleTest.java` use the `abstract` keyword. You don't need to know 
-what this is right now because we'll cover it later in the course, but in `TriangleTest.java`,
-when you are testing the `Triangle` methods, you must call them on a `Triangle` object returned by `getNewTriangle()`.
-The skeleton code has more on this.
+One proposed solution for merging accounts is the following:
 
-You should follow this process for this exercise:
+```java
+public void merge(Account other) {
+    this.balance = this.balance + other.balance;
+    other = new Account(0);
+}
+```
 
-1.  Read over the `Triangle.java` class throughly. The comments above each of the methods explain what
-    the expected behavior of this class will be. 
-2.  Write tests with Truth assertions in the `TriangleTest.java` file. You should write tests
-    which allow you to test all of the methods and behavior in the class. You should think of edge
-    cases that buggy implementations of `Triangle.java` methods are likely to fail. 
-3.  Though you won't exactly be practicing TDD here because you're only writing the tests and not filling
-    in the `Triangle.java` class after, still think about how you would implement the methods. Do your
-    tests poke holes in your first instinctual implementations? Do you see how writing tests before writing the code
-    can be beneficial?
+This doesn't work. Explain why not. Highlight the space below to reveal the answer.
+
+<p><span style="color:white"><em>When we set `other = new Account(0);`, we lose 
+information regarding the parent account of `other` and this is not intended behavior. </em></span>.</p>
+
+## Exercise: Pursuit Curves
+
+You will now create a class representing a pursuit curve.
+
+*Pursuit curves* provide a powerful way to render curves on a computer. The
+traditional method for drawing a path is to analytically define it via some
+algebraic formula like $$y(t) = t^2$$ and trace it point-wise. Consider an
+alternative where we define two points: the *pursuer* and the *pursued*.
+
+Now suppose the pursued point (in black) follows some fixed path $$F(t)$$. Then the
+pursuer (in red) will seek the pursued in the following manner.
+
+![Pursuit](img/pursuit.gif)
+
+We notice that the pursuer always follows the pursued along its tangent, which
+gives some serious first order differential equation vibes. Letting the
+pursuer's path be given by $$x(t)$$, then the closed form solution for its path is
+given by the following equation.
+
+![PursuitMath](img/PursuitMath.jpg)
+
+Of course, we won't require you to solve a differential equation. In fact, let's
+see what your task will be!
+
+## Task: Implementing Pursuit Curves
+
+Here's a getting started video:
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Y04PPs44sAs?si=cKVAzuqhaeOsLdCL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+Implement a simpler version of pursuit curves in order to create a
+cool visual by filling out `Path.java`. An additional
+file `PathHarness.java` is provided containing code that will render
+your code in `Path.java` using Java's graphics framework, uncomment this file after implementing `Path.java`.
+
+Also, testing code has been provided in `PathTest.java`. You can uncomment this file and run these tests in Intellij.
+
+As with the previous assignments,
+these tests are not entirely comprehensive. Feel free to add whatever testing code you desire.
+
+`Path.java` will represent the path traveled by the pursuer. You will need to
+keep track of the following two points:
+
+-   `curr` will represent where the path currently ends. This will be
+    a Point object.
+
+-   `next` will represent where the path (and thus, `curr`) will travel to next. This
+    will also be a Point object.
+
+Next, you will need to define a constructor that, given an x and y coordinate,
+sets `next` to the starting point (x, y). The constructor may look
+something like this.
+
+```java
+public Path(double x, double y) {
+    // more code goes here!
+}
+```
+
+When the `Path` object is first constructed, `curr`
+can be set to a `Point` instance with any coordinate so long as it is not `null`.
+Try playing around with initial `curr` values to see what you can get!
+
+Finally, you will need to implement the following instance methods.
+
+| method name                      | return type | functionality                      |
+|----------------------------------|-------------|------------------------------------|
+| `getCurrX()`                     | `double`    | Returns the x-coordinate of `curr` |
+| `getCurrY()`                     | `double`    | Returns the y-coordinate of `curr` |
+| `getNextX()`                     | `double`    | Returns the x-coordinate of `next` |
+| `getNextY()`                     | `double`    | Returns the y-coordinate of `next` |
+| `getCurrentPoint()`              | `Point`     | Returns `curr`                     |
+| `setCurrentPoint(Point point)`   | `void`      | Sets `curr` to `point`             |
+| `iterate(double dx, double dy)`  | `void`      | Sets `curr` to `next` and updates the position of `next` to be `next` with movement defined by `dx` and `dy`.  |
 
 
-## Recap
 
-In this lab, we discussed:
+A note on `iterate(double dx, double dy)`. If you were to implement a pursuit
+curve in full generality, then this is where you would solve a differential
+equation. But again, we won't have you do that. Instead we're giving you $$dx$$
+and $$dy$$ where, `dx` represents the distance moved in the x-direction and `dy` represents the distance moved in the y-direction. 
 
-- Effectively using the IntelliJ debugger.
-- Truth assertions and the JUnit Testing Framework.
-- Test-driven development and good testing principles.
+To summarize your task:
+
+-   Keep track of `curr` and `next`.
+
+-   Implement a constructor taking in a `double x` and `double y`.
+
+-   Implement the methods listed in the table above.
+
+Here are some tips to keep you on the right track!
+
+-   As `curr` and `next` are both `Point` objects, we've provided
+    a class defining `Point`. Make sure to read through and understand what each
+    method and constructor does!
+
+-   When defining `iterate(double dx, double dy)` you may find that your
+    `curr` and `next` are not being set to what they are coded to
+    be. Think about object references and try drawing a box-and-pointer diagram.
+
+{% include alert.html type="info" content="
+If you want to learn more about pursuit curves, [Wolfram's MathWorld provides
+a very interesting read](http://mathworld.wolfram.com/PursuitCurve.html).
+" %}
 
 
-## Deliverables and Scoring
+## `.toString` and `.equals`
 
-The lab is out of 2 points. There are no hidden tests on Gradescope. If you
-pass all the local required tests (not including the optional ones) and write comprehensive tests in `TriangleTest.java`, 
-you will receive full credit on the lab.
+You may have also noticed the `.toString` and `.equals` methods in the `Point`
+class, which have been copied here for your convenience. Both of these are
+special methods which you will use often throughout the rest of this class.
 
-- Find the first 2 passwords in `BombMain.java`. 
-- (Optional) Find the 3rd password in `BombMain.java`. 
-- Write tests in `TriangleTest.java` that pass on the correct `Triangle.java` implementation and fail on buggy `Triangle.java` implementations. 
+```java
+public class Point {
+    public double x;
+    public double y;
 
+    public String toString() {
+        return "(" + this.x + ", " + this.y + ")";
+    }
+}
+```
 
-## Submission
+The `toString` method is used by Java to determine how to represent an object
+as a string, like when printing objects to display to the user. In the example
+below, we create a new point at the origin, $$(0, 0)$$. When calling
+`System.out.println`, Java needs to figure out what exactly to print, so it
+invokes the `toString` method which returns `(0.0, 0.0)`. Then, that string is
+displayed to the screen.
 
-Just as you did in Lab 1, add, commit, then push your Lab 3 code to GitHub.
-Then, submit to Gradescope to test your code. If you need a refresher, check
-out the instructions in the
-[Lab 1 spec](../lab01/index.md#saving-your-work-using-git-and-github) and the
-[Assignment Workflow Guide](../../guides/assignment-workflow#submitting-to-gradescope).
+```java
+Point p = new Point();
+System.out.println(p);  // (0.0, 0.0)
+```
 
-If you worked with a partner, remember each of you need a separate submission on Gradescope.
+Likewise, the `equals` method is used whenever a user calls `equals`. We might
+define equality between two points as follows. We first verify if the object passed in 
+is a Point and then check for equality based on the x and y values. 
 
+```java
+public class Point {
+    public double x;
+    public double y;
 
-## Acknowledgements
+    public boolean equals(Object o) {
+        if (o instanceof Point other){
+            return (this.x == other.x) && (this.y == other.y);
+        }
+        else {
+            return false;
+        }
+    }
+}
+```
 
-This assignment is adapted from Adam Blank and previous iterations of CS 61B.
+It is very important to understand the difference between the equality and
+identity of objects. If you have not already, read over the
+[Identity and Equality section of the Java guide](../../java/index.md#identity-and-equality).
+ Many tricky bugs can arise from this if you misuse these two related but different concepts.
+
+## Conclusion
+
+Coding is not easy! Keeping track of what references point to what, modifying code
+(which you first have to understand), and systematically finding bugs are definitely
+not skills that develop overnight. Make sure to practice! You can generate variants of the lab exercises to provide
+extra practice.
+
+The exercises on complicated uses of references are easy to produce and
+can be verified online using tools such as
+[Java Visualizer](http://cscircles.cemc.uwaterloo.ca/java_visualize/)
+or by simply running your code through IntelliJ.
+
+The internet is also a great source for more coding practice. Here's a short list
+of websites where you can find problems:
+
+- [Advent of Code](https://adventofcode.com/)
+- [Project Euler](https://projecteuler.net/) (Warning: mathy)
+- [Leetcode](https://leetcode.com/) (very common interview prep)
+
+Many problems you see will rely on things we haven't learned yet. If you see
+a problem that you don't know how to do, don't panic! We'll be covering a lot more 
+data structures in this class that will help you solve them. 
+
+For coding, practice is crucial so make sure to do so! Finally, if you or anyone you know
+is struggling, let a TA know and we'll be more than happy to help.
+
+### Deliverables
+
+To quickly recap what you need to do for this lab:
+
+-   Make sure you understand Box and Pointer Diagrams
+-   `Account.java`
+-   `Path.java`

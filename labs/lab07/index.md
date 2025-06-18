@@ -1,7 +1,7 @@
 ---
 layout: page
 title: >-
-  Lab 07: Comparison, Iteration, and Exceptions
+  Lab 07: Inheritance
 has_children: true
 parent: Labs
 has_toc: false
@@ -11,669 +11,949 @@ released: true
 
 ## [FAQ](faq.md)
 
-This assignment has an [FAQ page](faq.md).
+The FAQ for Lab 6 is located [here](faq.md).
 
 ## Before You Begin
 
-As usual, pull the skeleton code.
+Pull the skeleton code from GitHub and open it on IntelliJ like usual.
 
 ## Learning Goals
 
-In this lab, we'll wrap up the Java-focused portion of the class.
+First, we'll cover inheritance in Java, which comes in three main forms: interface implementation,
+abstract class extension, and concrete class extension. We will also discuss dynamic method selection (DMS),
+a process that determines which functions get run upon program execution as a result of inheritance and
+Java's static typing.
 
-First, we will expand upon our knowledge of interfaces from [Lab 6](../lab06)
-by looking at some existing Java interfaces that allow us to implement useful
-behaviors for our data structures and other types.
+First, we'll look at some classes we've written so far, and identify patterns
+in what we can _do_ with them. We will connect this idea to _abstract data
+types_, then tie them to interfaces. This
+feature allows us to make a more complicated system of class interrelations
+than we have seen previously, and its correct utilization of interfaces is
+key to being able to write generalizable and neat code.
 
-We'll also consider what happens when an error occurs, like a
-`NullPointerException`, and what we can do to stop them from crashing the
-entire program.
+Once introduced, we will use this concept to explain the workings of the
+Java `Collections` Framework, which contains many of the data structures you've
+encountered before. Finally, we'll write our own implementations for a
+simplified abstract data type.
 
-## Interfaces as Behaviors
+## Inheritance
 
-In [Lab 6](../lab06), we discussed ADTs, a description of a data
-structure's behavior; and how we can implement ADTs in Java using *interfaces*.
-We actually don't need to limit ourselves to expressing data structure
-behavior - **as long as we have a list of things we want to do, we can make an
-interface**.
-
-We'll take a look at two really common things that we want to do with our
-classes:
-
--   Making them *able to be compared* (useful for things that go in certain kinds
-    of data structures)
--   Making them *able to be iterated over* (useful for the data structures
-    themselves)
-
-## Comparison
-
-{% include alert.html content="
-Read Chapter 4.3 from **[Max Function](https://joshhug.gitbooks.io/hug61b/content/chap4/chap43.html#max-function)** through **Comparables** to help
-motivate the problem we're solving and the tools we'll use along the way.
-
-Remember **casting** is a bit of special syntax where you can tell the compiler that a
-specific expression has a specific compile-time type. If the `maxDog` method
-below returns an object of static type `Dog`, the code normally wouldn't compile
-as `Poodle` is a subtype of `Dog`. *Casting* tells Java to treat the `Dog` as
-if it were a `Poodle` for the purposes of compilation because it's possible
-that the `Dog` returned from `maxDog` *could be* a `Poodle`.
+To motivate inheritance, let us consider a hypothetical scenario. Suppose we desire to implement a program that represents an animal. We might begin to define a class like follows:
 
 ```java
-Poodle largerPoodle = (Poodle) maxDog(frank, frankJr);
+public class Animal {
+  public int age;
+  public String name;
+  public int size;
+  public boolean hungry;
+  public Animal() { /* Implementation not shown. */ }
+  public void eat(Food food) {
+    food.consume();
+    hungry = false;
+  }
+}
 ```
 
-[Max Function]: <https://joshhug.gitbooks.io/hug61b/content/chap4/chap43.html#max-function>
-" %}
+Of course, having just a simple `Animal` class is not particularly useful to us. For example, if we wished to simulate a cat, the class below might be more useful:
 
-While we haven't explicitly learned about sorting yet, the idea of sorting
-should be intuitive enough. You have a list of things, and you want to put it
-in sorted order. While this makes sense immediately for things like `int`s,
-which we can compare with primitive operations like `<` and `==`, this becomes
-less clear for general objects.
+```java
+public class Cat {
+  public int age;
+  public String name;
+  public int size;
+  public boolean hungry;
+  private int tailSize;
+  public Cat() { /* Implementation not shown. */ }
+  public void eat(Food food) {
+    food.consume();
+    hungry = false;
+  }
+  public String meow() { return "Meow!"; }
+}
+```
 
-So, what does "sorted order" for general objects? To sort, we must first say
-that `<` *means* something, or that we can meaningfully compare two objects.
-For example, to sort `String`s, we could say that the "smaller" one
-is the one that would come first in the dictionary ("alphabet" "`<`" "zebra").
+Observe that this class is largely the same as the `Animal` class, but with one extra instance variable, and one extra instance method. And intuitively, a cat is an animal. Is there a way we can represent this in Java? As you may have already guessed, the formalization of this relationship is known as _inheritance_. The `Cat` class written with inheritance would look like:
 
-In Java, how do we say that a particular type can be compared?
-This is exactly what the [`Comparable<T>` interface][comparable interface]
-describes. When a type implements `Comparable<T>`, we say that it is
-"able to be compared" to objects of type `T`. Usually, `T` is the same type
-(that is, you'll usually see `class MyClass implements Comparable<MyClass>`),
-but it doesn't have to be.
+```java
+public class Cat extends Animal {
+  private int tailSize;
+  public String meow() { return "Meow!"; }
+}
+```
 
-[comparable interface]: <https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Comparable.html>
+Here, we introduce the new keyword `extends`. This keyword goes after the declaration of a class, and indicates that the declared class "inherits" from the following class, which we call the superclass. In this case, `Cat` inherits from `Animal`. What does inheritance actually provide? An inheriting class implicitly contains, or "inherits", all of the non-private variables and methods from its superclass.
 
-The only method required by `Comparable<T>` is `compareTo(T o)` which takes
-another object of the type `T` and returns an `int` whose value
-represents whether `this` or `o` should come first.
+Note that a class can only `extend`, or inherit from, one other class. This is because, if inheriting from two or more were allowed, then it would be possible to inherit conflicting definitions of a method, and impossible to resolve that (which class would get priority in having its definition utilized).
 
-In order to sort a list in
-Java, most sorting algorithms will call `compareTo` and make pairwise
-comparisons to determine which object should come first, repeatedly, and swap
-elements until the entire list is sorted. (The hard part of sorting, then, is
-to determine which `compareTo` 'questions' are necessary to ask!)
+### Overriding Methods
 
-Here are a few key details from [`compareTo`][compareTo], slightly adapted:
+One thing we might want to do is replace the superclass's implementation of a method. For example, suppose we preferred to have the following eat method for the Cat class:
 
-[compareTo]: <https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Comparable.html#compareTo(T)>
+```java
+public void eat(Food food) {
+  food.annihilate();
+  this.throwHairBall();
+  hungry = true;
+}
+```
 
-> Compares this object with the specified object for order. Returns a negative
-> integer, zero, or a positive integer if this object is less than, equal to,
-> or greater than the specified object, respectively.
+How can we have Cat use this method instead? As it turns out, it is as simple as simply plopping the method down into the class:
 
-There are other requirements that typically happen naturally with a
-"reasonable" implementation, but are still important to specify:
+```java
+public class Cat extends Animal {
+  private int tailSize;
 
-> The implementor must also ensure that the relation is transitive:
-> `(x.compareTo(y) > 0 && y.compareTo(z) > 0)` implies `x.compareTo(z) > 0`.
->
-> It is strongly recommended, but not strictly required that `x.compareTo(y) ==
-> 0` is equivalent to `x.equals(y)`. Generally speaking, any class that
-> implements the `Comparable` interface and violates this condition should
-> clearly indicate this fact. The recommended language is "Note: this class has
-> a natural ordering that is inconsistent with equals."
+  // Other Cat methods
+  ...
 
-Why do we care about making things comparable?
-: This means that we can implement data structures that require ordering or
-  comparison (like sorted lists, and in the future, search trees). We would say
-  "this collection can only contain types that are `Comparable` to themselves".
+  @Override
+  public void eat(Food food) {
+    food.annihilate(); // method implementation not shown
+    this.throwHairBall(); // method implementation not shown
+    hungry = true;
+  }
 
-What if we want to compare things that don't implement `Comparable`, or want to compare things in a different way?
-: The `compareTo` method defines an object's "natural order". However, a type
-  may not have a "natural order", or we may want to order it in a different
-  way (for example - ordering people by their height, name, or age). We can
-  instead use the [`Comparator<T>`][Comparator] interface to impose our own ordering on
-  objects. We can get a `Comparator` either by directly implementing the
-  interface, or by using Java's higher-order functions (out-of-scope).
+  public String meow() { return "Meow!"; }
+}
+```
 
-[Comparator]: <https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Comparator.html>
+And that is all we need to do! Note that there is an `@Override` tag above the method. This tells the compiler to make sure that this method actually overrides a method in the superclass. Otherwise, it will not compile. Note that you do not need to have the `@Override` tag to override a method - it simply serves as a guard against human error (more details on this later).
 
-### Exercise: Comparing `User`s
+## The `super` keyword
 
-In `User.java`, we've provided an example of how a website might model a user.
+Suppose we added the change from the previous section and overrode the `eat` method. Can we still call the original method? The answer is yes! Consider the following code example that adds a new method to Cat:
 
-Make `User` implement the `Comparable` interface. Use parameterization (ie. `<>`) with `Comparable`
-to ensure that `User` can only be used to compare against other `User`s.
+```java
+public void thoroughlyConsumeFood(Food food) {
+  super.eat(food); // Animal's eat
+  this.eat(food); // Cat's eat
+}
+```
 
-The natural ordering for `User` is to compare by ID number. If their ID numbers
-are the same, then compare them on their username.
+The first call allows us to access Animal's eat method and invoke it. In some sense, `super` is like `this` but for the parent class.
 
-After implementing this, you should be able to sort `User`s. The example below is also in the `main` method of your `User` class. Feel free
-to run it as a sanity check.
+In java, subclasses do not directly inherit the constructor of their
+superclass. Rather, we have to directly reference the constructor of the parent class.
+We do this with the keyword `super`, which is treated as an invocation of the parent
+class' constructor. Thus, in the parenthesis following `super` you must supply the
+correct number and type of arguments.
+**This call to super must be the first line of the constructor.**
+Check out the implementation of `GregorianDate.java` for an example of `super` in action.
+
+## Exercise: `GregorianDate`
+
+Let's start with an example of an abstract class. `Date.java` is an abstract
+class used to represent calendar dates (we will **ignore** leap years). In addition,
+we have included two classes that extend `Date` that are shown below.
+
+```java
+/**
+ * In a nonleap year in the French Revolutionary Calendar, the first twelve
+ * months have 30 days and month 13 has five days.
+ */
+public class FrenchRevolutionaryDate extends Date {
+
+    public FrenchRevolutionaryDate(int year, int month, int dayOfMonth) {
+        super(year, month, dayOfMonth);
+    }
+
+    @Override
+    public int dayOfYear() {
+        return (month - 1) * 30 + dayOfMonth;
+    }
+
+    ...
+}
+
+public class GregorianDate extends Date {
+
+    private static final int[] MONTH_LENGTHS = {
+        31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
+    };
+
+    public GregorianDate(int year, int month, int dayOfMonth) {
+        super(year, month, dayOfMonth);
+    }
+
+    @Override
+    public int dayOfYear() {
+        int precedingMonthDays = 0;
+        for (int m = 1; m < month; m += 1) {
+            precedingMonthDays += getMonthLength(m);
+        }
+        return precedingMonthDays + dayOfMonth();
+    }
+
+    private static int getMonthLength(int m) {
+        return MONTH_LENGTHS[m - 1];
+    }
+}
+```
+
+Read through the definition of the abstract class `Date`. Pay attension to the instance variables. 
+There is an abstract method named `nextDate` in the `Date` class. `nextDate` returns
+the new date that is the result of advancing this date by one day. It should
+not change `this`. Modify `GregorianDate` accordingly so that it follows
+the correct convention for dates. Make sure to test out your methods to be sure
+that they behave as you expect them to! Check out our initial tests in `GregorianDateTest.java` for how GregorianDate is used.
+
+## Inheritance Chains
+
+It is completely possible for a subclass to in turn be a superclass for another class! Consider the following example:
+
+```java
+public class BritishBlue extends Cat {
+  private boolean isChonky = true;
+}
+```
+
+This is totally valid and legal Java. The `BritishBlue` class would inherit all non-private methods and variables from `Cat`, and therefore, by extension, `Animal`.
+Specifically, a `Cat` instance would have access to all variables and methods defined in
+`Animal`, which would carry over to any `BritishBlue` instance as well; then, by `BritishBlue`'s
+inheritance of `Cat`, any `BritishBlue` instance would be able to access everything defined in `Cat`
+with the exception of the `tailSize` instance variable, which is `private`.
+
+## Overloading Methods
+
+As an aside, let us talk about overloading methods. Suppose we wanted to have two variants of the method grow:
+
+```java
+public void grow() {
+  this.size += 1
+}
+
+public void grow(int size) {
+  this.size = size;
+}
+```
+
+Would Java permit this, even though these two distinct methods have the same name? The answer is yes, thanks to method overloading! The idea behind method overloading is that we can have methods with the same name, as long as they have different method signatures. The method signature is the name combined with its list of parameters. Thus, because these two versions of `grow` have different parameters, it is possible to have both of them at the same time. We will formally cover method selection later, but for now intuitively see that, if we were to make a function call to `grow`, it would not be ambiguous which one we are referring to even at compile time because of the parameters being passed into the call.
+
+## Interfaces
+
+In Java, interfaces are "classes" that define a specific
+set of behavior. Specifically, they provide the method signatures for all the
+required methods. Generally, interfaces do not have method implementations,
+because they only describe what they can do, not how they do it. This also
+means that interfaces cannot be instantiated.
+
+If we can't directly instantiate them, then you might be wondering how we might use them. When we write code, we often don't care about the implementation details of the
+data types we're using, and only care about what we can do with them.
+Therefore, we should write code to work with the interface!
+
+This is the idea of **abstraction barriers**: we don't need to know how
+the methods we use have been implemented, only that they exist and should
+function according to their specification.
+
+### Implementing Interfaces
+
+<!-- I didn't write or read this big paragraph too carefully. -->
+<!-- Revised and cut down -Elaine Shu -->
+
+When a class **implements** an interface, the class guarantees that it can
+perform the functionalities defined by its interface.
+Using interfaces is all about _not knowing the actual implementation_, but
+rather working with the defined behavior given by the interface.
+Implementing an interface through a class, like you are asked for assignments
+and projects, is about making sure that your class methods give the correct output as defined by the interface.
+
+### Interfaces in Java
+
+We'll use the following `SimpleList` interface, which represents basic functionality of a list.
+
+```java
+public interface SimpleList {
+
+    /** Returns the integer stored at position i. */
+    int get(int i);
+
+    /** Adds k into the list at position i. */
+    void add(int i, int k);
+
+    /** Removes the item at position i. */
+    void remove(int i);
+
+    /** Returns the number of elements in this list. */
+    int size();
+}
+```
+
+An interface contains methods without bodies and only method signatures. To
+make a class _implement_ this interface, we use the `implements` keyword:
+
+```java
+public class SLList implements SimpleList {
+    @Override
+    int get(int i) {
+        // ...
+    }
+    // ...
+}
+```
+
+Some things to know about interfaces and related topics:
+
+Implementing classes must implement all method signatures from the interface
+: We can't partially implement an interface, because the implementation then
+does not meet all the requirements we have said it does. The one exception to this is
+if the method has the `default` keyword, then the method is already filled in the interface.
+
+`@Override`
+: This method annotation is not _required_ when implementing a method from an
+interface, but enforces that the method does override an interface method.
+This helps prevent typos, like accidentally defining `void ad(int i, int k)`,
+or `void add(int i)`, when we wanted to implement the interface method above.
+
+Interface methods are public by default.
+: Interfaces are a description of behavior (what we can do), and it doesn't
+make sense to describe things that we can't do outside the class.
+
+Interfaces cannot have fields.
+: Fields imply that the interface is storing some data, which implies that
+we are relying on its implementation -- which isn't allowed. The exception
+to this is that interfaces can have static constants (`static final`).
+
+Classes can implement more than one interface.
+: Classes can behave like multiple things at once. To have a class implement
+more than one interface, we use commas:
+
+```java
+public class SLList implements SimpleList, ComplexList {
+  // ...
+}
+```
+
+### Abstract Classes
+
+Suppose for a moment that we wanted to inherit from a partial implementation of a class. Recall the Animal example from before, but slightly rewritten:
+
+```java
+public class Animal {
+  private int age;
+  private String name;
+  private int size;
+  private boolean hungry;
+  public Animal() { /* Implementation not shown. */ }
+  public void eat(Food food) {
+    food.consume();
+    hungry = false;
+  }
+}
+```
+
+While it was useful for us to inherit some of the functionality from Animal, it does not make sense for us to actually be able to directly instantiate an Animal. Is there any way we can prevent instantiation? The answer, as you might suspect at this point, is yes! We can declare it as an abstract class:
+
+```java
+abstract class Animal {
+  private int age;
+  private String name;
+  private int size;
+  private boolean hungry;
+  public Animal() { /* Implementation not shown. */ }
+  public void eat(Food food) {
+    food.consume();
+    hungry = false;
+  }
+  abstract void speak();
+}
+```
+
+First, note that the class has been declared as abstract at the class declaration. Next, note that we have outlined several (private)
+instance variables, and one constructor and one instance method fully implemented. Finally, note that similar to the interface, we have
+provided a specification of a method to be implemented by an inheriting class, i.e. speak. We mark it as to-be-implemented with the `abstract`
+keyword. Any inheriting class must also be concrete, or else it too has to be abstract. Note finally that a class that is not abstract is called a concrete class.
+
+You might be wondering now why Java has both interfaces and abstract classes,
+when they seem to serve rather similar purposes and have similar functionality.
+Interfaces are particularly useful to represent blueprints for classes that may or
+may not be obviously related; for example, we might have a `Fluffy` interface that can
+be `implement`ed by both a `Poodle` and a `CottonBall`, which really don't have much
+else in common. This stands in contrast to abstract classes, which use the `extends`
+keyword and therefore strictly adheres to a superclass-subclass inheritance. Because of this,
+abstract classes are helpful as representations of a common base class that can be
+`extend`ed and therefore avoids a lot of repeated code.
+
+## Dynamic Method Selection (DMS)
+
+From the structure of inheritance and polymorphism arises a natural question:
+when you possess a Java object, and you evoke a particular method signature
+from it, what method will it actually run? The complexity of this question is
+apparent in the following example.
+
+```java
+public class A {
+    public void f() {
+        System.out.println("A's method!");
+    }
+}
+
+public class B extends A {
+    public void f() {
+        System.out.println("B's method!");
+    }
+}
+
+public static void main(String[] args) {
+    A objectA = new A();
+    B objectB = new B();
+    A mystery = new B();
+
+    objectA.f();
+    objectB.f();
+}
+```
+
+Clearly, `objectA.f()` will be A’s method, and `objectB.f()` will be B’s method,
+but what of `mystery`’s call? To understand this, we must learn Java’s rules for
+dynamic method selection.
+
+### Static and Dynamic Type
+
+First, let us cover some important vocabulary we need to understand. Consider
+the following variable declaration:
+
+`Object a = new Integer(0);`
+
+Here, we have declared a variable with name `a` of **static type** Object and
+**dynamic type** Integer. The static type is in a sense the ”official” type of the object.
+It is the only thing that the Java compiler considers when checking variable assignments and
+method invocations. The dynamic type is what the object actually is. So, for
+this object `a`, the compiler considers it as an `Object`, but in reality when the
+program is run it is an `Integer`. In other words, the static type is the type on the left-hand side
+of the `=` sign, and the dynamic type is the type on the right-hand side of the `=` sign.
+
+### Compile Time
+
+The general procedure is broken down into two phases. First, the compilation
+phase.
+
+1. Ensure that each variable assignment is valid.
+2. Ensure that all method calls resolve to some method of a matching method
+   signature within the calling class.
+3. If no suitable method is found, throw a compiler error.
+
+#### Variable assignments
+
+Let us elaborate on the first point. Suppose we have a typical inheritance
+structure of a superclass `Animal`, and subclasses `Cat` and `Dog`. Consider the
+following assignments:
+
+```java
+Animal a = new Animal(); // valid
+Animal b = new Cat(); // valid
+Cat c = new Cat(); // valid
+Cat d = new Animal(); // invalid
+Dog e = new Cat(); // invalid
+```
+
+It is of course allowed to create an object whose static and dynamic types
+match, so examples `a` and `c` are acceptable. Intuitively, an `Animal` can be an `Animal`
+Likewise, we can declare a variable’s static type to be of a general class,
+and then assign its dynamic type to be something more specific.
+Since an object is, abstractly speaking, an
+API of methods and variables, any subclasses of that object will meet the
+requirements of the parent class API, and can be assigned that parent type
+statically. Thus, example `b` also is acceptable. Intuitively, a `Cat` can be an `Animal`.
+It is precisely for this same reason that examples `d`and`e`fail. A`Cat`object
+is more specific than an`Animal`, and could have extensions to the API that an
+`Animal`does not have. Thus, we cannot assign an`Animal`to be a`Cat`— an `Animal`may not be a`Cat`.
+ Similarly, `Cat`and`Dog` are completely separate from each other, and could have differing
+extensions to the API. Thus, we cannot assign across the inheritance tree either.
+
+#### Method Signature Lookup
+
+Now, onto the second and third steps. Recall that a method signature is composed
+of the function’s name and parameters. At compile time, the compiler
+uses the provided method signature to check whether or not there is a valid
+function that matches the signature. Consider the following example:
+
+```java
+public class Animal {
+    public void eat() {
+        System.out.println("I am eating!");
+    }
+}
+
+public class Cat extends Animal {
+    public void meow() {
+        System.out.println("Meow!");
+    }
+}
+
+public static void main(String[] args) {
+    Animal cat = new Cat();
+    cat.eat(); // I am eating!
+    cat.meow(); // compile error
+}
+```
+
+The static type of `cat` is `Animal`, so the compiler references `Animal` when checking
+method signatures. Thus, we are able to find the method `cat.eat()` and lock it in during compile time, but not
+`cat.meow()` because there is no `meow()` method in `Animal`. So, despite this object
+in reality being a `Cat`, we are unable to invoke one of its method. Luckily, Java
+has a built-in way to get around this. Recall casting. Casting allows
+us to tell the compiler that a certain object is of another type, and the compiler
+will simply trust us on it as long as it could reasonably be of that other type, based on whether or not the actual type has a
+direct inheritance chain relationship with the other type.
+Consider the updated example:
 
 ```java
 public static void main(String[] args) {
-    User[] users = {
-        new User(2, "Erik", ""),
-        new User(4, "Vanessa", ""),
-        new User(5, "Natalia", ""),
-        new User(1, "Alex", ""),
-        new User(1, "Circle", "")
-    };
-    Arrays.sort(users);
-    for (User user : users) {
-        System.out.println(user);
-    }
+    Animal cat = new Cat();
+    cat.eat(); // I am eating!
+    ((Cat) cat).meow(); // Meow!
 }
 ```
 
+This will work, because we have told the compiler that the cat object is a `Cat`,
+and so it passes the compiler check. Note that it checks at runtime whether
+or not `cat` is actually of type `Cat`.
+
+To summarize and generalize method signature lookup: given some call `foo.bar(arg)`,
+we should be able to find some method `bar` in the static type of `foo`
+that takes in exactly one argument with the same static type as `arg`. If such
+a method is not found, we should try again and look up
+some method `bar` in the static type of `foo` that takes in exactly one argument
+whose static type is a superclass of `arg`. If that still does not work, repeat this
+step with the parent class of the static type of `foo` until there are no parent
+classes left to check. If we have exhausted all parent classes, then no method was
+found, and the code throws a compiler error.
+
+### Runtime
+
+So, the code has passed compile time. What happens in runtime, when the code
+is actually executed? Again, we have a three step sequence:
+
+1. Check that all casts were correct (ie. that the dynamic type of the variable is actually a valid subtype of the class we cast it to)
+2. If the method locked in at compile time is `static`, simply execute it. Do
+   not check for overridden methods.
+3. Otherwise, check for any overridden non-static methods.
+
+#### Static Methods
+
+Recall that when the static keyword is applied to a method, it is independent
+of any particular instance of that object. In a sense, it belongs to the whole
+class. It resides in its own special section of memory, and thus as a result, if the
+compile phase identities a static method during its lookup, it will lock onto that
+method and execute it during runtime, regardless of any overriden methods in
+the dynamic type.
+
+#### Overridden Methods
+
+If the method identified at compile time is non-static, then in runtime there
+will be a lookup based on the dynamic type for any overriding methods that
+match the function signature (function name, number of arguments, argument type).
+For example, consider yet again Animal and Cat.
+Suppose `Animal` has a method `play` that takes in an `Animal` as parameter, and
+that `Cat` has a method with the exact same name and input. Then, if we have
+an object that is statically an `Animal` and dynamically a `Cat`, it will invoke
+`Cat`’s `play` method rather than `Animal`’s.
+
+Overriding methods must also have a return type that is either the same
+type that is returned by the method they are trying to override, or a subtype of that
+parent method's return type. For example, if `Animal` defines a method `public Animal f(String s)`,
+a method defined in `Cat` as `public Cat f(String x)` would count as an override. Note that
+the variable names do not matter, only the types and number of variables.
+
+### Canonical Example
+
+Let us now illustrate all we have learned with a simple example that covers all
+cases (not including casting, which we will leave as an exercise to reader).
+
 ```java
-User{id=1, name=Alex, email=}
-User{id=1, name=Circle, email=}
-User{id=2, name=Erik, email=}
-User{id=4, name=Vanessa, email=}
-User{id=5, name=Natalia, email=}
-```
+public class A {
+    public void f() { System.out.println("A.f"); }
+    public static void g() { System.out.println("A.g"); }
+}
 
-Note that here we use `Arrays.sort` because `users` is an array; if it was a
-Java `Collection` like `ArrayList`, we would use `Collections.sort`.
+public class B extends A {
+    public void f() { System.out.println("B.f"); }
+    public static void g() { System.out.println("B.g"); }
+    public static void h() { System.out.println("B.h"); }
+}
 
-## Iteration
-
-In CS 61BL, we're going to encounter a variety of different *data structures*,
-or ways to organize data. We've implemented linked lists like `SLList` and
-`DLList`, and a couple different sets. Starting next Friday, we'll start to see
-more complicated data structures such as trees, hash tables, heaps, and graphs.
-
-A common operation on a data structure is to process every item it contains.
-But often, the code we need to write to setup and iterate through a data
-structure differs depending on the data structure's implementation.
-
-For an array, you might iterate over it like this:
-
-```java
-int[] array = ...
-for (int i = 0; i < array.length; i += 1) {
-    // Do something with array[i]
+public static void main(String[] args) {
+    A a = new A();
+    A fakeA = new B();
+    B b = new B();
 }
 ```
 
-For `SLList`, the pattern significantly differs from above.
+As an exercise, fill out the following table, and click the Solution dropdown when you're ready to compare your answers.
+
+![Table](img/table.png)
+
+<details markdown="block">
+<summary markdown="block">
+
+**Solution**
+
+</summary>
+
+`a.f()`: The static type is `A`, and the dynamic type is `A`, so there is no confusion
+over this case. We will simply use `A`’s `f()`.
+
+`a.g()`: The static type is `A`, so at compile time we see that `A` has a `static` `g()`
+method, and lock into it. Thus, at runtime we have `A`'s `g()`.
+
+`a.h()`: `A` has no `h()` method, so this results in a compile time error.
+
+`fakeA.f()`: At compile time, we see that `A` has a nonstatic method `f()`. At
+runtime, we see that `fakeA` is a `B`, and thus use `B`’s overridden `f()` method.
+
+`fakeA.g()`: At compile time, we see that `A` has a `static` method `g()`, and so we
+lock into it. Thus, at runtime, despite the fact that `fakeA` is dynamically a `B`,
+we will run `A`'s `g()`.
+
+`fakeA.h()`: Even though `fakeA` is dynamically a `B`, at compile time it is only
+known to be an `A`, and so thus the compiler will not be able to find an `h()` method
+for `A`.
+
+`b.f()`: Statically and dynamically a `B`, we will just run `B`’s `f()` method.
+
+`b.g()`: Statically a `B`, we find `B`’s `g()` method, and lock onto it to run in runtime.
+
+`b.h()`: Statically a `B`, we find an appropriate `h()` method to run, and then at
+runtime we run it.
+
+</details>
+
+## Abstract Data Types
+
+In the previous lab, we implemented two classes that had (and with a reasonable extension, could have had) many of the same methods: `SLList` and `DLList`.
 
 ```java
-SLList list = ...
-for (IntNode p = list.sentinel.next; p != null; p = p.next) {
-    int item = p.item;
+public void add(int index, Item item);
+public void addFirst(Item item);
+public void addLast(Item item);
+public Item get(int index);
+public Item getFirst();
+public Item getLast();
+public void remove(Item item);
+public Item removeFirst();
+public Item removeLast();
+public int size();
+```
+
+It seems like this list of methods could exist and have meaning _separate_
+from any actual implementation. We call a collection of methods -- a
+description of what we can do with a collection of data -- an **abstract
+data type**. We often use interfaces to represent abstract data types.
+
+`SLList` and `DLList` are particular kinds of lists, an abstract data type
+that has the methods listed above. Let's say that we use someone's code that
+defines another kind of list called `MysteryList`. Even though we might not
+know how its implementation works, we know that it can do at least everything
+a `List` can - because it's a `List`!
+
+## ADTs in Java
+
+We've talked about the list ADT. What other ADTs are commonly used, and in
+what kinds of situations? What are their implementations in Java?
+
+### Lists
+
+Let's define the list ADT in a bit more detail:
+
+A **list** is an ordered collection, or _sequence_, so the elements in a list
+have _positions_. An element can appear as many times as desired, as duplicates
+are allowed. Thus, they must support the following operations:
+
+- `add`ing an element to the list at a specific index
+- `remove`ing an element from the list at a specific index
+- `get`ing an element at a position in the list
+- `set`ting the element at a position in the list
+- Checking if the list `contains` a given item
+- Getting the `size` of a list
+
+Java's [`List` interface][List] contains many more methods, but these are the minimum
+methods that make Java's `List`s behave like our mental model of a list.
+
+The `List` implementations that you will use most often is
+[`ArrayList`][ArrayList]. Another common implementation is
+[`LinkedList`][LinkedList], which is similar to our `DLList`.
+
+[List]: https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html
+[LinkedList]: https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/LinkedList.html
+[ArrayList]: https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/ArrayList.html
+
+```java
+List<String> = new ArrayList<>();
+List<String> = new LinkedList<>();
+```
+
+### Sets
+
+When might we want something other than a list? Consider (but don't
+implement) the following problem:
+
+> Write a program that counts the number of unique words in a large text file
+> (such as the entire text of "War and Peace"). The program should output
+> the number of unique words in the text file.
+
+We could use a list, but the list ADT allows duplicate elements.
+We'd like to use ADT that handles duplicate elements for us, so we can simplify
+the code that we write. This is what the set ADT is for!
+
+A **set** is a collection of _unique_ items that is not necessarily ordered.
+Sets must support following operations at a minimum:
+
+- `add`ing an element to the set
+- `remove`ing an element from the set
+- Checking if the set `contains` a given item
+- Getting the `size` of a set
+
+There are two implementations of the [`Set` interface][Set] in Java that you will use
+often:
+
+- [`TreeSet`][TreeSet] keeps its elements in sorted order, and is fast.
+- [`HashSet`][HashSet] does not keep its elements in sorted order, and is (usually) **really** fast.
+
+[Set]: https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Set.html
+[TreeSet]: https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/TreeSet.html
+[HashSet]: https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/HashSet.html
+
+This is a concrete example of why interfaces are useful -- when we're writing
+a method, we may not care about whether it's a `TreeSet` or a `HashSet`.
+However, the code calling that method might need the ordering of the `TreeSet`
+or the speed of the `HashSet` -- we don't know how our code is going to be used!
+We can allow our code to
+be used by both by writing our method for the `Set` interface, instead
+of for `TreeSet` or for `HashSet`.
+
+```java
+Set<String> = new HashSet<>();
+Set<String> = new TreeSet<>();
+```
+
+### Maps
+
+Let's modify the above problem slightly:
+
+> Write a program that counts the number of unique words in a large text file
+> (such as the entire text of "War and Peace", which is 1225 pages!). The program should also
+> be able to take a word as input, and output how many times that word appeared
+> in the book.
+
+Here, we really want something that relates words to counts. This is where we
+can use the map ADT!
+
+A **map** is a collection of key-to-value mappings, like a dictionary from
+Python. A map is not necessarily ordered. Maps must support at least the
+following operations:
+
+- Change (`put`) the _value_ that a particular _key_ maps to.
+- `get` the _value_ that a particular _key_ maps to.
+- `remove` the value for a given _key_
+- Checking if the map `contains` a given **key**
+
+Similar to `Set`, There are two implementations of the [`Map` interface][Map] in Java that you will use
+often:
+
+- [`TreeMap`][TreeMap] keeps its _keys_ in sorted order, and is fast.
+- [`HashMap`][HashMap] does not keep its keys or values in sorted order, and is (usually) **really** fast.
+
+[Map]: https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/TreeMap.html
+[TreeMap]: https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/TreeMap.html
+[HashMap]: https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/HashMap.html
+
+```java
+Map<String, String> = new TreeMap<>();
+Map<Character, Int> = new HashMap<>();
+```
+
+#### More About Maps
+
+- To use a Java `Map`, you must specify two types: the key type, and the value
+  type. This is distinct from `List`s and `Set`s, which only need to specify
+  one type.
+
+- Maps are a mapping from keys to values, but not values to keys. They store a
+  relationship in _one direction_. For example:
+  consider a map which had keys as emails, and the values as peoples' names.
+  Given an email, I can find out who has that email. However, given a person, I
+  can't easily find out their email using that map. I would need a different map
+  going in the opposite direction (keys as peoples' names mapping to values as
+  emails).
+
+## Collections
+
+Looking at the above ADTs, it seems like they also share some behaviors. We can
+_add_ elements, _remove_ elements, check if the ADT _contains_ a certain
+element, and get the _size_. This looks like somewhere we can define a separate
+ADT!
+
+The collection ADT represents a _collection of data_. Most of the data
+structures we will study the rest of this class are used to implement
+collections. At the most general level, pretty much anything you use to store
+multiple items at once is going to fulfill the requirements to be a
+_collection_. Throughout this course, we will continue to
+see implementations of these collections.
+
+So, what does it mean (in Java) for a `List`, an ADT, to be a `Collection`,
+another ADT? We say that interfaces can `extend` other interfaces:
+
+```java
+public interface List<Item> extends Collection<Item> {
+    ...
 }
 ```
 
-Evidently, we need to write two very different codes in order to do the same
-high-level thing. It would be nice if we can write one piece of code that we can
-reuse for different things that we can iterate over. In other words, we wish
-to *abstract away* the internal implementation of data structures from the
-operations on them.
+This means that the `List` interface "inherits" all the methods in the
+`Collection` interface... or that a `List` has all the behaviors
+that a `Collection` has!
 
-Furthermore, if we use a different data structure, a `for` loop like the one
-above may not make sense. For example, what would it mean to access the `k`th
-item of a set, where the order of items is not defined? We need a more *abstract*
-notion of processing every item in a data structure, something that allows us
-to check every item regardless of how they're organized.
+As seen above, the Java interface for collections is, unsurprisingly,
+[`Collection`][Collection]. Typically, we'll implement the behaviors for a
+particular kind of collection, rather than the `Collection` interface itself.
 
-To do that, we're going to define the idea of a data structure being *iterable*.
+[Collection]: https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Collection.html
 
-### `Iterable`
+### Maps and Collections
 
-The interface that lets us say that something can be iterated over is called
-[`Iterable<T>`][Iterable]:
+Unlike **set** and **list**, `Map` is not a direct extension of the Java
+`Collection` interface. This is because `Collection` specifies collections of
+a single element type, but `Map` operates on key-value pairs. Instead, from
+[Java's `Map` documentation][Map], "The Map
+interface provides three _collection views_, which allow a map's contents to be
+viewed as a set of keys, collection of values, or set of key-value mappings."
 
-[Iterable]: <https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Iterable.html>
+- `keySet()`, which returns a `Set` of all the keys. The keys are unique, so a
+  set is an appropriate choice here.
+- `values()`, which returns a `Collection` of all the values. The values are
+  not necessarily unique, which is why we prefer a more general `Collection`
+  rather than a `Set`.
+- `entrySet()`, which returns a `Set` of key-value pairs with a wrapper type
+  called `Entry`. The entry class's job is just to hold the key and the value
+  together in a single class, so you can imagine that it might look something
+  like this.
 
+  ```java
+  public class Entry<Key, Value> {
+      private Key key;
+      private Value value;
+      public Key getKey();
+      public Value getValue();
+      // ...
+  }
+  ```
+
+These methods are vital when iterating over anything which implements the
+`Map` interface.
+
+[Map]: https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html
+
+## Exercise: `CodingChallenges`
+
+Knowing when, where, and how to use abstract data types is an important skill.
+
+For this part, we'll be using abstract data types to help us solve small
+programming challenges. These questions are similar to the kinds of questions
+you might get asked to solve in a technical interview for a software
+engineering position. Complete the methods outlined in `CodingChallenges.java`, and add tests in `CodingChallengesTest.java`. Review [Lab 03](../lab03) for how to write tests.
+
+
+Note that the first method, `missingNumber`, the input array is **not** in order.
+
+Hint: For `isPermutation`, use `toCharArray`. Look it up if you don't know what it is.
+
+Hint: Some of these instantiations might be useful for these problems:
 ```java
-public interface Iterable<T> {
-    Iterator<T> iterator();
-}
+Set<Integer> seen = new HashSet<>();
+Map<Character, Integer> characterCounts = new HashMap<>();
 ```
 
-The generic parameter `T` indicates the type of the elements that we visit
-while iterating. For example, for the `SLList` that contains only `int`s, we
-would write:
+## Exercise: Implementing Sets
 
-```java
-public class SLList implements Iterable<Integer>
-```
+We will implement two kinds of sets, with different underyling implementations.
 
-Similarly, a generic list would implement `public class MyList<T> implements
-Iterable<T>`.
+The file `SimpleCollection.java` contains a simplified version of the
+`Collection` interface which only accepts integers as members. The files
+`SimpleSet.java` contains a simplified version of the `Set` interfaces.
+Read both files so you can understand how interfaces and interface extension are
+being used here, as well as to understand what each of the interfaces requires.
 
-Since a Java `Collection` is a group of objects, it makes sense that we would
-like to iterate over those objects. Therefore, `Collection<T>` is a
-sub-interface of `Iterable<T>`.
+### `ListSet`
 
-Let's now consider the return type, `Iterator<T>`.
+The file `ListSet.java` is an incomplete implementation of the `SimpleSet`
+interface. It maintains uniqueness of a set of elements by storing
+elements in an `ArrayList<Integer>`.
 
-### `Iterator`
+Implement the methods of the `ListSet.java` class, and use the
+`ListSetTest.java` file to test your methods. You may use
+`List` methods in your implementation. We only provide a basic test,
+so feel free to add more comprehensive tests to this file.
 
-Remember how everything is an object in Java? If `Iterable` is the "thing that
-can be iterated over", then [`Iterator`][Iterator] is "where we are during
-iteration".
+### `BooleanSet`
 
-[Iterator]: <https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Iterator.html>
+The file `BooleanSet.java` is an incomplete implementation of the `SimpleSet`
+interface. It maintains uniqueness of elements in the set by storing a boolean
+array `contains` for a range `[0, maxElement]`. This version of the `SimpleSet`
+interface only deals with positive integers and uses a boolean array to keep
+track of what values are currently in the `Set`. Check the example below:
 
-As an analogy, think of a walking trail, with specific waypoints along the
-trail (like a list). The walking trail is `Iterable`, because we can visit each
-waypoint. Imagine that we have a person walking along the trail. The person
-and where they are on the trail is an `Iterator`. We can have multiple
-people on the trail, just like we can have multiple iterators.
+![BooleanSet array](img/boolean-set-array.jpg)
 
-Since the "state" that `Iterator` needs to keep track of will likely be
-different for each class, it's an interface as well:
+Implement the methods of the `BooleanSet.java` class, and use the
+`BooleanSetTest.java` file to test your methods. We only provide a basic test,
+so feel free to add more comprehensive tests to this file.
 
-```java
-package java.util;
-public interface Iterator<T> {
-    boolean hasNext();
-    T next();
-    // Some methods not shown
-}
-```
+### Tradeoffs
 
-`hasNext`
-: `hasNext` is a boolean method that says whether there are any more remaining
-items in the iterable to return. In other words, returns true if `next()`
-would return an element rather than throwing an exception. In our analogy,
-this returns true if the walker is not at the end of the trail.
+What are the tradeoffs between these two implementations? Neither one is
+strictly "better" than the other in all situations, but when might we want to
+use one of them? Discuss with a partner.
 
-`next`
-: `next` successively returns items in the iterable one by one. The first
-call to `next` returns a value, the second call to `next` returns another
-value, and so on. If you're iterating over a set -- a data structure that
-does not necessarily have an order -- we don't necessarily guarantee that
-`next` returns items in any specific order. However, what we do
-guarantee is that it returns each item in the iterable exactly once. If we were
-iterating over a data structure that *does* have an ordering, like a list, then
-we would also like to guarantee that `next` returns items in the right order.
-In our analogy, this causes the walker to "visit" a waypoint on the trail.
+## Aside: Generics and Autoboxing
+
+As you should remember from [Lab 5](../lab05), generics allow us to
+define data structures without relying on the specific type of objects it holds.
+This allows us to even further generalize our code, creating reusable data structures.
+
+Autoboxing is an automatic conversion that Java performs when presented a **wrapper class**.
+A wrapper class is a class that has been "wrapped" around a primitive data type so that
+the programmer can rely on object oriented interactions. You may have seen some examples already,
+such as `Integer.java` and `Double.java`. Automatic conversion
+is performed between wrapper classes and the primitives they represent.
 
 {% include alert.html content="
-Every call to `next()` is typically preceded by a call
-to `hasNext()`, thus ensuring that the `Iterator` does indeed have a next value
-to return. If there are no more elements to remaining, it is common practice to
-throw a `NoSuchElementException`.
+Read Chapter **[5.1][]** and **[5.3][]** which we skipped earlier, covering
+**generics** and **autoboxing** in Java. These two topics will be helpful for
+implementing data structures moving forward, though they aren't emphasized in this lab.
 " %}
 
-Why design two separate interfaces, one for iterator and one for iterable? Why not just have the iterable do both?
-: The idea is similar to `Comparable` and `Comparator`. We can provide a
-  'default' iterator, but also allow for other iterators. For example, we could
-  implement an iterator that skips every other element, visits each element,
-  twice, or skips elements that return false for some condition.
-
-### Enhanced `for` Loop
-
-You may have been using the idea of a data structure being iterable already!
-When Java executes an enhanced `for` loop (the one using a colon), it does a
-bit of work to convert it into iterators and iterables. The following code
-represents the enhanced for loop you have most likely already seen and then a
-translated version which reveals what is happening behind the hood using an
-iterator.
-
-```java
-List<Integer> friends = new ArrayList<>();
-friends.add(5);
-friends.add(23);
-friends.add(42);
-for (int x : friends) {
-    System.out.println(x);
-}
-```
-
-```java
-List<Integer> friends = new ArrayList<>();
-friends.add(5);
-friends.add(23);
-friends.add(42);
-Iterator<Integer> seer = friends.iterator();
-while (seer.hasNext()) {
-    int x = seer.next();
-    System.out.println(x);
-}
-```
-
-### `SLListIterator`
-
-Here's an example of implementing `Iterable` for `SLList`:
-
-```java
-public class SLList implements Iterable<Integer> {
-    /* The first item (if it exists) is at sentinel.next. */
-    private IntListNode sentinel;
-    private int size;
-
-    // Constructor and other methods...
-
-    public Iterator<Integer> iterator() {
-        return new SLListIterator();
-    }
-
-    // We can define "inner classes" that have access to the outer class's
-    // variables. Since this isn't a static class, it's tied to a particular
-    // instance of SLList and can access its instance variables.
-    private class SLListIterator implements Iterator<Integer> {
-
-        // For example, here we access the outer class's sentinel node.
-        private IntListNode curr = sentinel.next;
-
-        public Integer next() {
-            // Check if we're out of items here
-            if (!hasNext()) {
-                throw new NoSuchElementException();
-            }
-            int toReturn = curr.item;
-            curr = curr.next;
-            return toReturn;
-        }
-
-        public boolean hasNext() {
-            return curr != sentinel;
-        }
-    }
-}
-```
-
-{% include alert.html content="
-The code maintains an important invariant: prior to any call to `next`,
-`curr` contains the index of the next value in the list to return.
-" %}
-
-We can then use our `SLList` class in an enhanced `for` loop.
-
-```java
-SLList friends = SLList.of(5, 23, 42);
-Iterator<Integer> seer = friends.iterator();
-while (seer.hasNext()) {
-    int x = seer.next();
-    System.out.println(x);
-}
-```
-
-```java
-SLList friends = SLList.of(5, 23, 42);
-for (int x : friends) {
-    System.out.println(x);
-}
-```
-
-### Designing Iterators
-
-Often, when writing our own iterators, we'll follow a similar pattern of doing
-most of the work in `next`.
-
-1. We save the item to output with `int toReturn = curr.item;`.
-2. Move the current state to the next item with `curr = curr.next`.
-3. Return the item we saved earlier.
-
-An important feature of the code is that `hasNext` **doesn't change any
-state**. It only examines existing state by comparing the progress of the
-iteration to the number of list elements. `hasNext` can then be called any
-number of times in a row and nothing should change, or it could be called not
-at all and the iteration should still work as long as there are elements left
-to be returned.
-
-### Discussion: Iterator Invariants
-
-Consider the following `SLListIterator`, slightly different from those we just
-encountered.
-
-```java
-private class SLListIterator implements Iterator<Item> {
-    private IntListNode curr = sentinel;
-
-    public Integer next() {
-        curr = curr.next;
-        return curr.item;
-    }
-
-    public boolean hasNext() {
-        return curr.next != sentinel;
-    }
-}
-```
-
-Now, discuss the following questions with your partner:
-
-1. What's the invariant relation that's true between calls to `next`?
-2. In general, most experienced programmers prefer the organization introduced
-   first over this organization. What might explain this preference? Think
-   about both writing the iterator, and debugging it while it's in use.
-
-Finally, let's consider some questions about the order in which methods may be
-called on an `Iterator`:
-
-What if someone calls `next` when `hasNext` returns false?
-: This violates the iterator contract so the behavior for `next` is undefined.
-  Crashing the program is acceptable. However, a common convention is to throw a
-  `NoSuchElementException`.
-
-Will `hasNext` always be called before `next`?
-: Not necessarily. This is sometimes the case when someone using the iterator
-  knows exactly how many elements are in the sequence. For this reason, we can't
-  depend on the user calling `hasNext` when implementing `next`, and don't
-  typically change any state in `hasNext`.
-
-### Exercise: `AListIterator`
-
-As mentioned before, it is standard practice to use a separate iterator object
-(and therefore a separate, typically nested class) as the actual `Iterator`.
-This separates the `Iterator` from the underlying data structure or *iterable*.
-
-Modify the provided `AList` (array-backed list) class so that it `implements`
-`Iterable<Item>`. Then,
-add a nested `AListIterator` class which implements `Iterator<Item>`. Note that if
-you submit to the autograder before you implement this, your code likely will say
-that there are compilation errors coming from the autograder tests (you will see
-errors like "error: cannot find symbol" for calls to `a.iterator` or similar). Once
-you have properly completed this, the errors should go away. **Likewise, if you want 
-to test locally, you'll need to uncomment the test method in `AListTest.java`, and 
-make sure it doesn't have compilation errors.**
-
-{% include alert.html content="
-Note that `AList` itself does not implement `Iterator`. This is why we need
-a separate, nested, private class to be the iterator. Typically, this class
-is nested inside the data structure class itself so that it can access the
-internals of the object that instantiated the instance of the nested class.
-See `SLList` above for an example.
-Make sure that you've completed the following checklist.
-
-1. Does your `AList` object know anything about its `AListIterator`'s
-   state? Information about iteration (index of the next item to return)
-   should be confined to `Iterator` alone.
-2. Are multiple `Iterator`s for the same `AList` object independent of each
-   other? There can be multiple `Iterator`s for a single `AList` object, and
-   one iterator's operation should not affect the state of another.
-3. Does `hasNext` alter the state of your `Iterator`? It should not change
-   state.
-4. If there are no more elements left in the `Iterator` and the user tries to call
-   `next()`, throw a NoSuchElementException with the line `throw new NoSuchElementException();`
-" %}
-
-After you have modified your `AList` class, write some test code to see if
-Java's enhanced `for` loop works as expected on your `AList`.
-
-### Concurrent Modification
-
-For our lab, we regarded our data structure to be "frozen," while the
-`Iterator` was at work. In other words, we assumed that while we were operating
-on the iterators, the data structure would remain as is. However, this is not
-generally true in the real world.
-
-```java
-ArrayList<BankAccount> accounts = ...;
-Iterator<BankAccount> it = accounts.iterator();
-while (it.hasNext()) {
-    // Remove the next account!
-    accounts.remove(0);
-    checkValidity(it.next()); // Wait, what?
-}
-```
-
-If all clients of the data structure were to only read, there would be no
-problem. However, if any were to modify the data structure while others are
-reading, this could break the fundamental invariant that `next` returns the
-next item if `hasNext` returns true!
-
-To handle such situations, many Java iterators throw
-`ConcurrentModificationException` if they detect that the data structure has
-been externally modified during the iterator's lifetime. This is called a
-"fail-fast" behavior.
-
-Your main takeaway from this section should be that modifying data structures
-while iterating over them is dangerous!
-
-## Error-Handling
-
-Above, we mentioned `NoSuchElementException` and
-`ConcurrentModificationException`. We've also (probably)
-seen `NullPointerException` and `ArrayIndexOutOfBoundsException`, among others
-before. These are errors, but why does Java stop the entire program when it
-hits an error, and is there any way to avoid it?
-
-So far in this course, we have not dealt much with error-handling. You were
-allowed to assume that the arguments given to methods were formatted or
-structured appropriately. However, this is not always the case due to program
-bugs and incorrect user input. Here are a few examples of this:
-
-1. Bugs in your programs might create inconsistent structures or erroneous
-   method calls (e.g. division by zero, indexing out of bounds, dereferencing a
-   null pointer).
-2. Users (or the outside world in general) cannot be trusted to give valid
-   input (e.g. non-numeric input where a number is required or search failures
-   where a command or keyword was misspelled).
-
-We assume in the following discussion that we can detect the occurrence of an
-error and at least print an error message about it.
-
-A big challenge in dealing with an error is to provide information about it at
-the right level of detail. For instance, consider the error of running off the
-end of an array or list. If the contents of a list are inconsistent with the
-number of elements supposedly contained in the list, you might end up trying to
-"reference through a null pointer" or "index out of bounds". What should happen
-in this case?
-
-### Discussion: Error Handling
-
-The programmer may wish to pass information about the error back to the caller
-method with the hope that the caller can provide more appropriate and useful
-information about the root cause of the error and perhaps be able to deal with
-the error. However, this may be difficult.
-
-Here are three approaches to error handling:
-
-- Don't try to pass back any information to the caller at all. Just print
-  some kind of error message (hopefully a useful one?) and stop the entire
-  program.
-- Detect the error and set some global error indicator (like a `public static`
-  variable in Java) to indicate its cause.
-- Detect the error and directly "return" the error information. This typically
-  is handled with a particular return type that indicates a possible error, or
-  by passing in a mutable argument that can be set to indicate the error.
-
-Different languages geared towards solving different types of problems take
-different approaches to error handling. Some newer languages, such as [Go][], and
-[Rust], for example, support a design similar to the third option.
-
-[Go]: <https://go.dev/blog/error-handling-and-go>
-[Rust]: <https://doc.rust-lang.org/book/ch09-00-error-handling.html>
-
-Which seems most reasonable? Discuss with your partner, and defend your answer.
-If none, justify why all the options are bad.
-
-### Exceptions
-
-There is a fourth option for handling errors, called an *exception*. Provided
-by Java and other modern programming languages, including C++ and Python, an
-exception signals that an
-error of some sort has occurred. Java allows both the *signaling* of an error
-and selective *handling* of the error. Methods called between the signaling
-method and the handling method need not be aware of the possibility of the
-error.
-
-An exception is *thrown* by the code that detects the exceptional situation,
-and it is *caught* by the code that handles the problem, if any.
-
-{% include alert.html content="
-Read Chapter **[6.2](https://joshhug.gitbooks.io/hug61b/content/chap6/chap62.html)** of the online textbook to learn more
-about exceptions.
-" %}
-
-To manually throw an exception, we use the `throw` keyword, along with the
-exception instance we're throwing:
-
-```java
-throw new RuntimeException("yeet");  // Ideally you'll write better error messages...
-```
-
-If we want to do anything with the exception, such as gracefully continuing
-the program, or printing a better error message, we'll need to catch it with
-a `try catch` block.
-
-```java
-try {
-    // code that might throw an exception
-} catch (IOException e) {  // We have to catch a specific type of exception
-    // Let's handle the exception somehow.
-}
-```
-
-Different exceptions will have different constructors. We can also define our
-own exception classes, but this is out of scope.
-
-An extension to the `try catch` block construct that often comes in handy is
-the `finally` block. A `finally` block comes after the last `catch` block and
-is used to do any cleanup that might be necessary, such as releasing resources
-the `try` block was using. This is very common when working with input-output
-like opening files on your computer.
-
-```java
-Scanner scanner = new Scanner(System.in);
-int k;
-try {
-    k = scanner.nextInt();
-} catch (NoSuchElementException e) {
-    // Ran out of input
-} catch (InputMismatchException e) {
-    // Token isn't an integer
-} finally {
-    // finally will be executed as long as JVM does not exit early
-    scanner.close();
-}
-```
-
-This use of the `finally` block so common that the Java language developers
-introduced the `try-with-resources` block. It allows you to declare resources
-being used as part of the try block, and automatically release those resources
-after the block finishes executing. The code below is equivalent to the snippet
-above, but it doesn't use the `finally` block.
-
-```java
-int k;
-try (Scanner scanner = new Scanner(System.in)) {
-    k = scanner.nextInt();
-} catch (NoSuchElementException e) {
-    // ran out of input
-} catch (InputMismatchException e) {
-    // token isn't an integer
-}
-```
-
-{% capture alertContent %}
-Even though we've presented exceptions last, this is solely because Java uses
-them as its error-handling mechanism. This shouldn't be interpreted as
-"exceptions are the best method of error-handling".
-
-Exceptions, similar to the other methods, of error-handling, have benefits
-and drawbacks. What are some of these benefits and drawbacks?
-{% endcapture %}
-{% include alert.html type="warning" content=alertContent %}
+[5.1]: https://joshhug.gitbooks.io/hug61b/content/chap5/chap51.html
+[5.3]: https://joshhug.gitbooks.io/hug61b/content/chap5/chap53.html
+
+## Recap
+
+We introduced a few key topics in this lab:
+
+Inheritance:
+We learned that we can use inheritance to make the structures of our programs more efficient by taking advantage of
+similarities in the different types of objects that we are using. We also learned about method overloading and overriding,
+the `super` keyword, and inheritance chains.
+
+Dynamic Method Selection
+We learned how Java decides what method to actually call when a program invokes a particular method signature.
+There are two phases to this process. The first is the compiler phase, where Java ensures that there is a valid method
+matching the invoked signature that can be called. The second is the runtime phase, where Java looks up what method to
+run based on the dynamic types of the object involved.
+
+Abstract Data Types
+: Abstract data types are defined to be some sort of data that is defined
+by a set of operations rather than the **implementation** of these operations.
+
+`List`, `Set`, `Map`, and `Collection`
+: Java has interfaces for several ADTs, and several implementations for each of
+these ADTs. If we want to write code using algorithms that work on ADTs,
+we can write code against these Java collection types.
 
 ## Deliverables
 
-Here's a quick recap of the tasks you'll need to do to complete this lab:
+For full credit, submit:
 
-- Make the `User` class implement `Comparable`.
-- Make `AList` implement `Iterable`, as well as adding your iterator class to the `AList.java` file.
-
-Additionally, you'll need to work with exceptions in Gitlet, so
-understanding those will be helpful as well.
-
-Be sure to submit to Gradescope and add your partner if you have one!
+- Implement and test `nextDate` in `GregorianData.java`.
+- Implement and test each method in `CodingChallenges.java`.
+- Implement and test each method in `ListSet.java`.
+- Implement and test each method in `BooleanSet.java`.

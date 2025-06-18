@@ -1,7 +1,7 @@
 ---
 layout: page
 title: >-
-  Lab 06: Inheritance
+  Lab 06: Abstract Data Types
 has_children: true
 parent: Labs
 has_toc: false
