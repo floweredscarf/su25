@@ -3,7 +3,7 @@ layout: page
 title: >-
   FAQ
 parent: >-
-  Lab 02: Intro to Objects and Primitives
+  Lab 03: Intro to Objects and Primitives
 grand_parent: Labs
 has_right_toc: true
 released: true

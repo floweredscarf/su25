@@ -3,7 +3,7 @@ layout: page
 title: >-
   FAQ
 parent: >-
-  Lab 03: Debugging & Test-Driven Development
+  Lab 04: Debugging & Test-Driven Development
 grand_parent: Labs
 has_right_toc: true
 released: true

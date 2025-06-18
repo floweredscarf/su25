@@ -3,7 +3,7 @@ layout: page
 title: >-
   FAQ
 parent: >-
-  Lab 00: Java & Git
+  Lab 01: Java & Git
 grand_parent: Labs
 has_right_toc: true
 released: true
