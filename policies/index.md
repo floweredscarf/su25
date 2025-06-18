@@ -60,7 +60,7 @@ of work. **We strongly recommend not taking any other courses alongside CS
 While we can’t predict how many hours you will spend on the course, here is a
 brief breakdown of what you will have to do in this course.
 
-- Four 3 hour practical labs per week on Monday - Thursday.
+- Four 2-3 hour practical labs per week on Monday - Thursday.
 - Two one-hour lectures per week on Monday and Wednesday. 
 - One homework per week (total of 6).
 - Two exams (one midterm, one final) in the 8 weeks of the course.
@@ -185,7 +185,7 @@ de-prioritized for help. </strong>
 
 ### Homeworks
 
-Homeworks are designed to reinforce your **conceptual understanding** of the material each week. They will include a mix of multiple-choice, short answer, and coding questions, and will be released on **Gradescope** every **Wednesday**, due the following **Tuesday**.
+Homeworks are designed to reinforce your **conceptual understanding** of the material each week. They will include a mix of multiple-choice, short answer, and coding questions, and will be released on **Gradescope** every **Wednesday**, due the following **Tuesday at 11:59 PM**.
 Regardless of length, all homeworks will be worth **2.5** points. The maximum number of homeworks points you can get will be 15.
 
 **No extensions** will be granted for homework assignments for any reason, so please plan accordingly and start early.
@@ -194,7 +194,7 @@ Regardless of length, all homeworks will be worth **2.5** points. The maximum nu
 
 There are four projects in this course. Projects are larger and more
 challenging assignments than you would typically find in a lab. There will be some in lab time to work on these projects,
-but they are largely meant to be completed outside of lab. 
+but they are largely meant to be completed outside of lab. This semester **we will not be having OH** so please come to lab to get the best help.
 
 ### Exams
 
@@ -240,7 +240,7 @@ In theory, it would be nice to have a mechanism that avoids using any statistics
 
 After most weeks, we will send out a weekly survey in the weekly announcements.
 We will have 6 weekly surveys. Completing each weekly survey will give half of
-an extra credit point! In addition to the weekly surveys, we will send out
+an **extra credit** point! In addition to the weekly surveys, we will send out
 presemester, midsemester, and end of the semester surveys. Completing each of
 the presemester, midsemester, or end of the semester surveys will earn 1 extra
 credit point. Completing all three will give 3 points. So, if you complete
@@ -382,13 +382,11 @@ For the lab attendance, you will need to attend 15 labs in order to receive full
 
 ### Late Policy
 
+You will receive a total of 8 slip days for the entire semester that can be used for both lab assignments and projects. Each slip day extends your deadline by 24 hours. Slip days may only be applied retroactively, and you may **not** use a fraction of a slip day.
+
 #### Lab Lateness
 
-For lab assignments, you will receive a total of 4 slip days, with one slip day
-released to you every two weeks. If you use a slip day, your lab deadline is
-extended by 24 hours. You can use at most one slip day per lab assignment, and
-you may **not** use a fraction of a slip day. Slip days may only be applied retroactively. 
-Lab assignments turned in late without using a slip day will receive no credit.
+For lab assignments, you can use at most one slip day per lab assignment. Lab assignments turned in late without using a slip day will receive no credit.
 
 You should only be using a slip day on a lab assignment if you have made
 significant progress on the lab prior to the original deadline for the
@@ -402,7 +400,7 @@ make a lab section and are trying to complete the entire lab the day after. In
 this situation, it may be better for you to consider skipping the assignment and
 proceeding with the more current ones to keep pace with the course. Remember,
 you don't need to get all points in the lab category to still get full credit
-for labs.
+for labs. Please see the Grading section above for more information.
 
 **To use a lab slip day, go to the Extensions tab on Beacon. If you have enough
 slip days remaining, you may select your assignment and your new due date**.
@@ -410,20 +408,13 @@ Note that you can only request at most 1 slip day per lab, and once you apply a 
 
 #### Project Lateness
 
-For projects, you will not receive any slip days. However, you may turn in your
-project late and receive a penalty depending on when it is submitted:
+For projects, you can use slip days to extend your deadline. Each slip day extends your deadline by 24 hours. If you turn in your project late without using a slip day, you will receive no credit.
 
-- Within 24 hours of the deadline: 10% penalty
-- Within 48 hours of the deadline: 50% penalty
-- More than 48 hours after the deadline: 100% penalty (no credit)
-
-For example, a project that scored 10 points on the autograder that was turned
-in 8 hours after the deadline will receive a 10% penalty; the final score will
-be 9 points. Similarly, the same project turned in 25 hours after the deadline
-will receive a 50% deduction, and the final score will be 5 points.
+**To use a project slip day, go to the Extensions tab on Beacon. If you have enough
+slip days remaining, you may select your assignment and your new due date**.
 
 No extensions will be granted for project checkpoints and project 3 with the 
-exception of DSP extension accommodations. 
+exception of DSP extension accommodations.
 
 #### DSP Accommodations
 
@@ -434,18 +425,18 @@ on any assignment.
 **To request for a DSP-related extension, go to the "DSP Extensions" section under the Extensions tab on Beacon. We will check your DSP record for extensions related accommodations.**
 
 #### Extenuating Circumstances
-We define extenuating circumstances as circumstances outside of the student’s control that 
-directly inhibits the student’s ability to complete assignments in a timely manner. Some 
+We define extenuating circumstances as circumstances outside of the student's control that 
+directly inhibits the student's ability to complete assignments in a timely manner. Some 
 examples include unforeseen physical/mental health crises, technical issues (broken laptop), 
 family emergency, etc.
 
-If you’re experiencing extenuating circumstances impacting your mental health and would like
+If you're experiencing extenuating circumstances impacting your mental health and would like
 to meet with a member of course staff to work out accommodations within the course, or would 
 like to be connected to more resources, you can set up a meeting with us 
 [**here**](https://forms.gle/QnYufRchWc7dFdKZ8).
 
 {% include alert.html type="danger" content=" We will not be considering retroactive 
-submissions to the extenuating circumstances form. **This means that you should proactively submit to the form before the assignment’s deadline to be considered.** Exceptions will only be made in extreme cases. " %}
+submissions to the extenuating circumstances form. **This means that you should proactively submit to the form before the assignment's deadline to be considered.** Exceptions will only be made in extreme cases. " %}
 
 The last day to submit any assignment is **Monday, August 11th, 11:59 PM PT.** 
 This is a hard deadline, and we will not accept any submissions made after this deadline.
@@ -461,7 +452,7 @@ students benefit by seeing the question and the answer.
 #### Ed Etiquette
 -   **Search before posting**: Your question may have already been answered by us or other students in the past. Reading other  students' posts will let you refine your question, and gives us more time to answer new questions.
 -   **Try to avoid open-ended or vague questions such as**: "How does Java work?" or "How come the solution to a discussion      problem is this?". If you walk us through your thoughts and reference specific lines that you find confusing, we can better address the problem you are facing. Being specific helps us uncover any misunderstandings that you may have.
--   **Post questions about assignments as public follow-ups on the corresponding assignment post**: For example, post your questions about Lab 1 under the Lab 1 post. If your question is too detailed or revealing to fit as a follow-up, your question would be better answered during office hours. 
+-   **Post questions about assignments as public follow-ups on the corresponding assignment post**: For example, post your questions about Lab 1 under the Lab 1 post. If your question is too detailed or revealing to fit as a follow-up, your question would be better answered during lab. 
 -   **No follow-up +1's**:  Instead, you should use the heart button on a question/follow-up. Excessive +1 follow-ups clutter the post and make it more difficult to get to the unresolved follow-ups.
 -   **If you want a reply on a follow-up, mark it as unresolved**, or we may not see it.
 
@@ -471,13 +462,13 @@ For more detailed information, please read over the [Ed policies and guidelines.
 
 The email address <cs61bl@berkeley.edu> will send a message to the instructors.
 **Only the current instructors and select Head TAs have access to this email.**
-You can use it for correspondence that you don’t want to send to all TAs through the ticketing system.
+You can use it for correspondence that you don't want to send to all TAs through the ticketing system.
 **Please do not email the instructors directly** since your message may be
 misplaced that way. You will get a faster response from the course email.
 
 ### Reading
 
-You are expected to read each lab’s contents.  There are also related textbooks
+You are expected to read each lab's contents.  There are also related textbooks
 that belong to CS 61B, which you may read if you please. The The first text we use
 is Josh Hug's [free, online course notes][Hug61B] written in collaboration with past and current TAs. If you find these notes
 insufficient, you might consider consulting Paul Hilfinger's (free) [Java
@@ -560,7 +551,7 @@ bounds of acceptable behavior, we have three important rules for projects:
 #### Permitted
 
 -   Discussion of approaches for solving a problem. Such help should be cited as
-    comments in your code. For the sake of others’ learning experience, we ask
+    comments in your code. For the sake of others' learning experience, we ask
     that you try not to give away anything juicy, and instead try to lead people
     to such solutions.
 -   Discussion of specific syntax issues and bugs in your code, without showing
@@ -572,7 +563,7 @@ bounds of acceptable behavior, we have three important rules for projects:
 
 #### Absolutely Forbidden
 
--   Typing or dictating code into someone else’s computer is a violation of the “By You Alone” rule.
+-   Typing or dictating code into someone else's computer is a violation of the "By You Alone" rule.
 -   Looking at someone else's project code to understand a particular idea or
     part of a project. This is not allowed due to the danger of
     plagiarism. We are very serious about the "By You Alone" rule!
