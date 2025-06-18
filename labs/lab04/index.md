@@ -12,7 +12,7 @@ released: true
 ## [FAQ](faq.md)
 
 Each assignment will have an FAQ linked at the top. You can also access it by
-adding "/faq" to the end of the URL. The FAQ for Lab 03 is located
+adding "/faq" to the end of the URL. The FAQ for Lab 04 is located
 [here](faq.md).
 
 ## Introduction
@@ -238,12 +238,7 @@ in a `password` that matches it!
 
 </details>
 
-### Optional Challenge: Conditional Breakpoints (Phase 2)
-
-{% include alert.html type="info" content="
-Although phase 2 is optional, we **highly** recommend that you do it if you have time
-because conditional breakpoints are very useful!
-" %}
+### Conditional Breakpoints (Phase 2)
 
 Sometimes you may want to have your program pause only on certain conditions.
 To do so, create a breakpoint at the line of interest and open the
@@ -262,7 +257,7 @@ that your program is throwing.
 {% include alert.html type="task" content="
 **Task**: Set a breakpoint at `phase2` and use the debugger to find the password
 for `phase2` and replace the `phase2` argument accordingly in
-`bomb/BombMain.java`. Remember, don't edit `Bomb.java`!
+`bomb/BombMain.java`. The built-in `repeat` method of the `String` class may be useful; you can read more about it [here](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html).
 
 ***
 
@@ -298,37 +293,13 @@ of what it does.
 
 </summary>
 
-You don't necessarily need to construct the password in one line of code.
-
-</details>
-
-<details markdown="block">
-<summary markdown="block">
-
-**Hint 3**
-
-</summary>
-
 You'll need to build the password in pieces so that the `split` method will cause
 the correct number be in the right spot. 
-
 </details>
 
 <details markdown="block">
 <summary markdown="block">
 
-**Hint 4**
-
-</summary>
-
-After you've constructed a sufficiently long `String` so that `1337` is a valid
-index, set a conditional breakpoint inside the for loop that pauses the program
-when `i` is close to `1337`. Then step until you find the password.
-
-</details>
-
-<details markdown="block">
-<summary markdown="block">
 
 **`phase2` Method Breakdown**
 
