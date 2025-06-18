@@ -518,7 +518,7 @@ int[][][] threeDimensionalArray = new int[100][100][100];
 This 3D array has 100x100x100 = 1,000,000 different values. Multidimensional
 arrays are extremely useful, and you'll be encountering them a lot.
 
-## Exercise: A Jigsaw Puzzle - Drawing a Triangle
+## Task: A Jigsaw Puzzle - Drawing a Triangle
 
 The file `TriangleDrawer.stuff` contains a collection of statements. Some of
 the statements, together with some extra right braces, form the body of a main
@@ -529,16 +529,11 @@ method that, when executed, will print the triangle:
     ***
     ****
     *****
-    ******
-    *******
-    ********
-    *********
-    **********
 
 (Each line has one more asterisk than its predecessor; the number of asterisks
 in the last line is the value of the `SIZE` variable. `SIZE` has a hard-coded value,
 which you should experiment with. Feel free to make `SIZE` controlled by a command-line argument!
-However, when you turn it in, make sure that it will run with `SIZE = 10`!)
+However, when you turn it in, make sure that it will run with `SIZE = 5`!)
 
 At the top of IntelliJ, you should see "File". Click on it, and then hover over "New"
 and then click on "Java Class". See this reference screenshot:
@@ -569,7 +564,7 @@ execution.
 > end of its provided string. There is a variant of this function, System.out.print,
 > which does not output a new line. You may find it helpful in this exercise!
 
-## Exercise: Another Jigsaw Puzzle
+## Task: Another Jigsaw Puzzle
 
 Make a new Java file called `TriangleDrawer2.java` (you might want to copy and
 paste from `TriangleDrawer.java`). In this file, rewrite the program so that it
@@ -590,7 +585,7 @@ For example, consider the `SIZE` variable. When is it being modified? Based on t
 
 </details>
 
-## Exercise: An Adding Machine Simulator
+## Task: An Adding Machine Simulator
 
 Consider a program that simulates an old-fashioned adding machine. The user
 types integers as input, one per line. Input should be handled as follows:
@@ -677,7 +672,15 @@ A few things to take away from this code:
         example, if the user types `100`, then the program will store the value
         `100` in `k` before continuing on.
 
-## Exercise: `insert` & `delete`
+## Task: Array Exercises
+
+Your task is to complete the two exercises in `ArrayExercises.java`.
+
+- `makeDice`: This method returns a _new_ `array` of integers `[1, 2, 3, 4, 5, 6]`.
+- `findMinMax`: This method takes an `int[] array` and returns the the positive difference between the maximum element and minimum element of the given array. You may assume the input array is nonempty.
+
+
+## Task: Array Operations
 
 Look at the files `ArrayOperations.java` and `ArrayOperationsTest.java`.
 
@@ -687,6 +690,8 @@ the associated tests in `ArrayOperationsTest`.
 Note: Before trying to program an algorithm, you should usually try a small
 case by hand. For each of the exercises today, demo
 each algorithm by hand before writing any code.
+
+### `insert` & `delete`
 
 -   The `insert` method takes three arguments: an `int` array, a position in the
     array, and an `int` to put into that position. All the subsequent elements
@@ -715,13 +720,7 @@ would result in `values` becoming {1, 2, 4, 5, 0}.
 
 For today don't worry about the methods being called with incorrect input.
 
-## Exercise: Catenate
-
-Again, look at the files `ArrayOperations.java` and `ArrayOperationsTest.java`.
-
-Note that, with the provided starter code, the tests specific to this exercise 
-will not pass. This is expected! Implement the related method as described below
-and in the comments and the tests will pass!
+### `catenate`
 
 Complete the Java function `catenate` so that it
 performs as indicated below and in the comments. Remember that some
@@ -753,7 +752,7 @@ compile and pass.
 ## Deliverables
 
 As a reminder, this assignment has an [FAQ page](faq.md).
-There are two required files, all inside the `lab02` directory:
+These are the required files, all inside the `lab01` directory:
 
 `TriangleDrawer.java`
 :   You should have created this class and implemented it such that `TriangleDrawerTest.java` passes.
@@ -764,7 +763,12 @@ There are two required files, all inside the `lab02` directory:
 `AddingMachine.java`
 :   Implement `AddingMachine.java` such that `AddingMachineTest.java` passes.
 
+`ArrayExercises.java`
+:   Implement `ArrayExercises.java` such that `ArrayExercisesTest.java` passes.
+
 `ArrayOperations.java`
 :   Implement `ArrayOperations.java` such that `ArrayOperationsTest.java` passes.
 
 Don't forget to submit your work to Gradescope!
+
+### After completing this lab, you now have the tools to go ahead and work on Project 0! Please take a moment to read the [Project 0 Spec](../../projects/game2048/index.md) and start on the project if you have already - this is a fast-paced course and we want you to stay on track!
