@@ -1,7 +1,7 @@
 ---
 name: Stanley Li
 pronouns: he/him
-role: Instructor
+role: Tutor
 spaaccess: false
 dspdata: false
 email: stanley_li@berkeley.edu

@@ -1,7 +1,7 @@
 ---
 name: Miller Liu
 pronouns: he/him
-role: Instructor
+role: Tutor
 spaaccess: false
 dspdata: false
 email: millerliu@berkeley.edu

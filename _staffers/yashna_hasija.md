@@ -1,7 +1,7 @@
 ---
 name: Yashna Hasija
 pronouns: she/her
-role: Instructor
+role: Tutor
 spaaccess: false
 dspdata: false
 email: yashnahasija@berkeley.edu

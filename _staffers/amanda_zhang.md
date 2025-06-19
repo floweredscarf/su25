@@ -1,7 +1,7 @@
 ---
 name: amanda zhang
 pronouns: she/her
-role: Instructor
+role: Tutor
 spaaccess: false
 dspdata: false
 email: amanda_zhang@berkeley.edu

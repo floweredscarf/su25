@@ -1,7 +1,7 @@
 ---
 name: Noah Adhikari
 pronouns: he/him/his
-role: Tutor
+role: Instructor
 spaaccess: True
 dspdata: True
 email: noahadhikari@berkeley.edu
