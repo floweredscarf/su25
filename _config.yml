@@ -15,8 +15,8 @@
 # in the templates via {{ site.myvariable }}.
 title: CS 61BL Su25
 description: Data Structures and Programming Methodology at UC Berkeley
-baseurl: '' # the subpath of your site, e.g. /blog
-url: https://cs61bl.org/su25
+baseurl: '/su25' # the subpath of your site, e.g. /blog
+url: https://cs61bl.org
 exclude: ["Gemfile", "Gemfile.lock", "LICENSE", "vendor"]
 staff_email: 'CS61BL@berkeley.edu'
 
