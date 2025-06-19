@@ -42,46 +42,46 @@
 #     rowspan: 3
 
 homeworks:
-  - title: "Homework 0A"
-    due: "1/24"
-    hw_link: "homeworks/hw0/hw0a"
+  - title: "Homework 0"
+    due: "6/24"
+    hw_link: TBD (need to write smth or else assignment doesn't show)
     rowspan: 2
     # nonumber: True
-  - title: "Homework 0B"
-    due: "1/29"
-    hw_link: "homeworks/hw0/hw0b"
-    rowspan: 1
-    # nonumber: True
-  - title: "Homework 1"
-    due: "02/7"
-    hw_link: https://www.gradescope.com/courses/961758
-    rowspan: 5
-    # nonumber: True
-  - rowspan: 8
-    nonumber: True
-    classes:
-      - blank
-  - title: "Homework 2"
-    due: "03/07"
-    hw_link: "homeworks/hw2"
-    rowspan: 5
-    # nonumber: True
-  - title: "Homework 3"
-    due: "04/04"
-    hw_link:
-    rowspan: 13
-    # nonumber: True
-  - rowspan: 3
-    nonumber: True
-    classes:
-      - blank
-  - title: "Homework 4"
-    due: "05/04"
-    hw_link: https://www.gradescope.com/courses/961758/assignments/6164006/submissions
-    # link:
-    rowspan: 10
-    # nonumber: True
-  - rowspan: 5
-    nonumber: True
-    classes:
-      - blank
+  # - title: "Homework 0B"
+  #   due: "1/29"
+  #   hw_link: "homeworks/hw0/hw0b"
+  #   rowspan: 1
+  #   # nonumber: True
+  # - title: "Homework 1"
+  #   due: "02/7"
+  #   hw_link: https://www.gradescope.com/courses/961758
+  #   rowspan: 5
+  #   # nonumber: True
+  # - rowspan: 8
+  #   nonumber: True
+  #   classes:
+  #     - blank
+  # - title: "Homework 2"
+  #   due: "03/07"
+  #   hw_link: "homeworks/hw2"
+  #   rowspan: 5
+  #   # nonumber: True
+  # - title: "Homework 3"
+  #   due: "04/04"
+  #   hw_link:
+  #   rowspan: 13
+  #   # nonumber: True
+  # - rowspan: 3
+  #   nonumber: True
+  #   classes:
+  #     - blank
+  # - title: "Homework 4"
+  #   due: "05/04"
+  #   hw_link: https://www.gradescope.com/courses/961758/assignments/6164006/submissions
+  #   # link:
+  #   rowspan: 10
+  #   # nonumber: True
+  # - rowspan: 5
+  #   nonumber: True
+  #   classes:
+  #     - blank
