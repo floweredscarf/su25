@@ -1,7 +1,7 @@
 ---
 layout: page
 title: >-
-  Lab 04: Linked Lists
+  Lab 04: Debugging & Test-Driven Development
 has_children: true
 parent: Labs
 has_toc: false
@@ -12,436 +12,832 @@ released: true
 ## [FAQ](faq.md)
 
 Each assignment will have an FAQ linked at the top. You can also access it by
-adding "/faq" to the end of the URL. The FAQ for Lab 4 is located
+adding "/faq" to the end of the URL. The FAQ for Lab 04 is located
 [here](faq.md).
 
+## Introduction
 
-## Before You Begin
+To debug a program, you must first know what's wrong. In this lab, you'll get
+some experience with using the debugger to see program state. There are 3 types of bugs that you can encounter in code:
+1. Compiler error: There is some compilation issue (ie. IntelliJ underlines the code in red).
+2. Runtime: There is an exception that occurs while running the program.
+3. Correctness: The program runs without error, but it produces incorrect results.
 
-Reference the Git WTF guide and lecture one for any git confusions!
+When you run into a runtime bug, the error is accompanied by a "stack trace" that details the method
+calls that caused the error in the first place. One of the focuses of this lab
+will be to get you used to reading these stack traces, because they can be
+**super** helpful in debugging your own code.
 
-### Learning Goals for Today
+After you've gotten practice debugging, you'll explore TDD (test-driven development), 
+a good practice industry-standard approach in which you design and write test cases before 
+writing the actual code they test.
 
-This lab introduces you to the _linked list_, a data structure you may remember from [CS 61A](https://www.composingprograms.com/pages/29-recursive-objects.html). Much like an array, a linked list stores sequential data. However linked lists use _nodes_; each node stores one item and a reference to the next node. The last node in a linked list has no next node, so it stores a `null` reference instead.
+### Setup
 
-It is possible to implement linked lists that store any type of data by using _generics_, which you will be learning about in detail in a later lab. For now, this lab will focus on a Linked List that stores only integers - an `IntList`, for which we have provided a template. In this lab you will implement some basic functional methods for this data structure; in the next lab you will implement some more finicky _destructive_ and _non-destructive_ methods (you'll get an introduction to these terms later today).
+Follow the
+[assignment workflow instructions](../../guides/assignment-workflow#getting-the-skeleton)
+to get the assignment and open it in IntelliJ.
 
-Along the way, we'll also talk about testing and debugging software engineering principles.
+### Goals and Outcomes
 
-## Introduction to Linked Lists
+In this lab, you will enhance your code debugging and testing abilities by defusing a
+(programmatic) bomb and practicing test-driven development. We’ll guide
+you through this process, but the intention is to make this a realistic
+debugging and testing experience.
 
-In the next two labs we're going to be working with the _linked list_. A linked list is similar to an array in that it also stores sequential data, but different operations have different runtimes between linked lists and arrays. Since different problems call for different efficient operations, choosing the right data structure is an important design choice for an engineer, and we'll study this as we go through the course.
+By the end of this lab, you will…
 
-Here's a picture of a simple implementation of a linked list that contains the items "A", "B", and "C" (can you draw the corresponding picture for an array that stores these items?). A linked list consists of _nodes_ that are chained together. Here we represent nodes with a generic class `ListNode`. Each node contains some _item_ called `item`. As you can see, the items form a sequence. In this example, the linked list items are `String`s, though our linked list will contain `int`s instead, just like an `int[]`.
+- Be able to use the debugger and visualizer to inspect program state.
+- Be able to interpret stack traces.
+- Be better able to approach debugging code.
+- Have learned about some common Java bugs and errors.
+- Have better testing practices when developing.
 
-![SimpleLinkedList](img/SimpleLinkedList.jpg)
+## `Bomb`
 
-## IntList
-### A Straightforward Implementation of a Linked List
+The `BombMain` class calls the various `phase` methods of the `Bomb` class.
+Your job is to figure out what the passwords to each of these phrases is by
+*using the IntelliJ debugger*.
 
-Here's an implementation of an `IntList` which could easily be generalized to store different types of data. Notice how it stores an item `item` and a reference to another node `next`.
+{% include alert.html type="danger" content="
+The code is written so that you can't find the password just by reading it. For
+this lab, you are **forbidden** from editing the `Bomb` code, whether to add
+print statements or otherwise modify it. The autograder tests will use our version of `Bomb`.
 
-```java
-public class IntList {
-    public int item;
-    public IntList next;
-}
-```
+The point of this exercise is to get comfortable using tools that will help you
+a lot down the road. Please take it seriously!
+" %}
 
-### IntList Box and Pointer Diagram
+### Interactive Debugging vs. Print Debugging
 
-Draw out the box and pointer diagram that would result after the following code has been executed.
-When you and a partner in your lab section have compared diagrams, check your accuracy using the Java Visualizer below.
+So far, you might have practiced debugging by using print statements to
+see the values of certain variables as a program runs. When placed
+strategically, the output from printing might help make the bugs obvious or
+narrow down their cause. This method is called **print debugging**. While print
+debugging can be very useful, it has a few disadvantages:
 
-{%- capture intListExample -%}
-public class IntList {
-    public int item;
-    public IntList next;
+- It requires you to modify your code, and clean it up after.
+- It's tedious to decide and write out exactly what you want to print.
+- Printing isn't always formatted nicely.
 
-    public static void main(String[] args) {
-        IntList L = new IntList();
-        L.item = 5;
-        L.next = null;
+In this lab, we'll show you a new technique, **interactive debugging** --
+debugging by using an interactive tool, or a debugger. We'll focus on IntelliJ's
+built-in debugger.
 
-        L.next = new IntList();
-        L.next.item = 10;
-        IntList p1 = L.next;
+### Debugger Overview
 
-        L.next.next = new IntList();
-        L.next.next.item = 15;
-        IntList p2 = p1.next;
-        p1.next = null;
-    }
-}
-{%- endcapture -%}
-{% include java_visualizer.html caption="Introducing IntLists"
-   code=intListExample %}
+#### Breakpoints
 
-> If it's hard to see what's going on in the Java Visualizer, enable the
-> following two **options** from the code editor.
->
-> - **Prefer non-nesting and vertical layouts**
-> - **Force linked lists to display vertically**
+Before starting the IntelliJ debugger, you should set a few **breakpoints**.
+Breakpoints mark places in your code where you can *suspend* the program while
+debugging and examine its state. This:
 
+-   Doesn't require you to modify your code or clean it up after, since
+    breakpoints are ignored in normal execution.
+-   Lets you see *all* the variables without needing to write print statements.
+-   Lets IntelliJ display everything in a structured manner
 
-### IntList JUnit
+To set a breakpoint, click the area just to the right of the line number.
 
-For this lab, we've written JUnit tests for you in `IntListTest.java`.
-Open it up and read through it. The first thing you'll notice are the imports at the top. These imports are
-what give you easy access to the JUnit methods and functionality that you'll
-need to run JUnit tests. If you want to read more about JUnit, refer to [Lab 3](../lab03/).
+![code breakpoints](img/code_breakpoints.png){: style="max-height: 325px;" }
 
-### Exercise: The `get` Method
+A red circle or diamond should appear where you clicked. If nothing appears,
+make sure that you click next to a line with code. When the debugger reaches
+this point in the program, it will pause **before** the execution of the line or
+method. Click the breakpoint again to remove it.
 
-Fill in the `get` method in the `IntList` class. `get` takes an `int` position as an argument, and returns the list element at the given (zero-indexed) position in the list.
+#### Running the Debugger
 
-For example, lets say you have an `Intlist` with items 44, 79, and 109. If `get(1)` is called, you should return 79. If the position is out of range, `get` should throw `IllegalArgumentException` with an appropriate error message (just type in `throw new IllegalArgumentException("YOUR MESSAGE HERE")`). Assume `get` is always called on the first node in the list.
+Once you've set some breakpoints, you're ready to start a debugging session!
+Click on the green triangle next to the class or test you want to debug (in test
+files there may be two green triangles). Instead of clicking the green triangle
+to run, click the
+![debug](img/debug.png){: .inline } debug option:
 
-```java
-public class IntList {
-    public int get(int position) {
-        ....
-    }
-}
-```
+![run debugger](img/run_debugger.png){: style="max-height: 325px;" }
 
-Once you have something, **test your code** by running `IntListTest.java`.
-Depending on your IntelliJ setup, a window should pop up giving you multiple options.
-Choose the `IntListTest` next to the icon with a red and green arrow contained in a rectangle.
-If your implementation is correct, you should pass the `get` method tests.
+The selected program should run until it hits its first breakpoint. A debugger
+window should also appear on the bottom of the interface, where the console was.
 
-Hint: Traverse the list until the specified position is reached. Throw an exception if the position is out of bounds.
+![debugger session](img/debugger_session.png){: style="max-height: 325px;" }
 
-### Exercise: `toString` and `equals`
+On the left, you will be able to see all current method calls and on the right,
+you will be able to see the values of instantiated variables at this point in
+the program (they will also be shown in gray text in the editor). For instances
+of classes, you can click the dropdown to expand them and look at their fields.
 
-In [Lab 2](../lab02/#exercise-pursuit-curves), we introduced you to the `toString` and `equals` methods and you worked with a `Point` class for your Pursuit Curves that implemented these methods.
+In the debugger, you have a few options:
 
-Implement the standard Java methods, `toString` and `equals`, in the `IntList`
-class.
+-   Learn something from the displayed values, identify what's wrong, and fix
+    your bug! Click the stop button ![stop](img/stop.png){: .inline } to stop the debug session.
+-   Click the resume button ![resume](img/resume.png){: .inline } to resume the program (until it
+    hits another breakpoint or terminates).
+-   Click the step over button ![step over](img/step-over.png){: .inline } to advance the program by
+    one line of code.
+    -   The step into button ![step into](img/step-into.png){: .inline } does something similar, but
+        it will step into any method called in the current line, while
+        the step over button ![step over](img/step-over.png){: .inline } will step over it.
+    -   The step out button ![step out](img/step-out.png){: .inline } will advance the program until
+        after it returns from the current method.
+-   If you accidentally step too far and want to start the session over, click the rerun button
+    ![rerun](img/rerun.png){: .inline }.
 
-> Once you're done, test your code using the provided JUnit tester in `IntListTest.java`.
+To see the console output (and type into the console) while debugging, click
+the "Console" tab next to "Debugger" in the top left of the debug window,
+just above the frames. If you want to see everything simultaneously (while
+being more compressed), you can drag the console tab to the far right of the
+bottom panel. 
 
-`toString`
-: The `toString` method for `IntList` returns the `String` representation of
-this list, namely:
+### Reading Stack Traces
 
-    1. The `String` representation of the first element, followed by a space,
-    2. The `String` representation of the second element, followed by a space,
-    3. ...
-    4. The `String` representation of the last element.
+When a *runtime error* occurs in Java, a stack trace is printed to the console
+to provide information on where the error occurred and what steps the program
+took to get there. When running `Bomb` for the first time, your stack
+trace will look something like this:
 
-    The list containing the integers 1, 3, and 5 is represented by the string
-`1 3 5`.
+![stack trace](img/npe_stack_trace.png){: style="max-height: 325;" }
+
+The first thing to note is what kind of error occurred; this is shown at the
+first line of the stack trace. In this case, our code threw a
+`NullPointerException`.
+
+For some exceptions, including `NullPointerException`s, Java will give you an
+explanation. Here, `password` is `null`, so we can't invoke (call) a method on
+it.
+
+The lines beneath it represent the sequence of methods the program took to
+arrive at the error: the first line in the list is where the error occurred
+and the line beneath it represents the line of code that called the method
+which threw the error, and so on.
+
+You can click on **`blue text`**{: .blue} to navigate to that file and line.
+
+### `Bomb` Introduction (Phase 0)
+
+{% include alert.html type="info" content="
+For this lab, we will be providing hints. Please **only use them if
+you're stuck!** You'll get much more out of the exercises if you try to solve
+them on your own first.
+" %}
+
+{% include alert.html type="task" content="
+**Task**: Set a breakpoint at `phase0` and use the debugger to find the password
+for `phase0` and replace the `phase0` argument accordingly in
+`bomb/BombMain.java`. 
+" %}
+
+ Once you've found the correct password, running the code (not in debug mode)
+ should output "You passed phase 0 with the password \<password\>!" instead of
+ "Phase 0 went BOOM!"
 
 <details markdown="block">
-  <summary markdown="block">
-#### Hint: How would you convert an integer to a string in Java?
-{: .no_toc}
-  </summary>
-Try searching for the answer online! Talk to your peers! Consider referencing the official [Java Documentation](https://docs.oracle.com/en/java/)!
+<summary markdown="block">
+
+**`phase0` Method Breakdown**
+
+</summary>
+
+The `phase0` method first generates a secret String `correctPassword` (you don't
+need to understand how `shufflePassword` works). The `password` passed in from
+`BombMain` is then compared against `correctPassword`. The goal of this phase is
+to use the debugger to find the value of `correctPassword` and pass in a
+`password` that matches that value!
+
 </details>
 
+### Visualizer (Phase 1)
 
-`equals`
-: Given an `Object` as argument, this method returns `true` if this list and
-the argument list are the same length and store equal items in corresponding
-positions (determined by using the elements' `equals` method).
+While being able to see variable values is great, sometimes we have data that's
+not the easiest to inspect. The Java Visualizer shows a box-and-pointer diagram of
+the variables in your program, which is much better suited for large objects with a lot of data. 
+To use the visualizer, run the debugger until you stop at a breakpoint, then click
+the "Java Visualizer" tab.
+
+The password for phase 1 is an `int[]`, not a `String`.
+
+{% include alert.html type="task" content="
+**Task**: Set a breakpoint at `phase1` and use the Java Visualizer
+to find the password for `phase1` and replace the `phase1` argument accordingly
+in `bomb/BombMain.java`. 
+" %}
 
 <details markdown="block">
-  <summary markdown="block">
-#### Hint: How would you check if the given object is of type `IntList`?
-{: .no_toc}
-  </summary>
-Check the [Java Documentation](https://docs.oracle.com/en/java/) for a method if you're unsure.
+<summary markdown="block">
+
+**`phase1` Method Breakdown**
+
+</summary>
+
+The `phase1` method generates a secret `int[]` called `correctArrPassword`
+(similar to the previous phase, you don't need to understand how
+`shufflePasswordArr` works). The `password` (in the form of an `int[]`)
+passed in from `BombMain` is then compared against the `correctArrPassword`
+for equality. The goal of this phase is to use the debugger's Java Visualizer to
+find the structure and value of the `correctArrPassword`'s `int[]` and pass
+in a `password` that matches it!
+
 </details>
 
-### Exercise: `add`
+### Conditional Breakpoints (Phase 2)
 
-Fill in the `add` method, which accepts an `int` as an argument and appends an
-`IntList` with that argument at the end of the list. For a list `1 2 3 4 5`,
-calling `add` with `8` would result in the same list modified to `1 2 3 4 5 8`.
+Sometimes you may want to have your program pause only on certain conditions.
+To do so, create a breakpoint at the line of interest and open the
+"Edit breakpoint" menu by right-clicking the breakpoint icon itself. There,
+you can enter a boolean condition such that the program will only pause at this
+breakpoint if the condition is true.
 
-```java
-public void add(int value) {
-    // TODO
-}
-```
+Another thing you can do is to set breakpoints for exceptions in Java. If your
+program is crashing, you can have the debugger pause where the exception is
+thrown and display the state of your program. To do so, click
+![view breakpoint](img/view-breakpoints.png){: .inline }
+in the debugger window and press the plus icon to create a "Java Exception
+Breakpoint". In the window that should appear, enter the name of the exception
+that your program is throwing.
 
-### Exercise: `smallest`
+{% include alert.html type="task" content="
+**Task**: Set a breakpoint at `phase2` and use the debugger to find the password
+for `phase2` and replace the `phase2` argument accordingly in
+`bomb/BombMain.java`. The built-in `repeat` method of the `String` class may be useful; you can read more about it [here](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html).
 
-Implement the `smallest` method, which returns the smallest `int` that is
-stored in the list. For a list `6 4 3 2 3 2 2 5 999`, a call to `smallest`
-would return `2`.
+***
 
-```java
-public int smallest() {
-    // TODO
-}
-```
+**Note**: The password isn't given explicitly like in the previous phases.
+Rather, your task is to construct an input so that the `boolean correct`
+variable is set to `true` after `phase2` is run.
+
+***
+
+**Tip**: After you pass phase 0 and phase 1, before you change anything else for phase 2,
+try running `BombMain.java`. You'll see that the program  will exit with an `ArrayIndexOutOfBoundsException`,
+and resultant stack trace, which means that the code is trying to access an array at an index that does not fit within
+the bounds of the array. Revisit the [Reading Stack Traces](./#reading-stack-traces) section if you need a refresher on 
+stack traces.
+" %}
 
 <details markdown="block">
-  <summary markdown="block">
-#### Hint: How do we ask specific questions about integers in Java?
-{: .no_toc}
-  </summary>
-[You might find the Math Class documentation helpful.](https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html)
+<summary markdown="block">
+
+**Hint 1**
+
+</summary>
+
+You may want to look up Java's `split` method for `String`s if you're unsure
+of what it does.
 
 </details>
 
-### Exercise: `squaredSum`
+<details markdown="block">
+<summary markdown="block">
 
-Finally, implement the `squaredSum` method. As the name suggests, this method
-returns the sum of the squares of all elements in the list. For a list `1 2 3`,
-`squaredSum` should return `1^2 + 2^2 + 3^2 = 1 + 4 + 9 = 14`.
+**Hint 2**
 
-```java
-public int squaredSum() {
-    // TODO
-}
-```
+</summary>
 
-This type of function is called a *reducer*, as it reduces the whole list down to a single value! You might remember this idea from CS61A.
+You'll need to build the password in pieces so that the `split` method will cause
+the correct number be in the right spot. 
+</details>
 
-## Destructive vs. Non-Destructive
-
-Suppose you have an `IntList` representing the list of integers `1 2 3 4`. You
-want to find the list that results from squaring every integer in your list, `1
-4 9 16`.
-
-There are two ways we could go about solving this problem. The first way is to
-traverse your existing initial `IntList` and actually change the items stored in your
-nodes. Such a method is called **destructive** because it can change (*mutate*
-or *destroy*) the original list.
-
-```java
-IntList myList = IntList.of(1, 2, 3, 4);
-IntList squaredList = IntList.dSquareList(myList);
-System.out.println(myList);
-System.out.println(squaredList);
-```
-
-Running the above, destructive program would print,
-
-    1 4 9 16
-    1 4 9 16
-
-> Observe that the `IntList.of()` method makes it much easier to create
-> IntLists compared to the brute force approach. This might be useful for writing your own tests.... ;)
->
-> ```java
-> IntList myList = new IntList(0, null);
-> myList.next = new IntList(1, null);
-> myList.next.next = new IntList(2, null);
-> myList.next.next.next = new IntList(3, null);
-> // One line of using IntList.of() can do the job of four lines!
-> ```
-
-The second way is called **non-destructive**, because it allows you to access
-both the original and returned lists after execution. This method returns a list containing
-enough new `IntList` nodes such that the original list is left unchanged.
-
-```java
-IntList myList = IntList.of(1, 2, 3, 4);
-IntList squaredList = IntList.squareList(myList);
-System.out.println(myList);
-System.out.println(squaredList);
-```
-
-Running the above, non-destructive program would print,
-
-    1 2 3 4
-    1 4 9 16
-
-In practice, one approach may be preferred over the other depending on the
-problem you are trying to solve and the specifications of the program. We will talk about such
-trade-offs throughout the rest of the semester!
+<details markdown="block">
+<summary markdown="block">
 
 
+**`phase2` Method Breakdown**
 
-### `dSquareList` Implementation
+</summary>
 
-Here is one possible implementation of `dSquareList`, along with a call to
-`dSquareList`.
+The `phase2` method takes in your `password` from `BombMain` and splits it by
+spaces into the `passwordPieces` array. For example, if your password is `"1 2
+3"`, then `passwordPieces` will be equivalent to `{"1", "2", "3"}`.
 
-```java
-public static void dSquareList(IntList L) {
-    while (L != null) {
-        L.item = L.item * L.item;
-        L = L.next;
-    }
-}
-```
+The method then adds 100,000 random integers to a `Set` called `numbers`. It
+then loops through them using a for-each loop, incrementing a variable `i` as it
+goes along. On the 1338th iteration (because Java is zero-indexed, `i == 1337`
+on iteration 1338), we check whether the integer at the 1337th index of the
+`passwordPieces` array is equal to the current `number`.
+</details>
 
-```java
-IntList origL = IntList.of(1, 2, 3)
-dSquareList(origL);
-// origL is now (1, 4, 9)
-```
+***
 
-The reason that `dSquareList` is destructive is because we change the values of
-the **original input** `IntList L`. As we go along, we square each value, and the
-action of changing the internal data persists.
+At this point, you should be able to run the tests in `tests/bomb/BombTest.java`
+and have all of them pass with a green checkmark.
 
-It is also important to observe that the bits in the `origL` box do not change. Objects
-are saved by reference, meaning the value tied to the variable will point to a memory address
-rather than the integer values in our list. Thus, though this method is destructive, it is changing
-the value saved in the memory location referred to by `origL`, not the value within `origL` itself. 
-For more about this, refer to [Lab 2](../lab02/).
+### Recap: Debugging
 
-#### Testing `dSquareList`
+By this point you should understand the following tools:
 
-The `dSquareList` implementation above is provided to you in your skeleton file as well.
+- Breakpoints
+- Step Over
+- Step Into
+- Step Out (though you might not have actually used it in this lab)
+- Resume
+- Conditional breakpoints
 
-**Use the [Java Visualizer plugin][] to visualize the IntList** and to understand how the `dSquareList` method works, discussing with a
-partner as you do so. [Pointers and IntLists might seem confusing at first, but it's
-important that you understand these concepts!](https://www.youtube.com/watch?v=Gu8YiTeU9XU)
+However, this is simply scratching the surface of the features of the debugger!
+Feel free to experiment and search around online for more help.
 
-Note: The choice to return void rather than a pointer to `L` was an arbitrary
-decision. Different languages and libraries use different conventions ([and
-people get quite grumpy about which is the "right" one](https://en.wikipedia.org/wiki/Lilliput_and_Blefuscu)). We have the flexibility to decide
-when writing destructive methods when mutating objects passed in as arguments. Talk to your
-partner about why this is and try to think of settings where one would be preferable over the other.
+Some useful features include:
 
-[java visualizer plugin]: {{ site.baseurl }}/guides/plugin#java-visualizer
+-   Remember that
+    [**Watches**](https://www.jetbrains.com/help/idea/examining-suspended-program.html#watches)
+    tab? Why not read into what that does?
+-   Or try out the incredibly handy
+    [**Evaluate Expressions**](https://www.jetbrains.com/help/idea/examining-suspended-program.html#evaluating-expressions)
+    calculator button (the last button on the row of step into/over/out buttons)?
+-   Or perhaps look deeper into breakpoints, and
+    [**Exception Breakpoints**](https://www.jetbrains.com/help/idea/using-breakpoints.html#exception-breakpoints)
+    which can pause the debugger right _before_ your program is about to crash.
 
-### Non-Destructive Squaring
+We won't always use all of these tools, but knowing that they exist and making
+the debugger part of your toolkit is incredibly useful.
 
-`squareListIterative()` and `squareListRecursive()` are both *non-destructive*.
-That is, the underlying `IntList` passed into the methods does **not** get
-modified, and instead a fresh new copy is modified and returned.
+## Testing Your Code with Truth
+
+In the rest of the lab, you will be officially introduced to Google's [Truth](https://truth.dev/) 
+assertions library. It provides an intuitive way to write repeatable tests, which substantially reduces the tedium of testing
+your code. Many of your lab submissions for the rest of the course will include
+a Truth testing file and all of our autograders are written using Truth or JUnit.
+
+You may already be familiar with JUnit, a common Java testing framework. Both
+Truth and JUnit make easy an approach to programming called test-driven development
+(TDD). TDD is a popular approach in industry in which you design and write test cases
+before writing the code they test. We will encourage it in the remainder of CS
+61BL, starting by leading you through the steps of the construction of a class
+representing measurements (feet, yards, inches).
+
+In 61BL, we will use Truth assertions inside JUnit framework tests instead of JUnit assertions for the following reasons:
+
+- Better failure messages for lists.
+- Easier to read and write tests.
+- Larger assertions library out of the box.
+
+We often write tests using the Arrange-Act-Assert pattern:
+
+1.  **Arrange** the test case, such as instantiating the data structure or
+    filling it with elements.
+2.  **Act** by performing the behavior you want to test.
+3.  **Assert** the result of the action in (2).
+
+We will often have multiple "act" and "assert" steps in a single test method
+to reduce the amount of boilerplate (repeated) code.
+
+
+#### Truth Assertions
+
+A Truth assertion takes the following format:
 
 ```java
-public static IntList squareListIterative(IntList L) {
-    if (L == null) {
-        return null;
-    }
-    IntList res = new IntList(L.item * L.item, null);
-    IntList ptr = res;
-    L = L.next;
-    while (L != null) {
-        ptr.next = new IntList(L.item * L.item, null);
-        L = L.next;
-        ptr = ptr.next;
-    }
-    return res;
-}
+assertThat(actual).isEqualTo(expected);
 ```
+
+To add a message to the assertion that displays upon failure, we can instead use:
 
 ```java
-public static IntList squareListRecursive(IntList L) {
-    if (L == null) {
-        return null;
-    }
-    return new IntList(L.item * L.item, squareListRecursive(L.next));
-}
+assertWithMessage("actual is not expected")
+    .that(actual)
+    .isEqualTo(expected);
 ```
 
-Ideally, you should spend some time trying to really understand them, including
-possibly using the visualizer. However, if you don't have time, note that the
-iterative version is much messier.
+We can use things other than `isEqualTo`, depending on the type of `actual`.
+For example, if `actual` is a `List`, we could do the following to check its
+contents without constructing a new `List`:
 
-The iterative versions of non-destructive `IntList` methods are often (but not
-always) quite a bit messier than the recursive versions, since it takes some
-careful pointer action to create a new `IntList`, build it up, and return it.
+```java
+assertThat(actualList)
+    .containsExactly(0, 1, 2, 3)
+    .inOrder();
+```
 
-|           | Destructive              | Non-destructive                              |
-|-----------|--------------------------|----------------------------------------------|
-| What?     | Modify the original list | Return a new list                            |
-| Examples: | `dSquareList`            | `squareListRecursive`, `squareListIterative` |
+If we had a `List` or other reference object, we could use:
 
-### Exercise: Concatenation
+```java
+assertThat(actualList)
+    .containsExactlyElementsIn(expected)  // `expected` is a List
+    .inOrder();
+```
 
-To complete the lab, you will need to add test for `catenate` and `dcatenate`, and then implement `catenate` and `dcatenate` as described below.
+Truth has many assertions, including `isNull` and `isNotNull`; and
+`isTrue` and `isFalse` for `boolean`s. IntelliJ's autocomplete will often give
+you suggestions for which assertion you can use.
 
-You may find the squaring methods from above to be useful as you write your
-code.
+#### Example Test
 
-You may also find (lab03)[../lab03/#test-driven-development]'s section on Test Driven Development useful as you write your tests.
+Let's break down an example test:
 
 ```java
 @Test
-public void testCatenate() {
-    // TODO: Add tests
+/** In this test, we use only one assertThat statement. 
+    *  In other words, the tedious work of adding the extra assertThat statements isn't worth it. */
+public void arrTest() {
+    int[] arr = new int[3]; // arr is [0, 0, 0] because elements of int[] are initially set to 0
+    
+    arr[0] = 42; // after this we expect: [42, 0, 0]
+    arr[1] = 27; // after this we expect: [42, 27, 0]
+    arr[2] = 961; // after this we expect: [42, 27, 961]
+        
+    assertThat(arr).asList().containsExactly(42, 27, 961).inOrder();
 }
 ```
 
-```java
-public static IntList catenate(IntList A, IntList B) {
-    // TODO
-}
-```
+-   `@Test` tells Java that this is method is a *test*, and should be run when
+    we run tests.
+-   **Arrange**: We construct a new `int[]` called `arr`, and set 3 elements in it at indices 0, 1, and 2.
+-   **Act**: We call `asList` on the result of `assertThat(arr)`, which turns the assertion object into a list and implicitly depends on the
+      earlier sets to the array.
+-   **Assert**: We use a Truth assertion to check that the object created from `asList` contains
+    specific elements in a specific order.
+
+
+### Task: Using IntelliJ to Write Tests
+
+{% include alert.html type="warning" content="
+Similar to the debugging exercises, this section will not be graded, but it is
+recommended that you complete this exercise either now or sometime over the
+next few days. Testing is an equally important skill to learn as it will
+be used extensively throughout the rest of our class (in labs, projects, and
+exams).
+
+Past that, in industry, testing your code is a huge part of what you will do as
+a software engineer. Writing code is incomplete without a solid set of tests to
+verify its fault tolerance and accuracy.
+
+**Untested code is broken code.**
+" %}
+
+One of the many great features about IntelliJ is that it can be used to start
+generating JUnit tests, which we will use as a skeleton for our Truth assertions. We will illustrate how it can be used with the
+following example. Follow along each of the steps in IntelliJ.
+
+1.  Navigate to `Counter.java`. In it, you will see an instance variable `myCount`, some instance methods (`increment()`, `reset()`, `value()`),
+    and the constructor, defined as `public Counter() { myCount = 0; }`.
+    As a quick refresher, the constructor creates an instance of the `Counter` class and initializes
+    its `myCount` instance variable (attribute) to 0. We'll talk more about objects in depth next week; for now, 
+    we just want you to pay attention to the flow of how tests are generated, and for which methods.
+
+2.  Make a new JUnit Test Case:
+
+    -   **Click** on the class name in the `Counter.java` file and select
+        **"Navigate -> Test"**. Alternatively, you can use
+        <kbd>CTRL</kbd> / <kbd>CMD</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd>.
+
+        ![Navigate to Test](img/navigate-test.png)
+
+    -   Click **"Create New Test..."**. If you are asked to create test in the
+        same source root, click **"Ok"**.
+
+        ![Create Counter Test](img/create-new-test.png)
+
+    -   Name the JUnit Test Case `CounterTest`. Select "JUnit 4" as the testing
+        library. Next check the boxes for the `increment()` and `reset()`
+        functions.
+
+        ![Make Counter Test](img/make-counter-test.png)
+
+    -   You should see a file similar to the following:
+
+        ```java
+        import org.junit.Test;
+
+        import static org.junit.Assert.*;
+
+        public class CounterTest {
+
+            @Test
+            public void increment() {
+            }
+
+            @Test
+            public void reset() {
+            }
+        }
+        ```
+    -   **At this point, we have a nice skeleton testing setup, but we don't want to use
+        JUnit assertions. Replace the `import static org.junit.Assert.*;` line at the 
+        top with `import static com.google.common.truth.Truth.assertWithMessage;` so that we 
+        can use Truth assertions.**
+
+    -   Edit your `CounterTest.java` as follows:
+
+        -   In the test for `increment`, put the code
+
+            ```java
+            Counter c = new Counter();
+            c.increment();
+            assertWithMessage("Counter value is not 1.").that(c.value()).isEqualTo(1);
+            c.increment();
+            assertWithMessage("Counter value is not 2.").that(c.value()).isEqualTo(2);
+            ```
+
+        -   In the test for `reset`, put the code
+
+            ```java
+            Counter c = new Counter();
+            c.increment();
+            c.reset();
+            assertWithMessage("Counter value is not 0 after reset.").that(c.value()).isEqualTo(0);
+            ```
+
+        -   IntelliJ doesn't generate constructor tests. Add one:
+
+            ```java
+            @Test
+            public void testConstructor() {
+                Counter c = new Counter();
+                assertWithMessage("Counter value is not 0 upon instantiation.").that(c.value()).isEqualTo(0);
+            }
+            ```
+
+3.  Run your tests individually; they should all pass. You should also be able to run your full
+    test file (test case) and see that all tests pass.
+
+4.  We have shown you what it looks like to pass a test, but what happens if
+    you fail? Intentionally introduce an error into one of the `CounterTest`
+    methods, asserting for example that the value of a freshly-built `Counter`
+    object should be 7. Run the test again and observe the error messages
+    that result.
+
+## Testing Principles
+
+### Test-Driven Development
+
+_Test-driven development_ is a development process that involves designing test
+cases for program features before designing the code that implements those
+features. The work flow is:
+
+1.  Write test cases that demonstrate what you want your program to be
+    able to do. As the code isn't written yet, most tests should fail.
+2.  Write as little code as possible so that all the tests are passed.
+3.  Clean up the code as necessary. Recheck that all tests still pass.
+
+### Test Effectiveness
+
+Unsurprisingly, there are effective tests and ineffective tests. The presence
+of tests alone does not mean that those tests are doing anything:
 
 ```java
 @Test
-public void testDCatenate() {
-    // TODO: Add tests
+public static void uselessTest() {
+    assertThat(true).isEqualTo(true);
 }
 ```
+
+Given a codebase, and tests for that codebase, how can we evaluate how "good"
+the tests are? In other words, how much confidence do our tests give us that
+our code is completely, fully correct?
+
+#### Statement Coverage
+
+One testing principle you can imagine is that test values should exercise every
+statement in the program, since any statement that's not tested may contain a
+bug. Below is a program that checks whether a given year is a leap year:
 
 ```java
-public static IntList dcatenate(IntList A, IntList B) {
-    // TODO
+public static boolean isLeapYear(int year) {
+    if (year % 400 == 0) {
+        return true;
+    } else if (year % 100 == 0) {
+        return false;
+    } else if (year % 4 == 0) {
+        return true;
+    } else {
+        return false;
+    }
 }
 ```
 
-Both methods take in two `IntList`s and concatenate them together, so
-`catenate(IntList A, IntList B)` and `dcatenate(IntList A, IntList B)` both
-result in an `IntList` which contains the elements of `A` followed by the
-elements of `B`. The only difference between these two methods is that
-`dcatenate` modifies the original `IntList A` (it's destructive) and `catenate`
-does not.
+The code contains four cases, exactly one of which is executed for any
+particular value of year. Thus we must test this code with at least one year
+value per case, so at least four values of year are needed for testing:
 
-As an example, if you call either of the methods with two IntLists containing [0, 1, 2] and [3, 4], both `catenate` and `dcatenate` will result in an `IntList` containing [0, 1, 2, 3, 4]. 
+- a year that's divisible by 400;
+- a year that's divisible by 100 but not by 400;
+- a year that's divisible by 4 but not by 100;
+- a year that's not divisible by 4.
 
-To complete the lab:
+This approach by itself is insufficient as we will see below.
 
-- Write tests for `catenate` and `dcatenate`
-- Fill in one of `dcatenate()` or `catenate()`, and run them against your tests.
-  Revise your code until it passes your tests.
-- Repeat for the method you haven't yet completed. (We recommend you do one
-  first and finish it before you start the next, because then you'll be able to
-  take advantage of the similar logic).
+#### Path Coverage
 
-`IntList` problems can be tricky to think about, and there are always several
-approaches which can work. Don't be afraid to pull out pen and paper or go to
-the whiteboard and work out some examples! If you get stuck, drawing out the
-pointers can probably steer you back onto the path of progress. And, as always,
-the debugger is a great option!
+To augment this first principle, we'll say we need to test various _paths_
+through the program. For example, suppose our program had two consecutive `if`
+statements:
 
-Feel free to use either recursion or iteration. For extra practice, try both!
+```java
+if ( ... ) {
+    ...
+}
+if ( ... ) {
+    ...
+}
+```
 
-It's also often useful to first think about base cases, such as when `A` is
-`null`, for example. This works especially well for building up a recursive
-solution. In other words, write up a solution that would work for the base
-case, then stop and think about how to expand this solution into something that
-works for other bigger cases.
+There are two possibilities for each if case: `true` or `false`.
+Thus there are four paths through the two statements, corresponding to the four
+possibilities
 
-For this problem, it is okay for `dcatenate` to return one or the other list if
-one or both of `A` and `B` are `null`. For `catenate`, it is okay to attach `B`
-to the end of `A` without making a full copy of `B`. However, think about and
-discuss the following two questions with your partner:
+- `true`, `true`
+- `true`, `false`
+- `false`, `true`
+- `false`, `false`
 
-- Why does this still produce a 'correct' program?
-- What kinds of problems could this decision cause?
+The following example shows why statement coverage is not a guarantee of
+correctness:
+
+{% include alert.html content="
+A `year` value of 2000 causes all the statements in the below program segment
+to be executed, giving 100% statement coverage. However, there may be a bug in
+this code it will not catch.
+" %}
+
+<!-- TODO: see https://cs61bl.org/su17/materials/lab/lab08/lab08.html#testing-principle-1
+and bring the bug introduction exercise back.
+ -->
+
+```java
+public static boolean isLeapYear(int year) {
+    isLeapYear = true;
+    if (year % 4 == 0) {
+        isLeapYear = true;
+    }
+    if (year % 100 == 0) {
+        isLeapYear = false;
+    }
+    if (year % 400 == 0) {
+        isLeapYear = true;
+    }
+    return isLeapYear;
+}
+```
+
+From the previous discussion, it looks like we need _eight_ tests,
+corresponding to the eight paths through the three `if` statements. They are listed below.
+
+```java
+    year % 4 == 0, year % 100 == 0, and year % 400 == 0  // (which just means that year % 400 == 0)
+    year % 4 == 0, year % 100 == 0, and year % 400 != 0
+    year % 4 == 0, year % 100 != 0, and year % 400 == 0  // (not possible)
+    year % 4 == 0, year % 100 != 0, and year % 400 != 0
+    year % 4 != 0, year % 100 == 0, and year % 400 == 0  // (not possible)
+    year % 4 != 0, year % 100 == 0, and year % 400 != 0  // (not possible)
+    year % 4 != 0, year % 100 != 0, and year % 400 == 0  // (not possible)
+    year % 4 != 0, year % 100 != 0, and year % 400 != 0  // (equivalently, year % 4 != 0)
+```
+
+Notice that some of the tests are logically impossible, and so we don't need to
+use them. This leaves the _four_ tests we needed to write.
+
+### Testing Loops
+
+Loops can vastly increase the number of logical paths through the code, making
+it impractical to test all paths. Here are some guidelines for testing loops,
+drawn from _Program Development in Java_ by Barbara Liskov and John Guttag, a
+book used in previous CS 61B offerings.
+
+-   For loops with a fixed amount of iteration, we use two iterations. We choose
+    to go through the loop twice rather than once because failing to
+    reinitialize after the first time through a loop is a common programming
+    error. We also make certain to include among our tests all possible ways
+    to terminate the loop.
+-   For loops with a variable amount of iteration, we include zero, one, and
+    two iterations, and in addition, we include test cases for all possible
+    ways to terminate the loop. The zero iteration case is another situation
+    that is likely to be a source of program error.
+
+> Liskov and Guttag also say: This approximation to path-complete testing is, of
+> course, far from fail-safe. Like engineers' induction "One, two, three—that's
+> good enough for me," it frequently uncovers errors but offers no guarantees.
+
+### Black-box Testing
+
+All the testing principles discussed so far focused on testing features of the
+code. Since they assume that we can see into the program, these techniques are
+collectively referred to as _glass-box_ testing, as if our code is transparent.
+
+Another testing approach is called _black-box_ testing. It involves generating
+test cases based only on the problem specification, not on the code itself.
+There are several big advantages of this approach:
+
+-   The test generation is not biased by knowledge of the code. For instance, a
+    program author might mistakenly conclude that a given situation is
+    logically impossible and fail to include tests for that situation; a
+    black-box tester would be less likely to fall into this trap.
+
+-   Since black-box tests are generated from the problem specification, they
+    can be used without change when the program implementation is modified.
+
+-   The results of a black-box test should make sense to someone unfamiliar
+    with the code.
+
+-   Black-box tests can be easily designed before the program is written, so
+    they go hand-in-hand with test-driven development.
+
+In black-box testing as in glass-box testing, we try to test all possibilities
+of the specification. These include typical cases as well as _boundary_ cases,
+which represent situations that are extreme in some way, e.g. where a value is
+as large or as small as possible.
+
+There are often a variety of features whose "boundaries" should be considered.
+For example, in the `DateConverter` program, boundary cases would include not
+only dates in the first and last months of the year, but also the first and
+last dates of each month, etc.
+
+{% capture alertContent %}
+Whenever you write a program, try to think of any boundary cases. These cases,
+although potentially rare, are a common source of error. The safest thing to do
+is brainstorm as many unique ones as you can then write tests which test each
+unique boundary case.
+{% endcapture %}
+{% include alert.html content=alertContent %}
+
+
+### Parting Advice on Testing
+
+As you progress through the course, you will hopefully improve your testing
+skills! Here are some last bits of advice for now.
+
+-   Write tests as if you were testing your _worst enemy's_ code. You're
+    generally too familiar with your own code and might read a given line as
+    containing what you meant to write rather than what you did write. Don't
+    fall into the trap of hoping not to find bugs in your own code.
+
+-   Test your program with values that are as simple as possible. If the
+    program is supposed to work for a set of 1000 data values, make sure it
+    works on a set of 3 values first.
+
+-   Wrapping a loop around your code may allow you to test it with multiple
+    values in a single run.
+
+-   Make sure you know how your program is _supposed_ to behave on a given set
+    of test data. Often lazy programmers try a test and just scan through it
+    thinking that it "looks right". Such a programmer might later be
+    embarrassed to find out that they computed a product cost that's greater
+    than the national debt or a quantity that's greater than the number of
+    atoms in the universe.
+
+-   Make sure to cover _both_ the common cases and the extreme, edge or
+    boundary cases. Forgetting one or the other (or both!) can cause you to
+    miss critical bugs in your code.
+
+## Exercise: Testing a Triangle Class
+
+{% include alert.html type="danger" content="
+This section will be graded. All points for this part of the
+lab will be derived from writing tests in `TriangleTest.java`. Note that 
+you will not be able to run the tests you write in this file locally; you
+must submit to the autograder to run on our implementations of `Triangle.java`.
+" %}
+
+Now, you're going to be writing the code and a whole file of
+tests with Truth assertions for the `Triangle` class. Your goal is to write comprehensive tests
+that pass on a correct implementation of the `Triangle` methods, but fail on incorrect implementations of `Triangle`
+methods. 
+
+You'll notice that `Triangle.java` and `TriangleTest.java` use the `abstract` keyword. You don't need to know 
+what this is right now because we'll cover it later in the course, but in `TriangleTest.java`,
+when you are testing the `Triangle` methods, you must call them on a `Triangle` object returned by `getNewTriangle()`.
+The skeleton code has more on this.
+
+You should follow this process for this exercise:
+
+1.  Read over the `Triangle.java` class throughly. The comments above each of the methods explain what
+    the expected behavior of this class will be. 
+2.  Write tests with Truth assertions in the `TriangleTest.java` file. You should write tests
+    which allow you to test all of the methods and behavior in the class. You should think of edge
+    cases that buggy implementations of `Triangle.java` methods are likely to fail. 
+3.  Though you won't exactly be practicing TDD here because you're only writing the tests and not filling
+    in the `Triangle.java` class after, still think about how you would implement the methods. Do your
+    tests poke holes in your first instinctual implementations? Do you see how writing tests before writing the code
+    can be beneficial?
 
 
 ## Recap
 
-Today we talked about the `IntList`. Methods involving Linked Lists can be implemented
-iteratively and recursively. These functions can also be destructive or non-destructive.
+In this lab, we discussed:
 
-## What to do next
+- Effectively using the IntelliJ debugger.
+- Truth assertions and the JUnit Testing Framework.
+- Test-driven development and good testing principles.
 
-You are now ready to start project 1! 
 
-### Deliverables
+## Deliverables and Scoring
 
-- `IntList.java`
-    - `get`
-    - `toString`
-    - `equals`
-    - `add`
-    - `smallest`
-    - `squaredSum`
-    - `catenate`
-    - `dcatenate`
+The lab is out of 2 points. There are no hidden tests on Gradescope. If you
+pass all the local required tests and write comprehensive tests in `TriangleTest.java`, you will receive full credit on the lab.
+
+- Find the three passwords in `BombMain.java`.
+- Write tests in `TriangleTest.java` that pass on the correct `Triangle.java` implementation and fail on buggy `Triangle.java` implementations. 
+
+
+## Submission
+
+Just as you did in Lab 1, add, commit, then push your Lab 4 code to GitHub.
+Then, submit to Gradescope to test your code. If you need a refresher, check
+out the instructions in the
+[Lab 1 spec](../lab01/index.md#saving-your-work-using-git-and-github) and the
+[Assignment Workflow Guide](../../guides/assignment-workflow#submitting-to-gradescope).
+
+If you worked with a partner, remember each of you need a separate submission on Gradescope.
+
+
+## Acknowledgements
+
+This assignment is adapted from Adam Blank and previous iterations of CS 61B.

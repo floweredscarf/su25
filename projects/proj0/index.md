@@ -13,7 +13,7 @@ description: >-
 released: true
 ---
 
-**Deadline: Monday, February 3rd, 11:59 PM PT.**
+**Deadline: Sunday, June 29th, 11:59 PM PT.**
 
 ## FAQ
 
@@ -27,11 +27,10 @@ Note that this project has limited submission tokens. Please see [Submission and
 Prerequisites:
 
 - [Lab 1](../../labs/lab01/index.md) (required for setup)
-- [HW0A](../../homeworks/hw0/hw0a/index.md) (recommended, for Java syntax)
-- [HW0B](../../homeworks/hw0/hw0b/index.md) (recommended, for Java syntax)
-- Lectures 1-2
+- Lecture 1
 - [61B Style Guide](../../resources/guides/style/index.md) (we are checking your style in autograder!)
-- [Lab 2](../../labs/lab02/index.md) (optional but recommended prerequisite - helpful for debugging)
+- [Lab 2](../../labs/lab02/index.md) (optional but recommended for practice with Java syntax)
+- [Lab 3](../../labs/lab03/index.md) (optional but recommended for practice with debugging)
 
 <!-- [See here for a video overview of the project.](TODO)  -->
 

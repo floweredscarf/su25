@@ -1,557 +1,306 @@
 ---
 layout: page
 title: >-
-  Lab 19: Comparison Sorts
+  Lab 19: Build Your Own World Introduction
 has_children: true
 parent: Labs
 has_toc: false
 has_right_toc: true
 released: true
+
 ---
 
 ## [FAQ](faq.md)
 
 Each assignment will have an FAQ linked at the top. You can also access it by
-adding "/faq" to the end of the URL. The FAQ for Lab 20 is located
+adding "/faq" to the end of the URL. The FAQ for Lab 16 is located
 [here](faq.md).
 
+This lab is divided into two main parts– "Plus World" and "Memory Game". Both will help you with Project 3: Build your own World (BYOW).
+The first part will teach you how to use a set of "tiles" to generate shapes on your screen. This will apply to building the rooms, hallways, and other features of your world in Project 3. The second part will teach you more about how to use the StdDraw package to make a fun text-based game. This will help you build the main menu and other text-based elements of Project 3. It will also teach you how to achieve user interactivity, which is vital to Project 3!
 
-## Introduction
-
-As usual, pull the files from the skeleton and make a new IntelliJ project.
+Pre-lab
+-------------------------------
 
-In today's lab, we'll be discussing **sorting**, algorithms for rearranging elements
-in a collection to be in a specific order. There are many problems you can more easily solve with a sorted collection, including performing binary search in $$O(\log N)$$ time,
-efficiently identifying adjacent pairs within a list, finding the $$k^{th}$$
-largest element, and so forth.
-
-There are several kinds of sorting algorithms, each of which is appropriate for
-different situations. At the highest level, we will distinguish between two
-types of sorting algorithms:
-
-- **Comparison-based sorts**, which rely on making pairwise comparisons between
-  elements.
-- **Counting-based sorts**, which group elements based on their individual
-  digits before sorting and combining each group. Counting sorts do not need to
-  compare individual elements to each other.
+Some steps to complete before getting started on this lab:
 
-In this lab and the following lab, we will discuss several **comparison-based sorts** including
-*insertion sort*, *selection sort*, *heap sort*, *merge sort* and *quick sort*. Why all the
-different sorts? Each sort has a different set of advantages and disadvantages:
-under certain conditions, one sort may be faster than the other, or one sort may
-take less memory than the other, and so forth. When working with large datasets
-(or even medium and small datasets), choosing the right sorting algorithm can
-make a big difference. Along the way, we'll develop an intuition for how each
-sort works by exploring examples and writing our own implementations of each
-sort.
+- As usual, use `git pull skeleton main`
 
-[Here](https://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html) is a nice
-visualizer for some of the sorts we are going to cover today and tomorrow. 
+- Watch a previous semester's project 3 getting started video [at this link](https://youtu.be/zgdNWICEb_M). Note the name and API have changed slightly, but the bigger picture still applies.
 
-## Order and Stability
+- Understand that project 3 will be a marathon and not a sprint. Don't wait until the last minute. You and your partner should start thinking about your design NOW.
 
-To put elements in order implies that we can enforce an ordering between any two
-elements. Given any two elements in a list, according to **total order**, we
-should be able to decide which of the two elements is *larger* or *smaller* than
-the other.
+Your lab today will be graded by completing a checkoff with your TA during lab. This means you should try to finish the required parts of the lab ASAP, to avoid a long line to get checked off. This lab is due **24 hours from the start of your lab section with a 2 hour grace period,** instead of the usual 22 hours. This will allow you to get checked off the next day if necessary. 
 
-However, it's also possible that neither element is necessarily larger or
-smaller than the other. For instance, if we wish to determine the ordering
-between two strings, `["sorting", "example"]`, and we want to order by the
-*length of the string*, it's not clear which one should come first because both
-strings are of the same length 7.
+Plus World Introduction
+--------------------------------
 
-In this case, we can defer to the notion of **stability**: if a sort is stable,
-then it will preserve the relative orderings between elements in the list. In
-the above example then, the resultant array will be `["sorting", "example"]` in
-a *stable sort* rather than `["example", "sorting"]` as is possible in an
-*unstable sort*. Remember that, according to our total order by the *length of the strings*, the second list is still considered correctly sorted even though
-the relative order of equivalent elements is not preserved.
+In the first half of this lab, you and your partner will learn some basic techniques and tools that will be helpful for project 3.
 
-What is the benefit of stable sorting? It allows us to **sort values based off multiple attributes.** For example, we could stably sort a library catalog by
-alphabetical order, then by genre, author, etc. Without stable sorting, we are not guaranteed that the relative ordering of the previous sorts
-would persist so it is possible that the catalog would only be sorted by our
-last sort.
+Part I: Meet the Tile Rendering Engine
+--------------------------------
 
-Consider the following example where we sort a list of animals by alphabetical
-order and then length of string.
+#### Boring World
 
-Original collection:
+Open the up the skeleton and check out the `BoringWorldDemo` file in `PlusWorld`. Try running it and you should see a window appear that looks like the following:
 
-    cow
-    giraffe
-    octopus
-    cheetah
-    bat
-    ant
+![boring world](img/boringWorld.png)
 
-First, sort by alphabetical order:
+This world consists of empty space, except for the rectangular block near the bottom middle. The code to generate this world consists of three main parts:
+ - Initializing the tile rendering engine.
+ - Generating a two dimensional `TETile[][]` array.
+ - Using the tile rendering engine to display the `TETile[][]` array.
 
-    ant
-    bat
-    cheetah
-    cow
-    giraffe
-    octopus
+The API for the tile rendering engine is simple. After creating a `TERenderer` object, you simply need to call the `initialize` method, specifying the width and height of your world, where the width and height are given in terms of the number of tiles. Each tile is 16 pixels by 16 pixels, so for example, if we called `ter.initialize(10, 20)`, we'd end up with a world that is 10 tiles wide and 20 tiles tall, or equivalently 160 pixels wide and 320 pixels tall. For this lab, you don't need to think about pixels, though you'll eventually need to when you start building the user interface for Project 3.
 
-Second, **stable** sort by length of string:
+`TETile` objects are also quite simple. You can either build them from scratch using the `TETile` constructor (see `TETile.java`), or you can choose from a palette of pregenerated tiles in the file `Tileset.java`. For example, the code from `BoringWorldDemo.java` below generates a 2D array of tiles and fills them with the pregenerated tile given by `Tileset.NOTHING`.
 
-    ant
-    bat
-    cow
-    cheetah
-    giraffe
-    octopus
+```java
+TETile[][] world = new TETile[WIDTH][HEIGHT];
+for (int x = 0; x < WIDTH; x += 1) {
+    for (int y = 0; y < HEIGHT; y += 1) {
+        world[x][y] = Tileset.NOTHING;
+    }
+}
+```
 
-After the two sort calls on the same list, now the collection is sorted by length and elements with the same length are in
-alphabetical order with each other. If our sorting algorithm was not stable,
-then we would potentially lose the alphabetical information we achieved in the
-previous sort.
+Of course, we can overwrite existing tiles. For example, the code below from `BoringWorld.java` creates a 14 x 4 tile region made up of the pregenerated tile `Tileset.WALL` and writes it over some of the `NOTHING` tiles created by the loop code shown immediately above.
 
-## Space Complexity
+```java
+for (int x = 20; x < 35; x += 1) {
+    for (int y = 5; y < 10; y += 1) {
+        world[x][y] = Tileset.WALL;
+    }
+}
+```
+{% include alert.html type="info" content="
+The x and y values in the array are similar to what you would see on a graph. (0,0) would be the bottom left tile in your world. In the case of BoringWorld we draw a rectangle at around (20, 5) which is close to the bottom middle. 
+" %}
 
-Thus far, in this class, we've mostly talked about time complexity. Similarly to how we can do asymptotic analysis for runtime, we can also analyze how much *space* (i.e. memory) a given algorithm uses. For sorting algorithms, one common trait we look for is if the algorithm is **in-place**.
+The last step in rendering is to simply call `ter.renderFrame(world)`, where `ter` is a `TERenderer` object. Changes made to the tiles array will not appear on the screen until you call the `renderFrame` method.
 
-Any sorting algorithm that takes in an input of size N is going to have to work with some amount of memory proportional to N to store the size of the input itself. An in-place algorithm is one that doesn't use a significant amount of *additional* memory. In this class, this means that the algorithm must use a constant amount of additional memory (for example, a few variables to keep track of your current index or something). Another way to think about it is if we can do the entire algorithm within the original given list, without creating an additional data structure. All the algorithms we discuss today are in-place and do not need to create another data structure. 
+Try changing the tile specified to something else in the `Tileset` class other than `WALL` and see what happens. Also experiment with changing the constants in the loop and see how the world changes.
 
-Note that the definition of in-place can vary–though in our class we say only a constant amount of space counts, some measures say using a logarithmic amount is okay. If you see other articles online, just be wary!
 
-## Discussion: Sorting by Hand
+{% include alert.html type="warning" content="
+**Note**: Tiles themselves are immutable! You cannot do something like
+`world[x][y].character = 'X'`.
+" %}
 
-With a partner, discuss how you would sort a hand of 13 playing cards if you
-are dealt the cards one-by-one. Your hand should end up sorted first by suit,
-and then by rank within each suit.
+{% include alert.html type="info" content="
+Why do we initialize the world to `Tileset.NOTHING`, rather than just leaving it
+untouched? The reason is that the `renderFrame` method will not draw any tiles
+that are `null`. If you don't initialize the world to `Tileset.NOTHING`, you'll
+get a `NullPointerException` when you try to call `renderFrame`.
+" %}
 
-Then discuss how you would sort a pile of 300 CS 61BL exams by student ID. If
-it's different than your card-sorting algorithm of the previous step, explain
-why.
+#### Random World
 
-Afterwards, discuss with a partner and roughly describe an algorithm to formalize your sort.
-Can you tell if one is faster than the other? How so?
+Now open up `RandomWorldDemo.java`. Try running it and you should see something like this:
 
-## Insertion Sort
+![random world](img/randomWorld.png)
 
-The first comparison-based sort we'll learn is called an *insertion sort*. The
-basic idea for insertion sort can be formally summed up by this pseudocode: 
+This world is sheer chaos -- walls and flowers everywhere! If you look at the `RandomWorldDemo.java` file, you'll
+see that we're doing a few new things:
+ - We create and use an object of type `Random` that is a "[pseudorandom number generator](https://en.wikipedia.org/wiki/Pseudorandom_number_generator)".
+ - We use a new type of conditional called a switch statement.
+ - We have delegated work to functions instead of doing everything in main.
 
-    for each element in the collection:
-        while the previous element is smaller than the element:
-            swap the two elements
+A random number generator does exactly what its name suggests, it produces an infinite stream of numbers that appear to be randomly ordered. The `Random` class provides the ability to produce *pseudorandom* numbers for us in Java.  For example, the following code generates and prints 3 random integers:
 
-You might have intuitively come up with insertion sort when we asked you how to sort cards. This is like when you sort cards by continually putting the next card in the right spot in a group of sorted cards that you're holding.
+```java
+Random r = new Random(1000);
+System.out.println(r.nextInt());
+System.out.println(r.nextInt());
+System.out.println(r.nextInt());
+```
 
-Note that insertion sort is stable. We never swap elements if they are equal so
-the relative order of equal elements is preserved.
+We call `Random` a *pseudorandom* number generator because it isn't truly random. Underneath the hood, it uses cool math to take the previously generated number and calculate the next number. We won't go into the details of this math, but see [Wikipedia](https://en.wikipedia.org/wiki/Pseudorandom_number_generator) if you're curious. Importantly, the sequence generated is deterministic, and the way we get different sequences is by choosing what is called a "seed". If you start up a pseudorandom generator with a particular seed, you are guaranteed to get the exact sequence of random values.
 
-Now that you've read the above explanation, we recommend watching this [video](https://youtu.be/JtS5yGftYZ8) to solidify your understanding.
+In the above code snippet, the seed is the input to the `Random` constructor, so 1000 in this case. Having control over the seed is pretty useful since it allows us to indirectly control the output of the random number generator. If we provide the same seed to the constructor, we will get the same sequence values. For example, the code below prints 4 random numbers, then prints the SAME 4 random numbers again. Since the seed is different than the previous code snippet, the 4 numbers will likely be different than the 3 numbers printed above. This is super helpful in Project 3, as it will give us deterministic randomness: you worlds look totally random, but you can recreate them consistently for debugging (and grading) purposes.
 
-### Discussion: Runtime
+```java
+Random r = new Random(82731);
+System.out.println(r.nextInt());
+System.out.println(r.nextInt());
+System.out.println(r.nextInt());
+System.out.println(r.nextInt());
+r = new Random(82731);
+System.out.println(r.nextInt());
+System.out.println(r.nextInt());
+System.out.println(r.nextInt());
+System.out.println(r.nextInt());
+```
 
-For the following questions, discuss with your peers and verify your
-answers.
+In the case a seed is not provided by the user/programmer, i.e. `Random r = new Random()`, random number generators select a seed using some value that changes frequently and produces a lot of unique values, such as the current time and date. Seeds can be generated in all sorts of other stranger ways, such as [using a wall full of lava lamps](https://www.popularmechanics.com/technology/security/news/a28921/lava-lamp-security-cloudflare/).
 
-Assume we have an array of $$N$$ integers. What would the array have to look
-like before we ran insertion sort that would make insertion sort run the
-fastest, i.e. minimizing the number of steps needed?
+For now, `RandomWorldDemo` uses a hard coded seed, namely 2873123, so it will always generate the exact same random world. You can change the seed if you want to see other random worlds, though given how chaotic the world is, it probably won't be very interesting.
 
-<details><summary> Click to reveal answer! </summary>
-Sorted List
-</details>
+The final and most important thing is that rather than doing everything in `main`, **our code delegates work to functions with clearly defined behavior**. This is critically important for your project 3 experience! You're
+going to want to constantly identify small subtasks that can be solved with clearly defined methods. Furthermore, your methods should form a hierarchy of abstractions! We'll see how this can be useful in the final part of this lab.
 
-What is the runtime of running insertion sort on this array?
+Part II: Use the Tile Rendering Engine
+--------------------------------
 
-<details><summary> Click to reveal answer! </summary>
-Theta(N)
-</details>
+#### Plus World Intro
 
-What type of initial ordering of a list would maximize the number of comparisons and result in the slowest runtime?
+Above, we've seen how we can draw a world and generate randomness. Your task for the first half of lab is to use the tile generator we've seen to make a plus shape, like below.
 
-<details><summary> Click to reveal answer! </summary>
-Reverse Sorted Array
-</details>
+![single plus](img/singlePlus.png)
 
-What is the runtime of running insertion sort on the type of array you identified above?
+ Optionally, you can take these plus shapes, and form a beautiful (and randomized) tesselation like below.
 
-<details><summary> Click to reveal answer! </summary>
-Theta(N^2)
-</details>
+![example world](img/exampleSideLength4.png)
 
-### Non-Coding Exercise: `InsertionSort`
+In the actual Project 3, you'll be generating random worlds as well, although in
+the project, they will be indoor spaces instead of open landscapes. While this
+lab task does not directly apply to the project, it will familiarize you with important
+libraries including our Tile Rendering engine, and also help you think about how you can take
+complex drawing tasks and break them into simpler pieces.
 
-Read the solution `sort()` in `InsertionSort.java` and understand the provided helper methods.
+Your should be able to draw differently sized plus signs. The picture above is of size-4 plusses,
+and below we see a world consisting of size-1, size-2, and size-3 plusses, respectively.
 
-## Selection Sort
+![example world size 1](img/exampleSideLength1.png)
 
-Selection sort on a collection of $$N$$ elements can be described by the
-following pseudocode:
+![example world size 2](img/exampleSideLength2.png)
 
-    for each element in the collection:
-        find the smallest remaining element, E, in the *unsorted* part of the array
-        remove E and add E to the end of the *sorted* part of the array
-        repeat unsorted collection's original length number of times (or repeat until unsorted collection has no more elements)
+![example world size 3](img/exampleSideLength3.png)
 
+#### Drawing A Single Plus
 
-In selection sort we swap the minimum element in the unsorted
-collection with the element at the beginning of the unsorted collection. This can
-rearrange the relative ordering of equal elements. Thus, selection sort is
-unstable.
+The only task you are required to do for this section of the lab is to draw a single plus. Tesselating them to fill the whole screen is a cool but optional task. Your class is completely blank, but you're encouraged to reference `BoringWorld` and `RandomWorld` to get an idea of how to set up the class! Once you've done the setup to make an empty world, start by trying to create a method `addPlus` that adds a plus of size `s` to a given position in the world.
 
-After reading the above, we recommend watching this [video](https://youtu.be/yZtvSYeTQi4) on selection sort!
+Here, we see the size is the tile width for one "leg" of the plus. There are many ways to break down a plus. You could think of it as three rows, where the middle row is wider. You could think of it as 5 squares: top, bottom, left, right, and center. You could view it as neither! The way you define the "position" of a plus is also up to you! For this lab, we won't care about where in the map your plus is, the TA will just check that you've made one at all.
 
+```
+                       aaa
+           aa          aaa
+           aa          aaa
+  a      aaaaaa     aaaaaaaaa
+ aaa     aaaaaa     aaaaaaaaa
+  a        aa       aaaaaaaaa
+           aa          aaa
+                       aaa
+                       aaa
+```
 
-### Disussion: Runtime
+To verify that your `addPlus` method works, write a short main method and verify that things looked OK.  Unfortunately, writing a `JUnit` test to verify that you've properly drawn a plus is just as hard as drawing the plus itself, so you won't be able to build confidence in your `addPlus` method in a nice way like you can with simpler methods.
 
-Now, let's determine the asymptotic runtime of selection sort. One may observe
-that, in the first iteration of the loop, we will look through all $$N$$
-elements of the array to find the minimum element. On the next iteration, we
-will look through $$N - 1$$ elements to find the minimum. On the next, we'll
-look through  $$N - 2$$ elements, and so on.  Thus, the total amount of work
-will be the $$N + (N - 1) + ... + 1$$, no matter what the ordering of elements
-in the array or linked list prior to sorting.
+Note that even deciding the `addPlus` method signature is a non-trivial task! This exercise will give you a glimpse into the kind of decision-making and design thinking you will have to do in Project 3.
 
-Hence, we have an $$\Theta(N^2)$$ algorithm, equivalent to insertion sort's
-normal case. But notice that selection sort *doesn't* have a better case, while
-insertion sort does.
+Deciding what classes you need for this lab, just like Proj3, is entirely up to you! One example class you might add is a `Point` class, to represent coordinates in your world. You can also think about making a `Plus` class. This will require some careful thinking about what a `Plus` object is in this program, what it should know about itself (i.e. what are its instance variables), and what it can do (i.e. its public instance methods). This is what a lot of your work on Project 3 is going to look like! 
 
-### Non-Coding Exercise: `SelectionSort`
+There are many different ways to approach this problem, and that's what makes it so interesting.
 
-Read the solution to `sort()` and understand the helper methods in `SelectionSort.java`.
 
-## HeapSort
+#### Extra: Drawing A Tesselation of Plusses
 
-Recall the basic structure for selection sort
+Once you have code that can draw a single plus, you can try to tessellate them to form a world, like shown in the example images earlier. Do NOT attempt this until finishing the Memory Game in the next part of the lab. You should prioritize finish drawing the single plus and memory game, as this is what your TA will check for. It is in your best interest to do the checkoff ASAP and avoid a long wait, as things tend to get more chaotic right before the deadline.
 
-    for each element in the collection:
-        find the smallest remaining element, E, in the unsorted collection
-        remove E and add E to the end of the sorted collection
+As with drawing a single plus, there are a huge number of ways to draw a tesselation. The most important part is to identify helper methods that will be useful for the task!
 
-Adding something to the end of a sorted array or linked list can be done in
-constant time. What hurt our runtime was finding the smallest element in the
-collection, which always took linear time in an array.
+You should absolutely not try to do something like do everything in a nested for loop with no helper methods. While it is technically possible to do this, **you will melt your brain.** In this project, it is **absolutely vital** that you avoid the temptation to always work at a "low level". Without hierarchical abstraction, your **mind will transform into a pile of goo** under the weight of all the complexity.
 
-Is there a data structure we can use that allows us to find and remove the
-smallest element quickly? A heap will! 
+By writing very well-defined, nicely commented helper methods, you also make it physically possible to get help from course staff. During office hours for this project, TAs will be limited to ten minutes per pair, and will not be allowed to spend a long time getting to know the intricacies of your code. They are there for high level guidance, as well as help debugging when you've really exhausted all your options.
 
-We'll modify our approach to make it better suited for a heap by removing the 
-largest element and placing it at the end of the array. Here's the pseudocode for 
-HeapSort:
-   
-    construct a max heap from the given collection by bubbling down every
-    element from the end of the collection 
-    while there are elements remaining in the heap (unsorted part of the collection)
-        swap the root of the heap with the last element
-        bubble down the new root till the end of the heap
+As a hint for one possible solution, look for repeating patterns in a given tesselation. If you look at a single plus in a tesselation, when does it "repeat" itself? How many squares do you have to move over until you find another plus at that same height in the image?
 
-HeapSort is not stable because the heap operations (recall `bubbleUp` and
-`bubbleDown`) can change the relative order of equal elements.
 
-Once again, wrap up learning about HeapSort with this helpful [video](https://youtu.be/WuuQqsDftGU).
+Memory Game Introduction
+--------------------------------
+We can now move onto the second half of this lab! In preparation for making your game, we will use `StdDraw` and `java.util.Random` to construct a simple memory game. This game is much like the electronic toy [Simon](https://en.wikipedia.org/wiki/Simon_(game)), but on a computer and with a keyboard instead of with 4 colored buttons. The goal of the game will be to type in a randomly generated target string of characters after it is briefly displayed on the screen one letter at a time. The target string starts off as a single letter, but for each successful string entered, the game gets harder by making the target string longer.
 
-### Disussion: Runtime
+Eventually we want `MemoryGame.java` to have a main method which will launch a playable memory game, but instead of jumping straight into the implementation of the game, it is good to try and break down what tasks you will need to perform in order to run a game. For this memory game it would looks something like:
+1. Create the game window
+2. Randomly generate a target string
+3. Display target string on screen one character at a time
+4. Wait for player input until they type in as many characters as there are in the target
+5. Repeat from step 2 if player input matches the target string except with a longer random target string. If no match, print a game over message and exit.
 
-Now, let's determine the runtime of heap sort. Removal of the largest element from a
-heap of $$N$$ elements can be done in time proportional to $$\log N$$, allowing
-us to sort our elements in $$O(N \log N)$$ time. 
-We can also build a heap in $$O(N \log N)$$ time by calling bubble down on every element. 
-This step is only done once, so it doesn't make our overall runtime worse than $$O(N \log N)$$
-that we previously established. So, once the heap is created, sorting can be
-done in $$O(N \log N)$$.
+In general, good coding practice is to first build small procedures with explicit purposes and then compose more complex methods using the basic ones. Eventually, you’ll be able to build up something as complicated as a game or text editor using just a few lines in your main method. If you take a look at `MemoryGame.java` you will see that we have written in a few method headers which will each handle one of the above tasks. This process of identifying the steps of your game and breaking it apart into individual methods is highly recommended for project 3. It will give you a clear path forward in development and also provide clear breaks for unit tests.
 
-<details><summary> Out of scope note:</summary>
-The tighter runtime for building the heap is actually O(N) but it doesn't affect the 
-overall runtime. The actual calculation for the run time of heap sort is complicated and out
-of scope for this class. You can take a look at this <u><a href="https://stackoverflow.com/a/18742428">stackoverflow answer</a></u> for more a formal calculation of this runtime.
-</details>
+By the end of the lab, you'll have something that functions like the below GIF:
 
-### Exercise: `HeapSort`
+![Memory Game Example](img/memory-game-example.gif)
 
-Complete `sort()` and suggested helper methods in `HeapSort.java`. The heap in this lab is rooted at index 0 instead of 1 as we're using it to sort through a pre-existing array. 
-We've provided the appropriate `getLeftChild` and `getRightChild` methods as part of the skeleton, so you don't have to worry about this in your implementation. 
+## Providing arguments to `main`
+The main method will request that the user provides a command line argument: a seed for the random String generation. To provide a command line argument to the `main` method while running your program in Intellij, use Run > Edit Configurations > Program Arguments. You can then type in a number in that box to be passed to your program and used as your seed.
 
+## `drawFrame`
 
-## New Idea: "Divide and Conquer"
+We've provided you with one very helpful method: drawFrame. It uses the `StdDraw` library from Princeton, which you will have to get comfortable with for Project 3. In PlusWorld, our tile engine was actually secretly using `StdDraw` under the hood to draw up all the tiles! Now, we will use `StdDraw` directly. We use the `StdDraw` library because it is rather light and easy to get started with, but there are a few quirks of the library you should be aware of while working with it. Notably, when we want to change what is displayed on the screen, we have to clear the entire screen and redraw everything we want to show up. Because of this, it is incredibly useful to have a method which first clears the canvas, draws everything necessary for the next frame, and then shows the canvas.
 
-The first few sorting algorithms we've previously introduced work by iterating through each
-item in the collection one-by-one. With insertion sort and selection sort, both
-maintain a "sorted section" and an "unsorted section" and gradually sort the
-entire collection by moving elements over from the unsorted section into the
-sorted section. Another approach to sorting is by way of *divide and conquer*.
-Divide and conquer takes advantage of the fact that empty collections or
-one-element collections are already sorted. This essentially forms the base case
-for a recursive procedure that breaks the collection down into smaller pieces
-before merging adjacent pieces to form a completely sorted
-collection.
+This is what `drawFrame` does for us. We know we need to display strings on the screen and they should be noticeable. It clears the canvas, sets the font to be large and bold, draws the input string so that it is centered on the canvas, and then shows the canvas on the screen. It also displays some other information like the round number, and whether the player should currently be typing in an answer or watching for the next round. In your `startGame()` method you'll write in more of the logic to make this actually work. Try running the `main` method of MemoryGame right now, and you'll see what this all looks like so far.
 
-The idea behind divide and conquer can be broken down into the following 3-step
-procedure.
+**Discuss with a partner how the methods you see here can apply to your BYOW project. What does each line do? Do you think you could use these yourself?**
 
-1. Split the elements to be sorted into two collections.
-2. Sort each collection recursively.
-3. Combine the sorted collections.
+This would be a good time to look at the [StdDraw](https://introcs.cs.princeton.edu/java/stdlib/javadoc/StdDraw.html) API and figure out exactly how it works. Some useful methods to look at include:
 
-Compared to selection sort, which involves comparing every element with *every
-other element*, divide and conquer can reduce the number of unnecessary
-comparisons between elements by sorting or enforcing order on sub-ranges of the
-full collection. The runtime advantage of divide and conquer comes largely from
-the fact that merging already-sorted sequences is very fast.
+- [`StdDraw.setFont`](https://introcs.cs.princeton.edu/java/stdlib/javadoc/StdDraw.html#setFont(java.awt.Font))
+- [`StdDraw.clear`](https://introcs.cs.princeton.edu/java/stdlib/javadoc/StdDraw.html#clear())
+- [`StdDraw.text`](https://introcs.cs.princeton.edu/java/stdlib/javadoc/StdDraw.html#text(double,double,java.lang.String))
+- [`StdDraw.setPenColor`](https://introcs.cs.princeton.edu/java/stdlib/javadoc/StdDraw.html#setPenColor(java.awt.Color))
+- [`StdDraw.show`](https://introcs.cs.princeton.edu/java/stdlib/javadoc/StdDraw.html#show())
 
-Two algorithms that apply this approach are *merge sort* and *quicksort*.
+## `generateRandomString`
 
-## Merge Sort
+First task: we need to be able to randomly generate a string of a specified length. Briefly mentioned above, this random generation should be done using `java.util.Random`.
 
-Merge sort works by executing the following procedure until the base case of an
-empty or one-element collection is reached.
+Look at the `MemoryGame` constructor, and see how it creates a `Random` object which uses the first program argument as the seed. After that, complete `generateRandomString` so that it produces a random string using your `Random` object that is the length specified by the input `n`. Since we only want to produce strings of lowercase characters, the private `CHARACTERS` field has been provided for your convenience.
 
-1. Split the collection to be sorted in half.
-2. Recursively call merge sort on each half.
-3. Merge the sorted half-lists.
+You can choose to either use the methods of `java.util.Random` or use our helpful utility methods in `byow.Core.RandomUtils`. All of the utility methods take in a `Random` object as a parameter, so they do all use the relevant `java.util.Random` method under the hood: you can take a look if you're curious how these utilities work!
 
-The reason merge sort is fast is because merging two lists that are already
-sorted takes linear time proportional to the sum of the lengths of the two
-lists. In addition, splitting the collection in half requires a single pass
-through the elements. The processing pattern is depicted in the diagram below.
+You might find yourself having issues with working with variables of type `char` and `String`. Here are three useful things you should know about them:
 
-![Merge Sort](img/mergesort.png)
+1. In Java, a `Character` or `char` is wrapped with single quotes `'B'` whereas `String` objects are wrapped with double quotes `"and can be longer"`.
 
-Each level in the diagram is a collection of processes that all together run in
-linear time. Since there are $$2 \log N$$ levels with each level doing work
-proportional to $$N$$, the total time is proportional to $$N \log N$$.
+2. You can add a `char` to a `String` with the `+` operator:
 
-To be specific, each level does work proportional to $$N$$ because of the merging process, 
-which happens in a zipper-like fashion. Given two sorted lists, `merge` should continually
-compare the first elements of both lists and interweave the elements into a singular sorted list.
-For example, given the lists [2, 6, 7] and [1, 4, 5, 8], `merge` compares the front of both lists (1 and 2). Because
-1 < 2, 1 is moved into the next open spot (in this case, the first position) of the overall sorted list. Note
-that 2 does not enter the overall list, because we now must effectively compare [2, 6, 7] with [4, 5, 8] and repeat the process
-until there are no more elements that need to be compared and merged.
+```java
+String favClass = "CS 61" + 'B';
+```
 
-Merge sort is stable as long as we make sure when merging two halves together
-that we favor equal elements in the left half.
+3. You can convert a `char` to a `String` via:
+```java
+String B = Character.toString('B');
+```
 
-Now, watch [this video](https://youtu.be/JJrAzmJcMh0) on `mergeSort` before attempting the exercise below!
+## `flashSequence`
 
-## Exercise: `mergeSort`
+Using what we’ve built so far and the provided `drawFrame`, we need to define a procedure which presents the target string one character at a time. Write `flashSequence` so that it takes the input string and displays one character at a time centered on the screen. Each character should be visible on the screen for 1 second and there should be a brief 0.5 second break between characters where the screen is blank.
 
-To test your understanding of merge sort, fill out the `sort` method in
-`MergeSort.java`. Be sure to take advantage of the helper `merge` method!
+## `solicitNCharsInput`
 
-This method should be non-destructive, so the original `int[] arr` should not be
-modified.
+After displaying the target string one character at a time, we need to wait for the player to type in their string. For this task, we will have to use `StdDraw`’s key listening API to read in what the player typed. The methods of interest in this lab are `hasNextKeyTyped` and `nextKeyTyped`. They interact with a queue `StdDraw` uses to store all the keys the user has pressed and released. `hasNextKeyTyped` looks to see if there is any keystroke left in the queue while `nextKeyTyped` removes the key at the front of the queue and returns it. Note that `nextKeyTyped` returns the key as a `char` - this is another quirk of `StdDraw` and prevents us from using any keys on the keyboard which do not correspond to a `char` value.
 
-## Quicksort
+Once you’ve familiarized yourself with how `StdDraw` handles inputs from the keyboard, write `solicitNCharsInput` which reads `n` keystrokes using `StdDraw` and returns the string corresponding to those keystrokes. Also, the string built up so far should appear centered on the screen as keys are being typed by the user so that they can see what they’ve hit so far.
 
-Another example of dividing and conquering is the *quicksort* algorithm, which
-proceeds as follows:
+## `startGame`
 
-1. Split the collection to be sorted into three collections by *partitioning*
-   around a *pivot* (or "divider"). One collection consists of elements smaller
-   than the pivot, the second collection consists of elements equal to the
-   pivot, and the third consists of elements greater than or equal to the pivot.
-2. Recursively call quicksort on each collection.
-3. Merge the sorted collections by concatenation.
+We’re almost there! Now that we have defined all of our subprocesses, it is time to put them together and run our game. The `startGame` method should launch our game and begin the loop of gameplay until the player fails to type in the target string. The code for `startGame` should look like a translation of the following process into code:
 
-Specifically, this version of quicksort is called "three-way partitioning
-quicksort" due to the three partitions that the algorithm makes on every call.
+1. Start the game at round 1
+2. Display the message “Round: “ followed by the round number in the center of the screen
+3. Generate a random string of length equal to the current round number
+4. Display the random string one letter at a time
+5. Wait for the player to type in a string the same length as the target string
+6. Check to see if the player got it correct
+  - If they got it correct, repeat from step 2 after increasing the round by 1
+  - If they got it wrong, end the game and display the message “Game Over! You made it to round:” followed by the round number they failed in the center of the screen
 
-Here's an example of how this might work, sorting an array containing 3, 1, 4,
-5, 9, 2, 8, 6.
+After you’ve done this you should be able to run `MemoryGame.java` and play your game! It’s somewhat bare bones and definitely not pretty, but you can play with the StdDraw methods and see how they change the appearance. Graphic design is our passion...
 
-![Quicksort](img/quicksort.png)
+## Submission
 
-1. Choose 3 as the pivot. (We'll explore how to choose the pivot shortly.)
-2. Put 4, 5, 9, 8, and 6 into the "large" collection and 1 and 2 into the
-   "small" collection. No elements go in the "equal" collection.
-3. Sort the large collection into 4, 5, 6, 8, 9; sort the small collection into
-   1, 2; combine the two collections with the pivot to get 1, 2, 3, 4, 5, 6, 8,
-   9.
+- Complete `PlusWorld.java` 
+- Complete the following methods in `MemoryGame.java`:
+    - `generateRandomString`
+    - `flashSequence`
+    - `solicitNCharsInput` 
+    - `startGame`
 
-Depending on the implementation, quicksort is not stable because when we move
-elements to the left and right of our pivot the relative ordering of equal
-elements can change.
+To get credit for this lab, you'll have to do a checkoff during lab with your TA . You will be asked to show that you can generate a single plus at various sizings (or a whole tesselaton), and that you can play your memory game. Once you complete your checkoff, your TA should give you a magic word, which you can type it into magicword.txt. You will be solely graded off if your magic word is present. This is remniscent of how you will be graded for BYOW: though part of the project will be autograded, your final product will be graded in a checkoff with a staff member so you can show off your creative finished project!
 
-Before moving on to the next part of the lab, check out [this video](https://www.youtube.com/watch?v=7cjXkEW1STY&t=1h24m55s) to solidify your understanding of quicksort. Note this was taken from summer 2021's lecture, so you can stop after the section on quicksort. That is, you can stop at 1:41:00. 
+If you want to get checked off outside of lab hours you can make a private Ed **Question** thread under Labs - Lab16 - Checkoff and make sure you follow the instructions on the template. 
 
-## Exercise: `quicksort`
-
-To test your understanding of quicksort, fill out the `sort` method in
-`QuickSort.java`. Be sure to take advantage of the helper `partition` method!
-
-This method is destructive, where the original `int[] arr` should be
-modified.
-
-## Discussion: Quicksort
-
-### Discussion 1: Runtime
-
-First, let's consider the best-case scenario where each partition divides a
-range optimally in half. Using some of the strategies picked up from the merge
-sort analysis, we can determine that quicksort's best case asymptotic runtime
-behavior is $$O(N \log N)$$. Discuss with a partner why this is the case, and
-any differences between quicksort's best case runtime and merge sort's runtime.
-
-However, quicksort is faster in practice and tends to have better constant
-factors (which aren't included in the big-Oh analysis). To see this, let's
-examine exactly how quicksort works.
-
-We know concatenation for linked lists can be done in constant time, and for arrays it can be done in linear time.
-Partitioning can be done in time proportional to the number of elements $$N$$. 
-If the partitioning is optimal and splits each range more or less in half,
-we have a similar logarithmic division of levels downward
-like in merge sort. On each division, we still do the same linear amount of work
-as we need to decide whether each element is greater or less than the pivot.
-
-However, once we've reached the base case, we don't need as many steps to
-reassemble the sorted collection. Remember that with merge sort, while each list
-of one element is sorted, the entire set of one-element
-lists is not necessarily in order, which is why there are $$\log N$$ steps to
-merge upwards in merge sort. This isn't the case with quicksort as each element
-*is* in order. Thus, merging in quicksort is simply one level of linear-time
-concatenation.
-
-Unlike merge sort, quicksort has a worst-case runtime different from its
-best-case runtime. Suppose we always choose the first element in a range as our
-pivot. Then, which of the following conditions would cause the worst-case
-runtime for quicksort? Discuss with a partner, and verify your understanding
-by highlighting the line below for the answer.
-
-<p><span style="color:white"><em>Sorted or Reverse Sorted Array. This is because
-  the pivot will always be an extreme value (the largest or smallest unsorted value)
-  and we will thus have N recursive calls, rather than log(n).</em></span></p>
-
-What is the runtime of running quicksort on this array?
-
-<p><span style="color:white"><em>Theta(N^2)</em></span></p>
-
-Under these conditions, does this special case of quicksort remind you of any
-other sorting algorithm we've discussed in this lab? Discuss with a partner.
-
-We see that quicksort's worst case scenario is pretty bad... You might be wondering why we'd even bother with it then! However, though it's outside the scope of this class for you to prove why, we can show that on *average*, quicksort has $$O(N \log(N))$$ runtime! In practice, quicksort ends up being very fast.
-
-### Discussion 2: Choosing a Pivot
-
-Given a random collection of integers, what's the best possible choice of pivot
-for quicksort that will break the problem down into $$\log N$$ levels? Discuss
-with a partner and describe an algorithm to find this pivot element. What is
-its runtime? It's okay if you think your solution isn't the most efficient.
-
-## Quicksort in Practice
-
-How fast was the pivot-finding algorithm that you came up with? Finding the
-exact median of our elements may take so much time that it may not help the
-overall runtime of quicksort at all. It may be worth it to choose an approximate
-median, if we can do so really quickly. Options include picking a random
-element, or picking the median of the first, middle, and last elements. These
-will at least avoid the worst case we discussed above.
-
-In practice, quicksort turns out to be the fastest of the general-purpose
-sorting algorithms we have covered so far. For example, it tends to have better
-constant factors than that of merge sort. For this reason, Java uses this
-algorithm for sorting arrays of **primitive types**, such as `int`s or `float`s.
-With some tuning, the most likely worst-case scenarios are avoided, and the
-average case performance is excellent.
-
-Here are some improvements to the quicksort algorithm as implemented in the Java
-standard library:
-
-- When there are only a few items in a sub-collection (near the base case of the
-  recursion), insertion sort is used instead.
-- For larger arrays, more effort is expended on finding a good pivot.
-- Various machine-dependent methods are used to optimize the partitioning
-  algorithm and the `swap` operation.
-- [Dual pivots](https://www.geeksforgeeks.org/dual-pivot-quicksort/)
-
-For **object types**, however, Java uses a hybrid of *merge sort and insertion
-sort* called "Timsort" instead of quicksort. Can you come up with an explanation
-as to why? *Hint*: Think about stability!
- 
-
-To learn more about the performance difference between Quicksort and Mergesort, watch this video [Quicksort versus Mergesort](https://www.youtube.com/watch?v=es2T6KY45cA)
-
-### Timing
-
-So far we've measured the speed and efficiency of our algorithms by theoretically
-performing asymptotic analysis on them. Another (less formal) way of determining 
-the speed of a given program is to test it on a variety of inputs and measure 
-the time it takes for each one. This is called a timing experiment, and we 
-refer to this process as finding the efficiency of a program empirically. 
-In this lab, we will be doing some timing experiments to see how the different sorting 
-classes you implemented in this lab perform.
-
-Open `TimingTest.java` and run it's `main` method. This class will sort random arrays of
-different sizes using the sorting algorithms you implemented and plot the results. 
-
-Here's the result of running the test on one of our computers:
-
-![Sorting Algos Timing Test Results](./img/times.png)
-
-Notice how by the time we reach an array size of 1000000, Selection Sort and Insertion Sort 
-take more than a minute to run while Heap Sort and Merge Sort manages to sort the same array in just over
-one-tenth of a second!  
-
-If you run it multiple times, you will also notice that Quicksort's runtime varies more than others---you are seeing
-the different pivot's runtime on this algorithm's performance in action! 
-
-Please note that the result you see my be different from the picture above. 
-If the tests are taking too long on your computer, try lowering the bounds provided in the class.
-
-## Summary
-
-In this lab, we learned about more comparison-based algorithms for sorting
-collections. Within comparison-based algorithms, we examined two different
-paradigms for sorting:
-
-1. Simple sorts like **insertion sort** and **selection sort** which
-   demonstrated algorithms that maintained a sorted section and moved unsorted
-   elements into this sorted section one-by-one. With optimization like **heapsort** or the right conditions (relatively sorted list in the case of insertion
-   sort), these simple sorts can be fast!
-2. Divide and conquer sorts like **merge sort** and **quicksort**. These
-   algorithms take a different approach to sorting: we instead take advantage of
-   the fact that collections of one element are sorted with respect to
-   themselves.  Using recursive procedures, we can break larger sorting problems
-   into smaller subsequences that can be sorted individually and quickly
-   recombined to produce a sorting of the original collection.
-
-Here are several online resources for visualizing sorting algorithms. If you're
-having trouble understanding these sorts, use these resources as tools to help
-build intuition about how each sort works.
-
-- [VisuAlgo][]
-- [Sorting.at][]
-- [Sorting Algorithms Animations][]
-- [USF Comparison of Sorting Algorithms](http://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html)
-- [AlgoRhythmics][]: sorting demos through folk dance including
-  [insertion sort][], [selection sort][], [merge sort][], and [quicksort][]
-
-[VisuAlgo]: http://visualgo.net/sorting
-[Sorting.at]: http://sorting.at/
-[Sorting Algorithms Animations]: http://www.sorting-algorithms.com/
-[USF Comparison of Sorting Algorithms]: http://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html
-[AlgoRhythmics]: https://www.youtube.com/user/AlgoRythmics/videos
-[insertion sort]: https://www.youtube.com/watch?v=ROalU379l3U
-[selection sort]: https://www.youtube.com/watch?v=Ns4TPTC8whw
-[merge sort]: https://www.youtube.com/watch?v=XaqR3G*NVoo
-[quicksort]: https://www.youtube.com/watch?v=ywWBy6J5gz8
-
-To summarize the sorts that we've learned, take a look at the following table. 
-
-|                | Best Case Runtime    | Worst Case Runtime   | Stable  | In Place | Notes |
-|----------------|----------------------|----------------------|---------|----------|-------|
-| [Insertion Sort](https://youtu.be/JtS5yGftYZ8) | $$\Theta(N)$$        | $$\Theta(N^2)$$      | Yes     | Yes | |
-| [Selection Sort](https://youtu.be/yZtvSYeTQi4) | $$\Theta(N^2)$$      | $$\Theta(N^2)$$      | No      | Yes | Can be made stable under certain conditions. |
-| [Heap Sort](https://youtu.be/WuuQqsDftGU)      | $$\Theta(N \log N)$$ | $$\Theta(N \log N)$$ | No      | Yes | If all elements are equal then runtime is $$\Theta(N)$$. Hard to make stable. |
-| [Merge Sort](https://youtu.be/JJrAzmJcMh0)     | $$\Theta(N \log N)$$ | $$\Theta(N \log N)$$ | Yes     | Not usually. Typical implementations are not, and making it in-place is terribly complicated. | An optimized sort called "Timsort" is used by Java for arrays of reference types. |
-| [Quicksort](https://www.youtube.com/watch?v=7cjXkEW1STY&t=1h24m55s)      | $$\Theta(N \log N)$$ | $$\Theta(N^2)$$      | Depends | Most implementations use log(N) additional space for the recursive stack frames | Stability and runtime depend on partitioning strategy; three-way partition quicksort is stable. If all elements are equal, then the runtime using three-way partition quicksort is $$\Theta(N)$$. Used by Java for arrays of primitive types. Fastest in practice. |
-
-> You may have noticed that there seems to be a lower bound on how fast our sorting algorithms can go. For *comparison* based sorts, we can prove the best we can do is $$O(N\log(N))$$. You can watch a very brief video explanation [here](https://www.youtube.com/watch?v=j4Lmzhs6r-Y&list=PLNF4Mv5EsHj4QLTEw3uz42vJGKblD9usL&index=3) at timestamp 11:42. You can also read a more in-depth [proof](https://www.cs.cmu.edu/~avrim/451f11/lectures/lect0913.pdf), if you're into that kind of thing. Tomorrow, we'll learn about *counting* sorts, which can do even better when we're able to use them.
-
-
-
-
-
-### Deliverables
-
-To get credit for this lab:
-- Complete the following classes:
-    - `HeapSort.java`
-    - `MergeSort.java`
-    - `QuickSort.java`

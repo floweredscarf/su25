@@ -3,10 +3,10 @@ layout: page
 title: >-
   FAQ
 parent: >-
-  Lab 17: Minimum Spanning Trees
+  Lab 16: Shortest Path Trees
 grand_parent: Labs
 has_right_toc: true
 released: true
 ---
 
-### None yet!
+### Nothing at the moment!

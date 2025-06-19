@@ -3,36 +3,35 @@ layout: page
 title: >-
   FAQ
 parent: >-
-  Lab 03: Debugging & Test-Driven Development
+  Lab 03: Intro to Objects and Primitives
 grand_parent: Labs
 has_right_toc: true
 released: true
 ---
 
-## I'm getting merge conflicts after re-pulling the skeleton
+### I am confused about the conceptual content covered in today's lab.
 
-First, add and commit your local changes so that `git status` reads that your working
-tree is clean.
+If you found the information presented in today's lab difficult, I would
+recommend reading this tutorial on
+[Java conditionals](https://javatutorial.net/java-control-flow-statements), and
+the follow-up tutorials on [Java loops](https://javatutorial.net/java-loops) and
+[Java Arrays](https://javatutorial.net/java-array), as well as reading the
+relevant textbook chapters
+([Loops and conditionals](https://joshhug.gitbooks.io/hug61b/content/chap1/chap12.html),
+[Arrays](https://joshhug.gitbooks.io/hug61b/content/chap2/chap24.html)).
 
-Then, refer to the [Git WTFs](../../guides/git/wtfs) section on resolving merge
-conflicts. You'll need to incorporate both your local changes (this likely
-includes your `BombMain` passwords) and the bug fixes
-from the skeleton.
-
-After you've resolved the merge conflicts in the files, you'll need to re-add and commit them
-to complete the merge.
-
-Come into office hours or lab if you're unsure on what to do!
-
-
-## There's a lot of red in my IntelliJ
-
-First, be sure you've imported the libraries correctly. Refer back to step 5 of the
-[Assignment Workflow](../../../materials/guides/assignment-workflow/#opening-in-intellij)
-if you need a refresher on how to do this.
-
-If that doesn't work, be sure that `src` is blue and `tests` is green. Refer to
-the [IntelliJ WTFS](../../../materials/guides/intellij/wtfs/#i-cant-run-my-java-filefiles-dont-show-up-as-java-files)
-to mark your `src` and `tests` folders appropriately.
+In general, nothing in this lab should be entirely new to
+you (except maybe some Java syntax), so if you're having a lot of trouble,
+please let a TA know.
 
 
+### I am interested in learning more about Java documentation and syntax.
+
+If you found the information presented in today's lab interesting, I would
+recommend reading into the technical Java tutorials on
+[Control Flow](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/flow.html) and
+[Arrays](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/arrays.html).
+If you've noticed that Java Arrays have some pretty large weaknesses compared to
+lists in say, Python, I would recommend reading the Java Documentation for the
+[ArrayList class](https://docs.oracle.com/javase/tutorial/collections/implementations/list.html)
+(which we'll be talking about in a week or two).
