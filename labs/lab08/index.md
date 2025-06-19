@@ -1,1039 +1,679 @@
 ---
 layout: page
 title: >-
-  Lab 08: Runtime Analysis
+  Lab 08: Comparison, Iteration, and Exceptions
 has_children: true
 parent: Labs
 has_toc: false
 has_right_toc: true
 released: true
 ---
+
 ## [FAQ](faq.md)
 
-The FAQ for Lab 9 is located [here](faq.md).
+This assignment has an [FAQ page](faq.md).
 
 ## Before You Begin
 
-Pull the files for lab 9 from the skeleton.
-
-> The online textbook readings in for this lab are optional. The lab covers
-> the same content as Chapter [8.2][], [8.3][], and [8.4][] but more concisely
-> so that there's not as much to read. You still may want to refer back to the
-> textbook if you prefer watching videos or reading more about the topic. Additionally there is overlap between this lab and todays's lecture. Asymptotic analysis is both a tough topic and an important one, so this repetition is intentional and should hopefully help to reinforce the topics. However, feel free to skip around the spec if you feel like you already have a good understanding of the content. 
-
-[8.2]: https://joshhug.gitbooks.io/hug61b/content/chap8/chap82.html
-[8.3]: https://joshhug.gitbooks.io/hug61b/content/chap8/chap83.html
-[8.4]: https://joshhug.gitbooks.io/hug61b/content/chap8/chap84.html
-
+As usual, pull the skeleton code.
 
 ## Learning Goals
 
-> “““““An engineer will do for a dime what any fool will do for a dollar.”
+In this lab, we'll wrap up the Java-focused portion of the class.
+
+First, we will expand upon our knowledge of interfaces from [Lab 6](../lab06)
+by looking at some existing Java interfaces that allow us to implement useful
+behaviors for our data structures and other types.
+
+We'll also consider what happens when an error occurs, like a
+`NullPointerException`, and what we can do to stop them from crashing the
+entire program.
+
+## Interfaces as Behaviors
+
+In [Lab 6](../lab06), we discussed ADTs, a description of a data
+structure's behavior; and how we can implement ADTs in Java using *interfaces*.
+We actually don't need to limit ourselves to expressing data structure
+behavior - **as long as we have a list of things we want to do, we can make an
+interface**.
+
+We'll take a look at two really common things that we want to do with our
+classes:
+
+-   Making them *able to be compared* (useful for things that go in certain kinds
+    of data structures)
+-   Making them *able to be iterated over* (useful for the data structures
+    themselves)
+
+## Comparison
+
+{% include alert.html content="
+Read Chapter 4.3 from **[Max Function](https://joshhug.gitbooks.io/hug61b/content/chap4/chap43.html#max-function)** through **Comparables** to help
+motivate the problem we're solving and the tools we'll use along the way.
+
+Remember **casting** is a bit of special syntax where you can tell the compiler that a
+specific expression has a specific compile-time type. If the `maxDog` method
+below returns an object of static type `Dog`, the code normally wouldn't compile
+as `Poodle` is a subtype of `Dog`. *Casting* tells Java to treat the `Dog` as
+if it were a `Poodle` for the purposes of compilation because it's possible
+that the `Dog` returned from `maxDog` *could be* a `Poodle`.
+
+```java
+Poodle largerPoodle = (Poodle) maxDog(frank, frankJr);
+```
+
+[Max Function]: <https://joshhug.gitbooks.io/hug61b/content/chap4/chap43.html#max-function>
+" %}
+
+While we haven't explicitly learned about sorting yet, the idea of sorting
+should be intuitive enough. You have a list of things, and you want to put it
+in sorted order. While this makes sense immediately for things like `int`s,
+which we can compare with primitive operations like `<` and `==`, this becomes
+less clear for general objects.
+
+So, what does "sorted order" for general objects? To sort, we must first say
+that `<` *means* something, or that we can meaningfully compare two objects.
+For example, to sort `String`s, we could say that the "smaller" one
+is the one that would come first in the dictionary ("alphabet" "`<`" "zebra").
+
+In Java, how do we say that a particular type can be compared?
+This is exactly what the [`Comparable<T>` interface][comparable interface]
+describes. When a type implements `Comparable<T>`, we say that it is
+"able to be compared" to objects of type `T`. Usually, `T` is the same type
+(that is, you'll usually see `class MyClass implements Comparable<MyClass>`),
+but it doesn't have to be.
+
+[comparable interface]: <https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Comparable.html>
+
+The only method required by `Comparable<T>` is `compareTo(T o)` which takes
+another object of the type `T` and returns an `int` whose value
+represents whether `this` or `o` should come first.
+
+In order to sort a list in
+Java, most sorting algorithms will call `compareTo` and make pairwise
+comparisons to determine which object should come first, repeatedly, and swap
+elements until the entire list is sorted. (The hard part of sorting, then, is
+to determine which `compareTo` 'questions' are necessary to ask!)
+
+Here are a few key details from [`compareTo`][compareTo], slightly adapted:
+
+[compareTo]: <https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Comparable.html#compareTo(T)>
+
+> Compares this object with the specified object for order. Returns a negative
+> integer, zero, or a positive integer if this object is less than, equal to,
+> or greater than the specified object, respectively.
+
+There are other requirements that typically happen naturally with a
+"reasonable" implementation, but are still important to specify:
+
+> The implementor must also ensure that the relation is transitive:
+> `(x.compareTo(y) > 0 && y.compareTo(z) > 0)` implies `x.compareTo(z) > 0`.
 >
-> --- Arthur M. Wellington”
-> --- Paul Hilfinger”
-> --- Zephyr Omaly”
-> --- Laksith Prabu”
-> --- Dominic Conricode
+> It is strongly recommended, but not strictly required that `x.compareTo(y) ==
+> 0` is equivalent to `x.equals(y)`. Generally speaking, any class that
+> implements the `Comparable` interface and violates this condition should
+> clearly indicate this fact. The recommended language is "Note: this class has
+> a natural ordering that is inconsistent with equals."
 
-Efficiency comes in two flavors:
+Why do we care about making things comparable?
+: This means that we can implement data structures that require ordering or
+  comparison (like sorted lists, and in the future, search trees). We would say
+  "this collection can only contain types that are `Comparable` to themselves".
 
-Programming cost
-:   - How long does it take to develop your programs?
-    - How easy is it to read or modify your code?
-    - How maintainable is your code?
+What if we want to compare things that don't implement `Comparable`, or want to compare things in a different way?
+: The `compareTo` method defines an object's "natural order". However, a type
+  may not have a "natural order", or we may want to order it in a different
+  way (for example - ordering people by their height, name, or age). We can
+  instead use the [`Comparator<T>`][Comparator] interface to impose our own ordering on
+  objects. We can get a `Comparator` either by directly implementing the
+  interface, or by using Java's higher-order functions (out-of-scope).
 
-Execution cost
-:   - **Time complexity**: How much time does your program take to execute?
-    - **Space complexity**: How much memory does your program require?
+[Comparator]: <https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Comparator.html>
 
-We've already seen many examples of reducing programming cost. We've written
-*unit tests* and employed *test-driven development* to spend a little more time
-up front writing tests to save a lot of time down the line debugging programs.
-And we've seen how *encapsulation* can help reduce the cognitive load that a
-programmer needs to deal with by allowing them to think in terms of high-level
-abstractions like lists instead of having to deal with the nitty-gritty details
-of pointer manipulation. We've also discussed some elements of design for
-methods and classes, like how we prefer passing arguments around over
-maintaining `static` variables.
+### Exercise: Comparing `User`s
 
-We've only just scratched the surface on methods for reducing and optimizing
-programming costs, but for the coming weeks, it'll be helpful to have a working
-understanding of the idea of **execution cost**.
+In `User.java`, we've provided an example of how a website might model a user.
 
-In this lab, we consider ways of measuring the efficiency of a given code
-segment. Given a function `f`, we want to find out how "quickly" that function runs.
+Make `User` implement the `Comparable` interface. Use parameterization (ie. `<>`) with `Comparable`
+to ensure that `User` can only be used to compare against other `User`s.
 
-## Algorithms
+The natural ordering for `User` is to compare by ID number. If their ID numbers
+are the same, then compare them on their username.
 
-An *algorithm* is a step-by-step procedure for solving a problem, or an
-abstract notion that describes an approach for solving a problem. The code we
-write in this class, our programs, are implementations of algorithms. Indeed,
-we've already written many algorithms: the methods we've written for `IntList`,
-`SLList`, `DLList`, and `AList` are all *algorithms* that operate on data by
-storing and accessing that data in different ways.
-
-As another example, consider the problem of sorting a list of numbers. One
-algorithm we might use to solve this problem is called *bubble sort*. Bubble
-sort tells us we can sort a list by repeatedly looping through the list and
-swapping adjacent items if they are out of order, until the entire sorting is
-complete.
-
-Another algorithm we might use to solve this problem is called *insertion
-sort*. Insertion sort says to sort a list by looping through our list, taking
-out each item we find, and putting it into a new list in the correct order.
-
-Several websites like [VisuAlgo][], [Sorting Algorithms][], and
-[USF][] have developed some animations that can help us visualize these sorting
-algorithms.  Spend a little time playing around with these demos to get an
-understanding of how much time it takes for bubble sort or insertion sort to
-completely sort a list. We'll revisit sorting in more detail later in this
-course, but for now, try to get a feeling of how long each algorithm takes to
-sort a list. How many comparison does each sort need? And how many swaps?
-
-[VisuAlgo]: http://visualgo.net/sorting
-[Sorting Algorithms]: https://www.toptal.com/developers/sorting-algorithms/
-[USF]: http://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html
-
-Since each comparison and each swap takes time, we want to know which is the
-faster algorithm: bubble sort or insertion sort? And how fast can we make our
-Java programs that implement them? Much of our subsequent work in this course
-will involve estimating program efficiency and differentiating between fast
-algorithms and slow algorithms in their specific settings.
-This set of activities introduces an approach to making these estimates.
-
-## Measuring Execution Time
-
-One way to estimate the time an algorithm takes is to measure the time it takes
-to run the program directly. Each computer has an internal clock that keeps
-track of time, usually in the number of fractions of a second that have elapsed
-since a given base date. The Java method that accesses the clock is
-`System.currentTimeMillis`. A `Timer` class is provided in `Timer.java`.
-
-Take some time now to find out exactly what value `System.currentTimeMillis`
-returns, and how to use the `Timer` class to measure the time taken by a given
-segment of code.
-
-## Exercise: `Sorter`
-
-The file `Sorter.java` contains a version of the insertion sort algorithm
-mentioned earlier. Its `main` method uses a command-line argument to determine
-how many items to sort. It fills an array of the specified size with randomly
-generated values, starts a timer, sorts the array, and prints the elapsed time
-when the sorting is finished.
-
-```sh
-javac Sorter.java
-java Sorter 300
-```
-
-Compiling and running `Sorter` like above will tell us exactly how long it
-takes to sort an array of 300 randomly chosen elements.
-
-Alternatively, you can set command line arguments in IntelliJ by clicking on the class name next to the green run button on the top left and selecting "Edit Configurations." Next, you can enter command line arguments into the "Program arguments" field.
-
-
-
-<details markdown="block">
-  <summary markdown="block">
-#### Visual guide: adding program arguments
-{: .no_toc}
-  </summary>
-
-![Edit run configurations](img/edit_configurations.png)
-
-![Set command line arguments](img/set_command_line_args.png)
-
-</details>
-
-By compiling and running `Sorter.java` with different arguments, determine the size
-of the smallest array that needs 1 second (1000 milliseconds) to sort.
-
-You may notice that other students in lab end up with different timing results
-and a different number of elements. What factors might contribute to these differences?
-
-## Counting Steps
-
-From timing the program in the previous example, we learned it isn't very
-helpful in determining how good an algorithm is; different computers end up with
-different results! Additionally, we won't know the runtime of our algorithm until _after_ we've run the timer - we can't make any predictions about runtime with a timer. An alternative approach is **step counting**. The number of
-times a given *step*, or instruction, in a program gets executed is independent
-of the computer on which the program is run and is similar for programs coded
-in related languages. With step counting, we can now formally and
-deterministically describe the runtime of programs.
-
-We define a single step as the execution of a single instruction or primitive
-function call. For example, the `+` operator which adds two numbers is
-considered a single step. We can see that `1 + 2 + 3` can be broken down into
-*two steps* where the first is `1 + 2` while the second takes that result and
-adds it to 3. From here, we can combine simple steps into larger and more
-complex *expressions*.
+After implementing this, you should be able to sort `User`s. The example below is also in the `main` method of your `User` class. Feel free
+to run it as a sanity check.
 
 ```java
-(3 + 3 * 8) % 3
-```
-
-This expression takes 3 steps to complete: one for multiplication, one for
-addition, and one for the modulus of the result.
-
-From expressions, we can construct *statements*. An assignment statement, for
-instance, combines an expression with one more step to assign the result of the
-expression to a variable.
-
-```java
-int a = 4 * 6;
-int b = 9 * (a - 24) / (9 - 7);
-```
-
-In the example above, each assignment statement takes one additional step on
-top of however many steps it took to compute the right-hand side expressions.
-In this case, the first assignment to `a` takes one step to compute `4 * 6` and
-one more step to assign the result, 24, to the variable `a`. **How many steps
-does it take to finish the assignment to `b`?**
-
-Here are some rules about what we count as taking a single step to compute:
-
-- Assignment and variable declaration statements
-- All unary (like negation) and binary (like addition, and, or) operators
-- Conditional `if` statements
-- Function calls
-- `return` statements
-
-One important case to be aware of is that, while *calling* a function takes a
-single step to setup, *executing* the body of the function may require us to do
-**much** more than a single step of work.
-
-### Counting Conditionals
-
-With conditional statements like `if` statements, the total step count depends
-on the outcome of the condition we are testing.
-
-```java
-if (a > b) {
-    temp = a;
-    a = b;
-    b = temp;
-}
-```
-
-The example above can take four steps to execute: one for evaluating the
-conditional expression `a > b` and three steps for evaluating each line in the
-body of the condition. But this is only the case if `a > b`. If the condition
-is not true, then it only takes one step to check the conditional expression.
-
-That leads us to consider two quantities: the **worst case count**, or the
-maximum number of steps a program can execute, and the **best case count**, or
-the minimum number of steps a program needs to execute. The worst case count
-for the program segment above is 4 and the best case count is 1.
-
-### `if ... else` Counting
-
-Consider an `if ... else` of the form,
-
-```java
-if (A) {
-    B;
-} else {
-    C;
-}
-```
-
-where `A`, `B`, and `C` are program segments. (`A` might be a method call, for
-instance.)
-
-**How many steps does it take to evaluate the entire `if ... else`
-block in terms of the number of steps it takes to evaluate `A`, `B`, and `C`?**
-Think back to your practice tracing through programs to figure out which parts
-of the conditional will be evaluated (given the condition is true or false),
-and which parts won't be evaluated.
-
-### Loop Counting
-
-```java
-for (int k = 0; k < N; k++) {
-    sum = sum + 1;
-}
-```
-
-In terms of $$N$$, how many operations are executed in this loop? Remember that
-each of the actions in the for-loop header (the initialization of `k`, the exit
-condition, and the increment) count too!
-
-> It takes 1 step to execute the initialization, `int k = 0`. Then, to execute
-> the loop, we have the following sequence of steps:
->
-> - Check the loop condition, `k < N`
-> - Add 1 to the `sum`
-> - Update the value of `sum` by assignment
-> - Increment the loop counter, `k`
-> - Update `k` by assignment
->
-> This accounts for the first $$1 + 5N$$ steps. In the very last iteration of
-> the loop, after we increment `k` such that `k` now equals $$N$$, we spend one
-> more step checking the loop condition again to figure out that we need to
-> finally exit the loop so the final number of steps is $$1 + 5N + 1$$.
-
-### Example: `remove`
-
-Now consider code for the `remove` method, which removes the item at a given position of an array `values` by shifting over all the remaining elements. We notice here that things become slightly more complicated as the number of steps performed matters both on `pos` and `len`, the number of items contained in `values`. We now count the number of steps performed in terms of these two variables.
-
-> This example assumes that you are using an array to back some kind of list. This idea is similar to Project 1, but this implementation is not circular. Also assume that the length of the underlying array is much larger than length and will not have an effect on the runtime of this program.
->
-> The list will have the instance variables `values` which is the array backing the list and `len` which corresponds to the number of items actually contained in the list (not necessarily the same as `values.length`).
-
-```java
-void remove(int pos) {
-    for (int k = pos + 1; k < len; k++) {
-        values[k - 1] = values[k];
+public static void main(String[] args) {
+    User[] users = {
+        new User(2, "Erik", ""),
+        new User(4, "Vanessa", ""),
+        new User(5, "Natalia", ""),
+        new User(1, "Alex", ""),
+        new User(1, "Circle", "")
+    };
+    Arrays.sort(users);
+    for (User user : users) {
+        System.out.println(user);
     }
-    len -= 1;
 }
 ```
 
-Each column in the table below shows the total number of steps for computing each value of `pos`. These counts are written as a function of `len`. This way we can come up with total counts for the number of steps parameterized by `len` and `pos`.
+```java
+User{id=1, name=Alex, email=}
+User{id=1, name=Circle, email=}
+User{id=2, name=Erik, email=}
+User{id=4, name=Vanessa, email=}
+User{id=5, name=Natalia, email=}
+```
 
-| category            | pos = 0      | pos = 1       | pos = 2       | ... | pos = `len` - 1 |
-|---------------------|--------------|---------------|---------------|-----|-----------------|
-| `pos + 1`           | 1            | 1             | 1             |     | 1               |
-| assignment to `k`   | 1            | 1             | 1             |     | 1               |
-| loop conditional    | `len`        | `len` - 1     | `len` - 2     |     | 1               |
-| increment to `k`    | `len` - 1    | `len` - 2     | `len` - 3     |     | 0               |
-| update `k`          | `len` - 1    | `len` - 2     | `len` - 3     |     | 0               |
-| array access        | `len` - 1    | `len` - 2     | `len` - 3     |     | 0               |
-| array assignment    | `len` - 1    | `len` - 2     | `len` - 3     |     | 0               |
-| decrement to `len`  | 1            | 1             | 1             |     | 1               |
-| assignment to `len` | 1            | 1             | 1             |     | 1               |
-| Total count         | 5 * `len`    | 5 * `len` - 5 | 5 * `len` - 10 |     | 5               |
+Note that here we use `Arrays.sort` because `users` is an array; if it was a
+Java `Collection` like `ArrayList`, we would use `Collections.sort`.
 
-We can summarize these results as follows: a call to remove with argument `pos`
-requires in total:
+## Iteration
 
-- 1 step to calculate `pos + 1`
-- 1 step to make the initial assignment to `k`
-- `len - pos` loop tests
-- `len - pos - 1` increments of `k`
-- `len - pos - 1` reassignments to `k`
-- `len - pos - 1` accesses to `values` elements
-- `len - pos - 1` assignments to `values` elements
-- 1 step to decrement `len`
-- 1 step to reassign to `len`
+In CS 61BL, we're going to encounter a variety of different *data structures*,
+or ways to organize data. We've implemented linked lists like `SLList` and
+`DLList`, and a couple different sets. Starting next Friday, we'll start to see
+more complicated data structures such as trees, hash tables, heaps, and graphs.
 
-If all these operations take roughly the same amount of time, the total is `5 *
-(len - pos)`. Notice how we write the number of statements as a *function of the input arguments*.
+A common operation on a data structure is to process every item it contains.
+But often, the code we need to write to setup and iterate through a data
+structure differs depending on the data structure's implementation.
 
-> Although `len` is not a parameter of the `remove` method it is still considered to be an input as its value affects the number of steps.
->
-> More formally we can also see that since `remove` is a non-static method, we are implicitly passing in the variable `this` to our `remove` method. This means that the variables `this.values` and `this.length` are also passed in.
-
-Comparing across a fixed value of `len` we can notice that for a small value of `pos`, the number of steps executed will be *greater* than if we had a larger value of `pos` (e.g. closer to `len`). And vice versa: a larger value of `pos` will reduce the number of steps we need to execute.
-
-### Example with Nested Loops: `removeZeroes`
-
-Counting steps in nested loops is a little more involved. As an example, we'll
-consider an implementation of the method `removeZeroes`.
+For an array, you might iterate over it like this:
 
 ```java
-void removeZeroes() {
-    int k = 0;
-    while (k < len) {
-        if (values[k] == 0) {
-            remove(k);
-        } else {
-            k += 1;
+int[] array = ...
+for (int i = 0; i < array.length; i += 1) {
+    // Do something with array[i]
+}
+```
+
+For `SLList`, the pattern significantly differs from above.
+
+```java
+SLList list = ...
+for (IntNode p = list.sentinel.next; p != null; p = p.next) {
+    int item = p.item;
+}
+```
+
+Evidently, we need to write two very different codes in order to do the same
+high-level thing. It would be nice if we can write one piece of code that we can
+reuse for different things that we can iterate over. In other words, we wish
+to *abstract away* the internal implementation of data structures from the
+operations on them.
+
+Furthermore, if we use a different data structure, a `for` loop like the one
+above may not make sense. For example, what would it mean to access the `k`th
+item of a set, where the order of items is not defined? We need a more *abstract*
+notion of processing every item in a data structure, something that allows us
+to check every item regardless of how they're organized.
+
+To do that, we're going to define the idea of a data structure being *iterable*.
+
+### `Iterable`
+
+The interface that lets us say that something can be iterated over is called
+[`Iterable<T>`][Iterable]:
+
+[Iterable]: <https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Iterable.html>
+
+```java
+public interface Iterable<T> {
+    Iterator<T> iterator();
+}
+```
+
+The generic parameter `T` indicates the type of the elements that we visit
+while iterating. For example, for the `SLList` that contains only `int`s, we
+would write:
+
+```java
+public class SLList implements Iterable<Integer>
+```
+
+Similarly, a generic list would implement `public class MyList<T> implements
+Iterable<T>`.
+
+Since a Java `Collection` is a group of objects, it makes sense that we would
+like to iterate over those objects. Therefore, `Collection<T>` is a
+sub-interface of `Iterable<T>`.
+
+Let's now consider the return type, `Iterator<T>`.
+
+### `Iterator`
+
+Remember how everything is an object in Java? If `Iterable` is the "thing that
+can be iterated over", then [`Iterator`][Iterator] is "where we are during
+iteration".
+
+[Iterator]: <https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Iterator.html>
+
+As an analogy, think of a walking trail, with specific waypoints along the
+trail (like a list). The walking trail is `Iterable`, because we can visit each
+waypoint. Imagine that we have a person walking along the trail. The person
+and where they are on the trail is an `Iterator`. We can have multiple
+people on the trail, just like we can have multiple iterators.
+
+Since the "state" that `Iterator` needs to keep track of will likely be
+different for each class, it's an interface as well:
+
+```java
+package java.util;
+public interface Iterator<T> {
+    boolean hasNext();
+    T next();
+    // Some methods not shown
+}
+```
+
+`hasNext`
+: `hasNext` is a boolean method that says whether there are any more remaining
+items in the iterable to return. In other words, returns true if `next()`
+would return an element rather than throwing an exception. In our analogy,
+this returns true if the walker is not at the end of the trail.
+
+`next`
+: `next` successively returns items in the iterable one by one. The first
+call to `next` returns a value, the second call to `next` returns another
+value, and so on. If you're iterating over a set -- a data structure that
+does not necessarily have an order -- we don't necessarily guarantee that
+`next` returns items in any specific order. However, what we do
+guarantee is that it returns each item in the iterable exactly once. If we were
+iterating over a data structure that *does* have an ordering, like a list, then
+we would also like to guarantee that `next` returns items in the right order.
+In our analogy, this causes the walker to "visit" a waypoint on the trail.
+
+{% include alert.html content="
+Every call to `next()` is typically preceded by a call
+to `hasNext()`, thus ensuring that the `Iterator` does indeed have a next value
+to return. If there are no more elements to remaining, it is common practice to
+throw a `NoSuchElementException`.
+" %}
+
+Why design two separate interfaces, one for iterator and one for iterable? Why not just have the iterable do both?
+: The idea is similar to `Comparable` and `Comparator`. We can provide a
+  'default' iterator, but also allow for other iterators. For example, we could
+  implement an iterator that skips every other element, visits each element,
+  twice, or skips elements that return false for some condition.
+
+### Enhanced `for` Loop
+
+You may have been using the idea of a data structure being iterable already!
+When Java executes an enhanced `for` loop (the one using a colon), it does a
+bit of work to convert it into iterators and iterables. The following code
+represents the enhanced for loop you have most likely already seen and then a
+translated version which reveals what is happening behind the hood using an
+iterator.
+
+```java
+List<Integer> friends = new ArrayList<>();
+friends.add(5);
+friends.add(23);
+friends.add(42);
+for (int x : friends) {
+    System.out.println(x);
+}
+```
+
+```java
+List<Integer> friends = new ArrayList<>();
+friends.add(5);
+friends.add(23);
+friends.add(42);
+Iterator<Integer> seer = friends.iterator();
+while (seer.hasNext()) {
+    int x = seer.next();
+    System.out.println(x);
+}
+```
+
+### `SLListIterator`
+
+Here's an example of implementing `Iterable` for `SLList`:
+
+```java
+public class SLList implements Iterable<Integer> {
+    /* The first item (if it exists) is at sentinel.next. */
+    private IntListNode sentinel;
+    private int size;
+
+    // Constructor and other methods...
+
+    public Iterator<Integer> iterator() {
+        return new SLListIterator();
+    }
+
+    // We can define "inner classes" that have access to the outer class's
+    // variables. Since this isn't a static class, it's tied to a particular
+    // instance of SLList and can access its instance variables.
+    private class SLListIterator implements Iterator<Integer> {
+
+        // For example, here we access the outer class's sentinel node.
+        private IntListNode curr = sentinel.next;
+
+        public Integer next() {
+            // Check if we're out of items here
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            int toReturn = curr.item;
+            curr = curr.next;
+            return toReturn;
+        }
+
+        public boolean hasNext() {
+            return curr != sentinel;
         }
     }
 }
 ```
 
-Intuitively, the code should be slowest on an input where we need to do the
-most work, or an array of `values` full of zeroes. Here, we can tell that there
-is a worst case (removing everything) and a best case (removing nothing). To
-calculate the runtime, like before, we start by creating a table to help
-organize information.
-
-| category          | best case | worst case |
-|-------------------|-----------|------------|
-| assignment to `k` | 1         | 1          |
-| loop conditional  | `len` + 1 | `len` + 1  |
-| array accesses    | `len`     | `len`      |
-| comparisons       | `len`     | `len`      |
-| calls to remove   | 0         | `len`      |
-| k + 1             | `len`     | 0          |
-| update to `k`     | `len`     | 0          |
-
-In the best case, we never call `remove` so its runtime is simply the sum of
-the rows in the "best case" column. Thus, the best-case count is `2 + 5 * len`.
-
-The only thing left to analyze is the worst-case scenario. Remember that the
-worst case makes `len` total calls to `remove`. We already approximated the
-cost of a call to `remove` for a given `pos` and `len` value earlier: `5 *
-(len - pos)`.
-
-In our removals, `pos` is always 0, and only `len` is changing. The total
-cost of the removals is shown below.
-
-$$[5 \cdot \texttt{len}] + [5 \cdot (\texttt{len} - 1)] + \cdots +[5 \cdot (1)] + [5 \cdot (0)]$$
-
-$$= 5 \cdot [(\texttt{len}) + (\texttt{len} - 1) + \cdots + (1) + (0)]$$
-
-The challenge now is to simplify the expression. A handy summation formula to
-remember is the sum of the first $$k$$ natural numbers.
-
-$$1 + 2 + \cdots + k = \frac{k(k + 1)}{2}$$
-
-This lets us simplify the cost of removals (note that above was exactly a multiple of this form with terms from 1 to `len`). Remembering to include the additional steps in the table, we can now express the worst-case count of
-`removeZeroes` as:
-
-$$5 \cdot \frac{\texttt{len}(\texttt{len} + 1)}{2} + 3 \cdot \texttt{len} + 2$$
-
-We often prefer to simplify this by substituting `len` for a symbolic name like $$N$$.
-
-$$5 \frac{N(N + 1)}{2} + 3N + 2$$
-
-That took... a while.
-
-## Abbreviated Estimates
-
-> From this section onwards, we present a set of fairly precise definitions,
-> and we'll be relying on the example developed in this and the previous
-> part to build a solid definition for asymptotic notation. If you're
-> not fully comfortable with any of the material so far, now is the perfect
-> time to review it with someone in your lab or your TA!
-
-Producing step count figures even for those relatively simple program segments took a **lot**
-of work. But normally we don't actually need an exact step count but rather
-just an *estimate* of how many steps will be executed.
-
-In most cases, we only care about what happens for very large $$N$$ as that's
-where the differences between algorithms and their execution time really become
-limiting factors in the scalability of a program.
-
-Why is this? Debate with someone in your lab. Then, see our thoughts below
-
-<details markdown="block">
-  <summary markdown="block">
-#### Our take
-{: .no_toc}
-  </summary>
-When our $$N$$ is really small, no reasonable function
-will take a long time to execute! Imagine a program that takes $$N^{12}$$ steps
-to execute. When $$N=3$$, it doesn't really matter! But when
-$$N \gg 3$$ ($$N$$ much larger than 3) we might start to get really impatient (or the universe might end)!
-
-</details>
-
-We want to consider what
-types of algorithms would best handle big amounts of data, such as in the
-examples listed below:
-
-- Simulation of billions of interacting particles
-- Social network with billions of users
-- Encoding billions of bytes of video data
-
-> Here we are using a generic value of $$N$$ to represent the size of an input passed into a function. Note that we will not always use $$N$$ to represent the size of a program input (though it is common).
->
-> Also notice that sometimes the program will be parameterized by more than just one input; however, for most examples in this class we will ask you to write the order of growth in terms of just one variable.
-
-The **asymptotic behavior** of a function `f` (any one of the programs above,
-for example) is a description of how the execution time of `f` changes as the
-value of $$N$$ grows increasingly large towards infinity. Our goal is to come
-up with a technique that can be used to compare and contrast two algorithms to
-identify which algorithm scales better for large values of $$N$$.
-
-We can then compute the **order of growth** of a program, a classification of
-how the execution time of the program changes as the size of the input grows
-larger and larger. For example, we say that the *order of growth* of $$2N + 3$$ is $$N$$ since, for large
-values of $$N$$, $$2N + 3$$ will be less than $$3N$$ and slightly greater than
-$$2N$$. As $$N$$ tends towards infinity, the $$+ 3$$ contributes less and less
-to the overall runtime.
-
-This pattern holds for higher-order terms too. Applying this estimation
-technique to the `removeZeroes` method above results in the following orders of
-growth.
-
-- The order of growth for the best-case runtime of `removeZeroes`, $$5N + 2$$,
-  is proportional to the `len`, $$N$$.
-- The order of growth for the worst-case runtime of `removeZeroes`, $$5
-  \frac{N(N + 1)}{2} + 3N + 2$$, is $$N^2$$.
-
-The intuitive simplification being made here is that we **discard all but the
-most significant term of the estimate and also any constant factor of that
-term**. Later, we will see exactly why this is true with a more formal proof.
-
-## Asymptotic Analysis
-
-### Recap: Simplified Analysis Process
-
-Rather than building the entire table of all the exact step counts, we can
-instead follow a *simplified analysis process*.
-
-Choose a cost function
-: These are the underlying assumptions about the costs of each step or
-instruction for our machine. In this course, we'll assume all of the basic
-operations (Java operators, assignment statements, `return` statements, array
-access) each take the same amount of time (1 unit to execute). In CS 61C, we'll see how this
-fundamental assumption often isn't true.
-
-Compute the order of growth
-: Given the cost function, we can then compute the **order of growth** for a
-program. In the `removeZeroes` example, we saw how we could compute an exact
-count and then find the correct order of growth runtime classification for it
-by simplifying the expression.
-
-Later, we'll learn a few shortcuts and practice building intuition / inspection
-to determine orders of growth, but it's helpful to remember that we're always
-solving the same fundamental problem of measuring how long it takes to run a
-program, and how that runtime changes as we increase the value of $$N$$.
-
-### Big-Theta Notation
-
-Computer scientists often use special notation to describe runtime. The first
-one we'll learn is called *big-theta*, represented by the symbol $$\Theta$$.
-
-Suppose we have a function, $$R(N)$$, with order of growth $$f(N)$$. We could
-say,
-
-> $$R(N) \in \Theta(f(N))$$, or "$$R(N)$$ is in $$\Theta(f(N))$$"
-
-Why do we say "in" $$\Theta$$? Formally, $$\Theta(f(N))$$ is a family of
-functions that all grow *proportional to* $$f$$. Here, proportional can be thought of
-as roughly *equal*. Thinking back to our working
-definition of **order of growth** as a method for *classification*,
-$$\Theta(f(N))$$ refers to the entire set of all functions that share the same
-order of growth.
-
-The advantage of using notation like big-theta is that it provides a common
-definition for *asymptotic analysis* which reduces the amount of explaining we
-need to do when we want to share our ideas with others. It also makes sure
-we're all on the same page with the claims we make, so long as we use them
-carefully and precisely.
-
-Learning new notation can be a little daunting, but we've actually already
-been making statements in big-theta terms. The first claim about `removeZeroes`
-that we made earlier,
-
-> The order of growth for the best-case runtime of `removeZeroes`, $$5N + 2$$,
-> is proportional to the length of the array, $$N$$.
-
-is essentially equivalent to the claim: **In the best-case, `removeZeroes` is
-in $$\Theta(N)$$.**
-
-And, likewise, the second claim that we made earlier,
-
-> The order of growth for the worst-case runtime of `removeZeroes`, $$5
-> \frac{N(N + 1)}{2} + 3N + 2$$, is $$N^2$$.
-
-has its own equivalent in big-theta notation: **In the worst-case,
-`removeZeroes` is in $$\Theta(N^2)$$.**
-
-> When we use `removeZeroes` here, we mean the *runtime of the function* rather
-> than the function itself. In practice, we'll often use this English shortcut
-> as long as the meaning is clearly communicated, though it would be more
-> accurate to say the *runtime of the function*.
-
-### Asymptotic Variables
-
-You may have observed, in our analysis of `removeZeroes`, that we were careful
-to make clear what the running time estimate depended on, namely the value of
-`len` and `pos`.
-
-Unfortunately, people are sometimes careless about specifying the quantity on
-which an estimate depends. Don't just use $$N$$ without making clear what $$N$$
-means. This distinction is important especially when we begin to touch on
-sorting later in the course. It may not always be clear what $$N$$ means.
-
-We'll often qualify our runtimes by stating, "where $$N$$ is the length of the
-list", but we often also say things like, "where $$N$$ is the value of the
-largest number in the list".
-
-### Asymptotic Bounds
-
-Formally, we say that $$R(N) \in \Theta(f(N))$$ if and only if there exist
-positive constants $$k_1, k_2$$ such that $$k_1 \cdot f(N) \leq R(N) \leq k_2 \cdot
-f(N)$$ for all $$N$$ greater than some $$N_0$$ (very large $$N$$).
-
-In other words, $$R(N)$$ must be **bounded** above and below by $$f(N)$$
-asymptotically. But we've already seen something like this too.
-
-> We say that the *order of growth* of $$2N + 3$$ is $$N$$ since, for large
-> values of $$N$$, $$2N + 3$$ will be less than $$3N$$ and slightly greater
-> than $$2N$$. As $$N$$ tends towards infinity, the $$+ 3$$ contributes less
-> and less to the overall runtime.
-
-In this example, we chose $$k_1 = 2$$ and $$k_2 = 3$$. These two choices of
-$$k$$ constitute a *tight-bound* for $$2N + 3$$ for all values of $$N \geq 3$$.
-
-This idea of big-theta notation as a tight-bound is very useful as it allows us
-to, very precisely, state *exactly* how scalable a function's runtime grows as
-the size of its input ($$N$$) grows. When a $$\Theta(N)$$ function's input
-size increases, we'd expect the runtime to also increase linearly.
-
-### Big-O
-
-But, there are many scenarios where we can't actually give a tight bound:
-sometimes, it just doesn't exist. And, practically-speaking, one of the common
-use scenarios for runtime in the real world is to help choose between several
-different algorithms with different orders of growth. For these purposes, it's
-often sufficient just to give an *upper-bound* on the runtime of a program.
-
-There exists a very common asymptotic notation, *big-O*, represented by the
-symbol, $$O$$.
-
-If we could think of big-theta as an $$=$$ (equals) sign, then big-O is like a
-$$\leq$$ sign. Likewise, the formal definition for big-O follows, $$R(N) \in
-O(f(N))$$ if and only if there exists a positive constant $$k_2$$ such that
-$$R(N) \leq k_2 \cdot f(N)$$ for all $$N$$ greater than some $$N_0$$ (very large
-$$N$$).
-
-Note that this is a looser condition than big-theta since big-O doesn't include the lower bound.
-
-To see why we would prefer a theta bound consider the following simplified example. Would you know more about a person's age if they told you either 1. "I am between 30 and 40 years old" OR 2. "I am less than 40 years old"?
-
-### Big-Omega
-
-Sometimes it will also be useful to describe function runtimes using an $$\Omega$$ (Omega) bound, which you can think of as a lower bound. For example, if a tight $$\Theta$$ bound does not exist you could supply an $$O$$ and $$\Omega$$ bound. Practically speaking, an $$\Omega$$ bound by itself might be less useful than a $$\Theta$$ or $$O$$ bound, but in certain cases it will provide useful information.
-
-Similar to above, if we could think of big-theta as an $$=$$ (equals) sign, then big-$$\Omega$$ is like a
-$$\geq$$ sign. Likewise, the formal definition for big-Omega follows, $$R(N) \in
-\Omega(f(N))$$ if and only if there exists a positive constant $$k_1$$ such that
-$$R(N) \geq k_1 \cdot f(N)$$ for all $$N$$ greater than some $$N_0$$ (very large
-$$N$$).
-
-Note that this too is a looser condition than big-theta since big-Omega doesn't include
-the upper bound.
-
-We can return to our simplified example to again show why we prefer a theta bound. Would you know more about a person's age if they told you either 1. "I am between 30 and 40 years old" OR 2. "I am more than 30 years old"?
-
-### Back to Big Theta
-
-Now that we have learned big-Omega and big-O notation, where does big theta fall into this? We already said that big theta means *roughly equal*, but what does that mean? Given we have defined big-O as an *upper bound* and big-Omega as a *lower bound*, what happens if the tightest big-O bound
-is in the same family as the tightest big-Omega bound? This means the code is both
-upper bounded **AND** lower bounded by the same family of functions! This is what we mean by **equal**.
-
-A theta bound only exists if the tightest big-O bound is equal to the tightest big-Omega bound.
-
-## Discussion: Case Analysis
-
-> Read the following three sections of **[Chapter 8.4 from Runtime Analysis
-> Subtleties][]** all the way through **Big Omega**. You don't need to read the
-> last section on *Amortized Analysis*, yet. We will see that in a few labs!
-
-[Chapter 8.4 from Runtime Analysis Subtleties]: https://joshhug.gitbooks.io/hug61b/content/chap8/chap84.html#runtime-analysis-subtleties
-
-Discuss with someone *why* each of the following claims are true.
-
-- `removeZeroes` is in $$\Omega(1)$$.
-- `removeZeroes` is in $$\Omega(N)$$.
-- `removeZeroes` is in $$O(N^2)$$.
-- A $$\Theta(\cdot)$$ bound does not exist for `removeZeroes`.
-- In the best case, `removeZeroes` is in $$O(N^2)$$.
-- In the best case, `removeZeroes` is in $$\Theta(N)$$.
-- In the worst case, `removeZeroes` is in $$\Omega(\log N)$$.
-- In the worst case, `removeZeroes` is in $$\Theta(N^2)$$.
-
-### Limit Definition
-
-An alternative, the calculus-based [limit definition][] is also sometimes useful,
-as you can apply L'Hopital's Rule to derive asymptotic simplifications like
-dropping multiplicative constants and additive lower-order terms.
-
-We generally won't use this too often though, as the first definition provides
-a more useful and intuitive visualization of the lower and upper bounds.
-
-[limit definition]: https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-spring-2015/resources/mit6_042js15_session24/
-
-## Common Orders of Growth
-
-Here are some commonly-occurring estimates listed from no growth at all to
-fastest growth.
-
-- **Constant time**, often indicated with $$1$$.
-- **Logarithmic time** or proportional to $$\log N$$.
-- **Linear time** or proportional to $$N$$.
-- **Linearithmic time** or proportional to $$N \log N$$.
-- **Polynomial time** or proportional to $$N^{k}$$ for some constant $$k$$.
-- **Exponential time** or proportional to $$k^{N}$$ for some constant $$k$$.
-- **Factorial time** or proportional to $$N!$$ ($$N$$ factorial).
-
-![Orders of Growth](img/orders-of-growth.png)
-
-### Logarithmic Algorithms
-
-First, if you are shaky on the properties of logarithms, I suggest looking through
-[this](https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:logs/x2ec2f6f830c9fb89:log-prop/a/properties-of-logarithms) Khan academy section on log properties!
-
-We will shortly encounter algorithms that run in time proportional to $$\log
-N$$ for some suitably defined $$N$$. Recall from algebra that the base-10
-logarithm of a value is the exponent to which 10 must be raised to produce the
-value. It is usually abbreviated as $$\log_{10}$$. Thus
-
-- $$\log_{10} 1000$$ is 3 because $$10^{3} = 1000$$.
-- $$\log_{10} 90$$ is slightly less than 2 because $$10^{2} = 100$$.
-- $$\log_{10} 1$$ is 0 because $$10^{0} = 1$$.
-
-In algorithms, we commonly deal with the base-2 logarithm, written as $$\lg$$,
-defined similarly.
-
-- $$\lg 1024$$ is 10 because $$2^{10} = 1024$$.
-- $$\lg 9$$ is slightly more than 3 because $$2^{3} = 8$$.
-- $$\lg 1$$ is 0 because $$2^{0} = 1$$.
-
-Another way to think of log is the following: $$\log_{\text{base}} N$$ is the
-number of times $$N$$ must be divided by the base before it hits 1. For the
-purposes of determining orders of growth, however, the log base actually
-doesn't make a difference because, by the change of base formula, we know that
-any logarithm of $$N$$ is within a constant factor of any other logarithm of
-$$N$$. We usually express a logarithmic algorithm as simply $$\log N$$ as a
-result.
-
-Change of Base Formula
-: $$\log_b x = \frac{\log_a x}{\log_a b}$$
-
-Algorithms for which the running time is logarithmic are those where processing
-discards a large proportion of values in each iterations. The binary search
-algorithm is an example. We can use binary search in order to guess a number
-that a person is thinking of. In each iteration, we guess a number and are told whether the number they're thinking of is higher or lower than our guess. The algorithm then discards half the
-possible values for the searched-for number, repeating the process in the other half. Thus, we continually divide the size of
-the problem by 2 until there is only one value left.
-
-For example, say you started with a range of 1024 numbers in the number
-guessing game. Each time you would discard half of the numbers so that each
-round would have the following numbers under consideration:
-
-| Round # | Numbers left |
-|---------|--------------|
-| 1       | 1024         |
-| 2       | 512          |
-| 3       | 256          |
-| 4       | 128          |
-| 5       | 64           |
-| 6       | 32           |
-| 7       | 16           |
-| 8       | 8            |
-| 9       | 4            |
-| 10      | 2            |
-| 11      | 1            |
-
-We know from above that $$\lg 1024 = 10$$ which gives us an approximation of
-how many rounds it will take. We will see further applications of logarithmic
-behavior when we work with trees in subsequent activities.
-
-## Analyzing Iteration
-
-We've thus far defined the language of asymptotic analysis and developed some
-simple methods based on counting the total number of steps. However, the kind
-of problems we want to solve are often too complex to think of just in terms of
-number iterations times however much work is done per iteration.
-
-Consider the following function, `repeatedSum`.
+{% include alert.html content="
+The code maintains an important invariant: prior to any call to `next`,
+`curr` contains the index of the next value in the list to return.
+" %}
+
+We can then use our `SLList` class in an enhanced `for` loop.
 
 ```java
-long repeatedSum(int[] values) {
-    int N = values.length;
-    long sum = 0;
-    for (int i = 0; i < N; i += 1) {
-        for (int j = i; j < N; j += 1) {
-            sum += values[j];
-        }
-    }
-    return sum;
+SLList friends = SLList.of(5, 23, 42);
+Iterator<Integer> seer = friends.iterator();
+while (seer.hasNext()) {
+    int x = seer.next();
+    System.out.println(x);
 }
 ```
 
-In `repeatedSum`, we're given an array of `values` of length N. We want to take
-the repeated sum over the array as defined by the following sequences of values `j` takes on:
-
-- $$0, 1, 2, 3, \cdots, N - 1$$
-- $$1, 2, 3, 4, \cdots, N - 1$$
-- $$2, 3, 4, 5, \cdots, N - 1$$
-
-Notice that each time, the number of elements, or the iterations of `j`, being
-added is reduced by 1. While in the first iteration, we sum over all $$N$$
-elements, in the second iteration, we only sum over $$N - 1$$ elements. On the
-next iteration, even fewer: just $$N - 2$$ elements. This pattern continues until
-the outer loop, `i`, has incremented all the way to $$N$$.
-
-One possible approach to this problem is to draw a bar chart to visualize how
-much work is being done for each iteration of `i`. We can represent this by
-plotting the values of `i` across the X-axis of the chart and the number of
-steps for each corresponding value of `i` across the Y-axis of the chart.
-
-![Empty plot](img/empty-plot.png)
-
-Now, let's plot the amount of work being done on the first iteration of `i`
-where `i = 0`. If we examine this iteration alone, we just need to measure the
-amount of work done by the `j` loop. In this case, the `j` loop does work
-proportional to $$N$$ steps as the loop starts at 0, increments by 1, and only
-terminates when `j = N`.
-
-How about the next iteration of `i`? The loop starts at 1 now instead of 0 but
-still terminates at $$N$$. In this case, the `j` loop is proportional to $$N -
-1$$ steps. The next loop, then, is proportional to $$N - 2$$ steps.
-
-![Partial linear plot](img/partial-linear-plot.png)
-
-We can start to see a pattern forming. As `i` increases by 1, the amount of
-work done on each corresponding `j` loop decreases by 1. As `i` approaches
-$$N$$, the number of steps in the `j` loop approaches 0. In the final
-iteration, when `i = N - 1`, the `j` loop performs work proportional to 1 step.
-
-![Extrapolated linear plot](img/extrapolated-linear-plot.png)
-
-We've now roughly measured each loop proportional to some number of steps. Each
-independent bar represents the amount of work any one iteration of `i` will
-perform. The runtime of the entire function `repeatedSum` then is the sum of
-all the bars, or simply the area underneath the line.
-
-![Complete linear plot](img/complete-linear-plot.png)
-
-The problem is now reduced to finding the area of a triangle with a base of
-$$N$$ and height of also $$N$$. Thus, the runtime of `repeatedSum` is in
-$$\Theta(N^{2})$$.
-
-We can verify this result mathematically by noticing that the sequence can be
-described by the following summation:
-
-$$1 + 2 + 3 + ... + N = \frac{N(N + 1)}{2}$$,
-which after dropping lower order terms and multiplicative constants we see is in $$\Theta(N^{2})$$. It's useful to know both the formula as well as
-its derivation through the chart above.
-
-## Multivariate Analysis
-
-Sometimes we care about how the runtime of an algorithm will grow with respect to multiple variables. As an example, consider the `rectangle` function below that computes the area of a rectangle with side lengths `N` and `M`.
-
 ```java
-int rectangle(int N, int M) {
-    int area = 0;
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < M; j++) {
-            area += 1;
-        }
-    }
-    return area;
+SLList friends = SLList.of(5, 23, 42);
+for (int x : friends) {
+    System.out.println(x);
 }
 ```
 
-Analyzing this algorithm we see that the outer loop runs $$N$$ times and the inner loop runs $$M$$ times per each iteration of the outer loop. Since each iteration of the inner loop only does a constant amount of work, we find the resulting runtime to be in $$\Theta(MN)$$.
+### Designing Iterators
 
-## Analyzing Recursion
+Often, when writing our own iterators, we'll follow a similar pattern of doing
+most of the work in `next`.
 
-Now that we've learned how to use a bar chart to represent the runtime of an
-iterative function, let's try the technique out on a recursive function,
-`mitosis`.
+1. We save the item to output with `int toReturn = curr.item;`.
+2. Move the current state to the next item with `curr = curr.next`.
+3. Return the item we saved earlier.
+
+An important feature of the code is that `hasNext` **doesn't change any
+state**. It only examines existing state by comparing the progress of the
+iteration to the number of list elements. `hasNext` can then be called any
+number of times in a row and nothing should change, or it could be called not
+at all and the iteration should still work as long as there are elements left
+to be returned.
+
+### Discussion: Iterator Invariants
+
+Consider the following `SLListIterator`, slightly different from those we just
+encountered.
 
 ```java
-int mitosis(int N) {
-    if (N == 1) {
-        return 1;
+private class SLListIterator implements Iterator<Item> {
+    private IntListNode curr = sentinel;
+
+    public Integer next() {
+        curr = curr.next;
+        return curr.item;
     }
-    return mitosis(N / 2) + mitosis(N / 2);
+
+    public boolean hasNext() {
+        return curr.next != sentinel;
+    }
 }
 ```
 
-Let's start by trying to map each $$N$$ over the x-axis like we did before and
-try to see how much work is done for each call to the function. The conditional
-contributes a constant amount of work to each call. But notice that in our
-return statement, we make two recursive calls to `mitosis`. How do we represent
-the runtime for these calls? We know that each call to `mitosis` does a
-constant amount of work evaluating the conditional base case but it's much more
-difficult to model exactly how much work each recursive call will do. While a
-bar chart is a very useful way of representing the runtime of iterative
-functions, it's not always the right tool for recursive functions.
+Now, discuss the following questions with your partner:
 
-Instead, let's try another strategy: drawing call trees. Like the charting
-approach we used for iteration earlier, the *call tree* will reduce the
-complexity of the problem and allow us to find the overall runtime of the
-program on large values of $$N$$ by taking the tree recursion out of the
-problem. We will draw each call to the function as a node with its input size within the node, and recursive calls are drawn as children of a node. Consider the call tree for `fib` below.
+1. What's the invariant relation that's true between calls to `next`?
+2. In general, most experienced programmers prefer the organization introduced
+   first over this organization. What might explain this preference? Think
+   about both writing the iterator, and debugging it while it's in use.
+
+Finally, let's consider some questions about the order in which methods may be
+called on an `Iterator`:
+
+What if someone calls `next` when `hasNext` returns false?
+: This violates the iterator contract so the behavior for `next` is undefined.
+  Crashing the program is acceptable. However, a common convention is to throw a
+  `NoSuchElementException`.
+
+Will `hasNext` always be called before `next`?
+: Not necessarily. This is sometimes the case when someone using the iterator
+  knows exactly how many elements are in the sequence. For this reason, we can't
+  depend on the user calling `hasNext` when implementing `next`, and don't
+  typically change any state in `hasNext`.
+
+### Exercise: `AListIterator`
+
+As mentioned before, it is standard practice to use a separate iterator object
+(and therefore a separate, typically nested class) as the actual `Iterator`.
+This separates the `Iterator` from the underlying data structure or *iterable*.
+
+Modify the provided `AList` (array-backed list) class so that it `implements`
+`Iterable<Item>`. Then,
+add a nested `AListIterator` class which implements `Iterator<Item>`. Note that if
+you submit to the autograder before you implement this, your code likely will say
+that there are compilation errors coming from the autograder tests (you will see
+errors like "error: cannot find symbol" for calls to `a.iterator` or similar). Once
+you have properly completed this, the errors should go away. **Likewise, if you want 
+to test locally, you'll need to uncomment the test method in `AListTest.java`, and 
+make sure it doesn't have compilation errors.**
+
+{% include alert.html content="
+Note that `AList` itself does not implement `Iterator`. This is why we need
+a separate, nested, private class to be the iterator. Typically, this class
+is nested inside the data structure class itself so that it can access the
+internals of the object that instantiated the instance of the nested class.
+See `SLList` above for an example.
+Make sure that you've completed the following checklist.
+
+1. Does your `AList` object know anything about its `AListIterator`'s
+   state? Information about iteration (index of the next item to return)
+   should be confined to `Iterator` alone.
+2. Are multiple `Iterator`s for the same `AList` object independent of each
+   other? There can be multiple `Iterator`s for a single `AList` object, and
+   one iterator's operation should not affect the state of another.
+3. Does `hasNext` alter the state of your `Iterator`? It should not change
+   state.
+4. If there are no more elements left in the `Iterator` and the user tries to call
+   `next()`, throw a NoSuchElementException with the line `throw new NoSuchElementException();`
+" %}
+
+After you have modified your `AList` class, write some test code to see if
+Java's enhanced `for` loop works as expected on your `AList`.
+
+### Concurrent Modification
+
+For our lab, we regarded our data structure to be "frozen," while the
+`Iterator` was at work. In other words, we assumed that while we were operating
+on the iterators, the data structure would remain as is. However, this is not
+generally true in the real world.
 
 ```java
-int fib(int N) {
-    if (N <= 1) {
-        return 1;
-    }
-    return fib(n - 1) + fib(n - 2);
+ArrayList<BankAccount> accounts = ...;
+Iterator<BankAccount> it = accounts.iterator();
+while (it.hasNext()) {
+    // Remove the next account!
+    accounts.remove(0);
+    checkValidity(it.next()); // Wait, what?
 }
 ```
 
-![Fibonacci tree](img/fib-tree.png)
+If all clients of the data structure were to only read, there would be no
+problem. However, if any were to modify the data structure while others are
+reading, this could break the fundamental invariant that `next` returns the
+next item if `hasNext` returns true!
 
-At the *root* of the tree, we make our first call to `fib(n)`. The recursive
-calls to `fib(n - 1)` and `fib(n - 2)` are modeled as the two *children* of the
-root node. We say that this tree has a *branching factor* of two as each node
-contains two children. It takes a constant number of instructions to evaluate
-the conditional, addition operator, and the return statement as denoted by the
-`1` to the upper-right of each node. (Note that you may see call trees with nodes' input size and work performed in opposite positions. Be sure to understand what the numbers in your call tree represent.)
+To handle such situations, many Java iterators throw
+`ConcurrentModificationException` if they detect that the data structure has
+been externally modified during the iterator's lifetime. This is called a
+"fail-fast" behavior.
 
-We can see this pattern occurs for all nodes in the tree: each node performs
-the same constant number of operations if we don't consider recursive calls. If
-we can come up with a scheme to count all the nodes, then we can simply
-multiply by the constant number of operations to find the overall runtime of
-`fib`.
+Your main takeaway from this section should be that modifying data structures
+while iterating over them is dangerous!
 
-For a tree with branching
-factor $$b$$ and height $$h$$ we can compute the number of nodes as $$b^{h+1}-1$$ (if we think of the root as height 0). For the sake of asymptotic analysis, it is sufficient to use $$b^{h}$$ or $$b^{h+1}$$ as we will below (as an exercise, can you justify why?).
+## Error-Handling
 
-Spend a little time thinking about the maximum height of this tree: when does the base
-case tell us the tree recursion will stop?
+Above, we mentioned `NoSuchElementException` and
+`ConcurrentModificationException`. We've also (probably)
+seen `NullPointerException` and `ArrayIndexOutOfBoundsException`, among others
+before. These are errors, but why does Java stop the entire program when it
+hits an error, and is there any way to avoid it?
 
-> Note that the counting the number of nodes in this recursive call tree for `fib` ends up being a little tricky because the tree is not symmetric i.e. each of the two recursive calls made from one call to `fib` are not the same.
->
-> If you are interested, you can check out [this article](https://www.geeksforgeeks.org/time-complexity-recursive-fibonacci-program/) which explains how to compute a tight bound for `fib`.
+So far in this course, we have not dealt much with error-handling. You were
+allowed to assume that the arguments given to methods were formatted or
+structured appropriately. However, this is not always the case due to program
+bugs and incorrect user input. Here are a few examples of this:
 
-Returning to the original problem of `mitosis`, the call tree is setup just
-like `fib` except instead of decrementing $$N$$ by 1 or 2, we now divide $$N$$
-in half each time. Each node performs a constant amount of work but also makes
-two recursive calls to `mitosis(N / 2)`.
+1. Bugs in your programs might create inconsistent structures or erroneous
+   method calls (e.g. division by zero, indexing out of bounds, dereferencing a
+   null pointer).
+2. Users (or the outside world in general) cannot be trusted to give valid
+   input (e.g. non-numeric input where a number is required or search failures
+   where a command or keyword was misspelled).
 
-![N-time tree](img/n-tree.png)
+We assume in the following discussion that we can detect the occurrence of an
+error and at least print an error message about it.
 
-Like before, we want to identify both the branching factor and the height of
-the tree. In this case, the branching factor is 2 like before. Recall that the
-series $$N, N/2, \cdots , 4, 2, 1$$ contains $$\log_{2} N$$ elements since, if
-we start at $$N$$ and break the problem down in half each time, it will take us
-approximately $$\log_{2} N$$ steps to completely reduce down to 1, so the height of the tree will be $$\log_{2} N$$.
+A big challenge in dealing with an error is to provide information about it at
+the right level of detail. For instance, consider the error of running off the
+end of an array or list. If the contents of a list are inconsistent with the
+number of elements supposedly contained in the list, you might end up trying to
+"reference through a null pointer" or "index out of bounds". What should happen
+in this case?
 
-Plugging into the formula, we get $$2^{\log_{2} N}$$ nodes which simplifies to
-$$N$$. Therefore, $$N$$ nodes performing a constant amount of work each will
-give us an overall runtime in $$\Theta(N)$$.
+### Discussion: Error Handling
 
-There is another way to approach this analysis: going level by level. We can see that on the first level of the recursive call tree there is a single node doing a constant amount of work (1). On the second level we double the number of nodes, but each node still is doing a constant amount of work, so the total work on this layer is 1+1=2. Similarly, we can see that the work on level 3 is 4, on level 4 is 8, and so on following the pattern that the work on level $$i$$ is $$2^{i}$$. From the analysis above, we know that this tree has $$\log_{2} N$$ levels. Now, to figure out the total work done by the function we just need to sum up all the work done by all of the levels:
+The programmer may wish to pass information about the error back to the caller
+method with the hope that the caller can provide more appropriate and useful
+information about the root cause of the error and perhaps be able to deal with
+the error. However, this may be difficult.
 
-$$1 + 2 + 4 + \cdots + 2^{(log_{2} N) - 2} + 2^{(log_{2} N) - 1}$$
+Here are three approaches to error handling:
 
-$$ = 1 + 2 + 4 + \cdots + \frac{N}{4} + \frac{N}{2}$$
+- Don't try to pass back any information to the caller at all. Just print
+  some kind of error message (hopefully a useful one?) and stop the entire
+  program.
+- Detect the error and set some global error indicator (like a `public static`
+  variable in Java) to indicate its cause.
+- Detect the error and directly "return" the error information. This typically
+  is handled with a particular return type that indicates a possible error, or
+  by passing in a mutable argument that can be set to indicate the error.
 
-This is a geometric sum which is dominated by its last element. Here, the last element is larger than all of the elements that came before it combined (Exercise: prove this to yourself. As a hint, try out the first few powers of 2). This allows us to say the overall runtime is proportional to the last term giving us an overall runtime in $$\Theta(N)$$
+Different languages geared towards solving different types of problems take
+different approaches to error handling. Some newer languages, such as [Go][], and
+[Rust], for example, support a design similar to the third option.
 
-It will not always be the case that each layer in a recursive call tree will have the same amount of summed work, nor will it always be the case that each node in a recursive call tree will do the same amount of work. You will have to use the techniques at your disposal to solve these problems, which is a skill that takes time and practice to develop.
+[Go]: <https://go.dev/blog/error-handling-and-go>
+[Rust]: <https://doc.rust-lang.org/book/ch09-00-error-handling.html>
 
-In general, for a recursion tree, we can think of the total work as:
+Which seems most reasonable? Discuss with your partner, and defend your answer.
+If none, justify why all the options are bad.
 
-$$\sum_{\text{layers}} \frac{\text{nodes}}{\text{layer}
-}\frac{\text{work}}{\text{node}}$$
+### Exceptions
 
-For `mitosis`, we have $$\log N$$ levels,
-$$2^(i-1)$$ nodes in layer $$i$$, with $$1$$ work per node. Thus we see the summation will be as follows, which matches the quantity we just calculated:
+There is a fourth option for handling errors, called an *exception*. Provided
+by Java and other modern programming languages, including C++ and Python, an
+exception signals that an
+error of some sort has occurred. Java allows both the *signaling* of an error
+and selective *handling* of the error. Methods called between the signaling
+method and the handling method need not be aware of the possibility of the
+error.
 
-$$\sum_{i = 0}^{\log N} 2^i (1)$$
+An exception is *thrown* by the code that detects the exceptional situation,
+and it is *caught* by the code that handles the problem, if any.
 
-## Recap
+{% include alert.html content="
+Read Chapter **[6.2](https://joshhug.gitbooks.io/hug61b/content/chap6/chap62.html)** of the online textbook to learn more
+about exceptions.
+" %}
 
-Runtime Minimization
-: One of the most important properties of a program is the time it takes to
-execute. One goal as a programmer is to minimize the time (in seconds) that a
-program takes to complete.
+To manually throw an exception, we use the `throw` keyword, along with the
+exception instance we're throwing:
 
-Runtime Measurement
-:   - Measure the number of seconds that a program takes to complete using a
-    stopwatch (either physical or in software). This tells you the actual
-runtime, but is dependent on the machine and inputs.
-    - Count the number of operations needed for inputs of a given size. This is
-      a machine independent analysis, but still depends on the input, and also
-doesn't actually tell you how long the code takes to run.
-    - Derive an algebraic expression relating the number of operations to the
-      size of an input. This tells you how the algorithm scales, but does not
-tell you how long the code takes to run.
+```java
+throw new RuntimeException("yeet");  // Ideally you'll write better error messages...
+```
 
-Algorithm Scaling
-:   While we ultimately care about the runtime of an algorithm in seconds, we'll
-often say that one algorithm is better than another simply because of how it
-scales. By scaling, we mean how the runtime of a piece of code grows as a
-function of its input size. For example, inserting at the beginning of
-ArrayList on an old computer might take $$R(N) = 0.0001N$$ seconds, where $$N$$
-is the size of the list. For example, if the runtime of two algorithms is $$R_1(N) = N^2$$, and
-$$R_2(N) = 5000 + N$$, we'd say algorithm $$R_2$$ is better, even though
-$$R_1$$ is much faster for small $$N$$.
+If we want to do anything with the exception, such as gracefully continuing
+the program, or printing a better error message, we'll need to catch it with
+a `try catch` block.
 
-Order of Growth
-:   The result of applying our last 3 simplifications gives us the order of
-growth of a function. So for example, suppose $$R(N) = 4N^2 + 3N + 6$$, we'd
-say that the order of growth of $$R(N)$$ is $$N^2$$.
+```java
+try {
+    // code that might throw an exception
+} catch (IOException e) {  // We have to catch a specific type of exception
+    // Let's handle the exception somehow.
+}
+```
 
-    The terms "constant", "linear", and "quadratic" are often used for
-algorithms with order of growth $$1$$, $$N$$, and $$N^2$$, respectively. For
-example, we might say that an algorithm with runtime $$4N^2 + 3N + 6$$ is
-quadratic.
+Different exceptions will have different constructors. We can also define our
+own exception classes, but this is out of scope.
 
-Simplified Analysis
-:   Once we've chosen a cost function, we can either:
-    - Compute the exact expression that counts the number of operations.
-    - Use intuition and inspection to find the order of growth of the number of operations.
+An extension to the `try catch` block construct that often comes in handy is
+the `finally` block. A `finally` block comes after the last `catch` block and
+is used to do any cleanup that might be necessary, such as releasing resources
+the `try` block was using. This is very common when working with input-output
+like opening files on your computer.
 
-    This latter approach is generally preferable, but requires a lot of
-practice. One common intuitive/inspection-based approach is use geometric
-intuition. For example, if we have nested for loops where i goes from 0 to N,
-and j goes from i + 1 to N, we observe that the runtime is effectively given by
-a right triangle of side length N. Since the area of a such a triangle grows
-quadratically, the order of growth of the runtime is quadratic.
+```java
+Scanner scanner = new Scanner(System.in);
+int k;
+try {
+    k = scanner.nextInt();
+} catch (NoSuchElementException e) {
+    // Ran out of input
+} catch (InputMismatchException e) {
+    // Token isn't an integer
+} finally {
+    // finally will be executed as long as JVM does not exit early
+    scanner.close();
+}
+```
 
-Big-Theta
-:   To formalize our intuitive simplifications, we introduce big-theta
-notation. We say that a function $$R(N) \in \Theta(f(N))$$ if there exists
-positive constants $$k_1$$ and $$k_2$$ such that $$k_1 \cdot f_1(N) \leq R(N)
-\leq k_2 \cdot f_2(N)$$.
+This use of the `finally` block so common that the Java language developers
+introduced the `try-with-resources` block. It allows you to declare resources
+being used as part of the try block, and automatically release those resources
+after the block finishes executing. The code below is equivalent to the snippet
+above, but it doesn't use the `finally` block.
 
-    When using $$\Theta$$ to capture a function's asymptotic scaling, we avoid
-unnecessary terms in our $$\Theta$$ expression. For example, while $$4N^2 + 3N +
-6 \in \Theta(4N^2 + 3N)$$, we will usually make the simpler claim that is
-$$4N^2 + 3N + 6 \in \Theta(N^2)$$.
+```java
+int k;
+try (Scanner scanner = new Scanner(System.in)) {
+    k = scanner.nextInt();
+} catch (NoSuchElementException e) {
+    // ran out of input
+} catch (InputMismatchException e) {
+    // token isn't an integer
+}
+```
 
-    Big-theta is exactly equivalent to order of growth. That is, if a function
-$$R(N)$$ has order of growth $$N^2$$, then we also have that $$R(N) \in
-\Theta(f(N))$$.
+{% capture alertContent %}
+Even though we've presented exceptions last, this is solely because Java uses
+them as its error-handling mechanism. This shouldn't be interpreted as
+"exceptions are the best method of error-handling".
 
-In the final section, we applied what we learned about counting steps,
-estimation, and orders of growth to model algorithmic analysis for larger
-problems. Two techniques, **charting** and **drawing call trees**, helped us
-break down challenging problems into smaller pieces that we could analyze
-individually and recombine to form the final solution.
+Exceptions, similar to the other methods, of error-handling, have benefits
+and drawbacks. What are some of these benefits and drawbacks?
+{% endcapture %}
+{% include alert.html type="warning" content=alertContent %}
 
-Below, we will list some tips and formulas that will be handy when you start
-finding the asymptotic runtimes of functions.
+## Deliverables
 
-### Practical Tips
+Here's a quick recap of the tasks you'll need to do to complete this lab:
 
-1. Before attempting to calculate a function's runtime, first try to understand
-   what the function does.
-2. Try some small sample inputs to get a better intuition of what the
-   function's runtime is like. What is the function doing with the input? How
-does the runtime change as the input size increases? Can you spot any 'gotchas'
-in the code that might invalidate our findings for larger inputs?
-3. Try to lower bound and upper bound the function runtime given what you know
-   about how the function works. This is a good sanity check for your later
-observations.
-4. If the function is recursive, draw a call tree to map out the recursive
-   calls. Within each node, denote how much work that specific node does. Then,
-   note the total (sum) work done on each *level*. You should also find the height
-   of the recursive call tree. This breaks the problem down into
-   smaller parts that we can analyze individually. Once each part of the tree has been analyzed, we can then
-   reassemble all the parts to determine the overall runtime of the function.
-5. If the function has a complicated loop, draw a bar chart to map out how much
-   work the body of the loop executes for each iteration.
-6. **Only consider what happens for very large N.** If you see a statement like `if (N < 1) {return 0}` at the top of an algorithm this doesn't mean that we can immediately say the algorithm has a best case runtime in $$\Theta(1)$$. This is a *very* common mistake.
+- Make the `User` class implement `Comparable`.
+- Make `AList` implement `Iterable`, as well as adding your iterator class to the `AList.java` file.
 
-### Useful Formulas
+Additionally, you'll need to work with exceptions in Gitlet, so
+understanding those will be helpful as well.
 
-- $$1 + 2 + 3 + 4 + \cdots + N$$ is in $$\Theta(N^2)$$.
-- There are $$N$$ terms in the sequence $$1, 2, 3, 4, \cdots, N$$.
-- $$1 + 2 + 4 + 8 + \cdots + N$$ is in $$\Theta(N)$$.
-- There are $$\log N$$ terms in the sequence $$1, 2, 4, 8, \cdots, N$$.
-- The number of nodes in a complete tree, $$N$$, is approximately $$b^h$$ where
-  $$b$$ is the *branching factor* and $$h$$ is the *height* of the tree.
-- All logarithms are proportional to each other by the Change of Base formula
-  so we can express them generally as just $$\log$$.
-
-It's worth spending a little time proving each of these to yourself with a
-visual model! I personally recommend Desmos or WolframAlpha.
-
-### Deliverables
-
-A quick recap of what you need to do to finish today's lab.
-
-- Look through the `Timer` class and try timing the algorithm in `Sorter.java`
-  for different inputs. Discuss with your neighbors what you
-came up with.
-- Read through the content on asymptotic analysis (big-theta, O, and omega)
-  focusing on how to handle logarithmic, iterative, and recursive algorithms.
-- **Complete the online assessment on Gradescope. There is no coding submission.**
-
+Be sure to submit to Gradescope and add your partner if you have one!

@@ -1,28 +1,38 @@
 ---
 layout: page
 title: >-
-  FAQ - Lab 04
+  FAQ
 parent: >-
-  Lab 04: Linked Lists
+  Lab 04: Debugging & Test-Driven Development
 grand_parent: Labs
 has_right_toc: true
 released: true
 ---
 
-### In lecture we were talking about IntLists; what are these Linked Lists you speak of?
+## I'm getting merge conflicts after re-pulling the skeleton
 
-Linked List refers to a specific structure: items that are stored in nodes which are aware of the node
-that follows them. Sometimes when we are talking about Linked Lists, we refer to them by specifying the 
-*type* of the item, followed by "List". This means that IntLists are Linked Lists which only hold items of
-type int!
+First, add and commit your local changes so that `git status` reads that your working
+tree is clean.
 
-### The internet keeps referring to "value" and "rest" when talking about Linked Lists -- what is that?
+Then, refer to the [Git WTFs](../../guides/git/wtfs) section on resolving merge
+conflicts. You'll need to incorporate both your local changes (this likely
+includes your `BombMain` passwords) and the bug fixes
+from the skeleton.
 
-There are multiple ways to define and interact with Linked Lists. In this course, we use "item" to refer to the
-data being stored by each node and "next" to refer to the element immediately following the current node. Other implementations,
-however, are also completely valid. It is very likely in searching the internet you will see "item" referred to as "value"
-and "next" referred to as "rest" -- meaning recursive access to the rest or remaining segment of the Linked List.
+After you've resolved the merge conflicts in the files, you'll need to re-add and commit them
+to complete the merge.
 
-### My code does not change the "value" of any of the nodes -- why am I not passing constructive concatenate?
+Come into office hours or lab if you're unsure on what to do!
 
-Make sure you aren't changing the other element of each node, their "next" pointer! This is a vital part of your Linked List as well!
+
+## There's a lot of red in my IntelliJ
+
+First, be sure you've imported the libraries correctly. Refer back to step 5 of the
+[Assignment Workflow](../../../materials/guides/assignment-workflow/#opening-in-intellij)
+if you need a refresher on how to do this.
+
+If that doesn't work, be sure that `src` is blue and `tests` is green. Refer to
+the [IntelliJ WTFS](../../../materials/guides/intellij/wtfs/#i-cant-run-my-java-filefiles-dont-show-up-as-java-files)
+to mark your `src` and `tests` folders appropriately.
+
+

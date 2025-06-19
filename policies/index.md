@@ -37,43 +37,130 @@ at UC Berkeley.*
 
 ## General Background Information
 
-### Welcome to CS 61B
+### Welcome to CS 61BL
 
-The CS 61 series is an introduction to Computer Science, with particular emphasis on software and machines from a programmer’s point of view. CS 61A covered high-level approaches to problem-solving, providing you with a variety of ways to organize solutions to programming problems as compositions of functions, collections of objects, or sets of rules. In CS 61B, we move to a somewhat more detailed (and to some extent, more basic) level of programming by focusing particularly on the efficiency of writing programs (design) and running programs (runtime).
+The CS 61 series is an introduction to computer science, with particular
+emphasis on software and machines from a programmer’s point of view. In CS 61A,
+students are exposed to a diverse set of mental models for computational
+problems and solutions through programming paradigms like functional
+programming, object-oriented programming, and declarative programming. In CS
+61BL, we refine those mental representations by focusing particularly on the
+efficiency of writing programs (design) and running programs (runtime). Further,
+we aim to achieve a basic understanding of fundamental topics in theoretical
+computer science, as part of our work on improving performance.
 
+### Hours and Workload
+
+This is a summer course, which means it is run at twice the speed of a course
+during the normal semester. In addition, CS 61B naturally has more involved
+programming than CS 61A, and CS 61BL has even more, so expect there to be a lot
+of work. **We strongly recommend not taking any other courses alongside CS
+61BL.**
+
+While we can’t predict how many hours you will spend on the course, here is a
+brief breakdown of what you will have to do in this course.
+
+- Four 2 hour practical labs per week on Monday - Thursday.
+- Two one-hour live lectures per week on Monday and Wednesday, with pre-recorded lecture videos to watch before class.
+- One homework per week (total of 6).
+- Two exams (one midterm, one final) in the 8 weeks of the course.
+- Four projects in the 8 weeks of the course.
 
 ### Prerequisites
 
-This class assumes you have taken CS 61A, CS 88, or E7, or have equivalent background to a student who has taken one of these courses. The course is largely built upon the assumption that you have taken CS 61A. CS 88 and E7 students may find the beginning of the course to be a bit scarier, particularly when it comes to object oriented programming. We assume you are coming in with zero Java experience, but we will move through basic Java syntax very quickly.
-
-If you already have Java experience, great! We hope that you’ll help out yourfellow students in discussion, lab, and on our class forum, particularly in the opening weeks when everyone is catching up on Java.
-
+CS 61A is an important prerequisite. We expect to build heavily on
+data-oriented and object-oriented design approaches introduced in this course
+and on algorithms for recursive list and tree manipulation. Engineering 7 / CS
+88 / Data 8 students may find the beginning of the course to be a bit
+scarier, particularly when it comes to object-oriented programming and
+recursion. We assume you are coming in with zero Java experience, but we will
+move through basic Java syntax very quickly.
 
 ### Alternatives
 
-This is a course about data structures and programming methods. It happens to also teach Java, since it is hard to teach programming without a language. However, it is **not** intended as an exhaustive course on Java, creating Android apps, user interfaces, graphics, or any of that fun stuff.
+This is a course about data structures and programming methods. For those who
+may have already had a data structures course and simply want to learn Java,
+self-study may be a better option.
+Students with “sufficient partial credit” in CS 61B should consider taking CS
+47B to complete the CS 61B requirement without taking the full course. Both of
+these self-paced courses are only offered during the fall and spring semesters.
 
-Some of you may have already taken a data structures course, and simply want to learn Java or C++. For you, self-study may be a better option.
+### Goals and Class Norms
 
-Finally, the 1-unit self-paced course CS 47B is for students with “sufficient partial credit in 61B,” allowing them (with instructor’s permission) to complete the CS 61B course requirement without taking the full course. The 47B guide is at [this link](47b/index.md).
+We are committed to creating a learning environment welcoming of all students that supports a diversity of thoughts, perspectives and experiences and respects your identities and backgrounds (including race, ethnicity, nationality, gender identity, socioeconomic class, sexual orientation, language, religion, ability, and more.) To help accomplish this:
 
+- If your name and/or pronouns differ from those that appear in your official records, please let us know.
+- In scheduling exams, we have attempted to avoid conflicts with major religious holidays. If, however, we have inadvertently scheduled an exam or major deadline that creates a conflict with your religious observances, please let us know as soon as possible so that we can make other arrangements.
+- If you feel like your performance in the class is being affected by your experiences outside of class (e.g., family matters, current events), please don’t hesitate to come and talk with us. We want to be resources for you.
 
-### Mental Health and Wellness
+Professionalism and respect for diversity are not just matters between students; they also apply to how the course staff treat the students. The staff of this course will treat you in a way that respects our differences. However, despite our best efforts, we might slip up, hopefully inadvertently. We (like many people) are still in the process of learning about diverse perspectives and identities. If you are concerned about classroom environment issues created by the overall class dynamic or by the staff, please feel free to talk to us about it.
 
-As a student you may experience a range of issues that can cause barriers to learning, such as strained relationships, increased anxiety, alcohol/drug problems, depression, difficulty concentrating and/or lack of motivation. These mental health concerns or stressful events may lead to diminished academic performance or reduce a student’s ability to participate in daily activities. UC offers services to assist you with addressing these and other concerns you may be experiencing. If you or someone you know are suffering from any of the aforementioned conditions, consider utilizing the confidential mental health services available on campus. We encourage you to reach out to the Counseling Center for support. An on campus counselor or after-hours clinician is available 24/7.
+If something was said in class (by anyone—staff member or fellow student) that made you feel uncomfortable, please talk to us about it. Sometimes, you may not be comfortable bringing this up directly to us. Here are some options:
+- via the [61BL SU25 Incident Reporting Form.](https://forms.gle/kvTnbkvhYPZdiKbY6)
+- via email to our instructors, head TAs, or another member of staff you're comfortable with.
+- via the department's [Student Climate and Incident Reporting Form.](https://docs.google.com/forms/d/e/1FAIpQLSc4NYHdUJ8IzYA1SoiTinWBybGWkj0mfmdnHAeygAxkZajelQ/viewform)
 
-The National Suicide Prevention Lifeline is a 24-hour number any student or faculty/staff person can call to speak with someone about suicide: (800) 273-TALK (8255).
+### Remote Policy
 
-More resources can be found under our [Resources tab](../resources/support/index.md).
+This is, per university policy, an in-person course. **However, we will make at least one 
+lab section online, though we have no guarantees about meeting online demand.**
+Please note, however, that our ability to support those in other timezones will be 
+limited by our need to sleep at night. That means that, if you are on the other side 
+of the world, you may have to be up at night to attend our offerings. We thus do 
+not recommend that you take the course if you will not be physically located in an 
+amenable timezone, although we will not prevent you. **You must take the exams in person.** Everything other than exams can be done remotely.
 
-If you're experiencing extenuating circumstances impacting your mental health and would like to meet with a member of course staff to work out accommodations within the course, or would like to be connected to more resources, [you can set up a meeting with us here]({{site.links.student_support_meetings}}).
+### Mental Health & Wellness
 
+As a student you may experience a range of issues that can cause barriers to
+learning, such as strained relationships, increased anxiety, alcohol/drug problems,
+depression, difficulty concentrating and/or lack of motivation. Your mental health is more important than this course. **Seriously.** UC Berkeley offers services to assist you with addressing mental health concerns or stressful events:
+
+- [Counseling and Psychological Services](https://uhs.berkeley.edu/caps) has multiple free, confidential services. An on campus counselor or after-hours clinician is available 24/7.
+  - [UHS Casual Consulting](https://uhs.berkeley.edu/counseling/lets-talk)
+  - [UHS Crisis Management Counseling](https://uhs.berkeley.edu/counseling/urgent)
+- [UHS's mental health resources](https://uhs.berkeley.edu/health-topics/mental-health) offers guides, handbooks, and more.
+- The National Suicide Prevention Lifeline is a 24-hour number any student or faculty/staff person can call to speak with someone about suicide: +1-800-273-TALK (+1-800-273-8255).
+- Support is also available for survivors of sexual violence or harassment. Note that course staff are [Responsible Employees](https://svsh.berkeley.edu/responsible-employee) for such incidents. Campus also has free, confidential services available:
+  - [UC Berkeley Sexual Violence Services](https://svsh.berkeley.edu/)
+  - [PATH to Care Center: Reporting and Privacy](https://survivorsupport.berkeley.edu/Confidential-Resources-Anonymous-Reporting-and-Privacy)
+
+If you're in need of laptops, Wi-Fi hotspots, or other required technologies, check out the [Student Technology Equity Program.](https://technology.berkeley.edu/STEP)
+
+{% include alert.html type="info" content="If you’re experiencing extenuating circumstances impacting your mental health and would like to meet with a member of course staff to work out accommodations within the course, or would like to be connected to more resources, fill out our [Extenuating Circumstances form](#extenuating-circumstances). " %}
 
 ### Accommodation
 
-UC Berkeley is committed to creating a learning environment that meets the needs of its diverse student body including students with disabilities. If you anticipate or experience any barriers to learning in this course, please feel welcome to discuss your concerns with the instructors.
+UC Berkeley is committed to creating a learning environment that meets the
+needs of its diverse student body including students with disabilities. If you
+anticipate or experience any barriers to learning in this course, please feel
+free to email [cs61bl@berkeley.edu](mailto:cs61bl@berkeley.edu).
 
-If you have a disability, or think you may have a disability, you can work with the Disabled Students’ Program (DSP) to request an official accommodation. The Disabled Students’ Program (DSP) is the campus office responsible for authorizing disability-related academic accommodations, in cooperation with the students themselves and their instructors. You can find more information about DSP, including contact information and the application process here. If you have already been approved for accommodations through DSP or are working through the process, you can schedule a student support meeting with course staff [here]({{site.links.student_support_meetings}}) to ask any questions or develop an implementation plan if needed. 
+If you have a disability, or think you may have a disability, you can work with
+the Disabled Students' Program (DSP) to request an official accommodation. The
+Disabled Students' Program (DSP) is the campus office responsible for
+authorizing disability-related academic accommodations, in cooperation with the
+students themselves and their instructors. You can find more information about
+DSP, including contact information and the application process [here][DSP]. If
+you have already been approved for accommodations through DSP, please schedule
+a meeting with the instructors so we can develop an implementation plan
+together.
+
+[DSP]: https://dsp.berkeley.edu
+
+### Land Statement
+
+We recognize that Berkeley sits on the territory of Huichin, the ancestral and
+unceded land of the Chochenyo Ohlone, the successors of the historic and
+sovereign Verona Band of Alameda County. This land was and continues to be of
+great importance to the Ohlone people. We recognize that every member of the
+Berkeley community has, and continues to benefit from the use and occupation of
+this land, since the institution's founding in 1868. Consistent with our values
+of community and diversity, we have a responsibility to acknowledge and make
+visible the university's relationship to Native peoples. By offering this Land
+Acknowledgment, we affirm Indigenous sovereignty and will work to hold
+University of California Berkeley more accountable to the needs of American
+Indian and Indigenous peoples.
 
 ---
 
@@ -81,379 +168,444 @@ If you have a disability, or think you may have a disability, you can work with 
 
 ### Lecture
 
-Lecture is scheduled on Monday, Wednesday, and Friday from 1–2pm in VLSB 2050. Since the classroom is not large enough to allow all enrolled students to physically attend, lecture will be simultaneously webcast over Zoom.
+This summer, we will be using a _flipped classroom_ format. Students are **expected** to watch pre-recorded lecture videos from previous semesters before attending class (except for the first lecture). Live lecture sessions will focus on deepening your understanding of the material through conceptual reviews, interactive problem-solving, and Q&A.
+Lecture will be held on **Mondays and Wednesdays from 9–10am in Evans 10**. Because the classroom cannot accommodate all enrolled students, lectures will also be webcast live over Zoom to ensure full access. Whether attending in person or virtually, active participation is encouraged to make the most of our collaborative in-class time.
 
-We will post lecture recordings as well as Josh Hug's pre-recorded web videos to the content schedule on the main page. Both will cover the same content.
+### Labs
 
+Lab sections meet Monday through Thursday. You may only attend the lab section which you signed up for.
+In-person labs will be held in a lab room in Soda Hall. Remote labs will be held over 
+Zoom where you will be working primarily in breakout rooms (TAs / Tutors will join the breakout room when you need assistance).
 
-### Discussion
+These labs are practical labs that emphasize hands-on experience with the course material.
+They involve coding assignments that are submitted for credit. Labs will also have a small attendance credit (see grading breakdown below).
 
-Discussion sections are 1 hour long and feature a worksheet with problems reviewing the material learned in the past week. In discussion sections, TAs will help students review the material and solve the problems on the worksheet. Note that your TA may not cover all the problems on the worksheet, and that's intentional - you can review the remaining problems later with our posted solutions and walkthroughs.
-
-Discussion sections will primarily be held in-person, though we may have limited remote options on Zoom.
-
-The schedule of discussion sections can be found at the bottom of our
-course website's [main page](/#disccal). Information about the staff running each section can be found on the staff page.
-
-You can attend any section(s) you like. There are no signups. Discussion attendance is not mandatory, though you are given [pacing points](#pacing-points) for attending.
-
-We have three (3) different types of discussions this semester:
-
-**Bridge (2hr)**: This is a two-hour discussion section intentionally organized for students who are not as familiar with the material that week, and want more emphasis on the concepts before diving into the discussion worksheet. It’s a great way to get a little more comfortable with the topics and receive more individualized attention during the section. The material and difficulty covered during the bridge discussion section will be the same as the regular discussion section, and we’ll have an extended mini-lecture to reinforce conceptual understanding.
-
-**Regular (1hr)**: This section is best for students who are caught up with lectures and are ready to tackle some medium-difficulty questions. We recommend attending this section if you are unsure which to attend.
-
-**Exam-level (1hr)**: Exam-level sections are faster-paced sections that cover a different worksheet with more difficult problems. The goal of these sections is to get comfortable with exam-level problems and problem-solving strategies. In general, there will be less focus on review/mini-lecture and more time spent on the problems.
-
-
-### Lab
-
-Lab sections are 2 hours long and feature coding assignments that students submit for credit. In these sections, TAs will introduce the assignment, review relevant material, and answer students’ questions.
-
-Similar to discussions, the schedule of lab sections can be found at the bottom of our
-course website's [main page](/#disccal). Information about the staff running each section can be found on the staff page.
-
-You can attend any section(s) you like. There are no signups. Discussion attendance is not mandatory, though you are given [pacing points](#pacing-points) for attending.
-
-Labs will only be held in-person. 
-
-  
-### Office Hours
-
-In Office Hours, you can get help from our staff with the different assignments, exam preparation, logistical matters, and any advice you may need. We will hold both in-person and online office hours. You may also use lab sections to ask questions unrelated to lab.
-
-We will hold Office Hours over Zoom. To learn more about how CS 61B Office Hours work, please read our [Office Hours Guide](../resources/guides/oh/index.md). We will use the online [Office Hours Queue](https://cs61b-oh.eecs.berkeley.edu) to keep track of students in Office Hours. Staff will always skip tickets on the queue that do not adhere to our Office Hours policies.
-
----
-
-## Resources
-
-### Website
-
-The [course home page]({{ site.url }}) will provide one-stop shopping for course information. The course schedule as well as all handouts, homework, labs, FAQs, etc., will be posted there.
-
-### Discussion Forum
- Our discussion forum this semester will be Ed Discussions. For most questions about the course, Ed is the right place to ask them. The course staff reads it regularly, so you will get a quick answer. Furthermore, by posting online as opposed to emailing us directly, other students benefit by seeing the question and the answer. Don't forget to check Ed before asking your question, just in case someone else has already posted it. If you have a question about something pertaining to your own code that shouldn’t be shared with the class, or if you have a question about a personal matter, you can make a private post on Ed, which will only be seen by the instructors and staff.
-
-Please read our [Ed Guide](../resources/guides/ed/ed-guide.md) and [Policies](../resources/guides/ed/index.md). We will only respond to questions that adhere to our policies of using Ed.
-
-
-### Official Staff Emails
-Below are the two main staff emails that you might interact with throughout the semester: 
-- [**cs61b@berkeley.edu**](mailto:cs61b@berkeley.edu): emailing to this address will send a message to the course staff (instructors and the head/admin TAs). You can use it for correspondence that you don't want to seen on our class forum. If you send a question that is of general interest, we may post the response on Ed (we will keep personal information out of it, of course). In general, you should expect a response within a few days. People who have the "CS61b@" tag on the staff page will have access to this email. 
-
-{: .warning}
-If you have any problems that require an exception to course policy (e.g. medical emergencies or sudden necessary travel that result in extended absences), please contact [cs61b@berkeley.edu](mailto:cs61b@berkeley.edu). **Please do not email the instructors or course staff for exceptions.**
-
-- [**cs61b-student-support@berkeley.edu**](mailto:cs61b-student-support@berkeley.edu): This e-mail address will be mainly used to handle student support related concerns and send out decision emails for extenuating circumstances extension requests. You should email to this address if you have any questions or concerns related to student support meetings, extenuating circumstances, extensions, and DSP accommodations. People who have the "Student Support" tag on the staff page will have access to this email. 
-
-You might interact with the following staff emails less often, but please direct any related questions if necessary: 
-
-- [**cs61b-misconduct@berkeley.edu**](mailto:cs61b-misconduct@berkeley.edu): email used for handling misconduct-related tasks. You should email to this address if you have any questions or concerns related to the academic misconduct policy. 
-
-- [**cs61b-incompletes@berkeley.edu**](mailto:cs61b-incompletes@berkeley.edu): email used for handling incompletes. 
-
-
-
-### Beacon
-
-Rather than using bCourses, we will be using our own custom learning management system called Beacon located at [beacon.datastructur.es]({{ site.links.beacon }}). You can use Beacon to keep track of your grades and late assignments. You can also read our full guide on Beacon [here](../resources/guides/beacon/index.md).
-
-
-### Reading
-
-**There is no required textbook for the class.**
-
-There is an online textbook written by myself and a large team of course staff. It can be found at [https://cs61b-2.gitbook.io/cs61b-textbook/](https://cs61b-2.gitbook.io/cs61b-textbook/). If you find these notes insufficient, you might consider consulting [Paul Hilfinger's (free) Java Reference](http://www-inst.eecs.berkeley.edu/~cs61b/fa14/book1/java.pdf)
-or [Head First Java, 2nd Edition by Sierra and Bates (O'Reilly, 2005)](https://www.google.com/search?q=head+first+java). These are not required for the course. The **optional** textbook for the weeks 5-14 of the course is Algorithms, 4th Edition by Wayne and Sedgewick.
-
-The official description of the Java core language is available online in [The Java Language Specification](https://docs.oracle.com/javase/specs/jls/se21/html/index.html) (Java SE 21 Edition) by James Gosling, Bill Joy, Guy Steele, Gilad Bracha, Alex Buckley, Daniel Smith, and Gavin Bierman. It's extremely thorough and precise, at the expense of being quite dense and technical. You may find the official [Java 21 documentation](https://docs.oracle.com/en/java/javase/21/docs/api/index.html) to be useful as well.
-
-
-### Software
-
-This official coding environment and text editor for the course is the Integrated Development Environment (IDE) called IntelliJ. While we will not enforce using IntelliJ, we strongly recommend it. We will not officially support any editing or programming environment other than IntelliJ.
-
-This semester, we will use Java 17 or higher. We require you to have an IntelliJ 2023.2 or higher in order to prevent setup issues with our style checker. 
-
-You will be able to do any work you’d like on any Windows, Mac OS X, or Linux computer. You will set up your own computer in Lab 1.
-
-We'll be using the version-control system [Git](https://git-scm.com/) this semester with private repositories on [GitHub](https://github.com/). Version-control systems allow you to maintain a series of “snapshots” of your files at various points in their development. Used properly, this provides you some back-up protection, so that you can recover previous states of your work when something goes wrong. Also for team-oriented projects (as well as in the real world), version-control systems help manage collaborative work.
-
----
-
-## Coursework
-
-There are five required aspects of the course for which you earn points:
-
-1. Weekly Surveys
-2. Lab Assignments
-3. Homeworks
-4. Projects
-5. Exams
-
-
-### Weekly Surveys
-
-While lecture and section attendance is not required, nor even expected, we do expect you to stay up to date with material. To help us keep track of your progress and sentiment about the course, there will be 12 weekly surveys due on Mondays at 11:59 PM, with a 24 hour grace period. 
-
-Submitting 10 weekly surveys will receive full credit (i.e. you can skip 2). Submitting more will not yield extra credit.
-
-
-### Lab Assignments
-
-During Phase I of the course (Weeks 1 through 5), labs will provide you with help getting your computer set up and teach you how to use essential Java programming tools, and will also include a peer code review after we’re done with Project 1.
-
-During Phases II and III of the course (Weeks 6 - 15), labs will usually involve implementation of some data structure or algorithm described in lecture. All labs should take no more than two hours to complete, though some may run slightly longer. You will turn in everything electronically using GitHub, and your results will be available on Gradescope.
-
-Labs are graded according to autograder tests on Gradescope. There are no hidden tests for which your score is not displayed, though we may have tests which you do not have access to.
-
-There are 8 labs, worth a total of 40 points (5 points per lab). You do not need to attend lab to receive credit for lab.
-
-This semester, we are **not** allowing lab partners for lab assignments. We do encourage you to discuss ideas (see the [Lab Collaboration policy](#homework-and-lab-collaboration)), but the code you submit should be your own.
-
-No labs will be dropped, though we have a generous lateness policy.
-
+If you would like to swap to a lab section that you are not officially enrolled
+in you must email [cs61bl@berkeley.edu](mailto:cs61bl@berkeley.edu). **Attending a lab that you are not officially
+enrolled in or have not received permission to attend may result in you being 
+de-prioritized for help.**
 
 ### Homeworks
 
-There are 5 required homework assignments in the course.
+Homeworks are designed to reinforce your **conceptual understanding** of the material each week. They will include a mix of multiple-choice, short answer, and coding questions, and will be released on **Gradescope** every **Wednesday**, due the following **Tuesday at 11:59 PM**.
+Regardless of length, all homeworks will be worth **2.5** points. The maximum number of homework points you can get is 15.
 
-We have three kinds of homework:
-
-- Programming homeworks (HW0, HW2), which will be similar to labs.
-- HW1 is a homework about being a good classmate in CS courses. It is intended to set the norms for the course, and remind us as to how we can respect and include all members of the Berkeley community in CS 61B.
-- Conceptual assignments due shortly before midterm 2 (HW3) and the final (HW4) to help you study for the exams. They will be available on Gradescope and include a combination of multiple choice and fill-in-the-blanks questions. You can expect to have to work out these problems on paper before filling in your answer on Gradescope.
-
-Homeworks 0, 1, 3, and 4 are worth 15 points. Homework 2 is more challenging, time-consuming assignment and will be worth 30 points.
-
-No homeworks will be dropped, though we have a generous lateness policy.
-
+**No extensions** will be granted for homework assignments for any reason, so please plan accordingly and start early.
 
 ### Projects
 
-In addition to the HWs and labs, there will be 4 programming projects. In these projects you will build an entire system. All projects except project 3 must be completed on your own.
-
-Project 0 and 1 will be relatively easier than projects 2 and 3, taking less time and with greater levels of scaffolding. Project 2 will be a larger scale design project with very little skeleton code. Project 3 will be a capstone project in which you will design a project from scratch. Depending on how ambitious you are, it might end up being much more work than Project 2.
-
-Each project has a specific theme:
-
-- Project 0 (2048): Introduction to Java
-- Project 1 (Deques): Basic Design, Testing, and Code Review
-- Project 2 (Ngordnet): Design, Large Scale Implementation
-- Project 3 (BYOW): Large Scale Design
-
-Projects will have different grader release schedule and restrictions on the number of allowed submissions per a time interval. Full grader details will be provided on the release of each project.
-
-Projects 0, 1, 2, and 3 will be worth 50, 50, 125, and 125 points respectively.
-
-
-### Project 3
-
-As Project 3 is a large-scale design project, it will be have some differences from the other three projects.
-
-Project 3 will have a synchronous checkoff portion. We'll release instructions about how to sign up for a checkoff in the last week of class.
-
-For Project 3, all students will be required to work with a partner. You will either be able to choose a partner to work with or request to be paired up with another student who has similar working habits and goals as you.
-
-One of the main goals of CS 61B is to give you the tools to become a successful software engineer, one of which is the ability to work effectively with others. **Barring extreme circumstances, we will not approve for students to officially work alone on Project 3.** If you think you have a compelling reason for working alone on Project 3, we will release a form that you can fill out closer to the release of the project (keep an eye on Ed for this) - we will let you know if your request is approved shortly before the release of Project 3.
-
-Full details on partnerships can be found [here](../resources/guides/partnerships/index.md).
-
+There are four projects in this course. Projects are larger and more
+challenging assignments than you would typically find in a lab. There will be some in lab time to work on these projects,
+but they are largely meant to be completed outside of lab. This semester, **we will not be having explicit TA office hours**, so please come to lab to get the best help.
 
 ### Exams
 
-[See the exam policies page.](/policies/exams)
+This course has a midterm exam and a final exam.
+
+- The Midterm will be on **Friday, July 18th from 7-9 PM in Dwinelle 155**.
+- The Final Exam will be on **Tuesday, August 12th from 3-6 PM in Dwinelle 155**.
+
+We will offer **in-person exams only**.
+
+Students with DSP accommodations that require alternate exam timing
+will be accounted for, so long as you can make a time that overlaps the official
+time. If you have a disability that prevents your ability to make such a time,
+we will discuss alternate arrangements with you directly.
+
+If you have a time conflict with the midterm exam, or if you
+are unable to make the final exam, please email <cs61bl@berkeley.edu> as soon as possible explaining your needs.
+
+#### Final Exam Clobbering
+
+We have a **partial clobber policy** on the midterm exam. If you do significantly better on the final exam than on the midterm, we will adjust your midterm score to reflect that improvement—but only **partially**. This is intended to account for situations where students improve over the course or have an off day on the midterm.
+Specifically, if it helps your overall grade, we will **replace your midterm exam z-score** with the **average** of your midterm and final exam z-scores. Your final exam score will **never** be clobbered.
+
+As an example, suppose you are in the following situation (all numbers are in terms of raw scores):
+-   **Midterm Exam:** Your Score = 60, Mean Score = 70, Standard Deviation = 10
+-   **Final Exam:** Your Score = 85, Mean Score = 75, Standard Deviation = 10
+
+In this case, you will have the following z-scores:
+-   **Midterm Exam**: (60 - 70) / 10 = -1
+-   **Final Exam**: (85 - 75) / 10 = 1
+
+Under the partial clobber policy, your adjusted midterm z-score will be (-1 + 1) / 2 = 0. Your new midterm score will correspond to the mean score, or 70. The final exam score remains unchanged.
+
+Z-scores will be based on the grades before this policy is applied. In other words, we will not recalculate the statistics for the midterm for the purposes of implementing this policy.
+
+The final exam z-score clobbering policy will only be applied if it helps your score. For example, if you score around the average on the midterm, but then have a bad day and do poorly on the final, we will not change your midterm scores.
+
+While this mechanism introduces a bit of curving to the class, it does not turn the class into a competition. Our grading bins are still fixed, a vast majority of the points are not subject to this mechanism, and the impact tends to be relatively small for most students.
+
+In theory, it would be nice to have a mechanism that avoids using any statistics, e.g., simply replacing your midterm score with the final grade if it’s higher. In practice, it is very difficult to get both the exam means (and variances) to line up. Therefore, we use a z-score partial clobbering policy as described above.
+
+### Surveys
+
+After most weeks, we will send out a weekly survey in the weekly announcements.
+We will have 6 weekly surveys. Completing each weekly survey will give half of
+an **extra credit** point! In addition to the weekly surveys, we will send out
+presemester, midsemester, and end-of-semester surveys. The presemester, midsemester, and end-of-semester surveys will earn 1 extra
+credit point each. Completing all three will give 3 points. So, if you complete
+every survey in this class, you can get a total of 6 extra credit points!
 
 
-### Extra Credit
+## Grading
 
-Extra credit is very limited in this course, because we would rather you achieve your grade by demonstrating your knowledge on the assignments and exams. That said, here are a few:
+Your course grade is computed using a point system with a total of 300 points.
 
-- Pre-semester survey (2.5 points)
-- Mid-semester survey (2.5 points)
-- End-of-semester survey (2.5 points)
-- Official university course evals (up to 2.5 points)
+<div class="table-responsive">
+  <table>
+    <caption>Grade breakdown</caption>
+    <thead>
+      <tr>
+        <th scope="col">Category</th>
+        <th scope="col">Percentage</th>
+        <th scope="col">Points</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Lab Assignments</th>
+        <td>13%</td>
+        <td>40</td>
+      </tr>
+      <tr>
+        <th scope="row">Lab Attendance</th>
+        <td>5%</td>
+        <td>15</td>
+      </tr>
+      <tr>
+        <th scope="row">Homeworks</th>
+        <td>5%</td>
+        <td>15</td>
+      </tr>
+      <tr>
+        <th scope="row">Project 0</th>
+        <td>5%</td>
+        <td>15</td>
+      </tr>
+      <tr>
+        <th scope="row">Project 1</th>
+        <td>10%</td>
+        <td>30</td>
+      </tr>
+      <tr>
+        <th scope="row">Project 2</th>
+        <td>12%</td>
+        <td>36</td>
+      </tr>
+      <tr>
+        <th scope="row">Project 3</th>
+        <td>12%</td>
+        <td>36</td>
+      </tr>
+      <tr>
+        <th scope="row">Midterm</th>
+        <td>18%</td>
+        <td>54</td>
+      </tr>
+      <tr>
+        <th scope="row">Final Exam</th>
+        <td>20%</td>
+        <td>59</td>
+      </tr>
+      <tr>
+        <th scope="row">Total</th>
+        <td>100%</td>
+        <td>300</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-We may add additional extra credit, but do not expect us to do so.
+Each letter grade for the course corresponds to a range of
+scores:
 
+<div class="table-responsive">
+  <table>
+    <caption>Grade bins</caption>
+    <thead>
+      <tr>
+        <th scope="col">A+</th>
+        <th scope="col">A</th>
+        <th scope="col">A-</th>
+        <th scope="col">B+</th>
+        <th scope="col">B</th>
+        <th scope="col">B-</th>
+        <th scope="col">C+</th>
+        <th scope="col">C</th>
+        <th scope="col">C-</th>
+        <th scope="col">D+</th>
+        <th scope="col">D</th>
+        <th scope="col">D-</th>
+        <th scope="col">F</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>295</td>
+        <td>280</td>
+        <td>265</td>
+        <td>245</td>
+        <td>225</td>
+        <td>205</td>
+        <td>195</td>
+        <td>185</td>
+        <td>175</td>
+        <td>170</td>
+        <td>165</td>
+        <td>160</td>
+        <td>0</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
-### Pacing Points
+**There is no curve.** Your grade will depend only on how well you do, and not
+on how well everyone else does. These bins were designed based on past semester
+student performance with the intention of complying with [departmental grading
+guidelines][].
 
-There are three ways to earn “pacing” points, which are given for keeping up with the class.
+[departmental grading guidelines]: https://eecs.berkeley.edu/resources/faculty-staff/academic-personnel/grading-guidelines-undergrad
 
-- Attending discussion synchronously (in person or online)
-- Attending lab synchronously (in person or online)
-- Attending live/Zoom lecture, watching the pre-recorded videos, or watching the recorded lectures on time (before the start of the subsequent lecture).
+Incomplete grades will be granted only for dire medical or personal emergencies
+that cause you to miss the final, and only if your work up to that point has
+been satisfactory. You must complete all coursework before the drop deadline to
+be considered for an incomplete grade. Per university policy, you will **not** be able to request for an incomplete on assignments that were involved in academic misconduct. For more information, please email the instructors.
 
-Each discussion or lab is worth 0.5 pacing points. Each lecture is worth 0.5 pacing points. You may earn up to 16 pacing points. We will calculate pacing points using attendance forms and pacing point assignments. Specifically:
-- **To get pacing points from discussion/lab**: fill out the attendance form at the end of each discussion/lab section with the correct secret word. 
-- **To get pacing points from attending lectures**: complete the corresponding pacing point assignments with full score.   
+There are a total of 21 graded lab exercises, each worth 2 points.
+Thus, while the total point value for labs is 42 points, lab grades are capped
+at 40 points. This means that **you can miss up to 1 lab without penalty** if you get a full score on every other lab. 
+It also means that you can get full credit for labs in this class if you do not get a full score on every lab assignment.
+In other words, getting more than 40 points on lab is equivalent to
+getting 40 points for your lab score.
 
-Pacing point assignments are short, formative assessments that test your understanding of the lecture material. There is one pacing point assignment per lecture that contains key content, and you can find them linked as "Pacing" next to the lecture video and recordings. You have unlimited attempts to each pacing point assignment, but **you must have a full score submission** in order to get credit for pacing points. There are no deadlines, and you can submit to the pacing point assignments at any point in the semester to get credit before **May 11th**. 
+For the lab attendance, you will need to attend 15 labs in order to receive full attendance credit. Each attendance is worth 1 point, with a point cap of 15 points.
 
-Pacing points are added to your score, but cannot increase your score beyond 750 points. In other words, if you have 740 points and 15 pacing points, your final score will be 750 points.
+### Late Policy
 
----
+You will receive a total of 8 slip days for the entire semester that can be used for lab assignments. Each slip day extends your deadline by 24 hours. Slip days may only be applied retroactively, and you may **not** use a fraction of a slip day.
 
-## Grades
+#### Lab Lateness
 
-Your letter grade will be determined by the total points out of the possible 1000. In other words, there is _no curving in this course_, other than the clobbering policy above. Your grade will depend on how well you do relative to the bins, and not on how well everyone else does. Though we do not usually do this, we reserve the right to lower the the grading bins for 61B if grades are too low. We will not raise them.
+For lab assignments, you can use at most one slip day per lab assignment. Lab assignments turned in late without using a slip day will receive no credit.
 
-| Category      | Percentage | Points   |
-| ------------- | ---------- | -------- |
-| Homeworks     | 9%         | 90       |
-| Labs          | 4%         | 40       |
-| Surveys       | 2%         | 20       |
-| Projects      | 35%        | 350      |
-| Midterm 1     | 10%        | 100      |
-| Midterm 2     | 15%        | 150      |
-| Final Exam    | 25%        | 250      |
-| **Total**     | **100%**   | **1000** |
+You should only be using a slip day on a lab assignment if you have made
+significant progress on the lab prior to the original deadline for the
+assignment. The intention of a slip day is to give you enough time to put the
+last finishing touches on the lab assignment before turning it in (for example,
+if you have been facing a bug for awhile, you should use a slip day, which buys
+you time to get some sleep before asking your TA for the last bit of help you
+need the next day). We recommend that slip days are not be used if significant
+progress wasn't made on the lab before the deadline, such as if you couldn't
+make a lab section and are trying to complete the entire lab the day after. In
+this situation, it may be better for you to consider skipping the assignment and
+proceeding with the more current ones to keep pace with the course. Remember,
+you don't need to get all points in the lab category to still get full credit
+for labs. Please see the Grading section above for more information.
 
-{: #grade-breakdown}
+**To use a lab slip day, go to the Extensions tab on Beacon. If you have enough
+slip days remaining, you may select your assignment and your new due date**.
+Note that you can only request at most 1 slip day per lab, and once you apply a slip day to an assignment, you cannot later extend it by even more time.
 
-| A   | A-  | B+  | B   | B-  | C+  | C   | C-  | D   | F   |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 920 | 860 | 800 | 740 | 680 | 620 | 560 | 500 | 400 | 0   |
+#### Project Lateness
 
-{: #letter-grades}
+For projects, you can use slip days to extend your deadline. Each slip day extends your deadline by 24 hours. If you turn in your project late without using a slip day, you will receive no credit.
 
-These bins were designed to comply with departmental guidelines that the
-average GPA for a lower-division required course be in the range 2.8–3.3
-(including students who drop or take the class for a P/NP grade).
+**To use a project slip day, go to the Extensions tab on Beacon. If you have enough
+slip days remaining, you may select your assignment and your new due date**.
 
-We will round all grades up to the nearest multiple of 10 (e.g. 300.01 rounds to 310). This is the only rounding we will do. Please do not contact us about further rounding or exceptions.
+**No extensions will be granted for project checkpoints and Project 3** (with the 
+exception of DSP extension accommodations).
 
-If you are taking the course P/NP, any grade of C- or better will automatically be converted to a P. ([Source: Registrar's office.](https://registrar.berkeley.edu/faculty-staff/grading/grading-policies-reports/))
+#### DSP Accommodations
 
-We will grant grades of Incomplete only for dire medical or personal
-emergencies that cause you to miss the final, and only if your work up to that point has been satisfactory. Do not try to get an incomplete simply as a way to have more time to study or do a project. That is contrary to University policy. Before requesting an Incomplete grade, please contact a college advisor or review your college’s Incomplete grade policies to understand if this is a right option for you.
+We will be honoring DSP accommodations for extensions on assignments. For any assignment,
+students with extension accommodations can receive an automatic extension
+on any assignment in accordance with your accommodation letter.
 
----
+**To request for a DSP-related extension, go to the "DSP Extensions" section under the Extensions tab on Beacon. We will check your DSP record for extensions related accommodations.**
+
+#### Extenuating Circumstances
+
+We define extenuating circumstances as circumstances outside of the student's control that 
+directly inhibits the student's ability to complete assignments in a timely manner. Some 
+examples include unforeseen physical/mental health crises, technical issues (broken laptop), 
+family emergency, etc.
+
+If you're experiencing extenuating circumstances impacting your mental health and would like
+to meet with a member of course staff to work out accommodations within the course, or would 
+like to be connected to more resources, you can set up a meeting with us 
+[**here**](https://forms.gle/QnYufRchWc7dFdKZ8).
+
+{% include alert.html type="danger" content=" We will not be considering retroactive 
+submissions to the extenuating circumstances form. **This means that you should proactively submit to the form before the assignment's deadline to be considered.** Exceptions will only be made in extreme cases. " %}
+
+The last day to submit any assignment is **Monday, August 11th, 11:59 PM PT.** 
+This is a hard deadline, and we will not accept any submissions made after this deadline.
+
+## Resources
+
+### Online Forum
+
+Our discussion forum this semester is Edstem (Ed for short). For most questions about the course, Ed
+is the right place to ask them. The course staff read it regularly, so you will get a
+quick answer. Furthermore, by posting online as opposed to emailing us directly, other
+students benefit by seeing the question and the answer.
+
+#### Ed Etiquette
+
+-   **Search before posting**: Your question may have already been answered by us or other students in the past. Reading other  students' posts will let you refine your question, and gives us more time to answer new questions.
+-   **Try to avoid open-ended or vague questions such as**: "How does Java work?" or "How come the solution to a discussion      problem is this?". If you walk us through your thoughts and reference specific lines that you find confusing, we can better address the problem you are facing. Being specific helps us uncover any misunderstandings that you may have.
+-   **Post questions about assignments as public follow-ups on the corresponding assignment post**: For example, post your questions about Lab 1 under the Lab 1 post. If your question is too detailed or revealing to fit as a follow-up, your question would be better answered during lab. 
+-   **No follow-up +1's**:  Instead, you should use the heart button on a question/follow-up. Excessive +1 follow-ups clutter the post and make it more difficult to get to the unresolved follow-ups.
+-   **If you want a reply on a follow-up, mark it as unresolved**, or we may not see it.
+
+For more detailed information, please read over the [Ed policies and guidelines.](guides/ed/index.md)
+
+### Staff Email
+
+The email address <cs61bl@berkeley.edu> will send a message to the instructors.
+**Only the current instructors and select Head TAs have access to this email.**
+You can use it for correspondence that you don't want to send to all TAs through Ed.
+**Please do not email the instructors directly** since your message may be
+misplaced that way. You will get a faster response from the course email.
+
+### Reading
+
+You are expected to read each lab's contents.  There are also related textbooks
+that belong to CS 61B, which you may read if you please. The first text we use
+is Josh Hug's [free, online course notes][Hug61B] written in collaboration with past and current TAs. If you find these notes
+insufficient, you might consider consulting Paul Hilfinger's (free) [Java
+Reference][AJR] or Head First Java, 2nd Edition by Sierra and Bates (O'Reilly,
+2005). The optional textbook for the latter half of the course is Algorithms,
+4th Edition by Wayne and Sedgewick.
+
+[Hug61B]: https://cs61b-2.gitbook.io/cs61b-textbook/
+[AJR]: http://www-inst.eecs.berkeley.edu/~cs61b/fa14/book1/java.pdf
 
 ## Collaboration and Academic Misconduct
 
-Deadlines can be stressful, and we know that under extreme pressure, it becomes tempting to start rationalizing actions that you would otherwise consider inappropriate. Perhaps you’ll find yourself facing a CS 61B project deadline, and under all this stress you’ll convince yourself that you’re just going to cheat for the moment so you can get the points, and that you’ll come back later and really learn the thing you were supposed to have learned in order to restore your karmic balance (I’ve heard something along these lines a few times).
+Plagiarism on any lab or project will result in a score of zero on that
+assignment, along with academic sanctions. A second instance of plagiarism 
+on a lab or project will result in an F in the course. All incidents of 
+plagiarism will be referred to the Center for Student Conduct, including 
+carelessly leaving code up on GitHub. Further details about our academic 
+misconduct policy can be found [here][AM].
 
-Please don't do this. We care that you learn the material, and that your grade reflects your learning, regardless of the timeline. If you feel that you need to engage in academic misconduct to meet a deadline, please reach out to course staff.
+Deadlines can be stressful, and we know that under extreme pressure, it becomes
+tempting to start rationalizing actions that you would otherwise would consider
+inappropriate. If you find yourself in this situation, **please talk to a staff
+member immediately!** See the late policy above. We **want** to work with you!
 
-Academic misconduct on any homework, lab or project will result in requiring you to write an anonymous reflection to be posted on this course website and to resubmit the assignment. A second instance of plagiarism on a homework, lab, or project will result in an F in the course. **All incidents of plagiarism will be referred to the Office of Student Conduct**, including shared code with others. Given our friendly lateness policy, there will be no exceptions to this rule.
+During the Spring 2017 semester, we compiled a series of [incident reports
+written by students who were caught plagiarizing][incident reports]. If you
+find yourself tempted to cheat, consider turning to the words of others who
+have made the wrong choice for guidance.
 
-During the Spring 2017 semester, we compiled a series of [incident reports written by students who were caught plagiarizing](academic-misconduct/incident-reports-2017.md). If you find yourself tempted to cheat, you might turn to the words of others who have made the wrong choice for guidance.
+[incident reports]: https://sp18.datastructur.es/materials/guides/incident-reports-2017.html
+[AM]: guides/academic-misconduct.md
 
-### Homework and Lab Collaboration
+### Lab Collaboration
 
-The entire point of homework and labs is to learn. For homework or labs, you should feel free to collaborate with others however you choose, though keep in mind that greater independence is likely to give you a better learning experience (as long as you aren’t totally stuck). **Even though we will allow close collaborations on HW and labs, the solutions you submit should still be your own work!** Identical or near identical submissions will be treated as plagiarism.
+The entire point of labs is to learn, so we emphasize active learning and pair
+programming. For labs, you can work with anyone *in your lab section*, including sharing code. However, each student is expected to write up their own solutions and submit to their own Gradescope. If you work with others, note who you collaborated with.
+If you decide to work alone, you are able to submit individually.
 
 ### Project Collaboration
 
-By contrast, the projects were designed not just for learning (particularly how to be self-reliant in the context of large unfamiliar systems), but also for the dual purpose of evaluating your mastery of the course material. As such, they are intended to be completed primarily on your own (or with your partner on project 3, which allow partners), particularly when it comes to writing the actual code.
+Projects are designed for learning and evaluating your mastery of the course material. As such, they are intended to be completed primarily **independently** of any other student, particularly when it comes to
+writing actual code. However, we do encourage collaboration through discussing high-level strategies, specific syntax issues,
+and solutions to bugs with other students. **You should never be in direct possession of code that was not written entirely by you alone.**
+
+For Project 2, we will allow, but not require partnerships. Details will be released in the project spec. 
+
+Project 3 will be the only project where formal partnerships are required. Details related to partnerships will be released in the project spec. 
 
 ### Exam Misconduct
 
-**For exams, we will be absolutely unforgiving.** Any incident will result in a failing grade for the course, though Berkeley will let you retake CS 61B next semester. As above, all incidents of cheating will be referred to the Office of Student Conduct.
+**For exams, we will be absolutely unforgiving.** Any incident will result in a
+failing grade for the course, though Berkeley will let you retake CS 61B next
+semester. All incidents of academic misconduct on exams will be referred to the
+Center for Student Conduct.
 
 ### Academic Misconduct
 
-What constitutes cheating? **The golden rule of academic dishonesty is that you should not claim to be responsible for work that is not yours.**
+You can obey the letter of this entire policy while completely violating its
+spirit. However, this policy is not a game to be defeated, and such
+circumventions will be seen as plagiarism.
 
-This is obviously open to some interpretation, and you’ll be getting some help from instructors, the internet, other students, and more throughout the course. This is OK, and we hope that the class is an open, welcoming, collaborative environment where we can help each other build the highest possible understanding of the course material.
+**The golden rule of academic misconduct is that you should not claim to be
+responsible for work that is not yours.** To help (but not entirely define) the
+bounds of acceptable behavior, we have three important rules for projects:
 
-To help (but not entirely define) the bounds of acceptable behavior, we have three important rules for coding assignments:
+-   **By You (and Your Partner) Alone**: All code that you submit (other
+    than skeleton code) should be written by you (and your partner) alone, except
+    for small snippets that solve tiny subproblems (examples in the Permitted
+    section below).
+-   **Do Not Possess or Share Code**: Before you've submitted your final work for
+    a project, you should never be in possession of solution code that you (or
+    your partner) did not write. You will be equally culpable if you distribute
+    such code to other students or future students of CS 61BL (within reason). **DO
+    NOT GIVE ANYONE YOUR CODE! EVEN IF THEY ARE DESPERATELY ASKING. DO NOT POST
+    SOLUTIONS TO PROJECTS ONLINE (on GitHub or anywhere else)!** If you're not sure
+    what you're doing is OK, please ask.
+-   **Cite Your Sources**: When you receive significant assistance on a project
+    from someone else or an online source, you should cite that assistance somewhere in your source
+    code. We leave it to you to decide what constitutes "significant".
 
-1.  **By You Alone**: All code that you submit (other than skeleton code) should be written by you and your partner alone, except for small snippets that solve tiny subproblems (examples in the Permitted section below).
+#### Permitted
 
-2.  **Do Not Possess or Share Code**: Before you've submitted your final work, you should never be in possession of solution code that you (or your partner) did not write. Looking up solution code online is effectively possessing solution code.
+-   Discussion of approaches for solving a problem. Such help should be cited as
+    comments in your code. For the sake of others' learning experience, we ask
+    that you try not to give away anything juicy, and instead try to lead people
+    to such solutions.
+-   Discussion of specific syntax issues and bugs in your code, without showing
+    another student your code. Verbally discussing syntax issues is permitted, but
+    Zoom screen sharing your code, for example, is not permitted. Cite any
+    non course staff (course staff meaning Tutor, TA, or Instructor) person
+    you received advice from.
+-   Using small snippets of code that you find online for solving tiny problems such as math operations (finding the distance between two points, etc), or basic Java syntax (how to capitalize a String, how to iterate a list, etc). Nontrivial usages must be cited in comments in your code.
 
-    You will be equally culpable if you distribute such code to other student or future students of 61B (within reason). **DO NOT GIVE ANYONE YOUR CODE -- EVEN IF THEY ARE DESPERATELY ASKING. DO NOT POST SOLUTIONS ONLINE (on GitHub or anywhere else)!** If you're not sure what you're doing is OK, please ask.
+#### Absolutely Forbidden
 
-3.  **Cite Your Sources**: When you receive significant assistance on a coding assignment from someone else, you should cite that assistance somewhere in your source code with the `@source` tag in a comment. We leave it to you to decide what constitutes 'significant'. However, citing does not change the extent of collaboration or reference allowed.
+-   Typing or dictating code into someone else's computer is a violation of the "By You Alone" rule.
+-   Looking at someone else's project code to understand a particular idea or
+    part of a project. This is not allowed due to the danger of
+    plagiarism. We are very serious about the "By You Alone" rule!
+-   Possessing project solution code that you did not write yourself or another
+    student's project code in any form before a final deadline, be it electronic
+    or on paper. This includes the situation where you're trying to help someone
+    debug. Distributing such code is equally forbidden.
+-   Posting solution code to any assignment in a public place (e.g. a public git
+    repository, Google Drive, Discord, etched into stones above the Mediterranean, etc). This
+    applies even after the semester is over.
+-   Working in lock-step with other students. Your workflow should not involve a
+    group of people identifying, tackling, and effectively identically solving a
+    sequence of subproblems.
 
-    {: .warning}
-    > **Examples:**
-    > 
-    > ```
-    > // @source I worked with [person], the code below receives a list of objects
-    > // and iterates through the list until it finds the number 3 and
-    > // returns the index.
-    > ...
-    > 
-    > // @source From https://stackoverflow.com/questions/16242733/sum-all-the-elements-java-arraylist,
-    > // the following code iterates through the list and sums its values.
-    > ...
-    > 
-    > // @source This code was generated by ChatGPT. It reads and parses
-    > // all integers from the file, which I then pass into my computeSum method.
-    > ...
-    > ```
+#### LLM/AI Policy
 
-For clarity, some examples of specific activities are listed below:
+This course (and many others) serves to better your programming skills, and using LLM/AI tools such as ChatGPT, Copilot, Gemini, Deepseek, Cursor, etc. to generate code will not help you learn. Doing the work yourself gives you the ability to discern when LLMs (or other people) generate bad code. Copying code from LLMs is a form of plagiarism, and will be treated as such.
 
-**Permitted**:
+Thus, using these tools to generate code is **forbidden** unless otherwise stated. If you are completely stuck with debugging, using LLM tools to *debug code that you've written yourself* is permitted with extreme caution (cite your sources). In any case, you should understand what the LLM is suggesting and be able to explain it in your own words. Be wary that these tools are often confidently incorrect!
 
-- High-level discussion of approaches for solving a problem.
-- Giving away or receiving significant conceptual ideas towards a problem solution. Such help should be cited as comments in your code. For the sake of other's learning experience, we ask that you try not to give away anything juicy, and instead try to lead people to such solutions.
-- Discussion of specific syntax issues and bugs in your code.
-- Using small snippets of code that you find online for solving tiny problems (e.g. googling "uppercase string java" may lead you to some sample code that you copy and paste into your solution). Such usages should be cited as comments in your HW, lab, and especially project code!
+## A Parting Thought
 
-Permitted with **Extreme Caution**:
+Grades and penalties aren't the purpose of this course; we really just want you
+to learn and be successful.
 
-- Working on a project alongside another person or group of people. Your code should not substantially resemble anyone else's!
-- Use of GitHub Copilot / ChatGPT / Claude / etc. If you're just generating some amount of boilerplate code, that's ok. However, you should not use such tools to generate non-trivial methods. We are trying to build your fundamental skills, and leaning on an AI is going to cause you trouble in circumstances where you don't have an AI to help, such as exams. **Any AI generated code must be cited and explicitly commented as such.** Violation of this citation rule is a serious act of plagiarism. Note that generative AI is designed to output data that *looks* correct, not output data that *is* correct. As such, AI-generated code, especially from sources like ChatGPT, is often subtly buggy or completely incorrect.
-- Sending code to someone at a company when you are applying for a job. You should never send code publicly. Rather, you can add the recipient as a private collaborator to your Github repository.
+The entire staff is very excited to be teaching CS 61BL this semester and we're
+looking forward to meeting such a large and enthusiastic group of students.
+Welcome to CS 61BL!
 
-**Absolutely Forbidden**:
+### Acknowledgments
 
-- Typing or dictacting code into someone else's computer is a violation of the "By You Alone" rule.
-- Possessing another student's code in any form before a final deadline, be it electronic or on paper. This includes the situation where you're trying to help someone debug. Distributing such code is equally forbidden.
-- Possessing solution code that you did not write yourself (from online (e.g. GitHub), staff solution code found somewhere on a server it should not have been, etc.) before a final deadline. Distributing such code is equally forbidden. **Looking at solution code online counts as possessing code.**
-- Posting solution code to any assignment in a public place (e.g. a public git repository, Google Drive, Discord, etched into stones above the Mediterranean, etc). This applies even after the semester is over.
-- Working in lock-step with other students. Your workflow should not involve a group of people identifying, tackling, and effectively identically solving a sequence of subproblems.
+Some course information ideas derived from:
 
-We have advanced cheating detection software, and we will routinely run this code to detect cheating. Every semester, we catch and penalize a significant number of people (roughly 100 cases per semester). Do not be one of them. If you find yourself at such a point of total desperation that cheating begins to look attractive, contact one of the instructors. Likewise, if 61B is causing massive disruption to your personal life, please email `cs61b (at) berkeley.edu`{: .blue}.
-
-In essence, our ultimate goal is for students to grasp the code they've crafted. It's not just about completing projects; it's about cultivating a deep comprehension of their code. We assign these projects to give you an opportunity to build a strong foundation in coding, ensuring that you truly understand the core principles behind the concepts we teach in this course.
-
-If you admit guilt to an act of plagiarism before we catch you, you will receive the same penalty, but we will not refer your case to the Center of Student Conduct. However, we would strongly prefer that you ask us for additional time before opting to plagiarize. 
-
-Obviously, the expressive power of Java is a subset of the English language. And yes, you can obviously obey the letter of this entire policy while completely violating its spirit. However, this policy is not a game to be defeated, and such circumventions will be seen as plagiarism.
-
-If you would like to review our academic misconduct resolution procedures, you can find them [here](academic-misconduct/index.md).
-
-### Reusing Code from Past Semesters
-
-If you have completed assignments during past semesters and would like to reuse your work, you do not have to let staff know ahead of time. However:
-
-- We cannot promise that the assignments are identical across semesters.
-- By submitting work from past semesters, in part or in whole, you are claiming that the work submitted is completed entirely by you (and if applicable, your former project partner). If you are unsure if the work is your (and if applicable, your former project partner's) original work, we'd recommend redoing the assignment from scratch.
-- If you intend to reuse code for Project 3 (a partner project), you may be required to work alone. If you had a project partner while working on your project originally, you may submit the portions of the projects that they completed.
-
----
-## Late Adding CS61B
-
-If you are attempting to officially enroll in CS 61B late in the semester, you must turn in all outstanding course assignments within **5 days** of joining the course. This means that you should be following along with the course schedule, even before you enroll in the class.
-
-Please use the [Late Add Intent form]({{site.links.late_add}}) if you are waiting to be enrolled and need access to course platforms.
-
-If you'd like to meet with course staff for advice on catching up with the course, you can set up a [student support meeting]({{site.links.student_support_meetings}}).
-
-## Auditing CS61B
-
-This is for students who are unofficially auditing this class. Maybe you are a non-Berkeley student who wants to brush up on your programming knowledge or even a high school student who wants to get a head start on your programming career. If this sounds interesting to you, we have set up a public autograder for the Spring 2021 version of the course.
-
-To get everything set up, go to [Gradescope](https://www.gradescope.com/) and select the "Add a course" button. Enter course code **MB7ZPY** to be added. You will not be given a student repo, so you will have to create your own on GitHub in order to submit assignments. After you complete setup and lab1, you will also have access to all the code for the class.
-
-That's all you have to do! All lectures, worksheets, and specs will be available on the [Spring 2021 Website](https://sp21.datastructur.es/). Note: you should be using the Spring 2021 skeleton, website, and gradescope. You will not be using any resources from this current semester. Every term we change assignments and lectures up a little bit, so make sure to stick to the Spring 2021 verion of things.
-
-Note: If you're auditing the course, you will not be able to access Beacon. Instead, you can directly clone [the skeleton repo](https://github.com/Berkeley-CS61B/skeleton-sp21) to get a copy of the starter code.
-
-We cannot add auditors to private platforms (e.g. bCourses, Ed, current semester's Gradescope). All the information we can publicly share is available on this course website.
-
-We also cannot offer staff support (e.g. debugging help) for auditors.
+- [Josh Hug's CS 61B syllabus][Hug],
+- [Brian Harvey's CS 61A handout][BH],
+- [David Malan's CS50][CS50]
+- [Zephyr Omaly's guide to inclusive classrooms][ZB], and
+- [CS 61C Spring 2024's course policies][CS61C].
 
 ---
-
-## Acknowledgements
-
-Some course handout material derived from previous terms, professors, and GSIs.

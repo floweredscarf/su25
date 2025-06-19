@@ -3,7 +3,7 @@ layout: page
 title: >-
   FAQ
 parent: >-
-  Lab 01: Conditionals, Loops, and Arrays (Optional)
+  Lab 01: Java & Git
 grand_parent: Labs
 has_right_toc: true
 released: true

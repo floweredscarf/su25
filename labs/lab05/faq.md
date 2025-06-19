@@ -1,32 +1,28 @@
 ---
 layout: page
 title: >-
-  FAQ
+  FAQ - Lab 04
 parent: >-
-  Lab 05: Abstract Data Types
+  Lab 04: Linked Lists
 grand_parent: Labs
 has_right_toc: true
 released: true
 ---
-## Dynamic method selection is so confusing!
 
-[Here](https://docs.google.com/presentation/d/1l9kslV4XB46fOOyD-hiXxi4sK-lmtFg9rMHRmS7_S5k/edit?usp=sharing) is Crystal's DMS Flow chart from a few semesters ago. You can follow steps methodically.
+### In lecture we were talking about IntLists; what are these Linked Lists you speak of?
 
-## `ListSet`
+Linked List refers to a specific structure: items that are stored in nodes which are aware of the node
+that follows them. Sometimes when we are talking about Linked Lists, we refer to them by specifying the 
+*type* of the item, followed by "List". This means that IntLists are Linked Lists which only hold items of
+type int!
 
-### Why does `ListSet::remove` have that given line?
+### The internet keeps referring to "value" and "rest" when talking about Linked Lists -- what is that?
 
-As mentioned in the comment, the reason that we need the line is out of scope.
-Specifically, the `List` interface has two `remove` methods:
+There are multiple ways to define and interact with Linked Lists. In this course, we use "item" to refer to the
+data being stored by each node and "next" to refer to the element immediately following the current node. Other implementations,
+however, are also completely valid. It is very likely in searching the internet you will see "item" referred to as "value"
+and "next" referred to as "rest" -- meaning recursive access to the rest or remaining segment of the Linked List.
 
-- `remove(int index)`, that removes an element at a *specific index*
-- `remove(Object elem)`, that removes a *specific thing* from the list
+### My code does not change the "value" of any of the nodes -- why am I not passing constructive concatenate?
 
-We would like to use the latter, so we must "autobox" the given `int` to
-`Integer` with the given assignment statement.
-
-## `BooleanSet`
-
-### Do we have to handle inputs outside \[0, `maxElem`\] (inclusive)?
-
-No.
+Make sure you aren't changing the other element of each node, their "next" pointer! This is a vital part of your Linked List as well!

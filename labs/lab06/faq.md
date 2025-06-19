@@ -3,7 +3,7 @@ layout: page
 title: >-
   FAQ
 parent: >-
-  Lab 06: Inheritance
+  Lab 05: Abstract Data Types
 grand_parent: Labs
 has_right_toc: true
 released: true

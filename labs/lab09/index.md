@@ -1,536 +1,1039 @@
 ---
 layout: page
 title: >-
-  Lab 09: Trees and Traversals
+  Lab 09: Runtime Analysis
 has_children: true
 parent: Labs
 has_toc: false
 has_right_toc: true
 released: true
 ---
+## [FAQ](faq.md)
 
-## Introduction
+The FAQ for Lab 9 is located [here](faq.md).
 
-As usual, pull the files from the skeleton and open the Lab 10 directory in IntelliJ.
+## Before You Begin
 
-In this lab, we will introduce another data structure called a **tree** (you might
-have already seen this in CS 61A or another equivalent course). The
-meaning of the tree data structure originates from the notion of a tree in real
-life.
+Pull the files for lab 9 from the skeleton.
 
-Below is a conceptual visualization of a tree. It's not really a box and pointer
-diagram and should not be interpreted as a literal implementation in Java.
+> The online textbook readings in for this lab are optional. The lab covers
+> the same content as Chapter [8.2][], [8.3][], and [8.4][] but more concisely
+> so that there's not as much to read. You still may want to refer back to the
+> textbook if you prefer watching videos or reading more about the topic. Additionally there is overlap between this lab and todays's lecture. Asymptotic analysis is both a tough topic and an important one, so this repetition is intentional and should hopefully help to reinforce the topics. However, feel free to skip around the spec if you feel like you already have a good understanding of the content. 
 
-![conceptual-tree](img/conceptual-tree.png)
+[8.2]: https://joshhug.gitbooks.io/hug61b/content/chap8/chap82.html
+[8.3]: https://joshhug.gitbooks.io/hug61b/content/chap8/chap83.html
+[8.4]: https://joshhug.gitbooks.io/hug61b/content/chap8/chap84.html
 
-Note that while a tree in real life is rooted at the bottom and branches out and
-upwards, trees in computer science are typically drawn such that they are rooted
-at the top and branch out and downwards.
 
-For this lab, we have not provided you with any local tests. Instead, we expect you to create your own test file and write your own tests! You can also use ad-hoc testing in the main methods to test quickly.
+## Learning Goals
 
-### Vocabulary
+> “““““An engineer will do for a dime what any fool will do for a dollar.”
+>
+> --- Arthur M. Wellington”
+> --- Paul Hilfinger”
+> --- Zephyr Omaly”
+> --- Laksith Prabu”
+> --- Dominic Conricode
 
-In order to be able to talk about trees, we first need to define some
-terminology.
+Efficiency comes in two flavors:
 
-| Term          | Description  | Example Above |
-|---------------|--------------| ------------- |
-| Node          | Single element in a tree | 1, 2, 3, 4, 5, 6, and 7 are all nodes. |
-| Edge          | A connection between two nodes | There is a direct edge from 1 to 2, but there is no direct edge from 1 to 7. |
-| Path          | A series of one or more edges that connects two nodes without using an edge more than once | There is a path from 1 to 7, consisting of edges 1 -> 3 and 3 -> 7. |
-| Leaf          | A node with no children | 4, 5, 6, and 7 are leaf nodes. |
-| Root          | The topmost node, which does not have a parent | 1 is the root node. |
+Programming cost
+:   - How long does it take to develop your programs?
+    - How easy is it to read or modify your code?
+    - How maintainable is your code?
 
-### Relationships
+Execution cost
+:   - **Time complexity**: How much time does your program take to execute?
+    - **Space complexity**: How much memory does your program require?
 
-These following terms are defined with respect to a particular node.
+We've already seen many examples of reducing programming cost. We've written
+*unit tests* and employed *test-driven development* to spend a little more time
+up front writing tests to save a lot of time down the line debugging programs.
+And we've seen how *encapsulation* can help reduce the cognitive load that a
+programmer needs to deal with by allowing them to think in terms of high-level
+abstractions like lists instead of having to deal with the nitty-gritty details
+of pointer manipulation. We've also discussed some elements of design for
+methods and classes, like how we prefer passing arguments around over
+maintaining `static` variables.
 
-| Term          | Description |
-|---------------|-------------|
-| Child         | A node directly below the current node |
-| Parent        | Single node connected directly above the current node |
-| Siblings      | Nodes with the same parent |
-| Ancestors     | All nodes on the path from the selected node up to and including the root |
-| Descendants   | All the children, children's children, and so forth of a node |
-| Subtree       | The tree consisting of the node and all of its descendants |
-| Height        | The length of the path from the node to its deepest descendant. By length, we mean the number of nodes traveled along a given path. Therefore, the height of a leaf node is 1. (Note: There is an alternate definition of height as the number of edges traversed. In that case, the height of a leaf would be 0.) |
-| Depth         | The length of the path from the node to the root. The depth of the root node is 0. |
+We've only just scratched the surface on methods for reducing and optimizing
+programming costs, but for the coming weeks, it'll be helpful to have a working
+understanding of the idea of **execution cost**.
 
-Sometimes we'll refer to the height and depth of a tree as a whole. In these
-cases, it's usually assumed that we're referring to the height of the root node
-and the depth of the deepest leaf, respectively.
+In this lab, we consider ways of measuring the efficiency of a given code
+segment. Given a function `f`, we want to find out how "quickly" that function runs.
 
-### Definition
+## Algorithms
 
-For a linked structure of nodes to be considered a tree:
+An *algorithm* is a step-by-step procedure for solving a problem, or an
+abstract notion that describes an approach for solving a problem. The code we
+write in this class, our programs, are implementations of algorithms. Indeed,
+we've already written many algorithms: the methods we've written for `IntList`,
+`SLList`, `DLList`, and `AList` are all *algorithms* that operate on data by
+storing and accessing that data in different ways.
 
-- nodes must have either no parents or 1 parent
-- there can be no **cycles** (paths that start and end at the same node)
-- there can only be one path between any two nodes in a tree
-- all nodes must be a descendant of the root (except the root itself)
+As another example, consider the problem of sorting a list of numbers. One
+algorithm we might use to solve this problem is called *bubble sort*. Bubble
+sort tells us we can sort a list by repeatedly looping through the list and
+swapping adjacent items if they are out of order, until the entire sorting is
+complete.
 
-## Discussion: Examples of Trees
+Another algorithm we might use to solve this problem is called *insertion
+sort*. Insertion sort says to sort a list by looping through our list, taking
+out each item we find, and putting it into a new list in the correct order.
 
-Discuss with your partner whether the following examples would be considered
-trees as we've introduced them above.
+Several websites like [VisuAlgo][], [Sorting Algorithms][], and
+[USF][] have developed some animations that can help us visualize these sorting
+algorithms.  Spend a little time playing around with these demos to get an
+understanding of how much time it takes for bubble sort or insertion sort to
+completely sort a list. We'll revisit sorting in more detail later in this
+course, but for now, try to get a feeling of how long each algorithm takes to
+sort a list. How many comparison does each sort need? And how many swaps?
 
-- Linked List
-- Family Tree
+[VisuAlgo]: http://visualgo.net/sorting
+[Sorting Algorithms]: https://www.toptal.com/developers/sorting-algorithms/
+[USF]: http://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html
 
-Trees are naturally recursive structures, so you'll find that we implement a lot
-the methods in this lab using recursion because it tends to be the simplest
-solution. Unlike linked lists, trees can have one or more children which can make
-iterative approaches more difficult (this ultimately depends on the structure /
-implementation of your tree).
+Since each comparison and each swap takes time, we want to know which is the
+faster algorithm: bubble sort or insertion sort? And how fast can we make our
+Java programs that implement them? Much of our subsequent work in this course
+will involve estimating program efficiency and differentiating between fast
+algorithms and slow algorithms in their specific settings.
+This set of activities introduces an approach to making these estimates.
 
-## Binary Trees
+## Measuring Execution Time
 
-We'll now move on from trees and explore a common, special case of the tree data
-structure: the binary tree. A binary tree is a tree in which each node has at
-most two children. Normally it has two separate variables `left` and
-`right` for the left and right children of the binary tree.
+One way to estimate the time an algorithm takes is to measure the time it takes
+to run the program directly. Each computer has an internal clock that keeps
+track of time, usually in the number of fractions of a second that have elapsed
+since a given base date. The Java method that accesses the clock is
+`System.currentTimeMillis`. A `Timer` class is provided in `Timer.java`.
 
-## Traversals
+Take some time now to find out exactly what value `System.currentTimeMillis`
+returns, and how to use the `Timer` class to measure the time taken by a given
+segment of code.
 
-The remainder of this lab will cover the key ideas related to
-traversing the notes of a tree structure. Before we go over the traversals themselves, let's first briefly review some
-of the core ideas behind recursion and recursive programming!
+## Exercise: `Sorter`
 
-### Recursion: A Review
-One interpretation of recursive programming is **the clever utilization of the recursive call stack to help us perform certain tasks and operations.** Specifically, there is usually an exploration of relationship between the different stack frames of the recursive call stack. 
+The file `Sorter.java` contains a version of the insertion sort algorithm
+mentioned earlier. Its `main` method uses a command-line argument to determine
+how many items to sort. It fills an array of the specified size with randomly
+generated values, starts a timer, sorts the array, and prints the elapsed time
+when the sorting is finished.
 
-There are two types of patterns that we commonly see:
-- Void Recursive Methods: **There is no explicit pass of information between frames of the recursive call stack.** Or in other words, the recursive function doesn’t have a return value, and the operation is usually done while utilizing the execution order that follow the mechanisms of the recursive call stack.  
-- Non-void Recursive Methods: **There is an explicit pass of information between frames of the recursive call stack.** Specifically, the information is passed as return values from one frame to another, and operations are done by utilizing information from a "parent frame" (the previous recursive call) or "child frame" (the subsequent recursive call).
+```sh
+javac Sorter.java
+java Sorter 300
+```
 
-### Things to keep in mind when working with recursion:
-A recursive function usually consists of two components: 
-- The recursive call, which operates on other stack frames.
-- The rest of the function, which operates on the current stack frame. 
+Compiling and running `Sorter` like above will tell us exactly how long it
+takes to sort an array of 300 randomly chosen elements.
 
-Then naturally, these questions are will be important to keep in mind when working with recursion: 
-- Where should I put the recursive call relative to the code for my current stack frame?
-- What is the relationship between the outcome of the recursive call and the code for my current stack frame?
+Alternatively, you can set command line arguments in IntelliJ by clicking on the class name next to the green run button on the top left and selecting "Edit Configurations." Next, you can enter command line arguments into the "Program arguments" field.
 
-### Linked List Traversal
-To better understand the recursive logic behind tree traversals, it's helpful to first look at a simpler example using a familiar data structure that is also inherently recursive: linked lists. Given the linked list below, how can we utilize the recursive call stack and traverse all items in the linked list? 
 
-1 -> 2 -> 3
 
-Assuming our linked list is built with "Node" objects that have two instance variable:"val" and "next" (pointer to the next node), a traverse method that prints the values from the head of the linked list to the tail might look something this: 
+<details markdown="block">
+  <summary markdown="block">
+#### Visual guide: adding program arguments
+{: .no_toc}
+  </summary>
+
+![Edit run configurations](img/edit_configurations.png)
+
+![Set command line arguments](img/set_command_line_args.png)
+
+</details>
+
+By compiling and running `Sorter.java` with different arguments, determine the size
+of the smallest array that needs 1 second (1000 milliseconds) to sort.
+
+You may notice that other students in lab end up with different timing results
+and a different number of elements. What factors might contribute to these differences?
+
+## Counting Steps
+
+From timing the program in the previous example, we learned it isn't very
+helpful in determining how good an algorithm is; different computers end up with
+different results! Additionally, we won't know the runtime of our algorithm until _after_ we've run the timer - we can't make any predictions about runtime with a timer. An alternative approach is **step counting**. The number of
+times a given *step*, or instruction, in a program gets executed is independent
+of the computer on which the program is run and is similar for programs coded
+in related languages. With step counting, we can now formally and
+deterministically describe the runtime of programs.
+
+We define a single step as the execution of a single instruction or primitive
+function call. For example, the `+` operator which adds two numbers is
+considered a single step. We can see that `1 + 2 + 3` can be broken down into
+*two steps* where the first is `1 + 2` while the second takes that result and
+adds it to 3. From here, we can combine simple steps into larger and more
+complex *expressions*.
 
 ```java
-traverse(Node node) {
-	if (node == null) {
-		return;
-	}
-    //preorder position 
-    print(node.val);
-	traverse(node.next);
+(3 + 3 * 8) % 3
+```
+
+This expression takes 3 steps to complete: one for multiplication, one for
+addition, and one for the modulus of the result.
+
+From expressions, we can construct *statements*. An assignment statement, for
+instance, combines an expression with one more step to assign the result of the
+expression to a variable.
+
+```java
+int a = 4 * 6;
+int b = 9 * (a - 24) / (9 - 7);
+```
+
+In the example above, each assignment statement takes one additional step on
+top of however many steps it took to compute the right-hand side expressions.
+In this case, the first assignment to `a` takes one step to compute `4 * 6` and
+one more step to assign the result, 24, to the variable `a`. **How many steps
+does it take to finish the assignment to `b`?**
+
+Here are some rules about what we count as taking a single step to compute:
+
+- Assignment and variable declaration statements
+- All unary (like negation) and binary (like addition, and, or) operators
+- Conditional `if` statements
+- Function calls
+- `return` statements
+
+One important case to be aware of is that, while *calling* a function takes a
+single step to setup, *executing* the body of the function may require us to do
+**much** more than a single step of work.
+
+### Counting Conditionals
+
+With conditional statements like `if` statements, the total step count depends
+on the outcome of the condition we are testing.
+
+```java
+if (a > b) {
+    temp = a;
+    a = b;
+    b = temp;
 }
 ```
-Let's take a look at what its call stack will look like, as well as the order of the printed outputs:
-```java
-traverse(node)
-    print(node.val): 1
-	traverse(node.next)
-        print(node.next.val): 2
-		traverse(node.next.next)
-            print(node.next.next.val):3
-			traverse(null)
-		traverse(node.next.next)
-	traverse(node.next)
-traverse(node) 
-```
-Notice how the code of current stack frame (i.e. printing the value of the node) is executed **BEFORE** the recursive call is returned, and the printed outputs are: 1, 2, 3. 
 
-Now what if we want to print the values in reverse order? Turns out, we can achieve that exact effect by simply changing the position of the print statement with the recursive call!
+The example above can take four steps to execute: one for evaluating the
+conditional expression `a > b` and three steps for evaluating each line in the
+body of the condition. But this is only the case if `a > b`. If the condition
+is not true, then it only takes one step to check the conditional expression.
+
+That leads us to consider two quantities: the **worst case count**, or the
+maximum number of steps a program can execute, and the **best case count**, or
+the minimum number of steps a program needs to execute. The worst case count
+for the program segment above is 4 and the best case count is 1.
+
+### `if ... else` Counting
+
+Consider an `if ... else` of the form,
+
 ```java
-traverse(Node node) {
-	if (node == null) {
-		return;
-	}
-	traverse(node.next);
-    //postorder position 
-    print(node.val);
+if (A) {
+    B;
+} else {
+    C;
 }
 ```
-The recursive call stack and the order of printed outputs:
+
+where `A`, `B`, and `C` are program segments. (`A` might be a method call, for
+instance.)
+
+**How many steps does it take to evaluate the entire `if ... else`
+block in terms of the number of steps it takes to evaluate `A`, `B`, and `C`?**
+Think back to your practice tracing through programs to figure out which parts
+of the conditional will be evaluated (given the condition is true or false),
+and which parts won't be evaluated.
+
+### Loop Counting
+
 ```java
-traverse(node)
-	traverse(node.next)
-		traverse(node.next.next)
-			traverse(null)
-		traverse(node.next.next)
-        print(node.next.next.val):3
-	traverse(node.next)
-    print(node.next.val): 2
-traverse(node) 
-print(node.val): 1
+for (int k = 0; k < N; k++) {
+    sum = sum + 1;
+}
 ```
-Notice how the code of current stack frame (i.e. printing the value of the node) is executed **AFTER** the recursive call is returned, and the printed outputs are: 3, 2, 1. 
 
-### Tree Traversals
-Extending from the linked list example above, we can see how the items can be visited in different orders by placing the print statement in different positions relative to the recursive calls of binary trees. 
+In terms of $$N$$, how many operations are executed in this loop? Remember that
+each of the actions in the for-loop header (the initialization of `k`, the exit
+condition, and the increment) count too!
 
-Specifically, three processing sequences for nodes in a binary tree occur commonly enough to
-have names:
+> It takes 1 step to execute the initialization, `int k = 0`. Then, to execute
+> the loop, we have the following sequence of steps:
+>
+> - Check the loop condition, `k < N`
+> - Add 1 to the `sum`
+> - Update the value of `sum` by assignment
+> - Increment the loop counter, `k`
+> - Update `k` by assignment
+>
+> This accounts for the first $$1 + 5N$$ steps. In the very last iteration of
+> the loop, after we increment `k` such that `k` now equals $$N$$, we spend one
+> more step checking the loop condition again to figure out that we need to
+> finally exit the loop so the final number of steps is $$1 + 5N + 1$$.
 
-- **preorder**: process the root, process the left subtree (in preorder),
-  process the right subtree (in preorder)
-  ```java
-  traverse(Node TreeNode) {
-	if (TreeNode == null) {
-		return;
-	}
-    print(TreeNode.val);
-	traverse(TreeNode.left);
-	traverse(TreeNode.right);
-}
-  ```
+### Example: `remove`
 
-- **postorder**: process the left subtree (in postorder), process the right
-  subtree (in postorder), process the root. 
-  ```java 
-  traverse(Node TreeNode) {
-	if (TreeNode == null) {
-		return;
-	}
-	traverse(TreeNode.left);
-	traverse(TreeNode.right);
-    print(TreeNode.val);
-}
-  ```
-- **inorder**: process the left subtree (in inorder), process the root, process
-  the right subtree (in inorder).
-    ```java 
-  traverse(Node TreeNode) {
-	if (TreeNode == null) {
-		return;
-	}
-	traverse(TreeNode.left);
-    print(TreeNode.val);
-	traverse(TreeNode.right);
-}
-  ```
+Now consider code for the `remove` method, which removes the item at a given position of an array `values` by shifting over all the remaining elements. We notice here that things become slightly more complicated as the number of steps performed matters both on `pos` and `len`, the number of items contained in `values`. We now count the number of steps performed in terms of these two variables.
 
-Note that for preorder and postorder, it can often be equally valid to process
-the right and then the left, although it depends on the application. In this 
-course we will typically assume that the processing will be done left and then right unless we specify otherwise. On most exams we will be precise in what 
-order nodes will be processed.
-
-{% include alert.html type="info" content=" Note that for preorder and postorder, it can often be equally valid to process
-the right and then the left, although it depends on the application. In this course we will typically assume that the processing will be done left and then right unless we specify otherwise. On most exams we will be precise in what order nodes will be processed." %}
-
-## Exercise: Processing Sequences
-
-With your partner, determine the *preorder*, *inorder*, and *postorder*
-processing sequence for the tree below. This exercise will not be graded, 
-but understanding how traversals work is a crucial part of understanding how
-to operate on trees. We will rely on these for many topics in the rest
-of the course.
-
-![binary-tree-quiz](img/binary-tree-quiz.png)
-
-Answers below (highlight to reveal):
-<div style="color: white;">Pre Order: A B C D E</div>
-<div style="color: white;">Post Order: B D E C A</div>
-<div style="color: white;">In Order: B A D C E</div>
-
-## Stacks and Queues
-
-Before we go into more traversals, we will go over some a few more data
-structures that will help us when we implement the traversals later in the lab.
-
-One of the first true data structures we encountered was the `LinkedList` data
-structure. That data structure allowed for adding and removing at any position.
-However sometimes that is too powerful and we do not need all of that
-functionality. Thus, we will introduce the **stack** and the **queue** data
-structures, which are like lists, but have more limited, precise functionality.
-As you go through this section, think about how you can implement stacks and
-queues by using a `LinkedList`.
-
-A **stack** models a stack of papers, or plates in a restaurant, or
-boxes in a garage or closet. A new item is placed on the top of the stack, and
-only the top item on the stack can be accessed at any particular time. Stack
-operations include the following:
-
-- **Pushing** an item onto the stack.
-- Accessing the top item of the stack.
-- **Popping** the top item off the stack.
-- Checking if the stack is empty.
-
-As a result, we often refer to stacks as processing in LIFO (last-in,
-first-out) ordering.
-
-A **queue** is a waiting line. As with stacks, access to a queue's elements is
-restricted. Queue operations include:
-
-- Adding an item to the **back** of the queue.
-- Accessing the item at the **front** of the queue.
-- Removing the front item.
-- Checking if the queue is empty.
-
-As a result, we often refer to queues as processing in FIFO (first-in,
-first-out) ordering.
-
-
-## Stacks and Queues: Building a Tree Iterator
-
-We now consider the problem of returning the elements of a tree one by one,
-using an iterator. To do this, we will implement the interface
-`java.util.Iterator`. The first technique to traverse trees that we will examine
-is **depth-first iteration** or **depth-first search**. The general idea is
-that we walk along each branch, traveling as far down each branch as possible
-before turning back and examining the next one. This depth first search traversal
-should feel similar to the preorder and postorder we defined above. See if you 
-can see the connection!
-
-We will also use a nested iterator class to hide the details of the iteration
-from the outer class. As with previous iterators, we need to maintain
-state-saving information that lets us find the next tree element to return, and
-we now must determine what that information might include. To help work this
-out, we'll consider the sample tree below, with elements to be returned depth
-first as indicated by the numbers.
-
-![tree-1](img/tree-1.png)
-
-The first element to be returned is the one labeled "1". Once that's done, we
-have a choice whether to return "2" or "5".
-
-Suppose we break ties by lowest node label. As a result, based on our
-tie-breaking rule, we will pick "2" over "5". Once we return element "2", we
-have a choice between return "3" or "4" next. But don't forget about "5" from
-earlier!
-
-Next, we return "3", again based on our tie-breaking rule. At this point, we
-still remember that we need to return to "4" and "5" as in the diagram below.
-
-![tree-2](img/tree-2.png)
-
-That means that our state-saving information must include not just a single
-pointer of what to return next, but a whole *collection* of "bookmarks" to nodes
-we've passed along the way.
-
-More generally, we will maintain a collection that we'll call the *fringe*,
-containing all the nodes in the tree that are candidates for returning next. The
-`next` method will choose one of the elements of the fringe as the one to
-return, then add the returned element's children to the fringe as candidates for
-the next element to return. `hasNext` returns true when the fringe isn't empty.
-
-The iteration sequence will then depend on the order we take nodes out of the
-fringe. Depth-first iteration, for example, results from storing the fringe
-elements in a *stack*, a last-in first-out structure. The `java.util` class
-library conveniently contains a `Stack` class with `push` and `pop` methods. We
-illustrate this process on a *binary tree* in which `TreeNode`s have 0, 1, or 2
-children named `left` and `right`. Here is the code:
+> This example assumes that you are using an array to back some kind of list. This idea is similar to Project 1, but this implementation is not circular. Also assume that the length of the underlying array is much larger than length and will not have an effect on the runtime of this program.
+>
+> The list will have the instance variables `values` which is the array backing the list and `len` which corresponds to the number of items actually contained in the list (not necessarily the same as `values.length`).
 
 ```java
-public class DepthFirstIterator implements Iterator<TreeNode> {
+void remove(int pos) {
+    for (int k = pos + 1; k < len; k++) {
+        values[k - 1] = values[k];
+    }
+    len -= 1;
+}
+```
 
-    /* Where we will store our bookmarks. */
-    private Stack<TreeNode> fringe = new Stack<TreeNode>();
+Each column in the table below shows the total number of steps for computing each value of `pos`. These counts are written as a function of `len`. This way we can come up with total counts for the number of steps parameterized by `len` and `pos`.
 
-    public DepthFirstIterator(TreeNode root) {
-        if (root != null) {
-            fringe.push(root);
+| category            | pos = 0      | pos = 1       | pos = 2       | ... | pos = `len` - 1 |
+|---------------------|--------------|---------------|---------------|-----|-----------------|
+| `pos + 1`           | 1            | 1             | 1             |     | 1               |
+| assignment to `k`   | 1            | 1             | 1             |     | 1               |
+| loop conditional    | `len`        | `len` - 1     | `len` - 2     |     | 1               |
+| increment to `k`    | `len` - 1    | `len` - 2     | `len` - 3     |     | 0               |
+| update `k`          | `len` - 1    | `len` - 2     | `len` - 3     |     | 0               |
+| array access        | `len` - 1    | `len` - 2     | `len` - 3     |     | 0               |
+| array assignment    | `len` - 1    | `len` - 2     | `len` - 3     |     | 0               |
+| decrement to `len`  | 1            | 1             | 1             |     | 1               |
+| assignment to `len` | 1            | 1             | 1             |     | 1               |
+| Total count         | 5 * `len`    | 5 * `len` - 5 | 5 * `len` - 10 |     | 5               |
+
+We can summarize these results as follows: a call to remove with argument `pos`
+requires in total:
+
+- 1 step to calculate `pos + 1`
+- 1 step to make the initial assignment to `k`
+- `len - pos` loop tests
+- `len - pos - 1` increments of `k`
+- `len - pos - 1` reassignments to `k`
+- `len - pos - 1` accesses to `values` elements
+- `len - pos - 1` assignments to `values` elements
+- 1 step to decrement `len`
+- 1 step to reassign to `len`
+
+If all these operations take roughly the same amount of time, the total is `5 *
+(len - pos)`. Notice how we write the number of statements as a *function of the input arguments*.
+
+> Although `len` is not a parameter of the `remove` method it is still considered to be an input as its value affects the number of steps.
+>
+> More formally we can also see that since `remove` is a non-static method, we are implicitly passing in the variable `this` to our `remove` method. This means that the variables `this.values` and `this.length` are also passed in.
+
+Comparing across a fixed value of `len` we can notice that for a small value of `pos`, the number of steps executed will be *greater* than if we had a larger value of `pos` (e.g. closer to `len`). And vice versa: a larger value of `pos` will reduce the number of steps we need to execute.
+
+### Example with Nested Loops: `removeZeroes`
+
+Counting steps in nested loops is a little more involved. As an example, we'll
+consider an implementation of the method `removeZeroes`.
+
+```java
+void removeZeroes() {
+    int k = 0;
+    while (k < len) {
+        if (values[k] == 0) {
+            remove(k);
+        } else {
+            k += 1;
         }
     }
-
-    /* Returns whether or not we have any more "bookmarks" to visit. */
-    public boolean hasNext() {
-        return !fringe.isEmpty();
-    }
-
-    /* Throws an exception if we have no more nodes to visit in our traversal.
-       Otherwise, it picks the most recent entry to our stack and "explores" it.
-       Exploring it requires visiting the node and adding its children to the
-       fringe, since we must eventually visit them too. */
-    public TreeNode next() {
-        if (!hasNext()) {
-            throw new NoSuchElementException("tree ran out of elements");
-        }
-        TreeNode node = fringe.pop();
-        if (node.right != null) {
-            fringe.push(node.right);
-        }
-        if (node.left != null) {
-            fringe.push(node.left);
-        }
-        return node;
-    }
-
-    /* This is left unimplemented for this example. */
-    public void remove() {
-        throw new UnsupportedOperationException();
-    }
 }
 ```
-{% include alert.html type="task" content="
-**Task**: Complete the conceptual exercises for the topics covered above on gradescope!
-" %}
 
-## Optinonal Coding Practice: Amoeba Family Tree
+Intuitively, the code should be slowest on an input where we need to do the
+most work, or an array of `values` full of zeroes. Here, we can tell that there
+is a worst case (removing everything) and a best case (removing nothing). To
+calculate the runtime, like before, we start by creating a table to help
+organize information.
 
-{% include alert.html type="info" content=" The following exercises are optional and are provided in the skeleton only as a reference for you to practice some recursive programming on your own! You can find the relevant files in the src and tests folders.  " %}
+| category          | best case | worst case |
+|-------------------|-----------|------------|
+| assignment to `k` | 1         | 1          |
+| loop conditional  | `len` + 1 | `len` + 1  |
+| array accesses    | `len`     | `len`      |
+| comparisons       | `len`     | `len`      |
+| calls to remove   | 0         | `len`      |
+| k + 1             | `len`     | 0          |
+| update to `k`     | `len`     | 0          |
 
-An amoeba family tree is an example of our above definition of a tree that you will
-be working with for this lab. It is simpler than a normal family tree because amoebas
-do not need partners in order to reproduce. An amoeba has one parent, zero or more 
-siblings, and zero or more children. An amoeba also has a name.
+In the best case, we never call `remove` so its runtime is simply the sum of
+the rows in the "best case" column. Thus, the best-case count is `2 + 5 * len`.
 
-Below is the skeleton code for an `Amoeba`. The full code is located in the
-`AmoebaFamily.java` file.
+The only thing left to analyze is the worst-case scenario. Remember that the
+worst case makes `len` total calls to `remove`. We already approximated the
+cost of a call to `remove` for a given `pos` and `len` value earlier: `5 *
+(len - pos)`.
+
+In our removals, `pos` is always 0, and only `len` is changing. The total
+cost of the removals is shown below.
+
+$$[5 \cdot \texttt{len}] + [5 \cdot (\texttt{len} - 1)] + \cdots +[5 \cdot (1)] + [5 \cdot (0)]$$
+
+$$= 5 \cdot [(\texttt{len}) + (\texttt{len} - 1) + \cdots + (1) + (0)]$$
+
+The challenge now is to simplify the expression. A handy summation formula to
+remember is the sum of the first $$k$$ natural numbers.
+
+$$1 + 2 + \cdots + k = \frac{k(k + 1)}{2}$$
+
+This lets us simplify the cost of removals (note that above was exactly a multiple of this form with terms from 1 to `len`). Remembering to include the additional steps in the table, we can now express the worst-case count of
+`removeZeroes` as:
+
+$$5 \cdot \frac{\texttt{len}(\texttt{len} + 1)}{2} + 3 \cdot \texttt{len} + 2$$
+
+We often prefer to simplify this by substituting `len` for a symbolic name like $$N$$.
+
+$$5 \frac{N(N + 1)}{2} + 3N + 2$$
+
+That took... a while.
+
+## Abbreviated Estimates
+
+> From this section onwards, we present a set of fairly precise definitions,
+> and we'll be relying on the example developed in this and the previous
+> part to build a solid definition for asymptotic notation. If you're
+> not fully comfortable with any of the material so far, now is the perfect
+> time to review it with someone in your lab or your TA!
+
+Producing step count figures even for those relatively simple program segments took a **lot**
+of work. But normally we don't actually need an exact step count but rather
+just an *estimate* of how many steps will be executed.
+
+In most cases, we only care about what happens for very large $$N$$ as that's
+where the differences between algorithms and their execution time really become
+limiting factors in the scalability of a program.
+
+Why is this? Debate with someone in your lab. Then, see our thoughts below
+
+<details markdown="block">
+  <summary markdown="block">
+#### Our take
+{: .no_toc}
+  </summary>
+When our $$N$$ is really small, no reasonable function
+will take a long time to execute! Imagine a program that takes $$N^{12}$$ steps
+to execute. When $$N=3$$, it doesn't really matter! But when
+$$N \gg 3$$ ($$N$$ much larger than 3) we might start to get really impatient (or the universe might end)!
+
+</details>
+
+We want to consider what
+types of algorithms would best handle big amounts of data, such as in the
+examples listed below:
+
+- Simulation of billions of interacting particles
+- Social network with billions of users
+- Encoding billions of bytes of video data
+
+> Here we are using a generic value of $$N$$ to represent the size of an input passed into a function. Note that we will not always use $$N$$ to represent the size of a program input (though it is common).
+>
+> Also notice that sometimes the program will be parameterized by more than just one input; however, for most examples in this class we will ask you to write the order of growth in terms of just one variable.
+
+The **asymptotic behavior** of a function `f` (any one of the programs above,
+for example) is a description of how the execution time of `f` changes as the
+value of $$N$$ grows increasingly large towards infinity. Our goal is to come
+up with a technique that can be used to compare and contrast two algorithms to
+identify which algorithm scales better for large values of $$N$$.
+
+We can then compute the **order of growth** of a program, a classification of
+how the execution time of the program changes as the size of the input grows
+larger and larger. For example, we say that the *order of growth* of $$2N + 3$$ is $$N$$ since, for large
+values of $$N$$, $$2N + 3$$ will be less than $$3N$$ and slightly greater than
+$$2N$$. As $$N$$ tends towards infinity, the $$+ 3$$ contributes less and less
+to the overall runtime.
+
+This pattern holds for higher-order terms too. Applying this estimation
+technique to the `removeZeroes` method above results in the following orders of
+growth.
+
+- The order of growth for the best-case runtime of `removeZeroes`, $$5N + 2$$,
+  is proportional to the `len`, $$N$$.
+- The order of growth for the worst-case runtime of `removeZeroes`, $$5
+  \frac{N(N + 1)}{2} + 3N + 2$$, is $$N^2$$.
+
+The intuitive simplification being made here is that we **discard all but the
+most significant term of the estimate and also any constant factor of that
+term**. Later, we will see exactly why this is true with a more formal proof.
+
+## Asymptotic Analysis
+
+### Recap: Simplified Analysis Process
+
+Rather than building the entire table of all the exact step counts, we can
+instead follow a *simplified analysis process*.
+
+Choose a cost function
+: These are the underlying assumptions about the costs of each step or
+instruction for our machine. In this course, we'll assume all of the basic
+operations (Java operators, assignment statements, `return` statements, array
+access) each take the same amount of time (1 unit to execute). In CS 61C, we'll see how this
+fundamental assumption often isn't true.
+
+Compute the order of growth
+: Given the cost function, we can then compute the **order of growth** for a
+program. In the `removeZeroes` example, we saw how we could compute an exact
+count and then find the correct order of growth runtime classification for it
+by simplifying the expression.
+
+Later, we'll learn a few shortcuts and practice building intuition / inspection
+to determine orders of growth, but it's helpful to remember that we're always
+solving the same fundamental problem of measuring how long it takes to run a
+program, and how that runtime changes as we increase the value of $$N$$.
+
+### Big-Theta Notation
+
+Computer scientists often use special notation to describe runtime. The first
+one we'll learn is called *big-theta*, represented by the symbol $$\Theta$$.
+
+Suppose we have a function, $$R(N)$$, with order of growth $$f(N)$$. We could
+say,
+
+> $$R(N) \in \Theta(f(N))$$, or "$$R(N)$$ is in $$\Theta(f(N))$$"
+
+Why do we say "in" $$\Theta$$? Formally, $$\Theta(f(N))$$ is a family of
+functions that all grow *proportional to* $$f$$. Here, proportional can be thought of
+as roughly *equal*. Thinking back to our working
+definition of **order of growth** as a method for *classification*,
+$$\Theta(f(N))$$ refers to the entire set of all functions that share the same
+order of growth.
+
+The advantage of using notation like big-theta is that it provides a common
+definition for *asymptotic analysis* which reduces the amount of explaining we
+need to do when we want to share our ideas with others. It also makes sure
+we're all on the same page with the claims we make, so long as we use them
+carefully and precisely.
+
+Learning new notation can be a little daunting, but we've actually already
+been making statements in big-theta terms. The first claim about `removeZeroes`
+that we made earlier,
+
+> The order of growth for the best-case runtime of `removeZeroes`, $$5N + 2$$,
+> is proportional to the length of the array, $$N$$.
+
+is essentially equivalent to the claim: **In the best-case, `removeZeroes` is
+in $$\Theta(N)$$.**
+
+And, likewise, the second claim that we made earlier,
+
+> The order of growth for the worst-case runtime of `removeZeroes`, $$5
+> \frac{N(N + 1)}{2} + 3N + 2$$, is $$N^2$$.
+
+has its own equivalent in big-theta notation: **In the worst-case,
+`removeZeroes` is in $$\Theta(N^2)$$.**
+
+> When we use `removeZeroes` here, we mean the *runtime of the function* rather
+> than the function itself. In practice, we'll often use this English shortcut
+> as long as the meaning is clearly communicated, though it would be more
+> accurate to say the *runtime of the function*.
+
+### Asymptotic Variables
+
+You may have observed, in our analysis of `removeZeroes`, that we were careful
+to make clear what the running time estimate depended on, namely the value of
+`len` and `pos`.
+
+Unfortunately, people are sometimes careless about specifying the quantity on
+which an estimate depends. Don't just use $$N$$ without making clear what $$N$$
+means. This distinction is important especially when we begin to touch on
+sorting later in the course. It may not always be clear what $$N$$ means.
+
+We'll often qualify our runtimes by stating, "where $$N$$ is the length of the
+list", but we often also say things like, "where $$N$$ is the value of the
+largest number in the list".
+
+### Asymptotic Bounds
+
+Formally, we say that $$R(N) \in \Theta(f(N))$$ if and only if there exist
+positive constants $$k_1, k_2$$ such that $$k_1 \cdot f(N) \leq R(N) \leq k_2 \cdot
+f(N)$$ for all $$N$$ greater than some $$N_0$$ (very large $$N$$).
+
+In other words, $$R(N)$$ must be **bounded** above and below by $$f(N)$$
+asymptotically. But we've already seen something like this too.
+
+> We say that the *order of growth* of $$2N + 3$$ is $$N$$ since, for large
+> values of $$N$$, $$2N + 3$$ will be less than $$3N$$ and slightly greater
+> than $$2N$$. As $$N$$ tends towards infinity, the $$+ 3$$ contributes less
+> and less to the overall runtime.
+
+In this example, we chose $$k_1 = 2$$ and $$k_2 = 3$$. These two choices of
+$$k$$ constitute a *tight-bound* for $$2N + 3$$ for all values of $$N \geq 3$$.
+
+This idea of big-theta notation as a tight-bound is very useful as it allows us
+to, very precisely, state *exactly* how scalable a function's runtime grows as
+the size of its input ($$N$$) grows. When a $$\Theta(N)$$ function's input
+size increases, we'd expect the runtime to also increase linearly.
+
+### Big-O
+
+But, there are many scenarios where we can't actually give a tight bound:
+sometimes, it just doesn't exist. And, practically-speaking, one of the common
+use scenarios for runtime in the real world is to help choose between several
+different algorithms with different orders of growth. For these purposes, it's
+often sufficient just to give an *upper-bound* on the runtime of a program.
+
+There exists a very common asymptotic notation, *big-O*, represented by the
+symbol, $$O$$.
+
+If we could think of big-theta as an $$=$$ (equals) sign, then big-O is like a
+$$\leq$$ sign. Likewise, the formal definition for big-O follows, $$R(N) \in
+O(f(N))$$ if and only if there exists a positive constant $$k_2$$ such that
+$$R(N) \leq k_2 \cdot f(N)$$ for all $$N$$ greater than some $$N_0$$ (very large
+$$N$$).
+
+Note that this is a looser condition than big-theta since big-O doesn't include the lower bound.
+
+To see why we would prefer a theta bound consider the following simplified example. Would you know more about a person's age if they told you either 1. "I am between 30 and 40 years old" OR 2. "I am less than 40 years old"?
+
+### Big-Omega
+
+Sometimes it will also be useful to describe function runtimes using an $$\Omega$$ (Omega) bound, which you can think of as a lower bound. For example, if a tight $$\Theta$$ bound does not exist you could supply an $$O$$ and $$\Omega$$ bound. Practically speaking, an $$\Omega$$ bound by itself might be less useful than a $$\Theta$$ or $$O$$ bound, but in certain cases it will provide useful information.
+
+Similar to above, if we could think of big-theta as an $$=$$ (equals) sign, then big-$$\Omega$$ is like a
+$$\geq$$ sign. Likewise, the formal definition for big-Omega follows, $$R(N) \in
+\Omega(f(N))$$ if and only if there exists a positive constant $$k_1$$ such that
+$$R(N) \geq k_1 \cdot f(N)$$ for all $$N$$ greater than some $$N_0$$ (very large
+$$N$$).
+
+Note that this too is a looser condition than big-theta since big-Omega doesn't include
+the upper bound.
+
+We can return to our simplified example to again show why we prefer a theta bound. Would you know more about a person's age if they told you either 1. "I am between 30 and 40 years old" OR 2. "I am more than 30 years old"?
+
+### Back to Big Theta
+
+Now that we have learned big-Omega and big-O notation, where does big theta fall into this? We already said that big theta means *roughly equal*, but what does that mean? Given we have defined big-O as an *upper bound* and big-Omega as a *lower bound*, what happens if the tightest big-O bound
+is in the same family as the tightest big-Omega bound? This means the code is both
+upper bounded **AND** lower bounded by the same family of functions! This is what we mean by **equal**.
+
+A theta bound only exists if the tightest big-O bound is equal to the tightest big-Omega bound.
+
+## Discussion: Case Analysis
+
+> Read the following three sections of **[Chapter 8.4 from Runtime Analysis
+> Subtleties][]** all the way through **Big Omega**. You don't need to read the
+> last section on *Amortized Analysis*, yet. We will see that in a few labs!
+
+[Chapter 8.4 from Runtime Analysis Subtleties]: https://joshhug.gitbooks.io/hug61b/content/chap8/chap84.html#runtime-analysis-subtleties
+
+Discuss with someone *why* each of the following claims are true.
+
+- `removeZeroes` is in $$\Omega(1)$$.
+- `removeZeroes` is in $$\Omega(N)$$.
+- `removeZeroes` is in $$O(N^2)$$.
+- A $$\Theta(\cdot)$$ bound does not exist for `removeZeroes`.
+- In the best case, `removeZeroes` is in $$O(N^2)$$.
+- In the best case, `removeZeroes` is in $$\Theta(N)$$.
+- In the worst case, `removeZeroes` is in $$\Omega(\log N)$$.
+- In the worst case, `removeZeroes` is in $$\Theta(N^2)$$.
+
+### Limit Definition
+
+An alternative, the calculus-based [limit definition][] is also sometimes useful,
+as you can apply L'Hopital's Rule to derive asymptotic simplifications like
+dropping multiplicative constants and additive lower-order terms.
+
+We generally won't use this too often though, as the first definition provides
+a more useful and intuitive visualization of the lower and upper bounds.
+
+[limit definition]: https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-spring-2015/resources/mit6_042js15_session24/
+
+## Common Orders of Growth
+
+Here are some commonly-occurring estimates listed from no growth at all to
+fastest growth.
+
+- **Constant time**, often indicated with $$1$$.
+- **Logarithmic time** or proportional to $$\log N$$.
+- **Linear time** or proportional to $$N$$.
+- **Linearithmic time** or proportional to $$N \log N$$.
+- **Polynomial time** or proportional to $$N^{k}$$ for some constant $$k$$.
+- **Exponential time** or proportional to $$k^{N}$$ for some constant $$k$$.
+- **Factorial time** or proportional to $$N!$$ ($$N$$ factorial).
+
+![Orders of Growth](img/orders-of-growth.png)
+
+### Logarithmic Algorithms
+
+First, if you are shaky on the properties of logarithms, I suggest looking through
+[this](https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:logs/x2ec2f6f830c9fb89:log-prop/a/properties-of-logarithms) Khan academy section on log properties!
+
+We will shortly encounter algorithms that run in time proportional to $$\log
+N$$ for some suitably defined $$N$$. Recall from algebra that the base-10
+logarithm of a value is the exponent to which 10 must be raised to produce the
+value. It is usually abbreviated as $$\log_{10}$$. Thus
+
+- $$\log_{10} 1000$$ is 3 because $$10^{3} = 1000$$.
+- $$\log_{10} 90$$ is slightly less than 2 because $$10^{2} = 100$$.
+- $$\log_{10} 1$$ is 0 because $$10^{0} = 1$$.
+
+In algorithms, we commonly deal with the base-2 logarithm, written as $$\lg$$,
+defined similarly.
+
+- $$\lg 1024$$ is 10 because $$2^{10} = 1024$$.
+- $$\lg 9$$ is slightly more than 3 because $$2^{3} = 8$$.
+- $$\lg 1$$ is 0 because $$2^{0} = 1$$.
+
+Another way to think of log is the following: $$\log_{\text{base}} N$$ is the
+number of times $$N$$ must be divided by the base before it hits 1. For the
+purposes of determining orders of growth, however, the log base actually
+doesn't make a difference because, by the change of base formula, we know that
+any logarithm of $$N$$ is within a constant factor of any other logarithm of
+$$N$$. We usually express a logarithmic algorithm as simply $$\log N$$ as a
+result.
+
+Change of Base Formula
+: $$\log_b x = \frac{\log_a x}{\log_a b}$$
+
+Algorithms for which the running time is logarithmic are those where processing
+discards a large proportion of values in each iterations. The binary search
+algorithm is an example. We can use binary search in order to guess a number
+that a person is thinking of. In each iteration, we guess a number and are told whether the number they're thinking of is higher or lower than our guess. The algorithm then discards half the
+possible values for the searched-for number, repeating the process in the other half. Thus, we continually divide the size of
+the problem by 2 until there is only one value left.
+
+For example, say you started with a range of 1024 numbers in the number
+guessing game. Each time you would discard half of the numbers so that each
+round would have the following numbers under consideration:
+
+| Round # | Numbers left |
+|---------|--------------|
+| 1       | 1024         |
+| 2       | 512          |
+| 3       | 256          |
+| 4       | 128          |
+| 5       | 64           |
+| 6       | 32           |
+| 7       | 16           |
+| 8       | 8            |
+| 9       | 4            |
+| 10      | 2            |
+| 11      | 1            |
+
+We know from above that $$\lg 1024 = 10$$ which gives us an approximation of
+how many rounds it will take. We will see further applications of logarithmic
+behavior when we work with trees in subsequent activities.
+
+## Analyzing Iteration
+
+We've thus far defined the language of asymptotic analysis and developed some
+simple methods based on counting the total number of steps. However, the kind
+of problems we want to solve are often too complex to think of just in terms of
+number iterations times however much work is done per iteration.
+
+Consider the following function, `repeatedSum`.
 
 ```java
-class Amoeba {
-    public String name;
-    public Amoeba parent;
-    public ArrayList<Amoeba> children;
+long repeatedSum(int[] values) {
+    int N = values.length;
+    long sum = 0;
+    for (int i = 0; i < N; i += 1) {
+        for (int j = i; j < N; j += 1) {
+            sum += values[j];
+        }
+    }
+    return sum;
 }
 ```
 
-And below is a box and pointer diagram of our `Amoeba`.
+In `repeatedSum`, we're given an array of `values` of length N. We want to take
+the repeated sum over the array as defined by the following sequences of values `j` takes on:
 
-![amoeba-bp](img/amoeba-bp.jpg)
+- $$0, 1, 2, 3, \cdots, N - 1$$
+- $$1, 2, 3, 4, \cdots, N - 1$$
+- $$2, 3, 4, 5, \cdots, N - 1$$
 
-Amoebas (or amoebae) live dull lives. All they do is reproduce, so all we need
-to keep track of them are the following methods:
+Notice that each time, the number of elements, or the iterations of `j`, being
+added is reduced by 1. While in the first iteration, we sum over all $$N$$
+elements, in the second iteration, we only sum over $$N - 1$$ elements. On the
+next iteration, even fewer: just $$N - 2$$ elements. This pattern continues until
+the outer loop, `i`, has incremented all the way to $$N$$.
+
+One possible approach to this problem is to draw a bar chart to visualize how
+much work is being done for each iteration of `i`. We can represent this by
+plotting the values of `i` across the X-axis of the chart and the number of
+steps for each corresponding value of `i` across the Y-axis of the chart.
+
+![Empty plot](img/empty-plot.png)
+
+Now, let's plot the amount of work being done on the first iteration of `i`
+where `i = 0`. If we examine this iteration alone, we just need to measure the
+amount of work done by the `j` loop. In this case, the `j` loop does work
+proportional to $$N$$ steps as the loop starts at 0, increments by 1, and only
+terminates when `j = N`.
+
+How about the next iteration of `i`? The loop starts at 1 now instead of 0 but
+still terminates at $$N$$. In this case, the `j` loop is proportional to $$N -
+1$$ steps. The next loop, then, is proportional to $$N - 2$$ steps.
+
+![Partial linear plot](img/partial-linear-plot.png)
+
+We can start to see a pattern forming. As `i` increases by 1, the amount of
+work done on each corresponding `j` loop decreases by 1. As `i` approaches
+$$N$$, the number of steps in the `j` loop approaches 0. In the final
+iteration, when `i = N - 1`, the `j` loop performs work proportional to 1 step.
+
+![Extrapolated linear plot](img/extrapolated-linear-plot.png)
+
+We've now roughly measured each loop proportional to some number of steps. Each
+independent bar represents the amount of work any one iteration of `i` will
+perform. The runtime of the entire function `repeatedSum` then is the sum of
+all the bars, or simply the area underneath the line.
+
+![Complete linear plot](img/complete-linear-plot.png)
+
+The problem is now reduced to finding the area of a triangle with a base of
+$$N$$ and height of also $$N$$. Thus, the runtime of `repeatedSum` is in
+$$\Theta(N^{2})$$.
+
+We can verify this result mathematically by noticing that the sequence can be
+described by the following summation:
+
+$$1 + 2 + 3 + ... + N = \frac{N(N + 1)}{2}$$,
+which after dropping lower order terms and multiplicative constants we see is in $$\Theta(N^{2})$$. It's useful to know both the formula as well as
+its derivation through the chart above.
+
+## Multivariate Analysis
+
+Sometimes we care about how the runtime of an algorithm will grow with respect to multiple variables. As an example, consider the `rectangle` function below that computes the area of a rectangle with side lengths `N` and `M`.
 
 ```java
-/* Creates an AmoebaFamily, where the first Amoeba's name is NAME. */
-public AmoebaFamily(String name) {
-    root = new Amoeba(name, null);
-}
-
-/* Adds a new Amoeba with childName to this AmoebaFamily as the youngest
-   child of the Amoeba named parentName. This AmoebaFamily must contain an
-   Amoeba named parentName. */
-public void addChild(String parentName, String childName) {
-    if (root != null) {
-        root.addChildHelper(parentName, childName);
+int rectangle(int N, int M) {
+    int area = 0;
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < M; j++) {
+            area += 1;
+        }
     }
+    return area;
 }
 ```
 
-The `Amoeba` objects are the nodes of our tree, represented by the
-`AmoebaFamily` object. You will find that most of the methods of this
-`AmoebaFamily` will be implemented through recursive helper methods of the
-`Amoeba` class.
+Analyzing this algorithm we see that the outer loop runs $$N$$ times and the inner loop runs $$M$$ times per each iteration of the outer loop. Since each iteration of the inner loop only does a constant amount of work, we find the resulting runtime to be in $$\Theta(MN)$$.
 
-> This organization structure should feel similar. Before for our `DLList` we had the 
-> `DLList` class and within it the inner class `Node`. The `DLList` 
-> encapsulated the recursive structure of the `Node`s. Now we will have our
-> `AmoebaFamily` which will encapsulate the recursive structure of the 
-> `Amoeba`s.
+## Analyzing Recursion
 
-### Void Recursive Methods
+Now that we've learned how to use a bar chart to represent the runtime of an
+iterative function, let's try the technique out on a recursive function,
+`mitosis`.
 
-In the `AmoebaFamily` class, we provide the method `addChild` to add a new
-`Amoeba` to the `AmoebaFamily` tree. The method implements a general traversal
-of the tree using a void recursive method in the `Amoeba` class. Read through
-this method and related functionality to get an understanding of how we are 
-traversing and manipulating the Object.
+```java
+int mitosis(int N) {
+    if (N == 1) {
+        return 1;
+    }
+    return mitosis(N / 2) + mitosis(N / 2);
+}
+```
 
-### Non-void Recursive Methods
+Let's start by trying to map each $$N$$ over the x-axis like we did before and
+try to see how much work is done for each call to the function. The conditional
+contributes a constant amount of work to each call. But notice that in our
+return statement, we make two recursive calls to `mitosis`. How do we represent
+the runtime for these calls? We know that each call to `mitosis` does a
+constant amount of work evaluating the conditional base case but it's much more
+difficult to model exactly how much work each recursive call will do. While a
+bar chart is a very useful way of representing the runtime of iterative
+functions, it's not always the right tool for recursive functions.
 
-So far, the methods we've seen for the `AmoebaFamily` class have not returned
-anything; they have only been modifying the state of the `AmoebaFamily`. We will
-be able to do cooler things if we can return values, and the next example will
-take advantage of this.
+Instead, let's try another strategy: drawing call trees. Like the charting
+approach we used for iteration earlier, the *call tree* will reduce the
+complexity of the problem and allow us to find the overall runtime of the
+program on large values of $$N$$ by taking the tree recursion out of the
+problem. We will draw each call to the function as a node with its input size within the node, and recursive calls are drawn as children of a node. Consider the call tree for `fib` below.
 
-## Exercise: `longestName`
+```java
+int fib(int N) {
+    if (N <= 1) {
+        return 1;
+    }
+    return fib(n - 1) + fib(n - 2);
+}
+```
 
-Implement the `longestName` method in the `AmoebaFamily` class. Make this as
-similar to `longestNameLength` as possible. You will find that these non-void
-recursive methods follow a specific pattern, one that you will likely draw upon
-again when solving problems that you face in the future.
+![Fibonacci tree](img/fib-tree.png)
 
-You will not need to use `longestNameLength` directly in your implementation of
-`longestName`.
+At the *root* of the tree, we make our first call to `fib(n)`. The recursive
+calls to `fib(n - 1)` and `fib(n - 2)` are modeled as the two *children* of the
+root node. We say that this tree has a *branching factor* of two as each node
+contains two children. It takes a constant number of instructions to evaluate
+the conditional, addition operator, and the return statement as denoted by the
+`1` to the upper-right of each node. (Note that you may see call trees with nodes' input size and work performed in opposite positions. Be sure to understand what the numbers in your call tree represent.)
 
-## Optional Exercise: Tree Iterators
+We can see this pattern occurs for all nodes in the tree: each node performs
+the same constant number of operations if we don't consider recursive calls. If
+we can come up with a scheme to count all the nodes, then we can simply
+multiply by the constant number of operations to find the overall runtime of
+`fib`.
 
-### Optional Exercise 1: `AmoebaDFSIterator`
+For a tree with branching
+factor $$b$$ and height $$h$$ we can compute the number of nodes as $$b^{h+1}-1$$ (if we think of the root as height 0). For the sake of asymptotic analysis, it is sufficient to use $$b^{h}$$ or $$b^{h+1}$$ as we will below (as an exercise, can you justify why?).
 
-Switch which partner is doing the coding if you have not done so recently.
+Spend a little time thinking about the maximum height of this tree: when does the base
+case tell us the tree recursion will stop?
 
-Complete the definition of the `AmoebaDFSIterator` class (within the
-`AmoebaFamily` class). It should successively return names of `Amoeba`s from the
-family in depth-first preorder. **You will need to add `Amoeba`s to the stack as you do
-above, with the right child being pushed before the left child.** Thus, for the
-family set up in the `AmoebaFamily` main method, the name "Amos McCoy" should be
-returned by the first call to `next`; the second call to `next` should return
-the name "mom/dad"; and so on. Do not change any of the framework code.
+> Note that the counting the number of nodes in this recursive call tree for `fib` ends up being a little tricky because the tree is not symmetric i.e. each of the two recursive calls made from one call to `fib` are not the same.
+>
+> If you are interested, you can check out [this article](https://www.geeksforgeeks.org/time-complexity-recursive-fibonacci-program/) which explains how to compute a tight bound for `fib`.
 
-Organizing your code as described in the previous step will result in a process
-that takes time proportional to the number of `Amoeba`s in the tree to return
-them all. Moreover, the constructor and `hasNext` both run in constant time,
-while `next` runs in time proportional to the number of children of the element
-being returned.
+Returning to the original problem of `mitosis`, the call tree is setup just
+like `fib` except instead of decrementing $$N$$ by 1 or 2, we now divide $$N$$
+in half each time. Each node performs a constant amount of work but also makes
+two recursive calls to `mitosis(N / 2)`.
 
-Add some code at the end of the `AmoebaFamily` main method to test your
-solution. We suggest using the tree examples and answers above as a starting
-point for your tests.
+![N-time tree](img/n-tree.png)
 
-### Optional Exercise 2: `AmoebaBFSIterator`
+Like before, we want to identify both the branching factor and the height of
+the tree. In this case, the branching factor is 2 like before. Recall that the
+series $$N, N/2, \cdots , 4, 2, 1$$ contains $$\log_{2} N$$ elements since, if
+we start at $$N$$ and break the problem down in half each time, it will take us
+approximately $$\log_{2} N$$ steps to completely reduce down to 1, so the height of the tree will be $$\log_{2} N$$.
 
-Now write the `AmoebaBFSIterator` class (within the `AmoebaFamily` class). This
-will result in `Amoeba` names being returned in breadth-first order. That is,
-the name of the root of the family will be returned first, then the names of its
-children (oldest first), then the names of all their children, and so on. Another
-way to think about breadth-first search is a level order traversal. All of the 
-nodes at depth 0 will be processed, then at depth 1, then at depth 2, etc.
+Plugging into the formula, we get $$2^{\log_{2} N}$$ nodes which simplifies to
+$$N$$. Therefore, $$N$$ nodes performing a constant amount of work each will
+give us an overall runtime in $$\Theta(N)$$.
 
-Your code for your `AmoebaBFSIterator` should be very similar to that of 
-`AmoebaDFSIterator` with one big exception. In `AmoebaBFSIterator` instead of 
-using a stack you should use a queue. By making this one change you will greatly
-alter the behavior of your iterator. We recommend using `java.util.LinkedList`
-to implement your queue.
+There is another way to approach this analysis: going level by level. We can see that on the first level of the recursive call tree there is a single node doing a constant amount of work (1). On the second level we double the number of nodes, but each node still is doing a constant amount of work, so the total work on this layer is 1+1=2. Similarly, we can see that the work on level 3 is 4, on level 4 is 8, and so on following the pattern that the work on level $$i$$ is $$2^{i}$$. From the analysis above, we know that this tree has $$\log_{2} N$$ levels. Now, to figure out the total work done by the function we just need to sum up all the work done by all of the levels:
 
-> There is a `java.util.Queue` but it is just an interface. There are a number of 
-> Java classes which implement this interface, one of which being `java.util.LinkedList`.
-> Any non-abstract subclass of this interface should work for this exercise.
+$$1 + 2 + 4 + \cdots + 2^{(log_{2} N) - 2} + 2^{(log_{2} N) - 1}$$
 
-For the family constructed in the `AmoebaFamily` main method, your modification will
-result in the following iteration sequence:
+$$ = 1 + 2 + 4 + \cdots + \frac{N}{4} + \frac{N}{2}$$
 
-    Amos McCoy
-    mom/dad
-    auntie
-    me
-    Fred
-    Wilma
-    Mike
-    Homer
-    Marge
-    Bart
-    Lisa
-    Bill
-    Hilary
+This is a geometric sum which is dominated by its last element. Here, the last element is larger than all of the elements that came before it combined (Exercise: prove this to yourself. As a hint, try out the first few powers of 2). This allows us to say the overall runtime is proportional to the last term giving us an overall runtime in $$\Theta(N)$$
 
-**Note: You will need to change the return value of the `iterator` method to
-`AmoebaBFSIterator` to see the above output.**
+It will not always be the case that each layer in a recursive call tree will have the same amount of summed work, nor will it always be the case that each node in a recursive call tree will do the same amount of work. You will have to use the techniques at your disposal to solve these problems, which is a skill that takes time and practice to develop.
 
-Before implementing this, try working out this traversal on paper with the
-prior exercises to gain intuition for it. Keep track of the state of the 
-queue during the traversal and try to see how the difference between
-the queue's FIFO behavior and the stack's LIFO behavior results in a different
-traversal.
+In general, for a recursion tree, we can think of the total work as:
 
-## Conclusion
+$$\sum_{\text{layers}} \frac{\text{nodes}}{\text{layer}
+}\frac{\text{work}}{\text{node}}$$
 
-### Extra Readings
+For `mitosis`, we have $$\log N$$ levels,
+$$2^(i-1)$$ nodes in layer $$i$$, with $$1$$ work per node. Thus we see the summation will be as follows, which matches the quantity we just calculated:
 
-The next lab will cover binary search trees. You may find Shewchuk's notes on
-[Binary Search Trees][] helpful.
+$$\sum_{i = 0}^{\log N} 2^i (1)$$
 
-[Binary Search Trees]: http://www-inst.eecs.berkeley.edu/~cs61bl/su14/assets/readings/jrs/BSTs.txt
+## Recap
+
+Runtime Minimization
+: One of the most important properties of a program is the time it takes to
+execute. One goal as a programmer is to minimize the time (in seconds) that a
+program takes to complete.
+
+Runtime Measurement
+:   - Measure the number of seconds that a program takes to complete using a
+    stopwatch (either physical or in software). This tells you the actual
+runtime, but is dependent on the machine and inputs.
+    - Count the number of operations needed for inputs of a given size. This is
+      a machine independent analysis, but still depends on the input, and also
+doesn't actually tell you how long the code takes to run.
+    - Derive an algebraic expression relating the number of operations to the
+      size of an input. This tells you how the algorithm scales, but does not
+tell you how long the code takes to run.
+
+Algorithm Scaling
+:   While we ultimately care about the runtime of an algorithm in seconds, we'll
+often say that one algorithm is better than another simply because of how it
+scales. By scaling, we mean how the runtime of a piece of code grows as a
+function of its input size. For example, inserting at the beginning of
+ArrayList on an old computer might take $$R(N) = 0.0001N$$ seconds, where $$N$$
+is the size of the list. For example, if the runtime of two algorithms is $$R_1(N) = N^2$$, and
+$$R_2(N) = 5000 + N$$, we'd say algorithm $$R_2$$ is better, even though
+$$R_1$$ is much faster for small $$N$$.
+
+Order of Growth
+:   The result of applying our last 3 simplifications gives us the order of
+growth of a function. So for example, suppose $$R(N) = 4N^2 + 3N + 6$$, we'd
+say that the order of growth of $$R(N)$$ is $$N^2$$.
+
+    The terms "constant", "linear", and "quadratic" are often used for
+algorithms with order of growth $$1$$, $$N$$, and $$N^2$$, respectively. For
+example, we might say that an algorithm with runtime $$4N^2 + 3N + 6$$ is
+quadratic.
+
+Simplified Analysis
+:   Once we've chosen a cost function, we can either:
+    - Compute the exact expression that counts the number of operations.
+    - Use intuition and inspection to find the order of growth of the number of operations.
+
+    This latter approach is generally preferable, but requires a lot of
+practice. One common intuitive/inspection-based approach is use geometric
+intuition. For example, if we have nested for loops where i goes from 0 to N,
+and j goes from i + 1 to N, we observe that the runtime is effectively given by
+a right triangle of side length N. Since the area of a such a triangle grows
+quadratically, the order of growth of the runtime is quadratic.
+
+Big-Theta
+:   To formalize our intuitive simplifications, we introduce big-theta
+notation. We say that a function $$R(N) \in \Theta(f(N))$$ if there exists
+positive constants $$k_1$$ and $$k_2$$ such that $$k_1 \cdot f_1(N) \leq R(N)
+\leq k_2 \cdot f_2(N)$$.
+
+    When using $$\Theta$$ to capture a function's asymptotic scaling, we avoid
+unnecessary terms in our $$\Theta$$ expression. For example, while $$4N^2 + 3N +
+6 \in \Theta(4N^2 + 3N)$$, we will usually make the simpler claim that is
+$$4N^2 + 3N + 6 \in \Theta(N^2)$$.
+
+    Big-theta is exactly equivalent to order of growth. That is, if a function
+$$R(N)$$ has order of growth $$N^2$$, then we also have that $$R(N) \in
+\Theta(f(N))$$.
+
+In the final section, we applied what we learned about counting steps,
+estimation, and orders of growth to model algorithmic analysis for larger
+problems. Two techniques, **charting** and **drawing call trees**, helped us
+break down challenging problems into smaller pieces that we could analyze
+individually and recombine to form the final solution.
+
+Below, we will list some tips and formulas that will be handy when you start
+finding the asymptotic runtimes of functions.
+
+### Practical Tips
+
+1. Before attempting to calculate a function's runtime, first try to understand
+   what the function does.
+2. Try some small sample inputs to get a better intuition of what the
+   function's runtime is like. What is the function doing with the input? How
+does the runtime change as the input size increases? Can you spot any 'gotchas'
+in the code that might invalidate our findings for larger inputs?
+3. Try to lower bound and upper bound the function runtime given what you know
+   about how the function works. This is a good sanity check for your later
+observations.
+4. If the function is recursive, draw a call tree to map out the recursive
+   calls. Within each node, denote how much work that specific node does. Then,
+   note the total (sum) work done on each *level*. You should also find the height
+   of the recursive call tree. This breaks the problem down into
+   smaller parts that we can analyze individually. Once each part of the tree has been analyzed, we can then
+   reassemble all the parts to determine the overall runtime of the function.
+5. If the function has a complicated loop, draw a bar chart to map out how much
+   work the body of the loop executes for each iteration.
+6. **Only consider what happens for very large N.** If you see a statement like `if (N < 1) {return 0}` at the top of an algorithm this doesn't mean that we can immediately say the algorithm has a best case runtime in $$\Theta(1)$$. This is a *very* common mistake.
+
+### Useful Formulas
+
+- $$1 + 2 + 3 + 4 + \cdots + N$$ is in $$\Theta(N^2)$$.
+- There are $$N$$ terms in the sequence $$1, 2, 3, 4, \cdots, N$$.
+- $$1 + 2 + 4 + 8 + \cdots + N$$ is in $$\Theta(N)$$.
+- There are $$\log N$$ terms in the sequence $$1, 2, 4, 8, \cdots, N$$.
+- The number of nodes in a complete tree, $$N$$, is approximately $$b^h$$ where
+  $$b$$ is the *branching factor* and $$h$$ is the *height* of the tree.
+- All logarithms are proportional to each other by the Change of Base formula
+  so we can express them generally as just $$\log$$.
+
+It's worth spending a little time proving each of these to yourself with a
+visual model! I personally recommend Desmos or WolframAlpha.
 
 ### Deliverables
 
-To finish this lab, make sure to finish the following:
+A quick recap of what you need to do to finish today's lab.
 
-- Read through the lab spec and understand obtain a good understanding of these topics: tree definitions, traversals, stacks and queues.
-- Complete the lab 10 assignment on gradescope. **There is no coding submission required for this lab.**
+- Look through the `Timer` class and try timing the algorithm in `Sorter.java`
+  for different inputs. Discuss with your neighbors what you
+came up with.
+- Read through the content on asymptotic analysis (big-theta, O, and omega)
+  focusing on how to handle logarithmic, iterative, and recursive algorithms.
+- **Complete the online assessment on Gradescope. There is no coding submission.**
+
