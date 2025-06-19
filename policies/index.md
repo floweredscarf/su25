@@ -60,8 +60,8 @@ of work. **We strongly recommend not taking any other courses alongside CS
 While we can’t predict how many hours you will spend on the course, here is a
 brief breakdown of what you will have to do in this course.
 
-- Four 2-3 hour practical labs per week on Monday - Thursday.
-- Two one-hour lectures per week on Monday and Wednesday. 
+- Four 2 hour practical labs per week on Monday - Thursday.
+- Two one-hour live lectures per week on Monday and Wednesday, with pre-recorded lecture videos to watch before class.
 - One homework per week (total of 6).
 - Two exams (one midterm, one final) in the 8 weeks of the course.
 - Four projects in the 8 weeks of the course.
@@ -70,7 +70,7 @@ brief breakdown of what you will have to do in this course.
 
 CS 61A is an important prerequisite. We expect to build heavily on
 data-oriented and object-oriented design approaches introduced in this course
-and on algorithms for recursive list and tree manipulation. Engineering 7 or CS
+and on algorithms for recursive list and tree manipulation. Engineering 7 / CS
 88 / Data 8 students may find the beginning of the course to be a bit
 scarier, particularly when it comes to object-oriented programming and
 recursion. We assume you are coming in with zero Java experience, but we will
@@ -86,6 +86,7 @@ Students with “sufficient partial credit” in CS 61B should consider taking C
 these self-paced courses are only offered during the fall and spring semesters.
 
 ### Goals and Class Norms
+
 We are committed to creating a learning environment welcoming of all students that supports a diversity of thoughts, perspectives and experiences and respects your identities and backgrounds (including race, ethnicity, nationality, gender identity, socioeconomic class, sexual orientation, language, religion, ability, and more.) To help accomplish this:
 
 - If your name and/or pronouns differ from those that appear in your official records, please let us know.
@@ -100,13 +101,14 @@ If something was said in class (by anyone—staff member or fellow student) that
 - via the department's [Student Climate and Incident Reporting Form.](https://docs.google.com/forms/d/e/1FAIpQLSc4NYHdUJ8IzYA1SoiTinWBybGWkj0mfmdnHAeygAxkZajelQ/viewform)
 
 ### Remote Policy
-This is, per university policy, an in-person course. <strong> However, we will make at least one 
-lab section online. </strong>
+
+This is, per university policy, an in-person course. **However, we will make at least one 
+lab section online, though we have no guarantees about meeting online demand.**
 Please note, however, that our ability to support those in other timezones will be 
 limited by our need to sleep at night. That means that, if you are on the other side 
 of the world, you may have to be up at night to attend our offerings. We thus do 
 not recommend that you take the course if you will not be physically located in an 
-amenable timezone, although we will not prevent you. You must take the exams in person. Everything other than exams can be done remotely. If you can't attend the midterm in-person, but can attend the final in-person, please email us at cs.
+amenable timezone, although we will not prevent you. **You must take the exams in person.** Everything other than exams can be done remotely.
 
 ### Mental Health & Wellness
 
@@ -166,27 +168,27 @@ Indian and Indigenous peoples.
 
 ### Lecture
 
-This summer, we will be using a _flipped classroom_ format. Students are **expected** to watch pre-recorded lecture videos from previous semesters before attending class. Live lecture sessions will focus on deepening your understanding of the material through concept reviews, interactive problem-solving, and Q&A.
+This summer, we will be using a _flipped classroom_ format. Students are **expected** to watch pre-recorded lecture videos from previous semesters before attending class (except for the first lecture). Live lecture sessions will focus on deepening your understanding of the material through conceptual reviews, interactive problem-solving, and Q&A.
 Lecture will be held on **Mondays and Wednesdays from 9–10am in Evans 10**. Because the classroom cannot accommodate all enrolled students, lectures will also be webcast live over Zoom to ensure full access. Whether attending in person or virtually, active participation is encouraged to make the most of our collaborative in-class time.
 
 ### Labs
 
-Lab sections meet Monday through Thursday. You may only attend the lab section in which you are enrolled.
+Lab sections meet Monday through Thursday. You may only attend the lab section which you signed up for.
 In-person labs will be held in a lab room in Soda Hall. Remote labs will be held over 
-Zoom where you will be working primarily in breakout rooms (TAs / Tutors / Academic Interns will join the breakout room when you need assistance).
+Zoom where you will be working primarily in breakout rooms (TAs / Tutors will join the breakout room when you need assistance).
 
 These labs are practical labs that emphasize hands-on experience with the course material.
 They involve coding assignments that are submitted for credit. Labs will also have a small attendance credit (see grading breakdown below).
 
 If you would like to swap to a lab section that you are not officially enrolled
-in you must email [cs61bl@berkeley.edu](mailto:cs61bl@berkeley.edu). <strong> Attending a lab that you are not officially
+in you must email [cs61bl@berkeley.edu](mailto:cs61bl@berkeley.edu). **Attending a lab that you are not officially
 enrolled in or have not received permission to attend may result in you being 
-de-prioritized for help. </strong>
+de-prioritized for help.**
 
 ### Homeworks
 
 Homeworks are designed to reinforce your **conceptual understanding** of the material each week. They will include a mix of multiple-choice, short answer, and coding questions, and will be released on **Gradescope** every **Wednesday**, due the following **Tuesday at 11:59 PM**.
-Regardless of length, all homeworks will be worth **2.5** points. The maximum number of homeworks points you can get will be 15.
+Regardless of length, all homeworks will be worth **2.5** points. The maximum number of homework points you can get is 15.
 
 **No extensions** will be granted for homework assignments for any reason, so please plan accordingly and start early.
 
@@ -194,7 +196,7 @@ Regardless of length, all homeworks will be worth **2.5** points. The maximum nu
 
 There are four projects in this course. Projects are larger and more
 challenging assignments than you would typically find in a lab. There will be some in lab time to work on these projects,
-but they are largely meant to be completed outside of lab. This semester **we will not be having OH** so please come to lab to get the best help.
+but they are largely meant to be completed outside of lab. This semester, **we will not be having explicit TA office hours**, so please come to lab to get the best help.
 
 ### Exams
 
@@ -232,7 +234,7 @@ Z-scores will be based on the grades before this policy is applied. In other wor
 
 The final exam z-score clobbering policy will only be applied if it helps your score. For example, if you score around the average on the midterm, but then have a bad day and do poorly on the final, we will not change your midterm scores.
 
-While this mechanism introduces a bit of curving to the class, in practice it does not turn the class into a competition. Our grading bins are still fixed, a vast majority of the points are not subject to this mechanism, and the impact tends to be relatively small for most students.
+While this mechanism introduces a bit of curving to the class, it does not turn the class into a competition. Our grading bins are still fixed, a vast majority of the points are not subject to this mechanism, and the impact tends to be relatively small for most students.
 
 In theory, it would be nice to have a mechanism that avoids using any statistics, e.g., simply replacing your midterm score with the final grade if it’s higher. In practice, it is very difficult to get both the exam means (and variances) to line up. Therefore, we use a z-score partial clobbering policy as described above.
 
@@ -241,9 +243,8 @@ In theory, it would be nice to have a mechanism that avoids using any statistics
 After most weeks, we will send out a weekly survey in the weekly announcements.
 We will have 6 weekly surveys. Completing each weekly survey will give half of
 an **extra credit** point! In addition to the weekly surveys, we will send out
-presemester, midsemester, and end of the semester surveys. Completing each of
-the presemester, midsemester, or end of the semester surveys will earn 1 extra
-credit point. Completing all three will give 3 points. So, if you complete
+presemester, midsemester, and end-of-semester surveys. The presemester, midsemester, and end-of-semester surveys will earn 1 extra
+credit point each. Completing all three will give 3 points. So, if you complete
 every survey in this class, you can get a total of 6 extra credit points!
 
 
@@ -378,11 +379,11 @@ It also means that you can get full credit for labs in this class if you do not 
 In other words, getting more than 40 points on lab is equivalent to
 getting 40 points for your lab score.
 
-For the lab attendance, you will need to attend 15 labs in order to receive full attendance credit. Each attendance is worth 1 points, with a point cap of 15 points.
+For the lab attendance, you will need to attend 15 labs in order to receive full attendance credit. Each attendance is worth 1 point, with a point cap of 15 points.
 
 ### Late Policy
 
-You will receive a total of 8 slip days for the entire semester that can be used for both lab assignments and projects. Each slip day extends your deadline by 24 hours. Slip days may only be applied retroactively, and you may **not** use a fraction of a slip day.
+You will receive a total of 8 slip days for the entire semester that can be used for lab assignments. Each slip day extends your deadline by 24 hours. Slip days may only be applied retroactively, and you may **not** use a fraction of a slip day.
 
 #### Lab Lateness
 
@@ -413,18 +414,19 @@ For projects, you can use slip days to extend your deadline. Each slip day exten
 **To use a project slip day, go to the Extensions tab on Beacon. If you have enough
 slip days remaining, you may select your assignment and your new due date**.
 
-No extensions will be granted for project checkpoints and project 3 with the 
-exception of DSP extension accommodations.
+**No extensions will be granted for project checkpoints and Project 3** (with the 
+exception of DSP extension accommodations).
 
 #### DSP Accommodations
 
 We will be honoring DSP accommodations for extensions on assignments. For any assignment,
-students with the extension accommodations can receive an automatic one day extension
-on any assignment.
+students with extension accommodations can receive an automatic extension
+on any assignment in accordance with your accommodation letter.
 
 **To request for a DSP-related extension, go to the "DSP Extensions" section under the Extensions tab on Beacon. We will check your DSP record for extensions related accommodations.**
 
 #### Extenuating Circumstances
+
 We define extenuating circumstances as circumstances outside of the student's control that 
 directly inhibits the student's ability to complete assignments in a timely manner. Some 
 examples include unforeseen physical/mental health crises, technical issues (broken laptop), 
@@ -444,12 +446,14 @@ This is a hard deadline, and we will not accept any submissions made after this 
 ## Resources
 
 ### Online Forum
-Our discussion forum this semester will be Ed. For most questions about the course, Ed
+
+Our discussion forum this semester is Edstem (Ed for short). For most questions about the course, Ed
 is the right place to ask them. The course staff read it regularly, so you will get a
 quick answer. Furthermore, by posting online as opposed to emailing us directly, other
 students benefit by seeing the question and the answer.
 
 #### Ed Etiquette
+
 -   **Search before posting**: Your question may have already been answered by us or other students in the past. Reading other  students' posts will let you refine your question, and gives us more time to answer new questions.
 -   **Try to avoid open-ended or vague questions such as**: "How does Java work?" or "How come the solution to a discussion      problem is this?". If you walk us through your thoughts and reference specific lines that you find confusing, we can better address the problem you are facing. Being specific helps us uncover any misunderstandings that you may have.
 -   **Post questions about assignments as public follow-ups on the corresponding assignment post**: For example, post your questions about Lab 1 under the Lab 1 post. If your question is too detailed or revealing to fit as a follow-up, your question would be better answered during lab. 
@@ -462,14 +466,14 @@ For more detailed information, please read over the [Ed policies and guidelines.
 
 The email address <cs61bl@berkeley.edu> will send a message to the instructors.
 **Only the current instructors and select Head TAs have access to this email.**
-You can use it for correspondence that you don't want to send to all TAs through the ticketing system.
+You can use it for correspondence that you don't want to send to all TAs through Ed.
 **Please do not email the instructors directly** since your message may be
 misplaced that way. You will get a faster response from the course email.
 
 ### Reading
 
 You are expected to read each lab's contents.  There are also related textbooks
-that belong to CS 61B, which you may read if you please. The The first text we use
+that belong to CS 61B, which you may read if you please. The first text we use
 is Josh Hug's [free, online course notes][Hug61B] written in collaboration with past and current TAs. If you find these notes
 insufficient, you might consider consulting Paul Hilfinger's (free) [Java
 Reference][AJR] or Head First Java, 2nd Edition by Sierra and Bates (O'Reilly,
@@ -504,20 +508,18 @@ have made the wrong choice for guidance.
 ### Lab Collaboration
 
 The entire point of labs is to learn, so we emphasize active learning and pair
-programming. For labs, you can work with anyone *in your lab section*, including sharing code. Each student is responsible for submitting to their own gradescope, however. 
-If you decide to work alone, you are
-able to submit individually.
+programming. For labs, you can work with anyone *in your lab section*, including sharing code. However, each student is expected to write up their own solutions and submit to their own Gradescope. If you work with others, note who you collaborated with.
+If you decide to work alone, you are able to submit individually.
 
 ### Project Collaboration
 
-For both projects, they are designed for learning and evaluating your mastery of the course material. As such, they are intended to be completed primarily **independently** of any other student, particularly when it comes to
-writing actual code. However, we do encourage collaborations through discussing high-level strategies, specific syntax issues,
-and solutions to bugs with other students. **You should never be in direct possession code that was not written entirely by you alone.**
+Projects are designed for learning and evaluating your mastery of the course material. As such, they are intended to be completed primarily **independently** of any other student, particularly when it comes to
+writing actual code. However, we do encourage collaboration through discussing high-level strategies, specific syntax issues,
+and solutions to bugs with other students. **You should never be in direct possession of code that was not written entirely by you alone.**
 
 For Project 2, we will allow, but not require partnerships. Details will be released in the project spec. 
 
 Project 3 will be the only project where formal partnerships are required. Details related to partnerships will be released in the project spec. 
-
 
 ### Exam Misconduct
 
@@ -527,6 +529,10 @@ semester. All incidents of academic misconduct on exams will be referred to the
 Center for Student Conduct.
 
 ### Academic Misconduct
+
+You can obey the letter of this entire policy while completely violating its
+spirit. However, this policy is not a game to be defeated, and such
+circumventions will be seen as plagiarism.
 
 **The golden rule of academic misconduct is that you should not claim to be
 responsible for work that is not yours.** To help (but not entirely define) the
@@ -544,9 +550,8 @@ bounds of acceptable behavior, we have three important rules for projects:
     SOLUTIONS TO PROJECTS ONLINE (on GitHub or anywhere else)!** If you're not sure
     what you're doing is OK, please ask.
 -   **Cite Your Sources**: When you receive significant assistance on a project
-    from someone else, you should cite that assistance somewhere in your source
-    code with the `@source` tag. We leave it to you to decide what constitutes
-    "significant".
+    from someone else or an online source, you should cite that assistance somewhere in your source
+    code. We leave it to you to decide what constitutes "significant".
 
 #### Permitted
 
@@ -556,10 +561,10 @@ bounds of acceptable behavior, we have three important rules for projects:
     to such solutions.
 -   Discussion of specific syntax issues and bugs in your code, without showing
     another student your code. Verbally discussing syntax issues is permitted, but
-    Zoom screen sharing your code, for example, is **never permitted**. Cite any
-    non course staff (course staff meaning AI, Tutor, TA, and Instructor) person
+    Zoom screen sharing your code, for example, is not permitted. Cite any
+    non course staff (course staff meaning Tutor, TA, or Instructor) person
     you received advice from.
--   Using small snippets of code that you find online for solving tiny problems such as math operations (finding the distance between two points, etc), or basic Java syntax (how to capitalize a String, how to iterate a list, etc). Such usages must be cited in comments in your code, or would be considered plagiarism.
+-   Using small snippets of code that you find online for solving tiny problems such as math operations (finding the distance between two points, etc), or basic Java syntax (how to capitalize a String, how to iterate a list, etc). Nontrivial usages must be cited in comments in your code.
 
 #### Absolutely Forbidden
 
@@ -577,16 +582,17 @@ bounds of acceptable behavior, we have three important rules for projects:
 -   Working in lock-step with other students. Your workflow should not involve a
     group of people identifying, tackling, and effectively identically solving a
     sequence of subproblems.
--   Using any LLM tools such as ChatGPT, GitHub Co-Pilot, or similar AI tools to generate code. (Project 3 BYOW Note: LLMs are permitted in the Interactivity component with citations, but they are still forbidden in the World Generation component. Further details will be released in the project spec)
 
-You can obey the letter of this entire policy while completely violating its
-spirit. However, this policy is not a game to be defeated, and such
-circumventions will be seen as plagiarism.
+#### LLM/AI Policy
+
+This course (and many others) serves to better your programming skills, and using LLM/AI tools such as ChatGPT, Copilot, Gemini, Deepseek, Cursor, etc. to generate code will not help you learn. Doing the work yourself gives you the ability to discern when LLMs (or other people) generate bad code. Copying code from LLMs is a form of plagiarism, and will be treated as such.
+
+Thus, using these tools to generate code is **forbidden** unless otherwise stated. If you are completely stuck with debugging, using LLM tools to *debug code that you've written yourself* is permitted with extreme caution (cite your sources). In any case, you should understand what the LLM is suggesting and be able to explain it in your own words. Be wary that these tools are often confidently incorrect!
 
 ## A Parting Thought
 
 Grades and penalties aren't the purpose of this course; we really just want you
-to learn and be successful in the course.
+to learn and be successful.
 
 The entire staff is very excited to be teaching CS 61BL this semester and we're
 looking forward to meeting such a large and enthusiastic group of students.
@@ -601,6 +607,5 @@ Some course information ideas derived from:
 - [David Malan's CS50][CS50]
 - [Zephyr Omaly's guide to inclusive classrooms][ZB], and
 - [CS 61C Spring 2024's course policies][CS61C].
-
 
 ---
