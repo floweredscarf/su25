@@ -502,8 +502,6 @@ Projects are designed for learning and evaluating your mastery of the course mat
 writing actual code. However, we do encourage collaboration through discussing high-level strategies, specific syntax issues,
 and solutions to bugs with other students. **You should never be in direct possession of code that was not written entirely by you alone.**
 
-For Project 2, we will allow, but not require partnerships. Details will be released in the project spec. 
-
 Project 3 will be the only project where formal partnerships are required. Details related to partnerships will be released in the project spec. 
 
 ### Exam Misconduct
