@@ -69,79 +69,172 @@
 #     - schedule-purple
 
 labs:
-  - title: "Setup, Git"
+  - title: "Introduction to Java, Git, and Setup"
+    due: "2025/06/24"
     link: "/labs/lab01"
     show_links: true
-    due: "2025/1/24"
-    parts:
-      - name: "Slides"
-        link: "https://docs.google.com/presentation/d/1RM9EOWqfaNzy9FP-Ud22fS3xz7xIQDFBXQe0jrEN5rQ"
-    rowspan: 2
-  - title: "Debugging"
+  - title: "Conditionals, Loops, and Arrays"
+    due: "2025/06/25"
     link: "/labs/lab02"
     show_links: true
-    due: "2025/1/31"
-    parts:
-      - name: "Slides"
-        link: "https://docs.google.com/presentation/d/1kwgVU2BIG5BOvkKF1JWrXf62zJnzIki5UrTTCzMeVs4"
-  - title: "Debugging (Part 2)"
+  - title: "Primitives and Objects"
+    due: "2025/06/26"
     link: "/labs/lab03"
     show_links: true
-    due: "2025/2/07"
-    parts:
-      - name: "Slides"
-        link: "https://docs.google.com/presentation/d/1bn1QHK7nLbirGsEKct5UTf2vp2k7NOTaMSuu9lZW0yU"
-  - title: "Git"
+  - title: "Debugging & Test-Driven Development"
+    due: "2025/06/27"
     link: "/labs/lab04"
     show_links: true
-    due: "2025/2/14"
-    parts:
-      - name: "Slides"
-        link: "https://docs.google.com/presentation/d/1RoacUp7UAinLPNNUO4q8mNxTxR4_HYKYhIxeKiPd6B8"
-  - title: "No Lab"
+  - title: "Theoretical #1: Introduction to Java Programming"
+    theoretical: True
+    video: false
+    # solutions: https://drive.google.com/file/d/1GMJUf-MPohF77rf9Ow0-63LDwvxt8xyQ/view
+    # slides: https://docs.google.com/presentation/d/1h3I3HAeOceDIeF14y3o2pHEpWj83W2F646ClBv1q4uM/edit?slide=id.p#slide=id.p
+    # worksheet: https://drive.google.com/file/d/1gJSlCf3UzPOhyiqVOg5MtsaeBPWtltVP/view
+    link:
     nonumber: True
-    rowspan: 4
-  - title: "Project 1 Review"
+    show_links: false
+  - title: "Linked Lists"
+    due: "2025/07/01"
     link: "/labs/lab05"
-    show_links: true
-    due: "2025/02/28"
-    slides:
-  - title: "BSTMap"
+    show_links: false
+  - title: "Abstract Data Types"
+    due: "2025/07/02"
     link: "/labs/lab06"
-    show_links: true
-    due: "2025/03/07"
-    parts:
-      - name: "Slides"
-        link: "https://docs.google.com/presentation/d/1NylZ2TfB8SP41Y34WIFPt7sWsZRxYmTqDuc_iPPMt_4"
-  - title: "HashMaps"
+    show_links: false
+  - title: "Inheritance"
+    due: "2025/07/03"
     link: "/labs/lab07"
-    show_links: true
-    due: "2025/3/14"
-    parts:
-      - name: "Slides"
-        link: "https://docs.google.com/presentation/d/1dVc25JVkJxwI6HpiJIVDW_rGFSQ2_wRxVAfSP_lrLTY"
-  - title: "LLRBs"
+    show_links: false
+  - title: "Comparison, Exceptions, and Iteration"
+    due: "2025/07/04"
     link: "/labs/lab08"
-    show_links: true
-    due: "2025/3/21"
-    parts:
-      - name: "Slides"
-        link: "https://docs.google.com/presentation/d/1qmqaKQx4FygknF2kJ-NTimsfk01SmgCUd4JmxjhXbiM"
+    show_links: false
   - title: "No Lab"
     nonumber: True
-  - title: "Introduction to Project 3 (Optional)"
-    link: "/labs/lab09"
-    show_links: true
-    rowspan: 4
-  - title: "Tetris (Optional)"
-    link: "/labs/lab10"
-    show_links: true
-  - title: "Project 3 Workday"
+    rowspan: 1
+  - title: "Theoretical #2: Object Oriented Programming and Abstract Data Types"
+    theoretical: True
+    video: True
+    # worksheet: https://drive.google.com/file/d/1e-hJMsw48hXqtkg4Kj__fCCbmczJzKqz/view
+    # slides: https://docs.google.com/presentation/d/1qRNwO0VVOiCwAwSVUdPKrsTeSy2HK1Zmy4-RS5_KCrY/edit?slide=id.p#slide=id.p
+    # solutions: https://drive.google.com/file/d/1Xn0lEDtDesFNY_6jkU-yrrqE2jD3HFMb/view
+    link: 
+    show_links: false
     nonumber: True
-  - title: "Project 3 Workday"
+  - title: "Runtime Analysis"
+    due: "2025/07/09"
+    link: labs/lab09
+    show_links: false
+  - title: "Trees and Traversals"
+    due: "2025/07/10"
+    link: labs/lab10
+    show_links: false
+  - title: "Binary Search Trees"
+    due: "2025/07/11"
+    link: labs/lab11
+    show_links: false
+  - title: "Theoretical #3: Asymptotics and Trees"
+    theoretical: True
+    examprep_video: True
+    examprep_slides: True
+    link: 
+    show_links: false
     nonumber: True
-  - title: "Project 3 Demos"
+  - title: "Balanced Search Trees"
+    due: "2025/07/15"
+    link: labs/lab12
+    show_links: false
+  - title: "Hashing"
+    due: "2025/07/16"
+    link: labs/lab13
+    show_links: false
+  - title: "Heaps and Priority Queues"
+    due: "2025/07/17"
+    link: labs/lab14
+    show_links: false
+  - title: "Theoretical #4: Binary Search Trees (Optional)"
+    theoretical: True
+    examprep_video: True
+    examprep_slides: True
+    link: 
+    show_links: false
     nonumber: True
   - title: "No Lab"
     nonumber: True
-  - nonumber: True
+    rowspan: 1
+  - title: "Disjoint Sets"
+    due: "2025/07/22"
+    link: labs/lab15
+    show_links: false
+  - title: "Graphs"
+    due: "2025/07/23"
+    link: labs/lab16
+    show_links: false
+  - title: "Shortest Path Trees"
+    due: "2025/07/24"
+    link: labs/lab17
+    show_links: false
+  - title: "Minimum Spanning Trees"
+    due: "2025/07/25"
+    link: labs/lab18
+    show_links: false
+  - title: "Theoretical #5: Hashing, Heaps, and Union Find"
+    theoretical: True
+    examprep_video: True
+    examprep_slides: True
+    link: 
+    show_links: false
+    nonumber: True
+  - title: "Build Your Own World Introduction"
+    due: "2025/07/29"
+    link: labs/lab19
+    show_links: false
+  - title: "Comparison Sorts"
+    due: "2025/07/30"
+    link: labs/lab20
+  - title: "Counting Sorts"
+    due: "2025/07/31"
+    link: labs/lab21
+    show_links: false
+  - title: "TBD"
+    nonumber: True
+  - title: "Theoretical #6: Graphs"
+    theoretical: True
+    examprep_video: True
+    examprep_slides: True
+    link: 
+    show_links: false
+    nonumber: True
+  - title: "TBD"
+    nonumber: True
+  - title: "TBD"
+    nonumber: True
+  - title: "TBD"
+    nonumber: True
+  - title: "TBD"
+    nonumber: True
+  - title: "Theoretical #7: Sorting"
+    theoretical: True
+    examprep_video: True
+    examprep_slides: True
+    link:
+    show_links: false
+    nonumber: True
+  - title: "BYOW Presentations! (Optional)"
+    nonumber: True
+  - title: "No Lab"
+    nonumber: True
+  - title: "No Lab"
+    nonumber: True
+  - title: "No Lab"
+    nonumber: True
+
+  # - title: "Setup, Git"
+  #   link: "/labs/lab01"
+  #   show_links: true
+  #   due: "2025/1/24"
+  #   parts:
+  #     - name: "Slides"
+  #       link: "https://docs.google.com/presentation/d/1RM9EOWqfaNzy9FP-Ud22fS3xz7xIQDFBXQe0jrEN5rQ"
+  #   rowspan: 2

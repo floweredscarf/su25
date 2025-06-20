@@ -54,10 +54,9 @@
         <th style="width:{{ site.data.syllabus.week_width }}">Wk.</th>
         <th style="width:{{ site.data.syllabus.date_width }}">Date</th>
         <th style="width:{{ site.data.syllabus.lecture_width }}">Lecture</th>
-        {% comment %}<th style="width:{{ site.data.syllabus.readings_width }}">Readings</th>{% endcomment %}
-        <th style="width:{{ site.data.syllabus.discussion_width }}">Discussion</th>
-        <th style="width:{{ site.data.syllabus.labs_width }}">Labs</th>
-        <th style="width:{{ site.data.syllabus.homework_width }}">HW</th>
+        <th style="width:{{ site.data.syllabus.recording_width }}">Recording</th>
+        <th style="width:{{ site.data.syllabus.lab_width }}">Lab</th>
+        <th style="width:{{ site.data.syllabus.homework_width }}">Homework</th>
         <th style="width:{{ site.data.syllabus.project_width }}">Project</th>
       </tr>
     </thead>
@@ -259,7 +258,25 @@
               {%- else -%}
                 {%- assign new_rowspan = default_lecture_rowspan -%}
               {%- endif -%}
-              {%- include lecture.html element=lecture_element number=lecture_number rowspan=new_rowspan is_even=is_even -%}
+              {%- comment -%}
+                  <!-- scuffed -->
+              {%- endcomment -%}
+              {%- assign lecture_rowspan = new_rowspan | plus:-1 -%}
+              {%- assign lecture_index = lecture_index | plus:1 -%}
+              {%- assign lecture_element2 = site.data.lectures.lectures[lecture_index] -%}
+              {%- if lecture_element2.rowspan -%}
+                {%- assign new_rowspan2 = lecture_element2.rowspan -%}
+              {%- else -%}
+                {%- assign new_rowspan = default_lecture_rowspan -%}
+              {%- endif -%}
+              {%- unless lecture_element.nonumber -%}
+                {%- assign old_lecture_number = lecture_number -%}
+                {%- assign lecture_number = lecture_number | plus:1 -%}
+              {%- endunless -%}
+              {%- comment -%}
+                  <!-- scuffed -->
+              {%- endcomment -%}
+              {%- include lecture_su25.html element=lecture_element element2=lecture_element2 number=old_lecture_number number2=lecture_number rowspan=new_rowspan rowspan2=new_rowspan2 is_even=is_even classes=lecture_element.classes  -%}
               {%- assign lecture_rowspan = new_rowspan | plus: -1 -%}
               {%- assign lecture_index = lecture_index | plus: 1 -%}
               {%- unless lecture_element.nonumber -%}
@@ -269,7 +286,20 @@
               {%- assign lecture_rowspan = lecture_rowspan | plus: -1 -%}
             {%- endif -%}
 
-            {%- comment -%}
+            <!-- bruh -->
+            {%- if readings_rowspan == 0 -%}
+              {%- assign lecture_element = site.data.recordings.recordings[readings_index] -%}
+              {%- assign readings_element = lecture_element -%}
+              {%- assign new_rowspan = default_readings_rowspan -%}
+              {%- include recordings.html element=readings_element rowspan=new_rowspan is_even=is_even  -%}
+              {%- assign readings_rowspan = new_rowspan | plus:-1 -%}
+              <!-- 0 works, but 1 somehow skips every other recording... -->
+              {%- assign readings_index = readings_index | plus:0 -%}
+            {%- else -%}
+              {%- assign readings_rowspan = readings_rowspan | plus:-1 -%}
+            {%- endif -%}
+
+            <!-- {%- comment -%}
               - Render the readings column.
               - For simplicity, the code for each column should be kept identical (only
                 swapping out the column names.
@@ -295,9 +325,9 @@
               {%- else -%}
                 {%- assign readings_rowspan = readings_rowspan | plus:-1 -%}
               {%- endif -%}
-            {%- endcomment -%}
+            {%- endcomment -%} -->
 
-            {%- comment -%}
+            <!-- {%- comment -%}
               - Render the discussion column.
               - For simplicity, the code for each column should be kept identical (only
               swapping out the column names.
@@ -317,7 +347,7 @@
               {%- endunless -%}
             {%- else -%}
               {%- assign discussion_rowspan = discussion_rowspan | plus: -1 -%}
-            {%- endif -%}
+            {%- endif -%} -->
 
             {%- comment -%}
               - Render the lab column.

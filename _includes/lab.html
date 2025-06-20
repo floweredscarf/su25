@@ -15,11 +15,20 @@
   - Use syllabus.yml to toggle whether lab boxes alternate colors
     per week.
 {%- endcomment -%}
-{%- if site.data.syllabus.lab_alternate_color -%}
-  <td class="{{ include.is_even }} {{ include.element.classes | join ' ' }}" rowspan="{{ include.rowspan }}">
+
+{%- if include.element.theoretical -%}
+  <td class="{{ include.is_even }}" rowspan="{{ include.rowspan }}" style="background-color: rgba(255, 183, 237, 0.122);">
 {%- else -%}
-  <td class="{{ include.element.classes | join ' ' }}" rowspan="{{ include.rowspan }}">
+  <td class="{{ include.is_even }}" rowspan="{{ include.rowspan }}">
 {%- endif -%}
+
+{%- comment -%}
+    {%- if site.data.syllabus.lab_alternate_color -%}
+      <td class="{{ include.is_even }} {{ include.element.classes | join ' ' }}" rowspan="{{ include.rowspan }}">
+    {%- else -%}
+      <td class="{{ include.element.classes | join ' ' }}" rowspan="{{ include.rowspan }}">
+    {%- endif -%}
+{%- endcomment -%}
 
 {%- comment -%}
   - If title exists in labs.yml, show title.
