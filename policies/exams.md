@@ -3,192 +3,46 @@ layout: page
 title: Exam Policies
 parent: Policies
 nav_order: 1
+hide_content: true
+unreleased_warning: true
 ---
 
 # Exam Policies
 
-Authors: Justin Yokota, Peyrin Kao, Vanessa Teo
+This course has a midterm exam and a final exam.
 
-## Exam Times
+- The Midterm will be on **Friday, July 18th from 7-9 PM in Dwinelle 155**.
+- The Final Exam will be on **Tuesday, August 12th from 3-6 PM in Dwinelle 155**.
 
-There will be two midterms and a final exam:
+We will offer **in-person exams only**.
 
-- Midterm 1: Thursday, February 20, 8–10pm PT
-- Midterm 2: Wednesday, April 2, 8–10pm PT
-- Final Exam: Tuesday, May 13, 8–11am PT
+Students with DSP accommodations that require alternate exam timing
+will be accounted for, so long as you can make a time that overlaps the official
+time. If you have a disability that prevents your ability to make such a time,
+we will discuss alternate arrangements with you directly.
 
-There are **no remote exams** this semester. All exams (including alternate exams) will be held in-person.
+If you have a time conflict with the midterm exam, or if you
+are unable to make the final exam, please email <cs61bl@berkeley.edu> as soon as possible explaining your needs.
 
+## Final Exam Clobbering
 
-## Alternate Exam Times
+We have a **partial clobber policy** for the midterm exam. If you do significantly better on the final exam than on the midterm, we will adjust your midterm score to reflect that improvement—but only **partially**. This is intended to account for situations where students improve over the course or have an off day on the midterm.
+Specifically, if it helps your overall grade, we will **replace your midterm exam z-score** with the **average** of your midterm and final exam z-scores. Your final exam score will **never** be clobbered.
 
-If you are unable to take the exam at the scheduled time, we will be offering only one alternate exam time per exam, in-person only.
+As an example, suppose you are in the following situation (all numbers are in terms of raw scores):
+-   **Midterm Exam:** Your Score = 60, Mean Score = 70, Standard Deviation = 10
+-   **Final Exam:** Your Score = 85, Mean Score = 75, Standard Deviation = 10
 
-- Alternate Midterm 1: Thursday, Februrary 20, 6–8pm PT
-- Alternate Midterm 2: Wednesday, April 2, 6-8pm PT 
-- Alternate Final Exam: Tuesday, May 13, 11am–2pm PT
+In this case, you will have the following z-scores:
+-   **Midterm Exam**: (60 - 70) / 10 = -1
+-   **Final Exam**: (85 - 75) / 10 = 1
 
-There are no other alternate exam times.
+Under the partial clobber policy, your adjusted midterm z-score will be (-1 + 1) / 2 = 0. Your new midterm score will correspond to the mean score, or 70. The final exam score remains unchanged.
 
-We are only offering the alternate exam time if you are unable to take the exam at the normal time for verifiable time conflicts. For example, if you have another exam at the same time, you can take the alternate-time exam. However, wanting a break between non-conflicting exams would not be a valid reason to take the alternate-time exam, because in this case you are able to take the exam at the normal time.
+Z-scores will be based on the grades before this policy is applied. In other words, we will not recalculate the statistics for the midterm for the purposes of implementing this policy.
 
-We'll release a form closer to the exams for you to sign up for an alternate-time exam.
+The final exam z-score clobbering policy will only be applied if it helps your score. For example, if you score around the average on the midterm, but then have a bad day and do poorly on the final, we will not change your midterm scores.
 
-If you are unable to attend the normal exam or the alternate-time exam (e.g. because of sickness), please email cs61b@berkeley.edu.
+While this mechanism introduces a bit of curving to the class, it does not turn the class into a competition. Our grading bins are still fixed, a vast majority of the points are not subject to this mechanism, and the impact tends to be relatively small for most students.
 
-
-## Exam Clobbering
-
-For those of you who miss an exam, have a bad night, or make major improvements over the semester, the exam clobbering policy gives you a chance to replace one or both of your midterm exam scores.
-
-You don't need to understand the math behind the clobber policy, but we've described the computation steps below for transparency:
-
-{: .info }
-> Exam clobbering formulas. You do not need to understand anything in this box.
->
-> 1. Compute your z-score on the final exam:
-> 
->     $$\text{final exam z-score} = \frac{(\text{your final exam score} \ – \ \text{final exam mean})}{\text{final exam standard deviation}}$$
-> 
-> 2. Compute the equivalent score on the midterm distribution:
-> 
->     $$\text{scaled midterm score} = (\text{final exam z-score} \times \text{midterm standard deviation}) + \text{midterm mean}$$
-> 
-> 3. Your midterm score is:
-> 
->     $$\max(\text{your midterm score}, \text{scaled midterm score})$$
-> 
-> 4. Repeat Steps 1–3 for both midterms.
-
-
-## Exam Curving
-
-Our exams are intended to have an average score of 65%. If the exam is too difficult, and the class average score is below 65%, we will curve everyone's scores so that the average score is 65%.
-
-If the average score is at or above 65%, then we will not change scores (i.e. your score will not decrease).
-
-You don't need to worry about the specific calculations for grade curving, but we've described the calculations below for transparency:
-
-{: .info }
-> Exam curving formulas. You do not need to understand anything in this box.
->
-> To compute curved scores, we will reduce the maximum score on the exam until the average score is 65%.
-> 
-> The reduced maximum score turns out to be $$\text{mean score} / 0.65$$.
-> 
-> Here are some examples of computing the curve:
-> 
-> 1. Suppose we have a class with 3 students, and their exam scores are: $$40/100$$, $$50/100$$, and $$60/100$$.
-> 
->    The class average is $$\frac{40 + 50 + 60}{3}$$ = 50%. This means our exam was too difficult.
-> 
-> 2. To change the average score to 65%, we will reduce the maximum score. Instead of counting the exam out of 100 points, we will count the exam out of $$50 / 0.65$$ = 76.9 points.
-> 
-> 3. Using the reduced max score, the students' new exam scores are now: $$40/76.9$$, and $$50/76.9$$, and $$60/76.9$$.
-> 
->     As percentages, these scores are: 52%, 65%, and 78%.
-> 
->     The average of these scores is now 65%!
-
-For each exam, we will officially announce the reduced max score after exam regrades are processed, so that you can compute your own curved exam score.
-
-
-## Exam Scaling
-
-Each exam is scored out of 100 points, but we will scale your score up to be out of 100 (midterm 1), 150 (midterm 2), and 250 (final exam) course points when we compute your final letter grade.
-
-The maximum score on an exam is 100%. If your score exceeds 100% after curving, it will be capped at 100% when calculating grades.
-
-Points earned above 100% can be used to increase your grade from an A to an A+, but will not be used in any other grade calculations.
-
-
-## Exam Score Computation Formula
-
-We know that exam scores with clobber and curve aren't the easiest thing to compute. Remember, you don't need to know any of this math, and you can totally ignore this section if you want – we will automatically compute the correct exam score for you!
-
-That said, if you want to compute your own score, we've provided the exact formulas here for your reference.
-
-{: .info }
-> Exam score computation formulas. You do not need to understand anything in this box.
->
-> Intutively, the clobber changes the numerator of your score, and the curve changes the denominator of your score. After applying the clobber and curve, we scale your score and cap it at 100% if needed.
-> 
-> For the final exam (can't be clobbered), skip steps 1–3.
-> 
-> If computing a midterm score before the final exam (no clobber available yet), skip steps 1–3.
-> 
-> 1. [Clobber] Compute your z-score on the final exam:
-> 
->     $$\text{final exam z-score} = \frac{(\text{your score} \ – \ \text{final exam mean})}{\text{final exam standard deviation}}$$
-> 
->     In the formula, your score, the final exam mean, and the final exam standard deviation are all taken directly from Gradescope and are out of 100 points.
-> 
-> 2. [Clobber] Compute the equivalent score on the midterm distribution:
-> 
->     $$\text{scaled midterm score} = (\text{final exam z-score} \times \text{midterm standard deviation}) + \text{midterm mean}$$
-> 
->     In the formula, the midterm mean, midterm standard deviation, and your scaled midterm score are all out of 100 points. The midterm mean and standard deviation are taken directly from Gradescope.
-> 
-> 3. [Clobber] Your clobbered midterm score is:
-> 
->     $$\text{clobbered midterm score} = \max(\text{your midterm score}, \text{scaled midterm score})$$
-> 
->     This is the numerator of your score fraction.
-> 
-> 4. [Curve] Compute the reduced max score. (The official reduced max score will be announced by staff, but you can use this formula to estimate.)
->
->     $$\text{reduced max} = \frac{\text{exam mean}}{0.65}$$
->
->     In the formula, the exam mean is out of 100 points.
-> 
->     This is the denominator of your score fraction.
-> 
-> 5. Compute your score.
-> 
->     The denominator is always from Step 4.
-> 
->     If computing a midterm score with clobber, the numerator is from Step 3:
-> 
->     $$\text{curved and clobbered exam score} = \frac{\text{clobbered midterm score}}{\text{reduced max}}$$
-> 
->     If computing a final exam score (can't be clobbered), or computing a midterm score before the final exam (no clobber available yet), the numerator is just your raw exam score out of 100:
-> 
->     $$\text{curved and clobbered exam score} = \frac{\text{raw exam score}}{\text{reduced max}}$$
-> 
-> 6. [Scale] You now have a clobbered, curved midterm score out of 100 points.
-> 
->     The last step is to scale this score up to the number of course points (out of 1000) the exam is worth:
-> 
->     Midterm 1 (worth 100 points): $$\text{course points} = \text{curved and clobbered exam score} \times 100$$
-> 
->     Midterm 2 (worth 150 points): $$\text{course points} = \text{curved and clobbered exam score} \times 150$$
-> 
->     Midterm 3 (worth 250 points): $$\text{course points} = \text{curved and clobbered exam score} \times 250$$
-> 
->     If the score you compute is greater than 100% (e.g. 160/150 on Midterm 2), round your score down to the maximum (e.g. round down to 150/150). Any excess points get converted to "exam bonus points", which only gets used to determine A+s. 
-
-
-## Regrade Request Policy
-
-If you think we made a mistake when grading your exam, you can request a regrade through Gradescope.
-
-You should only request a regrade if there is a rubric item that clearly applies to your answer. For example:
-
-![Regrade sample](../exams-img/regrade-sample.png)
-
-In this case, your answer is eligible for the "Partial: 120" rubric item, so you can request a regrade request.
-
-However, if you answered "–121", this is not on the rubric. If you request a regrade asking for partial credit, it will be denied.
-
-If you want to ask for credit for something that's not on the rubric, you should ask publicly on Ed. A good rule of thumb is: If regrading your answer would change the rubric for everybody else, you should post on Ed.
-
-Note on partial credit: To minimize the effect of random guessing on exam scores, we are stricter than other classes when it comes to partial credit:
-- An answer that is fully correct except for one very minor mistake is usually worth half-credit.
-- An answer with 2 or more minor mistakes is usually not worth credit.
-- An answer showing conceptual misunderstanding is usually not worth credit. Similarly, an answer where we cannot distinguish between a conceptual misunderstanding and a typo is usually not worth credit.
-
-Asking for more partial credit is not going to be very helpful. Remember, we curve the exam to a target average of 65%, so when we hand out less partial credit, it also means you get more of a grade bump from the curve. If we gave more partial credit, the curve would end up being less generous, and your overall grade wouldn't be much different.
-
-Some other logistical policies on regrade requests:
-- We only respond to regrade requests after the deadline for submitting them.
-- If we spot another mistake in the process of regrading your submission, we will fix it, even if your grade goes down. Please request responsibly! If you flood us with frivolous requests or requests that don't follow the rules (e.g. "can I have partial credit for this thing that's not on the rubric"), we're more likely to find something else and decrease your score.
+In theory, it would be nice to have a mechanism that avoids using any statistics, e.g., simply replacing your midterm score with the final grade if it’s higher. In practice, it is very difficult to get both the exam means (and variances) to line up. Therefore, we use a z-score partial clobbering policy as described above.
