@@ -28,6 +28,9 @@ Each assignment will have an FAQ linked at the top. You can also access it by ad
 FAQ for Project 1B is located
 [here](faq.md).
 
+{: .warning}
+> **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
+
 Note that this project has limited submission tokens. Please see [Submit to the Autograder](#submit-to-the-autograder) for more details.
 
 ## Introduction

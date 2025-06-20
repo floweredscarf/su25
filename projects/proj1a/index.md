@@ -30,6 +30,9 @@ Each assignment will have an FAQ linked at the top. You can also access it by
 adding "/faq" to the end of the URL. The FAQ for Project 1A is located
 [here](faq.md).
 
+{: .warning}
+> **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
+
 ## Introduction
 
 In Project 0, you implemented game logic for 2048. In Project 1A and 1B (and some upcoming labs), you will implement

@@ -17,6 +17,9 @@ Each assignment will have an FAQ linked at the top. You can also access it by ad
 FAQ for Project 2A is located
 [here](faq.md).
 
+{: .warning}
+> **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
+
 ## Introduction
 
 In this project, we will build a browser based tool for exploring the history of word usage in English texts. We have
