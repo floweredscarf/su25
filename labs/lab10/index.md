@@ -9,6 +9,9 @@ has_right_toc: true
 released: true
 ---
 
+{: .warning}
+> **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
+
 ## Introduction
 
 As usual, pull the files from the skeleton and open the Lab 10 directory in IntelliJ.

@@ -13,6 +13,9 @@ released: true
 
 The FAQ for Lab 6 is located [here](faq.md).
 
+{: .warning}
+> **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
+
 ## Before You Begin
 
 Pull the skeleton code from GitHub and open it on IntelliJ like usual.

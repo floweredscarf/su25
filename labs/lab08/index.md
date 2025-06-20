@@ -13,6 +13,9 @@ released: true
 
 This assignment has an [FAQ page](faq.md).
 
+{: .warning}
+> **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
+
 ## Before You Begin
 
 As usual, pull the skeleton code.

@@ -15,6 +15,9 @@ Each assignment will have an FAQ linked at the top. You can also access it by
 adding "/faq" to the end of the URL. The FAQ for Lab 04 is located
 [here](faq.md).
 
+{: .warning}
+> **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
+
 ## Introduction
 
 To debug a program, you must first know what's wrong. In this lab, you'll get
@@ -750,7 +753,7 @@ skills! Here are some last bits of advice for now.
 
 ## Exercise: Testing a Triangle Class
 
-{: .danger}
+{: .warning}
 > This section will be graded. All points for this part of the lab will be derived from writing tests in `TriangleTest.java`. Note that  you will not be able to run the tests you write in this file locally; you must submit to the autograder to run on our implementations of `Triangle.java`.
 
 Now, you're going to be writing the code and a whole file of tests with Truth assertions for the `Triangle` class. Your goal is to write comprehensive tests that pass on a correct implementation of the `Triangle` methods, but fail on incorrect implementations of `Triangle` methods. 

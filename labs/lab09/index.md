@@ -12,6 +12,9 @@ released: true
 
 The FAQ for Lab 9 is located [here](faq.md).
 
+{: .warning}
+> **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
+
 ## Before You Begin
 
 Pull the files for lab 9 from the skeleton.
