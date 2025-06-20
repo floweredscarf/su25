@@ -3,33 +3,55 @@ layout: page
 title: >-
   FAQ
 parent: >-
-  Lab 02: Debugging (Part 1)
+  Lab 02: Conditionals, Loops, and Arrays
 grand_parent: Labs
 has_right_toc: true
 released: true
 ---
 
-## I'm getting merge conflicts after re-pulling the skeleton
+### When I try to push, I get the error "failed to push some refs"
 
-First, add and commit your local changes so that `git status` reads that your working
-tree is clean.
+If you see a hint that says "Updates were rejected because the tip of your
+current branch was behind its remote counterpart", then read
+[this section of the Git WTFS](../../guides/git-wtfs.md#error-failed-to-push-some-refs).
 
-Then, refer to the [Git WTFs](../../resources/guides/git/wtfs.md) section on resolving merge
-conflicts. You'll need to incorporate both your local changes (this likely
-includes your `BombMain` passwords) and the bug fixes
-from the skeleton.
+### On Gradescope, I'm missing required files
 
-After you've resolved the merge conflicts in the files, you'll need to re-add and commit them
-to complete the merge.
+First, make sure that you've pushed your code! You can check this by viewing
+your repository on GitHub.
 
-Come into office hours or lab if you're unsure on what to do!
+Secondly, the expected file structure (including the optional files) is
 
-## There's a lot of red in my IntelliJ
+```text
+su24-***
+├── magic_word.txt
+├── src
+│   └── AddingMachine.java
+│   └── Arithmetic.java
+│   └── ArrayOperations.java
+│   └── TriangleDrawer.java
+│   └── TriangleDrawer2.java
+│   └── TriangleDrawer.stuff
+└── tests
+    └── ArithmeticTest.java
+    └── ArrayOperationsTest.java
 
-First, be sure you've imported the libraries correctly. Refer back to step 5 of the
-[Assignment Workflow](../../resources/guides/assignment-workflow/index.md#opening-in-intellij)
-if you need a refresher on how to do this.
+```
 
-If that doesn't work, be sure that `src` is blue and `tests` is green. Refer to
-the [IntelliJ WTFS](../../resources/guides/intellij/wtfs/index.md)
-to mark your `src` and `tests` folders appropriately.
+Note that the files are inside the `lab01` directory. If the files aren't
+inside `lab01`, then the autograder won't be able to find them.
+
+### I'm using Mac, and after I install Java, it's not showing up in IntelliJ or in `JavaVirtualMachines`
+
+### I'm using Mac, and I get "Unable to load Java Runtime Environment"
+
+Run `brew reinstall java`, and look for the command that starts `sudo ln`,
+right under "For the system wrappers to find this JDK...". Copy-paste and
+run that command.
+
+After this, your newly installed Java should appear in IntelliJ.
+
+### In IntelliJ, I get "release version 18 not supported"
+
+Go into File > Project Structure > Project Settings > Project, and make sure
+that your Language level is set to 17.

@@ -3,14 +3,14 @@ layout: page
 title: >-
   Mac OS
 parent: >-
-  Lab 01: Setup
+  Lab 01: Java & Git
 grand_parent: Labs
-has_toc: false
 has_right_toc: true
 released: true
 ---
 
-## A. Setup
+
+## A. Git Install
 
 1.  Install the Xcode Command Line Tools through your terminal by running this command
     (it should already be available on macOS - try using the search feature/Finder to find it): 
@@ -38,6 +38,11 @@ released: true
     You have successfully installed git if this command returns a valid version
     number and does not fail. If the installation is good,
     skip the rest of the guide and return to the lab.
+
+If you had installation issues with Git try the instructions
+"Installing on macOS" at this
+[link](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+Contact your TA if you are still having issues.
 
 ## B. Git Install Issues
 

@@ -1,7 +1,8 @@
 ---
 layout: page
 title: >-
-  Lab 02: Debugging (Part 1)
+  Lab 02: Conditionals, Loops, and Arrays
+nav: 1
 has_children: true
 parent: Labs
 has_toc: false
@@ -9,317 +10,695 @@ has_right_toc: true
 released: true
 ---
 
-## FAQ
+## [FAQ](faq.md)
 
 Each assignment will have an FAQ linked at the top. You can also access it by
-adding "/faq" to the end of the URL. The FAQ for Lab 02 is located
-[here](faq).
+adding "/faq" to the end of the URL. The FAQ for Lab 2 is located
+[here](faq.md). 
+**The FAQ (frequently asked questions) is a list of compiled questions and errors that students often run into, so refer to this page first before reaching out to staff.**
 
-## Introduction
+## Learning Goals
 
-To debug a program, you must first know what's wrong. In this lab, you'll get
-some experience with using the debugger to see the program state. When you run into
-a bug, the error is accompanied with a "stack trace" that details the method
-calls that caused the error in the first place. We won't cover going through the stack trace 
-in this lab, but we'll talk more about it in a later lab. 
+In this lab, we will learn more about Java syntax and get some more practice with programming in Java.
 
-TODO: Add LLM exercise that showcases LLM failure modes (e.g. confirmation bias).
+To see what you need to complete for full credit on this lab, skip to the [Deliverables section](#deliverables) below.
 
-### Setup
+## Java: Conditionals, Loops, and Arrays
 
-Follow the
-[assignment workflow](../../resources/guides/assignment-workflow/index.md#opening-in-intellij)
-to get the assignment and open it in IntelliJ.
+This section will provide an introduction to Java loops and conditionals (the if, while and for statements), followed by a brief explanation of Java Arrays. We assume no prior experience with any of these topics in Java, but we do assume some prior knowledge of these concepts from an earlier course (like Python control flow and lists as taught in CS61A).
 
-### Goals and Outcomes
+Because of this, there is a lot of information presented here, but hopefully most of it will be review that can be skimmed through quickly.
 
-In this lab, you will enhance your code debugging abilities by defusing a
-(programmatic) bomb. We’ll guide you through this process, but the intention 
-is to make this a realistic debugging experience.
+This course strives to teach you how to “program”, and this includes not just teaching you how to write code, but how to do a variety of activities. We have included a few exercises for you to practice writing, analyzing, and testing code.
 
-By the end of this lab, you will…
+### How `if` and `if ... else` Work
 
-- Be able to use the debugger and visualizer to inspect program state.
-- Be able to interpret test failure messages.
-- Be better able to approach debugging code.
+An `if` statement starts with the word `if`. It is followed by a *condition*
+statement **in parentheses** that is either true or false (a *boolean
+expression*). There is then a sequence of statements surrounded by braces,
+which is called the *body*. For example:
 
-{: .info}
-For this lab and course in general, we highly encourage that you try things out on your own first,
-including looking things up if you're unsure what something is. In this lab, this might be about what a certain
-error means or the exception that is thrown - google it!
+```java
+if (year % 4 == 0) {
+    System.out.println (year + " might be a leap year.");
+}
+```
 
-## `Bomb`
+> Note: like in Python, the `%` symbol above is called *mod*, and it takes the
+> remainder after division. The above statement is checking if `year` has no
+> remainder when divided by 4). The behavior of the `%` operator in Java
+> annoyingly differs slightly from how it functions in Python, particularly
+> with respect to negative numbers.
+>
+> For example in Python `-5 % 4` evaluates to `3` whereas in Java `-5 % 4`
+> evaluates to `-1`. If you want the behavior to match what you might expect 
+> in Python, you should use the Math.floorMod function in Java. If you do this 
+> then Math.floorMod(-5, 4) evaluates to 3.
 
-The `BombMain` class calls the various `phase` methods of the `Bomb` class.
-For this lab, we'll be running the lab through the tests in `BombTest.java`. 
-If you were to run `BombTest` (in the testing folder), you'll notice that there are some errors - 
-this is because the current inputs to the phase methods in `BombMain` aren't the 
-correct passwords! Your job is to figure out what the passwords to each of these phases 
-is by _using the IntelliJ debugger_.
+The braces after an `if` statement aren't technically necessary if there is
+only one statement in the sequence; however, it is good practice to always
+include them since it makes it easier to add lines to the body later.
 
-{: .danger}
-**WARNING**: The code is written so that you can't find the password just by reading it. For
-this lab, you are **forbidden** from editing the `Bomb` and `BombTest` code, whether to add
-print statements or otherwise modify it. The point of this exercise is to get comfortable 
-using tools that will help you a lot down the road. Please take it seriously! **If you modify those
-files, you will not pass the tests on the autograder!**
+Unlike other languages (Python in particular), the condition of the `if`
+statement *must* be a boolean statement or a statement that reduces to a
+boolean expression. `if (5):` is a legal statement in Python, but `if (5) {`
+will not compile in Java.
 
-As mentioned, you'll be running your code from `BombTest.java` in the testing folder 
-and you can use those tests to help you debug, as on other assignments, you will
-end up writing your own tests to help you fix bugs! The **only** file you
-need to modify is `BombMain.java`
+Boolean expressions often involve comparisons. The comparison operators in Java
+are `==` and `!=` for equality and inequality testing, and `>`, `>=`, `<`, and
+`<=` for comparison of magnitudes. Multiple comparisons can be chained together
+with the logical operators `&&` (and) and `||` (or). If instead you wish to
+negate an expression, you can prefix your expression with `!`, the Java
+negation operator.
 
-**`BombTest.java` is where you will be running the program. `Bomb.java` and `BombMain.java`
-will not have the green run button since it does not contain a `static void main(String[] args)` 
-so please make sure to run the program through `BombTest.java`!**
+The block of statements following the `if` statement above will not execute if
+`year`'s value is not divisible by 4. If you wanted something to happen when
+the test fails, use the `else` keyword. Here's an example:
 
-### Interactive Debugging
+```java
+if (year % 4 == 0) {
+    System.out.println (year + " might be a leap year.");
+} else {
+    System.out.println (year + " is definitely not a leap year.");
+}
+```
 
-So far, you might have practiced debugging by using print statements to
-see the values of certain variables as a program runs. When placed
-strategically, the output from printing might help make the bugs obvious or
-narrow down their cause. This method is called **print debugging**. While print
-debugging can be very useful, it has a few disadvantages:
+You can also add further tests that are executed only if above boolean
+expressions evaluate to false, similarly to `elif` in Python. For example:
 
-- It requires you to modify your code, and clean it up after.
-- It's tedious to decide and write out exactly what you want to print.
-- Printing isn't always formatted nicely.
+```java
+if (year % 4 != 0) {
+    System.out.println (year + " is not a leap year.");
+} else if (year % 100 != 0) {
+    System.out.println (year + " is a leap year.");
+} else if (year % 400 != 0) {
+    System.out.println (year + " is not a leap year.");
+} else {
+    System.out.println (year + " is a leap year.");
+}
+```
 
-In this lab, we'll show you a new technique, **interactive debugging** --
-debugging by using an interactive tool, or a debugger. We'll focus on IntelliJ's
-built-in debugger.
+Note that only one body section, the one corresponding to the first true
+boolean expression (or `else` if none are true), will execute. After that,
+your program will continue on, skipping all the remaining code in this `if`
+structure. This implies that none of the conditions below the first true
+boolean expression will be evaluated.
 
-### Debugger Overview
+One consequence of conditions becomes apparent in non-void methods. Recall that in Java,
+you must return something of the return type. Consider the following code snippet:
 
-#### Breakpoints
+```java
+public int relu(int x) {
+    if (x < 0) {
+        return 0;
+    }
+}
+```
 
-Before starting the IntelliJ debugger, you should set a few **breakpoints**.
-Breakpoints mark places in your code where you can _suspend_ the program while
-debugging and examine its state. This:
+As the code is, it will not compile. That is because currently, a value is only
+returned when `x` is less than 0. What happens when that's not the case? Java
+must be assured that `relu()` *always* returns an int, and thus will not allow
+you to compile your code.
 
-- Doesn't require you to modify your code or clean it up after, since
-  breakpoints are ignored in normal execution.
-- Lets you see _all_ the variables without needing to write print statements.
-- Lets IntelliJ display everything in a structured manner
+A correct version looks like this:
 
-Go ahead and open up `Bomb.java` and place a breakpoint. To set a breakpoint, 
-click the area just to the right of the line number.
+```java
+public int relu(int x) {
+    if (x < 0) {
+        return 0;
+    } else {
+        return x;
+    }
+}
+```
 
-![code breakpoints](img/code_breakpoints.png){: style="max-height: 325px;" }
+### How `while` Works
 
-A red circle or diamond should appear where you clicked. If nothing appears,
-make sure that you click next to a line with code. When the debugger reaches
-this point in the program, it will pause **before** the execution of the line or
-method. Clicking the breakpoint again will remove it.  
+The `while` statement is used to repeat a sequence of statements. It consists
+of the word `while`, followed by a continuation *test* in parentheses, also
+called the *condition*. It is then followed by a sequence of statements to
+repeat enclosed in braces, called the *loop body*.
 
-#### Running the Debugger
+The `while` statement works by evaluating the condition. If the condition is
+true (the test succeeds), the entire loop body is executed, and the condition
+is checked again. If it succeeds again, the entire loop body is executed again.
+This continues, possibly infinitely.
 
-Now, let's set a few breakpoints - you can do this either in `Bomb.java` or `BombMain.java`. 
-With these set, we can start a debugging session! Click on the green triangle next to the 
-class or test you want to debug (in test files there may be two green triangles). 
-Instead of clicking the green triangle to run, click the
-![debug](img/debug.png){: .inline } debug option:
+A common mistake when first learning a Java-like language is to think that the
+behavior of `while` is to stop as soon as the test becomes false, possibly in
+the middle of the loop. This is not the case. The test is checked only at the
+end of a complete iteration, and so this is the only time the loop can stop.
 
-![run debugger](img/run_debugger.png){: style="max-height: 325px;" }
+Here's an example that implements the remainder operation `dividend % divisor`,
+and produces some output. We assume all variables have already been declared,
+and that `divisor` and `dividend` have already been assigned positive values.
 
-The selected program should run until it hits its first breakpoint. A debugger
-window should also appear on the bottom of the interface, where the console was.
+```java
+while (dividend >= divisor) {
+    dividend = dividend - divisor;
+    System.out.println ("loop is executed");
+}
+remainder = dividend;
+```
 
-![debugger session](img/debugger_session.png){: style="max-height: 325px;" }
+All statements of the loop body are executed, even if one of them affects the
+truth value of the test. In the example above, values of 9 for `dividend` and
+4 for `divisor` result in two lines of output. We show a representation with
+values of 13 for `dividend` and 4 for `divisor` and initially 0 for
+`remainder`. This results in 3 lines of output.
 
-On the left, you will be able to see all current method calls and on the right,
-you will be able to see the values of instantiated variables at this point in
-the program (they will also be shown in gray text in the editor). For instances
-of classes, you can click the dropdown to expand them and look at their fields.
+When debugging `while` loop code, sometimes it's useful to make charts like the
+one below to keep track of the value of each variable.
 
-In the debugger, you have a few options:
+![DividendDivisor](img/DividendDivisor.jpg)
 
-- Learn something from the displayed values, identify what's wrong, and fix
-  your bug! Click ![stop](img/stop.png){: .inline } to stop the debug session.
-- Click ![resume](img/resume.png){: .inline } to resume the program (until it
-  hits another breakpoint or terminates).
-- Click ![step over](img/step-over.png){: .inline } to advance the program by
-  one line of code.
-  - ![step into](img/step-into.png){: .inline } does something similar, but
-    it will step into any method called in the current line, while
-    ![step over](img/step-over.png){: .inline } will step over it.
-  - ![step out](img/step-out.png){: .inline } will advance the program until
-    after it returns from the current method.
-- If you accidentally step too far and want to start the session over, click
-  ![rerun](img/rerun.png){: .inline } (at least right now, there isn't a good way to directly 
-  step back).
+### How `for` Works
 
-### `Bomb` Introduction (Phase 0)
+The `for` statement provides another way in Java to repeat a sequence of
+statements, similar to `while` but slightly different. It starts with `for`,
+continues with *loop information* inside parentheses, and ends with the *loop
+body* (the segment to be repeated) enclosed in curly braces.
 
-{: .info}
-For this lab, we will be providing method breakdowns if you want an 
-overview of the method/phase that you're debugging.
+```java
+for (loop-information) {
+    loop-body;
+}
+```
 
-{: .task}
-Set a breakpoint at `phase0` and use the debugger to find the password
-for `phase0` and replace the `phase0` argument accordingly in
-`bomb/BombMain.java`. You can start the program from `testBombPhase0` in 
-`tests/bomb/BombTest.java`.
+<!-- TODO: I know Oracle docs refer to these as "increments",
+but that's weird because it's arbitrary. "update" might be better. -->
+Loop information consists of *initializations*, a *test* (condition), and
+*increments*. If the test succeeds, the loop continues and then increments. These refer to the creation of variables, boolean conditions that dictates when the loop should and should not be entered, 
+and the equation we use to update our position between loops. 
+These three sections are separated by semicolons, and any of
+these may be blank. If there is more than one initialization or increment,
+they are separated by commas.
+```java
+for (initialization; test; increment) {
+    loop-body;
+}
+```
 
-Once you've found the correct password, running the code (not in debug mode)
-should output `You passed phase 0 with the password \<password\>!` instead of
-`Phase 0 went BOOM!`
+Loop execution proceeds as follows:
+
+1.  Initializations are performed.
+2.  The test is evaluated.
+    -   If the condition is false, the loop is finished and execution continues
+        with the code following the for loop.
+    -   If the condition is true, the loop body is executed, increments are
+        performed, and we loop back to the top of step 2 where the test is
+        evaluated again. (Note: We never re-initialize.)
+
+Note that the code `for (;;)` is in fact valid Java code. It never terminates!
+
+![For Loop Execution](img/ForLoopExecution.png)
+
+The following loops are several equivalent ways to compute `n` factorial
+(the product of all the positive integers up through `n`).
+
+-   Two initializations in loop-information
+
+    ```java
+    for (int k = n, product = 1; k > 0; k = k - 1) {
+        product = product * k;
+    }
+    ```
+
+-   Product initialized outside for loop
+
+    ```java
+    int product = 1;
+    for (int k = n; k > 0; k = k - 1) {
+        product = product * k;
+    }
+    ```
+
+-   Decrement performed inside the loop-body
+
+    ```java
+    int product = 1;
+    for (int k = n; k > 0; ) {
+        product = product * k;
+        k = k - 1;
+    }
+    ```
+
+-   While loop equivalent
+
+    ```java
+    int product = 1;
+    int k = n;
+    while (k > 0) {
+        product = product * k;
+        k = k - 1;
+    }
+    ```
+
+As the last loop demonstrates, the `for` loop is basically a
+repackaged `while` loop that puts all the information about how long the
+loop should continue in one place. Thus, a `for` loop is generally easier
+to understand than an equivalent `while` loop.
+
+### Shortcuts for Incrementing / Decrementing
+
+Let `k` be an integer variable. Then the three following statements all increment `k` by 1:
+
+```java
+k = k + 1;
+k += 1;
+k++;
+```
+
+Similarly, these three statements all decrement `k` by 1.
+
+```java
+k = k - 1;
+k -= 1;
+k--;
+```
+
+Note: The motivation for this shorthand notation is that the operations of
+incrementing and decrementing by 1 are very common. While it is legal to
+increment or decrement variables within larger expressions like
+
+```java
+System.out.println(values[k++]);
+```
+
+this is a risky practice very susceptible to off-by-one errors. In general,
+we suggest starting with more verbose syntax. Therefore, we ask that you
+only use the `++` or `--` operations on lines **by themselves**.
+
+### The `break` Statement
+
+The `break` statement "breaks out of" a loop (both for and while loops). In
+other words, it stops the execution of the loop body, and continues with the
+statement immediately following the loop. An example of its use would be a
+program segment that searches an array named `values` for a given `value`,
+setting the variable found to true if the value is found and to false if it
+is not in the array.
+
+```java
+boolean found = false;
+for (int k = 0; k < values.length; k++) {
+    if (values[k] == value) {
+        found = true;
+        break;
+    }
+}
+```
+
+This `break` statement allows us to save computation time. If we find the value within
+the array before the end, we don't waste more time looping through the rest
+of the array.
+
+However, the `break` statement is not always necessary, and code with a lot
+of `break`s can be confusing. Abusing the break statement is often considered
+poor style. When using `break`, first consider if instead it would be more
+appropriate to put another condition in the test.
+
+### The `continue` Statement
+
+The `continue` statement skips the current iteration of the loop body,
+increments the variables in the loop information, then evaluates the loop
+test. This example checks how many 0's there are in array `values`:
+
+```java
+int count = 0;
+for (int i = 0; i < values.length; i++) {
+    if (values[i] != 0) {
+        continue;
+    }
+    count += 1;
+}
+System.out.println("Number of 0s in values array: " + count);
+```
+
+Similar to the `break` statement, the `continue` allows us to save time by
+skipping sections of the loop. In this case, the `continue` allows us to add
+to the `count` only when there is a 0 in the array. Removing continue will
+give an incorrect output.
+
+The difference between `break` and `continue` is that `break` immediately stops
+the loop and moves on to the code directly following it. In comparison,
+`continue` stops going through the current iteration of the loop body and
+immediately continues on to the next iteration as given by the loop information.
+
+Like with `break`, abusing `continue` is often considered poor style. Try not
+to go crazy with nested `break`s and `continue`s.
+
+Both `break` and `continue` apply to only the closest loop it is enclosed in.
+For instance, in the case of the following nested loop, the `break` will only
+exit out of the inner for loop, not the outer one.
+
+```java
+for (int i = 0; i < values.length; i++) {
+    for (int j = i + 1; j < values.length; j++) {
+        if (values[i] == value[j]) {
+            break;
+        }
+    }
+}
+```
+
+### Array Definition and Use
+
+ An array is an indexed sequence of elements, all of the same type. Real-life
+ examples of arrays include the following:
+
+- ducks in a row
+- slices of bread
+- words in this sentence
+- book pages
+- egg cartons
+- chessboards / checkerboards
+
+We declare an array variable by giving the type of its elements, a pair of
+square brackets, and the variable name, for example:
+
+```java
+int[] values;
+```
+
+Note that we don't specify the length of the array in its declaration.
+
+Arrays are basically objects with some special syntax. To initialize an array,
+we use the `new` operator as we do with objects; the argument to `new` is the type
+of the array, which includes the length. For example, the statement
+
+```java
+values = new int[7];
+```
+
+stores a reference to a 7-element integer array in the variable `values`. This
+initializes the array variable itself. If we want to declare and initialize the
+array at the same time, we can:
+
+```java
+int[] values = new int[7];
+```
+
+The elements of the array are indexed from `0` to `(array length) - 1` and the
+element at a particular index can be changed with an assignment statement. For
+example, to set the second element to `4` we write:
+
+```java
+values[1] = 4;
+```
+
+For an `int` array, Java will (by default) set all of the elements to `0`.
+Similarly, `double` arrays will be filled with `0.0`, `boolean` with `false`,
+etc. For arrays of references to non-primitive objects (whose precise definition we will
+cover in lab 4), the array will be initialized with `null`.
+
+If you know what every value in your array should be at initialization time,
+you can use this simplified syntax to directly initialize the array to the
+desired values. Note that you don't have to provide the array length because
+you're explicitly telling Java how long your array should be.
+
+```java
+int[] oneThroughFive = new int[]{1, 2, 3, 4, 5};
+// This also works but only if you declare and initialize in the same line
+int[] oneThroughFive = {1, 2, 3, 4, 5};
+```
+
+To access an array element, we first give the name of the array, and then
+supply an index expression for the element we want in square brackets. For
+example, if we want to access the `k`th element of values (0-indexed), we can
+write:
+
+```java
+values[k]
+```
+
+If the value of the index expression is negative or greater than/equal to the
+length of the array, an exception is thrown (negative indexing is not allowed).
+
+Every array has an instance variable named `length` that stores the number of
+elements that array can hold. For the `values` array just defined,
+`values.length` is 7. The length variable can't be changed; once we create an
+array of a given length, we can't shrink or expand that array.
+
+### `for` Statements with Arrays
+
+`for` statements work well with arrays. Consider, for example, an array named
+`values`. It is very common to see code like the following:
+
+```java
+for (int k = 0; k < values.length; k += 1) {
+    // do something with values[k]
+}
+```
+
+### Multidimensional Arrays
+
+Having an array of objects is very useful, but often you will want to have an
+array *of arrays* of objects. Java does this in a very natural way. We've
+already learned that to declare an array, we do:
+
+```java
+int[] array;
+```
+
+Similarly, to declare an array of arrays, we do:
+
+```java
+int[][] arrayOfArrays;
+```
+
+When constructing an array of arrays, you *must* declare how many arrays it
+contains (because this is the actual array you are constructing), but you don't
+have to declare the length of each array. To declare an array of 10 arrays, you
+do this:
+
+```java
+int[][] arrayOfArrays = new int[10][];
+```
+
+To construct the first array in the array of arrays, you could do:
+
+```java
+arrayOfArrays[0] = new int[5];
+```
+
+And you could access the first index of the first array as:
+
+```java
+arrayOfArrays[0][0] = 1;
+```
+
+Hopefully this all makes sense. Alternatively, you can fix the length of each
+array in the array of arrays as the same length like this:
+
+```java
+int[][] tenByTenArray = new int[10][10];
+```
+
+You can also directly instantiate an array of arrays with prefilled elements,
+such as:
+
+```java
+{% raw %}
+int[][] oneThroughTen = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+{% endraw %}
+```
+
+An array of arrays, when the different sub-arrays can be of different sizes, is
+called a *jagged array*. If they are all the same size, it is often convenient
+to forget altogether that you have an array of arrays, and instead to simply
+imagine you had a multi-dimensional array. For instance, you could create a
+3-dimensional array (to represent points in space, for example) like this:
+
+```java
+int[][][] threeDimensionalArray = new int[100][100][100];
+```
+
+This 3D array has 100x100x100 = 1,000,000 different values. Multidimensional
+arrays are extremely useful, and you'll be encountering them a lot.
+
+## Task: A Jigsaw Puzzle - Drawing a Triangle
+
+The file `TriangleDrawer.stuff` contains a collection of statements. Some of
+the statements, together with some extra right braces, form the body of a main
+method that, when executed, will print the triangle:
+
+    *
+    **
+    ***
+    ****
+    *****
+
+(Each line has one more asterisk than its predecessor; the number of asterisks
+in the last line is the value of the `SIZE` variable. `SIZE` has a hard-coded value,
+which you should experiment with. Feel free to make `SIZE` controlled by a command-line argument!
+However, when you turn it in, make sure that it will run with `SIZE = 5`!)
+
+At the top of IntelliJ, you should see "File". Click on it, and then hover over "New"
+and then click on "Java Class". See this reference screenshot:
+![New Java Class](img/NewJavaClass.png)
+
+You will then be prompted to give a name, which in this case you should write `TriangleDrawer.java`. 
+Now, you've learned how to create a new Java class, and are ready to continue on to the 
+next part of the lab! 
+
+Next, let us add a `drawTriangle` method to the class, as such:
+```java 
+public static void drawTriangle() {
+    // your code here
+}
+```
+
+Let's add a main method to the class:
+```java 
+public static void main(String[] args) {
+    // your code here
+}
+```
+
+Inside the main method, let's add a line to call the `drawTriangle` method:
+```java 
+public static void main(String[] args) {
+    drawTriangle();
+}
+```
+
+Now, you should be able to see a green arrow pop up on the `public static void main` line. Clicking this green arrow will allow you to run the main method, which in turn calls the `drawTriangle` method. In the below example, the `drawTriangle` prints out `"hello cs61bl!`, which we can see is outputted in the console when we run main. \n
+![New Java Class](img/drawTriangle.png)
+
+You can visually check the output of your `drawTriangle` method by running main like above. Tests are also provided in the tests/ folder; you can run TriangleDrawerTest.java in Intellij to check the correctness of your code. For this particular question, the given tests aren't as useful (since it asks you to visually check your code output), but the test files will be much more relevant in future labs and other assignments.
+
+Copy and paste statements from the `TriangleDrawer.stuff` file into the main method of 
+`TriangleDrawer.java`. You'll have to add some right braces in addition to the copied lines 
+that you've chosen and rearranged. (You won't need all the statements. You shouldn't need to use 
+any statement more than once.)
+
+Many students encounter infinite loops in their first solutions to this
+problem. If you get an infinite loop, be sure to hit `CTRL+C` in your terminal to halt
+execution.
+
+> Hint: So far, we have mostly used the well-named function System.out.println
+> to conduct our printing. However, this function always outputs a new line at the
+> end of its provided string. There is a variant of this function, System.out.print,
+> which does not output a new line. You may find it helpful in this exercise!
+
+## Task: Another Jigsaw Puzzle
+
+Make a new Java file called `TriangleDrawer2.java` (you might want to copy and
+paste from `TriangleDrawer.java`). In this file, rewrite the program so that it
+produces the exact same output, but using `for` loops and no `while` loops. If
+you have having trouble, re-read the parts above describing how to convert a
+`while` loop to a `for` loop.
 
 <details markdown="block">
-<summary markdown="block">
+  <summary markdown="block">
+#### Hint: When do we define variables?
+{: .no_toc}
+  </summary>
+When working with loops, we have to consider scope. In other words, we have to consider when our variables are being created,
+when they are being modified, and when they are inaccessible. Which variables do we want to define within the loop (either in the
+header or the body) and which variables do we want to define outside of the loop (either before or after the loop)?
 
-**`phase0` Method Breakdown**
-
-</summary>
-
-The `phase0` method first generates a secret String `correctPassword` (you don't
-need to understand how `shufflePassword` works). The `password` passed in from
-`BombMain` is then compared against `correctPassword`. The goal of this phase is
-to use the debugger to find the value of `correctPassword` and pass in a
-`password` that matches that value!
+For example, consider the `SIZE` variable. When is it being modified? Based on that, where should it be defined?
 
 </details>
 
-### Visualizer (Phase 1)
+## Task: Array Exercises
 
-For this portion of the lab, we'll be working with `IntList`. If you need a quick recap, 
-refer to the relevant lecture slides from this week. 
+Your task is to complete the two exercises in `ArrayExercises.java`.
 
-Adding to our implementation of `IntList` are two methods that may not have been 
-mentioned: `print` and `of`. The `of` method makes it more convenient to create `IntList`s. 
-Here's a brief demonstration of how it works. Consider the following code: 
+- `makeDice`: This method returns a _new_ `array` of integers `[1, 2, 3, 4, 5, 6]`.
+- `findMinMax`: This method takes an `int[] array` and returns the the positive difference between the maximum element and minimum element of the given array. You may assume the input array is nonempty.
 
-```shell
-IntList lst = new IntList(1, new IntList(2, new IntList(3, null)));
+
+## Task: Array Operations
+
+Look at the files `ArrayOperations.java` and `ArrayOperationsTest.java`.
+
+Fill in the blanks in the `ArrayOperations` class. Your methods should pass
+the associated tests in `ArrayOperationsTest`.
+
+Note: Before trying to program an algorithm, you should usually try a small
+case by hand. For each of the exercises today, demo
+each algorithm by hand before writing any code.
+
+### `insert` & `delete`
+
+-   The `insert` method takes three arguments: an `int` array, a position in the
+    array, and an `int` to put into that position. All the subsequent elements
+    in the array are moved over by one position to make room for the new element.
+    The last value in the array is lost.
+
+For example, let `values` be the array {1, 2, 3, 4, 5}. Calling
+
+```java
+insert(values, 2, 7)
 ```
 
-That's a lot of typing for just a list of 1, 2, and 3 (quite confusing too)! 
-The `IntList.of` method addresses this problem. To create an IntList containing 
-the elements 1, 2, and 3, you can simply type:
+would result in `values` becoming {1, 2, 7, 3, 4}.
 
-```shell
-IntList lst = IntList.of(1, 2, 3);
+-   The `delete` method takes two arguments: an `int` array and a position in
+    the array. The subsequent elements are moved down one position, and the
+    value 0 is assigned to the last array element.
+
+For example, let `values` be the array {1, 2, 3, 4, 5}. Calling
+
+```java
+delete(values, 2)
 ```
 
-The other method `print` returns a `String` representation of an IntList.
+would result in `values` becoming {1, 2, 4, 5, 0}.
 
-```shell
-IntList lst = IntList.of(1, 2, 3);
-System.out.println(lst.print())
-// Output: 1 -> 2 -> 3
+For today don't worry about the methods being called with incorrect input.
+
+### `catenate`
+
+Complete the Java function `catenate` so that it
+performs as indicated below and in the comments. Remember that some
+arrays can have zero elements!
+
+Note: Again, before trying to program an algorithm, you should usually try a small
+case by hand.
+
+You may find `System.arraycopy` useful for this problem, but you are not
+required to use it. If you are not sure how to use this method, try Googling it!
+
+-   The `catenate` method takes in two arguments: integer arrays `A` and `B`.
+    You should return a new array with all of the elements of `A` directly
+    followed by all of the elements in `B`.
+
+For example, let `A` be the array `{1, 2, 3}` and `B` be the array `{4, 5}`.
+Calling
+
+```java
+int[] values = catenate(A, B);
 ```
 
-Back to debugging - while being able to see variable values is great, sometimes we have data that's
-not the easiest to inspect. For example, to look at long `IntList`s, we need to
-click a lot of dropdowns. The Java Visualizer shows a box-and-pointer diagram of
-the variables in your program, which is much better suited for `IntList`s. To
-use the visualizer, run the debugger until you stop at a breakpoint, then click
-the "Java Visualizer" tab. The tab is outlined in red below. 
+would result in `values` becoming `{1, 2, 3, 4, 5}`.
 
-![Java Visualizer Tab](img/java_visualizer.png)
+Again, for today, don't worry about the method being called with incorrect input.
+When you finish this function, all tests in `ArrayOperationsTest.java` should
+compile and pass.
 
-**The password for phase 1 is an `IntList`, not a `String`. You may find the
-`IntList.of` method helpful.**
+## Deliverables
 
-{: .task}
-Set a breakpoint at `phase1` and use the Java Visualizer
-to find the password for `phase1` and replace the `phase1` argument accordingly
-in `bomb/BombMain.java`. You can start the program from `testBombPhase1` in
-`tests/bomb/BombTest.java`.
+As a reminder, this assignment has an [FAQ page](faq.md).
+These are the required files, all inside the `lab01` directory:
 
-<details markdown="block">
-<summary markdown="block">
+`TriangleDrawer.java`
+:   You should have created this class and implemented it such that `TriangleDrawerTest.java` passes.
 
-**`phase1` Method Breakdown**
+`TriangleDrawer2.java`
+:   This should function the same as `TriangleDrawer.java`, except using only for loops.
 
-</summary>
+`AddingMachine.java`
+:   Implement `AddingMachine.java` such that `AddingMachineTest.java` passes.
 
-The `phase1` method generates a secret `IntList` called `correctIntListPassword`
-(similar to the previous phase, you don't need to understand how
-`shufflePasswordIntList` works). The `password` (in the form of an `IntList`)
-passed in from `BombMain` is then compared against the `correctIntListPassword`
-for equality. The goal of this phase is to use the debugger's Java Visualizer to
-find the structure and value of the `correctIntListPassword`'s IntList and pass
-in a `password` that matches it!
+`ArrayExercises.java`
+:   Implement `ArrayExercises.java` such that `ArrayExercisesTest.java` passes.
 
-</details>
+`ArrayOperations.java`
+:   Implement `ArrayOperations.java` such that `ArrayOperationsTest.java` passes.
 
-### Conditional Breakpoints (Phase 2)
+Don't forget to submit your work to Gradescope!
 
-Consider a program that loops 5000 times - trying to step 
-through each time to find the error wouldn't be too efficient. Instead, you would want 
-your program to pause on a specific iteration, such as the last one. In other words, you 
-would want your program to pause on certain conditions. To do so, create a breakpoint at the 
-line of interest and open the "Edit breakpoint" menu by right-clicking the breakpoint icon itself. 
-There, you can enter a boolean condition such that the program will only pause at this
-breakpoint if the condition is true. It will look something like this:
-
-![Conditional Breakpoint](img/conditional_breakpoint.png)
-
-Another thing you can do is to set breakpoints for exceptions in Java. If your
-program is crashing, you can have the debugger pause where the exception is
-thrown and display the state of your program. To do so, click
-![view breakpoint](img/view-breakpoints.png){: .inline }
-in the debugger window and press the plus icon to create a "Java Exception
-Breakpoint". In the window that should appear, enter the name of the exception
-that your program is throwing.
-
-{: .task} 
-Set a breakpoint at `phase2` and use the debugger to find the password
-for `phase2` and replace the `phase2` argument accordingly in
-`bomb/BombMain.java`. Remember, don't edit `Bomb.java`! You can start the program 
-from `testBombPhase2` in `tests/bomb/BombTest.java`.
-
-{: .info}
-**NOTE**: The password isn't given explicitly like in the previous phases.
-Rather, your task is to "try to find it" using a conditional breakpoint.
-
-<details markdown="block">
-<summary markdown="block">
-
-**`phase2` Method Breakdown**
-
-</summary>
-
-The `phase2` method takes in your `password` from `BombMain`. 
-
-The method adds 100,000 random integers to a `Set` called `numbers`. It
-then loops through them using a for-each loop, incrementing a variable `i` as it
-goes along. On the 1338th iteration (because Java is zero-indexed, `i == 1337`
-on iteration 1338), we check whether your password is equal to the current
-`number`.
-
-</details>
-
----
-
-At this point, you should be able to run the tests in `tests/bomb/BombTest.java`
-and have all of them pass with a green checkmark.
-
-## Deliverables and Scoring
-
-{: .warning} 
-**Make sure you did not edit `Bomb.java` or `BombTest.java`.** There are tests 
-on the autograder that check if you edited those files and you will not pass 
-if there are changes in the file (this includes adding comments). **The 
-local tests prevent you from editing `Bomb.java`, but not `BombTest.java`
-(this is only on the autograder), so do not touch those files!** 
-
-The lab is out of 5 points. 
-
-- Find all the passwords in `BombMain.java` and ensure that you pass all tests locally 
-  before submitting to Gradescope. 
-
-## Submission
-
-Just as you did in Lab 1, add, commit, then push your Lab 2 code to GitHub.
-Then, submit to Gradescope to test your code. If you need a refresher, check
-out the instructions in the
-[Lab 1 spec](../lab01/index.md#submitting-to-gradescope) and the
-[Assignment Workflow Guide][workflow].
-
-[workflow]: ../../resources/guides/assignment-workflow/index.md#opening-in-intellij
-
-## Acknowledgements
-
-This assignment is adapted from Adam Blank.**
+### After completing this lab, you now have the tools to go ahead and work on Project 0! Please take a moment to read the [Project 0 Spec](../../projects/game2048/index.md) and start on the project if you have already - this is a fast-paced course and we want you to stay on track!
