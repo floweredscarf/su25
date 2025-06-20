@@ -1,8 +1,10 @@
 ---
 layout: page
 title: >-
-  Lab 11: Comparison-Based Sorts (Optional)
+  Lab 11: Binary Search Trees
+has_children: true
 parent: Labs
+has_toc: false
 has_right_toc: true
 released: true
 ---
@@ -10,548 +12,448 @@ released: true
 ## [FAQ](faq.md)
 
 Each assignment will have an FAQ linked at the top. You can also access it by
-adding "/faq" to the end of the URL. The FAQ for Lab11 is located
+adding "/faq" to the end of the URL. The FAQ for Lab 11 is located
 [here](faq.md).
 
+## Before You Begin
 
-## Introduction
-
-This lab is optional. You are encouraged to work through it on your own time to strengthen 
-your understanding of comparison-based sorting algorithms. There is no in-section component 
-or required submission.
-
-As usual, pull the files from the skeleton and make a new IntelliJ project.
+As usual, pull the skeleton code.
 
-In this lab, we'll be discussing **sorting**, algorithms for rearranging elements
-in a collection to be in a specific order. There are many problems you can more easily solve with a sorted collection, including performing binary search in $$O(\log N)$$ time,
-efficiently identifying adjacent pairs within a list, finding the $$k^{th}$$
-largest element, and so forth.
-
-There are several kinds of sorting algorithms, each of which is appropriate for
-different situations. At the highest level, we will distinguish between two
-types of sorting algorithms:
+## Learning Goals
 
-- **Comparison-based sorts**, which rely on making pairwise comparisons between
-  elements.
-- **Counting-based sorts**, which group elements based on their individual
-  digits before sorting and combining each group. Counting sorts do not need to
-  compare individual elements to each other.
+In this lab, you'll continue to practice coding up binary trees and learn about building data structures
+that rely on comparisons. This
+technique will be widely used in the remainder of the class.
 
-In this lab and the following lab, we will discuss several **comparison-based sorts** including
-*insertion sort*, *selection sort*, *heap sort*, *merge sort* and *quick sort*. Why all the
-different sorts? Each sort has a different set of advantages and disadvantages:
-under certain conditions, one sort may be faster than the other, or one sort may
-take less memory than the other, and so forth. When working with large datasets
-(or even medium and small datasets), choosing the right sorting algorithm can
-make a big difference. Along the way, we'll develop an intuition for how each
-sort works by exploring examples and writing our own implementations of each
-sort.
+## Recall: Binary Trees
 
-[Here](https://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html) is a nice
-visualizer for some of the sorts. 
+We'll now move on from trees and explore a common, special case of the tree data
+structure: the binary tree. A binary tree is a tree in which each node has at
+most two children. Normally it has two separate variables `left` and
+`right` for the left and right children of the binary tree.
 
-## Order and Stability
+## Exercise: `BinaryTree`
 
-To put elements in order implies that we can enforce an ordering between any two
-elements. Given any two elements in a list, according to **total order**, we
-should be able to decide which of the two elements is *larger* or *smaller* than
-the other.
+The file `BinaryTree.java` defines a `BinaryTree` class and a `TreeNode` class.
+First, read over the code, as well as the implementations for `printPreorder` and `printInorder`.
 
-However, it's also possible that neither element is necessarily larger or
-smaller than the other. For instance, if we wish to determine the ordering
-between two strings, `["sorting", "example"]`, and we want to order by the
-*length of the string*, it's not clear which one should come first because both
-strings are of the same length 7.
+Then, read over methods that generate sample trees (`sampleTreeX` methods) and try running the `main` method to understand how it works.
+In addition, consider adding more test cases to the `BinaryTreeTest.java`.
 
-In this case, we can defer to the notion of **stability**: if a sort is stable,
-then it will preserve the relative orderings between elements in the list. In
-the above example then, the resultant array will be `["sorting", "example"]` in
-a *stable sort* rather than `["example", "sorting"]` as is possible in an
-*unstable sort*. Remember that, according to our total order by the *length of the strings*, the second list is still considered correctly sorted even though
-the relative order of equivalent elements is not preserved.
+Once you have understood the code, you can start working on the exercises below.
 
-What is the benefit of stable sorting? It allows us to **sort values based off multiple attributes.** For example, we could stably sort a library catalog by
-alphabetical order, then by genre, author, etc. Without stable sorting, we are not guaranteed that the relative ordering of the previous sorts
-would persist so it is possible that the catalog would only be sorted by our
-last sort.
+### Exercise 1: `height`
 
-Consider the following example where we sort a list of animals by alphabetical
-order and then length of string.
+First, if you have a partner, switch which partner is coding if you haven't recently.
 
-Original collection:
+Implement the `height` method in the `BinaryTree` class. The height of an empty tree is
+0; the height of a one-node tree is 1; the height of any other tree is 1 + the
+greater of the heights of the two children.
 
-    cow
-    giraffe
-    octopus
-    cheetah
-    bat
-    ant
+### Exercise 2: `isCompletelyBalanced`
 
-First, sort by alphabetical order:
+Add an `isCompletelyBalanced` method for the `BinaryTree` class. A tree with no
+nodes and a tree with one node are both completely balanced; any other tree is
+completely balanced if and only if the height of its left child is equal to the
+height of its right child, and its left and right children are also completely
+balanced. Make sure you test your code with trees of height 3 or more to ensure
+that your code works!
 
-    ant
-    bat
-    cheetah
-    cow
-    giraffe
-    octopus
+### Exercise 3: `fibTree`
 
-Second, **stable** sort by length of string:
+This exercise deals with "Fibonacci trees", trees that represents the recursive
+call structure of the Fibonacci computation. (The Fibonacci sequence is defined
+as follows: $$F_0 = 0, F_1 = 1$$, and each subsequent number in the sequence is
+the sum of the previous two.) The root of a Fibonacci tree should contain the
+value of the `N`th Fibonacci number, the left subtree should be the tree
+representing the computation of the `N-1`th Fibonacci number, and the right
+subtree should be the tree representing the computation of the `N-2`th
+Fibonacci number. The two exceptions to this rule are when we pass in 0 or 1 to
+the `fibTree` method. The first few Fibonacci trees appear below.
 
-    ant
-    bat
-    cow
-    cheetah
-    giraffe
-    octopus
+| Function     | Tree                           |
+|--------------|--------------------------------|
+| `fibtree(0)` |![fibtree-0](img/fibtree-0.png) |
+| `fibtree(1)` |![fibtree-1](img/fibtree-1.png) |
+| `fibtree(2)` |![fibtree-2](img/fibtree-2.png) |
+| `fibtree(3)` |![fibtree-3](img/fibtree-3.png) |
+| `fibtree(4)` |![fibtree-4](img/fibtree-4.png) |
+| `fibtree(5)` |![fibtree-5](img/fibtree-5.png) |
 
-After the two sort calls on the same list, now the collection is sorted by length and elements with the same length are in
-alphabetical order with each other. If our sorting algorithm was not stable,
-then we would potentially lose the alphabetical information we achieved in the
-previous sort.
+Write the static `fibTree` method in `BinaryTree` that takes in a non-negative
+integer `N`, and returns a `BinaryTree` that stores the `N`-th Fibonacci value
+using the representation above.
 
-## Space Complexity
+{% include alert.html type="info" content=' You should be using recursion for these problems, and you should be adding your helper methods with modified arguments. Refer to the tree traversal code for reference!
 
-Thus far, in this class, we've mostly talked about time complexity. Similarly to how we can do asymptotic analysis for runtime, we can also analyze how much *space* (i.e. memory) a given algorithm uses. For sorting algorithms, one common trait we look for is if the algorithm is **in-place**.
+Furthermore, because `fibTree` is a static method that returns a `BinaryTree`, your helper method must be static as well!' %}
 
-Any sorting algorithm that takes in an input of size N is going to have to work with some amount of memory proportional to N to store the size of the input itself. An in-place algorithm is one that doesn't use a significant amount of *additional* memory. In this class, this means that the algorithm must use a constant amount of additional memory (for example, a few variables to keep track of your current index or something). Another way to think about it is if we can do the entire algorithm within the original given list, without creating an additional data structure. All the algorithms we discuss in this lab are in-place and do not need to create another data structure. 
+## Comparisons
 
-Note that the definition of in-place can vary–though in our class we say only a constant amount of space counts, some measures say using a logarithmic amount is okay. If you see other articles online, just be wary!
+Here are a few key details from `compareTo`, slightly adapted:
 
-## Some Thoughts: Sorting by Hand
+> Compares this object with the specified object for order. Returns a negative
+> integer or a positive integer if this object is less than
+> or greater than the specified object, respectively. Note that it can be any negative
+> or positive integer, not -1 and 1 necessarily.
 
-Think about how you would sort a hand of 13 playing cards if you
-are dealt the cards one-by-one. Your hand should end up sorted first by suit,
-and then by rank within each suit.
+There are other requirements that usually just happen naturally with a
+reasonable implementation, but are still important to specify:
 
-Then, think about how you would sort a pile of 300 CS 61BL exams by student ID. If
-it's different than your card-sorting algorithm of the previous step, explain
-why.
+> The implementer must also ensure that the relation is transitive:
+> `x.compareTo(y) > 0 && y.compareTo(z) > 0` implies `x.compareTo(z) > 0`.
+>
+> It is strongly recommended, but not strictly required that `x.compareTo(y) ==
+> 0` is equivalent to `x.equals(y)`. Generally speaking, any class that
+> implements the `Comparable` interface and violates this condition should
+> clearly indicate this fact. The recommended language is "Note: this class has
+> a natural ordering that is inconsistent with equals."
 
-Can you tell if one is faster than the other? How so?
+Typically, a class will compare to objects of the same type as itself (although
+it does not strictly have to). Doing so means data structures that require
+ordering (like sorted lists, and in the future, search trees) can contain the
+class.
 
-## Insertion Sort
+## Binary Search
 
-The first comparison-based sort we'll learn is called an *insertion sort*. The
-basic idea for insertion sort can be formally summed up by this pseudocode: 
+Suppose we have a sorted array of *comparable* elements, and we want to see if a certain element is in the array. How can we use `compareTo()` to achieve an efficient implementation? Before reading the next section, pause here and discuss approaches with your peers!
 
-    for each element in the collection:
-        while the previous element is smaller than the element:
-            swap the two elements
 
-You might have intuitively come up with insertion sort when we asked you how to sort cards. This is like when you sort cards by continually putting the next card in the right spot in a group of sorted cards that you're holding.
+We can employ the well
+known divide-and-conquer algorithm known as **binary search**. Used with an
+array where `low`, `mid`, and `high` are array indices, binary search assumes that the
+elements of the array are **sorted** in increasing order, and executes the following:
 
-Note that insertion sort is stable. We never swap elements if they are equal so
-the relative order of equal elements is preserved.
+1. Set `low` to 0 and `high` to the length of the array minus 1. The value
+   we're looking for — we'll call it `k`— will be somewhere between position
+   `low` and position `high` if it's in the array.
+2. While `low` $$\leq$$ `high`, do one of the following:
+    - Compute `mid`, the *middle* of the range `[low, high]`, and see if that's
+      `k`. If so, return **`true`**.
+    - Otherwise, we can cut the range of possible positions for `k` in half, by
+      setting `high` to `mid - 1` or by setting `low` to `mid + 1`, depending on
+      the result of the comparison.
+3. If the loop terminates with `low > high`, we know that `k` is not in the
+   array, so we return **`false`.
 
-Now that you've read the above explanation, we recommend watching this [video](https://youtu.be/JtS5yGftYZ8) to solidify your understanding.
+The diagrams below portray a search if `k` was equal to 25. Elements removed
+from consideration at each iteration are greyed out.
 
-### Thought Exercise: Runtime
+`low = 0`, `mid = 7`, `high = 14` 
+: ![Search](img/binary-search-1.png)
 
-For the following questions, think on your own and then verify your
-answers.
+`low = 0`, `mid = 3`, `high = 6`
+: ![Search](img/binary-search-2.png)
 
-Assume we have an array of $$N$$ integers. What would the array have to look
-like before we ran insertion sort that would make insertion sort run the
-fastest, i.e. minimizing the number of steps needed?
+`low = 4`, `mid = 5`, `high = 6`
+: ![Search](img/binary-search-3.png)
 
-<details><summary> Click to reveal answer! </summary>
-Sorted List
-</details>
+`low = 4`, `mid = 4`, `high = 4` 
+: ![Search](img/binary-search-4.png)
 
-What is the runtime of running insertion sort on this array?
+What would be the worst case running time of a search for `k`?
+Highlight the next line for the answer *after* discussing with your peers:
 
-<details><summary> Click to reveal answer! </summary>
-Theta(N)
-</details>
+<p><span style="color:white"><em>Since (roughly) half the elements are removed from consideration at each step,
+the worst-case running time is proportional to log_2(N), where N is the
+number of elements in the array.</em></span>.</p>
 
-What type of initial ordering of a list would maximize the number of comparisons and result in the slowest runtime?
 
-<details><summary> Click to reveal answer! </summary>
-Reverse Sorted Array
-</details>
+## Binary Search Trees
 
-What is the runtime of running insertion sort on the type of array you identified above?
+The binary search algorithm suggests a way to organize keys in an explicitly
+linked tree, as indicated in the diagram below.
 
-<details><summary> Click to reveal answer! </summary>
-Theta(N^2)
-</details>
+![Array to BST](img/array-to-bst2.png)
 
-### Non-Coding Exercise: `InsertionSort`
+Notice that as we searched for 25 in the example above, we essentially traversed 
+this tree from 41 to 25!
 
-Read the solution `sort()` in `InsertionSort.java` and understand the provided helper methods.
+The data structure that results is called a **binary search tree** (BST). Given
+that the root value (one of the keys to be stored) is $$k$$, a binary search
+tree is organized as follows:
 
-## Selection Sort
+- Put all the keys that are smaller than $$k$$ into a binary search tree, and
+  let that tree be $$k$$'s left subtree.
+- Put all the keys that are larger than $$k$$ into a binary search tree, and let
+  that tree be $$k$$'s right subtree.
 
-Selection sort on a collection of $$N$$ elements can be described by the
-following pseudocode:
+This organization assumes that there are no duplicate keys among those to be
+stored.
 
-    for each element in the collection:
-        find the smallest remaining element, E, in the *unsorted* part of the array
-        remove E and add E to the end of the *sorted* part of the array
-        repeat unsorted collection's original length number of times (or repeat until unsorted collection has no more elements)
+### `contains`
 
+It's important to note that in a binary search tree, each subtree is also a
+binary search tree. This suggests a recursive rather than an iterative approach for
+implementing many methods and the `contains` method is no different. In
+pseudocode, here is an outline of the helper method of the `contains` method,
+`containsHelper(TreeNode t, T key)`:
 
-In selection sort we swap the minimum element in the unsorted
-collection with the element at the beginning of the unsorted collection. This can
-rearrange the relative ordering of equal elements. Thus, selection sort is
-unstable.
+1. An empty tree cannot contain anything, so if `t` is `null` return `false`.
+2. If `key` is equal to `t.item`, return `true`.
+3. If `key < t.item`, `key` must be in the left subtree if it's in the
+   BST at all, so return the result of searching for it in the left
+   subtree.
+4. Otherwise it must be in the right subtree, so return the result of searching
+   for `key` in the right subtree.
 
-After reading the above, we recommend watching this [video](https://youtu.be/yZtvSYeTQi4) on selection sort!
+{% include alert.html type="warning" content='    
+Note: that the type of `key` is `T`, which is the generic type of the
+`BinaryTree` class.' %}
 
+This algorithm can go all the way down to a leaf to determine its answer. Thus
+in the worst case, the number of comparisons is proportional to $$d$$, the depth
+of the tree. In a balanced tree (more on that next lab), you can expect the
+depth of the tree to be proportional to $$\log N$$ in the worst case, where
+$$N$$ is the number of nodes in the tree.
 
-### Disussion: Runtime
+### Use of `Comparable` objects
 
-Now, let's determine the asymptotic runtime of selection sort. One may observe
-that, in the first iteration of the loop, we will look through all $$N$$
-elements of the array to find the minimum element. On the next iteration, we
-will look through $$N - 1$$ elements to find the minimum. On the next, we'll
-look through  $$N - 2$$ elements, and so on.  Thus, the total amount of work
-will be the $$N + (N - 1) + ... + 1$$, no matter what the ordering of elements
-in the array or linked list prior to sorting.
+Finding a value in the tree will require "less than", "greater than", and
+"equals" comparisons. Since the operators < and > don't work with
+objects, we have to use method calls for comparisons.
 
-Hence, we have an $$\Theta(N^2)$$ algorithm, equivalent to insertion sort's
-normal case. But notice that selection sort *doesn't* have a better case, while
-insertion sort does.
+The Java convention for this situation is to have the values stored in the tree
+be objects that implement the `Comparable` interface, which you learned about
+in lab 8.
 
-### Non-Coding Exercise: `SelectionSort`
+### Balance and Imbalance
 
-Read the solution to `sort()` and understand the helper methods in `SelectionSort.java`.
+Unfortunately, the use of a binary search tree does not guarantee efficient search.
 
-## HeapSort
+What would be the worst case runtime possible for a single call to `contains()`
+on a valid BST? Discuss with your peers and highlight the next line for the answer.
+<p><span style="color:white"><em> 	Θ(n) </em></span>.</p>
 
-Recall the basic structure for selection sort
+For example, the tree
 
-    for each element in the collection:
-        find the smallest remaining element, E, in the unsorted collection
-        remove E and add E to the end of the sorted collection
+![Unbalanced BST](img/unbalanced-bst.png)
 
-Adding something to the end of a sorted array or linked list can be done in
-constant time. What hurt our runtime was finding the smallest element in the
-collection, which always took linear time in an array.
+is a binary search tree in which search proceeds in the same runtime as a linked
+list. We thus are forced to consider the *balance* of a binary search tree.
+Informally, a balanced tree has subtrees that are roughly equal in size and
+depth. Next lab, we will encounter specific algorithms for maintaining balance
+in a binary search tree. Until then, we will work under the possibly unwarranted
+assumption that we don't need to worry much about balance.
 
-Is there a data structure we can use that allows us to find and remove the
-smallest element quickly? A heap will! 
+One can [prove (optional to read, but an important fact to know)][prove],
+incidentally, that search in a BST of $$$$N$$$$ keys will
+require only about $$$$2 \ln N$$$$ comparisons (where $$$$\ln$$$$ is the "natural log"
+of $$$$N$$$$) if the keys are inserted in **random** order. Well-balanced trees are
+common, and degenerate trees are rare.
 
-We'll modify our approach to make it better suited for a heap by removing the 
-largest element and placing it at the end of the array. Here's the pseudocode for 
-HeapSort:
-   
-    construct a max heap from the given collection by bubbling down every
-    element from the end of the collection 
-    while there are elements remaining in the heap (unsorted part of the collection)
-        swap the root of the heap with the last element
-        bubble down the new root till the end of the heap
+[prove]: http://opendatastructures.org/versions/edition-0.1d/ods-java/node40.html
 
-HeapSort is not stable because the heap operations (recall `bubbleUp` and
-`bubbleDown`) can change the relative order of equal elements.
+### Insertion into a BST
 
-Once again, wrap up learning about HeapSort with this helpful [video](https://youtu.be/WuuQqsDftGU).
+If we have 4 nodes in our binary search tree, there are actually 14 different
+BST's you could make. Correspondingly, there are typically a bunch of places in
+a BST that a key to be inserted might go, anywhere from the root down to a leaf.
+Given below are two trees; the tree on the right shows one possible way to
+insert the key 41 into the tree on the left.
 
-### Disussion: Runtime
+| ![t1](img/bst.png) |  ![t2](img/bst-and-41.png)  |
 
-Now, let's determine the runtime of heap sort. Removal of the largest element from a
-heap of $$N$$ elements can be done in time proportional to $$\log N$$, allowing
-us to sort our elements in $$O(N \log N)$$ time. 
-We can also build a heap in $$O(N \log N)$$ time by calling bubble down on every element. 
-This step is only done once, so it doesn't make our overall runtime worse than $$O(N \log N)$$
-that we previously established. So, once the heap is created, sorting can be
-done in $$O(N \log N)$$.
+However, to minimize restructuring of the tree and the creation of internal
+nodes, we choose in the following exercise to insert a new key only as a new
+*leaf*.
 
-<details><summary> Out of scope note:</summary>
-The tighter runtime for building the heap is actually O(N) but it doesn't affect the 
-overall runtime. The actual calculation for the run time of heap sort is complicated and out
-of scope for this class. You can take a look at this <u><a href="https://stackoverflow.com/a/18742428">stackoverflow answer</a></u> for more a formal calculation of this runtime.
-</details>
+[USFCA put together a BST visualization][USFCA] interactive animation to help
+you visualize the BST insertion and deletion algorithms. Try inserting a key
+that ends up as a right child and another key that ends up as a left child. Add
+some more nodes to the tree, then delete some of them: a node with no children,
+a node with one child, and a node with two children.
 
-### Exercise: `HeapSort`
+[USFCA]: https://www.cs.usfca.edu/~galles/visualization/BST.html
 
-Complete `sort()` and suggested helper methods in `HeapSort.java`. The heap in this lab is rooted at index 0 instead of 1 as we're using it to sort through a pre-existing array. 
-We've provided the appropriate `getLeftChild` and `getRightChild` methods as part of the skeleton, so you don't have to worry about this in your implementation. 
+Note that this animation deletes from the BST by swapping with the inorder
+*predecessor* rather than the inorder successor. Convince your peers that this is
+essentially equivalent.
 
+## Exercises: BST Implementation
 
-## New Idea: "Divide and Conquer"
+Now it's time to start writing code! As you go, don't forget to write JUnit
+tests.
 
-The first few sorting algorithms we've previously introduced work by iterating through each
-item in the collection one-by-one. With insertion sort and selection sort, both
-maintain a "sorted section" and an "unsorted section" and gradually sort the
-entire collection by moving elements over from the unsorted section into the
-sorted section. Another approach to sorting is by way of *divide and conquer*.
-Divide and conquer takes advantage of the fact that empty collections or
-one-element collections are already sorted. This essentially forms the base case
-for a recursive procedure that breaks the collection down into smaller pieces
-before merging adjacent pieces to form a completely sorted
-collection.
+Since binary search trees share many of the characteristics of regular binary
+trees, we can define the `BinarySearchTree` class using inheritance from a
+provided `BinaryTree` class.
 
-The idea behind divide and conquer can be broken down into the following 3-step
-procedure.
+### Exercise 1: Testing Utilities
 
-1. Split the elements to be sorted into two collections.
-2. Sort each collection recursively.
-3. Combine the sorted collections.
+As always, we will start by ensuring our ability to test our code. In BinaryTree.java, 
+you can find a `print()` method that serves as the foundation for BinaryTreeTest.java. Any test run
+right now will fail, because `printInorder()` has not been implemented.
 
-Compared to selection sort, which involves comparing every element with *every
-other element*, divide and conquer can reduce the number of unnecessary
-comparisons between elements by sorting or enforcing order on sub-ranges of the
-full collection. The runtime advantage of divide and conquer comes largely from
-the fact that merging already-sorted sequences is very fast.
+Implement both:
+``` java 
+/* Print the values in the tree in inorder. */
+public void printInorder() {
+```
+in `BinaryTree` and
+```java
+/* Prints the nodes of the BinaryTree in inorder. Used for your testing. */
+private void printInorder() {
+```
+in `BinaryTree.TreeNode` to allow for our tests to function. 
 
-Two algorithms that apply this approach are *merge sort* and *quicksort*.
+### Binary Search Tree
 
-## Merge Sort
+The `BinarySearchTree` class is defined as follows:
 
-Merge sort works by executing the following procedure until the base case of an
-empty or one-element collection is reached.
+```java
+public class BinarySearchTree<T extends Comparable<T>> extends BinaryTree<T>
+```
 
-1. Split the collection to be sorted in half.
-2. Recursively call merge sort on each half.
-3. Merge the sorted half-lists.
+This class definition is a slightly more complicated use of generic types than
+you have seen before in lab. Previously, you saw things like `BinaryTree<T>`,
+which meant that the `BinaryTree` class had a generic type `T` that could be any
+class, interface, or abstract class that extends `Object`. In this case,
+`BinarySearchTree<T extends Comparable<T>>` means that the `BinarySearchTree`
+class has a generic type `T` that can be any class, interface, or abstract class
+that implements the `Comparable<T>` interface. In this case, `Comparable<T>` is
+used because the `Comparable` interface itself uses generic types (much like the
+`Iterable` and `Iterator` interfaces).
 
-The reason merge sort is fast is because merging two lists that are already
-sorted takes linear time proportional to the sum of the lengths of the two
-lists. In addition, splitting the collection in half requires a single pass
-through the elements. The processing pattern is depicted in the diagram below.
+Take a look through the `BinarySearchTree` and `BinaryTree` classes, and
+familiarize yourself with the methods that are available to you.
 
-![Merge Sort](img/mergesort.png)
+### Exercise 2: `contains`
 
-Each level in the diagram is a collection of processes that all together run in
-linear time. Since there are $$2 \log N$$ levels with each level doing work
-proportional to $$N$$, the total time is proportional to $$N \log N$$.
+Now, we will implement the `contains` method. We will use the following method
+signature:
 
-To be specific, each level does work proportional to $$N$$ because of the merging process, 
-which happens in a zipper-like fashion. Given two sorted lists, `merge` should continually
-compare the first elements of both lists and interweave the elements into a singular sorted list.
-For example, given the lists [2, 6, 7] and [1, 4, 5, 8], `merge` compares the front of both lists (1 and 2). Because
-1 < 2, 1 is moved into the next open spot (in this case, the first position) of the overall sorted list. Note
-that 2 does not enter the overall list, because we now must effectively compare [2, 6, 7] with [4, 5, 8] and repeat the process
-until there are no more elements that need to be compared and merged.
+```java
+public boolean contains(T key)
+```
 
-Merge sort is stable as long as we make sure when merging two halves together
-that we favor equal elements in the left half.
+which takes a `Comparable` object `T` as an argument and checks whether the tree
+contains it.
 
-Now, watch [this video](https://youtu.be/JJrAzmJcMh0) on `mergeSort` before attempting the exercise below!
+Recall that `Comparable` objects provide an `int compareTo` method that returns:
 
-## Exercise: `mergeSort`
+- a negative integer if this object is less than the argument,
+- a positive integer if this object is greater than the argument, and
+- 0 if the two objects have equal values.
 
-To test your understanding of merge sort, fill out the `sort` method in
-`MergeSort.java`. Be sure to take advantage of the helper `merge` method!
+Depending on whether you take a recursive or iterative approach, you may need to
+define a helper method. If you're stuck, take a look at the pseudocode that we
+described above!
 
-This method should be non-destructive, so the original `int[] arr` should not be
-modified.
+### Exercise 3: `add`
 
-## Quicksort
+We will now define an `add` method. We will use the following method signature:
 
-Another example of dividing and conquering is the *quicksort* algorithm, which
-proceeds as follows:
+```java
+public void add(T key)
+```
 
-1. Split the collection to be sorted into three collections by *partitioning*
-   around a *pivot* (or "divider"). One collection consists of elements smaller
-   than the pivot, the second collection consists of elements equal to the
-   pivot, and the third consists of elements greater than or equal to the pivot.
-2. Recursively call quicksort on each collection.
-3. Merge the sorted collections by concatenation.
+which takes a `Comparable` object as an argument and adds it to the tree *if and
+only if it isn't already there*.  The trees you create with the `add` method
+will thus not contain any duplicate elements.
 
-Specifically, this version of quicksort is called "three-way partitioning
-quicksort" due to the three partitions that the algorithm makes on every call.
+*Hint*: You should be able to do this in a similar way to the `contains` method.
+When you're done with both, you can write a JUnit test suite to test your code.
+Don't forget edge cases!
 
-Here's an example of how this might work, sorting an array containing 3, 1, 4,
-5, 9, 2, 8, 6.
+### Optional Exercise 4: Optional Constructor
 
-![Quicksort](img/quicksort.png)
+For additional practice constructing Binary Trees, implement
+```java
+public BinaryTree(ArrayList<T> pre,  ArrayList<T> in)
+  ```
+which constructs a Binary Tree given the preorder traversal (pre) and inorder
+traversal (in) provided as ArrayList arguments in `BinaryTree.java`. We recommend a recursive approach.
 
-1. Choose 3 as the pivot. (We'll explore how to choose the pivot shortly.)
-2. Put 4, 5, 9, 8, and 6 into the "large" collection and 1 and 2 into the
-   "small" collection. No elements go in the "equal" collection.
-3. Sort the large collection into 4, 5, 6, 8, 9; sort the small collection into
-   1, 2; combine the two collections with the pivot to get 1, 2, 3, 4, 5, 6, 8,
-   9.
+## Discussion: BST Deletion
 
-Depending on the implementation, quicksort is not stable because when we move
-elements to the left and right of our pivot the relative ordering of equal
-elements can change.
+We've covered `add`ing to a BST and `contains` in a BST. But how about deletion?
 
-Before moving on to the next part of the lab, check out [this video](https://www.youtube.com/watch?v=7cjXkEW1STY&t=1h24m55s) to solidify your understanding of quicksort. Note this was taken from summer 2021's lecture, so you can stop after the section on quicksort. That is, you can stop at 1:41:00. 
+When inserting a key, we were allowed to choose where in the tree it should go.
+The deletion operation doesn't appear to allow us that flexibility; deletion of
+some keys will be easy (leaves or keys with only one child), but our deletion
+method has to be able to delete *any* key from the tree.
 
-## Exercise: `quicksort`
+Here are a bunch of binary search trees that might result from deleting the root
+of the tree
 
-To test your understanding of quicksort, fill out the `sort` method in
-`QuickSort.java`. Be sure to take advantage of the helper `partition` method!
+![BST](img/small-bst.png)
 
-This method is destructive, where the original `int[] arr` should be
-modified.
+Which ones do you think are reasonable?
 
-## Though Exercise: Quicksort
+| ![Tree](img/bst-delete-1.png) | ![Tree](img/bst-delete-2.png) | ![Tree](img/bst-delete-3.png) | ![Tree](img/bst-delete-4.png) |
+| ![Tree](img/bst-delete-5.png) | ![Tree](img/bst-delete-6.png) | ![Tree](img/bst-delete-7.png) | ![Tree](img/bst-delete-8.png) |
+| ![Tree](img/bst-delete-9.png) | ![Tree](img/bst-delete-10.png) | ![Tree](img/bst-delete-11.png) | ![Tree](img/bst-delete-12.png) |
 
-### Thought Exercise 1: Runtime
+### A Good Way to Delete a Key
 
-First, let's consider the best-case scenario where each partition divides a
-range optimally in half. Using some of the strategies picked up from the merge
-sort analysis, we can determine that quicksort's best case asymptotic runtime
-behavior is $$O(N \log N)$$. Think about why this is the case, and
-any differences between quicksort's best case runtime and merge sort's runtime.
+The following algorithm for deletion has the advantage of minimizing
+restructuring and unbalancing of the tree. The method returns the tree that
+results from the removal.
 
-However, quicksort is faster in practice and tends to have better constant
-factors (which aren't included in the big-Oh analysis). To see this, let's
-examine exactly how quicksort works.
+1. Find the node to be removed. We'll call it `remNode`. If it's a leaf, remove
+   it immediately by returning `null`. If it has only one child, remove it by
+   returning the other child node.
+2. Otherwise, remove the *inorder successor* of `remNode` OR remove the *inorder predecessor*, copy its `item` into
+   `remNode`, and return `remNode`.
 
-We know concatenation for linked lists can be done in constant time, and for arrays it can be done in linear time.
-Partitioning can be done in time proportional to the number of elements $$N$$. 
-If the partitioning is optimal and splits each range more or less in half,
-we have a similar logarithmic division of levels downward
-like in merge sort. On each division, we still do the same linear amount of work
-as we need to decide whether each element is greater or less than the pivot.
+What is an *inorder successor*?  It is the node that would appear **AFTER** the
+`remNode` if you were to do an inorder traversal of the tree.
 
-However, once we've reached the base case, we don't need as many steps to
-reassemble the sorted collection. Remember that with merge sort, while each list
-of one element is sorted, the entire set of one-element
-lists is not necessarily in order, which is why there are $$\log N$$ steps to
-merge upwards in merge sort. This isn't the case with quicksort as each element
-*is* in order. Thus, merging in quicksort is simply one level of linear-time
-concatenation.
+An example is diagrammed below. The node to remove is the node containing 4. It
+has two children, so it's not an easy node to remove. We locate the node with
+4's inorder successor, namely 5. The node containing 5 has no children, so it's
+easy to delete. We copy the 5 into the node that formerly contained 4, and
+delete the node that originally contained 5.
 
-Unlike merge sort, quicksort has a worst-case runtime different from its
-best-case runtime. Suppose we always choose the first element in a range as our
-pivot. Then, which of the following conditions would cause the worst-case
-runtime for quicksort? Think about it, then verify your understanding
-by highlighting the line below for the answer.
+| Before                              | After                                 |
+|-------------------------------------|---------------------------------------|
+| ![bst-pre-del](img/bst-pre-del.png) | ![bst-post-del](img/bst-post-del.png) |
 
-<p><span style="color:white"><em>Sorted or Reverse Sorted Array. This is because
-  the pivot will always be an extreme value (the largest or smallest unsorted value)
-  and we will thus have N recursive calls, rather than log(n).</em></span></p>
+### Inorder Successor
 
-What is the runtime of running quicksort on this array?
+Suppose `node` is the root node in a BST with both a left child and a right
+child. Will `sucNode`, the inorder successor of `node`, ALWAYS have a null
+left child? Discuss this with your peers.
 
-<p><span style="color:white"><em>Theta(N^2)</em></span></p>
+We've implemented a `delete` method for you already. Take a look at it and
+**understand how it works**.
 
-Under these conditions, does this special case of quicksort remind you of any
-other sorting algorithm we've discussed in this lab?
+## The Engineer's Tradeoff
 
-We see that quicksort's worst case scenario is pretty bad... You might be wondering why we'd even bother with it then! However, though it's outside the scope of this class for you to prove why, we can show that on *average*, quicksort has $$O(N \log(N))$$ runtime! In practice, quicksort ends up being very fast.
+Consider the problem of finding the `k`th largest key in a binary search tree.
+An obvious way of doing this is to use the inorder enumeration from this week's
+lab; we could call `nextElement` until we get the desired key. If `k` is near
+the number of keys `N` in the tree, however, that algorithm's running time is
+proportional to `N`. We'd like to do better. But how?
 
-### Thought Exercise 2: Choosing a Pivot
+If you haven't yet noticed, this class is all about tradeoffs---finding the
+delicate balance between two conflicting factors to perfectly suit a certain
+task. Choosing an appropriate data structure is one tradeoff: an algorithm that
+requires quick access to a certain piece of information would perform better on
+an array, but an algorithm that uses many insert and delete operations would
+probably do better in a linked list. Sacrificing a shorter running time in
+exchange for more memory space, or vice versa, is another.
 
-Given a random collection of integers, what's the best possible choice of pivot
-for quicksort that will break the problem down into $$\log N$$ levels? Try to describe an algorithm 
-to find this pivot element. What is its runtime? It's okay if you think your solution isn't the most efficient.
+For this problem, we can reduce the runtime of the `k`th largest key by storing
+in each node the size of the tree rooted at that node. Can you design an
+algorithm using this idea that runs in time proportional to `d`, where `d` is
+the depth of the tree?
 
-## Quicksort in Practice
 
-How fast was the pivot-finding algorithm that you came up with? Finding the
-exact median of our elements may take so much time that it may not help the
-overall runtime of quicksort at all. It may be worth it to choose an approximate
-median, if we can do so really quickly. Options include picking a random
-element, or picking the median of the first, middle, and last elements. These
-will at least avoid the worst case we discussed above.
+## Deliverables
 
-In practice, quicksort turns out to be the fastest of the general-purpose
-sorting algorithms we have covered so far. For example, it tends to have better
-constant factors than that of merge sort. For this reason, Java uses this
-algorithm for sorting arrays of **primitive types**, such as `int`s or `float`s.
-With some tuning, the most likely worst-case scenarios are avoided, and the
-average case performance is excellent.
+Here's a quick recap of what you need to do to complete this lab!
 
-Here are some improvements to the quicksort algorithm as implemented in the Java
-standard library:
 
-- When there are only a few items in a sub-collection (near the base case of the
-  recursion), insertion sort is used instead.
-- For larger arrays, more effort is expended on finding a good pivot.
-- Various machine-dependent methods are used to optimize the partitioning
-  algorithm and the `swap` operation.
-- [Dual pivots](https://www.geeksforgeeks.org/dual-pivot-quicksort/)
+- Complete the following methods in `BinaryTree.java`:
+   - `height()`
+   - `isCompletelyBalanced()`
+   - `fibTree(int N)`
+- Complete the following methods in `BinarySearchTree.java`:
+    - `contains(T key)`
+    - `add(T key)`
+- Understand the `delete` method of the `BinarySearchTree`.
 
-For **object types**, however, Java uses a hybrid of *merge sort and insertion
-sort* called "Timsort" instead of quicksort. Can you come up with an explanation
-as to why? *Hint*: Think about stability!
- 
+Submit all of these to Gradescope.
 
-To learn more about the performance difference between Quicksort and Mergesort, watch this video [Quicksort versus Mergesort](https://www.youtube.com/watch?v=es2T6KY45cA)
-
-### Timing
-
-So far we've measured the speed and efficiency of our algorithms by theoretically
-performing asymptotic analysis on them. Another (less formal) way of determining 
-the speed of a given program is to test it on a variety of inputs and measure 
-the time it takes for each one. This is called a timing experiment, and we 
-refer to this process as finding the efficiency of a program empirically. 
-In this lab, we will be doing some timing experiments to see how the different sorting 
-classes you implemented in this lab perform.
-
-Open `TimingTest.java` and run it's `main` method. This class will sort random arrays of
-different sizes using the sorting algorithms you implemented and plot the results. 
-
-Here's the result of running the test on one of our computers:
-
-![Sorting Algos Timing Test Results](./img/times.png)
-
-Notice how by the time we reach an array size of 1000000, Selection Sort and Insertion Sort 
-take more than a minute to run while Heap Sort and Merge Sort manages to sort the same array in just over
-one-tenth of a second!  
-
-If you run it multiple times, you will also notice that Quicksort's runtime varies more than others---you are seeing
-the different pivot's runtime on this algorithm's performance in action! 
-
-Please note that the result you see my be different from the picture above. 
-If the tests are taking too long on your computer, try lowering the bounds provided in the class.
-
-## Summary
-
-In this lab, we learned about more comparison-based algorithms for sorting
-collections. Within comparison-based algorithms, we examined two different
-paradigms for sorting:
-
-1. Simple sorts like **insertion sort** and **selection sort** which
-   demonstrated algorithms that maintained a sorted section and moved unsorted
-   elements into this sorted section one-by-one. With optimization like **heapsort** or the right conditions (relatively sorted list in the case of insertion
-   sort), these simple sorts can be fast!
-2. Divide and conquer sorts like **merge sort** and **quicksort**. These
-   algorithms take a different approach to sorting: we instead take advantage of
-   the fact that collections of one element are sorted with respect to
-   themselves.  Using recursive procedures, we can break larger sorting problems
-   into smaller subsequences that can be sorted individually and quickly
-   recombined to produce a sorting of the original collection.
-
-Here are several online resources for visualizing sorting algorithms. If you're
-having trouble understanding these sorts, use these resources as tools to help
-build intuition about how each sort works.
-
-- [VisuAlgo][]
-- [Sorting.at][]
-- [Sorting Algorithms Animations][]
-- [USF Comparison of Sorting Algorithms](http://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html)
-- [AlgoRhythmics][]: sorting demos through folk dance including
-  [insertion sort][], [selection sort][], [merge sort][], and [quicksort][]
-
-[VisuAlgo]: http://visualgo.net/sorting
-[Sorting.at]: http://sorting.at/
-[Sorting Algorithms Animations]: http://www.sorting-algorithms.com/
-[USF Comparison of Sorting Algorithms]: http://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html
-[AlgoRhythmics]: https://www.youtube.com/user/AlgoRythmics/videos
-[insertion sort]: https://www.youtube.com/watch?v=ROalU379l3U
-[selection sort]: https://www.youtube.com/watch?v=Ns4TPTC8whw
-[merge sort]: https://www.youtube.com/watch?v=XaqR3G*NVoo
-[quicksort]: https://www.youtube.com/watch?v=ywWBy6J5gz8
-
-To summarize the sorts that we've learned, take a look at the following table. 
-
-|                | Best Case Runtime    | Worst Case Runtime   | Stable  | In Place | Notes |
-|----------------|----------------------|----------------------|---------|----------|-------|
-| [Insertion Sort](https://youtu.be/JtS5yGftYZ8) | $$\Theta(N)$$        | $$\Theta(N^2)$$      | Yes     | Yes | |
-| [Selection Sort](https://youtu.be/yZtvSYeTQi4) | $$\Theta(N^2)$$      | $$\Theta(N^2)$$      | No      | Yes | Can be made stable under certain conditions. |
-| [Heap Sort](https://youtu.be/WuuQqsDftGU)      | $$\Theta(N \log N)$$ | $$\Theta(N \log N)$$ | No      | Yes | If all elements are equal then runtime is $$\Theta(N)$$. Hard to make stable. |
-| [Merge Sort](https://youtu.be/JJrAzmJcMh0)     | $$\Theta(N \log N)$$ | $$\Theta(N \log N)$$ | Yes     | Not usually. Typical implementations are not, and making it in-place is terribly complicated. | An optimized sort called "Timsort" is used by Java for arrays of reference types. |
-| [Quicksort](https://www.youtube.com/watch?v=7cjXkEW1STY&t=1h24m55s)      | $$\Theta(N \log N)$$ | $$\Theta(N^2)$$      | Depends | Most implementations use log(N) additional space for the recursive stack frames | Stability and runtime depend on partitioning strategy; three-way partition quicksort is stable. If all elements are equal, then the runtime using three-way partition quicksort is $$\Theta(N)$$. Used by Java for arrays of primitive types. Fastest in practice. |
-
-> You may have noticed that there seems to be a lower bound on how fast our sorting algorithms can go. For *comparison* based sorts, we can prove the best we can do is $$O(N\log(N))$$. You can watch a very brief video explanation [here](https://www.youtube.com/watch?v=j4Lmzhs6r-Y&list=PLNF4Mv5EsHj4QLTEw3uz42vJGKblD9usL&index=3) at timestamp 11:42. You can also read a more in-depth [proof](https://www.cs.cmu.edu/~avrim/451f11/lectures/lect0913.pdf), if you're into that kind of thing. There are also *counting* sorts, which can do even better when we're able to use them.
-
-
-
-
-
-### Deliverables
-
-To get credit for this lab:
-- Complete the following classes:
-    - `HeapSort.java`
-    - `MergeSort.java`
-    - `QuickSort.java`

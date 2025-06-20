@@ -1,7 +1,7 @@
 ---
 layout: page
 title: >-
-    Lab 04: Git
+    Lab 04: Debugging & Test-Driven Development
 has_children: true
 parent: Labs
 has_toc: false
@@ -9,507 +9,799 @@ has_right_toc: true
 released: true
 ---
 
-## FAQ
+## [FAQ](faq.md)
 
-The FAQ for Lab 04 is [here](faq.md).
+Each assignment will have an FAQ linked at the top. You can also access it by
+adding "/faq" to the end of the URL. The FAQ for Lab 04 is located
+[here](faq.md).
 
 ## Introduction
 
-Up until this point, we've been using Git and Github to submit assignments, but
-haven't talked much beyond what is needed. In this lab assignment, we'll revisit
-some previous git commands that we've shown as well as introduce new ones, so that
-you'll gain more familiarity with Git (and Github). There will be exercises throughout
-this lab to help reinforce your understanding of Git.
+To debug a program, you must first know what's wrong. In this lab, you'll get
+some experience with using the debugger to see program state. There are 3 types of bugs that you can encounter in code:
+1. Compiler error: There is some compilation issue (ie. IntelliJ underlines the code in red).
+2. Runtime: There is an exception that occurs while running the program.
+3. Correctness: The program runs without error, but it produces incorrect results.
+
+When you run into a runtime bug, the error is accompanied by a "stack trace" that details the method
+calls that caused the error in the first place. One of the focuses of this lab
+will be to get you used to reading these stack traces, because they can be
+**super** helpful in debugging your own code.
+
+After you've gotten practice debugging, you'll explore TDD (test-driven development), 
+a good practice industry-standard approach in which you design and write test cases before 
+writing the actual code they test.
+
+### Setup
+
+Follow the
+[assignment workflow instructions](../../guides/assignment-workflow#getting-the-skeleton)
+to get the assignment and open it in IntelliJ.
+
+### Goals and Outcomes
+
+In this lab, you will enhance your code debugging and testing abilities by defusing a
+(programmatic) bomb and practicing test-driven development. We’ll guide
+you through this process, but the intention is to make this a realistic
+debugging and testing experience.
+
+By the end of this lab, you will…
+
+- Be able to use the debugger and visualizer to inspect program state.
+- Be able to interpret stack traces.
+- Be better able to approach debugging code.
+- Have learned about some common Java bugs and errors.
+- Have better testing practices when developing.
+
+## `Bomb`
+
+The `BombMain` class calls the various `phase` methods of the `Bomb` class.
+Your job is to figure out what the passwords to each of these phrases is by
+*using the IntelliJ debugger*.
+
+{: .danger}
+> The code is written so that you can't find the password just by reading it. For this lab, you are **forbidden** from editing the `Bomb` code, whether to add print statements or otherwise modify it. The autograder tests will use our version of `Bomb`.
+
+> The point of this exercise is to get comfortable using tools that will help you a lot down the road. Please take it seriously!
+
+### Interactive Debugging vs. Print Debugging
+
+So far, you might have practiced debugging by using print statements to
+see the values of certain variables as a program runs. When placed
+strategically, the output from printing might help make the bugs obvious or
+narrow down their cause. This method is called **print debugging**. While print
+debugging can be very useful, it has a few disadvantages:
+
+- It requires you to modify your code, and clean it up after.
+- It's tedious to decide and write out exactly what you want to print.
+- Printing isn't always formatted nicely.
+
+In this lab, we'll show you a new technique, **interactive debugging** --
+debugging by using an interactive tool, or a debugger. We'll focus on IntelliJ's
+built-in debugger.
+
+### Debugger Overview
+
+#### Breakpoints
+
+Before starting the IntelliJ debugger, you should set a few **breakpoints**.
+Breakpoints mark places in your code where you can *suspend* the program while
+debugging and examine its state. This:
+
+-   Doesn't require you to modify your code or clean it up after, since
+    breakpoints are ignored in normal execution.
+-   Lets you see *all* the variables without needing to write print statements.
+-   Lets IntelliJ display everything in a structured manner
+
+To set a breakpoint, click the area just to the right of the line number.
+
+![code breakpoints](img/code_breakpoints.png){: style="max-height: 325px;" }
+
+A red circle or diamond should appear where you clicked. If nothing appears,
+make sure that you click next to a line with code. When the debugger reaches
+this point in the program, it will pause **before** the execution of the line or
+method. Click the breakpoint again to remove it.
+
+#### Running the Debugger
+
+Once you've set some breakpoints, you're ready to start a debugging session!
+Click on the green triangle next to the class or test you want to debug (in test
+files there may be two green triangles). Instead of clicking the green triangle
+to run, click the
+![debug](img/debug.png){: .inline } debug option:
+
+![run debugger](img/run_debugger.png){: style="max-height: 325px;" }
+
+The selected program should run until it hits its first breakpoint. A debugger
+window should also appear on the bottom of the interface, where the console was.
+
+![debugger session](img/debugger_session.png){: style="max-height: 325px;" }
+
+On the left, you will be able to see all current method calls and on the right,
+you will be able to see the values of instantiated variables at this point in
+the program (they will also be shown in gray text in the editor). For instances
+of classes, you can click the dropdown to expand them and look at their fields.
+
+In the debugger, you have a few options:
+
+-   Learn something from the displayed values, identify what's wrong, and fix
+    your bug! Click the stop button ![stop](img/stop.png){: .inline } to stop the debug session.
+-   Click the resume button ![resume](img/resume.png){: .inline } to resume the program (until it
+    hits another breakpoint or terminates).
+-   Click the step over button ![step over](img/step-over.png){: .inline } to advance the program by
+    one line of code.
+    -   The step into button ![step into](img/step-into.png){: .inline } does something similar, but
+        it will step into any method called in the current line, while
+        the step over button ![step over](img/step-over.png){: .inline } will step over it.
+    -   The step out button ![step out](img/step-out.png){: .inline } will advance the program until
+        after it returns from the current method.
+-   If you accidentally step too far and want to start the session over, click the rerun button
+    ![rerun](img/rerun.png){: .inline }.
+
+To see the console output (and type into the console) while debugging, click
+the "Console" tab next to "Debugger" in the top left of the debug window,
+just above the frames. If you want to see everything simultaneously (while
+being more compressed), you can drag the console tab to the far right of the
+bottom panel. 
+
+### Reading Stack Traces
+
+When a *runtime error* occurs in Java, a stack trace is printed to the console
+to provide information on where the error occurred and what steps the program
+took to get there. When running `Bomb` for the first time, your stack
+trace will look something like this:
+
+![stack trace](img/npe_stack_trace.png){: style="max-height: 325;" }
+
+The first thing to note is what kind of error occurred; this is shown at the
+first line of the stack trace. In this case, our code threw a
+`NullPointerException`.
+
+For some exceptions, including `NullPointerException`s, Java will give you an
+explanation. Here, `password` is `null`, so we can't invoke (call) a method on
+it.
+
+The lines beneath it represent the sequence of methods the program took to
+arrive at the error: the first line in the list is where the error occurred
+and the line beneath it represents the line of code that called the method
+which threw the error, and so on.
+
+You can click on **`blue text`**{: .blue} to navigate to that file and line.
+
+### `Bomb` Introduction (Phase 0)
+
+{: .info}
+> For this lab, we will be providing hints. Please **only use them if you're stuck!** You'll get much more out of the exercises if you try to solve them on your own first.
+
+{: .task}
+> **Task**: Set a breakpoint at `phase0` and use the debugger to find the password for `phase0` and replace the `phase0` argument accordingly in `bomb/BombMain.java`.
+
+ Once you've found the correct password, running the code (not in debug mode)
+ should output "You passed phase 0 with the password \<password\>!" instead of
+ "Phase 0 went BOOM!"
+
+<details markdown="block">
+<summary markdown="block">
+
+**`phase0` Method Breakdown**
+
+</summary>
+
+The `phase0` method first generates a secret String `correctPassword` (you don't
+need to understand how `shufflePassword` works). The `password` passed in from
+`BombMain` is then compared against `correctPassword`. The goal of this phase is
+to use the debugger to find the value of `correctPassword` and pass in a
+`password` that matches that value!
+
+</details>
+
+### Visualizer (Phase 1)
+
+While being able to see variable values is great, sometimes we have data that's
+not the easiest to inspect. The Java Visualizer shows a box-and-pointer diagram of
+the variables in your program, which is much better suited for large objects with a lot of data. 
+To use the visualizer, run the debugger until you stop at a breakpoint, then click
+the "Java Visualizer" tab.
+
+The password for phase 1 is an `int[]`, not a `String`.
+
+{: .task}
+> **Task**: Set a breakpoint at `phase1` and use the Java Visualizer to find the password for `phase1` and replace the `phase1` argument accordingly in `bomb/BombMain.java`.
+
+<details markdown="block">
+<summary markdown="block">
+
+**`phase1` Method Breakdown**
+
+</summary>
+
+The `phase1` method generates a secret `int[]` called `correctArrPassword`
+(similar to the previous phase, you don't need to understand how
+`shufflePasswordArr` works). The `password` (in the form of an `int[]`)
+passed in from `BombMain` is then compared against the `correctArrPassword`
+for equality. The goal of this phase is to use the debugger's Java Visualizer to
+find the structure and value of the `correctArrPassword`'s `int[]` and pass
+in a `password` that matches it!
+
+</details>
+
+### Conditional Breakpoints (Phase 2)
+
+Sometimes you may want to have your program pause only on certain conditions.
+To do so, create a breakpoint at the line of interest and open the
+"Edit breakpoint" menu by right-clicking the breakpoint icon itself. There,
+you can enter a boolean condition such that the program will only pause at this
+breakpoint if the condition is true.
+
+Another thing you can do is to set breakpoints for exceptions in Java. If your
+program is crashing, you can have the debugger pause where the exception is
+thrown and display the state of your program. To do so, click
+![view breakpoint](img/view-breakpoints.png){: .inline }
+in the debugger window and press the plus icon to create a "Java Exception
+Breakpoint". In the window that should appear, enter the name of the exception
+that your program is throwing.
+
+{: .task}
+> **Task**: Set a breakpoint at `phase2` and use the debugger to find the password for `phase2` and replace the `phase2` argument accordingly in `bomb/BombMain.java`. The built-in `repeat` method of the `String` class may be useful; you can read more about it [here](https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/lang/String.html).
+
+***
+
+**Note**: The password isn't given explicitly like in the previous phases.
+Rather, your task is to construct an input so that the `boolean correct`
+variable is set to `true` after `phase2` is run.
+
+***
+
+**Tip**: After you pass phase 0 and phase 1, before you change anything else for phase 2,
+try running `BombMain.java`. You'll see that the program  will exit with an `ArrayIndexOutOfBoundsException`,
+and resultant stack trace, which means that the code is trying to access an array at an index that does not fit within
+the bounds of the array. Revisit the [Reading Stack Traces](./#reading-stack-traces) section if you need a refresher on 
+stack traces.
+
+<details markdown="block">
+<summary markdown="block">
+
+**Hint 1**
+
+</summary>
+
+You may want to look up Java's `split` method for `String`s if you're unsure
+of what it does.
+
+</details>
+
+<details markdown="block">
+<summary markdown="block">
+
+**Hint 2**
+
+</summary>
+
+You'll need to build the password in pieces so that the `split` method will cause
+the correct number be in the right spot. 
+</details>
+
+<details markdown="block">
+<summary markdown="block">
+
+
+**`phase2` Method Breakdown**
+
+</summary>
+
+The `phase2` method takes in your `password` from `BombMain` and splits it by
+spaces into the `passwordPieces` array. For example, if your password is `"1 2
+3"`, then `passwordPieces` will be equivalent to `{"1", "2", "3"}`.
+
+The method then adds 100,000 random integers to a `Set` called `numbers`. It
+then loops through them using a for-each loop, incrementing a variable `i` as it
+goes along. On the 1338th iteration (because Java is zero-indexed, `i == 1337`
+on iteration 1338), we check whether the integer at the 1337th index of the
+`passwordPieces` array is equal to the current `number`.
+</details>
+
+***
+
+At this point, you should be able to run the tests in `tests/bomb/BombTest.java`
+and have all of them pass with a green checkmark.
+
+### Recap: Debugging
+
+By this point you should understand the following tools:
+
+- Breakpoints
+- Step Over
+- Step Into
+- Step Out (though you might not have actually used it in this lab)
+- Resume
+- Conditional breakpoints
+
+However, this is simply scratching the surface of the features of the debugger!
+Feel free to experiment and search around online for more help.
+
+Some useful features include:
+
+-   Remember that
+    [**Watches**](https://www.jetbrains.com/help/idea/examining-suspended-program.html#watches)
+    tab? Why not read into what that does?
+-   Or try out the incredibly handy
+    [**Evaluate Expressions**](https://www.jetbrains.com/help/idea/examining-suspended-program.html#evaluating-expressions)
+    calculator button (the last button on the row of step into/over/out buttons)?
+-   Or perhaps look deeper into breakpoints, and
+    [**Exception Breakpoints**](https://www.jetbrains.com/help/idea/using-breakpoints.html#exception-breakpoints)
+    which can pause the debugger right _before_ your program is about to crash.
+
+We won't always use all of these tools, but knowing that they exist and making
+the debugger part of your toolkit is incredibly useful.
+
+## Testing Your Code with Truth
+
+In the rest of the lab, you will be officially introduced to Google's [Truth](https://truth.dev/) 
+assertions library. It provides an intuitive way to write repeatable tests, which substantially reduces the tedium of testing
+your code. Many of your lab submissions for the rest of the course will include
+a Truth testing file and all of our autograders are written using Truth or JUnit.
+
+You may already be familiar with JUnit, a common Java testing framework. Both
+Truth and JUnit make easy an approach to programming called test-driven development
+(TDD). TDD is a popular approach in industry in which you design and write test cases
+before writing the code they test. We will encourage it in the remainder of CS
+61BL, starting by leading you through the steps of the construction of a class
+representing measurements (feet, yards, inches).
+
+In 61BL, we will use Truth assertions inside JUnit framework tests instead of JUnit assertions for the following reasons:
+
+- Better failure messages for lists.
+- Easier to read and write tests.
+- Larger assertions library out of the box.
+
+We often write tests using the Arrange-Act-Assert pattern:
+
+1.  **Arrange** the test case, such as instantiating the data structure or
+    filling it with elements.
+2.  **Act** by performing the behavior you want to test.
+3.  **Assert** the result of the action in (2).
+
+We will often have multiple "act" and "assert" steps in a single test method
+to reduce the amount of boilerplate (repeated) code.
+
+
+#### Truth Assertions
+
+A Truth assertion takes the following format:
+
+```java
+assertThat(actual).isEqualTo(expected);
+```
+
+To add a message to the assertion that displays upon failure, we can instead use:
+
+```java
+assertWithMessage("actual is not expected")
+    .that(actual)
+    .isEqualTo(expected);
+```
+
+We can use things other than `isEqualTo`, depending on the type of `actual`.
+For example, if `actual` is a `List`, we could do the following to check its
+contents without constructing a new `List`:
+
+```java
+assertThat(actualList)
+    .containsExactly(0, 1, 2, 3)
+    .inOrder();
+```
+
+If we had a `List` or other reference object, we could use:
+
+```java
+assertThat(actualList)
+    .containsExactlyElementsIn(expected)  // `expected` is a List
+    .inOrder();
+```
+
+Truth has many assertions, including `isNull` and `isNotNull`; and
+`isTrue` and `isFalse` for `boolean`s. IntelliJ's autocomplete will often give
+you suggestions for which assertion you can use.
+
+#### Example Test
+
+Let's break down an example test:
+
+```java
+@Test
+/** In this test, we use only one assertThat statement. 
+    *  In other words, the tedious work of adding the extra assertThat statements isn't worth it. */
+public void arrTest() {
+    int[] arr = new int[3]; // arr is [0, 0, 0] because elements of int[] are initially set to 0
+    
+    arr[0] = 42; // after this we expect: [42, 0, 0]
+    arr[1] = 27; // after this we expect: [42, 27, 0]
+    arr[2] = 961; // after this we expect: [42, 27, 961]
+        
+    assertThat(arr).asList().containsExactly(42, 27, 961).inOrder();
+}
+```
+
+-   `@Test` tells Java that this is method is a *test*, and should be run when
+    we run tests.
+-   **Arrange**: We construct a new `int[]` called `arr`, and set 3 elements in it at indices 0, 1, and 2.
+-   **Act**: We call `asList` on the result of `assertThat(arr)`, which turns the assertion object into a list and implicitly depends on the
+      earlier sets to the array.
+-   **Assert**: We use a Truth assertion to check that the object created from `asList` contains
+    specific elements in a specific order.
+
+
+### Task: Using IntelliJ to Write Tests
 
 {: .warning}
-Please don't skip around in this lab and **do not run commands you find online**
-if you get stuck (this could lead to potential issues in the lab). When going
-through this lab, read through the commands and instructions and make sure you understand them!
+> Similar to the debugging exercises, this section will not be graded, but it is recommended that you complete this exercise either now or sometime over the next few days. Testing is an equally important skill to learn as it will be used extensively throughout the rest of our class (in labs, projects, and exams).
+
+> Past that, in industry, testing your code is a huge part of what you will do as
+a software engineer. Writing code is incomplete without a solid set of tests to
+verify its fault tolerance and accuracy.
+
+> **Untested code is broken code.**
+
+One of the many great features about IntelliJ is that it can be used to start
+generating JUnit tests, which we will use as a skeleton for our Truth assertions. We will illustrate how it can be used with the
+following example. Follow along each of the steps in IntelliJ.
+
+1.  Navigate to `Counter.java`. In it, you will see an instance variable `myCount`, some instance methods (`increment()`, `reset()`, `value()`),
+    and the constructor, defined as `public Counter() { myCount = 0; }`.
+    As a quick refresher, the constructor creates an instance of the `Counter` class and initializes
+    its `myCount` instance variable (attribute) to 0. We'll talk more about objects in depth next week; for now, 
+    we just want you to pay attention to the flow of how tests are generated, and for which methods.
+
+2.  Make a new JUnit Test Case:
+
+    -   **Click** on the class name in the `Counter.java` file and select
+        **"Navigate -> Test"**. Alternatively, you can use
+        <kbd>CTRL</kbd> / <kbd>CMD</kbd> + <kbd>Shift</kbd> + <kbd>T</kbd>.
+
+        ![Navigate to Test](img/navigate-test.png)
+
+    -   Click **"Create New Test..."**. If you are asked to create test in the
+        same source root, click **"Ok"**.
+
+        ![Create Counter Test](img/create-new-test.png)
+
+    -   Name the JUnit Test Case `CounterTest`. Select "JUnit 4" as the testing
+        library. Next check the boxes for the `increment()` and `reset()`
+        functions.
+
+        ![Make Counter Test](img/make-counter-test.png)
+
+    -   You should see a file similar to the following:
+
+        ```java
+        import org.junit.Test;
+
+        import static org.junit.Assert.*;
+
+        public class CounterTest {
+
+            @Test
+            public void increment() {
+            }
+
+            @Test
+            public void reset() {
+            }
+        }
+        ```
+    -   **At this point, we have a nice skeleton testing setup, but we don't want to use
+        JUnit assertions. Replace the `import static org.junit.Assert.*;` line at the 
+        top with `import static com.google.common.truth.Truth.assertWithMessage;` so that we 
+        can use Truth assertions.**
+
+    -   Edit your `CounterTest.java` as follows:
+
+        -   In the test for `increment`, put the code
+
+            ```java
+            Counter c = new Counter();
+            c.increment();
+            assertWithMessage("Counter value is not 1.").that(c.value()).isEqualTo(1);
+            c.increment();
+            assertWithMessage("Counter value is not 2.").that(c.value()).isEqualTo(2);
+            ```
+
+        -   In the test for `reset`, put the code
+
+            ```java
+            Counter c = new Counter();
+            c.increment();
+            c.reset();
+            assertWithMessage("Counter value is not 0 after reset.").that(c.value()).isEqualTo(0);
+            ```
+
+        -   IntelliJ doesn't generate constructor tests. Add one:
+
+            ```java
+            @Test
+            public void testConstructor() {
+                Counter c = new Counter();
+                assertWithMessage("Counter value is not 0 upon instantiation.").that(c.value()).isEqualTo(0);
+            }
+            ```
+
+3.  Run your tests individually; they should all pass. You should also be able to run your full
+    test file (test case) and see that all tests pass.
+
+4.  We have shown you what it looks like to pass a test, but what happens if
+    you fail? Intentionally introduce an error into one of the `CounterTest`
+    methods, asserting for example that the value of a freshly-built `Counter`
+    object should be 7. Run the test again and observe the error messages
+    that result.
+
+## Testing Principles
+
+### Test-Driven Development
+
+_Test-driven development_ is a development process that involves designing test
+cases for program features before designing the code that implements those
+features. The work flow is:
+
+1.  Write test cases that demonstrate what you want your program to be
+    able to do. As the code isn't written yet, most tests should fail.
+2.  Write as little code as possible so that all the tests are passed.
+3.  Clean up the code as necessary. Recheck that all tests still pass.
+
+### Test Effectiveness
+
+Unsurprisingly, there are effective tests and ineffective tests. The presence
+of tests alone does not mean that those tests are doing anything:
+
+```java
+@Test
+public static void uselessTest() {
+    assertThat(true).isEqualTo(true);
+}
+```
+
+Given a codebase, and tests for that codebase, how can we evaluate how "good"
+the tests are? In other words, how much confidence do our tests give us that
+our code is completely, fully correct?
+
+#### Statement Coverage
+
+One testing principle you can imagine is that test values should exercise every
+statement in the program, since any statement that's not tested may contain a
+bug. Below is a program that checks whether a given year is a leap year:
+
+```java
+public static boolean isLeapYear(int year) {
+    if (year % 400 == 0) {
+        return true;
+    } else if (year % 100 == 0) {
+        return false;
+    } else if (year % 4 == 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+```
+
+The code contains four cases, exactly one of which is executed for any
+particular value of year. Thus we must test this code with at least one year
+value per case, so at least four values of year are needed for testing:
+
+- a year that's divisible by 400;
+- a year that's divisible by 100 but not by 400;
+- a year that's divisible by 4 but not by 100;
+- a year that's not divisible by 4.
+
+This approach by itself is insufficient as we will see below.
+
+#### Path Coverage
+
+To augment this first principle, we'll say we need to test various _paths_
+through the program. For example, suppose our program had two consecutive `if`
+statements:
+
+```java
+if ( ... ) {
+    ...
+}
+if ( ... ) {
+    ...
+}
+```
+
+There are two possibilities for each if case: `true` or `false`.
+Thus there are four paths through the two statements, corresponding to the four
+possibilities
+
+- `true`, `true`
+- `true`, `false`
+- `false`, `true`
+- `false`, `false`
+
+The following example shows why statement coverage is not a guarantee of
+correctness:
 
 {: .info}
-Please make sure to pull from the skeleton in your `{{ site.semester }}-s***` repository to obtain
-the required files. In this lab, we will only have one file, `magic_word.txt`. 
+> A `year` value of 2000 causes all the statements in the below program segment to be executed, giving 100% statement coverage. However, there may be a bug in this code it will not catch.
 
-## Git vs Github
+<!-- TODO: see https://cs61bl.org/su17/materials/lab/lab08/lab08.html#testing-principle-1
+and bring the bug introduction exercise back.
+ -->
 
-Before we explore the Git commands, let's talk about the difference between Git and Github.
-
-### Git
-
-Git is a version control system that is free and open-source (this means that the source code
-is available for use by users and developers). As a version control system, we use Git to
-help manage different versions of code and track changes made in the source code. This makes it
-even more useful if there are multiple developers working on one program. Without a version control
-system, there wouldn't be much communication between developers and changes to the source code
-will go unknown to other developers.
-
-For the most part, Git's data model or representation is based on a linked list. We'll talk
-more about this a little later, but whenever we want to save a snapshot of our repository,
-we commit it (like we've been doing up until this point when we want to submit an assignment).
-These commits are, in a way, chained together. Here's a visualization of what that looks
-like below:
-
-![git_structure](img/git_structure.png){: style="max-height: 325;" }
-
-This linked list of commits forms a history of the changes you've made. The most recent
-commit/latest snapshot is the green circle above.
-
-### Github
-
-Github is an online hosting service for git repositories. Git repositories are central locations
-where any changes made to our files and directories are tracked and managed (this is your `{{ site.semester }}-s***`
-repository). Repositories can be made locally on your computer as well as on Github.
-
-Github allows for easier collaboration with other developers, as you can more easily share code, and
-also allows us to save our code on a remote server. If you have some code stored locally,
-you can save it to Github. You'll then have a copy of your code saved somewhere else
-in the event that your local code is somehow destroyed. This is why we say to commit often so you
-save your work and progress on assignments!
-
-## Git Commands
-
-In this section, we describe some of the more common Git commands you might end up using. Please keep
-in mind that this is not comprehensive of all the Git commands that may be available. Let's begin!
-
-### `init`
-
-The following command can be run in a directory that you want to make into a Git repository:
-
-```shell
-git init
+```java
+public static boolean isLeapYear(int year) {
+    isLeapYear = true;
+    if (year % 4 == 0) {
+        isLeapYear = true;
+    }
+    if (year % 100 == 0) {
+        isLeapYear = false;
+    }
+    if (year % 400 == 0) {
+        isLeapYear = true;
+    }
+    return isLeapYear;
+}
 ```
 
-This initializes a git repository in that directory.
+From the previous discussion, it looks like we need _eight_ tests,
+corresponding to the eight paths through the three `if` statements. They are listed below.
 
-### `add`, `commit`
-
-When we want to save the changes we've made in a git repository, we want to first select
-what changes should be saved:
-
-```shell
-git add some_file.txt
+```java
+    year % 4 == 0, year % 100 == 0, and year % 400 == 0  // (which just means that year % 400 == 0)
+    year % 4 == 0, year % 100 == 0, and year % 400 != 0
+    year % 4 == 0, year % 100 != 0, and year % 400 == 0  // (not possible)
+    year % 4 == 0, year % 100 != 0, and year % 400 != 0
+    year % 4 != 0, year % 100 == 0, and year % 400 == 0  // (not possible)
+    year % 4 != 0, year % 100 == 0, and year % 400 != 0  // (not possible)
+    year % 4 != 0, year % 100 != 0, and year % 400 == 0  // (not possible)
+    year % 4 != 0, year % 100 != 0, and year % 400 != 0  // (equivalently, year % 4 != 0)
 ```
 
-If you want to select all changes that have been made, you can run the following shortcut:
+Notice that some of the tests are logically impossible, and so we don't need to
+use them. This leaves the _four_ tests we needed to write.
 
-```shell
-git add .
-```
+### Testing Loops
 
-**The changes we've selected have not actually been saved yet.** When we `add` certain files/changes, this
-means we've put them into a staging area, which stores information about what will go into our next commit.
-To actually save our changes, or take a snapshot of our current repository, we run `git commit -m`, like below:
+Loops can vastly increase the number of logical paths through the code, making
+it impractical to test all paths. Here are some guidelines for testing loops,
+drawn from _Program Development in Java_ by Barbara Liskov and John Guttag, a
+book used in previous CS 61B offerings.
 
-```shell
-git commit -m "We put a commit message here to describe what changes we made."
-```
+-   For loops with a fixed amount of iteration, we use two iterations. We choose
+    to go through the loop twice rather than once because failing to
+    reinitialize after the first time through a loop is a common programming
+    error. We also make certain to include among our tests all possible ways
+    to terminate the loop.
+-   For loops with a variable amount of iteration, we include zero, one, and
+    two iterations, and in addition, we include test cases for all possible
+    ways to terminate the loop. The zero iteration case is another situation
+    that is likely to be a source of program error.
 
-When we commit any changes, it's good practice to place a descriptive commit message - this makes it easier
-to keep track of what changes are made over time as well as make it easier for other developers to understand
-what you've changed.
+> Liskov and Guttag also say: This approximation to path-complete testing is, of
+> course, far from fail-safe. Like engineers' induction "One, two, three—that's
+> good enough for me," it frequently uncovers errors but offers no guarantees.
 
-### `status`
+### Black-box Testing
 
-If you want to see what changes have been made, you can run `git status` in your repository. It might look
-a little bit different from below, but it will show what files have been modified. If they are under
-"changes not staged for commit", it means they haven't been added to the staging area. Once they are
-added, those files will show up under "Changes to be committed".
+All the testing principles discussed so far focused on testing features of the
+code. Since they assume that we can see into the program, these techniques are
+collectively referred to as _glass-box_ testing, as if our code is transparent.
 
-```shell
-On branch main
-Your branch is up to date with 'origin/main'.
+Another testing approach is called _black-box_ testing. It involves generating
+test cases based only on the problem specification, not on the code itself.
+There are several big advantages of this approach:
 
-Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git restore <file>..." to discard changes in working directory)
-	modified:   proj1a/src/LinkedListDeque61B.java
-	modified:   proj1b/src/ArrayDeque61B.java
-	modified:   proj1b/tests/ArrayDeque61BTest.java
-```
+-   The test generation is not biased by knowledge of the code. For instance, a
+    program author might mistakenly conclude that a given situation is
+    logically impossible and fail to include tests for that situation; a
+    black-box tester would be less likely to fall into this trap.
 
-In this example, `git status` shows that we've modified three files that have not been staged for commit. Once
-we `git add` them, `git status` will change:
+-   Since black-box tests are generated from the problem specification, they
+    can be used without change when the program implementation is modified.
 
-```shell
-On branch main
-Your branch is up to date with 'origin/main'.
+-   The results of a black-box test should make sense to someone unfamiliar
+    with the code.
 
-Changes to be committed:
-  (use "git restore --staged <file>..." to unstage)
-	modified:   proj1a/src/LinkedListDeque61B.java
-	modified:   proj1b/src/ArrayDeque61B.java
-	modified:   proj1b/tests/ArrayDeque61BTest.java
-```
+-   Black-box tests can be easily designed before the program is written, so
+    they go hand-in-hand with test-driven development.
 
-In both cases, "Changes not staged for commit" and "Changes to be committed" are for files that are already
-**tracked** or have been saved before in a previous version of your repository. Git will also show
-**untracked** files, which have not been saved in a previous version of your repository.
+In black-box testing as in glass-box testing, we try to test all possibilities
+of the specification. These include typical cases as well as _boundary_ cases,
+which represent situations that are extreme in some way, e.g. where a value is
+as large or as small as possible.
 
-### `log`
-
-Running `git log` in a git repository will display all the history of our committed history. For example, you
-would get something similar to the below:
-
-```shell
-$ git log
-
-commit 8g955d88159fc8e4504d7220e33fad34f8f2c6bd
-Author: Diego Huezo <huezodiego@Huezos-MacBook-Pro.local>
-Date:   Tue Feb 7 19:06:48 2016 -0800
-
-    Added common Git problems to lab04.
-```
-
-What this means is that you're able to view the entire history of all the commits you made. Remember
-the message you always add when you commit? It will show up in `git log`. In this example, the
-commit message would be "Added common Git problems to lab04." That is to say, we ran
-`git commit -m "Added common Git problems to lab04."` when we committed.
-
-To scroll up and down in `git log`, you can use the up and down arrow keyboard keys. To exit out of `git log`, press the keyboard key `q`.
-
-Another **important** thing is what is besides the "commit" heading. It looks like a long
-string of random characters and numbers, but it represents the **commit id**. The commit
-id is a unique id that Git assigned to identify the specific changes that were made
-in the commit. **It is important for the next section.**
-
-### `restore`
-
-What if we want to restore changes from a previous version of our program? We can use `git restore`!
-There are a couple ways to do this.
-
-If we want to restore files to the versions in the most recent commit, then we can run `git restore`
-without specifying a commit id:
-
-```shell
-git restore [path_to_file]
-```
-
-If we want to restore to a **specific** commit, we can identify that commit's id and restore the
-files from that commit.
-
-```shell
-git restore --source=[commitID] [path_to_file]
-```
-
-## Git Exercise (Part 1.1)
-
-Now you're ready to start using git! Your next task is to work through a small
-git workflow by setting up a repository and making a couple commits. At the end,
-you will need to be checked off by filling out the form linked on Beacon.
-
-{: .danger}
-This is meant to be done on your local computer, but **outside your `{{ site.semester }}-s***`**
-repository. Make sure you don't initialize a repository in your `{{ site.semester }}-s***`!
+There are often a variety of features whose "boundaries" should be considered.
+For example, in the `DateConverter` program, boundary cases would include not
+only dates in the first and last months of the year, but also the first and
+last dates of each month, etc.
 
 {: .info}
-> If you need help with creating directories, creating files, changing
-> directories, etc., refer back to [_How to Use the Terminal_](terminal).
+> Whenever you write a program, try to think of any boundary cases. These cases, although potentially rare, are a common source of error. The safest thing to do is brainstorm as many unique ones as you can then write tests which test each unique boundary case.
 
-1.  Create a directory called `lab04-checkoff`. You can put this directory
-    anywhere on your computer **(but not in your `{{ site.semester }}-s***` repo)**.
-2.  Move into the `lab04-checkoff` directory, and initialize a git repository.
-3.  Create a file called `61b.txt` in any way you'd like. In this text file,
-    add the text "Created 61b.txt".
-4.  Create another file called `61boba.txt` in any way you'd like. In this text file,
-    add the text "Created 61boba.txt".
-5.  Begin tracking **only** `61b.txt`, and create a new commit containing just
-    this file, with the following commit message: `Add 61b.txt`.
-6.  Make a modification in `61b.txt` by changing the text in the file to: "61b.txt
-    changed to version 2".
-7.  Make another commit, this time containing both `61b.txt` and `61boba.txt`.
-    The commit message should be: `Updated 61b.txt and added 61boba.txt`.
-8.  Make one more modification to `61b.txt` by changing the text in
-    the file to: "61b.txt changed to final version". **Don’t commit this version.**
 
-    At this point, if you were to type in `git status` and `git log`, you’d see
-    something similar to the following:
+### Parting Advice on Testing
 
-    ![git_checkoff](img/git_checkoff.png)
+As you progress through the course, you will hopefully improve your testing
+skills! Here are some last bits of advice for now.
 
-9.  **Using git only**, restore `61b.txt` to the version in the most recent
-    commit.
-    <!-- markdownlint-disable MD030 -->
-10. **Using git only**, restore `61b.txt` to the version in the first commit.
+-   Write tests as if you were testing your _worst enemy's_ code. You're
+    generally too familiar with your own code and might read a given line as
+    containing what you meant to write rather than what you did write. Don't
+    fall into the trap of hoping not to find bugs in your own code.
 
-<!-- markdownlint-restore -->
+-   Test your program with values that are as simple as possible. If the
+    program is supposed to work for a set of 1000 data values, make sure it
+    works on a set of 3 values first.
 
-Be sure to save this repository and directory until you complete the
-form on [Beacon]({{ site.links.beacon }}).
+-   Wrapping a loop around your code may allow you to test it with multiple
+    values in a single run.
 
-{: .task}
-Do the steps above, and complete the first google form. There is a second
-google form to fill out before you get the magic word.
+-   Make sure you know how your program is _supposed_ to behave on a given set
+    of test data. Often lazy programmers try a test and just scan through it
+    thinking that it "looks right". Such a programmer might later be
+    embarrassed to find out that they computed a product cost that's greater
+    than the national debt or a quantity that's greater than the number of
+    atoms in the universe.
 
-## Git Commands Continued
+-   Make sure to cover _both_ the common cases and the extreme, edge or
+    boundary cases. Forgetting one or the other (or both!) can cause you to
+    miss critical bugs in your code.
 
-Let's continue on! In this section, we go a little more in-depth about remote repositories
-and what branching is.
-
-### `remote add`
-
-Sometimes, we want to be able to pull changes from another repository, specifically one
-that is hosted on Github. To do so, we can add that repository as a "remote".
-For example, in Lab01, we used the following command to add the skeleton
-repository in our personal repository:
-
-```shell
-git remote add skeleton https://github.com/Berkeley-CS61B/skeleton-{{ site.semester }}.git
-```
-
-Let's break this down. When we want to add a remote, we specify the name of the remote, as well as the remote URL.
-In this example, the name is `skeleton` and the url is `https://github.com/Berkeley-CS61B/skeleton-{{ site.semester }}.git`. We can
-then refer to the remote repository with its name when we want to [pull](#pull) or [push](#push) from it.
-
-So, to add a remote, we can run the following command:
-
-```shell
-git remote add [remote-name] [remote-url]
-```
-
-{: .info}
-You can run `git remote -v` in your repository to check what remotes have been added.
-
-### `switch`
-
-We haven't talked a lot about another feature of Git, which is branches! You won't use it much
-(or at all!) in this class (except this lab), but it is a useful thing to know.
-
-Most version control systems have some kind of branching system. When we say branching, it means that
-we "diverge" away from the "main" branch. Branches allow us to keep track of multiple versions of
-our work at the same time (think of it like alternate dimensions). A reason why we would want to
-create another branch is if we want to develop another feature of our program, but we still wanted
-to maintain the current version that we had.
-
-Let's consider a visualization.
-
-![cool_branch](img/on_cool_branch.png){: style="max-height: 325;" }
-
-In this image above, there are two branches, `master` and `cool_branch`. Notice that we've
-already made several commits. At some point, we ended up "branching" away from `master`
-(at the commit with the message "diverge commit") and diverging away from that specific branch.
-Now, if we wanted to stop working on our current branch (`cool_branch`), we can switch back to our
-`master` branch. We do this by running the following command:
-
-```shell
-git switch [branch-name]
-```
-
-![master_branch](img/on_master_branch.png){: style="max-height: 325;" }
-
-In this example, we would run `git switch master`. Notice that the HEAD tag is now pointing back to
-the latest commit on `master`.
-
-{: .info}
-We won't cover it here, but feel free to look up how you might create a branch.
-
-If you get an error that the `.idea` folder is untracked when you try to switch out of a branch, you can create another commit including the `.idea` folder using `git add` and `git commit`. You do not have to push these changes.
-
-### `restore` Revisited
-
-Now that we have an idea of what remotes and branches are, let's revisit the `restore` command.
-In the earlier section, we talked about using `restore` to revert back to previous commits
-based on the most recent commit or based on a commit id, but we can also use the command
-to revert a change back based on a remote repository and a specified branch. This is what
-it would look like:
-
-```shell
-git restore --source=[remote-name]/[branch-name] [file_name]
-```
-
-It would revert the file back based on the contents of the latest commit on the branch
-of the remote repository.
-
-### `push`
-
-If we want to push any commits we made on our local computer to a remote repository, we can use `git push`:
-
-```shell
-git push [remote-name] [branch]
-```
-
-In this class, we use `git push origin main` to push any of our changes from the local repository
-to our remote repository. `origin` is the remote repo that represents our personal repository that's hosted
-on Github and `main` is the branch that we work off of.
-
-Here's a visualization of what this looks like with a couple of local commits we haven't pushed yet.
-The local repository is on the left, and the remote one is on the right.
-
-![remote_push_before](img/remote_push_before.png){: style="max-height: 325;" }
-
-After pushing, our commits are now saved in our remote repository:
-
-![remote_push_after](img/remote_push_after.png){: style="max-height: 325;" }
-
-### `pull`
-
-Conversely, if we want to pull any changes from our remote repository to our local one, we can run `git pull`:
-
-```shell
-git pull [remote-name] [branch]
-```
-
-We've done this before when pulling from the skeleton: `git pull skeleton main`. Here's a visualization of
-what this looks like with a couple of remote commits we haven't pulled from yet:
-
-![remote_pull_before](img/remote_pull_before.png){: style="max-height: 325;" }
-
-After pulling, our remote commits are now in our local repository:
-
-![remote_pull_after](img/remote_pull_after.png){: style="max-height: 325;" }
-
-## Common Git Issues
-
-In this section, we'll cover some common issues you might see with Git. This is not
-comprehensive of all issues you may see. You can read more about git issues in our
-Using Git guide [here](../../resources/guides/git/index.md) and Git WTFs [here](../../troubleshooting/git-wtfs/index.md).
+## Exercise: Testing a Triangle Class
 
 {: .danger}
-While this is meant to help diagnose a Git issue and go through the common ways to
-resolve them, always ask for help if you aren't too sure!
+> This section will be graded. All points for this part of the lab will be derived from writing tests in `TriangleTest.java`. Note that  you will not be able to run the tests you write in this file locally; you must submit to the autograder to run on our implementations of `Triangle.java`.
 
-### Fatal: refusing to merge unrelated histories
+Now, you're going to be writing the code and a whole file of tests with Truth assertions for the `Triangle` class. Your goal is to write comprehensive tests that pass on a correct implementation of the `Triangle` methods, but fail on incorrect implementations of `Triangle` methods. 
 
-This occurs when the history of your local respository and the remote repository are separate. This usually happens when someone has changed files in the skeleton code after you
-have pulled. To fix, run `git pull <remote-repo> main --allow-unrelated-histories --no-rebase`.
-This may force a merge conflict (more information below).
+You'll notice that `Triangle.java` and `TriangleTest.java` use the `abstract` keyword. You don't need to know 
+what this is right now because we'll cover it later in the course, but in `TriangleTest.java`,
+when you are testing the `Triangle` methods, you must call them on a `Triangle` object returned by `getNewTriangle()`.
+The skeleton code has more on this.
 
-### Merge Conflict
+You should follow this process for this exercise:
 
-Merge conflict messages can show up like below:
+1.  Read over the `Triangle.java` class throughly. The comments above each of the methods explain what
+    the expected behavior of this class will be. 
+2.  Write tests with Truth assertions in the `TriangleTest.java` file. You should write tests
+    which allow you to test all of the methods and behavior in the class. You should think of edge
+    cases that buggy implementations of `Triangle.java` methods are likely to fail. 
+3.  Though you won't exactly be practicing TDD here because you're only writing the tests and not filling
+    in the `Triangle.java` class after, still think about how you would implement the methods. Do your
+    tests poke holes in your first instinctual implementations? Do you see how writing tests before writing the code
+    can be beneficial?
 
-```shell
-$ git pull origin main
-From github.com:Berkeley-CS61B/course-materials-sp16
- * branch            main     -> FETCH_HEAD
-Auto-merging proj/proj0/solution/canonical/Planet.java
-CONFLICT (content): Merge conflict in proj/proj0/solution/canonical/Planet.java
-Automatic merge failed; fix conflicts and then commit the result.
-```
 
-Merge conflicts occur when different modifications have been made to the same file that
-impact the same lines of code, and thus, cannot coexist. Git will indicate which files
-have conflicts; **to fix them, open the files in IntelliJ and resolve them manually.**
-These conflicts will appear like below in the file:
+## Recap
 
-```shell
-    public Planet(Planet p) {
-<<<<<<< HEAD
-        this.xPos = p.xPos;
-        this.yPos = p.yPos;
-=======
-        this.xxPos = p.xxPos;
-        this.yyPos = p.yyPos;
->>>>>>> 27ddd0c71515e5cfc7f58a43bcf0e2144c127aed
-```
+In this lab, we discussed:
 
-Everything between `<<<<<<< HEAD` and `=======` is from your local version. Everything between `=======` and
-`27ddd0c71515e5cfc7f58a43bcf0e2144c127aed` is from your remote repository. Between these two options,
-choose the modifications that you would like to keep. Once you have resolved all conflicts,
-add and commit your changes. Run git status to check the state of your repo.
+- Effectively using the IntelliJ debugger.
+- Truth assertions and the JUnit Testing Framework.
+- Test-driven development and good testing principles.
 
-We've provided more reading on merge conflicts [here](../../resources/guides/git/index.md/#merging)
-and [here](../../troubleshooting/git-wtfs/index.md/#error-you-have-not-concluded-your-merge-merge_head-exists).
 
-### Your branch is ahead of 'origin/main' by X commits.
-This occurs when the local repo is no longer in sync with its remote counterpart.
-If you want to keep the local versions of your files, use `git push`.
-If you want to overwrite your local changes with the versions in the remote repo,
-use `git reset --hard origin/main`.
+## Deliverables and Scoring
 
-## Git Exercise (Part 1.2)
+The lab is out of 2 points. There are no hidden tests on Gradescope. If you
+pass all the local required tests and write comprehensive tests in `TriangleTest.java`, you will receive full credit on the lab.
 
-Just as you did in Part 1.1, navigate to [Beacon]({{ site.links.beacon }}) and
-complete the second form.
+- Find the three passwords in `BombMain.java`.
+- Write tests in `TriangleTest.java` that pass on the correct `Triangle.java` implementation and fail on buggy `Triangle.java` implementations. 
 
-Once you finish both google forms (in Part 1.1 and 1.2) and receive full credit,
-you should be able to obtain a **magic word**. Place this magic word on the
-**first line** of `magic_word.txt`.
-
-## Git Exercise (Part 2)
-
-In this exercise, we'll have you clone a git repository, and you'll be using some of the commands you've learned to find
-the passwords that are hidden away in the repository. Copy and paste the following command to clone your repository, **outside
-your `{{ site.semester }}-s***` repository and outside your `lab04-checkoff` repository that you created in part 1.1**. The exact location is up to you, as long as it's not in another repository or in one of the repositories we mentioned in the previous sentence.
-
-{: .danger}
-Before running the command, **double check that you are not in your personal repository or the lab04-checkoff repository.** If you are, a message will show
-up preventing you from cloning the repository inside your `{{ site.semester }}-s***` and `lab04-checkoff` repository.
-
-```shell
-curl -sS https://{{ site.semester }}.datastructur.es/labs/lab04/lab04.sh | bash
-```
-
-Check that a repository called `git-exercise-{{ site.semester }}` shows up. If it's there, `cd` into it, open up
-`git-exercise-{{ site.semester }}` in IntelliJ, and you're ready to continue on with the exercise!
-
-### Part 2.1
-
-When you open up the repository, you'll notice a `password.txt` file. This is where the password for the first task will
-be in. It doesn't seem to be here, but it might be in a previous commit... See if you can find that commit and revert
-back to the commit with some of the commands we've learned (you may need to scroll using the arrow keys!).
-
-{: .task}
-Find the password for Task 1. When you do, you can store the password on the **second line** of `magic_word.txt` file in your
-lab04 directory. **You will also want to restore your file to the most recent commit before moving on.**
-
-### Part 2.2
-
-Once you've completed Task 1, let's try to figure out where the second password it is. The repository you cloned
-has multiple branches, but the branch called `erik` might have something we want. Let's try switching to the branch
-and seeing if the password is in there.
-
-{: .task}
-Find the password for Task 2. You can verify that it is the password by checking the commit message of the commit
-that you are on. When you do, you can store the password on the **third line** of `magic_word.txt` file in your
-lab04 directory. When you find the password, **switch back to the `main` branch.**
-
-### Part 2.3
-
-It doesn't seem like the third password is in this repository, but in another one! The password is in this repository
-(note that this is not a command, but the ssh url):
-
-```shell
-git@github.com:Berkeley-CS61B/git-exercise-remote.git
-```
-
-We want to try pulling from it, so first, **add this repository as a remote in our `git-exercise-{{ site.semester }}` repository**. You may
-give the remote a name of your choosing. Once it's added, run the following command (without the brackets around the remote's
-name):
-
-```shell
-git pull [remote-name] main --allow-unrelated-histories --no-rebase
-```
-
-The reason we add the flags `--allow-unrelated-histories` and `--no-rebase` is because our two repositories don't have any related history, so
-we're going to try to merge these two branches (our local one and the one we're pulling from).
-
-{: .danger}
-Do not add the flags if you are not sure if it should be used. If you do use the flag without it being needed, you may
-end up putting yourself into an interactive rebase and destroying some of your work. In most, if not all cases of pulling
-from the skeleton in your personal repository, this flag should not be added, and running `git pull skeleton main` is
-enough.
-
-{: .task}
-Once you've pulled, you'll see Git trying to merge the branches. Go ahead and merge it and the final password should show
-up in your IntelliJ. You can store the password on the **fourth line** of `magic_word.txt`.
 
 ## Submission
 
-At this point, you should have **four passwords on each line, as specified in the previous exercises**. Ensure that they
-are in the specific order mentioned and that there are no extra spaces at the end. Your magic word text file
-should look similar to below:
+Just as you did in Lab 1, add, commit, then push your Lab 4 code to GitHub.
+Then, submit to Gradescope to test your code. If you need a refresher, check
+out the instructions in the
+[Lab 1 spec](../lab01/index.md#saving-your-work-using-git-and-github) and the
+[Assignment Workflow Guide](../../guides/assignment-workflow#submitting-to-gradescope).
 
-```shell
-git_exercise_1_password
-git_exercise_2.1_password
-git_exercise_2.2_password
-git_exercise_2.3_password
-```
-
-The passwords should be placed at the top 4 lines of your `magic_word.txt`. When you are ready, please submit **only** `magic_word.txt` to Gradescope. You will **not** submit the `lab04-checkoff` or `git-exercise-{{ site.semester }}` repositories.
-
-If you want to play around with the visualizer which we used to make some of the images in this lab,
-you can find it [here](https://git-school.github.io/visualizing-git/#free-remote).
+If you worked with a partner, remember each of you need a separate submission on Gradescope.
 
 
+## Acknowledgements
 
+This assignment is adapted from Adam Blank and previous iterations of CS 61B.
