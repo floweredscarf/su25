@@ -68,333 +68,362 @@ lecture_prefix: "/assets/lectures/cs101-sp25-lec"
 # [CS61B] We don't use lecture_prefix. ~peyrin Jun 2025
 
 lectures:
-  - title: "Intro, Instance Variables"
-    slides: "https://docs.google.com/presentation/d/1_funKmLVePWqfNulUl5yehBQmV1gxHarI_VkMgQ_Ah8/edit#slide=id.g3280633c3ea_0_148"
-    video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRq5wRDN8wZFy7GrrJXUtr1q"
-    recording: "https://www.youtube.com/watch?v=qMdLi5v8aT4"
-    quiz: "https://forms.gle/9YzSaMr74atHPoai7"
+  - title: "Introduction and Logistics"
+    # slides: https://docs.google.com/presentation/d/1_funKmLVePWqfNulUl5yehBQmV1gxHarI_VkMgQ_Ah8/edit#slide=id.g3280633c3ea_0_148
+    video: tbd
+    # reading: 
+    # recording: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+    # quiz: https://forms.gle/9YzSaMr74atHPoai7
+    readings: 
+      - title: "Course Policies"
+        link: policies
+  - title: "Introduction to Java, Git, and Setup"
+    # slides: https://docs.google.com/presentation/d/1Eci0ko521eAnEmbcJU12exLmVBIrAkQnVSO-8U1mzz0/edit?usp=drive_link
+    video: tbd # https://www.youtube.com/playlist?list=PLnp31xXvnfRq5wRDN8wZFy7GrrJXUtr1q
+    # reading: https://cs61b-2.gitbook.io/cs61b-textbook/1.-introduction
+    # recording: https://www.youtube.com/watch?v=qMdLi5v8aT4
+    # quiz: https://forms.gle/9YzSaMr74atHPoai7
     readings:
-      - name: "Ch. 1"
+      - title: "Ch 1"
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/1.-introduction"
-  - title: "Defining and Using Classes. Lists, Sets and Maps"
-    slides: "https://docs.google.com/presentation/d/1TGLZJuxBemPf6Ttdh49S04QJVzWWQa4ZYn-fIsgEFDI/edit#slide=id.g3291dab0df5_0_719"
-    video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRqziLs3JZ6LIH73ZsVtvsGy"
-    recording: "https://youtu.be/K54flmpG11k"
-    quiz: "https://forms.gle/ZRvLF4uf75neXnEi9"
+  - title:
+    nonumber: True
+  - title:
+    nonumber: True
+  - title: "Primitives and Objects"
+    # slides: https://docs.google.com/presentation/d/1TGLZJuxBemPf6Ttdh49S04QJVzWWQa4ZYn-fIsgEFDI/edit#slide=id.g3291dab0df5_0_719
+    video: tbd # https://www.youtube.com/playlist?list=PLnp31xXvnfRqziLs3JZ6LIH73ZsVtvsGy
+    # reading: "https://cs61b-2.gitbook.io/cs61b-textbook/2.-defining-and-using-classes"
+    # recording: https://youtu.be/K54flmpG11k
+    # quiz: https://forms.gle/ZRvLF4uf75neXnEi9
     readings:
-      - name: "Ch. 2"
+      - title: "Ch 2"
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/2.-defining-and-using-classes"
-  - title: "References, Recursion, IntLists"
-    slides: "https://docs.google.com/presentation/d/1Mt75hXW59E6LnfdEmiSF05ozoawmegz60yOSu-hI_-k/edit?usp=sharing"
-    video: "https://youtube.com/playlist?list=PLnp31xXvnfRpb4EQp0tOFJNZUXHnxTfXm&si=lUAGPJ0338-FX6UO"
-    recording: "https://youtu.be/5RHHawo0VQA"
-    quiz: "https://forms.gle/QXoKRCdUsaZXjpy96"
-    readings:
-      - name: "Ch. 3"
-        link: "https://cs61b-2.gitbook.io/cs61b-textbook/3.-references-recursion-and-lists"
-  - title: "SLLists, Nested Classes, Sentinel Nodes"
-    slides: "https://docs.google.com/presentation/d/1TKQO-56_VvVaEiKFYyjCS_wYKfVg_DJE-nK9N62OWz4/edit?usp=sharing"
-    video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRqyuN_xxm4o1Woa44dXW_N8"
-    recording: "https://youtu.be/DJSlcdq-hCY"
-    quiz: "https://forms.gle/GULhx2TsP6YrDnkA6"
-    readings:
-      - name: "Ch. 4"
-        link: "https://cs61b-2.gitbook.io/cs61b-textbook/4.-sllists"
-  - title: "DLLists, Arrays"
-    slides: "https://docs.google.com/presentation/d/12Yrdoyq7Yad2figzvjSpBvezRIzzfov65gq-2mcu0gI/edit?usp=sharing"
-    video: "https://youtube.com/playlist?list=PLnp31xXvnfRpPjLuN6-QJUFeK_mBZPve4&si=QGsZPljZc4hD_Nql"
-    quiz: "https://forms.gle/buUP4J1iwXCY1rRq8"
-    recording: "https://youtu.be/GiLJktMHgy8"
-    readings:
-      - name: "Ch. 5"
-        link: "https://cs61b-2.gitbook.io/cs61b-textbook/5.-dllists"
-      - name: "Ch. 6"
+      - title: "Ch 6"
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/6.-arrays"
   - title: "Testing"
-    slides: "https://docs.google.com/presentation/d/1Wc68rKn6FlGV7Y5JwgpA-g0NVDz973UIBmb1FYtxcKk"
-    video: "https://youtube.com/playlist?list=PLnp31xXvnfRqRR4OQx_I3YPkA87bO0whh&si=xQ5YS5zJXKKzP7Eo"
-    quiz: "https://forms.gle/BgmDR57vwhXAfuA26"
-    extra: >
-      [Bonus Video](https://youtu.be/1MzbwZwos6Q), 
-      [TDD is dead](https://dhh.dk/2014/tdd-is-dead-long-live-testing.html), 
-      [Unit Tests Are Waste](http://www.rbcs-us.com/documents/Why-Most-Unit-Testing-is-Waste.pdf), 
-      [Response](http://henrikwarne.com/2014/09/04/a-response-to-why-most-unit-testing-is-waste/)
-    recording: "https://youtu.be/oXU9Owm9sfA"
+    # slides: https://docs.google.com/presentation/d/1TGLZJuxBemPf6Ttdh49S04QJVzWWQa4ZYn-fIsgEFDI/edit#slide=id.g3291dab0df5_0_719
+    video: tbd # https://www.youtube.com/playlist?list=PLnp31xXvnfRqziLs3JZ6LIH73ZsVtvsGy
+    # reading: "https://cs61b-2.gitbook.io/cs61b-textbook/2.-defining-and-using-classes"
+    # recording: https://youtu.be/K54flmpG11k
+    # quiz: https://forms.gle/ZRvLF4uf75neXnEi9
     readings:
-      - name: "Ch. 7"
+      - title: "Ch 7"
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/7.-testing"
-  - title: "ArrayLists, Resizing"
-    slides: "https://docs.google.com/presentation/d/1JnH_OrR1DtMOWBn0sp1yEULe6N-_iI058Il2kClcL18"
-    video: "https://youtube.com/playlist?list=PLnp31xXvnfRrv834ePjKGB7i1az039-Gw&si=aIviT6qZa1an9bOX"
-    recording: "https://youtu.be/ME5OxFl-3D8"
-    quiz: "https://forms.gle/n6Wk2iSGrwh8iSeGA"
-    extra: "[Bonus Video](https://www.youtube.com/watch?v=XX3gTWQvZ2g)"
+  - title:
+    nonumber: True
+  - title:
+    nonumber: True
+  - title:
+    nonumber: True
+  - title: 
+    nonumber: True
+  - title: "Linked Lists"
+    # slides: https://docs.google.com/presentation/d/1Mt75hXW59E6LnfdEmiSF05ozoawmegz60yOSu-hI_-k/edit?usp=sharing
+    video: tbd # https://youtube.com/playlist?list=PLnp31xXvnfRpb4EQp0tOFJNZUXHnxTfXm&si=lUAGPJ0338-FX6UO
+    # recording: https://youtu.be/5RHHawo0VQA
+    # quiz: https://forms.gle/QXoKRCdUsaZXjpy96
     readings:
-      - name: "Ch. 8"
-        link: "https://cs61b-2.gitbook.io/cs61b-textbook/8.-arraylist"
-  - title: "Interface and Implementation Inheritance"
-    slides: "https://docs.google.com/presentation/d/1DCpZ5xy0rWUbgb_qKZ0XorjtLMXUgV8z5OwKqT-N6Z4/edit?usp=sharing"
-    video:
-    recording: "https://youtu.be/WnEb-0d8LGw"
-    quiz: "https://forms.gle/qVBRFLEhBu7CmH2p7"
+      - title: "Ch 3"
+        link: "https://cs61b-2.gitbook.io/cs61b-textbook/3.-references-recursion-and-lists"
+      - title: "Ch 4"
+        link: "https://cs61b-2.gitbook.io/cs61b-textbook/4.-sllists"
+      - title: "Ch 5"
+        link: https://cs61b-2.gitbook.io/cs61b-textbook/5.-dllists
+      - title: "Ch 8"
+        link: https://cs61b-2.gitbook.io/cs61b-textbook/8.-arraylist
+  - title: "Abstract Data Types"
+    # slides: https://docs.google.com/presentation/d/1TKQO-56_VvVaEiKFYyjCS_wYKfVg_DJE-nK9N62OWz4/edit?usp=sharing
+    video: tbd # https://www.youtube.com/playlist?list=PLnp31xXvnfRqyuN_xxm4o1Woa44dXW_N8
+    # recording: https://youtu.be/DJSlcdq-hCY
+    # quiz: https://forms.gle/GULhx2TsP6YrDnkA6
     readings:
-      - name: "Ch. 9"
-        link: "https://cs61b-2.gitbook.io/cs61b-textbook-2025/10.-inheritance-ii-extends-casting-higher-order-functions"
-  - title: "Subtype Polymorphism, Comparators, Comparables, Generic Functions"
-    slides: "https://docs.google.com/presentation/d/1zLCqAei8OELHPV_v-kCyBWSkgotnkhzYsrQT8TCZHlY/edit?usp=sharing"
-    video:
-    recording: "https://youtu.be/0qw-12Bp4Ew"
-    quiz: "https://forms.gle/hBStZpax9Ws5ZGsq6"
+      - title: "Ch 16.1"
+        link: "https://cs61b-2.gitbook.io/cs61b-textbook/16.-adts-and-bsts/16.1-abstract-data-types"
+  - title:
+    nonumber: True
+  - title: 
+    nonumber: True
+  - title: "Inheritance"
+    # slides: https://docs.google.com/presentation/d/12Yrdoyq7Yad2figzvjSpBvezRIzzfov65gq-2mcu0gI/edit?usp=sharing
+    video: tbd # https://youtube.com/playlist?list=PLnp31xXvnfRpPjLuN6-QJUFeK_mBZPve4&si=QGsZPljZc4hD_Nql
+    # quiz: https://forms.gle/buUP4J1iwXCY1rRq8
+    # recording: https://youtu.be/GiLJktMHgy8
     readings:
-      - name: "Ch. 10"
-        link: "https://cs61b-2.gitbook.io/cs61b-textbook-2025/10.-inheritance-ii-extends-casting-higher-order-functions"
-  - title: "Iterators, Object Methods"
-    slides: "https://docs.google.com/presentation/d/1z-MtqV3RMJAJy3C4QStRfL_FCk1-o9fmQ04m5KvrU_E"
-    video: "https://youtube.com/playlist?list=PLnp31xXvnfRrvh9PM0gK9fm7VAD0HdijJ&si=SHLXVjbZ5VDbDD2g"
-    recording: "https://youtu.be/nFmG60oFYlM"
-    quiz: "https://forms.gle/wPFZ1vkhVFRrHPMQA"
+      - title: "Ch 9"
+        link: "https://cs61b-2.gitbook.io/cs61b-textbook/9.-inheritance-i-interface-and-implementation-inheritance"
+      - title: "Ch 10"
+        link: "https://cs61b-2.gitbook.io/cs61b-textbook/10.-inheritance-ii-extends-casting-higher-order-functions"
+  - title: "Comparison, Iterators, and Generics"
+    # slides: https://docs.google.com/presentation/d/1Wc68rKn6FlGV7Y5JwgpA-g0NVDz973UIBmb1FYtxcKk
+    video: tbd # https://youtube.com/playlist?list=PLnp31xXvnfRqRR4OQx_I3YPkA87bO0whh&si=xQ5YS5zJXKKzP7Eo
+    # quiz: https://forms.gle/BgmDR57vwhXAfuA26
+    # extra: "[Bonus Video](https://youtu.be/1MzbwZwos6Q)"
+    # recording: https://youtu.be/oXU9Owm9sfA
     readings:
-      - name: "Ch. 12"
-        link: "https://cs61b-2.gitbook.io/cs61b-textbook-2025/12.-inheritance-iv-iterators-object-methods"
-  - title: "Asymptotics I"
-    slides: "https://docs.google.com/presentation/d/15n6HWzcTGlT1SNslOWMGUSua05dYOu1vcvUtC8XNAEs/"
-    video: "https://youtube.com/playlist?list=PLnp31xXvnfRrajvLNrqCND6CQUbqaR0mU&si=jR0uKF9obQWfVavZ"
-    recording: "https://youtu.be/4sm57s0Xm6E"
-    quiz: "https://forms.gle/5hqMPYFenYXDTF1o6"
+      - title: "Ch 11"
+        link: "https://cs61b-2.gitbook.io/cs61b-textbook/11.-inheritance-iii-subtype-polymorphism-comparators-comparable"
+      - title: "Ch 12"
+        link: "https://cs61b-2.gitbook.io/cs61b-textbook/12.-inheritance-iv-iterators-object-methods"
+  - title:
+    nonumber: True
+  - title:
+    nonumber: True
+  - title:
+    nonumber: True
+  - title: 
+    nonumber: True
+  - title: "Asymptotics"
+    # slides: https://docs.google.com/presentation/d/15n6HWzcTGlT1SNslOWMGUSua05dYOu1vcvUtC8XNAEs/
+    video: tbd # https://youtube.com/playlist?list=PLnp31xXvnfRrajvLNrqCND6CQUbqaR0mU&si=jR0uKF9obQWfVavZ
+    # recording: https://youtu.be/4sm57s0Xm6E
+    # quiz: https://forms.gle/5hqMPYFenYXDTF1o6
     readings:
-      - name: "Ch. 13"
+      - title: "Ch 13"
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/13.-asymptotics-i"
-  - title: "No Lecture (President's Day)"
-    slides:
-    recording:
-    nonumber: true
-  - title: "Ask Anything (midterm prep)"
-    slides: "https://docs.google.com/presentation/d/1gYzYu-T0ymaVcH87-mlCPc7qnRmWacHpKebCentDjoM/edit#slide=id.g208da71f5d7_0_136"
-    recording:
-  - title: "**Midterm 1 (8pm - 10pm)**"
-    nonumber: true
-  - title: "Asymptotics II"
-    slides: "https://docs.google.com/presentation/d/1hPFchcMeDChntsR6ReHa9wmv_yx_9yzuUFrnangXyFk"
-    video:
-    recording: "https://youtu.be/YmFuwyCzw6M"
-    quiz: "https://forms.gle/jpb36dpRNDMtjHRH8"
+  - title: "Asymptotics, Measuring Code Efficiency"
+    # slides: https://docs.google.com/presentation/d/15n6HWzcTGlT1SNslOWMGUSua05dYOu1vcvUtC8XNAEs/
+    video: tbd # https://youtube.com/playlist?list=PLnp31xXvnfRrajvLNrqCND6CQUbqaR0mU&si=jR0uKF9obQWfVavZ
+    # recording: https://youtu.be/4sm57s0Xm6E
+    # quiz: https://forms.gle/5hqMPYFenYXDTF1o6
     readings:
-      - name: "Ch. 13"
+      - title: "Ch 15"
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/15.-asymptotics-ii"
-  - title: "Asymptotics III"
-    slides: "https://docs.google.com/presentation/d/1MRK7tIlSVaErvySFtkpN9E5PIc04XdcXkHbZCa8uCNQ/"
-    video: "https://youtube.com/playlist?list=PLnp31xXvnfRqwuAZ5q3P5xUxe2xNZL3an&si=agzrdMt5sFdJh4d0"
-    recording: "https://youtu.be/mbP26v50xGQ"
-    quiz: "https://forms.gle/wHvCgH9dX5UBhu8K8"
+  - title:
+    nonumber: True
+  - title: 
+    nonumber: True
+  - title: "Introduction to Trees and Traversals"
+    # slides: https://docs.google.com/presentation/d/15n6HWzcTGlT1SNslOWMGUSua05dYOu1vcvUtC8XNAEs/
+    video: tbd # https://youtube.com/playlist?list=PLnp31xXvnfRrajvLNrqCND6CQUbqaR0mU&si=jR0uKF9obQWfVavZ
+    # recording: https://youtu.be/4sm57s0Xm6E
+    # quiz: https://forms.gle/5hqMPYFenYXDTF1o6
     readings:
-      - name: "Ch. 15"
-        link: "https://cs61b-2.gitbook.io/cs61b-textbook/15.-asymptotics-ii"
-  - title: "Disjoint Sets"
-    slides: "https://docs.google.com/presentation/d/12VCENn-07ZMsSt0ZlJj_YpXNWtR3aEeNlLp6KD0PGf8/edit#slide=id.g636c46f3c_0973"
-    video: "https://www.youtube.com/playlist?list=PL8FaHk7qbOD44CGmkFro1gqxkDl5gIpXB"
-    recording: "https://youtu.be/3QnElmfYYwM"
-    quiz: "https://forms.gle/1qr1w48Vyr21pFCJ6"
+      - title: "Ch 22.1-22.2"
+        link: "https://cs61b-2.gitbook.io/cs61b-textbook/22.-tree-traversals-and-graphs/22.1-tree-recap"
+  - title: "Binary Search Trees: Derivation"
+    # slides: https://docs.google.com/presentation/d/15n6HWzcTGlT1SNslOWMGUSua05dYOu1vcvUtC8XNAEs/
+    video: tbd # https://youtube.com/playlist?list=PLnp31xXvnfRrajvLNrqCND6CQUbqaR0mU&si=jR0uKF9obQWfVavZ
+    # recording: https://youtu.be/4sm57s0Xm6E
+    # quiz: https://forms.gle/5hqMPYFenYXDTF1o6
     readings:
-      - name: "Ch. 14"
-        link: "https://cs61b-2.gitbook.io/cs61b-textbook/14.-disjoint-sets"
-  - title: "Extends, Sets, Maps, and BSTs"
-    slides: "https://docs.google.com/presentation/d/19BrUSntsqpGcIbVxEMgVj5YV75l1fJKuoMtBLVSbIKQ"
-    video: "https://www.youtube.com/watch?v=990kImS-_nA&list=PL8FaHk7qbOD7xI6LkyBe2_AdaZp-XFXr3"
-    recording: "https://youtu.be/nTQm7ORCgJM"
-    quiz: "https://forms.gle/sJ7QvuspcsA5AARn9"
+      - title: "Ch 16.2-16.7"
+        link: "https://cs61b-2.gitbook.io/cs61b-textbook/16.-adts-and-bsts/16.2-binary-search-trees"
+  - title:
+    nonumber: True
+  - title: 
+    nonumber: True
+  - title:
+    nonumber: True
+  - title: 
+    nonumber: True
+  - title: "Balanced Search Trees"
+    # slides: https://docs.google.com/presentation/d/1hPFchcMeDChntsR6ReHa9wmv_yx_9yzuUFrnangXyFk
+    video: tbd # 
+    # recording: https://youtu.be/YmFuwyCzw6M
+    # quiz: https://forms.gle/jpb36dpRNDMtjHRH8
     readings:
-      - name: "Ch. 16"
-        link: "https://cs61b-2.gitbook.io/cs61b-textbook/16.-adts-and-bsts"
-  - title: "B-Trees (2-3, 2-3-4 Trees)"
-    slides: "https://docs.google.com/presentation/d/17_BnS03_dM2oeZVe7fQL5PHXJhIMBXMjuXpsjPYgMpY/edit#slide=id.g1f5aad9eaf1_0_269"
-    video: "https://www.youtube.com/watch?v=0SCtnf84QrI&list=PL8FaHk7qbOD41EHkD7CgQuRw1jpH_Fv7-"
-    recording: "https://youtu.be/bJqx0WoNNZc"
-    quiz: "https://forms.gle/eurAbBiqWFo6enas8"
-    readings:
-      - name: "Ch. 17"
+      - title: "Ch 17"
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/17.-b-trees"
-  - title: "Red Black Trees"
-    slides: "https://docs.google.com/presentation/d/1a4LW0Zsxny9On74OqJ_Q1VHlgYjuyBL-Z5_nFkXSxJ4/edit?usp=sharing"
-    video: "https://www.youtube.com/watch?v=kkd8d0QhiQ0&list=PL8FaHk7qbOD6aKgTz2W-foDiTeBEaBoS3&index=3"
-    recording: "https://youtu.be/vI2_0iKeuGU"
-    quiz: "https://forms.gle/FSS2WpAgWbNaVR4C8"
-    readings:
-      - name: "Ch. 18"
+      - title: "Ch 18"
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/18.-red-black-trees"
-  - title: "Hashing I"
-    slides: "https://docs.google.com/presentation/d/1JelUuuXlyeHQam1UDOamQdkOucFj_vCI5bNZWFkhTuM/edit"
-    video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRr_rFqN57yjZtcw_P4UiJ7a"
-    recording: "https://youtu.be/0sCPc87O304"
-    quiz: "https://forms.gle/AexqSsU8n3aJFK4D9"
+  - title: "Hashing & Hash Tables"
+    # slides: https://docs.google.com/presentation/d/1hPFchcMeDChntsR6ReHa9wmv_yx_9yzuUFrnangXyFk
+    video: tbd # 
+    # recording: https://youtu.be/YmFuwyCzw6M
+    # quiz: https://forms.gle/jpb36dpRNDMtjHRH8
     readings:
-      - name: "Ch. 19"
-        link: "https://cs61b-2.gitbook.io/cs61b-textbook/19.-hashing"
-  - title: "Hashing II"
-    slides: "https://docs.google.com/presentation/d/1SNMyAbboJ5ArhN9WmkaeOgFrMJUWFbcZn2hbTSWGcuY/edit"
-    video: "https://youtube.com/playlist?list=PLnp31xXvnfRrSxUje7m5-Y41ELVPm50N_&si=5plPlOH7IPamR6YH"
-    recording: "https://youtu.be/ADAnAolmqJc"
-    quiz: "https://forms.gle/kk4nynSew1vMhAWs7"
-    readings:
-      - name: "Ch. 20"
+      - title: "Ch 19"
+        link: "https://cs61b-2.gitbook.io/cs61b-textbook/19.-hashing-i"
+      - title: "Ch 20"
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/20.-hashing-ii"
+  - title:
+    nonumber: True
+  - title: 
+    nonumber: True
   - title: "Heaps and Priority Queues"
-    slides: "https://docs.google.com/presentation/d/1VE9RS4S80WLV-oZDz2EIW11GViSLxWejk-0QstgANW8"
-    video: "https://youtube.com/playlist?list=PLnp31xXvnfRrFJrMMOkrShULQ3KeoqZB9&si=N7_r1I06TVMxxHsK"
-    recording: "https://youtu.be/9rTohStUA5w"
-    quiz: "https://forms.gle/2V6h6Qt93AFB78nC9"
+    # slides: https://docs.google.com/presentation/d/1hPFchcMeDChntsR6ReHa9wmv_yx_9yzuUFrnangXyFk
+    video: tbd # 
+    # recording: https://youtu.be/YmFuwyCzw6M
+    # quiz: https://forms.gle/jpb36dpRNDMtjHRH8
     readings:
-      - name: "Ch. 21"
+      - title: "Ch 21"
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/21.-heaps-and-priority-queues"
-  - title: "Tree and Graph Traversals"
-    slides: "https://docs.google.com/presentation/d/1gVSdIOUq9aV91vlbzp4X-OB9CE9NJwqmP6a3aiWh-7k/edit?usp=sharing"
-    video: "https://www.youtube.com/watch?v=wkkCVWn7au4&list=PL8FaHk7qbOD4tIQrwqsx16fNq6uXNhauw"
-    recording: "https://youtu.be/sENGx72bDVc"
-    quiz: "https://forms.gle/ajsbXnM2SjbUvZNS7"
+  - title: "Exam Advice / Review"
+    # slides: https://docs.google.com/presentation/d/1hPFchcMeDChntsR6ReHa9wmv_yx_9yzuUFrnangXyFk
+    # recording: https://youtu.be/YmFuwyCzw6M
+    # quiz: 
     readings:
-      - name: "Ch. 22"
-        link: "https://cs61b-2.gitbook.io/cs61b-textbook/22.-tree-traversals-and-graphs"
-  - title: "Graph Traversals and Implementations"
-    slides: "https://docs.google.com/presentation/d/1x_mhGB5ay0jy9UXaq6TZBVXXMEn8PTy2n2xl6F6Ul3M/"
-    video: "https://www.youtube.com/watch?v=YgPtwbWpLaM&list=PLnp31xXvnfRqyRDKtQeHvjxhonhNuaOAK"
-    recording: "https://youtu.be/45cCK3PteOA"
-    quiz: "https://forms.gle/wBsQ9ggY3WhWsQTP9"
+  - title:
+    nonumber: True
+  - title: 
+    nonumber: True
+  - title: "**Midterm (7 - 9pm)**"
+    nonumber: True
+  - title: 
+    nonumber: True
+  - title: "Disjoint Sets"
+    # slides: https://docs.google.com/presentation/d/1hPFchcMeDChntsR6ReHa9wmv_yx_9yzuUFrnangXyFk
+    video: tbd # 
+    # recording: https://youtu.be/YmFuwyCzw6M
+    # quiz: https://forms.gle/jpb36dpRNDMtjHRH8
     readings:
-      - name: "Ch. 23"
+      - title: "Ch 14"
+        link: "https://cs61b-2.gitbook.io/cs61b-textbook/14.-disjoint-sets"
+  - title: "Introduction to Graphs"
+    # slides: https://docs.google.com/presentation/d/1MRK7tIlSVaErvySFtkpN9E5PIc04XdcXkHbZCa8uCNQ/
+    video: tbd # https://youtube.com/playlist?list=PLnp31xXvnfRqwuAZ5q3P5xUxe2xNZL3an&si=agzrdMt5sFdJh4d0
+    # recording: https://youtu.be/mbP26v50xGQ
+    # quiz: https://forms.gle/wHvCgH9dX5UBhu8K8
+    readings:
+      - title: "Ch 22.3-22.4"
+        link: "https://cs61b-2.gitbook.io/cs61b-textbook/22.-tree-traversals-and-graphs/22.3-graphs"
+      - title: "Ch 23"
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/23.-graph-traversals-and-implementations"
-  - title: "Shortest Paths"
-    slides: "https://docs.google.com/presentation/d/1g0XbwrdNxrDmFXXP6pPf-_mtpIrzSdP4W71VyvbfITc/edit"
-    video: "https://www.youtube.com/watch?v=iMoFtG1md3w&list=PLnp31xXvnfRrbIn8mZ3pmpgygnfwp2zjW"
-    recording: "https://youtu.be/gPzzzP0g0eE"
-    quiz: "https://forms.gle/s8nRHyz6p5W282TA6"
+  - title:
+    nonumber: True
+  - title: 
+    nonumber: True
+  - title: "Shortest Path Trees"
+    # slides: https://docs.google.com/presentation/d/12VCENn-07ZMsSt0ZlJj_YpXNWtR3aEeNlLp6KD0PGf8/edit#slide=id.g636c46f3c_0973
+    video: tbd # https://www.youtube.com/playlist?list=PL8FaHk7qbOD44CGmkFro1gqxkDl5gIpXB
+    # recording: https://youtu.be/3QnElmfYYwM
+    # quiz: https://forms.gle/1qr1w48Vyr21pFCJ6
     readings:
-      - name: "Ch. 24"
+      - title: "Ch 24"
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/24.-shortest-paths"
   - title: "Minimum Spanning Trees"
-    slides: "https://docs.google.com/presentation/d/1J2aR_oZeGN3pKVriZdkQoag6nzj1XnTBzMfGBJkjnBM/"
-    video: "https://www.youtube.com/watch?v=vnKK38JS9Ik&list=PL8FaHk7qbOD7SvlWei_-neNmgmXzJG2ad"
-    recording: "https://youtu.be/2Z8M5TAvg-U"
-    quiz: "https://forms.gle/muwaVvZpD8NePmBq7"
+    # slides: https://docs.google.com/presentation/d/19BrUSntsqpGcIbVxEMgVj5YV75l1fJKuoMtBLVSbIKQ
+    video: tbd # https://www.youtube.com/watch?v=990kImS-_nA&list=PL8FaHk7qbOD7xI6LkyBe2_AdaZp-XFXr3
+    # recording: https://youtu.be/nTQm7ORCgJM
+    # quiz: https://forms.gle/sJ7QvuspcsA5AARn9
     readings:
-      - name: "Ch. 25"
+      - title: "Ch 25"
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/25.-minimum-spanning-trees"
-  - title: "Spring Break"
+  - title:
     nonumber: True
-    rowspan: 3
-  - title: "Directed Acyclic Graphs"
-    slides: "https://docs.google.com/presentation/d/1RXsgiW-0Jik_cn0HEwMFZYMYQuvqDeLeCEf7HupZNXE/"
-    video: "https://youtube.com/playlist?list=PLnp31xXvnfRprqOwH0sojH3VLONWXtYM0&si=PokkZG0u_t06es5m"
-    recording: "https://youtu.be/n-4ijFSRAKQ"
-    quiz: "https://forms.gle/QAzwEhF7LuTgdYAY8"
+  - title: 
+    nonumber: True
+  - title:
+    nonumber: True
+  - title: 
+    nonumber: True
+  - title: "BYOW Introduction"
+    # slides: https://docs.google.com/presentation/d/17_BnS03_dM2oeZVe7fQL5PHXJhIMBXMjuXpsjPYgMpY/edit#slide=id.g1f5aad9eaf1_0_269
+    video: tbd # https://www.youtube.com/watch?v=0SCtnf84QrI&list=PL8FaHk7qbOD41EHkD7CgQuRw1jpH_Fv7-
+    # recording: https://youtu.be/bJqx0WoNNZc
+    # quiz: https://forms.gle/eurAbBiqWFo6enas8
     readings:
-      - name: "Ch. 28"
-        link: "https://cs61b-2.gitbook.io/cs61b-textbook/28.-reductions-and-decomposition"
-  - title: "Tries and Midterm 2 Review"
-    slides: "https://docs.google.com/presentation/d/1JzSaAYWneEv4KPGy0U1RSbUB5QVRlH5hQcSikn88fSw/"
-    video: "https://www.youtube.com/watch?v=F8Q-SHW2hAM&list=PLnp31xXvnfRoMxe8IbO1qF3lXwudLHVDk"
-    recording: "https://youtu.be/z9KPiR0qo98"
-    quiz: "https://forms.gle/CtPASDe1HBHxLzH2A"
+      - title: "Project 3 Spec"
+        link: projects/proj3
+  - title: "Sorting"
+    # slides: https://docs.google.com/presentation/d/1a4LW0Zsxny9On74OqJ_Q1VHlgYjuyBL-Z5_nFkXSxJ4/edit?usp=sharing
+    video: tbd # https://www.youtube.com/watch?v=kkd8d0QhiQ0&list=PL8FaHk7qbOD6aKgTz2W-foDiTeBEaBoS3&index=3
+    # recording: https://youtu.be/vI2_0iKeuGU
+    # quiz: https://forms.gle/FSS2WpAgWbNaVR4C8
     readings:
-      - name: "Ch. 26"
-        link: "https://cs61b-2.gitbook.io/cs61b-textbook/26.-prefix-operations-and-tries"            
-  - title: "**Midterm 2 (8pm - 10pm)**"
-    nonumber: True  
-  - title: "Basic Sorts"
-    slides: "https://docs.google.com/presentation/d/1IueKinWSMOzJsoW8u2BdZVW2Eiesfq182bHO3U9Vqcw/"
-    video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRrK9o_QZyGOCbQVFTsqOPtN"
-    recording: "https://youtu.be/DRQNGLOERJA"
-    quiz: "https://forms.gle/7hqwJqYQa9rVTb7W9"
+      - title: "Ch 29"
+        link: "https://cs61b-2.gitbook.io/cs61b-textbook/29.-basic-sorts"
+  - title:
+    nonumber: True
+  - title: 
+    nonumber: True
+  - title: "Quicksort"
+    # slides: https://docs.google.com/presentation/d/1JelUuuXlyeHQam1UDOamQdkOucFj_vCI5bNZWFkhTuM/edit
+    video: tbd # https://www.youtube.com/playlist?list=PLnp31xXvnfRr_rFqN57yjZtcw_P4UiJ7a
+    # recording: https://youtu.be/0sCPc87O304
+    # quiz: https://forms.gle/AexqSsU8n3aJFK4D9
     readings:
-      - name: "Ch. 29"
-        link: "https://cs61b-2.gitbook.io/cs61b-textbook/29.-basic-sorts"  
-  - title: "Software Engineering I - Project 3"
-    slides: "https://docs.google.com/presentation/d/1x2m9MGy95DQtqj0cjh7_bDTHRgp5kuI71VEjZc4TFRc"
-    recording: "https://youtu.be/qV-xeU5vKm0"
-    # quiz: ""
-    readings:
-    classes:
-      - schedule-red          
-  - title: "Merge Sort, Insertion Sort, and Quick Sort"
-    slides: "https://docs.google.com/presentation/d/18CSlgRlld1Kgg1YzjhjzthP9A6bF_XUTt2fhepjJDDs"
-    video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRqsfDWZNS86oYmHFY6UKA2t"
-    recording: "https://youtu.be/1ApoeHOjmAo"
-    quiz: "https://forms.gle/sKsKjRN5Ay9CgKgMA"
-    readings:
-      - name: "Ch. 30"
+      - title: "Ch 30"
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/30.-quicksort"
-  - title: "Software Engineering II [Optional]"
-    slides: "https://docs.google.com/presentation/d/1xCfp0pZkziOOoh9GyLQwTmPhDo7bdkg2P0i3EwNDUMA/edit?usp=drivesdk"
-    video:
-    recording: "https://youtu.be/CPScOCVoU1E"
-    # quiz: ""
-    classes:
-      - schedule-red      
-  - title: "Software Engineering III - Project 3"
-    slides: "https://docs.google.com/presentation/d/1UDAmYmWRnIgrm5-JgM6gWZd0uje8bAKm_xrt_x2_ZbE"
-    recording: "https://youtu.be/PA0ineqGrZA"
-    classes:
-      - schedule-red
-  - title: "More Quicksort, Quick Select, Stability"
-    slides: "https://docs.google.com/presentation/d/1oOS_OHUIwYiTN7MVRbDCK1-cwZmx5OCNgj3UCZPXTLY"
-    video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRrHHQP93qqc_QBNBF_WEQLy"
-    recording: "https://youtu.be/nqCKoHtXol0"
-    quiz: "https://forms.gle/cUCgNQuRTdifRVWX8"
-    readings:    
-      - name: "Ch. 32"
+      - title: "Ch 32"
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/32.-more-quick-sort-sorting-summary"
-  - title: "Sorting and Algorithmic Bounds"
-    slides: "https://docs.google.com/presentation/d/1GhVpargCDkLuacnb8HzkeRxTVofF6eE-siUEDvf8V3Y/"
-    video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRqEadgCMXeo1gnlIxnETooG"
-    recording: "https://youtu.be/oFhHGNKa6Ok"
-    quiz: "https://forms.gle/1yFhf3qNyDk6rpaZ7"
-    readings:
-      - name: "Ch. 34"
+      - title: "Ch 34"
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/34.-sorting-and-algorithmic-bounds"
-  - title: "Software Engineering IV [Optional]"
-    slides: "https://docs.google.com/presentation/d/1yXqrOWwGeDqvcUAJ2BVkZ-r4M7cRqgwwXGQA0wMn-kA"
-    recording: "https://youtu.be/2BDrDRCJpSs"
-    classes:
-      - schedule-red
   - title: "Radix Sorts"
-    slides: "https://docs.google.com/presentation/d/1v2ZzzGLOv-U7QxIk2si7YDdjQtUi_JRlVzlWGkh3PmA/"
-    video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRr4cg5TeJZplLTlOVmMNE0d"
-    recording: "https://youtu.be/VRRqynZwpRg"
-    quiz: "https://forms.gle/zEUa9FMsHV89jyEs5"
+    # slides: https://docs.google.com/presentation/d/1SNMyAbboJ5ArhN9WmkaeOgFrMJUWFbcZn2hbTSWGcuY/edit
+    video: tbd # https://youtube.com/playlist?list=PLnp31xXvnfRrSxUje7m5-Y41ELVPm50N_&si=5plPlOH7IPamR6YH
+    # recording: https://youtu.be/ADAnAolmqJc
+    # quiz: https://forms.gle/kk4nynSew1vMhAWs7
     readings:
-      - name: "Ch. 35"
-        link: "https://cs61b-2.gitbook.io/cs61b-textbook/35.-radix-sorts"      
-  - title: "Sorting Conclusion, Algorithm Design Practice"
-    slides: "https://docs.google.com/presentation/d/1bSa1oVvhKkFaIUOyevSWKovME0pN1IBqqgpvBNUbuVw/edit"
-    video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRoDV1sFRy3Hdx0N6BMZjI1n"
-    recording: "https://youtu.be/jobat9IrmpQ"
-    quiz: "https://forms.gle/6WavxYhuec5ohtU27"
-    readings:
-      - name: "Ch. 36"
+      - title: "Ch 35"
+        link: "https://cs61b-2.gitbook.io/cs61b-textbook/35.-radix-sorts"
+      - title: "Ch 36"
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/36.-sorting-and-data-structures-conclusion"
-  - title: "Compression [Optional]"
-    slides: "https://docs.google.com/presentation/d/1t2FoFm0H-r5oVQmn-KcEcpbofI1ItCTtBDDkuFBFlHM/edit"
-    video:
-    recording: "https://youtu.be/3071MOOoEis"
-    readings:
-      - name: "Ch. 38"
-        link: "https://cs61b-2.gitbook.io/cs61b-textbook/38.-compression-and-complexity"
-    classes:
-      - schedule-red
-  - title: "P vs NP [Optional]"
-    slides: "https://docs.google.com/presentation/d/1SHCz2_Lzr6tPrZ1jWTi9YsuAvqbxJtJQ3k2vgo64pCE/edit"
-    video:
-    recording: "https://youtu.be/Tew56swDlWA"
-    readings:
-      - name: "Ch. 39"
-        link: "https://cs61b-2.gitbook.io/cs61b-textbook/39.-compression-complexity-p-np"
-    classes:
-      - schedule-red
-  - title: "Summary, Fun [Optional]"
-    slides: "https://docs.google.com/presentation/d/1U9ljZcRX3zYHRw4IesdqD4KMRCqig6UGjXdmYC1bE7I/edit?usp=sharing"
-    recording: "https://youtu.be/wIL8ELdtgBo"
-    classes:
-      - schedule-red
-  - title: "No Lecture (RRR Week)"
-    rowspan: 3
+  - title:
     nonumber: True
-  - title: "**Final Exam (Tue, May 13, 8–11am)**"
+  - title: 
     nonumber: True
+  - title:
+    nonumber: True
+  - title: 
+    nonumber: True
+  - title: "Special Topics"
+    classes:
+      - schedule-red
+    # slides: https://docs.google.com/presentation/d/1VE9RS4S80WLV-oZDz2EIW11GViSLxWejk-0QstgANW8
+    # video: https://youtube.com/playlist?list=PLnp31xXvnfRrFJrMMOkrShULQ3KeoqZB9&si=N7_r1I06TVMxxHsK
+    # recording: https://youtu.be/9rTohStUA5w
+    # quiz: https://forms.gle/2V6h6Qt93AFB78nC9
+    readings:
+    nonumber: True
+  - title:
+    nonumber: True
+  - title: 
+    nonumber: True
+  - title:
+    nonumber: True
+  - title: "AMA"
+    classes:
+      - schedule-red
+    # slides: https://docs.google.com/presentation/d/1gVSdIOUq9aV91vlbzp4X-OB9CE9NJwqmP6a3aiWh-7k/edit?usp=sharing
+    # video: https://www.youtube.com/watch?v=wkkCVWn7au4&list=PL8FaHk7qbOD4tIQrwqsx16fNq6uXNhauw
+    # recording: https://youtu.be/sENGx72bDVc
+    # quiz: https://forms.gle/ajsbXnM2SjbUvZNS7
+    readings:
+    nonumber: True
+  - title:
+    nonumber: True
+  - title:
+    nonumber: True
+  - title: 
+    nonumber: True
+  - title: "Review?"
+    classes:
+      - schedule-red
+    # slides: https://docs.google.com/presentation/d/1x_mhGB5ay0jy9UXaq6TZBVXXMEn8PTy2n2xl6F6Ul3M/
+    # video: https://www.youtube.com/watch?v=YgPtwbWpLaM&list=PLnp31xXvnfRqyRDKtQeHvjxhonhNuaOAK
+    # recording: https://youtu.be/45cCK3PteOA
+    # quiz: https://forms.gle/wBsQ9ggY3WhWsQTP9
+    readings:
+  - title:
+    nonumber: True
+  - title:
+    nonumber: True
+  - title:
+    nonumber: True
+  - title: "**Final Exam (Tues, Aug 12, 3-6pm)**"
+    nonumber: True
+  - title:
+    nonumber: True
+
+  # saving below for reference
+  
+  # - title: "Intro, Instance Variables"
+  #   slides: "https://docs.google.com/presentation/d/1_funKmLVePWqfNulUl5yehBQmV1gxHarI_VkMgQ_Ah8/edit#slide=id.g3280633c3ea_0_148"
+  #   video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRq5wRDN8wZFy7GrrJXUtr1q"
+  #   recording: "https://www.youtube.com/watch?v=qMdLi5v8aT4"
+  #   quiz: "https://forms.gle/9YzSaMr74atHPoai7"
+  #   readings:
+  #     - name: "Ch. 1"
+  #       link: "https://cs61b-2.gitbook.io/cs61b-textbook/1.-introduction"
+  # - title: "Summary, Fun [Optional]"
+  #   slides: "https://docs.google.com/presentation/d/1U9ljZcRX3zYHRw4IesdqD4KMRCqig6UGjXdmYC1bE7I/edit?usp=sharing"
+  #   recording: "https://youtu.be/wIL8ELdtgBo"
+  #   classes:
+  #     - schedule-red
+  # - title: "No Lecture (RRR Week)"
+  #   rowspan: 3
+  #   nonumber: True
+  # - title: "**Final Exam (Tue, May 13, 8–11am)**"
+  #   nonumber: True

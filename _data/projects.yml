@@ -71,65 +71,65 @@
 #     - schedule-green
 
 projects:
-  - nonumber: true
-    rowspan: 1
-  - title: "Mini-Project 0: 2048"
+  # - nonumber: true
+  #   rowspan: 1
+  - title: "Project 0: 2048"
     link: "/projects/proj0"
     show_links: true
-    due: "2025/02/3"
+    due: "2025/06/29"
     classes:
       - "schedule-green"
     rowspan: 5
-  - title: "Project 1A: LinkedListDeque"
-    link: "/projects/proj1a"
-    show_links: true
-    due: "2025/02/10"
+  - title: "Project 1: Deques Checkpoint"
+    link: "/projects/proj1"
+    show_links: false
+    due: "2025/07/03"
     classes:
-      - "schedule-green"
-    rowspan: 3
-  - title: "Project 1B: ArrayDeque, Deque"
-    link: "/projects/proj1b"
-    show_links: true
-    due: "2025/02/19"
+      - "schedule-blue"
+    rowspan: 4
+  - title: "Project 1: Deques"
+    link: "/projects/proj1"
+    show_links: false
+    due: "2025/07/06"
     classes:
-      - "schedule-green"
-    rowspan: 4
-  - nonumber: true
-    rowspan: 4
+      - "schedule-blue"
+    rowspan: 1
+  # - nonumber: true
+  #   rowspan: 4
   - title: "Project 2A: NGrams"
     link: "/projects/proj2a"
-    show_links: true
-    due: "2025/03/12"
+    show_links: false
+    due: "2025/07/13"
     classes:
-      - "schedule-green"
-    rowspan: 6
-  - title: "Project 2B: Checkpoint"
-    link: "/projects/proj2b"
-    rowspan: 4
-    show_links: true
-    due: "2025/03/21"
-    classes:
-      - "schedule-green"
+      - "schedule-purple"
+    rowspan: 5
+  # - title: "Project 2B: Checkpoint"
+  #   link: "/projects/proj2b"
+  #   rowspan: 4
+  #   show_links: true
+  #   due: "2025/03/21"
+  #   classes:
+  #     - "schedule-green"
   - title: "Project 2B: Wordnet"
     link: "/projects/proj2b"
-    show_links: true
-    due: "2025/04/04"
+    show_links: false
+    due: "2025/07/27"
     classes:
-      - "schedule-green"
-    rowspan: 7
+      - "schedule-purple"
+    rowspan: 10
   - title: "Project 3A: World Generation"
     link: "/projects/proj3/proj3a"
-    show_links: true
-    due: "2025/04/18"
+    show_links: false
+    due: "2025/08/03"
     classes:
       - "schedule-green"
-    rowspan: 6
+    rowspan: 5
   - title: "Project 3B: Interactivity"
     link: "/projects/proj3/proj3b"
-    show_links: true
+    show_links: false
     due: "2025/04/29"
     classes:
       - "schedule-green"
-    rowspan: 3
+    rowspan: 5
   - nonumber: true
     rowspan: 10

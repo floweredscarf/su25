@@ -71,55 +71,64 @@
 #     - schedule-purple
 
 homeworks:
-  - title: "Homework 0A"
-    link: "homeworks/hw0/hw0a"
+  - title: "Homework 0"
+    due: "2025/06/24"
+    link: "https://www.gradescope.com/courses/1050654/assignments/6356907"
     show_links: true
-    due: "2025/1/24"
     rowspan: 2
     classes:
       - "schedule-yellow"
-  - title: "Homework 0B"
-    link: "homeworks/hw0/hw0b"
-    show_links: true
-    due: "2025/1/29"
-    rowspan: 1
-    classes:
-      - "schedule-yellow"
   - nonumber: true
-    rowspan: 2
-  - title: "Homework 1"
-    link: "https://www.gradescope.com/courses/961758/assignments/5698332"
-    show_links: true
-    due: "2025/02/7"
-    rowspan: 3
-    classes:
-      - "schedule-yellow"
-  - nonumber: true
-    rowspan: 8
-  - title: "Homework 2"
-    link: "homeworks/hw2"
-    show_links: true
-    due: "2025/03/07"
-    rowspan: 5
-    classes:
-      - "schedule-yellow"
-  - nonumber: true
-    rowspan: 9
-  - title: "Homework 3"
-    link: "https://www.gradescope.com/courses/961758/assignments/5967008"
-    show_links: true
-    due: "2025/04/04"
-    rowspan: 4
-    classes:
-      - "schedule-yellow"
-  - nonumber: true
-    rowspan: 9
-  - title: "Homework 4"
-    link: "https://www.gradescope.com/courses/961758/assignments/6164006"
-    show_links: true
-    due: "2025/05/04"
-    rowspan: 3
-    classes:
-      - "schedule-yellow"
-  - nonumber: true
-    rowspan: 6
+    rowspan: 50
+  # - title: "Homework 0A"
+  #   link: "homeworks/hw0/hw0a"
+  #   show_links: true
+  #   due: "2025/1/24"
+  #   rowspan: 2
+  #   classes:
+  #     - "schedule-yellow"
+  # - title: "Homework 0B"
+  #   link: "homeworks/hw0/hw0b"
+  #   show_links: true
+  #   due: "2025/1/29"
+  #   rowspan: 1
+  #   classes:
+  #     - "schedule-yellow"
+  # - nonumber: true
+  #   rowspan: 2
+  # - title: "Homework 1"
+  #   link: "https://www.gradescope.com/courses/961758/assignments/5698332"
+  #   show_links: true
+  #   due: "2025/02/7"
+  #   rowspan: 3
+  #   classes:
+  #     - "schedule-yellow"
+  # - nonumber: true
+  #   rowspan: 8
+  # - title: "Homework 2"
+  #   link: "homeworks/hw2"
+  #   show_links: true
+  #   due: "2025/03/07"
+  #   rowspan: 5
+  #   classes:
+  #     - "schedule-yellow"
+  # - nonumber: true
+  #   rowspan: 9
+  # - title: "Homework 3"
+  #   link: "https://www.gradescope.com/courses/961758/assignments/5967008"
+  #   show_links: true
+  #   due: "2025/04/04"
+  #   rowspan: 4
+  #   classes:
+  #     - "schedule-yellow"
+  # - nonumber: true
+  #   rowspan: 9
+  # - title: "Homework 4"
+  #   link: "https://www.gradescope.com/courses/961758/assignments/6164006"
+  #   show_links: true
+  #   due: "2025/05/04"
+  #   rowspan: 3
+  #   classes:
+  #     - "schedule-yellow"
+  # - nonumber: true
+  #   rowspan: 6
