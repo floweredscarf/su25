@@ -1,7 +1,7 @@
 ---
 name: Lawrence Wu
 pronouns: he/him/his
-role: Instructor
+role: TA
 spaaccess: false
 dspdata: false
 email: lawrence.wu@berkeley.edu

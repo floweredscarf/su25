@@ -1,7 +1,7 @@
 ---
 name: Codey Ma
 pronouns:
-role: Instructor
+role: TA
 spaaccess: false
 dspdata: false
 email: cm.1@berkeley.edu

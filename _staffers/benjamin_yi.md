@@ -1,7 +1,7 @@
 ---
 name: Benjamin Yi
 pronouns: he/him
-role: Instructor
+role: Tutor
 spaaccess: false
 dspdata: false
 email: byi09@berkeley.edu

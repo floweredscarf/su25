@@ -1,7 +1,7 @@
 ---
 name: Dennis Koh
 pronouns:
-role: Instructor
+role: TA
 spaaccess: false
 dspdata: false
 email: dkoh135@berkeley.edu

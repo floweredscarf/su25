@@ -598,6 +598,18 @@ The entire staff is very excited to be teaching CS 61BL this semester and we're
 looking forward to meeting such a large and enthusiastic group of students.
 Welcome to CS 61BL!
 
+## Auditing 61BL
+
+We welcome those who are interested in auditing 61BL. We will provide access to our assignments and autograders, but you will not have access to anything that requires manual human effort (e.g. staff support, exam grading, lab sections, etc.). We cannot provide staff support for auditors.
+
+61BL SU25 lectures will be made available to those with a Berkeley email. (If you are a non-Berkeley student, see [the SP25 audit policy](https://sp25.datastructur.es/policies/#auditing-cs61b).)
+
+We cannot add auditors to private platforms (e.g. bCourses, Ed, SU25 student Gradescope). All the information we can publicly share is available on this course website.
+
+Note: If you're auditing the course, you will not be able to access Beacon. Instead, you can directly clone the [skeleton repo](https://github.com/cs61bl/skeleton-su25) to get a copy of the starter code.
+
+To get everything set up, go to Gradescope and select the "Add a course" button. Enter course code **KDR8BZ** to be added. You will not be given a student repo, so you will have to create your own on GitHub in order to submit assignments. After you complete setup and Lab 1, you should have access to all the code for the class.
+
 ### Acknowledgments
 
 Some course information ideas derived from:

@@ -1,7 +1,7 @@
 ---
 name: Michelle Koga
 pronouns: she/her
-role: Instructor
+role: Tutor
 spaaccess: false
 dspdata: false
 email: michellesk@berkeley.edu

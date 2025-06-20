@@ -1,7 +1,7 @@
 ---
 name: Amy Wang
 pronouns: she/her
-role: Instructor
+role: TA
 spaaccess: false
 dspdata: false
 email: amywanglw@berkeley.edu

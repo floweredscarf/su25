@@ -1,7 +1,7 @@
 ---
 name: Julian Tuazon
 pronouns: he/him
-role: Instructor
+role: TA
 spaaccess: false
 dspdata: false
 email: j.tuazon@berkeley.edu

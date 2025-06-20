@@ -1,9 +1,9 @@
 ---
 name: Karen Meng
 pronouns: she/her
-role: Instructor
-spaaccess: false
-dspdata: True
+role: Admin TA
+spaaccess: true
+dspdata: true
 email: kmeng@berkeley.edu
 photo: karen_meng.jpg
 ---
