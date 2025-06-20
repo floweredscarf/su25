@@ -31,18 +31,18 @@ projects:
   #   due: "09/06"
   #   classes:
   #     - proj1 # adds the purple background
-  - title: "Project 0: 2048 Checkpoint"
-    due: "6/26"
-    link: "/projects/proj0/"
-    released: True
-    rowspan: 4
-    classes:
-      - proj1
+  # - title: "Project 0: 2048 Checkpoint"
+  #   due: "6/26"
+  #   link: "/projects/proj0/"
+  #   released: True
+  #   rowspan: 4
+  #   classes:
+  #     - proj1
   - title: "Project 0: 2048"
     due: "6/29"
     link: "/projects/proj0/"
     released: True
-    rowspan: 1
+    rowspan: 5
     classes:
       - proj1
   - title: "Project 1: Deques Checkpoint"
