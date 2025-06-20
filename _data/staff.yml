@@ -31,7 +31,7 @@ staff_columns: 2
 dsp_text: "DSP Data"
 
 # Determines the text to display for the staff email access tag.
-spa_text: "cs61b@"
+spa_text: "cs61bl@"
 
 # [CS61B] Text for student support access tag. ~peyrin Jun 2025
 student_support_text: "Student Support"
