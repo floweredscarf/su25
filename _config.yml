@@ -36,11 +36,11 @@ description: "Data Structures at UC Berkeley"
 #   then this should say "" since there is no subpath
 # - If not empty, the baseurl MUST start with a leading slash,
 #   and MUST NOT have a slash at the end. "/sp25" is good, "/sp25/" is bad
-baseurl: ""
+baseurl: "/su25"
 
 # - Jekyll default variable.
 # - The full URL of your homepage.
-url: "https://sp25.datastructur.es"
+url: "https://cs61bl.org"
 
 # - Used in _includes/title.html
 # - Path to an image to display in the sidebar (or top bar on mobile). Leave blank to omit.
