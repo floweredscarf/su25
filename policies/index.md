@@ -378,7 +378,7 @@ For the theoretical lab attendance, you will need to attend 5 of the 7 theoretic
 
 ### Late Policy
 
-You will receive a total of 8 slip days for the entire semester that can be used for lab assignments. Each slip day extends your deadline by 24 hours. Slip days may only be applied retroactively, and you may **not** use a fraction of a slip day.
+You will receive a total of 8 slip days for the entire semester that can be used for lab and project assignments. Slip days can not be used for forms, surveys, or homeworks. Each slip day extends your deadline by 24 hours. Slip days may only be applied retroactively, and you may **not** use a fraction of a slip day. If you need a longer extension, please refer to the [Extenuating Circumstances Section](#extenuating-circumstances) below. 
 
 #### Lab Lateness
 
@@ -420,10 +420,10 @@ family emergency, etc.
 If you're experiencing extenuating circumstances impacting your mental health and would like
 to meet with a member of course staff to work out accommodations within the course, or would 
 like to be connected to more resources, you can set up a meeting with us 
-[**here**](https://forms.gle/QnYufRchWc7dFdKZ8).
+[**here**](https://forms.gle/fhgcSq54BJHhNKz66).
 
 {% include alert.html type="danger" content=" We will not be considering retroactive 
-submissions to the extenuating circumstances form. **This means that you should proactively submit to the form before the assignment's deadline to be considered.** Exceptions will only be made in extreme cases. " %}
+submissions to the extenuating circumstances form. **This means that you should proactively submit to the form before the assignment's deadline to be considered.** We also will be primarily providing extensions as a result of extenuating circumstances on projects. Exceptions will only be made in extreme cases. " %}
 
 The last day to submit any assignment is **Monday, August 11th, 11:59 PM PT.** 
 This is a hard deadline, and we will not accept any submissions made after this deadline.
