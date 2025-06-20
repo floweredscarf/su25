@@ -72,7 +72,6 @@ If you have a non-course related question, you can view staff emails by pressing
 <br>
 - **CS61B@**: Can see or respond to emails for [cs61b@berkeley.edu](mailto:cs61b@berkeley.edu)
 - **DSP**: Can see the DSP letter of accommodations (knowing whether or not a student is DSP does not count as DSP access).
-- **Student Support**: Can see student support meeting notes, extenuating circumstances form responses, and see/respond to emails for [cs61b-student-support@berkeley.edu](mailto:cs61b-student-support@berkeley.edu)
 
 {% if extra_instructors or instructors %}
 ## Instructors

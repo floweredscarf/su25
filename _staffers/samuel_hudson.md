@@ -1,11 +1,11 @@
 ---
-name: Dennis Koh
+name: Samuel Hudson
 pronouns: he/him
-role: TA
+role: Tutor
 spaaccess: false
 dspdata: false
-email: dkoh135@berkeley.edu
-photo: dennis_koh.webp
+email: samuel.r.hudson@berkeley.edu
+photo: samuel_hudson.webp
 ---
 
 

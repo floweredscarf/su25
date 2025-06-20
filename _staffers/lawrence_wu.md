@@ -1,6 +1,6 @@
 ---
 name: Lawrence Wu
-pronouns: he/him/his
+pronouns: he/him
 role: TA
 spaaccess: false
 dspdata: false

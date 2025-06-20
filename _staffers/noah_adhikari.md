@@ -1,6 +1,6 @@
 ---
 name: Noah Adhikari
-pronouns: he/him/his
+pronouns: he/him
 role: Instructor
 spaaccess: True
 dspdata: True

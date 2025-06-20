@@ -1,7 +1,7 @@
 ---
 name: Yinqi Yi
 pronouns: she/her
-role: Tutor
+role: TA
 spaaccess: false
 dspdata: false
 email: yiyinqi@berkeley.edu
