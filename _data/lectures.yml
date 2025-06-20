@@ -359,6 +359,8 @@ lectures:
   - title: 
     nonumber: True
   - title: "Special Topics"
+    classes:
+      - schedule-red
     # slides: https://docs.google.com/presentation/d/1VE9RS4S80WLV-oZDz2EIW11GViSLxWejk-0QstgANW8
     # video: https://youtube.com/playlist?list=PLnp31xXvnfRrFJrMMOkrShULQ3KeoqZB9&si=N7_r1I06TVMxxHsK
     # recording: https://youtu.be/9rTohStUA5w
@@ -372,6 +374,8 @@ lectures:
   - title:
     nonumber: True
   - title: "AMA"
+    classes:
+      - schedule-red
     # slides: https://docs.google.com/presentation/d/1gVSdIOUq9aV91vlbzp4X-OB9CE9NJwqmP6a3aiWh-7k/edit?usp=sharing
     # video: https://www.youtube.com/watch?v=wkkCVWn7au4&list=PL8FaHk7qbOD4tIQrwqsx16fNq6uXNhauw
     # recording: https://youtu.be/sENGx72bDVc
@@ -385,6 +389,8 @@ lectures:
   - title: 
     nonumber: True
   - title: "Review?"
+    classes:
+      - schedule-red
     # slides: https://docs.google.com/presentation/d/1x_mhGB5ay0jy9UXaq6TZBVXXMEn8PTy2n2xl6F6Ul3M/
     # video: https://www.youtube.com/watch?v=YgPtwbWpLaM&list=PLnp31xXvnfRqyRDKtQeHvjxhonhNuaOAK
     # recording: https://youtu.be/45cCK3PteOA

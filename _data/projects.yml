@@ -89,7 +89,7 @@ projects:
     rowspan: 4
   - title: "Project 1: Deques"
     link: "/projects/proj1"
-    show_links: true
+    show_links: false
     due: "2025/07/06"
     classes:
       - "schedule-blue"
@@ -102,7 +102,7 @@ projects:
     due: "2025/07/13"
     classes:
       - "schedule-purple"
-    rowspan: 6
+    rowspan: 5
   # - title: "Project 2B: Checkpoint"
   #   link: "/projects/proj2b"
   #   rowspan: 4
