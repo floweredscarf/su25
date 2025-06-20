@@ -61,7 +61,8 @@ While we can’t predict how many hours you will spend on the course, here is a
 brief breakdown of what you will have to do in this course.
 
 - Four 2 hour practical labs per week on Monday - Thursday.
-- Two one-hour live lectures per week on Monday and Wednesday, with pre-recorded lecture videos to watch before class.
+- One 2 hour theoretical lab per week on Friday
+- Two 1 hour live lectures per week on Monday and Wednesday, with pre-recorded lecture videos to watch before class.
 - One homework per week (total of 6).
 - Two exams (one midterm, one final) in the 8 weeks of the course.
 - Four projects in the 8 weeks of the course.
@@ -96,7 +97,7 @@ We are committed to creating a learning environment welcoming of all students th
 Professionalism and respect for diversity are not just matters between students; they also apply to how the course staff treat the students. The staff of this course will treat you in a way that respects our differences. However, despite our best efforts, we might slip up, hopefully inadvertently. We (like many people) are still in the process of learning about diverse perspectives and identities. If you are concerned about classroom environment issues created by the overall class dynamic or by the staff, please feel free to talk to us about it.
 
 If something was said in class (by anyone—staff member or fellow student) that made you feel uncomfortable, please talk to us about it. Sometimes, you may not be comfortable bringing this up directly to us. Here are some options:
-- via the [61BL SU25 Incident Reporting Form.](https://forms.gle/kvTnbkvhYPZdiKbY6)
+- via the [61BL SU25 Incident Reporting Form.](https://forms.gle/PfiP8KSFd13bqD4a9)
 - via email to our instructors, head TAs, or another member of staff you're comfortable with.
 - via the department's [Student Climate and Incident Reporting Form.](https://docs.google.com/forms/d/e/1FAIpQLSc4NYHdUJ8IzYA1SoiTinWBybGWkj0mfmdnHAeygAxkZajelQ/viewform)
 
@@ -123,11 +124,11 @@ depression, difficulty concentrating and/or lack of motivation. Your mental heal
 - The National Suicide Prevention Lifeline is a 24-hour number any student or faculty/staff person can call to speak with someone about suicide: +1-800-273-TALK (+1-800-273-8255).
 - Support is also available for survivors of sexual violence or harassment. Note that course staff are [Responsible Employees](https://svsh.berkeley.edu/responsible-employee) for such incidents. Campus also has free, confidential services available:
   - [UC Berkeley Sexual Violence Services](https://svsh.berkeley.edu/)
-  - [PATH to Care Center: Reporting and Privacy](https://survivorsupport.berkeley.edu/Confidential-Resources-Anonymous-Reporting-and-Privacy)
+  - [PATH to Care Center](https://care.berkeley.edu)
 
 If you're in need of laptops, Wi-Fi hotspots, or other required technologies, check out the [Student Technology Equity Program.](https://technology.berkeley.edu/STEP)
 
-{% include alert.html type="info" content="If you’re experiencing extenuating circumstances impacting your mental health and would like to meet with a member of course staff to work out accommodations within the course, or would like to be connected to more resources, fill out our [Extenuating Circumstances form](#extenuating-circumstances). " %}
+{% include alert.html type="info" content="If you’re experiencing extenuating circumstances impacting your mental health and would like to meet with a member of course staff to work out accommodations within the course, or would like to be connected to more resources, please check out our [Extenuating Circumstances Section](#extenuating-circumstances). " %}
 
 ### Accommodation
 
@@ -173,30 +174,24 @@ Lecture will be held on **Mondays and Wednesdays from 9–10am in Evans 10**. Be
 
 ### Labs
 
-Lab sections meet Monday through Thursday. You may only attend the lab section which you signed up for.
+Lab sections meet Monday through Friday. You may only attend the lab section which you signed up for.
 In-person labs will be held in a lab room in Soda Hall. Remote labs will be held over 
 Zoom where you will be working primarily in breakout rooms (TAs / Tutors will join the breakout room when you need assistance).
 
-These labs are practical labs that emphasize hands-on experience with the course material.
-They involve coding assignments that are submitted for credit. Labs will also have a small attendance credit (see grading breakdown below).
+The Monday through Thursday labs are practical labs that emphasize hands-on experience with the course material. These involve coding assignments that are submitted for credit. Practical labs do not require attendance, but are your main source of help from course staff. The Friday labs are theoretical labs that involve working through a worksheet with your classmates and TA. Theoretical labs will have a small attendance credit (see grading breakdown below).
 
 If you would like to swap to a lab section that you are not officially enrolled
-in you must email [cs61bl@berkeley.edu](mailto:cs61bl@berkeley.edu). **Attending a lab that you are not officially
-enrolled in or have not received permission to attend may result in you being 
-de-prioritized for help.**
+in, we will send out more information about that on the course EdStem as well as update our policies here. **Attending a lab that you are not officially enrolled in or have not received permission to attend may result in you being de-prioritized for help.**
 
 ### Homeworks
 
-Homeworks are designed to reinforce your **conceptual understanding** of the material each week. They will include a mix of multiple-choice, short answer, and coding questions, and will be released on **Gradescope** every **Wednesday**, due the following **Tuesday at 11:59 PM**.
-Regardless of length, all homeworks will be worth **2.5** points. The maximum number of homework points you can get is 15.
+Homeworks are designed to reinforce your **conceptual understanding** of the material each week. They will include a mix of multiple-choice, short answer, and coding questions, and will be released on **Gradescope** every **Wednesday**, due the following **Tuesday at 11:59 PM**. Regardless of length, all homeworks will be worth **2.5** points. The maximum number of homework points you can get is 15.
 
 **No extensions** will be granted for homework assignments for any reason, so please plan accordingly and start early.
 
 ### Projects
 
-There are four projects in this course. Projects are larger and more
-challenging assignments than you would typically find in a lab. There will be some in lab time to work on these projects,
-but they are largely meant to be completed outside of lab. This semester, **we will not be having explicit TA office hours**, so please come to lab to get the best help.
+There are four projects in this course. Projects are larger and more challenging assignments than you would typically find in a lab. There will be some in lab time to work on these projects, but they are largely meant to be completed outside of lab. This semester, **we will not be having explicit TA office hours**, so please come to lab to get the best help.
 
 ### Exams
 
@@ -264,12 +259,12 @@ Your course grade is computed using a point system with a total of 300 points.
     </thead>
     <tbody>
       <tr>
-        <th scope="row">Lab Assignments</th>
+        <th scope="row">Practical Lab Assignments</th>
         <td>13%</td>
         <td>40</td>
       </tr>
       <tr>
-        <th scope="row">Lab Attendance</th>
+        <th scope="row">Theoretical Lab Attendance</th>
         <td>5%</td>
         <td>15</td>
       </tr>
@@ -372,36 +367,26 @@ that cause you to miss the final, and only if your work up to that point has
 been satisfactory. You must complete all coursework before the drop deadline to
 be considered for an incomplete grade. Per university policy, you will **not** be able to request for an incomplete on assignments that were involved in academic misconduct. For more information, please email the instructors.
 
-There are a total of 21 graded lab exercises, each worth 2 points.
+There are a currently total of 21 graded lab exercises (subject to change), each worth 2 points.
 Thus, while the total point value for labs is 42 points, lab grades are capped
 at 40 points. This means that **you can miss up to 1 lab without penalty** if you get a full score on every other lab. 
 It also means that you can get full credit for labs in this class if you do not get a full score on every lab assignment.
 In other words, getting more than 40 points on lab is equivalent to
 getting 40 points for your lab score.
 
-For the lab attendance, you will need to attend 15 labs in order to receive full attendance credit. Each attendance is worth 1 point, with a point cap of 15 points.
+For the theoretical lab attendance, you will need to attend 5 of the 7 theoretical labs in order to receive full attendance credit. Each attendance is worth 3 point, with a point cap of 15 points.
 
 ### Late Policy
 
-You will receive a total of 8 slip days for the entire semester that can be used for lab assignments. Each slip day extends your deadline by 24 hours. Slip days may only be applied retroactively, and you may **not** use a fraction of a slip day.
+You will receive a total of 8 slip days for the entire semester that can be used for lab and project assignments. Slip days can not be used for forms, surveys, or homeworks. Each slip day extends your deadline by 24 hours. Slip days may only be applied retroactively, and you may **not** use a fraction of a slip day. If you need a longer extension, please refer to the [Extenuating Circumstances Section](#extenuating-circumstances) below. 
 
 #### Lab Lateness
 
 For lab assignments, you can use at most one slip day per lab assignment. Lab assignments turned in late without using a slip day will receive no credit.
 
-You should only be using a slip day on a lab assignment if you have made
-significant progress on the lab prior to the original deadline for the
-assignment. The intention of a slip day is to give you enough time to put the
-last finishing touches on the lab assignment before turning it in (for example,
-if you have been facing a bug for awhile, you should use a slip day, which buys
-you time to get some sleep before asking your TA for the last bit of help you
-need the next day). We recommend that slip days are not be used if significant
-progress wasn't made on the lab before the deadline, such as if you couldn't
-make a lab section and are trying to complete the entire lab the day after. In
-this situation, it may be better for you to consider skipping the assignment and
-proceeding with the more current ones to keep pace with the course. Remember,
-you don't need to get all points in the lab category to still get full credit
-for labs. Please see the Grading section above for more information.
+You should only be using a slip day on a lab assignment if you have made significant progress on the lab prior to the original deadline for the assignment. The intention of a slip day is to give you enough time to put the last finishing touches on the lab assignment before turning it in (for example, if you have been facing a bug for awhile, you should use a slip day, which buys you time to get some sleep before asking your TA for the last bit of help you need the next day). 
+
+We recommend that slip days are not be used if significant progress wasn't made on the lab before the deadline, such as if you couldn't make a lab section and are trying to complete the entire lab the day after. In this situation, it may be better for you to consider skipping the assignment and proceeding with the more current ones to keep pace with the course. Remember, you don't need to get all points in the lab category to still get full credit for labs. Please see the Grading section above for more information.
 
 **To use a lab slip day, go to the Extensions tab on Beacon. If you have enough
 slip days remaining, you may select your assignment and your new due date**.
@@ -435,10 +420,10 @@ family emergency, etc.
 If you're experiencing extenuating circumstances impacting your mental health and would like
 to meet with a member of course staff to work out accommodations within the course, or would 
 like to be connected to more resources, you can set up a meeting with us 
-[**here**](https://forms.gle/QnYufRchWc7dFdKZ8).
+[**here**](https://forms.gle/fhgcSq54BJHhNKz66).
 
 {% include alert.html type="danger" content=" We will not be considering retroactive 
-submissions to the extenuating circumstances form. **This means that you should proactively submit to the form before the assignment's deadline to be considered.** Exceptions will only be made in extreme cases. " %}
+submissions to the extenuating circumstances form. **This means that you should proactively submit to the form before the assignment's deadline to be considered.** We also will be primarily providing extensions as a result of extenuating circumstances on projects. Exceptions will only be made in extreme cases. " %}
 
 The last day to submit any assignment is **Monday, August 11th, 11:59 PM PT.** 
 This is a hard deadline, and we will not accept any submissions made after this deadline.
