@@ -26,57 +26,57 @@
 labs:
   - title: "Introduction to Java, Git, and Setup"
     due: "6/24"
-    link: labs/lab00
+    link: labs/lab01
   - title: "Conditionals, Loops, and Arrays (Optional?)"
     due: "6/25"
-    link: labs/lab01
+    link: labs/lab02
   - title: "Primitives and Objects"
     due: "6/26"
-    link: labs/lab02
+    link: labs/lab03
   - title: "Debugging & Test-Driven Development"
     due: "6/30"
-    link: labs/lab03
-  - title: "Theoretical #0: Introduction to Java Programming"
+    link: labs/lab04
+  - title: "Theoretical #1: Introduction to Java Programming"
     theoretical: True
     video: false
-    solutions: https://drive.google.com/file/d/1GMJUf-MPohF77rf9Ow0-63LDwvxt8xyQ/view
-    slides: https://docs.google.com/presentation/d/1h3I3HAeOceDIeF14y3o2pHEpWj83W2F646ClBv1q4uM/edit?slide=id.p#slide=id.p
-    worksheet: https://drive.google.com/file/d/1gJSlCf3UzPOhyiqVOg5MtsaeBPWtltVP/view
+    # solutions: https://drive.google.com/file/d/1GMJUf-MPohF77rf9Ow0-63LDwvxt8xyQ/view
+    # slides: https://docs.google.com/presentation/d/1h3I3HAeOceDIeF14y3o2pHEpWj83W2F646ClBv1q4uM/edit?slide=id.p#slide=id.p
+    # worksheet: https://drive.google.com/file/d/1gJSlCf3UzPOhyiqVOg5MtsaeBPWtltVP/view
     link:
     nonumber: True
   - title: "Linked Lists"
     due: "2/14"
-    link: labs/lab04
+    link: labs/lab05
   - title: "Abstract Data Types"
     due: "02/28"
-    link: labs/lab05
+    link: labs/lab06
   - title: "Inheritance"
     due: "03/07"
-    link: labs/lab06
+    link: labs/lab07
   - title: "Comparison, Exceptions, and Iteration"
     due: "3/14"
-    link: labs/lab07
+    link: labs/lab08
   - title: "No Lab"
     nonumber: True
     rowspan: 1
-  - title: "Theoretical #1: Object Oriented Programming and Abstract Data Types"
+  - title: "Theoretical #2: Object Oriented Programming and Abstract Data Types"
     theoretical: True
     video: True
-    worksheet: https://drive.google.com/file/d/1e-hJMsw48hXqtkg4Kj__fCCbmczJzKqz/view
-    slides: https://docs.google.com/presentation/d/1qRNwO0VVOiCwAwSVUdPKrsTeSy2HK1Zmy4-RS5_KCrY/edit?slide=id.p#slide=id.p
-    solutions: https://drive.google.com/file/d/1Xn0lEDtDesFNY_6jkU-yrrqE2jD3HFMb/view
+    # worksheet: https://drive.google.com/file/d/1e-hJMsw48hXqtkg4Kj__fCCbmczJzKqz/view
+    # slides: https://docs.google.com/presentation/d/1qRNwO0VVOiCwAwSVUdPKrsTeSy2HK1Zmy4-RS5_KCrY/edit?slide=id.p#slide=id.p
+    # solutions: https://drive.google.com/file/d/1Xn0lEDtDesFNY_6jkU-yrrqE2jD3HFMb/view
     link: 
     nonumber: True
   - title: "Runtime Analysis"
     due: "3/21"
-    link: labs/lab08
+    link: labs/lab09
   - title: "Trees and Traversals"
     due: "3/21"
-    link: labs/lab09
+    link: labs/lab10
   - title: "Binary Search Trees"
     due: "3/21"
-    link: labs/lab10
-  - title: "Theoretical #2: Asymptotics and Trees"
+    link: labs/lab11
+  - title: "Theoretical #3: Asymptotics and Trees"
     theoretical: True
     examprep_video: True
     examprep_slides: True
@@ -84,14 +84,14 @@ labs:
     nonumber: True
   - title: "Balanced Search Trees"
     due: "3/21"
-    link: labs/lab11
+    link: labs/lab12
   - title: "Hashing"
     due: "3/21"
-    link: labs/lab12
+    link: labs/lab13
   - title: "Heaps and Priority Queues"
     due: "3/21"
-    link: labs/lab13
-  - title: "Theoretical #3: Binary Search Trees (Optional)"
+    link: labs/lab14
+  - title: "Theoretical #4: Binary Search Trees (Optional)"
     theoretical: True
     examprep_video: True
     examprep_slides: True
@@ -102,17 +102,17 @@ labs:
     rowspan: 1
   - title: "Disjoint Sets"
     due: "3/21"
-    link: labs/lab14
+    link: labs/lab15
   - title: "Graphs"
     due: "3/21"
-    link: labs/lab15
+    link: labs/lab16
   - title: "Shortest Path Trees"
     due: "3/21"
-    link: labs/lab16
+    link: labs/lab17
   - title: "Minimum Spanning Trees"
     due: "3/21"
-    link: labs/lab17
-  - title: "Theoretical #4: Hashing, Heaps, and Union Find"
+    link: labs/lab18
+  - title: "Theoretical #5: Hashing, Heaps, and Union Find"
     theoretical: True
     examprep_video: True
     examprep_slides: True
@@ -120,16 +120,16 @@ labs:
     nonumber: True
   - title: "Build Your Own World Introduction"
     due: "3/21"
-    link: labs/lab18
+    link: labs/lab19
   - title: "Comparison Sorts"
     due: "3/21"
-    link: labs/lab19
+    link: labs/lab20
   - title: "Counting Sorts"
     due: "3/21"
-    link: labs/lab20
+    link: labs/lab21
   - title: "TBD"
     nonumber: True
-  - title: "Theoretical #5: Graphs"
+  - title: "Theoretical #6: Graphs"
     theoretical: True
     examprep_video: True
     examprep_slides: True
@@ -143,11 +143,11 @@ labs:
     nonumber: True
   - title: "TBD"
     nonumber: True
-  - title: "Theoretical #6: Sorting"
+  - title: "Theoretical #7: Sorting"
     theoretical: True
     examprep_video: True
     examprep_slides: True
-    link: 
+    link:
     nonumber: True
   - title: "BYOW Presentations! (Optional)"
     nonumber: True

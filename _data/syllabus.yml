@@ -40,7 +40,7 @@ starting_lecture_number: '0'
 starting_readings_number: '1'
 starting_recordings_number: '1'
 starting_discussion_number: '0'
-starting_lab_number: '0'
+starting_lab_number: '1'
 starting_homework_number: '1'
 starting_project_number: '0'
 # Is the first week of class Week 0 or Week 1? We currently don't support
