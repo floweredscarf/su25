@@ -13,7 +13,7 @@ released: true
 
 Each assignment will have an FAQ linked at the top. You can also access it by
 adding "/faq" to the end of the URL. The FAQ for Lab 1 is located
-[here](faq.md). 
+[here](faq). 
 **The FAQ (frequently asked questions) is a list of compiled questions and errors that students often run into, so refer to this page first before reaching out to staff.**
 
 {: .warning}
@@ -39,7 +39,7 @@ and setup these first few days. **Don't be discouraged**, and make sure to ask
 for help if you're stuck! The best place to ask for help is during your actual
 lab time. If you attempt to do this outside of that time and run into any
 problems, please ask them on Ed. For more information on using Ed in this course, 
-read through our [Ed Policies and Guidelines](../../resources/guides/ed/).
+read through our [Ed Policies and Guidelines](../../resources/using-ed/).
 
 {: .danger}
 > If ever something isn't working, or a screen that should show up isn't showing up, make sure you ask for help -- **do not** keep going because this might make it more difficult for us to identify the problem later on if you do hit a dead-end.
@@ -53,11 +53,11 @@ your computer up for 61B(L).
 
 The precise steps to take depend on your operating system.
 
-- [Windows instructions](windows.md)
-- [macOS instructions](mac.md)
-- [Linux instructions](linux.md)
+- [Windows instructions](windows)
+- [macOS instructions](mac)
+- [Linux instructions](linux)
 
-{: .info}
+{: .warning}
 > Move on to the next section **only** once you've completed the instructions above for your operating system.
 
 ## The Terminal
@@ -232,7 +232,7 @@ repository ("repo"), which you will need to submit all coding assignments.
 1.  Create an account at [GitHub.com](https://github.com/). If you already have
     an account, you do not need to create a new one.
 1.  Go to
-    [the Beacon website](https://beacon.datastructur.es/)
+    the [Beacon website](https://beacon.datastructur.es/)
     and you'll be guided through a few steps to complete your GitHub repository
     registration. Please follow them carefully! You must be logged in to your
     Berkeley account to complete the Google Form quiz. If any errors occur while
@@ -272,10 +272,10 @@ in much greater detail but, for now, let's just get a working knowledge of how
 to use git.
 
 Before you proceed, **read sections up to the Remote Repositories section of
-the [Using Git Guide](../../resources/guides/git.md)**.
+the [Using Git Guide](../../resources/using-git/)**.
 
-{: .info}
-> Do not proceed until you have read sections up to the **Remote Repositories** section of the **[Using Git Guide](../../resources/guides/git.md)**. You do not need to read past that.
+{: .warning}
+> Do not proceed until you have read sections up to the **Remote Repositories** section of the **[Using Git Guide](../../resources/using-git/)**. You do not need to read past that.
 
 
 ### Setting Up Git
@@ -318,7 +318,7 @@ editor. If not we suggest using Notepad for Windows, TextEdit for MacOS and Nano
 ### Task: Git Exercise
 
 Now that you've read the first 3 sections of the
-[Using Git Guide](../../guides/using-git.md), you're ready to start using git!
+[Using Git Guide](../../resources/using-git/), you're ready to start using git!
 As part of your lab checkoff, you will be working through a small git workflow
 by setting up a git repository and making a couple commits to the repository.
 
@@ -365,13 +365,15 @@ Be sure to save this repository and directory until you complete the
 [asynchronous checkoff form on beacon](https://beacon.datastructur.es/) and
 obtain a **magic word**. We'll be using this magic word later in the lab. 
 
+<!-- TODO: update checkoff form link -->
+
 {: .task}
 > **Task**: Do the steps above, then get checked off by filling out the Beacon form.
 
 ### Git and Remote Repos
 
 First, read the **Remote Repositories** section of the
-**[Using Git Guide](../../guides/using-git#remote-repositories)**.
+**[Using Git Guide](../../resources/using-git/)**.
 
 In this course, you'll be required to submit your code using Git to your course
 GitHub repository that you created in [Account Setup](#task-account-setup).
@@ -400,7 +402,7 @@ curl -sS https://cs61bl.org/su25/labs/lab01/get-ssh-key.sh | bash
 ```
 
 {: .info}
-> DIf you get an error message such as `bash: line 1: syntax error near unexpected token 'newline'`, try refreshing this page and run the updated command.
+> If you get an error message such as `bash: line 1: syntax error near unexpected token 'newline'`, try refreshing this page and run the updated command.
 
 With the location that is provided, go ahead and run the following 
 command, ensuring to replace `<path_to_ssh_key>` with the location of the SSH key
@@ -455,7 +457,7 @@ git clone git@github.com:Berkeley-CS61B-Student/su25-s***.git
 ```
 
 {: .info}
-> After cloning your terminal will report "`warning: You appear to have cloned an empty repository.`" This is not an issue, it is just git letting you know that there are no files in the repo, which is what we expect here.
+> After cloning your terminal will report "`warning: You appear to have cloned an empty repository.`" This is not an issue; it's just git letting you know that there are no files in the repo, which is what we expect here.
 
 Move into your newly created repo!
 
@@ -491,7 +493,7 @@ git remote -v
 
 {: .task}
 > **Task**: Follow the instructions in the
-[Getting the Skeleton section of the Assignment Workflow guide](../../guides/assignment-workflow.md#getting-the-skeleton) to get the skeleton code for Lab 1.
+[Getting the Skeleton section of the Assignment Workflow guide](../../resources/assignment-workflow/#getting-the-skeleton) to get the skeleton code for Lab 1.
 
 {: .danger}
 > At this point, you should have a `lab01` folder, with the contents
@@ -536,24 +538,21 @@ Our work is now on GitHub, and ready to submit!
 ## Submitting to Gradescope
 
 Although we use GitHub to store our programming work, we use **Gradescope** to
-actually grade it. The last step is to submit your work with [Gradescope][],
+actually grade it. The last step is to submit your work with [Gradescope](https://www.gradescope.com/),
 which we use to autograde programming assignments.
 
-{: .info}
-> We added everyone's CalCentral email to Gradescope on the first day of labs. Make sure to login using the email address listed on CalCentral.
+We added everyone's CalCentral email to Gradescope on the first day of labs. Make sure to login using the email address listed on CalCentral.
 
 If you're having trouble accessing the course on Gradescope or would like to use
 a different email address, ask your TA!
 
-[gradescope]: https://gradescope.com
-" %}
 
 {: .danger}
 > As above, **we strongly encourage you to make frequent commits!** Lack of proper version control will not be considered an excuse for lost work, particularly after the first week.
 
 {: .task}
 > **Task**: Follow the instructions in the
-[Submitting to Gradescope section of the Assignment Workflow guide](../../guides/assignment-workflow.md#submitting-to-gradescope) to submit to Gradescope.
+[Submitting to Gradescope section of the Assignment Workflow guide](../../resources/assignment-workflow/#submitting-to-gradescope) to submit to Gradescope.
 
 
 At this point, Gradescope should show you something similar to the following:
@@ -621,7 +620,7 @@ We will assume that you are using IntelliJ, and will not offer support for
 other editors, including VSCode.
 
 {: .danger}
-> IntelliJ is a real world, industrial software development application. There are many features that we will not use, and you will sometimes encounter situations that do not make sense. **Ask for help if you are stuck or something seems broken!** It can be very hard to guess the right thing to do in IntelliJ. Check out the [IntelliJ WTFS Guide](../../guides/intellij-wtfs.md) for solutions to some common problems.
+> IntelliJ is a real world, industrial software development application. There are many features that we will not use, and you will sometimes encounter situations that do not make sense. **Ask for help if you are stuck or something seems broken!** It can be very hard to guess the right thing to do in IntelliJ. Check out the [IntelliJ WTFS Guide](../../troubleshooting/intellij-wtfs/) for solutions to some common problems.
 
 **Before continuing, make sure that you have completed all above tasks besides
 the git exercise:**
@@ -639,7 +638,7 @@ the git exercise:**
     class. **It is recommended and assumed that you proceed with the Community
     Edition.**
 
-    {: .warning}
+    {: .info}
       > If you have an M1 or M2 Mac, select ".dmg (Apple Silicon)". Otherwise, select ".dmg (Intel)."
     
 
@@ -652,7 +651,7 @@ the git exercise:**
     uninstall it at this time and replace it with this newer version.
 
 {: .info}
-> While IntelliJ downloads, you can read / skim our [Using IntelliJ Guide](../../guides/using-intellij.md). You don't need to read or internalize all of this to complete the lab. IntelliJ is complicated, but the core features should feel somewhat familiar to text editors you have used in the past.
+> While IntelliJ downloads, you can read / skim our [Using IntelliJ Guide](../../resources/using-intellij/). You don't need to read or internalize all of this to complete the lab. IntelliJ is complicated, but the core features should feel somewhat familiar to text editors you have used in the past.
 
 ### Installing Plugins
 
@@ -689,7 +688,7 @@ also work but we haven't tried them ourselves.
 1.  Restart (close and reopen) IntelliJ.
 
 For more information on using the plugins, read
-[the plugin guide](../../guides/plugin.md).
+[the plugin guide](../../resources/using-intellij/#cs-61b-plugins).
 You don't have to read this right now.
 
 ### Installing Java
@@ -793,7 +792,7 @@ Let's ensure that everything is working.
 ### Creating Projects
 
 {: .task}
-> **Task**: Follow the instructions in the [Opening in IntelliJ section of the Assignment Workflow guide](../../guides/assignment-workflow.md#opening-in-intellij) to open `lab01`.
+> **Task**: Follow the instructions in the [Opening in IntelliJ section of the Assignment Workflow guide](../../resources/assignment-workflow/#opening-in-intellij) to open `lab01`.
 
 Once you've done this, you should see at least these three files in the left
 pane:
@@ -841,8 +840,7 @@ The green checkmark indicates tests that you have passed, while the yellow X ind
 that you have failed. Don't worry about the doubled output; this is a strange quirk of
 IntelliJ.
 
-{: .info}
-> This should look familiar. The test that failed on Gradescope is the same test that we see here! We can run these tests locally, very easily!
+This should look familiar. The test that failed on Gradescope is the same test that we see here! We can run these tests locally, very easily!
 
 {: .task}
 > **Task**: Fix the bug in `Arithmetic.java` so that the tests pass.
@@ -907,11 +905,11 @@ frequently commit. When you are finished, `git push` so all your changes are
 uploaded and ready for you to pull again next time.
 
 {: .task}
-> **Task**: Follow the instructions (again!) in the [Submitting to Gradescope section of the Assignment Workflow guide](../../guides/assignment-workflow.md#submitting-to-gradescope) to submit to Gradescope. This time, you should receive a full score on the lab.
+> **Task**: Follow the instructions (again!) in the [Submitting to Gradescope section of the Assignment Workflow guide](../../resources/assignment-workflow/#submitting-to-gradescope) to submit to Gradescope. This time, you should receive a full score on the lab. Your score on Gradescope is your final score.
 
 ## Deliverables
 
-As a reminder, this assignment has an [FAQ page](faq.md).
+As a reminder, this assignment has an [FAQ page](faq).
 There are two required files, all inside the `lab01` directory:
 
 `magic_word.txt`

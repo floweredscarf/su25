@@ -12,7 +12,7 @@ released: true
 ## A. Install Git
 
 1.  Install git. Head to
-    [http://git-scm.com/download/](http://git-scm.com/download/)
+    [http://git-scm.com/downloads/](http://git-scm.com/downloads/)
     and download the Git for Windows installer.
 
     ![Windows Download Git 1](img/windows/win_download.png)
