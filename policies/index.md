@@ -52,7 +52,7 @@ This is a course about data structures and programming methods. It happens to al
 
 Some of you may have already taken a data structures course, and simply want to learn Java or C++. For you, self-study may be a better option.
 
-Finally, the 1-unit self-paced course CS 47B is for students with “sufficient partial credit in 61B,” allowing them (with instructor’s permission) to complete the CS 61B course requirement without taking the full course. 47B is not offered during summer. For more info, see the [Spring/Fall 47B guide](https://datastructur.es/policies/47b/).
+Finally, the 1-unit self-paced course CS 47B is for students with “sufficient partial credit in 61B,” allowing them (with instructor’s permission) to complete the CS 61B course requirement without taking the full course. 47B is not offered during summer. For more info, see the [Spring 2025 CS 47B guide](https://sp25.datastructur.es/policies/47b/).
 
 ### Mental Health and Wellness
 
@@ -60,9 +60,7 @@ As a student you may experience a range of issues that can cause barriers to lea
 
 The National Suicide Prevention Lifeline is a 24-hour number any student or faculty/staff person can call to speak with someone about suicide: (800) 273-TALK (8255).
 
-More resources can be found under our [Resources tab](../resources/support/index.md).
-
-If you're experiencing extenuating circumstances impacting your mental health and would like to meet with a member of course staff to work out accommodations within the course, or would like to be connected to more resources, [you can set up a meeting with us here]({{site.links.student_support_meetings}}).
+More resources can be found under our [Resources tab](../resources#student-support-resources).
 
 ### Accommodation
 
@@ -76,22 +74,27 @@ If you have a disability, or think you may have a disability, you can work with 
 
 ### Lecture
 
-This summer, we will be using a _flipped classroom_ format. Students are **expected** to watch pre-recorded lecture videos from previous semesters before attending class (except for the first lecture). Live lecture sessions will focus on deepening your understanding of the material through conceptual reviews, interactive problem-solving, and Q&A.
-Lecture will be held on **Mondays and Wednesdays from 9–10am in Evans 10**. Because the classroom cannot accommodate all enrolled students, lectures will also be webcast live over Zoom to ensure full access. Whether attending in person or virtually, active participation is encouraged to make the most of our collaborative in-class time.
+This summer, we will be using a _flipped classroom_ format. You are **expected** to watch pre-recorded lecture videos from previous semesters before attending class (except for the first lecture). Live lecture sessions will focus on deepening your understanding of the material through conceptual reviews, interactive problem-solving, and Q&A.
+Lecture will be held on **Mondays and Wednesdays from 9–10am in Evans 10**. Because the classroom cannot accommodate all enrolled students, lectures will also be livestreamed over Zoom to ensure full access. Whether attending in person or virtually, active participation is encouraged to make the most of our collaborative in-class time.
 
 ### Labs
 
-Lab sections meet Monday through Friday. You may only attend the lab section which you signed up for.
-In-person labs will be held in a lab room in Soda Hall. Remote labs will be held over 
-Zoom where you will be working primarily in breakout rooms (TAs / Tutors will join the breakout room when you need assistance).
+Lab sections meet Monday through Friday. You may only attend the lab section which you signed up for. In-person labs will be held in a lab room in Soda Hall. Remote labs will be held over Zoom where you will be working primarily in breakout rooms (TAs / Tutors will join the breakout room when you need assistance).
 
 #### Practical Labs
 
-The Monday through Thursday labs are practical labs that emphasize hands-on experience with the course material. These involve coding assignments that are submitted for credit. Practical labs do not require attendance, but are your main source of help from course staff, including on projects.
+The Monday through Thursday labs are practical labs (except Mon, Jul 7) that emphasize hands-on experience with the course material. These involve coding assignments that are submitted for credit. Practical labs do not require attendance, but are your main source of help from course staff, including on projects.
+
+There are currently a total of 21 graded lab exercises (subject to change), each worth 2 points. Thus, while the total point value for labs is 42 points, lab grades are capped
+at 40 points. This means that **you can miss up to 1 lab without penalty** if you get a full score on every other lab. It also means that you can get full credit for labs in this class if you do not get a full score on every lab assignment. In other words, getting more than 40 points on lab is equivalent to getting 40 points for your lab score.
 
 #### Theoretical Labs
 
-The Friday labs are theoretical labs that involve working through a worksheet with your classmates and TA. Theoretical labs will have a small attendance credit (see grading breakdown below).
+Friday labs are theoretical labs (except Fri, Jul 4, which will be pushed to Mon, Jul 7) that involve working through a worksheet with your classmates and TA. Theoretical labs will have a small attendance credit (see grading breakdown below).
+
+We also may hold review sessions this semester before the exams. Attending these will also count towards the theoretical lab attendance credit. More details will be announced on Ed as the semester progresses.
+
+Excluding review sessions, you will need to attend 5 of the 7 theoretical labs in order to receive full attendance credit. Each attendance is worth 3 points, capped at 15 points. Achieving more than 5 attendances does not give extra credit, but we still encourage you to attend all theoretical labs and review sessions, as they will help you better prepare for the exams.
 
 #### Section Swapping
 
@@ -128,11 +131,11 @@ For Project 3, all students will be required to work with a partner. You will ei
 
 One of the main goals of CS 61BL is to give you the tools to become a successful software engineer, one of which is the ability to work effectively with others. **Barring extreme circumstances, we will not approve for students to officially work alone on Project 3.** If you think you have a compelling reason for working alone on Project 3, we will release a form that you can fill out closer to the release of the project (keep an eye on Ed for this) - we will let you know if your request is approved shortly before the release of Project 3.
 
-[Full details on partnerships can be found here](../resources/guides/partnerships/index.md).
+Full details on partnerships will be released closer to Project 3.
 
 ### Exams
 
-[See the exam policies page.](/policies/exams)
+[See the exam policies page.](./exams)
 
 ### Surveys
 
@@ -147,20 +150,7 @@ every survey in this class, you can get a total of 6 extra credit points!
 
 ## Grading
 
-Your course grade is computed using a point system with a total of 300 points.
-
-### Practical Lab Assignments
-
-There are currently a total of 21 graded lab exercises (subject to change), each worth 2 points. Thus, while the total point value for labs is 42 points, lab grades are capped
-at 40 points. This means that **you can miss up to 1 lab without penalty** if you get a full score on every other lab. It also means that you can get full credit for labs in this class if you do not get a full score on every lab assignment. In other words, getting more than 40 points on lab is equivalent to getting 40 points for your lab score.
-
-### Theoretical Lab Attendance
-
-You will need to attend 5 of the 7 theoretical labs in order to receive full attendance credit. Each attendance is worth 3 points, capped at 15 points.
-
-## Grades
-
-Your letter grade will be determined by the total points out of a possible 300. In other words, there is _no curving in this course_, other than the clobbering policy above. Your grade will depend on how well you do relative to the bins, and not on how well everyone else does. Though we do not usually do this, we reserve the right to lower the the grading bins for 61B if grades are too low. We will not raise the bins.
+Your course grade is computed using a point system with a total of 300 points. In other words, there is _no curving in this course_, other than the clobbering policy above. Your grade will depend on how well you do relative to the bins, and not on how well everyone else does. Though we do not usually do this, we reserve the right to lower the the grading bins for 61BL if grades are too low. We will not raise the bins.
 
 | Category                      | Percentage  | Points   |
 | ----------------------------- | ----------- | -------- |
@@ -193,29 +183,9 @@ If you are taking the course P/NP, any grade of C- or better will automatically 
 
 We will grant grades of Incomplete only for dire medical or personal emergencies that cause you to miss the final, and only if your work up to that point has been satisfactory. Do not try to get an Incomplete simply as a way to have more time to study or do a project. That is contrary to University policy. Before requesting an Incomplete grade, please contact a college advisor or review your college’s Incomplete grade policies to understand if this is a right option for you. Per university policy, you will **not** be able to request for an incomplete on assignments that were involved in academic misconduct. For more information, please email the instructors.
 
-### Late Policy
+### Lateness Policy
 
-You will receive a total of 8 slip days for the entire semester that can be used for lab and project assignments. Slip days can not be used for forms, surveys, or homeworks. Each slip day extends your deadline by 24 hours. Slip days may only be applied retroactively, and you may **not** use a fraction of a slip day. If you need a longer extension, please refer to the [Extenuating Circumstances Section](#extenuating-circumstances) below.
-
-#### Lab Lateness
-
-For lab assignments, you can use at most one slip day per lab assignment. Lab assignments turned in late without using a slip day will receive no credit.
-
-You should only be using a slip day on a lab assignment if you have made significant progress on the lab prior to the original deadline for the assignment. The intention of a slip day is to give you enough time to put the last finishing touches on the lab assignment before turning it in (for example, if you have been facing a bug for awhile, you should use a slip day, which buys you time to get some sleep before asking your TA for the last bit of help you need the next day).
-
-We recommend that slip days are not be used if significant progress wasn't made on the lab before the deadline, such as if you couldn't make a lab section and are trying to complete the entire lab the day after. In this situation, it may be better for you to consider skipping the assignment and proceeding with the more current ones to keep pace with the course. Remember, you don't need to get all points in the lab category to still get full credit for labs. Please see the Grading section above for more information.
-
-**To use a lab slip day, go to the Extensions tab on Beacon. If you have enough
-slip days remaining, you may select your assignment and your new due date**.
-Note that you can only request at most 1 slip day per lab, and once you apply a slip day to an assignment, you cannot later extend it by even more time.
-
-#### Project Lateness
-
-For projects, you can use slip days to extend your deadline. Each slip day extends your deadline by 24 hours. If you turn in your project late without using a slip day, you will receive no credit.
-
-**To use a project slip day, go to the Extensions tab on Beacon. If you have enough slip days remaining, you may select your assignment and your new due date**.
-
-**No extensions will be granted for project checkpoints and Project 3** (with the exception of DSP extension accommodations).
+[See the lateness policy page.](./extensions)
 
 ---
 
@@ -229,7 +199,7 @@ The [course home page]({{ site.url }}) will provide one-stop shopping for course
 
  Our discussion forum this semester will be Edstem Discussions (Ed for short). For most questions about the course, Ed is the right place to ask them. The course staff reads it regularly, so you will get a quick answer. Furthermore, by posting online as opposed to emailing us directly, other students benefit by seeing the question and the answer. Don't forget to check Ed before asking your question, just in case someone else has already posted it. If you have a question about something pertaining to your own code that shouldn’t be shared with the class, or if you have a question about a personal matter, you can make a private post on Ed, which will only be seen by the instructors and staff.
 
-Please read our [Ed Guide](../resources/guides/ed/ed-guide.md) and [Policies](../resources/guides/ed/index.md). We will only respond to questions that adhere to our policies of using Ed.
+Please read our [Ed Guide](../resources/using-ed). We will only respond to questions that adhere to our policies of using Ed.
 
 ### Official Staff Emails
 
@@ -240,7 +210,9 @@ If you have any problems that require an exception to course policy (e.g. medica
 
 ### Beacon
 
-Rather than using bCourses, we will be using our own custom learning management system called Beacon located at [beacon.datastructur.es]({{ site.links.beacon }}). You can use Beacon to keep track of your grades and late assignments. [You can also read our full guide on Beacon here](../resources/guides/beacon/index.md).
+Rather than using bCourses, we will be using our own custom learning management system called Beacon located at [beacon.datastructur.es]({{ site.links.beacon }}). You can use Beacon to keep track of your grades and late assignments.
+
+<!-- [You can also read our full guide on Beacon here](../resources/guides/beacon/index.md). -->
 
 ### Reading
 
@@ -265,7 +237,7 @@ We'll be using the version-control system [Git](https://git-scm.com/) this semes
 
 ## Collaboration and Academic Misconduct
 
-Deadlines can be stressful, and we know that under extreme pressure, it becomes tempting to start rationalizing actions that you would otherwise consider inappropriate. Perhaps you’ll find yourself facing a CS 61B project deadline, and under all this stress you’ll convince yourself that you’re just going to cheat for the moment so you can get the points, and that you’ll come back later and really learn the thing you were supposed to have learned in order to restore your karmic balance (I’ve heard something along these lines a few times).
+Deadlines can be stressful, and we know that under extreme pressure, it becomes tempting to start rationalizing actions that you would otherwise consider inappropriate. Perhaps you’ll find yourself facing a CS 61BL project deadline, and under all this stress you’ll convince yourself that you’re just going to cheat for the moment so you can get the points, and that you’ll come back later and really learn the thing you were supposed to have learned in order to restore your karmic balance (I’ve heard something along these lines a few times).
 
 Please don't do this. We care that you learn the material, and that your grade reflects your learning, regardless of the timeline. If you feel that you need to engage in academic misconduct to meet a deadline, please reach out to course staff.
 
@@ -350,7 +322,7 @@ If you admit guilt to an act of plagiarism before we catch you, you will receive
 
 Obviously, the expressive power of Java is a subset of the English language. And yes, you can obviously obey the letter of this entire policy while completely violating its spirit. However, this policy is not a game to be defeated, and such circumventions will be seen as plagiarism.
 
-You can review our [academic misconduct resolution procedures here](academic-misconduct/index.md).
+You can review our [academic misconduct resolution procedures here](./academic-misconduct.md).
 
 ### Reusing Code from Past Semesters
 

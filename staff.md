@@ -70,7 +70,7 @@ If you have a non-course related question, you can view staff emails by pressing
 {% endif %}
 
 <br>
-- **CS61B@**: Can see or respond to emails for [cs61b@berkeley.edu](mailto:cs61b@berkeley.edu)
+- **CS61BL@**: Can see or respond to emails for [cs61bl@berkeley.edu](mailto:cs61bl@berkeley.edu)
 - **DSP**: Can see the DSP letter of accommodations (knowing whether or not a student is DSP does not count as DSP access).
 
 {% if extra_instructors or instructors %}

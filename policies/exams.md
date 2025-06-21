@@ -3,8 +3,8 @@ layout: page
 title: Exam Policies
 parent: Policies
 nav_order: 1
-hide_content: true
-unreleased_warning: true
+hide_content: false
+unreleased_warning: false
 ---
 
 # Exam Policies
