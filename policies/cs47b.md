@@ -3,6 +3,7 @@ layout: page
 title: CS 47B
 parent: Policies
 nav_order: 3
+nav_exclude: true # since summer doesn't have 47b
 ---
 
 # CS 47B
