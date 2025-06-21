@@ -13,7 +13,7 @@ released: true
 
 If you see a hint that says "Updates were rejected because the tip of your
 current branch was behind its remote counterpart", then read
-[this section of the Git WTFS](../../guides/git-wtfs.md#error-failed-to-push-some-refs).
+[this section of the Git WTFS](../../../troubleshooting/git-wtfs/#error-failed-to-push-some-refs).
 
 ### On Gradescope, I'm missing required files
 
