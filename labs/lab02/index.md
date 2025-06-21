@@ -14,7 +14,7 @@ released: true
 
 Each assignment will have an FAQ linked at the top. You can also access it by
 adding "/faq" to the end of the URL. The FAQ for Lab 2 is located
-[here](faq.md). 
+[here](faq). 
 **The FAQ (frequently asked questions) is a list of compiled questions and errors that students often run into, so refer to this page first before reaching out to staff.**
 
 {: .warning}
@@ -684,7 +684,7 @@ compile and pass.
 
 ## Deliverables
 
-As a reminder, this assignment has an [FAQ page](faq.md).
+As a reminder, this assignment has an [FAQ page](faq).
 These are the required files, all inside the `lab01` directory:
 
 `TriangleDrawer.java`
@@ -704,4 +704,5 @@ These are the required files, all inside the `lab01` directory:
 
 Don't forget to submit your work to Gradescope!
 
-### After completing this lab, you now have the tools to go ahead and work on Project 0! Please take a moment to read the [Project 0 Spec](../../projects/game2048/index.md) and start on the project if you have already - this is a fast-paced course and we want you to stay on track!
+{: .info}
+>After completing this lab, you now have the tools to go ahead and work on Project 0! Please take a moment to read the [Project 0 Spec](../../projects/proj0/) and start on the project if you have already - this is a fast-paced course and we want you to stay on track!

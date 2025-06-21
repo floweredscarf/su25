@@ -21,7 +21,7 @@ sudo apt install openjdk-17-jdk git curl
 ```
 
 If you're able to successfully install Java, you can skip the step later on in the lab to 
-download it through IntelliJ ([Installing Java](index.md#installing-intellij)).
+download it through IntelliJ.
 
 You can also install IntelliJ using: 
 ```shell

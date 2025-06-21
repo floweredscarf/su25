@@ -5,7 +5,7 @@ parent: Resources
 unreleased_warning: true
 ---
 
-TODO: This is currently 3 separate guides concatenated together (see the h1 headings): "Using Ed", "Ed Guide for New Users", and "Gitbugs". We should clean this up and merge the guides into one coherent guide at some point. ~peyrin, Jun 2025
+<!-- TODO: This is currently 3 separate guides concatenated together (see the h1 headings): "Using Ed", "Ed Guide for New Users", and "Gitbugs". We should clean this up and merge the guides into one coherent guide at some point. ~peyrin, Jun 2025 -->
 
 # Using Ed
 

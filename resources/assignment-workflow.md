@@ -23,7 +23,7 @@ The `skeleton` remote repository contains the skeleton code for all assignments.
 git pull skeleton main
 ```
 
-This fetches all remote files from the repo named `skeleton` (which is located at `https://github.com/Berkeley-CS61B/skeleton-{{ site.semester }}.git`) and copies them into your current folder.
+This fetches all remote files from the repo named `skeleton` (which is located at `https://github.com/cs61bl/skeleton-su25`) and copies them into your current folder.
 
 {: .warning}
 > If you get an error similar to `fatal: refusing to merge unrelated histories`,
@@ -79,4 +79,4 @@ At this point, if things have been configured correctly:
 
 Gradescope will use the latest version of your code from Github. **If you think that Gradescope isn't grading the right code, check that you have added, committed, and pushed with `git status`.**
 
-If you've gotten yourself into a situation where you're unable to push for some reason, see [Git WTFS](/troubleshooting/git-wtfs).
+If you've gotten yourself into a situation where you're unable to push for some reason, see [Git WTFS](../../troubleshooting/git-wtfs).

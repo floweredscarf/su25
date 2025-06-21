@@ -21,11 +21,11 @@
 #   - Click "Get shareable link"
 #   - Copy the URL with calendar/u/0?cid= in it
 
-google_api_key: None
-google_calendar_id: None
+google_api_key: AIzaSyApZpMzryfE0uefdL2NUYaLU8jxT2EaoSg
+google_calendar_id: c_93af0d11ca4e1431b38e1351e67db4d70dab36957e8ddf5d6f3c7db4d42992d3@group.calendar.google.com
 
-google_calendar_embed_link: None
-google_calendar_add_link: None
+google_calendar_embed_link: https://calendar.google.com/calendar/embed?src=c_93af0d11ca4e1431b38e1351e67db4d70dab36957e8ddf5d6f3c7db4d42992d3%40group.calendar.google.com&ctz=America%2FLos_Angeles
+google_calendar_add_link: https://calendar.google.com/calendar/u/0?cid=Y185M2FmMGQxMWNhNGUxNDMxYjM4ZTEzNTFlNjdkYjRkNzBkYWIzNjk1N2U4ZGRmNWQ2ZjNjN2RiNGQ0Mjk5MmQzQGdyb3VwLmNhbGVuZGFyLmdvb2dsZS5jb20
 
 # - Google Calendar events should all be prefixed "[CS101 SP25]" so that students
 #   adding it to their calendar see "[CS101 SP25] Lecture" instead of just "Lecture".
@@ -35,7 +35,7 @@ google_calendar_add_link: None
 #   when rendering the website.
 # - Note the trailing space is included here too, so that "[CS101 SP25] Lecture"
 #   becomes "Lecture", not " Lecture".
-remove_prefix: "[CS101 SP25] "
+remove_prefix: "[CS61BL SU25] "
 
 # You can set up your own categories that are filtered and colored as you choose. Every
 # event can only be matched to one category. The order that entries are provided in below
@@ -88,24 +88,24 @@ categories:
     darkTheme:
       --event-background: "#363197"
       --event-border-color: "#CAC8EB"
-  - name: "Discussion"
-    match: "bridge"
+  - name: "Online"
+    match: "online"
     lightTheme:
       --event-background: "#EAB59E"
       --event-border-color: "#B43600"
     darkTheme:
       --event-background: "#7A2500"
       --event-border-color: "#EAB59E"
-  - name: "Discussion"
-    match: "exam prep"
+  - name: "Practical Lab"
+    match: "practical lab"
     lightTheme:
       --event-background: "#F4EFC3"
       --event-border-color: "#B4B11C"
     darkTheme:
       --event-background: "#4C4B10"
       --event-border-color: "#F4EFC3"
-  - name: "Discussion"
-    match: "discussion"
+  - name: "Theoretical Lab"
+    match: "theoretical lab"
     lightTheme:
       --event-background: "#ECD9C9"
       --event-border-color: "#8D5C32"
