@@ -185,7 +185,7 @@ We will grant grades of Incomplete only for dire medical or personal emergencies
 
 ### Lateness Policy
 
-[See the lateness policy page.](./extensions)
+[See the lateness policy page.](./lateness)
 
 ---
 
@@ -203,7 +203,7 @@ Please read our [Ed Guide](../resources/using-ed). We will only respond to quest
 
 ### Official Staff Emails
 
-The main staff email that you might interact with throughout the semester is- [**cs61bl@berkeley.edu**](mailto:cs61bl@berkeley.edu). Emailing to this address will send a message to the course staff (instructors and the head/admin TAs). You can use it for correspondence that you don't want to seen on our class forum. If you send a question that is of general interest, we may post the response on Ed (we will keep personal information out of it, of course). In general, you should expect a response within a few days. Only people who have the "CS61BL@" tag on the staff page will have access to this email.
+The main staff email that you might interact with throughout the semester is [**cs61bl@berkeley.edu**](mailto:cs61bl@berkeley.edu). Emailing to this address will send a message to the course staff (instructors and the head/admin TAs). You can use it for correspondence that you don't want to seen on our class forum. If you send a question that is of general interest, we may post the response on Ed (we will keep personal information out of it, of course). In general, you should expect a response within a few days. Only people who have the "CS61BL@" tag on the staff page will have access to this email.
 
 {: .warning}
 If you have any problems that require an exception to course policy (e.g. medical emergencies or sudden necessary travel that result in extended absences), please contact [cs61bl@berkeley.edu](mailto:cs61bl@berkeley.edu). **Please do not email the instructors or course staff for exceptions.**
@@ -251,7 +251,7 @@ The entire point of homework and labs is to learn. For homework or labs, you sho
 
 ### Project Collaboration
 
-By contrast, the projects were designed not just for learning (particularly how to be self-reliant in the context of large unfamiliar systems), but also for the dual purpose of evaluating your mastery of the course material. As such, they are intended to be completed primarily on your own (or with your partner on project 3, which allow partners), particularly when it comes to writing the actual code.
+By contrast, the projects were designed not just for learning (particularly how to be self-reliant in the context of large unfamiliar systems), but also for the dual purpose of evaluating your mastery of the course material. As such, they are intended to be completed primarily on your own (or with your partner on project 3, which allows partners), particularly when it comes to writing the actual code.
 
 ### Exam Misconduct
 
