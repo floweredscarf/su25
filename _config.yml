@@ -76,7 +76,7 @@ staff_email: "cs61bl@berkeley.edu"
 
 # - Use this to show/hide the "announcements" feature on the homepage.
 # - Add your weekly announcements in the _announcements folder.
-enable_announcements: true
+enable_announcements: false
 
 
 #######################################################
