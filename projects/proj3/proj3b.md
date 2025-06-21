@@ -13,6 +13,9 @@ description: >-
 released: true
 ---
 
+{: .warning}
+> **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
+
 ## Deadlines
 
 {% capture deadlines %}{% include proj3-deadlines.html %}{% endcapture %}

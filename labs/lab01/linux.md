@@ -3,9 +3,8 @@ layout: page
 title: >-
   Linux/Unix
 parent: >-
-  Lab 01: Setup
+  Lab 01: Java & Git
 grand_parent: Labs
-has_toc: false
 has_right_toc: true
 released: true
 ---

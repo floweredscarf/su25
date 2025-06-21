@@ -13,17 +13,14 @@ description: >-
 released: true
 ---
 
-**Deadline: Monday, February 3rd, 11:59 PM PT.**
-
-# Hard Mode Project
-
-If you are a strong programmer, you might be interested in the [hard mode version of this project](hardmode). In the hard mode version, you'll solve the same problem as the standard version of this project, but there will be no handholding and you'll have to come up with the design yourself.
-
-There is no extra credit for completing the hard mode version instead of the standard version.
+**Deadline: Sunday, June 29th, 11:59 PM PT.**
 
 ## FAQ
 
 Each assignment will have an FAQ linked at the top. You can also access it by adding `/faq` to the end of the URL. The FAQ for Project 0 is located [here](./faq.md).
+
+{: .warning}
+> **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
 
 {: warning}
 Note that this project has limited submission tokens. Please see [Submission and Grading](#submission-and-grading) for more details.
@@ -33,12 +30,10 @@ Note that this project has limited submission tokens. Please see [Submission and
 Prerequisites:
 
 - [Lab 1](../../labs/lab01/index.md) (required for setup)
-- [HW0A](../../homeworks/hw0/hw0a/index.md) (recommended, for Java syntax)
-- [HW0B](../../homeworks/hw0/hw0b/index.md) (recommended, for Java syntax)
-- Lectures 1-2
+- Lecture 1
 - [61B Style Guide](../../resources/guides/style/index.md) (we are checking your style in autograder!)
-- [Lab 2](../../labs/lab02/index.md) (optional but recommended prerequisite - helpful for debugging)
-
+- [Lab 2](../../labs/lab02/index.md) (optional but recommended for practice with Java syntax)
+- [Lab 3](../../labs/lab03/index.md) (optional but recommended for practice with debugging)
 <!-- [See here for a video overview of the project.](TODO)  -->
 
 <!-- Any future resources (e.g. project party or intro section recording) can also be linked at the top here for ease of access. -->

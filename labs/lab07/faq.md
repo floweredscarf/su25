@@ -3,35 +3,30 @@ layout: page
 title: >-
   FAQ
 parent: >-
-  Lab 07: Hashmaps
+  Lab 06: Inheritance
 grand_parent: Labs
 has_right_toc: true
 released: true
 ---
+## Dynamic method selection is so confusing!
 
-### I'm getting a "Generic array creation" error.
+[Here](https://docs.google.com/presentation/d/1l9kslV4XB46fOOyD-hiXxi4sK-lmtFg9rMHRmS7_S5k/edit?usp=sharing) is Crystal's DMS Flow chart from a few semesters ago. You can follow steps methodically.
 
-Be sure to instantiate your buckets table with `new Collection[size]` or `(Collection<Node>[]) new Object[size]`!
+## `ListSet`
 
-### Failing edge cases
+### Why does `ListSet::remove` have that given line?
 
-The `Bee` class has some strange `equals()` and `hashCode()` implementations. If you're stuck on this test, use the debugger to see what values are expected from the reference map, which is Java's built-in HashMap. Walking through the expected behavior by hand may help as well.
+As mentioned in the comment, the reason that we need the line is out of scope.
+Specifically, the `List` interface has two `remove` methods:
 
-Some things to think about:
+- `remove(int index)`, that removes an element at a *specific index*
+- `remove(Object elem)`, that removes a *specific thing* from the list
 
-The reference map has some (maybe) unexpected behaviors. _Why_ does the reference map behave the way it does (remember `equals()` and `hashCode()`!)?
-Does your map behave the same way?
+We would like to use the latter, so we must "autobox" the given `int` to
+`Integer` with the given assignment statement.
 
-### I'm running into issues with resizing and getting "expected to be greater than [this value], but was [this value]".
+## `BooleanSet`
 
-For example, you might be seeing this error message:
+### Do we have to handle inputs outside \[0, `maxElem`\] (inclusive)?
 
-```shell
-expected to be greater than: 16
-but was                    : 16
-```
-
-If you're running into this issue, a common problem is how the load factor is being calculated. The load
-factor can be calculated by dividing the total number of elements in the hashmap by the total number
-of buckets - both values are commonly stored as integers, but remember, the load factor is a double.
-How might Java's integer division cause an issue?
+No.

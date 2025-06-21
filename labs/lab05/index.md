@@ -1,7 +1,7 @@
 ---
 layout: page
 title: >-
-  Lab 05: Project 1 Review
+  Lab 05: Linked Lists
 has_children: true
 parent: Labs
 has_toc: false
@@ -9,54 +9,441 @@ has_right_toc: true
 released: true
 ---
 
-## FAQ Page
+## [FAQ](faq.md)
 
-Please use our **[common issues and frequently asked questions page](./faq.md)**
-as a resource. We'll be updating this FAQ page on the website throughout the
-week!
-
-## Introduction
-
-In this lab, you will compare your solution to Project 1 with 1-3 other students in your lab. **On-time attendance is required this week**. If you cannot attend your regular lab, you may attend any other lab instead, barring room capacity.
-
-If you are physically unable to attend any lab at all, please fill out **[this exemption form](https://forms.gle/eQqWjZn4hbHkQAXj8) by Friday, February 28th (2/28)**. **If you have approved extensions for Project 1A/1B that extend past the Lab 5 deadline, please also fill out the form. Do NOT fill out the form unless you have approved extensions.** We will be verifying each form submission manually, and those with invalid submissions will not be checked off. **We will not be accepting any new form submissions after 2/28**, and will be emailing checkoff instructions during the weekend of March 1st (3/1).
+Each assignment will have an FAQ linked at the top. You can also access it by
+adding "/faq" to the end of the URL. The FAQ for Lab 4 is located
+[here](faq.md).
 
 {: .warning}
-As part of this lab, TAs will go over part of the solution for Project 1. **Do not attend this lab before you have made your final Project 1A and 1B submission to Gradescope, otherwise you will get marked for academic dishonesty.**
+> **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
 
-Please find the Lab 5 FAQ [here](./faq.md). **This lab is due Friday, February 28**. Good luck!
+## Before You Begin
 
-## Skeleton
+Reference the Git WTF guide and lecture one for any git confusions!
 
-Please run `git pull skeleton main` in order to receive the `lab05` starter files. Make sure your current changes are committed and pushed before pulling!
+### Learning Goals for Today
 
-## LinkedListDeque61B Overview
+This lab introduces you to the _linked list_, a data structure you may remember from [CS 61A](https://www.composingprograms.com/pages/29-recursive-objects.html). Much like an array, a linked list stores sequential data. However linked lists use _nodes_; each node stores one item and a reference to the next node. The last node in a linked list has no next node, so it stores a `null` reference instead.
 
-Your TA will start the lab by giving a brief overview of the staff solution to `LinkedListDeque61B`.
+It is possible to implement linked lists that store any type of data by using _generics_, which you will be learning about in detail in a later lab. For now, this lab will focus on a Linked List that stores only integers - an `IntList`, for which we have provided a template. In this lab you will implement some basic functional methods for this data structure; in the next lab you will implement some more finicky _destructive_ and _non-destructive_ methods (you'll get an introduction to these terms later today).
 
-### LinkedListDeque61B Peer Review
+Along the way, we'll also talk about testing and debugging software engineering principles.
 
-Group up with 1-3 other students and compare solutions. You should form groups with other students in Discord rooms. Don't be afraid of meeting someone new! Programmers in 61B vary widely in their level of experience and comfort with programming. Our goal here is to help each other get better. Please be nice, and don't feel bad if your solution is less elegant or even downright ugly. I've certainly written incredibly ugly, inelegant code! Why here's [a 1600 line monstrosity I wrote in 1997](knaveos.html), and a [video demo of it running](https://youtu.be/XgJUC0Le_Ew) if you're curious what it does. knaveos will not be on any exam.
+## Introduction to Linked Lists
 
-Avoid the temptation to explain exactly how your implementation works to your partner. Instead focus your discussion on more specific questions. Some suggested questions are listed below:
+In the next two labs we're going to be working with the _linked list_. A linked list is similar to an array in that it also stores sequential data, but different operations have different runtimes between linked lists and arrays. Since different problems call for different efficient operations, choosing the right data structure is an important design choice for an engineer, and we'll study this as we go through the course.
 
-1. What was the most annoying bug you had and how did you fix it? Did you use the debugger? Did you fix it by adding special cases? Did you do any change-and-pray (where you make a tiny change and hope the AG approves)?
-2. Did you end up cutting anything out to make your code simpler? If so, what?
-3. Do you have any special cases in your code?
-4. Do you have any private helper methods?
-5. Does your code repeat itself anywhere? Would private helper methods have helped?
-6. Were you able to call or reuse code anywhere?
+Here's a picture of a simple implementation of a linked list that contains the items "A", "B", and "C" (can you draw the corresponding picture for an array that stores these items?). A linked list consists of _nodes_ that are chained together. Here we represent nodes with a generic class `ListNode`. Each node contains some _item_ called `item`. As you can see, the items form a sequence. In this example, the linked list items are `String`s, though our linked list will contain `int`s instead, just like an `int[]`.
 
-After discussion, fill out `self_reflection.txt` with your own self reflection.
+![SimpleLinkedList](img/SimpleLinkedList.jpg)
 
-## ArrayDeque61B Overview
+## IntList
+### A Straightforward Implementation of a Linked List
 
-Your TA will go over the `ArrayDeque61B` solution.
+Here's an implementation of an `IntList` which could easily be generalized to store different types of data. Notice how it stores an item `item` and a reference to another node `next`.
 
-### ArrayDeque61B Peer Review
+```java
+public class IntList {
+    public int item;
+    public IntList next;
+}
+```
 
-Now, pair up again and discuss your `ArrayDeque61B` solutions as you did for `LinkedListDeque61B`. Fill out your `self_reflection.txt`. We recommend that you talk to different people than you did for `ArrayDeque61B`, but it's OK to stick with your group for `ArrayDeque61B`.
+### IntList Box and Pointer Diagram
 
-## Self Reflection and Submission
+Draw out the box and pointer diagram that would result after the following code has been executed.
+When you and a partner in your lab section have compared diagrams, check your accuracy using the Java Visualizer below.
 
-Make sure you've filled out at least 4 of the questions for both `ArrayDeque61B` and `LinkedListDeque61B` in the `self_reflection.txt` document provided in the skeleton. You should answer a minimum of 8 questions in total. Ask a TA to check your `self_reflection.txt` and give you the magic word to put in `magic_word.txt`. Push to Github and submit to Gradescope.
+{%- capture intListExample -%}
+public class IntList {
+    public int item;
+    public IntList next;
+
+    public static void main(String[] args) {
+        IntList L = new IntList();
+        L.item = 5;
+        L.next = null;
+
+        L.next = new IntList();
+        L.next.item = 10;
+        IntList p1 = L.next;
+
+        L.next.next = new IntList();
+        L.next.next.item = 15;
+        IntList p2 = p1.next;
+        p1.next = null;
+    }
+}
+{%- endcapture -%}
+{% include java_visualizer.html caption="Introducing IntLists"
+   code=intListExample %}
+
+> If it's hard to see what's going on in the Java Visualizer, enable the
+> following two **options** from the code editor.
+>
+> - **Prefer non-nesting and vertical layouts**
+> - **Force linked lists to display vertically**
+
+
+### IntList JUnit
+
+For this lab, we've written JUnit tests for you in `IntListTest.java`.
+Open it up and read through it. The first thing you'll notice are the imports at the top. These imports are
+what give you easy access to the JUnit methods and functionality that you'll
+need to run JUnit tests. If you want to read more about JUnit, refer to [Lab 3](../lab03/).
+
+### Exercise: The `get` Method
+
+Fill in the `get` method in the `IntList` class. `get` takes an `int` position as an argument, and returns the list element at the given (zero-indexed) position in the list.
+
+For example, lets say you have an `Intlist` with items 44, 79, and 109. If `get(1)` is called, you should return 79. If the position is out of range, `get` should throw `IllegalArgumentException` with an appropriate error message (just type in `throw new IllegalArgumentException("YOUR MESSAGE HERE")`). Assume `get` is always called on the first node in the list.
+
+```java
+public class IntList {
+    public int get(int position) {
+        ....
+    }
+}
+```
+
+Once you have something, **test your code** by running `IntListTest.java`.
+Depending on your IntelliJ setup, a window should pop up giving you multiple options.
+Choose the `IntListTest` next to the icon with a red and green arrow contained in a rectangle.
+If your implementation is correct, you should pass the `get` method tests.
+
+Hint: Traverse the list until the specified position is reached. Throw an exception if the position is out of bounds.
+
+### Exercise: `toString` and `equals`
+
+In [Lab 2](../lab02/#exercise-pursuit-curves), we introduced you to the `toString` and `equals` methods and you worked with a `Point` class for your Pursuit Curves that implemented these methods.
+
+Implement the standard Java methods, `toString` and `equals`, in the `IntList`
+class.
+
+> Once you're done, test your code using the provided JUnit tester in `IntListTest.java`.
+
+`toString`
+: The `toString` method for `IntList` returns the `String` representation of
+this list, namely:
+
+    1. The `String` representation of the first element, followed by a space,
+    2. The `String` representation of the second element, followed by a space,
+    3. ...
+    4. The `String` representation of the last element.
+
+    The list containing the integers 1, 3, and 5 is represented by the string
+`1 3 5`.
+
+<details markdown="block">
+  <summary markdown="block">
+#### Hint: How would you convert an integer to a string in Java?
+{: .no_toc}
+  </summary>
+Try searching for the answer online! Talk to your peers! Consider referencing the official [Java Documentation](https://docs.oracle.com/en/java/)!
+</details>
+
+
+`equals`
+: Given an `Object` as argument, this method returns `true` if this list and
+the argument list are the same length and store equal items in corresponding
+positions (determined by using the elements' `equals` method).
+
+<details markdown="block">
+  <summary markdown="block">
+#### Hint: How would you check if the given object is of type `IntList`?
+{: .no_toc}
+  </summary>
+Check the [Java Documentation](https://docs.oracle.com/en/java/) for a method if you're unsure.
+</details>
+
+### Exercise: `add`
+
+Fill in the `add` method, which accepts an `int` as an argument and appends an
+`IntList` with that argument at the end of the list. For a list `1 2 3 4 5`,
+calling `add` with `8` would result in the same list modified to `1 2 3 4 5 8`.
+
+```java
+public void add(int value) {
+    // TODO
+}
+```
+
+### Exercise: `smallest`
+
+Implement the `smallest` method, which returns the smallest `int` that is
+stored in the list. For a list `6 4 3 2 3 2 2 5 999`, a call to `smallest`
+would return `2`.
+
+```java
+public int smallest() {
+    // TODO
+}
+```
+
+<details markdown="block">
+  <summary markdown="block">
+#### Hint: How do we ask specific questions about integers in Java?
+{: .no_toc}
+  </summary>
+[You might find the Math Class documentation helpful.](https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html)
+
+</details>
+
+### Exercise: `squaredSum`
+
+Finally, implement the `squaredSum` method. As the name suggests, this method
+returns the sum of the squares of all elements in the list. For a list `1 2 3`,
+`squaredSum` should return `1^2 + 2^2 + 3^2 = 1 + 4 + 9 = 14`.
+
+```java
+public int squaredSum() {
+    // TODO
+}
+```
+
+This type of function is called a *reducer*, as it reduces the whole list down to a single value! You might remember this idea from CS61A.
+
+## Destructive vs. Non-Destructive
+
+Suppose you have an `IntList` representing the list of integers `1 2 3 4`. You
+want to find the list that results from squaring every integer in your list, `1
+4 9 16`.
+
+There are two ways we could go about solving this problem. The first way is to
+traverse your existing initial `IntList` and actually change the items stored in your
+nodes. Such a method is called **destructive** because it can change (*mutate*
+or *destroy*) the original list.
+
+```java
+IntList myList = IntList.of(1, 2, 3, 4);
+IntList squaredList = IntList.dSquareList(myList);
+System.out.println(myList);
+System.out.println(squaredList);
+```
+
+Running the above, destructive program would print,
+
+    1 4 9 16
+    1 4 9 16
+
+> Observe that the `IntList.of()` method makes it much easier to create
+> IntLists compared to the brute force approach. This might be useful for writing your own tests.... ;)
+>
+> ```java
+> IntList myList = new IntList(0, null);
+> myList.next = new IntList(1, null);
+> myList.next.next = new IntList(2, null);
+> myList.next.next.next = new IntList(3, null);
+> // One line of using IntList.of() can do the job of four lines!
+> ```
+
+The second way is called **non-destructive**, because it allows you to access
+both the original and returned lists after execution. This method returns a list containing
+enough new `IntList` nodes such that the original list is left unchanged.
+
+```java
+IntList myList = IntList.of(1, 2, 3, 4);
+IntList squaredList = IntList.squareList(myList);
+System.out.println(myList);
+System.out.println(squaredList);
+```
+
+Running the above, non-destructive program would print,
+
+    1 2 3 4
+    1 4 9 16
+
+In practice, one approach may be preferred over the other depending on the
+problem you are trying to solve and the specifications of the program. We will talk about such
+trade-offs throughout the rest of the semester!
+
+
+
+### `dSquareList` Implementation
+
+Here is one possible implementation of `dSquareList`, along with a call to
+`dSquareList`.
+
+```java
+public static void dSquareList(IntList L) {
+    while (L != null) {
+        L.item = L.item * L.item;
+        L = L.next;
+    }
+}
+```
+
+```java
+IntList origL = IntList.of(1, 2, 3)
+dSquareList(origL);
+// origL is now (1, 4, 9)
+```
+
+The reason that `dSquareList` is destructive is because we change the values of
+the **original input** `IntList L`. As we go along, we square each value, and the
+action of changing the internal data persists.
+
+It is also important to observe that the bits in the `origL` box do not change. Objects
+are saved by reference, meaning the value tied to the variable will point to a memory address
+rather than the integer values in our list. Thus, though this method is destructive, it is changing
+the value saved in the memory location referred to by `origL`, not the value within `origL` itself. 
+For more about this, refer to [Lab 2](../lab02/).
+
+#### Testing `dSquareList`
+
+The `dSquareList` implementation above is provided to you in your skeleton file as well.
+
+**Use the [Java Visualizer plugin][] to visualize the IntList** and to understand how the `dSquareList` method works, discussing with a
+partner as you do so. [Pointers and IntLists might seem confusing at first, but it's
+important that you understand these concepts!](https://www.youtube.com/watch?v=Gu8YiTeU9XU)
+
+Note: The choice to return void rather than a pointer to `L` was an arbitrary
+decision. Different languages and libraries use different conventions ([and
+people get quite grumpy about which is the "right" one](https://en.wikipedia.org/wiki/Lilliput_and_Blefuscu)). We have the flexibility to decide
+when writing destructive methods when mutating objects passed in as arguments. Talk to your
+partner about why this is and try to think of settings where one would be preferable over the other.
+
+[java visualizer plugin]: {{ site.baseurl }}/guides/plugin#java-visualizer
+
+### Non-Destructive Squaring
+
+`squareListIterative()` and `squareListRecursive()` are both *non-destructive*.
+That is, the underlying `IntList` passed into the methods does **not** get
+modified, and instead a fresh new copy is modified and returned.
+
+```java
+public static IntList squareListIterative(IntList L) {
+    if (L == null) {
+        return null;
+    }
+    IntList res = new IntList(L.item * L.item, null);
+    IntList ptr = res;
+    L = L.next;
+    while (L != null) {
+        ptr.next = new IntList(L.item * L.item, null);
+        L = L.next;
+        ptr = ptr.next;
+    }
+    return res;
+}
+```
+
+```java
+public static IntList squareListRecursive(IntList L) {
+    if (L == null) {
+        return null;
+    }
+    return new IntList(L.item * L.item, squareListRecursive(L.next));
+}
+```
+
+Ideally, you should spend some time trying to really understand them, including
+possibly using the visualizer. However, if you don't have time, note that the
+iterative version is much messier.
+
+The iterative versions of non-destructive `IntList` methods are often (but not
+always) quite a bit messier than the recursive versions, since it takes some
+careful pointer action to create a new `IntList`, build it up, and return it.
+
+|           | Destructive              | Non-destructive                              |
+|-----------|--------------------------|----------------------------------------------|
+| What?     | Modify the original list | Return a new list                            |
+| Examples: | `dSquareList`            | `squareListRecursive`, `squareListIterative` |
+
+### Exercise: Concatenation
+
+To complete the lab, you will need to add test for `catenate` and `dcatenate`, and then implement `catenate` and `dcatenate` as described below.
+
+You may find the squaring methods from above to be useful as you write your
+code.
+
+You may also find (lab03)[../lab03/#test-driven-development]'s section on Test Driven Development useful as you write your tests.
+
+```java
+@Test
+public void testCatenate() {
+    // TODO: Add tests
+}
+```
+
+```java
+public static IntList catenate(IntList A, IntList B) {
+    // TODO
+}
+```
+
+```java
+@Test
+public void testDCatenate() {
+    // TODO: Add tests
+}
+```
+
+```java
+public static IntList dcatenate(IntList A, IntList B) {
+    // TODO
+}
+```
+
+Both methods take in two `IntList`s and concatenate them together, so
+`catenate(IntList A, IntList B)` and `dcatenate(IntList A, IntList B)` both
+result in an `IntList` which contains the elements of `A` followed by the
+elements of `B`. The only difference between these two methods is that
+`dcatenate` modifies the original `IntList A` (it's destructive) and `catenate`
+does not.
+
+As an example, if you call either of the methods with two IntLists containing [0, 1, 2] and [3, 4], both `catenate` and `dcatenate` will result in an `IntList` containing [0, 1, 2, 3, 4]. 
+
+To complete the lab:
+
+- Write tests for `catenate` and `dcatenate`
+- Fill in one of `dcatenate()` or `catenate()`, and run them against your tests.
+  Revise your code until it passes your tests.
+- Repeat for the method you haven't yet completed. (We recommend you do one
+  first and finish it before you start the next, because then you'll be able to
+  take advantage of the similar logic).
+
+`IntList` problems can be tricky to think about, and there are always several
+approaches which can work. Don't be afraid to pull out pen and paper or go to
+the whiteboard and work out some examples! If you get stuck, drawing out the
+pointers can probably steer you back onto the path of progress. And, as always,
+the debugger is a great option!
+
+Feel free to use either recursion or iteration. For extra practice, try both!
+
+It's also often useful to first think about base cases, such as when `A` is
+`null`, for example. This works especially well for building up a recursive
+solution. In other words, write up a solution that would work for the base
+case, then stop and think about how to expand this solution into something that
+works for other bigger cases.
+
+For this problem, it is okay for `dcatenate` to return one or the other list if
+one or both of `A` and `B` are `null`. For `catenate`, it is okay to attach `B`
+to the end of `A` without making a full copy of `B`. However, think about and
+discuss the following two questions with your partner:
+
+- Why does this still produce a 'correct' program?
+- What kinds of problems could this decision cause?
+
+
+## Recap
+
+Today we talked about the `IntList`. Methods involving Linked Lists can be implemented
+iteratively and recursively. These functions can also be destructive or non-destructive.
+
+## What to do next
+
+You are now ready to start project 1! 
+
+### Deliverables
+
+- `IntList.java`
+    - `get`
+    - `toString`
+    - `equals`
+    - `add`
+    - `smallest`
+    - `squaredSum`
+    - `catenate`
+    - `dcatenate`

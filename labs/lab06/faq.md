@@ -3,36 +3,30 @@ layout: page
 title: >-
   FAQ
 parent: >-
-  Lab 06: BSTMap
+  Lab 05: Abstract Data Types
 grand_parent: Labs
 has_right_toc: true
 released: true
 ---
+## Dynamic method selection is so confusing!
 
-### Error relating to iterator
+[Here](https://docs.google.com/presentation/d/1l9kslV4XB46fOOyD-hiXxi4sK-lmtFg9rMHRmS7_S5k/edit?usp=sharing) is Crystal's DMS Flow chart from a few semesters ago. You can follow steps methodically.
 
-If you get this error:
+## `ListSet`
 
-```
-java: bstmap.BSTMap is not abstract and does not override abstract method iterator() in java.lang.Iterable
-```
+### Why does `ListSet::remove` have that given line?
 
-You need to put the following method in your BSTMap:
+As mentioned in the comment, the reason that we need the line is out of scope.
+Specifically, the `List` interface has two `remove` methods:
 
-```
-public Iterator<K> iterator() {
-    throw new UnsupportedOperationException();
-}
-```
+- `remove(int index)`, that removes an element at a *specific index*
+- `remove(Object elem)`, that removes a *specific thing* from the list
 
-Why does the BSTMap need this? It's because the `Map61B` interface extends `Iterable`, which means that anything that implements `Map61B` must have the `Iterable` methods as well.
+We would like to use the latter, so we must "autobox" the given `int` to
+`Integer` with the given assignment statement.
 
-### Wrong size in treeTest
+## `BooleanSet`
 
-If you're erroring on this line in `treeTest`:
+### Do we have to handle inputs outside \[0, `maxElem`\] (inclusive)?
 
-```
-assertThat(b.size()).isEqualTo(5)
-```
-
-Keep in mind that `put` doesn't always add a new value to the tree. If `put` is called with an existing key, it should just update the value, which shouldn't change the size.
+No.

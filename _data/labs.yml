@@ -221,7 +221,7 @@ labs:
     link:
     show_links: false
     nonumber: True
-  - title: "BYOW Presentations! (Optional)"
+  - title: "BYOW Presentations!"
     nonumber: True
   - title: "No Lab"
     nonumber: True

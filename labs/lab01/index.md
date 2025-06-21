@@ -1,7 +1,7 @@
 ---
 layout: page
 title: >-
-    Lab 01: Setup
+    Lab 01: Java & Git
 has_children: true
 parent: Labs
 has_toc: false
@@ -9,162 +9,280 @@ has_right_toc: true
 released: true
 ---
 
-<!-- markdownlint-capture -->
+## [FAQ](faq.md)
 
-## FAQ
+Each assignment will have an FAQ linked at the top. You can also access it by
+adding "/faq" to the end of the URL. The FAQ for Lab 1 is located
+[here](faq.md). 
+**The FAQ (frequently asked questions) is a list of compiled questions and errors that students often run into, so refer to this page first before reaching out to staff.**
 
-Each assignment will have an FAQ linked at the top. The FAQ for Lab 1 is located
-[here](faq.md). **The FAQ (frequently asked questions) is a list of compiled questions 
-and errors that students often run into, so refer to this page first before reaching 
-out to staff.**
+{: .warning}
+> **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
 
-## Welcome to CS 61B!
+## Learning Goals
 
-We're very excited to work with you this term! Before we can get started, you'll
-need to have a computer that you can work on assignments on. In this class,
-you'll be using real-world tools, which means that you'll likely run into
-real-world problems. These are hard problems, and software engineers run into
-them every day! **Don't be discouraged**, and make sure to ask
-for help if you're stuck!
+In this lab, we will set up the software that we will use throughout the
+course: the terminal, git, java, IntelliJ, etc. We will also look at a small
+Java program and learn a little bit about Java syntax.
 
-We highly recommend attending a lab section, and asking for help during lab
-section. If you're working outside of a lab section, you can ask on Ed or
-attend office hours.
+To see what you need to complete for full credit on this lab, skip to the [Deliverables section](#deliverables) below.
+
+## Before You Begin
+
+**Welcome to CS 61BL!**
+We have a wonderful summer planned for y'all, and we're so excited that you'll
+be joining us!
+
+First things first: setup! In this class, you'll be using real-world tools, and
+that means that you'll likely run into real-world problems with configuration
+and setup these first few days. **Don't be discouraged**, and make sure to ask
+for help if you're stuck! The best place to ask for help is during your actual
+lab time. If you attempt to do this outside of that time and run into any
+problems, please ask them on Ed. For more information on using Ed in this course, 
+read through our [Ed Policies and Guidelines](../../resources/guides/ed/).
 
 {: .danger}
-> If something isn't working, **do not** keep trying random things! Instead, ask for help. 
-> Your lab TA will tell you how to join the queue. They may choose to use a whiteboard queue
-> or the [online OH queue](https://oh.datastructur.es).
-> 
-> In general, while you are waiting, you should **move on to the next step of the
-assignment**, whenever possible.
-
-### Partners
-
-Labs in CS 61B are **solo**. This means that you will need to write and submit
-your own code. For Lab 1 in particular, you will need to set up your own
-computer.
-
-However, we strongly encourage working together
-with other students! In-person lab sections are an excellent place to find
-groups.
-
-### Goals and Workflow
-
-In this lab, we will work on setting up the software that will be used throughout this course. 
-This includes an introduction to the terminal, git, Java, and IntelliJ. We'll also work through a 
-small Java program to get situated with the Java language!
-
-{: .info}
-> This lab will be long! **Do not skip steps!** 
+> If ever something isn't working, or a screen that should show up isn't showing up, make sure you ask for help -- **do not** keep going because this might make it more difficult for us to identify the problem later on if you do hit a dead-end.
 
 ## Personal Computer Setup
 
-### Task: Installing Git
+### Task: Configure Your Computer
 
-<!-- Install Git Instructions Here and come back later to do -->
+Depending on your operating system, there are a few things we need to do to set
+your computer up for 61B(L).
 
-Installation will vary, depending on your operating system.
-
-<!-- TODO: Rework these. Mac brew is *nasty*, just switch to the websites. -->
-<!-- Hmm, Mac needs brew for git though. Blegh.  -->
+The precise steps to take depend on your operating system.
 
 - [Windows instructions](windows.md)
 - [macOS instructions](mac.md)
 - [Linux instructions](linux.md)
 
-{: .task}
-Follow the guide for your operating system to install the software.
+{: .info}
+> Move on to the next section **only** once you've completed the instructions above for your operating system.
 
 ## The Terminal
 
-### Terminal Guide
+### Learn to use the Terminal
 
-In CS61B, we will be using the terminal extensively to work with git. The terminal also has some other commands 
-that allow you to work with folders or files. We've compiled them in this brief guide, so please make sure to read
-through it here: **[How to Use the Terminal](terminal.md)**. 
+In CS 61BL we will be using the terminal extensively, even more than you likely
+did in previous classes. Bash commands can be pretty powerful and will allow you
+to create folders or files, navigate through your file system, etc. To jump
+start your knowledge we have included a short guide of the most essential
+commands that you will be using in this class. Please carefully read this and
+try to familiarize yourself with the commands. We will help you as you get
+started, but by the end of the class we hope that you will have become a
+proficient user of the bash terminal!
 
-In the terminal, you can move through different directories, create new files, list files in a current directory, 
-etc. with the specified commands in the guide. You will be using the terminal throughout this lab and most likely 
-in future assignments, especially for assignment submissions.
+-   `pwd`: present working directory
 
-{: .task}
-Please read through the terminal guide and familiarize yourself with the commands! Feel free to also bookmark 
-the page for future reference.
+    ```shell
+    pwd
+    ```
 
-## GitHub and Beacon Accounts
+    This command will tell you the full absolute path for the current
+     directory you are in if you are not sure where you are.
 
-### Overview
+-   `ls`: list files/folders in directory
 
-Instead of bCourses, CS 61B uses an in-house system for centralizing your
+    ```shell
+    ls
+    ```
+
+    This command will list all the files and folders in your current
+    directory.
+
+    ```shell
+    ls -l
+    ```
+
+    This command will list all the files and folders in your current
+    directory with timestamps and file permissions. This can help you
+    double-check if your file updated correctly or change the read-write-
+    execute permissions for your files.
+
+-   `mkdir`: make a directory
+
+    ```shell
+    mkdir dirname
+    ```
+
+    This command will make a directory within the current directory called
+    `dirname`.
+
+-   `cd`: change your working directory
+
+    ```shell
+    cd hw
+    ```
+
+    This command will change your directory to `hw`.
+
+-   `.`: means your current directory
+
+    ```shell
+    cd .
+    ```
+
+    This command will change your directory to the current directory (aka,
+    do nothing).
+
+-   `..`: means one parent directory above your current directory
+
+    ```shell
+    cd ..
+    ```
+
+    This command will change your directory to its parent. If you are in
+    `/workspace/day1/`, the command will place you in `/workspace/`.
+
+-   `rm`: remove a file
+
+    ```shell
+    rm file1
+    ```
+
+    This command will remove file1 from the current directory. It will not
+    work if `file1` does not exist.
+
+    ```shell
+    rm -r dir1
+    ```
+
+    This command will remove the `dir1` directory recursively. In other
+    words, it will delete all the files and directories in `dir1` in addition
+    to `dir1` itself. Be very careful with this command!
+
+-   `cp`: copy a file
+
+    ```shell
+    cp lab1/original lab2/duplicate
+    ```
+
+    This command will copy the `original` file in the `lab1` directory and
+    and create a `duplicate` file in the `lab2` directory.
+
+-   `mv`: move or rename a file
+
+    ```shell
+    mv lab1/original lab2/original
+    ```
+
+    This command moves `original` from `lab1` to `lab2`. Unlike `cp`, mv
+    does not leave original in the `lab1` directory.
+
+    ```shell
+    mv lab1/original lab1/newname
+    ```
+
+    This command does not move the file but rather renames it from `original`
+    to `newname`.
+    
+-   `touch` : create a file if it doesn't exist
+    
+    ```shell 
+    touch lab1/newFile
+    ```
+    
+    This command will create a new empty file called `newFile` in the `lab1`
+    directory. 
+    
+    ```shell
+    touch existingFile
+    ```
+    
+    This command will leave the contents of `existingFile` unchanged.
+    
+ 
+ - `cat` : catenate file(s) to output
+    
+    ```shell
+    cat file1 
+    ```
+    
+    This command will print out the contents of `file1` to the terminal. 
+    
+    ```shell
+    cat file1 file2
+    ```
+    
+    This command will print out the contents of `file1` followed by `file2` to
+    the terminal. 
+
+    There are some other useful tricks when navigating on a command line:
+
+-   Your shell can complete file names and directory names for you with
+    *tab completion*.
+    When you have an incomplete name (for something that already exists), try
+    pressing the `tab` key for autocomplete or a list of possible names.
+
+-   If you want to retype the same instruction used recently, press the `up`
+    key on your keyboard until you see the correct instruction.
+    This saves typing time if you are doing repetitive instructions.
+
+## GitHub and Beacon
+
+Instead of bCourses, CS 61BL uses an in-house system for centralizing your
 grades and student information called Beacon.
 
 In this section, we'll set up your Beacon account as well as your CS 61B GitHub
 repository ("repo"), which you will need to submit all coding assignments.
 
-### Task: Setting Up Accounts
+### Task: Account Setup
 
-1.  Create an account on [GitHub](https://github.com/). If you already have
+1.  Create an account at [GitHub.com](https://github.com/). If you already have
     an account, you do not need to create a new one.
-2.  Go to [Beacon]({{ site.links.beacon }}) and follow the steps to complete your GitHub repository
-    registration. You must be logged in to your Berkeley account to complete
-    the Google Form syllabus quiz.
-3.  After completing all of the steps, you should receive an email inviting you
-    to collaborate on your course GitHub repository. Accept the email
-    invitation to receive access to your course repository. This email will be
-    sent to the **email that you used to create your GitHub account, which may
-    not necessarily be your Berkeley email**.
+1.  Go to
+    [the Beacon website](https://beacon.datastructur.es/)
+    and you'll be guided through a few steps to complete your GitHub repository
+    registration. Please follow them carefully! You must be logged in to your
+    Berkeley account to complete the Google Form quiz. If any errors occur while
+    you're working through the steps, please let your TA know immediately.
+1.  After completing all of the steps, you should receive an email inviting you
+    to collaborate on your course GitHub repository.
+    This email will be sent to the **email that you used to create your GitHub account, which may not
+    necessarily be your Berkeley email**.
 
-{: .warning}
-> Don't follow the instructions that GitHub says you might want to do.
-> We have our own set of instructions later in this lab.
-
-{: .task}
-Follow the steps above to create your GitHub and Beacon accounts, and
-connect them.
+    {: .danger}
+    > Don't follow the instructions that GitHub says you might want to do. We have our own set of instructions later in this lab.
 
 ### Your Repository
 
-Your repository will have a name containing a number that is unique to you.
-For instance, if your repo is called "`{{ site.semester }}-s1`", you'll be able to visit your
-private repository at <https://github.com/Berkeley-CS61B-Student/{{ site.semester }}-s1>
-(when logged into GitHub). **Your student number is not "1", so this
-link will not work for you. Replace "1" with your own number to see your repo on
-GitHub.**
+Your repository will have a name containing a number that is unique to you!
+For instance, if your repo is called "`su25-s12`", you'll be able to visit your
+private repository at <https://github.com/Berkeley-CS61B-Student/su25-s12>
+(when logged into GitHub). **If your repo number is not "12" this link will not
+work for you.** Replace "12" with your own to see your repo on Github.
 
-Additionally, **course staff will be able to view your repository.** This means you can 
-(and should!) link to your code when asking private debugging questions in Ed or Gitbugs. 
-No other students will be able to view your repository.
+Additionally, the instructors, TAs, and tutors will be able to view your
+repository. This means you can (and should!) link to your code when creating
+gitbugs posts on Ed. No other students will be
+able to view your repository.
 
 {: .danger}
-As a reminder, you may not post code from this course publicly, even after
-completing the course. Doing so is a violation of our course policies and you
-might be subject to disciplinary action.
+> As a reminder, you may not post code from this course publicly, even after completing the course. Doing so is a violation of our course policies and you might be subject to disciplinary action.
 
 ## Git
 
-### Git Basics
-
 In this course, you'll be required to use the Git version control system, which
-is nearly universal out in the real world. Since the abstractions behind
+is wildly popular out in the real world. Since the abstractions behind
 it are fairly tricky to understand, don't be worried if you encounter
-significant frustration as you learn to use it.
+significant frustration as you learn to use git. Towards the middle of the
+semester, we'll be learning the inner workings of git
+in much greater detail but, for now, let's just get a working knowledge of how
+to use git.
 
-{: .task}
-Before you proceed, **read up to the Remote Repositories
-section of the [Using Git Guide](../../resources/guides/git/index.md)**. You do not need
-to read past that. This is to help you get a rough idea of what Git is. 
+Before you proceed, **read sections up to the Remote Repositories section of
+the [Using Git Guide](../../resources/guides/git.md)**.
 
-### Task: Setting Up Git
+{: .info}
+> Do not proceed until you have read sections up to the **Remote Repositories** section of the **[Using Git Guide](../../resources/guides/git.md)**. You do not need to read past that.
+
+
+### Setting Up Git
 
 Before we use git, we have some short commands to configure it appropriately.
 
-First, open up your terminal. It will look something like this:
-
-{: style="max-height: 200;" }
-![empty_terminal](img/empty_terminal.png)
-
-Then, set the name and email that git will use with these two commands:
+First, set the name and email that git will use with these two commands:
 
 ```shell
 git config --global user.name "<your name>"
@@ -186,87 +304,103 @@ git config --global pull.rebase false
 We'll also change the text editor associated with git. Sometimes, git needs
 your help when inputting things like commit messages, so it will open a text
 editor for you. The default editor is `vim`, which is notoriously difficult to use.
-We recommend `nano` for this course, but you're free to use whatever you'd like.
 
 **Follow the instructions
 [here](https://git-scm.com/book/en/v2/Appendix-C%3A-Git-Commands-Setup-and-Config)**.
 This will configure Git's default editor (make sure that you follow the correct
-instructions for your operating system).
+instructions for your operating system). If you've worked with a text editor like VSCode, 
+Sublime Text or Atom before, we suggest setting whatever you're most familiar with as the default
+editor. If not we suggest using Notepad for Windows, TextEdit for MacOS and Nano for Linux. 
 
 {: .task}
-Configure git by following the above instructions, and set your preferred
-editor.
+> **Task**: Configure git by following the above instructions, and set your preferred editor.
+
+### Task: Git Exercise
+
+Now that you've read the first 3 sections of the
+[Using Git Guide](../../guides/using-git.md), you're ready to start using git!
+As part of your lab checkoff, you will be working through a small git workflow
+by setting up a git repository and making a couple commits to the repository.
+
+If you need help with creating directories, creating files, changing
+directories, etc., refer back to
+*[Learn to use the Terminal](#learn-to-use-the-terminal)*.
+
+
+1.  Create a directory called `lab01-checkoff` (`mkdir`). You can put this directory
+    anywhere on your computer (unless you have already cloned your `su25-s***`
+    repository, in which case, you **should not put this directory inside of
+    your `su25-s***` repo)**.
+2.  Move into the `lab01-checkoff` directory (`cd`), and initialize a git repository
+    in this directory (`git init`).
+3.  Create a file called `61b.txt` in any way you'd like (`touch`). In this text file,
+    add the text "61b version 1" into it.
+4.  Create another file called `61bl.txt` in any way you'd like. In this text
+    file, add the text "61bl version 1" into it.
+5.  Begin tracking **only** `61b.txt`, and create a new commit containing just
+    this file, with the following commit message: "Add 61b.txt".
+6.  Make a modification in `61b.txt` by changing the text in the file to: "61b
+    changed to version 2".
+7.  Make another commit, this time containing both `61b.txt` and `61bl.txt`.
+    The commit message should be: "Update 61b.txt and add 61bl.txt".
+8.  Make one more modification to `61b.txt` by changing the text in
+    the file to: "61b changed to version 3". Don’t commit this version.
+
+At this point, if you were to type in `git status` and `git log`, something like this should
+show:
+
+ <script
+        id="asciicast-r8KSJ9xba9m2PvL2hxrJMO39Y"
+        src="https://asciinema.org/a/r8KSJ9xba9m2PvL2hxrJMO39Y.js"
+        async
+    ></script>
+
+
+9. **Using git only**, restore `61b.txt` to the version in the first commit.
+10.  **Using git only**, restore `61b.txt` to the version in the most recent commit.
+
+
+
+Be sure to save this repository and directory until you complete the
+[asynchronous checkoff form on beacon](https://beacon.datastructur.es/) and
+obtain a **magic word**. We'll be using this magic word later in the lab. 
+
+{: .task}
+> **Task**: Do the steps above, then get checked off by filling out the Beacon form.
 
 ### Git and Remote Repos
 
 First, read the **Remote Repositories** section of the
-**[Using Git Guide](../../resources/guides/git/index.md#d-remote-repositories)**.
+**[Using Git Guide](../../guides/using-git#remote-repositories)**.
 
-In this course, you'll be required to submit your code using git to your course
-GitHub repository that you created in [Account Setup](#task-setting-up-accounts).
+In this course, you'll be required to submit your code using Git to your course
+GitHub repository that you created in [Account Setup](#task-account-setup).
 This is for several reasons:
 
-- To spare you the incredible agony of losing your files.
-- To submit your work for grading and to get results back from the autograder.
-- To save you from the tremendous anguish of making unknown changes to your
-  files that break everything.
-- To ensure that we have easy access to your code so that we can help if
-  you're stuck.
-- **To dissuade you from posting your solutions on the web in a public GitHub
-  repository**. This is a major violation of course policy!
-- To expose you to a realistic workflow that is common on every major project
-  you'll ever work on in the future.
+-   To spare you the incredible agony of losing your files.
+-   To submit your work for grading and to get results back from the autograder.
+-   To save you from the tremendous anguish of making unknown changes to your
+    files that break everything.
+-   To ensure that we have easy access to your code so that we can help if
+    you're stuck.
+-   **To dissuade you from posting your solutions on the web in a public GitHub
+    repository**. This is a major violation of course policy!
+-   To expose you to a realistic workflow that is common on every major project
+    you'll ever work on in the future.
 
-## Task: Git Repository and Java Libraries
+### Task: Setting up your Git Repository
 
-### Java Libraries                                                                     
-                                                                                                  
-Like in Python, we sometimes want to use libraries that others wrote. Java dependency management 
-is a bit of a mess, so we instead provide a git repo that contains all the dependencies that we 
-will use in this course. Once again, make sure your terminal is open.
-
-Navigate to the folder where you would like to store your libraries. For this lab, we'll 
-assume that you placed all your stuff in a folder named __cs61b__. You can pick a different name
-if you would like to. This is what it might look like after navigating to where you want to, 
-creating the `cs61b` directory, and going into it (`cd cs61b` in this example): 
-
-{: style="max-height: 200;" }
-![terminal-directory](img/terminal_directory.png)
-
-Once inside the folder, run:                                                                                        
-                                                                                                  
-```shell                                                                                          
-git clone https://github.com/Berkeley-CS61B/library-{{ site.semester }}
-```
-                                                                                                  
-Below is the directory structure of `library-{{ site.semester }}`. Look inside the folder using 
-`ls library-{{ site.semester }}` and make sure you see the `.jar` files listed below. There are many more, 
-but we only list the first few. If you're using your operating system's file explorer, 
-the `jar` part might not show up in the filenames, and that's OK.                                                                  
-                                                                                                  
-```console                                                                                        
-library-{{ site.semester }}
-├── algs4.jar
-├── animated-gif-lib-1.4.jar
-├── antlr4-runtime-4.11.1.jar
-├── apiguardian-api-1.1.2.jar
-└── ...
-```          
-                                                                                                  
-{: .task}
-Follow the instructions above to get the course libraries.                                                                                                                                                                                
-
-### Authenticate With Github
+#### Authenticate With Github
 
 First, run the following command in your terminal. It will print out any SSH keys you have 
 and generate a new one if none exists: 
 
 ```shell
-curl -sS https://{{ site.semester }}.datastructur.es/labs/lab01/get-ssh-key.sh | bash 
+curl -sS https://cs61bl.org/su25/labs/lab01/get-ssh-key.sh | bash 
 ```
 
 {: .info}
-If you get an error message such as `bash: line 1: syntax error near unexpected token 'newline'`, try refreshing this page and run the updated command.
+> DIf you get an error message such as `bash: line 1: syntax error near unexpected token 'newline'`, try refreshing this page and run the updated command.
 
 With the location that is provided, go ahead and run the following 
 command, ensuring to replace `<path_to_ssh_key>` with the location of the SSH key
@@ -294,8 +428,6 @@ In your terminal, run the following command to connect with Github using SSH:
 ssh -T git@github.com
 ```
 
-If the system asks"The key is not know by any other names. Are you sure you want to continue connecting (yes/no/[fingerprint])?", type "yes". 
-
 If all went well, you should see something like this:
 
 ```shell
@@ -304,33 +436,31 @@ Hi USERNAME! You've successfully authenticated, but GitHub does not provide shel
 
 You should now be successfully authenticated with Github and good to go!
 
-### Configure Personal Repository
+#### Clone your `su25-s***` Git Repository
 
-Now, it's time to clone your personal repository. As you did with the libraries, navigate to the 
-folder where you would like to keep your repository. We recommend that it's the same folder as where
-you stored your Java libraries (for example, `cs61b`).
-
-{: .danger}
-Do not place your repository inside the `library-{{ site.semester }}` folder. This will cause headaches
-in the future. For example, it would be inside of the `cs61b` folder but not in the `library-{{ site.semester }}`
-folder (possibly on the same level as the library).
-
-**Make sure to replace the `***` with your
-class repository number (you can find this repo number on Beacon).** Then run the command below:
+Navigate to the spot in your folders on your computer that you'd like to start
+your repository. In the example below, we're assuming you want all your stuff
+in a folder named `cs61bl`, but you can pick a different name if you'd like.
 
 ```shell
-git clone git@github.com:Berkeley-CS61B-Student/{{site.semester}}-s***.git
+cd cs61bl
+```
+
+Enter the following command to clone your GitHub repo. Make sure to replace the
+`***` with your class repository number (this should be the repo number you
+were assigned through Beacon, not your lab section number).
+
+```shell
+git clone git@github.com:Berkeley-CS61B-Student/su25-s***.git
 ```
 
 {: .info}
-After cloning your terminal will report `warning: You appear to have cloned
-an empty repository.` This is not an issue, it is just git letting you know
-that there are no files in the repo.
+> After cloning your terminal will report "`warning: You appear to have cloned an empty repository.`" This is not an issue, it is just git letting you know that there are no files in the repo, which is what we expect here.
 
 Move into your newly created repo!
 
 ```shell
-cd {{ site.semester }}-s***
+cd su25-s***
 ```
 
 Make sure that we're working with the branch name we expect, `main`:
@@ -339,12 +469,13 @@ Make sure that we're working with the branch name we expect, `main`:
 git branch -M main
 ```
 
-**Now, we'll add the `skeleton` remote repository.** We add starter code for the assignments
-to `skeleton`, and you will pull from it (please make sure you're in your newly created repository 
-before running this command!). 
+Now, we will add the `skeleton` remote repository. You will pull from this
+remote repository to get starter code for assignments. (Make sure that you are
+within the newly created repository folder when you continue with these
+commands.) Enter the following command to add the `skeleton` remote.
 
 ```shell
-git remote add skeleton https://github.com/Berkeley-CS61B/skeleton-{{ site.semester }}.git
+git remote add skeleton https://github.com/cs61bl/skeleton-su25.git
 ```
 
 Listing the remotes should now show both the `origin` and `skeleton` remotes.
@@ -354,31 +485,126 @@ git remote -v
 ```
 
 {: .info}
-If you see an error like `fatal: not a git repository` make sure you have
-properly moved into the `{{ site.semester }}-s***` directory using `cd`.
-
-{: .task}
-Follow the steps above to clone and configure your repository.
+> If you see an error like `fatal: not a git repository` make sure you have properly moved into the `su25-s***` directory using `cd`.
 
 ### Getting the Skeleton
 
-The skeleton remote repository contains the skeleton code for all assignments.
-Whenever a new assignment is released, or if we need to update an assignment, you will
-pull from the skeleton. First ensure that you are in your `{{ site.semester }}-s***` repository directory. 
+{: .task}
+> **Task**: Follow the instructions in the
+[Getting the Skeleton section of the Assignment Workflow guide](../../guides/assignment-workflow.md#getting-the-skeleton) to get the skeleton code for Lab 1.
 
-Next, run the following command to get the skeleton code for Lab 1: 
+{: .danger}
+> At this point, you should have a `lab01` folder, with the contents
+`src/Arithmetic.java` and `tests/ArithmeticTests.java`, among some other files. If you **do not have these contents**, don't make it manually! Instead, pull from the skeleton or ask a staff member.
 
-```shell
-git pull skeleton main
-```
+### Pushing to GitHub
 
 {: .warning}
-At this point, you should have a `lab01` folder, with the contents
-`src/Arithmetic.java` and `tests/ArithmeticTests.java`. If you **do not have
-these contents**, don't make it manually! Instead, pull from the skeleton or
-ask a staff member.
+> **You will need the magic word** (obtained from checkoff) **to complete this step.**
 
-## Task: IntelliJ Setup
+Open the file `lab01/magic_word.txt` in a text editor, and edit it to contain
+the **magic word** obtained during the [git exercise][].
+
+[git exercise]: #task-git-exercise
+
+Now stage and commit `magic_word.txt` (make sure you're in your repo!).
+
+```shell
+git add lab01/magic_word.txt
+git commit -m "Added Magic Word"
+```
+
+Right now, the modified `magic_word.txt` is only on your computer. We want to
+push these changes to the GitHub repository so that your changes can be seen by
+us and Gradescope. Push these changes to the `main` branch on the `origin`
+remote repo.
+
+```shell
+git push origin main
+```
+
+You can verify that this was successful by checking your repository online on
+GitHub's website. It should contain the updated `magic_word.txt` file. If it
+doesn't, make sure that your `add` and `commit` were successful. In particular,
+make sure that you are in your repo, `su25-***`.
+
+{: .task}
+> **Task**: Follow the instructions above to push your magic word to GitHub, and check that it appears.
+
+Our work is now on GitHub, and ready to submit!
+
+## Submitting to Gradescope
+
+Although we use GitHub to store our programming work, we use **Gradescope** to
+actually grade it. The last step is to submit your work with [Gradescope][],
+which we use to autograde programming assignments.
+
+{: .info}
+> We added everyone's CalCentral email to Gradescope on the first day of labs. Make sure to login using the email address listed on CalCentral.
+
+If you're having trouble accessing the course on Gradescope or would like to use
+a different email address, ask your TA!
+
+[gradescope]: https://gradescope.com
+" %}
+
+{: .danger}
+> As above, **we strongly encourage you to make frequent commits!** Lack of proper version control will not be considered an excuse for lost work, particularly after the first week.
+
+{: .task}
+> **Task**: Follow the instructions in the
+[Submitting to Gradescope section of the Assignment Workflow guide](../../guides/assignment-workflow.md#submitting-to-gradescope) to submit to Gradescope.
+
+
+At this point, Gradescope should show you something similar to the following:
+
+{: style="max-height: 400;" }
+![gradescope failure](img/gradescope_test_failure.png)
+
+In CS 61BL, we use automated tests to check that your code is written correctly.
+In your first submission, you:
+
+- Should be **passing** "Magic Word", if you received the magic word
+- Should be **passing** "Test product correctness"
+- Should **not be passing** "Test sum correctness"
+
+We'll now show you how you can work on and check your code locally, which is
+much easier than checking on Gradescope every time.
+
+## Setting Up Java Libraries
+
+Like in Python, we sometimes want to use libraries that others wrote. Java
+dependency management is a bit of a mess, so we instead provide a
+git repo that contains all the dependencies that we will use in this course.
+
+{: .warning}
+> First, **move out of your `su25-s***` repo with `cd ..`**. Failing to do so can cause many headaches later.
+
+Then, run:
+
+```shell
+git clone https://github.com/cs61bl/library-su25
+```
+
+Below is shown the directory structure of `library-su25`. Look inside the
+folder using `ls library-su25` and make sure you see the `.jar` files
+listed below. There are many more, but we only list the first few. If you're
+using your operating system's file explorer, the `jar` part might not show up
+in the filenames, and that's OK.
+
+```console
+library-su25
+├── algs4.jar
+├── animated-gif-lib-1.4.jar
+├── antlr4-runtime-4.11.1.jar
+├── apiguardian-api-1.1.2.jar
+└── ...
+```
+
+{: .task}
+> **Task**: Follow the instructions above to get the course libraries.
+
+## IntelliJ Setup
 
 IntelliJ is an Integrated Development Environment or IDE. An IDE is a single
 program which combines typically a source code editor, tools to compile and run
@@ -386,7 +612,7 @@ code, and a debugger. Some IDEs like IntelliJ contain even more features such
 as an integrated terminal and a graphical interface for git commands. Finally,
 IDEs also have tools like code completion which will help you write Java faster.
 
-We _highly_ recommend using IntelliJ. Our tests are written to run
+We *highly* recommend using IntelliJ. Our tests are written to run
 in IntelliJ, and we will explicitly use its debugger in later labs.
 Additionally, IntelliJ is an industry-standard tool that you will almost
 certainly encounter if you work with Java again in the future.
@@ -394,62 +620,50 @@ certainly encounter if you work with Java again in the future.
 We will assume that you are using IntelliJ, and will not offer support for
 other editors, including VSCode.
 
-{: .warning}
-IntelliJ is a real world, industrial software development application. There are
-many features that we will not use, and you will sometimes encounter situations
-that do not make sense. **Ask for help if you are stuck or something seems
-broken!** It can be very hard to guess the right thing to do in IntelliJ. Check
-out the [IntelliJ WTFS Guide](../../resources/guides/intellij/wtfs/index.md) for solutions
-to some common problems.
+{: .danger}
+> IntelliJ is a real world, industrial software development application. There are many features that we will not use, and you will sometimes encounter situations that do not make sense. **Ask for help if you are stuck or something seems broken!** It can be very hard to guess the right thing to do in IntelliJ. Check out the [IntelliJ WTFS Guide](../../guides/intellij-wtfs.md) for solutions to some common problems.
 
 **Before continuing, make sure that you have completed all above tasks besides
 the git exercise:**
 
 1.  You have successfully created your local repo for the class on your own
-    machine. This is the `{{ site.semester }}-s***` repository you earlier.
-1.  You have pulled from the skeleton, and you have a `lab01` directory.
+    machine. This is the `su25-s***` repository you earlier.
+2.  You have pulled from the skeleton, and you have a `lab01` directory.
 
 ### Installing IntelliJ
 
-1. Download the Community Edition of IntelliJ from the
-   [JetBrains](https://www.jetbrains.com/idea/download/) website. 
-   As a student you can actually get a student license for the Ultimate 
-   version, but there are not any additional features that we will use for this 
-   class. **It is recommended and assumed that you proceed with the Community  
-   Edition.**
-   
-   {: .danger}
-  > **The Ultimate Version will be the first one you see when you click on the link - 
-  > make sure to scroll down for the Community Version.**
-   
-   {: .info}
-   If you have an M* Mac (M1, M2, or M3),
-   select ".dmg (Apple Silicon)". Otherwise, select ".dmg (Intel)."
+1.  Download the Community Edition of IntelliJ from the
+    [JetBrains](https://www.jetbrains.com/idea/download/#:~:text=free%20to%20use-,IntelliJ%20IDEA%20Community%20Edition,-The%20IDE%20for) website.
+    As a student you can actually get a student license for the Ultimate
+    version, but there are not any additional features that we will use for this
+    class. **It is recommended and assumed that you proceed with the Community
+    Edition.**
 
-2. After selecting the appropriate version for your OS, click download and wait
-   a few minutes for the file to finish downloading.
-3. Run the installer. If you have an older version of IntelliJ, you should
-   uninstall it at this time and replace it with this newer version.
+    {: .warning}
+      > If you have an M1 or M2 Mac, select ".dmg (Apple Silicon)". Otherwise, select ".dmg (Intel)."
+    
 
+{:start="2"}
+
+1.  After selecting the appropriate version for your OS, click download and wait
+    a few minutes for the file to finish downloading.
+
+1.  Run the installer. If you have an older version of IntelliJ, you should
+    uninstall it at this time and replace it with this newer version.
 
 {: .info}
-While IntelliJ downloads, you can read / skim our
-[Using IntelliJ Guide](../../resources/guides/intellij/index.md).
-You don't need to read or internalize all of this to complete the lab.
-IntelliJ is complicated, but the core features should feel somewhat familiar
-to text editors you have used in the past.
+> While IntelliJ downloads, you can read / skim our [Using IntelliJ Guide](../../guides/using-intellij.md). You don't need to read or internalize all of this to complete the lab. IntelliJ is complicated, but the core features should feel somewhat familiar to text editors you have used in the past.
 
 ### Installing Plugins
 
 Open IntelliJ. Then follow the steps below.
 
-**Make sure you're running IntelliJ Version 2023.2 or later before
-continuing.** This is because we will use Java 17 or later.
-We are using **IntelliJ Version 2023.2** (in the images), which has an updated user interface. Note 
-that there might be older screenshots of IntelliJ in this lab - that is fine since the general layout is still 
-relatively consistent. 
+**Make sure you're running IntelliJ Version 2021.2 or later before
+continuing.** This is because we will use Java 17.
+We are using **IntelliJ Version 2023.2**. Older versions may
+also work but we haven't tried them ourselves.
 
-1.  In the _Welcome_ window, click the **"Plugins"** button in the menu on the
+1.  In the *Welcome* window, click the **"Plugins"** button in the menu on the
     left.
 
     ![Configure Plugin](img/plugin_setup1.png){: style="max-height: 325;" }
@@ -475,43 +689,120 @@ relatively consistent.
 1.  Restart (close and reopen) IntelliJ.
 
 For more information on using the plugins, read
-[the plugin guide](../../resources/guides/intellij/plugins/index.md).
+[the plugin guide](../../guides/plugin.md).
 You don't have to read this right now.
 
 ### Installing Java
-
-{: .warning}
-**This step is important!!**
 
 With IntelliJ and the plugins installed, we can install the JDK. Follow the steps below: 
 
 1. Start up IntelliJ. If you have no projects open, click the “Open” button. If you have a project currently open,
    navigate to “File –> Open”.
 2. Find and choose the directory of your current assignment. For example, for Lab 1, you would select the 
-   lab01 directory inside your `{{ site.semester }}-s***`. 
+   lab01 directory inside your `su25-s***`. 
 3. Navigate to the “File -> Project Structure” menu, and make sure you are in the Project tab. Then, follow 
    the instructions [Set up the project JDK](https://www.jetbrains.com/help/idea/sdk.html#set-up-jdk)
    to download your JDK version. **Choose a version that is 17 or greater!** Depending on which
    version you choose, make sure that it is compatible with the language level (e.g. if you
    choose SDK 18, choose your language level to be 18). 
 
-### Setting Up Assignments
+### Task: Terminal Test Run
 
-Follow the instructions in
-[Opening in IntelliJ section of the Assignment Workflow guide](../../resources/guides/assignment-workflow/index.md#opening-in-intellij)
-to open `lab01` (if you haven't exited from the previous section, you can start on step 3).
+Let's ensure that everything is working.
 
-**Everytime you open up an assignment, you will need to ensure that your Project Structure is set up and that you've 
-added the `library-{{ site.semester }}` package**.
+{: .info}
+> **Tip**: We have a video below that shows what the correct outputs for these commands should look like. 
+
+1.  First open up your terminal.
+    Check that git is a recognized command by typing the following command:
+
+    ```shell
+    git --version
+    ```
+
+    The version number for git should be printed. If you see "git: command not
+    found", or similar, try opening a new terminal window, restarting your
+    computer, or installing git again.
+
+2.  Second, let's check that `javac` and `java` are working.
+    `javac` and `java` allow *Command Line Compilation*, or in other words,
+    the ability to run Java programs directly from the command line.
+    In practice, most developers run Java programs through an IDE like IntelliJ,
+    so we won't be using command line compilation for much this semester other
+    than testing your setup.
+    Start by running the following commands at your terminal.
+
+    ```shell
+    mkdir ~/temp
+    cd ~/temp
+    ```
+
+
+    1.  In this newly created directory, create an empty file `HelloWorld.java`.
+        
+        ```shell
+        touch HelloWorld.java
+        ```
+        
+        
+    2.  Then, open the file using your operating system's text editor.
+        You can do this from the command line:
+
+        - Mac: `open -e ./HelloWorld.java`
+        - Windows: `notepad ./HelloWorld.java`
+        - Linux: `xdg-open ./HelloWorld.java`
+
+
+    3. Copy paste the following code block into the editor, then save and close. 
+
+        ```java
+        public class HelloWorld {
+            public static void main(String[] args) {
+                System.out.println("Hello world!");
+            }
+        }
+        ```
+
+    4. In your terminal, type `cat HelloWorld.java`. You should see the contents of 
+       the file we just created. 
+     
+    5. In your terminal, enter `ls` (list the files/folders in this directory).
+        You should only see `HelloWorld.java` listed.
+        
+    6.  Run `javac HelloWorld.java`. If this produces any output, then something
+        may be wrong with your setup. Try opening a new terminal window or
+        restarting your computer. If that still doesn't work, see the
+        Troubleshooting section under the directions for your operating system.
+
+    7.  Type `ls`, you should see both `HelloWorld.java`
+        and a freshly created `HelloWorld.class` (the `javac` command created
+        this file).
+
+    8.  Run `java HelloWorld`. It should print out "Hello world!" for you.
+        If it didn't, something is wrong with your setup!
+
+    9.  You're done! You can also delete the "temp" folder and its contents as
+        you please.
+
+    The video below shows what we're hoping for when we run through the steps above.
+    If you see something similar to this, your java setup is complete.
+
+
+    <script id="asciicast-i4kqX0gnASof89lIdE6JzMCyC" src="https://asciinema.org/a/i4kqX0gnASof89lIdE6JzMCyC.js" async ></script> 
 
 ### Creating Projects
 
-With `lab01` opened up and set up, you should see the following files in the left pane: 
+{: .task}
+> **Task**: Follow the instructions in the [Opening in IntelliJ section of the Assignment Workflow guide](../../guides/assignment-workflow.md#opening-in-intellij) to open `lab01`.
 
-- `src/Arithmetic`, a Java file which contains your first programming
-  exercise.
-- `tests/ArithmeticTest`, another Java file which will check that
-  `Arithmetic` is implemented correctly.
+Once you've done this, you should see at least these three files in the left
+pane:
+
+-   `magic_word.txt`, which should contain the magic word you added.
+-   `src/Arithmetic`, a Java file which contains your first programming
+    exercise.
+-   `tests/ArithmeticTest`, another Java file which will check that
+    `Arithmetic` is implemented correctly.
 
 ![arithmetic intellij](img/arithmetic_intellij.png){: style="max-height: 250;" }
 
@@ -525,21 +816,6 @@ opening the file, clicking on the green triangle next to
 `public class Arithmetic`, then clicking "Run 'Arithmetic.main()'".
 
 ![arithmetic_run_main](img/arithmetic_run_main.png){: style="max-height: 250;" }
-
-<details markdown="block">
-<summary markdown="block">
-
-**There are other ways to run the main method.** 
-
-</summary>
-
-![run_main_method](img/run_main_intellij.png){: style="max-height: 250;"}
-
-Assuming that the file has a `main` method, you can right click on the file in the project view 
-and navigate to `[filname].main()`. You can also run it through the green arrow in the top right (outlined 
-in red). 
-
-</details>
 
 You should see a console pop up, prompting you to enter a number:
 
@@ -561,16 +837,17 @@ in this assignment. At this point, you will see the following:
 {: style="max-height: 200;" }
 ![arithmetic test failed](img/arithmetic_test_failed.png)
 
-The green checkmark (![checkmark](img/testPassed.png){: .inline }) indicates
-tests that you have passed, while the yellow X
-(![failed](img/testFailed.png){: .inline }) indicates tests that you have
-failed. Don't worry about the doubled output; this is a strange quirk of
+The green checkmark indicates tests that you have passed, while the yellow X indicates tests 
+that you have failed. Don't worry about the doubled output; this is a strange quirk of
 IntelliJ.
 
-{: .task}
-Fix the bug in `Arithmetic.java` so that the tests pass.
+{: .info}
+> This should look familiar. The test that failed on Gradescope is the same test that we see here! We can run these tests locally, very easily!
 
-## Task: Saving Your Work using Git and GitHub
+{: .task}
+> **Task**: Fix the bug in `Arithmetic.java` so that the tests pass.
+
+## Saving Your Work using Git and GitHub
 
 As you are making changes to your code, it is good practice to save your work
 often. We have briefly discussed the commands, but now we will explain how they
@@ -622,81 +899,30 @@ work through snapshots of your file system called commits.
     `Your branch is up to date with 'origin/main'.`
 
 {: .warning}
-Get into the habit of saving your files and doing the `git commit` step *often*
-(i.e. every 15 minutes). It will be incredibly helpful when you mess things up,
-since it allows you to back out of changes and to see what you have changed
-recently.
+> Get into the habit of saving your files and doing the `git commit` step *often* (i.e. every 15 minutes). It will be incredibly helpful when you mess things up, since it allows you to back out of changes and to see what you have changed recently.
 
 Basically, right when you sit down to work in your repository, first `git pull`
 to make sure you are starting with the most recent code. While you are working,
-frequently commit. When you are finished, `git push origin main` so all your changes are
+frequently commit. When you are finished, `git push` so all your changes are
 uploaded and ready for you to pull again next time.
 
-## Submitting to Gradescope
-
-Although we use GitHub to store our programming work, we use **Gradescope** to
-actually grade it. The last step is to submit your work with [Gradescope]({{ site.links.gradescope_url }}),
-which we use to autograde programming assignments.
-
-{: .info}
-> We added everyone's CalCentral email to Gradescope on the first day of labs.
-> Make sure to login using the email address listed on CalCentral.
->
-> If you're having trouble accessing the course on Gradescope or would like to use
-> a different email address, ask your TA!
-
 {: .task}
-If you haven't already, make sure you've added, committed and pushed your changes. The steps 
-are repeated below for your convenience. 
-
-1. Add your assignment directory using `git add`. For example, for Lab 1, from your 
-   repo root (`{{ site.semester }}-s***`) you would use `git add lab01`. 
-
-2. Commit the files using `git commit -m "<commit message here>"`. The commit message 
-   is required. For example, `git commit -m "Finished Lab 1"`.
-
-3. Push your code to your remote repository with `git push origin main`. You can verify the changes 
-   have been pushed by navigating to your personal repository on Github and checking if your changes 
-   have been reflected. 
-
-4. Open the assignment on Gradescope. Select Github, then your `{{ site.semester }}-s***` 
-   repository and the main branch, then submit your assignment. You will receive a 
-   confirmation email, and the autograder will run automatically. Gradescope will use 
-   the latest version of your code from Github. **If you think that Gradescope isn’t grading 
-   the right code, check that you have added, committed, and pushed with** `git status`.
+> **Task**: Follow the instructions (again!) in the [Submitting to Gradescope section of the Assignment Workflow guide](../../guides/assignment-workflow.md#submitting-to-gradescope) to submit to Gradescope. This time, you should receive a full score on the lab.
 
 ## Deliverables
 
 As a reminder, this assignment has an [FAQ page](faq.md).
-There is one required file, all inside the `lab01` directory:
+There are two required files, all inside the `lab01` directory:
+
+`magic_word.txt`
+:   You should have received the correct magic word from completing the git
+    checkoff.
 
 `Arithmetic.java`
-: You should have fixed the bug so that the tests pass. We check this file 
-with an autograder! For this lab, the autograder tests are the same as the
-ones you have on your computer.
+:   You should have fixed the bug so that the tests pass. We check this file
+    with an autograder! For this lab, the autograder tests are the same as the
+    ones you have on your computer.
 
-{: .task}
-If you haven't already,
-make sure that you've added, committed and pushed your changes to Github (based on the
-workflow that's specified above). You should receive a full score on the lab if you've
-passed all the tests in `ArithmeticTest.java`.
-
-**Congratulations on finishing your first CS 61B lab!**
-
-If you ever need a refresher on how to submit an assignment, you can refer back to the 
-[assignment workflow guide](../../resources/guides/assignment-workflow/index.md#opening-in-intellij). 
-
-## Optional: Josh Hug's Color Schemes
-
-Per Josh Hug:
-
-> I'm not a big fan of the default IntelliJ colors.
->
-> **Mariana Pro**: If you want the color scheme Josh uses in live lecture, install the Mariana Pro Theme plugin.
-> To get Mariana Pro, go to the
-> same plug-in shop that you used to install the CS 61B plugin, and search for "Mariana Pro".
-> This plugin was made by Thibault Soulabaille. Note that I prefer a pure black background,
-> whereas Mariana Pro is a dark grey. You can change the background color using 
-> [these directions](https://stackoverflow.com/questions/19411510/how-do-you-change-background-color-in-the-settings-of-jetbrains-ide).
-
-Note: If you ever want to reset to the default IntelliJ colors, go to "File &rarr; Manage IDE Settings &rarr; Restore Default Settings". 
+Be sure to submit **again** according to the
+[submission section](#submitting-to-gradescope), so that you submit your
+completed lab. Congratulations on finishing your first CS 61BL lab!

@@ -1,18 +1,28 @@
 ---
 layout: page
 title: >-
-  FAQ
+  FAQ - Lab 04
 parent: >-
-  Lab 05: Project 1 Review
+  Lab 04: Linked Lists
 grand_parent: Labs
 has_right_toc: true
 released: true
 ---
 
-### I can't physically attend lab this week
+### In lecture we were talking about IntLists; what are these Linked Lists you speak of?
 
-If you are physically unable to attend any lab at all, please fill out **[this exemption form](https://forms.gle/eQqWjZn4hbHkQAXj8) by Friday, February 28th (2/28)**. **If you have approved extensions for Project 1A/1B that extend past the Lab 5 deadline, please also fill out the form. Do NOT fill out the form unless you have approved extensions.** We will be verifying each form submission manually, and those with invalid submissions will not be checked off. **We will not be accepting any new form submissions after 2/28**, and will be emailing checkoff instructions during the weekend of March 1st (3/1).
+Linked List refers to a specific structure: items that are stored in nodes which are aware of the node
+that follows them. Sometimes when we are talking about Linked Lists, we refer to them by specifying the 
+*type* of the item, followed by "List". This means that IntLists are Linked Lists which only hold items of
+type int!
 
-### I've filled out the form, now what?
+### The internet keeps referring to "value" and "rest" when talking about Linked Lists -- what is that?
 
-We'll be emailing checkoff instructions during the weekend of March 1st (3/1) to those who submitted the form with a valid reason for not being able to attend any lab or with approved Project 1 extensions past 2/28.
+There are multiple ways to define and interact with Linked Lists. In this course, we use "item" to refer to the
+data being stored by each node and "next" to refer to the element immediately following the current node. Other implementations,
+however, are also completely valid. It is very likely in searching the internet you will see "item" referred to as "value"
+and "next" referred to as "rest" -- meaning recursive access to the rest or remaining segment of the Linked List.
+
+### My code does not change the "value" of any of the nodes -- why am I not passing constructive concatenate?
+
+Make sure you aren't changing the other element of each node, their "next" pointer! This is a vital part of your Linked List as well!
