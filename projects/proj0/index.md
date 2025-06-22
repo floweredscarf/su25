@@ -176,9 +176,11 @@ This method should move the tile at position `(r, c)` as far up in its column as
 
 Remember that a tile can move up through empty squares, until the tile either reaches the top row, or the tile reaches an empty square with another tile directly above it.
 
-For this task, don't worry about merges yet. We'll add logic for merging in the next task. 
+If this method is called on an empty tile (with value of `0`), it should not do anything.
 
-Below are four **before-and-after** board pairs that illustrate how the `moveTileUpAsFarAsPossible(int[][] board, int r, int c, int minR)` function should behave. For each example, the first table is the **board before** the method call, and the second table is the **board after** the method call. The values of `r` and `c` are explicitly stated for clarity. Remember that, for this task, **merging is ignored** and **`minR` should also be ignored**.
+For this task, don't worry about merges yet. We'll add logic for merging in the next task.
+
+Below are a few **before-and-after** board pairs that illustrate how the `moveTileUpAsFarAsPossible(int[][] board, int r, int c, int minR)` function should behave. For each example, the first table is the **board before** the method call, and the second table is the **board after** the method call. The values of `r` and `c` are explicitly stated for clarity. Remember that, for this task, **merging is ignored** and **`minR` should also be ignored**.
 
 ---
 
@@ -249,12 +251,30 @@ The tile at `(2, 1)` moves up until it is just below the `4`, i.e. it lands at `
 
 The tile at `(0, 2)` is already at the top row, so it does not move.
 
+### Example 4
+**Method call**: `moveTileUpAsFarAsPossible(board, r=0, c=0, minR=0)`
+
+**Before**:
+
+|---|---|---|---|
+| 0 | 4 | 0 | 0 |
+| 0 | 0 | 0 | 0 |
+| 0 | 2 | 0 | 0 |
+| 0 | 0 | 0 | 0 |
+
+**After**:
+
+|---|---|---|---|
+| 0 | 4 | 0 | 0 |
+| 0 | 0 | 0 | 0 |
+| 0 | 2 | 0 | 0 |
+| 0 | 0 | 0 | 0 |
+
+The tile at `(0, 0)` is empty (value `0`), so nothing happens.
+
 ### Testing and Debugging
 
 To test your method, run the tests in `TestTask2.java` by right-clicking the file and selecting "Run 'TestTask2'". 
-
-
-
 
 ![test-task2](img/test-task2.webp){:style="display:block; margin-left:auto; margin-right:auto"}
 
@@ -309,9 +329,7 @@ Modify the `moveTileUpAsFarAsPossible` method so that it accounts for the possib
 
 Remember that a tile can move up through empty squares. When the tile sees a non-empty square, if that square contains another tile of the same value, then the two tiles should merge.
 
-If there is a merge, `moveTileUpAsFarAsPossible` should return 1 + the row number where the merge occurred. If there is no merge, it should return 0. This might seem quite arbitrary. We'll see why this is useful in task 4.
-
-As in task 2, you should ignore the `minR` argument.
+If there is a merge, `moveTileUpAsFarAsPossible` should return 1 + the row number where the merge occurred. If there is no merge, it should return `minR`. This might seem quite arbitrary. We'll see why this is useful in task 4.
 
 **Method call**: `moveTileUpAsFarAsPossible(board, r=3, c=0, minR=0)`
 
@@ -353,7 +371,7 @@ Tiles of the same value (2 and 2) merge into 4 at the top of the column. The met
 | 8 | 0 | 0 | 0 |
 | 0 | 0 | 0 | 0 |
 
-The `8` at `(2, 0)` cannot merge with `(0, 0)` because there is a `4` in between. The method should return 0 because there was no merge.
+The `8` at `(2, 0)` cannot merge with `(0, 0)` because there is a `4` in between. The method should return 0 (the value of `minR`) because there was no merge.
 
 ---
 
@@ -607,6 +625,8 @@ Now that we've written `tiltUp` working for the up direction, our game should wo
 One possible approach is to create three more functions `moveTileRightAsFarAsPossible`, `moveTileDownAsFarAsPossible`, and `moveTileLeftAsFarAsPossible`, which we can use to ultimately implement `tiltRight`, `tiltDown`, and `tiltLeft`. This is a terrible idea. This leads to messy, hard-to-read code, with ample opportunity to introduce obscure bugs, e.g. what if you fix something in one copy, but not the other three copies?
 
 Instead, we'll take advantage of the provided `rotateLeft` and `rotateRight` methods, which rotate the board.
+
+You'll notice the `Side` _enum_ given in the skeleton code. An _enum_ is a special type of class in Java that represents a fixed set of constants. In this case, `Side` represents the four directions that a user can tilt the board: `NORTH`, `EAST`, `SOUTH`, and `WEST`. We can use a given `Side` constant, e.g. `EAST`, by writing `Side.EAST`.
 
 Fill in the provided `tilt` method so that it handles all four directions properly.
 
