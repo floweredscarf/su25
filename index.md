@@ -11,7 +11,7 @@ unreleased_warning: true
 {%- assign instructor_msg = "Instructors" -%}
 {%- endif -%}
 
-<img align="right" alt="61B bee logo" width="150px" src="{{ "/assets/images/bee.webp" | relative_url }}">
+<img align="right" alt="61B bee logo" width="150px" src="{{ "/assets/images/bear.webp" | relative_url }}">
 
 # {{ site.title }}
 
