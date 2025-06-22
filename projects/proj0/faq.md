@@ -36,7 +36,7 @@ Unit testing aims to test the individual pieces of code of your program—genera
 integration testing tests how your program as a whole works, including how classes interface with each other and how
 user input is handled.
 
-Here's the [section about testing in the spec](index.md#testing). For this project, we have provided you all the tests
+For this project, we have provided you all the tests
 we'll use to grade the assignment. You'll run these tests via JUnit. You can run each of the test classes in IntelliJ,
 and it will show you which tests pass or fail, including expected values vs. your actual output. This is very, very
 useful for debugging. A general workflow would be to take a look at the tests you're failing, understand the expected
@@ -46,7 +46,7 @@ do this in later assignments (and you'll have to write your own tests in the rea
 
 <cite>Paraphrased from Shreyas Kallingal.</cite>
 
----
+<!-- ---
 
 ## `TestAtLeastOneMoveExists`
 
@@ -65,4 +65,4 @@ condition in the for loop may be off by one.
 Please watch [Josh's intro video to this method](https://youtu.be/abFbbK1QY2k)! However, the methods in the intro video might be different that current skeleton code since a lot changed.
 
 
-
+ -->

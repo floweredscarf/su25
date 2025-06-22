@@ -15,9 +15,9 @@ released: true
 
 **Deadline: Sunday, June 29th, 11:59 PM PT.**
 
-## FAQ
+## [FAQ](faq)
 
-Each assignment will have an FAQ linked at the top. You can also access it by adding `/faq` to the end of the URL. The FAQ for Project 0 is located [here](./faq.md).
+Each assignment will have an FAQ linked at the top. You can also access it by adding `/faq` to the end of the URL. The FAQ for Project 0 is located [here](./faq).
 
 {: .warning}
 > **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
@@ -29,11 +29,11 @@ Note that this project has limited submission tokens. Please see [Submission and
 
 Prerequisites:
 
-- [Lab 1](../../labs/lab01/index.md) (required for setup)
+- [Lab 1](../../labs/lab01) (required for setup)
 - Lecture 1
-- [61B Style Guide](../../resources/guides/style/index.md) (we are checking your style in autograder!)
-- [Lab 2](../../labs/lab02/index.md) (optional but recommended for practice with Java syntax)
-- [Lab 3](../../labs/lab03/index.md) (optional but recommended for practice with debugging)
+- [61B Style Guide](../../resources/style-guide/) (we are checking your style in autograder!)
+- [Lab 2](../../labs/lab02) (optional but recommended for practice with Java syntax)
+- [Lab 3](../../labs/lab03) (optional but recommended for practice with debugging)
 <!-- [See here for a video overview of the project.](TODO)  -->
 
 <!-- Any future resources (e.g. project party or intro section recording) can also be linked at the top here for ease of access. -->
@@ -83,10 +83,10 @@ If you would like to try the game out yourself, feel free to try it [here](https
 
 ### Getting the Skeleton Files
 
-Follow the instructions in the [Assignment Workflow Guide](../../resources/guides/assignment-workflow/index.md) to get the skeleton code and open it in IntelliJ. For this project, we will be working in the `proj0/` directory.
+Follow the instructions in the [Assignment Workflow Guide](../../resources/assignment-workflow/) to get the skeleton code and open it in IntelliJ. For this project, we will be working in the `proj0/` directory.
 
 {: .danger}
-> If you get some sort of error, STOP and either figure it out by carefully reading the [git WTFs](../../resources/guides/git/wtfs.md) or seek help at OH or Ed. You’ll save yourself a lot of trouble vs. guess-and-check with git commands. If you find yourself trying to use commands recommended by Google like force push, [don’t](https://twitter.com/heathercmiller/status/526770571728531456). **Don’t use `git push -f`, even if a post you found on Stack Overflow says to do it!**
+> If you get some sort of error, STOP and either figure it out by carefully reading the [git WTFs](../../troubleshooting/git-wtfs/) or seek help at OH or Ed. You’ll save yourself a lot of trouble vs. guess-and-check with git commands. If you find yourself trying to use commands recommended by Google like force push, [don’t](https://twitter.com/heathercmiller/status/526770571728531456). **Don’t use `git push -f`, even if a post you found on Stack Overflow says to do it!**
 >
 > If you can't get Git to work, watch [this video](https://www.youtube.com/watch?v=Squ8TmG5mX0) as a last resort to submit your work.
 
@@ -624,7 +624,7 @@ Note: If you haven't passed all of the tests, the game may behave strangely or c
 
 ## Style
 
-Starting with this project, **we will be enforcing style**. You must follow the [style guide](../../resources/guides/style/index.md), or you will be penalized on the autograder.
+Starting with this project, **we will be enforcing style**. You must follow the [style guide](../../resources/style-guide/), or you will be penalized on the autograder.
 
 You can and should check your style locally with the CS 61B plugin. **We will not remove the velocity limit for failing to check style.**
 
