@@ -803,7 +803,7 @@ pane:
 -   `tests/ArithmeticTest`, another Java file which will check that
     `Arithmetic` is implemented correctly.
 
-![arithmetic intellij](img/arithmetic_intellij.png){: style="max-height: 250;" }
+![arithmetic intellij](img/lab01-structure-su25.png){: style="max-height: 250;" }
 
 When you open `Arithmetic` and `ArithmeticTest`, you should not see any red
 text or red squiggles.
