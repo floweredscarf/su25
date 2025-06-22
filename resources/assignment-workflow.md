@@ -60,7 +60,7 @@ The following instructions apply for **every** assignment. **Each time after pul
 
 5. Still in Project Structure, go to the **Libraries** tab. Click the "**+ -> Java**" button, then navigate to `library-{{ site.semester }}`, select the folder, and click "Ok".
 
-   ![select-libraries](../assignment-workflow-img/select_libraries.png){: style="max-height: 300;"}
+   ![select-libraries](../assignment-workflow-img/lab01-librarysu25.png){: style="max-height: 300;"}
 
 6. Click "Ok" to apply your settings and leave Project Structure.
 
