@@ -171,7 +171,7 @@
 {%- endif -%}
 <!-- end added -->
 
-{%- if links_array.size > 0 -%}
+{%- if links_array.size > 0 or links_chapter_array.size > 0 -%}
 <br>
 {%- endif -%}
 {%- for link in links_array -%}
@@ -181,7 +181,7 @@
 
 <!-- begin added -->
 {%- if links_chapter_array.size > 0 -%}
-    <span> Textbook: </span>
+    <!-- <span> Textbook: </span> -->
     {%- for link in links_chapter_array -%}
     {{ link }}
     <!-- {%- unless forloop.last %}{{}} / {{}}{% endunless -%} -->
