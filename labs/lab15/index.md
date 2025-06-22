@@ -4,6 +4,7 @@ title: >-
   Lab 15: Disjoint Sets
 has_children: true
 parent: Labs
+nav_exclude: true
 has_toc: false
 has_right_toc: true
 released: true

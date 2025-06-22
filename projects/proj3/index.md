@@ -4,6 +4,7 @@ title: "Project 3: Build Your Own World"
 nav_order: 6
 parent: Projects
 has_children: true
+nav_exclude: true
 has_toc: false
 has_right_toc: true
 description: >-

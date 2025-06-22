@@ -4,6 +4,7 @@ title: >-
   Lab 19: Build Your Own World Introduction
 has_children: true
 parent: Labs
+nav_exclude: true
 has_toc: false
 has_right_toc: true
 released: true
