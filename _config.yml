@@ -44,7 +44,7 @@ url: "https://cs61bl.org"
 
 # - Used in _includes/title.html
 # - Path to an image to display in the sidebar (or top bar on mobile). Leave blank to omit.
-logo: '/assets/images/bee.webp'
+logo: '/assets/images/bear.webp'
 
 # - Used in _includes/title.html
 # - Optional text that replaces site.title at the top of the sidebar when set.
