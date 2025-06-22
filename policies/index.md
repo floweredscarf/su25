@@ -23,7 +23,7 @@ The CS 61 series is an introduction to Computer Science, with particular emphasi
 
 This class assumes you have taken CS 61A, CS 88, or E7, or have equivalent background to a student who has taken one of these courses. The course is largely built upon the assumption that you have taken CS 61A. CS 88 and E7 students may find the beginning of the course to be a bit scarier, particularly when it comes to object oriented programming. We assume you are coming in with zero Java experience, but we will move through basic Java syntax very quickly.
 
-If you already have Java experience, great! We hope that you’ll help out yourfellow students in discussion, lab, and on our class forum, particularly in the opening weeks when everyone is catching up on Java.
+If you already have Java experience, great! We hope that you’ll help out your fellow students in discussion, lab, and on our class forum, particularly in the opening weeks when everyone is catching up on Java.
 
 ### Hours and Workload
 
