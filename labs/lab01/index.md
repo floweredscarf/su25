@@ -361,14 +361,12 @@ show:
 
 
 
-Be sure to save this repository and directory until you complete the
-[asynchronous checkoff form on beacon](https://beacon.datastructur.es/) and
-obtain a **magic word**. We'll be using this magic word later in the lab. 
+Be sure to save this repository and directory until you complete **Exercise 1.1** of the
+[asynchronous checkoff form on beacon](https://beacon.datastructur.es/). You need to get full credit for the exercise to receive the magic word later, and there are unlimited attempts.
 
-<!-- TODO: update checkoff form link -->
 
 {: .task}
-> **Task**: Do the steps above, then get checked off by filling out the Beacon form.
+> **Task**: Complete Exercise 1.1 linked on Beacon.
 
 ### Git and Remote Repos
 
@@ -494,6 +492,14 @@ git remote -v
 {: .task}
 > **Task**: Follow the instructions in the
 [Getting the Skeleton section of the Assignment Workflow guide](../../resources/assignment-workflow/#getting-the-skeleton) to get the skeleton code for Lab 1.
+
+### Task: Git Exercise Part 2
+
+Complete **Exercise 1.2** of the
+[asynchronous checkoff form on beacon](https://beacon.datastructur.es/) and obtain a **magic word**. You will need this magic word later in the lab. 
+
+{: .task}
+> **Task**: Complete Exercise 1.2 to receive the magic word.
 
 {: .danger}
 > At this point, you should have a `lab01` folder, with the contents
