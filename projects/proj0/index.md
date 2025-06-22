@@ -626,7 +626,7 @@ Note: If you haven't passed all of the tests, the game may behave strangely or c
 
 Starting with this project, **we will be enforcing style**. You must follow the [style guide](../../resources/style-guide/), or you will be penalized on the autograder.
 
-You can and should check your style locally with the CS 61B plugin. **We will not remove the velocity limit for failing to check style.**
+For later projects, you should check your style locally with the CS 61B plugin. **We will not remove the velocity limit for failing to check style.** However, since our local style checker is not fully set up yet, we have increased the velocity limit to **8** tokens for **Project 0 only** (whereas previous semesters allowed **4**). Once you submit to the autograder, you should be able to see the messages regarding your style errors, if any, which you can reference to fix your style.
 
 ## Submission and Grading
 
@@ -635,7 +635,7 @@ We will **not remove the velocity limit** for failing to submit the correct file
 
 ### Velocity Limiting
 
-For this project we will be limiting the number of times you can submit your code to the autograder. You will get 4 submission "tokens" that each regenerate after 24 hours.
+For this project we will be limiting the number of times you can submit your code to the autograder. You will get 8 submission "tokens" that each regenerate after 24 hours.
 
 ### Grading Overview
 

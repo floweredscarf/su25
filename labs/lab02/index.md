@@ -693,9 +693,6 @@ These are the required files, all inside the `lab01` directory:
 `TriangleDrawer2.java`
 :   This should function the same as `TriangleDrawer.java`, except using only for loops.
 
-`AddingMachine.java`
-:   Implement `AddingMachine.java` such that `AddingMachineTest.java` passes.
-
 `ArrayExercises.java`
 :   Implement `ArrayExercises.java` such that `ArrayExercisesTest.java` passes.
 
