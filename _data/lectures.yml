@@ -70,7 +70,7 @@ lecture_prefix: "/assets/lectures/cs101-sp25-lec"
 lectures:
   - title: "Introduction and Logistics"
     # slides: https://docs.google.com/presentation/d/1_funKmLVePWqfNulUl5yehBQmV1gxHarI_VkMgQ_Ah8/edit#slide=id.g3280633c3ea_0_148
-    video: ""
+    # video: ""
     # reading: 
     # recording: https://www.youtube.com/watch?v=dQw4w9WgXcQ
     # quiz: https://forms.gle/9YzSaMr74atHPoai7
@@ -79,7 +79,7 @@ lectures:
         link: policies
   - title: "Introduction to Java, Git, and Setup"
     # slides: https://docs.google.com/presentation/d/1Eci0ko521eAnEmbcJU12exLmVBIrAkQnVSO-8U1mzz0/edit?usp=drive_link
-    video: "" # https://www.youtube.com/playlist?list=PLnp31xXvnfRq5wRDN8wZFy7GrrJXUtr1q
+    # video: "" # https://www.youtube.com/playlist?list=PLnp31xXvnfRq5wRDN8wZFy7GrrJXUtr1q
     # reading: https://cs61b-2.gitbook.io/cs61b-textbook/1.-introduction
     # recording: https://www.youtube.com/watch?v=qMdLi5v8aT4
     # quiz: https://forms.gle/9YzSaMr74atHPoai7
@@ -92,7 +92,7 @@ lectures:
     nonumber: True
   - title: "Primitives and Objects"
     # slides: https://docs.google.com/presentation/d/1TGLZJuxBemPf6Ttdh49S04QJVzWWQa4ZYn-fIsgEFDI/edit#slide=id.g3291dab0df5_0_719
-    video: "" # https://www.youtube.com/playlist?list=PLnp31xXvnfRqziLs3JZ6LIH73ZsVtvsGy
+    # video: "" # https://www.youtube.com/playlist?list=PLnp31xXvnfRqziLs3JZ6LIH73ZsVtvsGy
     # reading: "https://cs61b-2.gitbook.io/cs61b-textbook/2.-defining-and-using-classes"
     # recording: https://youtu.be/K54flmpG11k
     # quiz: https://forms.gle/ZRvLF4uf75neXnEi9
@@ -103,7 +103,7 @@ lectures:
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/6.-arrays"
   - title: "Testing"
     # slides: https://docs.google.com/presentation/d/1TGLZJuxBemPf6Ttdh49S04QJVzWWQa4ZYn-fIsgEFDI/edit#slide=id.g3291dab0df5_0_719
-    video: "" # https://www.youtube.com/playlist?list=PLnp31xXvnfRqziLs3JZ6LIH73ZsVtvsGy
+    # video: "" # https://www.youtube.com/playlist?list=PLnp31xXvnfRqziLs3JZ6LIH73ZsVtvsGy
     # reading: "https://cs61b-2.gitbook.io/cs61b-textbook/2.-defining-and-using-classes"
     # recording: https://youtu.be/K54flmpG11k
     # quiz: https://forms.gle/ZRvLF4uf75neXnEi9
@@ -120,7 +120,7 @@ lectures:
     nonumber: True
   - title: "Linked Lists"
     # slides: https://docs.google.com/presentation/d/1Mt75hXW59E6LnfdEmiSF05ozoawmegz60yOSu-hI_-k/edit?usp=sharing
-    video: "" # https://youtube.com/playlist?list=PLnp31xXvnfRpb4EQp0tOFJNZUXHnxTfXm&si=lUAGPJ0338-FX6UO
+    # video: "" # https://youtube.com/playlist?list=PLnp31xXvnfRpb4EQp0tOFJNZUXHnxTfXm&si=lUAGPJ0338-FX6UO
     # recording: https://youtu.be/5RHHawo0VQA
     # quiz: https://forms.gle/QXoKRCdUsaZXjpy96
     readings:
@@ -134,7 +134,7 @@ lectures:
         link: https://cs61b-2.gitbook.io/cs61b-textbook/8.-arraylist
   - title: "Abstract Data Types"
     # slides: https://docs.google.com/presentation/d/1TKQO-56_VvVaEiKFYyjCS_wYKfVg_DJE-nK9N62OWz4/edit?usp=sharing
-    video: "" # https://www.youtube.com/playlist?list=PLnp31xXvnfRqyuN_xxm4o1Woa44dXW_N8
+    # video: "" # https://www.youtube.com/playlist?list=PLnp31xXvnfRqyuN_xxm4o1Woa44dXW_N8
     # recording: https://youtu.be/DJSlcdq-hCY
     # quiz: https://forms.gle/GULhx2TsP6YrDnkA6
     readings:
@@ -146,7 +146,7 @@ lectures:
     nonumber: True
   - title: "Inheritance"
     # slides: https://docs.google.com/presentation/d/12Yrdoyq7Yad2figzvjSpBvezRIzzfov65gq-2mcu0gI/edit?usp=sharing
-    video: "" # https://youtube.com/playlist?list=PLnp31xXvnfRpPjLuN6-QJUFeK_mBZPve4&si=QGsZPljZc4hD_Nql
+    # video: "" # https://youtube.com/playlist?list=PLnp31xXvnfRpPjLuN6-QJUFeK_mBZPve4&si=QGsZPljZc4hD_Nql
     # quiz: https://forms.gle/buUP4J1iwXCY1rRq8
     # recording: https://youtu.be/GiLJktMHgy8
     readings:
@@ -156,7 +156,7 @@ lectures:
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/10.-inheritance-ii-extends-casting-higher-order-functions"
   - title: "Comparison, Iterators, and Generics"
     # slides: https://docs.google.com/presentation/d/1Wc68rKn6FlGV7Y5JwgpA-g0NVDz973UIBmb1FYtxcKk
-    video: "" # https://youtube.com/playlist?list=PLnp31xXvnfRqRR4OQx_I3YPkA87bO0whh&si=xQ5YS5zJXKKzP7Eo
+    # video: "" # https://youtube.com/playlist?list=PLnp31xXvnfRqRR4OQx_I3YPkA87bO0whh&si=xQ5YS5zJXKKzP7Eo
     # quiz: https://forms.gle/BgmDR57vwhXAfuA26
     # extra: "[Bonus Video](https://youtu.be/1MzbwZwos6Q)"
     # recording: https://youtu.be/oXU9Owm9sfA
@@ -175,7 +175,7 @@ lectures:
     nonumber: True
   - title: "Asymptotics"
     # slides: https://docs.google.com/presentation/d/15n6HWzcTGlT1SNslOWMGUSua05dYOu1vcvUtC8XNAEs/
-    video: "" # https://youtube.com/playlist?list=PLnp31xXvnfRrajvLNrqCND6CQUbqaR0mU&si=jR0uKF9obQWfVavZ
+    # video: "" # https://youtube.com/playlist?list=PLnp31xXvnfRrajvLNrqCND6CQUbqaR0mU&si=jR0uKF9obQWfVavZ
     # recording: https://youtu.be/4sm57s0Xm6E
     # quiz: https://forms.gle/5hqMPYFenYXDTF1o6
     readings:
@@ -183,7 +183,7 @@ lectures:
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/13.-asymptotics-i"
   - title: "Asymptotics, Measuring Code Efficiency"
     # slides: https://docs.google.com/presentation/d/15n6HWzcTGlT1SNslOWMGUSua05dYOu1vcvUtC8XNAEs/
-    video: "" # https://youtube.com/playlist?list=PLnp31xXvnfRrajvLNrqCND6CQUbqaR0mU&si=jR0uKF9obQWfVavZ
+    # video: "" # https://youtube.com/playlist?list=PLnp31xXvnfRrajvLNrqCND6CQUbqaR0mU&si=jR0uKF9obQWfVavZ
     # recording: https://youtu.be/4sm57s0Xm6E
     # quiz: https://forms.gle/5hqMPYFenYXDTF1o6
     readings:
@@ -195,7 +195,7 @@ lectures:
     nonumber: True
   - title: "Introduction to Trees and Traversals"
     # slides: https://docs.google.com/presentation/d/15n6HWzcTGlT1SNslOWMGUSua05dYOu1vcvUtC8XNAEs/
-    video: "" # https://youtube.com/playlist?list=PLnp31xXvnfRrajvLNrqCND6CQUbqaR0mU&si=jR0uKF9obQWfVavZ
+    # video: "" # https://youtube.com/playlist?list=PLnp31xXvnfRrajvLNrqCND6CQUbqaR0mU&si=jR0uKF9obQWfVavZ
     # recording: https://youtu.be/4sm57s0Xm6E
     # quiz: https://forms.gle/5hqMPYFenYXDTF1o6
     readings:
@@ -203,7 +203,7 @@ lectures:
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/22.-tree-traversals-and-graphs/22.1-tree-recap"
   - title: "Binary Search Trees: Derivation"
     # slides: https://docs.google.com/presentation/d/15n6HWzcTGlT1SNslOWMGUSua05dYOu1vcvUtC8XNAEs/
-    video: "" # https://youtube.com/playlist?list=PLnp31xXvnfRrajvLNrqCND6CQUbqaR0mU&si=jR0uKF9obQWfVavZ
+    # video: "" # https://youtube.com/playlist?list=PLnp31xXvnfRrajvLNrqCND6CQUbqaR0mU&si=jR0uKF9obQWfVavZ
     # recording: https://youtu.be/4sm57s0Xm6E
     # quiz: https://forms.gle/5hqMPYFenYXDTF1o6
     readings:
@@ -219,7 +219,7 @@ lectures:
     nonumber: True
   - title: "Balanced Search Trees"
     # slides: https://docs.google.com/presentation/d/1hPFchcMeDChntsR6ReHa9wmv_yx_9yzuUFrnangXyFk
-    video: "" # 
+    # video: "" # 
     # recording: https://youtu.be/YmFuwyCzw6M
     # quiz: https://forms.gle/jpb36dpRNDMtjHRH8
     readings:
@@ -229,7 +229,7 @@ lectures:
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/18.-red-black-trees"
   - title: "Hashing & Hash Tables"
     # slides: https://docs.google.com/presentation/d/1hPFchcMeDChntsR6ReHa9wmv_yx_9yzuUFrnangXyFk
-    video: "" # 
+    # video: "" # 
     # recording: https://youtu.be/YmFuwyCzw6M
     # quiz: https://forms.gle/jpb36dpRNDMtjHRH8
     readings:
@@ -243,7 +243,7 @@ lectures:
     nonumber: True
   - title: "Heaps and Priority Queues"
     # slides: https://docs.google.com/presentation/d/1hPFchcMeDChntsR6ReHa9wmv_yx_9yzuUFrnangXyFk
-    video: "" # 
+    # video: "" # 
     # recording: https://youtu.be/YmFuwyCzw6M
     # quiz: https://forms.gle/jpb36dpRNDMtjHRH8
     readings:
@@ -264,7 +264,7 @@ lectures:
     nonumber: True
   - title: "Disjoint Sets"
     # slides: https://docs.google.com/presentation/d/1hPFchcMeDChntsR6ReHa9wmv_yx_9yzuUFrnangXyFk
-    video: "" # 
+    # video: "" # 
     # recording: https://youtu.be/YmFuwyCzw6M
     # quiz: https://forms.gle/jpb36dpRNDMtjHRH8
     readings:
@@ -272,7 +272,7 @@ lectures:
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/14.-disjoint-sets"
   - title: "Introduction to Graphs"
     # slides: https://docs.google.com/presentation/d/1MRK7tIlSVaErvySFtkpN9E5PIc04XdcXkHbZCa8uCNQ/
-    video: "" # https://youtube.com/playlist?list=PLnp31xXvnfRqwuAZ5q3P5xUxe2xNZL3an&si=agzrdMt5sFdJh4d0
+    # video: "" # https://youtube.com/playlist?list=PLnp31xXvnfRqwuAZ5q3P5xUxe2xNZL3an&si=agzrdMt5sFdJh4d0
     # recording: https://youtu.be/mbP26v50xGQ
     # quiz: https://forms.gle/wHvCgH9dX5UBhu8K8
     readings:
@@ -286,7 +286,7 @@ lectures:
     nonumber: True
   - title: "Shortest Path Trees"
     # slides: https://docs.google.com/presentation/d/12VCENn-07ZMsSt0ZlJj_YpXNWtR3aEeNlLp6KD0PGf8/edit#slide=id.g636c46f3c_0973
-    video: "" # https://www.youtube.com/playlist?list=PL8FaHk7qbOD44CGmkFro1gqxkDl5gIpXB
+    # video: "" # https://www.youtube.com/playlist?list=PL8FaHk7qbOD44CGmkFro1gqxkDl5gIpXB
     # recording: https://youtu.be/3QnElmfYYwM
     # quiz: https://forms.gle/1qr1w48Vyr21pFCJ6
     readings:
@@ -294,7 +294,7 @@ lectures:
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/24.-shortest-paths"
   - title: "Minimum Spanning Trees"
     # slides: https://docs.google.com/presentation/d/19BrUSntsqpGcIbVxEMgVj5YV75l1fJKuoMtBLVSbIKQ
-    video: "" # https://www.youtube.com/watch?v=990kImS-_nA&list=PL8FaHk7qbOD7xI6LkyBe2_AdaZp-XFXr3
+    # video: "" # https://www.youtube.com/watch?v=990kImS-_nA&list=PL8FaHk7qbOD7xI6LkyBe2_AdaZp-XFXr3
     # recording: https://youtu.be/nTQm7ORCgJM
     # quiz: https://forms.gle/sJ7QvuspcsA5AARn9
     readings:
@@ -310,7 +310,7 @@ lectures:
     nonumber: True
   - title: "BYOW Introduction"
     # slides: https://docs.google.com/presentation/d/17_BnS03_dM2oeZVe7fQL5PHXJhIMBXMjuXpsjPYgMpY/edit#slide=id.g1f5aad9eaf1_0_269
-    video: "" # https://www.youtube.com/watch?v=0SCtnf84QrI&list=PL8FaHk7qbOD41EHkD7CgQuRw1jpH_Fv7-
+    # video: "" # https://www.youtube.com/watch?v=0SCtnf84QrI&list=PL8FaHk7qbOD41EHkD7CgQuRw1jpH_Fv7-
     # recording: https://youtu.be/bJqx0WoNNZc
     # quiz: https://forms.gle/eurAbBiqWFo6enas8
     readings:
@@ -318,7 +318,7 @@ lectures:
         link: projects/proj3
   - title: "Sorting"
     # slides: https://docs.google.com/presentation/d/1a4LW0Zsxny9On74OqJ_Q1VHlgYjuyBL-Z5_nFkXSxJ4/edit?usp=sharing
-    video: "" # https://www.youtube.com/watch?v=kkd8d0QhiQ0&list=PL8FaHk7qbOD6aKgTz2W-foDiTeBEaBoS3&index=3
+    # video: "" # https://www.youtube.com/watch?v=kkd8d0QhiQ0&list=PL8FaHk7qbOD6aKgTz2W-foDiTeBEaBoS3&index=3
     # recording: https://youtu.be/vI2_0iKeuGU
     # quiz: https://forms.gle/FSS2WpAgWbNaVR4C8
     readings:
@@ -330,7 +330,7 @@ lectures:
     nonumber: True
   - title: "Quicksort"
     # slides: https://docs.google.com/presentation/d/1JelUuuXlyeHQam1UDOamQdkOucFj_vCI5bNZWFkhTuM/edit
-    video: "" # https://www.youtube.com/playlist?list=PLnp31xXvnfRr_rFqN57yjZtcw_P4UiJ7a
+    # video: "" # https://www.youtube.com/playlist?list=PLnp31xXvnfRr_rFqN57yjZtcw_P4UiJ7a
     # recording: https://youtu.be/0sCPc87O304
     # quiz: https://forms.gle/AexqSsU8n3aJFK4D9
     readings:
@@ -342,7 +342,7 @@ lectures:
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/34.-sorting-and-algorithmic-bounds"
   - title: "Radix Sorts"
     # slides: https://docs.google.com/presentation/d/1SNMyAbboJ5ArhN9WmkaeOgFrMJUWFbcZn2hbTSWGcuY/edit
-    video: "" # https://youtube.com/playlist?list=PLnp31xXvnfRrSxUje7m5-Y41ELVPm50N_&si=5plPlOH7IPamR6YH
+    # video: "" # https://youtube.com/playlist?list=PLnp31xXvnfRrSxUje7m5-Y41ELVPm50N_&si=5plPlOH7IPamR6YH
     # recording: https://youtu.be/ADAnAolmqJc
     # quiz: https://forms.gle/kk4nynSew1vMhAWs7
     readings:
