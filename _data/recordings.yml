@@ -7,8 +7,8 @@
 #   There is one line for every lecture day (MTWThF), so TThF will have no link.
 
 recordings:
-  # - title: "6/23"
-  #   link: "https://cs61a.org/"
+  - title: "Lec 0-1"
+    link: "https://www.youtube.com/watch?v=vYaq9Rm_aXw&list=PL102eBoiAo8mDS-ccb43g6Frv6dNT6T9S&index=1"
   # - title: "6/24"
   # - title: "6/25"
   #   link: "https://cs61c.org/sp25/"

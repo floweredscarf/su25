@@ -294,7 +294,7 @@
               {%- include recordings.html element=readings_element rowspan=new_rowspan is_even=is_even  -%}
               {%- assign readings_rowspan = new_rowspan | plus:-1 -%}
               <!-- 0 works, but 1 somehow skips every other recording... -->
-              {%- assign readings_index = readings_index | plus:0 -%}
+              {%- assign readings_index = readings_index | plus:1 -%}
             {%- else -%}
               {%- assign readings_rowspan = readings_rowspan | plus:-1 -%}
             {%- endif -%}
