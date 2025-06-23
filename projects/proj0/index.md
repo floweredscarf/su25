@@ -15,12 +15,12 @@ released: true
 
 **Deadline: Sunday, June 29th, 11:59 PM PT.**
 
+{: .danger}
+> **DANGER:** This assignment is not officially released yet! This spec still has a couple modifications required - please DO NOT start until we make the announcement on Ed and this danger tag is deleted!
+
 ## [FAQ](faq)
 
 Each assignment will have an FAQ linked at the top. You can also access it by adding `/faq` to the end of the URL. The FAQ for Project 0 is located [here](./faq).
-
-{: .warning}
-> **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
 
 {: warning}
 Note that this project has limited submission tokens. Please see [Submission and Grading](#submission-and-grading) for more details.
