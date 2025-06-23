@@ -28,9 +28,9 @@ To see what you need to complete for full credit on this lab, skip to the [Deliv
 
 ## Java: Conditionals, Loops, and Arrays
 
-This section will provide an introduction to Java loops and conditionals (the if, while and for statements), followed by a brief explanation of Java Arrays. We assume no prior experience with any of these topics in Java, but we do assume some prior knowledge of these concepts from an earlier course (like Python control flow and lists as taught in CS61A).
+This section will provide an introduction to Java loops and conditionals (the `if`, `while` and `for` statements), followed by a brief explanation of Java Arrays. We assume no prior experience with any of these topics in Java, but we do assume some prior knowledge of these concepts from an earlier course (like Python control flow and lists as taught in CS61A).
 
-Because of this, there is a lot of information presented here, but hopefully most of it will be review that can be skimmed through quickly.
+Because of this, there is a lot of information presented here. Hopefully most of it will be review that can be skimmed through quickly, but please don't hesitate to ask us if you have any questions!
 
 This course strives to teach you how to “program”, and this includes not just teaching you how to write code, but how to do a variety of activities. We have included a few exercises for you to practice writing, analyzing, and testing code.
 
@@ -164,16 +164,12 @@ while (dividend >= divisor) {
 remainder = dividend;
 ```
 
-All statements of the loop body are executed, even if one of them affects the
-truth value of the test. In the example above, values of 9 for `dividend` and
-4 for `divisor` result in two lines of output. We show a representation with
-values of 13 for `dividend` and 4 for `divisor` and initially 0 for
-`remainder`. This results in 3 lines of output.
+For the code above, if we set `dividend = 9` and `divisor = 4`, we will get two lines of output. If we set `dividend = 13`, `divisor = 4`, and `remainder = 0` initially, we will get three lines of output:
+
+![DividendDivisor](img/DividendDivisor.jpg)
 
 When debugging `while` loop code, sometimes it's useful to make charts like the
 one below to keep track of the value of each variable.
-
-![DividendDivisor](img/DividendDivisor.jpg)
 
 ### How `for` Works
 
@@ -190,14 +186,15 @@ for (loop-information) {
 
 <!-- TODO: I know Oracle docs refer to these as "increments",
 but that's weird because it's arbitrary. "update" might be better. -->
+<!-- UPDATE: changed increments to updates because I agree "increments" is weird-->
 Loop information consists of *initializations*, a *test* (condition), and
-*increments*. If the test succeeds, the loop continues and then increments. These refer to the creation of variables, boolean conditions that dictates when the loop should and should not be entered, 
-and the equation we use to update our position between loops. 
+*updates*. If the test succeeds, the loop continues and then updates. These refer to the creation of variables, boolean conditions that dictates when the loop should and should not be entered, 
+and the equation we use to update our variable between loops. 
 These three sections are separated by semicolons, and any of
-these may be blank. If there is more than one initialization or increment,
+these may be blank. If there is more than one initialization or update,
 they are separated by commas.
 ```java
-for (initialization; test; increment) {
+for (initialization; test; update) {
     loop-body;
 }
 ```
@@ -208,7 +205,7 @@ Loop execution proceeds as follows:
 2.  The test is evaluated.
     -   If the condition is false, the loop is finished and execution continues
         with the code following the for loop.
-    -   If the condition is true, the loop body is executed, increments are
+    -   If the condition is true, the loop body is executed, updates are
         performed, and we loop back to the top of step 2 where the test is
         evaluated again. (Note: We never re-initialize.)
 
@@ -376,7 +373,7 @@ for (int i = 0; i < values.length; i++) {
 - egg cartons
 - chessboards / checkerboards
 
-We declare an array variable by giving the type of its elements, a pair of
+We **declare** an array variable by giving the type of its elements, a pair of
 square brackets, and the variable name, for example:
 
 ```java
@@ -385,7 +382,7 @@ int[] values;
 
 Note that we don't specify the length of the array in its declaration.
 
-Arrays are basically objects with some special syntax. To initialize an array,
+Arrays are basically objects with some special syntax. To **initialize** an array,
 we use the `new` operator as we do with objects; the argument to `new` is the type
 of the array, which includes the length. For example, the statement
 
@@ -394,7 +391,7 @@ values = new int[7];
 ```
 
 stores a reference to a 7-element integer array in the variable `values`. This
-initializes the array variable itself. If we want to declare and initialize the
+initializes the array variable itself. If we want to **declare and initialize** the
 array at the same time, we can:
 
 ```java
@@ -412,7 +409,7 @@ values[1] = 4;
 For an `int` array, Java will (by default) set all of the elements to `0`.
 Similarly, `double` arrays will be filled with `0.0`, `boolean` with `false`,
 etc. For arrays of references to non-primitive objects (whose precise definition we will
-cover in lab 4), the array will be initialized with `null`.
+cover in lab 3), the array will be initialized with `null`.
 
 If you know what every value in your array should be at initialization time,
 you can use this simplified syntax to directly initialize the array to the
@@ -437,7 +434,7 @@ values[k]
 If the value of the index expression is negative or greater than/equal to the
 length of the array, an exception is thrown (negative indexing is not allowed).
 
-Every array has an instance variable named `length` that stores the number of
+Every array has an **instance variable** named `length` that stores the number of
 elements that array can hold. For the `values` array just defined,
 `values.length` is 7. The length variable can't be changed; once we create an
 array of a given length, we can't shrink or expand that array.
@@ -490,7 +487,7 @@ And you could access the first index of the first array as:
 arrayOfArrays[0][0] = 1;
 ```
 
-Hopefully this all makes sense. Alternatively, you can fix the length of each
+Alternatively, you can fix the length of each
 array in the array of arrays as the same length like this:
 
 ```java
@@ -517,7 +514,7 @@ int[][][] threeDimensionalArray = new int[100][100][100];
 ```
 
 This 3D array has 100x100x100 = 1,000,000 different values. Multidimensional
-arrays are extremely useful, and you'll be encountering them a lot.
+arrays are extremely useful, and you'll likely be encountering them a lot.
 
 ## Task: A Jigsaw Puzzle - Drawing a Triangle
 
@@ -534,7 +531,7 @@ method that, when executed, will print the triangle:
 (Each line has one more asterisk than its predecessor; the number of asterisks
 in the last line is the value of the `SIZE` variable. `SIZE` has a hard-coded value,
 which you should experiment with. Feel free to make `SIZE` controlled by a command-line argument!
-However, when you turn it in, make sure that it will run with `SIZE = 5`!)
+However, when you turn it in, **make sure that it will run with `SIZE = 5`**!)
 
 At the top of IntelliJ, you should see "File". Click on it, and then hover over "New"
 and then click on "Java Class". See this reference screenshot:
@@ -570,10 +567,7 @@ Now, you should be able to see a green arrow pop up on the `public static void m
 
 You can visually check the output of your `drawTriangle` method by running main like above. Tests are also provided in the tests/ folder; you can run TriangleDrawerTest.java in Intellij to check the correctness of your code. For this particular question, the given tests aren't as useful (since it asks you to visually check your code output), but the test files will be much more relevant in future labs and other assignments.
 
-Copy and paste statements from the `TriangleDrawer.stuff` file into the main method of 
-`TriangleDrawer.java`. You'll have to add some right braces in addition to the copied lines 
-that you've chosen and rearranged. (You won't need all the statements. You shouldn't need to use 
-any statement more than once.)
+In the `TriangleDrawer.stuff` file, you will find some provided statements. Feel free to use these in your `drawTriangle` method in `TriangleDrawer.java`, adding braces and rearranging statements as you deem necessary. You won't need all the statements, and you shouldn't need to use any statement more than once.
 
 Many students encounter infinite loops in their first solutions to this
 problem. If you get an infinite loop, be sure to hit `CTRL+C` in your terminal to halt
@@ -583,6 +577,9 @@ execution.
 > to conduct our printing. However, this function always outputs a new line at the
 > end of its provided string. There is a variant of this function, System.out.print,
 > which does not output a new line. You may find it helpful in this exercise!
+
+{: .task}
+>Make the `TriangleDrawer.java` file and fill out the `drawTriangle` method, visually checking your output for correctness.
 
 ## Task: Another Jigsaw Puzzle
 
@@ -605,6 +602,9 @@ For example, consider the `SIZE` variable. When is it being modified? Based on t
 
 </details>
 
+{: .task}
+>Make and fill out `TriangleDrawer2.java` as described above.
+
 ## Task: Array Exercises
 
 Your task is to complete the two exercises in `ArrayExercises.java`.
@@ -612,6 +612,10 @@ Your task is to complete the two exercises in `ArrayExercises.java`.
 - `makeDice`: This method returns a _new_ `array` of integers `[1, 2, 3, 4, 5, 6]`.
 - `findMinMax`: This method takes an `int[] array` and returns the the positive difference between the maximum element and minimum element of the given array. You may assume the input array is nonempty.
 
+In the `tests` folder, there is a file called `ArrayExercisesTest.java`, which you can use to check your code. As a refresher for how to run these tests, see the [Testing Your Code](../lab01/#testing-your-code) section of Lab 01.
+
+{: .task}
+>Fill out `ArrayExercises.java`.
 
 ## Task: Array Operations
 
@@ -620,13 +624,12 @@ Look at the files `ArrayOperations.java` and `ArrayOperationsTest.java`.
 Fill in the blanks in the `ArrayOperations` class. Your methods should pass
 the associated tests in `ArrayOperationsTest`.
 
-Note: Before trying to program an algorithm, you should usually try a small
-case by hand. For each of the exercises today, demo
-each algorithm by hand before writing any code.
+Note: Before trying to program an algorithm, it may help to try a small
+case by hand. Feel free to try this for each of the remaining exercises in this lab.
 
 ### `insert` & `delete`
 
--   The `insert` method takes three arguments: an `int` array, a position in the
+-   The `insert` method takes three arguments: an `int` array, a position (zero-indexed) in the
     array, and an `int` to put into that position. All the subsequent elements
     in the array are moved over by one position to make room for the new element.
     The last value in the array is lost.
@@ -639,7 +642,7 @@ insert(values, 2, 7)
 
 would result in `values` becoming {1, 2, 7, 3, 4}.
 
--   The `delete` method takes two arguments: an `int` array and a position in
+-   The `delete` method takes two arguments: an `int` array and a position (zero-indexed) in
     the array. The subsequent elements are moved down one position, and the
     value 0 is assigned to the last array element.
 
@@ -651,7 +654,7 @@ delete(values, 2)
 
 would result in `values` becoming {1, 2, 4, 5, 0}.
 
-For today don't worry about the methods being called with incorrect input.
+You do not need to worry about the methods being called with incorrect input.
 
 ### `catenate`
 
@@ -681,6 +684,9 @@ would result in `values` becoming `{1, 2, 3, 4, 5}`.
 Again, for today, don't worry about the method being called with incorrect input.
 When you finish this function, all tests in `ArrayOperationsTest.java` should
 compile and pass.
+
+{: .task}
+>Fill out `ArrayOperations.java`.
 
 ## Deliverables
 
