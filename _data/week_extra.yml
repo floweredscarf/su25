@@ -30,8 +30,8 @@
 
 week_extra:
   - name: "Survey" # week 1
-    link: "https://forms.gle/FFTFQmv2UJqooukH7"
-    show_extra: false
+    link: "https://forms.gle/XGsoiBSHNbhVksyP9"
+    show_extra: true
   - name: "Survey" # week 2
     link: "https://forms.gle/CacfMhK8MhPAt1vf6"
     show_extra: false
