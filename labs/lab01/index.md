@@ -634,8 +634,8 @@ the git exercise:**
 
 ### Installing IntelliJ
 
-1.  Download the Community Edition of IntelliJ from the
-    [JetBrains](https://www.jetbrains.com/idea/download/#:~:text=free%20to%20use-,IntelliJ%20IDEA%20Community%20Edition,-The%20IDE%20for) website.
+1.  Download the **Community Edition** of IntelliJ from the
+    [JetBrains](https://www.jetbrains.com/idea/download/#:~:text=free%20to%20use-,IntelliJ%20IDEA%20Community%20Edition,-The%20IDE%20for) website. **DO NOT** download the IDEA Ultimate version. Please scroll down slightly to find the Community Edition.
     As a student you can actually get a student license for the Ultimate
     version, but there are not any additional features that we will use for this
     class. **It is recommended and assumed that you proceed with the Community
