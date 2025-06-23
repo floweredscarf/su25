@@ -92,7 +92,7 @@ lectures:
     nonumber: True
   - title: "Primitives and Objects"
     # slides: https://docs.google.com/presentation/d/1TGLZJuxBemPf6Ttdh49S04QJVzWWQa4ZYn-fIsgEFDI/edit#slide=id.g3291dab0df5_0_719
-    # video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRqziLs3JZ6LIH73ZsVtvsGy"
+    video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRqziLs3JZ6LIH73ZsVtvsGy"
     # reading: "https://cs61b-2.gitbook.io/cs61b-textbook/2.-defining-and-using-classes"
     # recording: https://youtu.be/K54flmpG11k
     # quiz: https://forms.gle/ZRvLF4uf75neXnEi9
