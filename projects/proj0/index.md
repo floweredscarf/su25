@@ -470,7 +470,7 @@ Note: It should not be clear why `minR` is going to be helpful later. You'll see
 | 0 | 0 | 0 | 0 |
 | 0 | 0 | 0 | 0 |
 
-**Explanation**: With `minR = 1`, the tile at `(3,0)` can move only up to `(1,0)` and does not merge with the tile at `(0,0)`. Since no merge occurred, the method returns `0`.
+**Explanation**: With `minR = 1`, the tile at `(3,0)` can move only up to `(1,0)` and does not merge with the tile at `(0,0)`. Since no merge occurred, the method returns `minR`, which is `1`.
 
 ---
 
@@ -493,7 +493,7 @@ Note: It should not be clear why `minR` is going to be helpful later. You'll see
 | 0 | 0 | 0 | 0 |
 | 2 | 0 | 0 | 0 |
 
-**Explanation**: With `minR = 3`, the tile at `(3,0)` is not allowed to move up at all, so the board remains unchanged, and no merge occurs. The method should return `0`.
+**Explanation**: With `minR = 3`, the tile at `(3,0)` is not allowed to move up at all, so the board remains unchanged, and no merge occurs. The method should return `minR`, which is `3`.
 
 ### Testing and Debugging
 
