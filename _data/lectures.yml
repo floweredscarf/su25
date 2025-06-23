@@ -69,7 +69,7 @@ lecture_prefix: "/assets/lectures/cs101-sp25-lec"
 
 lectures:
   - title: "Introduction and Logistics"
-    # slides: https://docs.google.com/presentation/d/1_funKmLVePWqfNulUl5yehBQmV1gxHarI_VkMgQ_Ah8/edit#slide=id.g3280633c3ea_0_148
+    slides: https://docs.google.com/presentation/d/1g31wXLoykVRf5cP1X3fsYdW6pwcZv9Ut0k3FZYOxOtU/edit?usp=sharing
     # video: ""
     # reading: 
     # recording: https://www.youtube.com/watch?v=dQw4w9WgXcQ
@@ -78,7 +78,7 @@ lectures:
       - title: "Course Policies"
         link: policies
   - title: "Introduction to Java, Git, and Setup"
-    # slides: https://docs.google.com/presentation/d/1Eci0ko521eAnEmbcJU12exLmVBIrAkQnVSO-8U1mzz0/edit?usp=drive_link
+    slides: https://docs.google.com/presentation/d/1g31wXLoykVRf5cP1X3fsYdW6pwcZv9Ut0k3FZYOxOtU/edit?usp=sharing
     # video: "" # https://www.youtube.com/playlist?list=PLnp31xXvnfRq5wRDN8wZFy7GrrJXUtr1q
     # reading: https://cs61b-2.gitbook.io/cs61b-textbook/1.-introduction
     # recording: https://www.youtube.com/watch?v=qMdLi5v8aT4
@@ -92,7 +92,7 @@ lectures:
     nonumber: True
   - title: "Primitives and Objects"
     # slides: https://docs.google.com/presentation/d/1TGLZJuxBemPf6Ttdh49S04QJVzWWQa4ZYn-fIsgEFDI/edit#slide=id.g3291dab0df5_0_719
-    # video: "" # https://www.youtube.com/playlist?list=PLnp31xXvnfRqziLs3JZ6LIH73ZsVtvsGy
+    # video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRqziLs3JZ6LIH73ZsVtvsGy"
     # reading: "https://cs61b-2.gitbook.io/cs61b-textbook/2.-defining-and-using-classes"
     # recording: https://youtu.be/K54flmpG11k
     # quiz: https://forms.gle/ZRvLF4uf75neXnEi9
