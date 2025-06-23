@@ -15,8 +15,8 @@ released: true
 
 **Deadline: Sunday, June 29th, 11:59 PM PT.**
 
-{: .danger}
-> **DANGER:** This assignment is not officially released yet! This spec still has a couple modifications required - please DO NOT start until we make the announcement on Ed and this danger tag is deleted!
+<!-- {: .danger}
+> **DANGER:** This assignment is not officially released yet! This spec still has a couple modifications required - please DO NOT start until we make the announcement on Ed and this danger tag is deleted! -->
 
 ## [FAQ](faq)
 
