@@ -335,14 +335,14 @@ directories, etc., refer back to
     in this directory (`git init`).
 3.  Create a file called `61b.txt` in any way you'd like (`touch`). In this text file,
     add the text "61b version 1" into it.
-4.  Create another file called `61bl.txt` in any way you'd like. In this text
-    file, add the text "61bl version 1" into it.
+4.  Create another file called `61boba.txt` in any way you'd like. In this text
+    file, add the text "61boba version 1" into it.
 5.  Begin tracking **only** `61b.txt`, and create a new commit containing just
     this file, with the following commit message: "Add 61b.txt".
 6.  Make a modification in `61b.txt` by changing the text in the file to: "61b
     changed to version 2".
-7.  Make another commit, this time containing both `61b.txt` and `61bl.txt`.
-    The commit message should be: "Update 61b.txt and add 61bl.txt".
+7.  Make another commit, this time containing both `61b.txt` and `61boba.txt`.
+    The commit message should be: "Update 61b.txt and add 61boba.txt".
 8.  Make one more modification to `61b.txt` by changing the text in
     the file to: "61b changed to version 3". Don’t commit this version.
 
