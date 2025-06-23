@@ -2,7 +2,7 @@
 layout: page
 nav_order: 0
 hide_right_toc: true
-unreleased_warning: true
+unreleased_warning: false
 ---
 
 {%- assign instructors = site.staffers | where: 'role', 'Instructor' | map: "name" -%}
