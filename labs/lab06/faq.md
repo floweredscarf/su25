@@ -1,10 +1,10 @@
 ---
 layout: page
 title: >-
-  FAQ - Lab 4B
+  FAQ
 parent: >-
-  Lab 4B: Linked List Enhancements
-grand_parent: "Lab 04: Linked Lists"
+  Lab 06: Linked List Enhancements
+grand_parent: Labs
 has_right_toc: true
 released: true
 ---
