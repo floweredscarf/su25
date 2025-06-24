@@ -1,7 +1,7 @@
 ---
 layout: page
 title: >-
-  Lab 05: Linked Lists
+  Lab 05: Intro to Linked Lists
 has_children: true
 parent: Labs
 has_toc: false
@@ -13,8 +13,8 @@ released: true
 ## [FAQ](faq.md)
 
 Each assignment will have an FAQ linked at the top. You can also access it by
-adding "/faq" to the end of the URL. The FAQ for Lab 4 is located
-[here](faq.md).
+adding "/faq" to the end of the URL. The FAQ for Lab 5 is located
+[here](faq).
 
 {: .warning}
 > **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.

@@ -1,32 +1,18 @@
 ---
 layout: page
 title: >-
-  FAQ
+  FAQ - Lab 4B
 parent: >-
-  Lab 05: Abstract Data Types
-grand_parent: Labs
+  Lab 4B: Linked List Enhancements
+grand_parent: "Lab 04: Linked Lists"
 has_right_toc: true
 released: true
 ---
-## Dynamic method selection is so confusing!
+### `assertEquals` is failing, but shows that the `SLList`s are the same?
 
-[Here](https://docs.google.com/presentation/d/1l9kslV4XB46fOOyD-hiXxi4sK-lmtFg9rMHRmS7_S5k/edit?usp=sharing) is Crystal's DMS Flow chart from a few semesters ago. You can follow steps methodically.
+Take a look at the `equals` implementation - it has the line
+`if (size != slList.size) return false;`. That is, two lists must have the same
+size to be considered equivalent. However, `toString` does not use the size;
+it uses the sentinel node.
 
-## `ListSet`
-
-### Why does `ListSet::remove` have that given line?
-
-As mentioned in the comment, the reason that we need the line is out of scope.
-Specifically, the `List` interface has two `remove` methods:
-
-- `remove(int index)`, that removes an element at a *specific index*
-- `remove(Object elem)`, that removes a *specific thing* from the list
-
-We would like to use the latter, so we must "autobox" the given `int` to
-`Integer` with the given assignment statement.
-
-## `BooleanSet`
-
-### Do we have to handle inputs outside \[0, `maxElem`\] (inclusive)?
-
-No.
+Make sure that your list size is correct!
