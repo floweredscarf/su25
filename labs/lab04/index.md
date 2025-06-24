@@ -9,11 +9,11 @@ has_right_toc: true
 released: true
 ---
 
-## [FAQ](faq.md)
+## [FAQ](faq)
 
 Each assignment will have an FAQ linked at the top. You can also access it by
 adding "/faq" to the end of the URL. The FAQ for Lab 04 is located
-[here](faq.md).
+[here](faq).
 
 {: .warning}
 > **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
@@ -38,7 +38,7 @@ writing the actual code they test.
 ### Setup
 
 Follow the
-[assignment workflow instructions](../../guides/assignment-workflow#getting-the-skeleton)
+[assignment workflow instructions](../../resources/assignment-workflow/#getting-the-skeleton)
 to get the assignment and open it in IntelliJ.
 
 ### Goals and Outcomes
@@ -799,8 +799,8 @@ pass all the local required tests and write comprehensive tests in `TriangleTest
 Just as you did in Lab 1, add, commit, then push your Lab 4 code to GitHub.
 Then, submit to Gradescope to test your code. If you need a refresher, check
 out the instructions in the
-[Lab 1 spec](../lab01/index.md#saving-your-work-using-git-and-github) and the
-[Assignment Workflow Guide](../../guides/assignment-workflow#submitting-to-gradescope).
+[Lab 1 spec](../lab01/#submitting-to-gradescope) and the
+[Assignment Workflow Guide](../../resources/assignment-workflow/#submitting-to-gradescope).
 
 If you worked with a partner, remember each of you need a separate submission on Gradescope.
 
