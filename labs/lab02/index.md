@@ -564,7 +564,10 @@ Now, you should be able to see a green arrow pop up on the `public static void m
 
 You can visually check the output of your `drawTriangle` method by running main like above. Tests are also provided in the tests/ folder; you can run TriangleDrawerTest.java in Intellij to check the correctness of your code. For this particular question, the given tests aren't as useful (since it asks you to visually check your code output), but the test files will be much more relevant in future labs and other assignments.
 
-In the `TriangleDrawer.stuff` file, you will find some provided statements. Feel free to use these in your `drawTriangle` method in `TriangleDrawer.java`, adding braces and rearranging statements as you deem necessary. You won't need all the statements, and you shouldn't need to use any statement more than once.
+In the `TriangleDrawer.stuff` file, you will find some provided statements, which are suggestions to help with your coding. Feel free to use these in your `drawTriangle` method in `TriangleDrawer.java`, adding braces and rearranging statements as you deem necessary, but you are free to not use the statements in `TriangleDrawer.stuff`. If you do, you likely won't need all the statements, and you shouldn't need to use any statement more than once. 
+
+{: .info}
+>For your `drawTriangle` method in `TriangleDrawer.java`, practice using a `while` loop! You'll be asked to re-write it using a `for` loop in the next task.
 
 Many students encounter infinite loops in their first solutions to this
 problem. If you get an infinite loop, be sure to hit `CTRL+C` in your terminal to halt
@@ -576,7 +579,7 @@ execution.
 > which does not output a new line. You may find it helpful in this exercise!
 
 {: .task}
->Make the `TriangleDrawer.java` file and fill out the `drawTriangle` method, visually checking your output for correctness.
+>Make the `TriangleDrawer.java` file and fill out the `drawTriangle` method using only `while` loops, visually checking your output for correctness.
 
 ## Task: Another Jigsaw Puzzle
 
