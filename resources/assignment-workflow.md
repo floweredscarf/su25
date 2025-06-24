@@ -42,7 +42,7 @@ The following instructions apply for **every** assignment. **Each time after pul
 
 1. Start up IntelliJ. **If you have no projects open**, click the "Open" button. If you have a project currently open, navigate to **"File --> Open"**.
 
-2. Find and choose the directory of your current assignment. For example, for Lab 1, you would select the `lab01` directory inside your `{{ site.semester }}-s***` repo.
+2. Find and choose the directory of your current assignment. For example, for Lab 1, you would select the `lab01` directory inside your `su25-s***` repo.
 
 3. Navigate to the **"File -> Project Structure"** menu, and make sure you are in the **Project** tab. Set your project SDK to your installed Java version. If 17 or higher isn't available in the dropdown, make sure you downloaded and installed Java completely.
 
