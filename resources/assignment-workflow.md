@@ -58,7 +58,7 @@ The following instructions apply for **every** assignment. **Each time after pul
    - The Language level is at least 17, and at most the SDK.
    - The Compiler output is filled in, and is set to the assignment directory, followed by `out`
 
-5. Still in Project Structure, go to the **Libraries** tab. Click the "**+ -> Java**" button, then navigate to `library-{{ site.semester }}`, select the folder, and click "Ok".
+5. Still in Project Structure, go to the **Libraries** tab. Click the "**+ -> Java**" button, then navigate to `library-su25`, select the folder, and click "Ok".
 
    ![select-libraries](../assignment-workflow-img/lab01-librarysu25.png){: style="max-height: 300;"}
 
