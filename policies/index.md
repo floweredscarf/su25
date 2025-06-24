@@ -94,7 +94,7 @@ Friday labs are theoretical labs (except Fri, Jul 4, which will be pushed to Mon
 
 We also may hold review sessions this semester before the exams. Attending these will also count towards the theoretical lab attendance credit. More details will be announced on Ed as the semester progresses.
 
-You will need to attend 5 of the 7 theoretical labs (and/or 2 review sessions) in order to receive full attendance credit. Each attendance is worth 3 points, capped at 15 points. Achieving more than 5 attendances does not give extra credit, but we still encourage you to attend all theoretical labs and review sessions, as they will help you better prepare for the exams.
+There will be 7 theoretical labs and 2 review sessions. You will need to attend 5 of them (aka 5 of the 9 sections) in order to receive full attendance credit. Each attendance is worth 3 points, capped at 15 points. Achieving more than 5 attendances does not give extra credit, but we still encourage you to attend all theoretical labs and review sessions, as they will help you better prepare for the exams.
 
 #### Section Swapping
 
