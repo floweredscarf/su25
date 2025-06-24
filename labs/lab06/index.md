@@ -12,7 +12,10 @@ released: true
 
 ## [FAQ](faq.md)
 
-The FAQ for Lab 5 is located [here](faq.md).
+The FAQ for Lab 6 is located [here](faq).
+
+{: .warning}
+> **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
 
 ## Before You Begin
 
