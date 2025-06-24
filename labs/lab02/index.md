@@ -17,9 +17,6 @@ adding "/faq" to the end of the URL. The FAQ for Lab 2 is located
 [here](faq). 
 **The FAQ (frequently asked questions) is a list of compiled questions and errors that students often run into, so refer to this page first before reaching out to staff.**
 
-{: .warning}
-> **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
-
 ## Learning Goals
 
 In this lab, we will learn more about Java syntax and get some more practice with programming in Java.
