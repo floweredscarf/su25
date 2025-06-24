@@ -1,9 +1,9 @@
 ---
 layout: page
 title: >-
-  FAQ - Lab 04
+  FAQ
 parent: >-
-  Lab 04: Linked Lists
+  Lab 05: Intro to Linked Lists
 grand_parent: Labs
 has_right_toc: true
 released: true

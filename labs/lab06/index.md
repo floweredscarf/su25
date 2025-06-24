@@ -1,963 +1,381 @@
 ---
 layout: page
 title: >-
-  Lab 06: Abstract Data Types
+  Lab 06: Linked List Enhancements
 has_children: true
 parent: Labs
 has_toc: false
-nav_exclude: true
+nav_exclude: false
 has_right_toc: true
 released: true
 ---
 
 ## [FAQ](faq.md)
 
-The FAQ for Lab 6 is located [here](faq.md).
-
-{: .warning}
-> **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
+The FAQ for Lab 5 is located [here](faq.md).
 
 ## Before You Begin
 
-Pull the skeleton code from GitHub and open it on IntelliJ like usual.
+Pull the skeleton code from GitHub and open it on Intellij like usual.
 
-## Learning Goals
+## Linked Lists
 
-First, we'll cover inheritance in Java, which comes in three main forms: interface implementation,
-abstract class extension, and concrete class extension. We will also discuss dynamic method selection (DMS),
-a process that determines which functions get run upon program execution as a result of inheritance and
-Java's static typing.
+In today's lab, we're going to continue our discussion of **linked lists** by
+introducing a new way of organizing programs through **encapsulation**. By hiding
+our linked list behind an abstraction barrier, it will no longer be naked and will be more user-friendly.
 
-First, we'll look at some classes we've written so far, and identify patterns
-in what we can _do_ with them. We will connect this idea to _abstract data
-types_, then tie them to interfaces. This
-feature allows us to make a more complicated system of class interrelations
-than we have seen previously, and its correct utilization of interfaces is
-key to being able to write generalizable and neat code.
+We will first define a few terms.
 
-Once introduced, we will use this concept to explain the workings of the
-Java `Collections` Framework, which contains many of the data structures you've
-encountered before. Finally, we'll write our own implementations for a
-simplified abstract data type.
+Module
+: A set of methods that work together as a whole to perform some task or set of
+related tasks.
 
-## Inheritance
+Encapsulated
+: A module is said to be encapsulated if its implementation is completely
+hidden, and it can be accessed by the user only through a documented interface.
 
-To motivate inheritance, let us consider a hypothetical scenario. Suppose we desire to implement a program that represents an animal. We might begin to define a class like follows:
+## Enhancement 1: Encapsulation
 
-```java
-public class Animal {
-  public int age;
-  public String name;
-  public int size;
-  public boolean hungry;
-  public Animal() { /* Implementation not shown. */ }
-  public void eat(Food food) {
-    food.consume();
-    hungry = false;
-  }
-}
-```
+The "naked" implementation of `IntList` that we learned fom [Lab 4](../lab04)
+is impractical to use at scale. In it, the idea of a node in the list and the list itself
+are not separate. This means that someone who wants to use the `IntList` class
+would need to spend a lot of time adding `null` checks and handling errors that
+might come as a result of accidentally or intentionally modifying the `item`
+or `next` of a list. By giving users direct control to the `IntList` data
+structure's internals, in some ways, we've actually made it *harder* to reason
+about the correctness of a program.
 
-Of course, having just a simple `Animal` class is not particularly useful to us. For example, if we wished to simulate a cat, the class below might be more useful:
+We want to separate the idea of the list as an entity from an entry in the
+list, much like an [*abstraction barrier*](http://composingprograms.com/pages/22-data-abstraction.html#abstraction-barriers). We'll
+see that this design philosophy of encapsulation will come up over and over
+again for each of the data structures we study in the coming weeks.
 
-```java
-public class Cat {
-  public int age;
-  public String name;
-  public int size;
-  public boolean hungry;
-  private int tailSize;
-  public Cat() { /* Implementation not shown. */ }
-  public void eat(Food food) {
-    food.consume();
-    hungry = false;
-  }
-  public String meow() { return "Meow!"; }
-}
-```
+Let's update our lab 4 `IntList` with encapsulation, which we will now call
+a `SLList` (Singly Linked List).
+Note that in order to emphasize the encapsulation in box-and-pointer diagrams, we
+will be breaking the normal box-and-pointer rule that we don't put Objects
+inside other Objects.
 
-Observe that this class is largely the same as the `Animal` class, but with one extra instance variable, and one extra instance method. And intuitively, a cat is an animal. Is there a way we can represent this in Java? As you may have already guessed, the formalization of this relationship is known as _inheritance_. The `Cat` class written with inheritance would look like:
+> Note that throughout the lab, some of the images do not depict the `size` variable for simplicity. This variable is an instance variable for all `SLList`s even if it is not shown in our illustrations.
 
-```java
-public class Cat extends Animal {
-  private int tailSize;
-  public String meow() { return "Meow!"; }
-}
-```
+![](img/intlist.png)
 
-Here, we introduce the new keyword `extends`. This keyword goes after the declaration of a class, and indicates that the declared class "inherits" from the following class, which we call the superclass. In this case, `Cat` inherits from `Animal`. What does inheritance actually provide? An inheriting class implicitly contains, or "inherits", all of the non-private variables and methods from its superclass.
+All operations on the list are handled through an instance of an `SLList` object, which keeps a single instance variable `head` in order to track the first node in the linked list. The `SLList` object operates directly on the `IntListNode`s that make up the `SLList`. Note that `IntListNode` does not need any methods (other than some utility methods such as `toString()` and `equals()`, which you will use later). The main effect of using encapsulation, by using a reference to the `head` of a list,is hiding the internal representation and operations of the list from users. Instead, the users could simply operate on list as a whole and the `SLList` representation will take care of the operations, including any null checks, size checks, or further operations.
 
-Note that a class can only `extend`, or inherit from, one other class. This is because, if inheriting from two or more were allowed, then it would be possible to inherit conflicting definitions of a method, and impossible to resolve that (which class would get priority in having its definition utilized).
+## Enhancement 2: Sentinel
 
-### Overriding Methods
+Although encapsulation shields users of our data structure from having to deal with
+cumbersome null checks, we as the implementors of our linked list class still have to handle them.
+However, we can eliminate null checks and simplify our code greatly with usage of a `sentinel` _node_ instead of the `head` pointer. The sentinel node always exists (even when our list is empty), and does not represent an actual node in the list. Its `next` field represents the front of the list, unless the list is empty. The sentinel's `item` is some meaningless value (in this example, we have chosen [42](https://en.wikipedia.org/wiki/42_%28number%29#The_Hitchhiker's_Guide_to_the_Galaxy), but it doesn't matter what its value is; **a sentinel's item should never be accessed**). The last node in the list should have its `next` pointing back at the `sentinel`, and an empty list is represented by just a `sentinel` node whose `next` points back to itself. In a box-and-pointer diagram, a empty singly-linked list with a sentinel looks like this:
 
-One thing we might want to do is replace the superclass's implementation of a method. For example, suppose we preferred to have the following eat method for the Cat class:
+![](img/emptyintlistsentinel.png)
+
+and a 2-item singly-linked list with a sentinel looks like this:
+
+![](img/intlistsentinel.png)
+
+This has many benefits. When iterating through the list, we do not need to worry about reaching a null pointer at any point; when our moving pointer reaches the sentinel, it's the end of the list. When inserting and removing nodes, we don't need to manually handle being near the end or beginning or being the first or last element inserted or removed of the list; the code can be written with disregard for null-checking edge cases and it will still work properly because of the sentinel!
+
+In code, an implementation might look like this:
 
 ```java
-public void eat(Food food) {
-  food.annihilate();
-  this.throwHairBall();
-  hungry = true;
-}
-```
+public class SLList {
 
-How can we have Cat use this method instead? As it turns out, it is as simple as simply plopping the method down into the class:
+    /**
+     * IntListNode is a nested class that represents a single node in the
+     * SLList, storing an item and a reference to the next IntListNode.
+     */
+    private static class IntListNode {
+        /**
+         * The access modifiers inside a private nested class are irrelevant:
+         * both the inner class and the outer class can access these instance
+         * variables and methods. 
+         * Though making the instance variables of the inner class 
+         private is better practice. 
+         */
+        public int item;
+        public IntListNode next;
 
-```java
-public class Cat extends Animal {
-  private int tailSize;
-
-  // Other Cat methods
-  ...
-
-  @Override
-  public void eat(Food food) {
-    food.annihilate(); // method implementation not shown
-    this.throwHairBall(); // method implementation not shown
-    hungry = true;
-  }
-
-  public String meow() { return "Meow!"; }
-}
-```
-
-And that is all we need to do! Note that there is an `@Override` tag above the method. This tells the compiler to make sure that this method actually overrides a method in the superclass. Otherwise, it will not compile. Note that you do not need to have the `@Override` tag to override a method - it simply serves as a guard against human error (more details on this later).
-
-## The `super` keyword
-
-Suppose we added the change from the previous section and overrode the `eat` method. Can we still call the original method? The answer is yes! Consider the following code example that adds a new method to Cat:
-
-```java
-public void thoroughlyConsumeFood(Food food) {
-  super.eat(food); // Animal's eat
-  this.eat(food); // Cat's eat
-}
-```
-
-The first call allows us to access Animal's eat method and invoke it. In some sense, `super` is like `this` but for the parent class.
-
-In java, subclasses do not directly inherit the constructor of their
-superclass. Rather, we have to directly reference the constructor of the parent class.
-We do this with the keyword `super`, which is treated as an invocation of the parent
-class' constructor. Thus, in the parenthesis following `super` you must supply the
-correct number and type of arguments.
-**This call to super must be the first line of the constructor.**
-Check out the implementation of `GregorianDate.java` for an example of `super` in action.
-
-## Exercise: `GregorianDate`
-
-Let's start with an example of an abstract class. `Date.java` is an abstract
-class used to represent calendar dates (we will **ignore** leap years). In addition,
-we have included two classes that extend `Date` that are shown below.
-
-```java
-/**
- * In a nonleap year in the French Revolutionary Calendar, the first twelve
- * months have 30 days and month 13 has five days.
- */
-public class FrenchRevolutionaryDate extends Date {
-
-    public FrenchRevolutionaryDate(int year, int month, int dayOfMonth) {
-        super(year, month, dayOfMonth);
-    }
-
-    @Override
-    public int dayOfYear() {
-        return (month - 1) * 30 + dayOfMonth;
-    }
-
-    ...
-}
-
-public class GregorianDate extends Date {
-
-    private static final int[] MONTH_LENGTHS = {
-        31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
-    };
-
-    public GregorianDate(int year, int month, int dayOfMonth) {
-        super(year, month, dayOfMonth);
-    }
-
-    @Override
-    public int dayOfYear() {
-        int precedingMonthDays = 0;
-        for (int m = 1; m < month; m += 1) {
-            precedingMonthDays += getMonthLength(m);
+        public IntListNode(int item, IntListNode next) {
+            this.item = item;
+            this.next = next;
         }
-        return precedingMonthDays + dayOfMonth();
     }
 
-    private static int getMonthLength(int m) {
-        return MONTH_LENGTHS[m - 1];
-    }
+    /**
+    *  sentinel is a dummy node that points to the first real node. That is,
+    *  sentinel.item is a dummy value, while sentinel.next.item is our true
+    *  first item.
+    */
+    private IntListNode sentinel;
+    private int size;
+
+    /* ... more methods to operate on ... */
 }
 ```
+> The inner class is declared `private` to enforce our abstraction barrier, but what does the `static` modifier do?
+> The `static` modifier prevents the inner class from accessing instance variables or methods of the outer class.
+> This saves a bit of memory and helps prevent mistakes by making sure we don't modify anything we shouldn't.
 
-Read through the definition of the abstract class `Date`. Pay attension to the instance variables. 
-There is an abstract method named `nextDate` in the `Date` class. `nextDate` returns
-the new date that is the result of advancing this date by one day. It should
-not change `this`. Modify `GregorianDate` accordingly so that it follows
-the correct convention for dates. Make sure to test out your methods to be sure
-that they behave as you expect them to! Check out our initial tests in `GregorianDateTest.java` for how GregorianDate is used.
 
-## Inheritance Chains
+### `toString` and `equals`
 
-It is completely possible for a subclass to in turn be a superclass for another class! Consider the following example:
+Just like yesterday, we will want a `toString` method so that our linked lists will be displayed
+in a more readable format in the debugger or when printing to the console. We will also want
+an `equals` method that checks whether or not list A and list B have the same content, rather than checking if `A` and `B` refer to the same object. 
+Overriding `equals()` means `assertEquals` in our tests will correctly verify whether two lists contain the same content. Here is an illustration of this difference:
+
+![](img/equals.png)
+
+These implementations have been provided for you this time. Take a brief look at their implementations in
+your skeleton file `SLList.java` to understand what we've changed.
+
+
+### Exercise: `add`
+
+As a bit of practice working with these improved lists, implement the `add` method in
+`SLList.java`, which adds the `int x` to the list at the specified `int index`. Be
+sure to look at and utilize the given completed methods. We suggest you read the entire class before starting coding this problem.
+
+In the case that `index` is greater than or equal to the current size of the list,
+`x` should just be added to the end of the list. For example, inserting into index
+10 of an empty list should result in a list of size 1 with the inserted item in position 0.
 
 ```java
-public class BritishBlue extends Cat {
-  private boolean isChonky = true;
+public void add(int index, int x) {
+    // TODO: YOUR CODE HERE
 }
 ```
 
-This is totally valid and legal Java. The `BritishBlue` class would inherit all non-private methods and variables from `Cat`, and therefore, by extension, `Animal`.
-Specifically, a `Cat` instance would have access to all variables and methods defined in
-`Animal`, which would carry over to any `BritishBlue` instance as well; then, by `BritishBlue`'s
-inheritance of `Cat`, any `BritishBlue` instance would be able to access everything defined in `Cat`
-with the exception of the `tailSize` instance variable, which is `private`.
+Check your solution with the tests provided in `SLListTest.java`. As always, feel free to add more testing methods!
 
-## Overloading Methods
+### Exercise: `reverse`
 
-As an aside, let us talk about overloading methods. Suppose we wanted to have two variants of the method grow:
+Over the next few steps, we're going to be completing the method `reverse` in
+`SLList` using our current `SLList` implementation.
 
 ```java
-public void grow() {
-  this.size += 1
-}
-
-public void grow(int size) {
-  this.size = size;
+/* Reverses a linked list destructively and assigns sentinel.next to the head of the reversed
+linked list.*/
+public void reverse() {
+    // TODO: YOUR CODE HERE
 }
 ```
 
-Would Java permit this, even though these two distinct methods have the same name? The answer is yes, thanks to method overloading! The idea behind method overloading is that we can have methods with the same name, as long as they have different method signatures. The method signature is the name combined with its list of parameters. Thus, because these two versions of `grow` have different parameters, it is possible to have both of them at the same time. We will formally cover method selection later, but for now intuitively see that, if we were to make a function call to `grow`, it would not be ambiguous which one we are referring to even at compile time because of the parameters being passed into the call.
+We will assume the restriction that the reversal is to be done in place,
+*destructively*, without creating any new nodes.
 
-## Interfaces
+**However, don't implement the method just yet!**
 
-In Java, interfaces are "classes" that define a specific
-set of behavior. Specifically, they provide the method signatures for all the
-required methods. Generally, interfaces do not have method implementations,
-because they only describe what they can do, not how they do it. This also
-means that interfaces cannot be instantiated.
+#### Testing `reverse`
 
-If we can't directly instantiate them, then you might be wondering how we might use them. When we write code, we often don't care about the implementation details of the
-data types we're using, and only care about what we can do with them.
-Therefore, we should write code to work with the interface!
+> Make sure that you're familiar with how to test with JUnit from the section
+> on **[Testing][]** in the last few labs.
 
-This is the idea of **abstraction barriers**: we don't need to know how
-the methods we use have been implemented, only that they exist and should
-function according to their specification.
+[Testing]: {{ site.baseurl }}/labs/lab04/#testing-your-code-with-junit
 
-### Implementing Interfaces
+Once again, we're going to write the test *before* we write `reverse`, as part of our ongoing crusade of **test-driven development** (TDD).
 
-<!-- I didn't write or read this big paragraph too carefully. -->
-<!-- Revised and cut down -Elaine Shu -->
+Especially for tricky problems like this, thinking about test cases before writing code can help us write better code
+more quickly. This foresight hopefully will lead to a better outcome when compared to rushing ahead and trying to solve the problem without
+first having considered all the different scenarios.
 
-When a class **implements** an interface, the class guarantees that it can
-perform the functionalities defined by its interface.
-Using interfaces is all about _not knowing the actual implementation_, but
-rather working with the defined behavior given by the interface.
-Implementing an interface through a class, like you are asked for assignments
-and projects, is about making sure that your class methods give the correct output as defined by the interface.
+Add JUnit tests in `SLListTest.java` to cover at least the following three situations:
 
-### Interfaces in Java
+- General case: That the function returns a reversed list (for lists of size $$\ge 2$$).
+- Base case: That the function "reverses" a list of size 1 by completing without erroring.
+- Base case: That the function "reverses" a list of size 0 by completing without erroring.
 
-We'll use the following `SimpleList` interface, which represents basic functionality of a list.
+#### Implementing `reverse`
 
 ```java
-public interface SimpleList {
-
-    /** Returns the integer stored at position i. */
-    int get(int i);
-
-    /** Adds k into the list at position i. */
-    void add(int i, int k);
-
-    /** Removes the item at position i. */
-    void remove(int i);
-
-    /** Returns the number of elements in this list. */
-    int size();
+public void reverse() {
+    // TODO: YOUR CODE HERE
 }
 ```
 
-An interface contains methods without bodies and only method signatures. To
-make a class _implement_ this interface, we use the `implements` keyword:
-
-```java
-public class SLList implements SimpleList {
-    @Override
-    int get(int i) {
-        // ...
-    }
-    // ...
-}
-```
-
-Some things to know about interfaces and related topics:
-
-Implementing classes must implement all method signatures from the interface
-: We can't partially implement an interface, because the implementation then
-does not meet all the requirements we have said it does. The one exception to this is
-if the method has the `default` keyword, then the method is already filled in the interface.
-
-`@Override`
-: This method annotation is not _required_ when implementing a method from an
-interface, but enforces that the method does override an interface method.
-This helps prevent typos, like accidentally defining `void ad(int i, int k)`,
-or `void add(int i)`, when we wanted to implement the interface method above.
-
-Interface methods are public by default.
-: Interfaces are a description of behavior (what we can do), and it doesn't
-make sense to describe things that we can't do outside the class.
-
-Interfaces cannot have fields.
-: Fields imply that the interface is storing some data, which implies that
-we are relying on its implementation -- which isn't allowed. The exception
-to this is that interfaces can have static constants (`static final`).
-
-Classes can implement more than one interface.
-: Classes can behave like multiple things at once. To have a class implement
-more than one interface, we use commas:
-
-```java
-public class SLList implements SimpleList, ComplexList {
-  // ...
-}
-```
-
-### Abstract Classes
-
-Suppose for a moment that we wanted to inherit from a partial implementation of a class. Recall the Animal example from before, but slightly rewritten:
-
-```java
-public class Animal {
-  private int age;
-  private String name;
-  private int size;
-  private boolean hungry;
-  public Animal() { /* Implementation not shown. */ }
-  public void eat(Food food) {
-    food.consume();
-    hungry = false;
-  }
-}
-```
-
-While it was useful for us to inherit some of the functionality from Animal, it does not make sense for us to actually be able to directly instantiate an Animal. Is there any way we can prevent instantiation? The answer, as you might suspect at this point, is yes! We can declare it as an abstract class:
-
-```java
-abstract class Animal {
-  private int age;
-  private String name;
-  private int size;
-  private boolean hungry;
-  public Animal() { /* Implementation not shown. */ }
-  public void eat(Food food) {
-    food.consume();
-    hungry = false;
-  }
-  abstract void speak();
-}
-```
-
-First, note that the class has been declared as abstract at the class declaration. Next, note that we have outlined several (private)
-instance variables, and one constructor and one instance method fully implemented. Finally, note that similar to the interface, we have
-provided a specification of a method to be implemented by an inheriting class, i.e. speak. We mark it as to-be-implemented with the `abstract`
-keyword. Any inheriting class must also be concrete, or else it too has to be abstract. Note finally that a class that is not abstract is called a concrete class.
-
-You might be wondering now why Java has both interfaces and abstract classes,
-when they seem to serve rather similar purposes and have similar functionality.
-Interfaces are particularly useful to represent blueprints for classes that may or
-may not be obviously related; for example, we might have a `Fluffy` interface that can
-be `implement`ed by both a `Poodle` and a `CottonBall`, which really don't have much
-else in common. This stands in contrast to abstract classes, which use the `extends`
-keyword and therefore strictly adheres to a superclass-subclass inheritance. Because of this,
-abstract classes are helpful as representations of a common base class that can be
-`extend`ed and therefore avoids a lot of repeated code.
-
-## Dynamic Method Selection (DMS)
-
-From the structure of inheritance and polymorphism arises a natural question:
-when you possess a Java object, and you evoke a particular method signature
-from it, what method will it actually run? The complexity of this question is
-apparent in the following example.
-
-```java
-public class A {
-    public void f() {
-        System.out.println("A's method!");
-    }
-}
-
-public class B extends A {
-    public void f() {
-        System.out.println("B's method!");
-    }
-}
-
-public static void main(String[] args) {
-    A objectA = new A();
-    B objectB = new B();
-    A mystery = new B();
-
-    objectA.f();
-    objectB.f();
-}
-```
-
-Clearly, `objectA.f()` will be A’s method, and `objectB.f()` will be B’s method,
-but what of `mystery`’s call? To understand this, we must learn Java’s rules for
-dynamic method selection.
-
-### Static and Dynamic Type
-
-First, let us cover some important vocabulary we need to understand. Consider
-the following variable declaration:
-
-`Object a = new Integer(0);`
-
-Here, we have declared a variable with name `a` of **static type** Object and
-**dynamic type** Integer. The static type is in a sense the ”official” type of the object.
-It is the only thing that the Java compiler considers when checking variable assignments and
-method invocations. The dynamic type is what the object actually is. So, for
-this object `a`, the compiler considers it as an `Object`, but in reality when the
-program is run it is an `Integer`. In other words, the static type is the type on the left-hand side
-of the `=` sign, and the dynamic type is the type on the right-hand side of the `=` sign.
-
-### Compile Time
-
-The general procedure is broken down into two phases. First, the compilation
-phase.
-
-1. Ensure that each variable assignment is valid.
-2. Ensure that all method calls resolve to some method of a matching method
-   signature within the calling class.
-3. If no suitable method is found, throw a compiler error.
-
-#### Variable assignments
-
-Let us elaborate on the first point. Suppose we have a typical inheritance
-structure of a superclass `Animal`, and subclasses `Cat` and `Dog`. Consider the
-following assignments:
-
-```java
-Animal a = new Animal(); // valid
-Animal b = new Cat(); // valid
-Cat c = new Cat(); // valid
-Cat d = new Animal(); // invalid
-Dog e = new Cat(); // invalid
-```
-
-It is of course allowed to create an object whose static and dynamic types
-match, so examples `a` and `c` are acceptable. Intuitively, an `Animal` can be an `Animal`
-Likewise, we can declare a variable’s static type to be of a general class,
-and then assign its dynamic type to be something more specific.
-Since an object is, abstractly speaking, an
-API of methods and variables, any subclasses of that object will meet the
-requirements of the parent class API, and can be assigned that parent type
-statically. Thus, example `b` also is acceptable. Intuitively, a `Cat` can be an `Animal`.
-It is precisely for this same reason that examples `d`and`e`fail. A`Cat`object
-is more specific than an`Animal`, and could have extensions to the API that an
-`Animal`does not have. Thus, we cannot assign an`Animal`to be a`Cat`— an `Animal`may not be a`Cat`.
- Similarly, `Cat`and`Dog` are completely separate from each other, and could have differing
-extensions to the API. Thus, we cannot assign across the inheritance tree either.
-
-#### Method Signature Lookup
-
-Now, onto the second and third steps. Recall that a method signature is composed
-of the function’s name and parameters. At compile time, the compiler
-uses the provided method signature to check whether or not there is a valid
-function that matches the signature. Consider the following example:
-
-```java
-public class Animal {
-    public void eat() {
-        System.out.println("I am eating!");
-    }
-}
-
-public class Cat extends Animal {
-    public void meow() {
-        System.out.println("Meow!");
-    }
-}
-
-public static void main(String[] args) {
-    Animal cat = new Cat();
-    cat.eat(); // I am eating!
-    cat.meow(); // compile error
-}
-```
-
-The static type of `cat` is `Animal`, so the compiler references `Animal` when checking
-method signatures. Thus, we are able to find the method `cat.eat()` and lock it in during compile time, but not
-`cat.meow()` because there is no `meow()` method in `Animal`. So, despite this object
-in reality being a `Cat`, we are unable to invoke one of its method. Luckily, Java
-has a built-in way to get around this. Recall casting. Casting allows
-us to tell the compiler that a certain object is of another type, and the compiler
-will simply trust us on it as long as it could reasonably be of that other type, based on whether or not the actual type has a
-direct inheritance chain relationship with the other type.
-Consider the updated example:
-
-```java
-public static void main(String[] args) {
-    Animal cat = new Cat();
-    cat.eat(); // I am eating!
-    ((Cat) cat).meow(); // Meow!
-}
-```
-
-This will work, because we have told the compiler that the cat object is a `Cat`,
-and so it passes the compiler check. Note that it checks at runtime whether
-or not `cat` is actually of type `Cat`.
-
-To summarize and generalize method signature lookup: given some call `foo.bar(arg)`,
-we should be able to find some method `bar` in the static type of `foo`
-that takes in exactly one argument with the same static type as `arg`. If such
-a method is not found, we should try again and look up
-some method `bar` in the static type of `foo` that takes in exactly one argument
-whose static type is a superclass of `arg`. If that still does not work, repeat this
-step with the parent class of the static type of `foo` until there are no parent
-classes left to check. If we have exhausted all parent classes, then no method was
-found, and the code throws a compiler error.
-
-### Runtime
-
-So, the code has passed compile time. What happens in runtime, when the code
-is actually executed? Again, we have a three step sequence:
-
-1. Check that all casts were correct (ie. that the dynamic type of the variable is actually a valid subtype of the class we cast it to)
-2. If the method locked in at compile time is `static`, simply execute it. Do
-   not check for overridden methods.
-3. Otherwise, check for any overridden non-static methods.
-
-#### Static Methods
-
-Recall that when the static keyword is applied to a method, it is independent
-of any particular instance of that object. In a sense, it belongs to the whole
-class. It resides in its own special section of memory, and thus as a result, if the
-compile phase identities a static method during its lookup, it will lock onto that
-method and execute it during runtime, regardless of any overriden methods in
-the dynamic type.
-
-#### Overridden Methods
-
-If the method identified at compile time is non-static, then in runtime there
-will be a lookup based on the dynamic type for any overriding methods that
-match the function signature (function name, number of arguments, argument type).
-For example, consider yet again Animal and Cat.
-Suppose `Animal` has a method `play` that takes in an `Animal` as parameter, and
-that `Cat` has a method with the exact same name and input. Then, if we have
-an object that is statically an `Animal` and dynamically a `Cat`, it will invoke
-`Cat`’s `play` method rather than `Animal`’s.
-
-Overriding methods must also have a return type that is either the same
-type that is returned by the method they are trying to override, or a subtype of that
-parent method's return type. For example, if `Animal` defines a method `public Animal f(String s)`,
-a method defined in `Cat` as `public Cat f(String x)` would count as an override. Note that
-the variable names do not matter, only the types and number of variables.
-
-### Canonical Example
-
-Let us now illustrate all we have learned with a simple example that covers all
-cases (not including casting, which we will leave as an exercise to reader).
-
-```java
-public class A {
-    public void f() { System.out.println("A.f"); }
-    public static void g() { System.out.println("A.g"); }
-}
-
-public class B extends A {
-    public void f() { System.out.println("B.f"); }
-    public static void g() { System.out.println("B.g"); }
-    public static void h() { System.out.println("B.h"); }
-}
-
-public static void main(String[] args) {
-    A a = new A();
-    A fakeA = new B();
-    B b = new B();
-}
-```
-
-As an exercise, fill out the following table, and click the Solution dropdown when you're ready to compare your answers.
-
-![Table](img/table.png)
-
-<details markdown="block">
-<summary markdown="block">
-
-**Solution**
-
-</summary>
-
-`a.f()`: The static type is `A`, and the dynamic type is `A`, so there is no confusion
-over this case. We will simply use `A`’s `f()`.
-
-`a.g()`: The static type is `A`, so at compile time we see that `A` has a `static` `g()`
-method, and lock into it. Thus, at runtime we have `A`'s `g()`.
-
-`a.h()`: `A` has no `h()` method, so this results in a compile time error.
-
-`fakeA.f()`: At compile time, we see that `A` has a nonstatic method `f()`. At
-runtime, we see that `fakeA` is a `B`, and thus use `B`’s overridden `f()` method.
-
-`fakeA.g()`: At compile time, we see that `A` has a `static` method `g()`, and so we
-lock into it. Thus, at runtime, despite the fact that `fakeA` is dynamically a `B`,
-we will run `A`'s `g()`.
-
-`fakeA.h()`: Even though `fakeA` is dynamically a `B`, at compile time it is only
-known to be an `A`, and so thus the compiler will not be able to find an `h()` method
-for `A`.
-
-`b.f()`: Statically and dynamically a `B`, we will just run `B`’s `f()` method.
-
-`b.g()`: Statically a `B`, we find `B`’s `g()` method, and lock onto it to run in runtime.
-
-`b.h()`: Statically a `B`, we find an appropriate `h()` method to run, and then at
-runtime we run it.
-
-</details>
-
-## Abstract Data Types
-
-In the previous lab, we implemented two classes that had (and with a reasonable extension, could have had) many of the same methods: `SLList` and `DLList`.
-
-```java
-public void add(int index, Item item);
-public void addFirst(Item item);
-public void addLast(Item item);
-public Item get(int index);
-public Item getFirst();
-public Item getLast();
-public void remove(Item item);
-public Item removeFirst();
-public Item removeLast();
-public int size();
-```
-
-It seems like this list of methods could exist and have meaning _separate_
-from any actual implementation. We call a collection of methods -- a
-description of what we can do with a collection of data -- an **abstract
-data type**. We often use interfaces to represent abstract data types.
-
-`SLList` and `DLList` are particular kinds of lists, an abstract data type
-that has the methods listed above. Let's say that we use someone's code that
-defines another kind of list called `MysteryList`. Even though we might not
-know how its implementation works, we know that it can do at least everything
-a `List` can - because it's a `List`!
-
-## ADTs in Java
-
-We've talked about the list ADT. What other ADTs are commonly used, and in
-what kinds of situations? What are their implementations in Java?
-
-### Lists
-
-Let's define the list ADT in a bit more detail:
-
-A **list** is an ordered collection, or _sequence_, so the elements in a list
-have _positions_. An element can appear as many times as desired, as duplicates
-are allowed. Thus, they must support the following operations:
-
-- `add`ing an element to the list at a specific index
-- `remove`ing an element from the list at a specific index
-- `get`ing an element at a position in the list
-- `set`ting the element at a position in the list
-- Checking if the list `contains` a given item
-- Getting the `size` of a list
-
-Java's [`List` interface][List] contains many more methods, but these are the minimum
-methods that make Java's `List`s behave like our mental model of a list.
-
-The `List` implementations that you will use most often is
-[`ArrayList`][ArrayList]. Another common implementation is
-[`LinkedList`][LinkedList], which is similar to our `DLList`.
-
-[List]: https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html
-[LinkedList]: https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/LinkedList.html
-[ArrayList]: https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/ArrayList.html
-
-```java
-List<String> = new ArrayList<>();
-List<String> = new LinkedList<>();
-```
-
-### Sets
-
-When might we want something other than a list? Consider (but don't
-implement) the following problem:
-
-> Write a program that counts the number of unique words in a large text file
-> (such as the entire text of "War and Peace"). The program should output
-> the number of unique words in the text file.
-
-We could use a list, but the list ADT allows duplicate elements.
-We'd like to use ADT that handles duplicate elements for us, so we can simplify
-the code that we write. This is what the set ADT is for!
-
-A **set** is a collection of _unique_ items that is not necessarily ordered.
-Sets must support following operations at a minimum:
-
-- `add`ing an element to the set
-- `remove`ing an element from the set
-- Checking if the set `contains` a given item
-- Getting the `size` of a set
-
-There are two implementations of the [`Set` interface][Set] in Java that you will use
-often:
-
-- [`TreeSet`][TreeSet] keeps its elements in sorted order, and is fast.
-- [`HashSet`][HashSet] does not keep its elements in sorted order, and is (usually) **really** fast.
-
-[Set]: https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Set.html
-[TreeSet]: https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/TreeSet.html
-[HashSet]: https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/HashSet.html
-
-This is a concrete example of why interfaces are useful -- when we're writing
-a method, we may not care about whether it's a `TreeSet` or a `HashSet`.
-However, the code calling that method might need the ordering of the `TreeSet`
-or the speed of the `HashSet` -- we don't know how our code is going to be used!
-We can allow our code to
-be used by both by writing our method for the `Set` interface, instead
-of for `TreeSet` or for `HashSet`.
-
-```java
-Set<String> = new HashSet<>();
-Set<String> = new TreeSet<>();
-```
-
-### Maps
-
-Let's modify the above problem slightly:
-
-> Write a program that counts the number of unique words in a large text file
-> (such as the entire text of "War and Peace", which is 1225 pages!). The program should also
-> be able to take a word as input, and output how many times that word appeared
-> in the book.
-
-Here, we really want something that relates words to counts. This is where we
-can use the map ADT!
-
-A **map** is a collection of key-to-value mappings, like a dictionary from
-Python. A map is not necessarily ordered. Maps must support at least the
-following operations:
-
-- Change (`put`) the _value_ that a particular _key_ maps to.
-- `get` the _value_ that a particular _key_ maps to.
-- `remove` the value for a given _key_
-- Checking if the map `contains` a given **key**
-
-Similar to `Set`, There are two implementations of the [`Map` interface][Map] in Java that you will use
-often:
-
-- [`TreeMap`][TreeMap] keeps its _keys_ in sorted order, and is fast.
-- [`HashMap`][HashMap] does not keep its keys or values in sorted order, and is (usually) **really** fast.
-
-[Map]: https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/TreeMap.html
-[TreeMap]: https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/TreeMap.html
-[HashMap]: https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/HashMap.html
-
-```java
-Map<String, String> = new TreeMap<>();
-Map<Character, Int> = new HashMap<>();
-```
-
-#### More About Maps
-
-- To use a Java `Map`, you must specify two types: the key type, and the value
-  type. This is distinct from `List`s and `Set`s, which only need to specify
-  one type.
-
-- Maps are a mapping from keys to values, but not values to keys. They store a
-  relationship in _one direction_. For example:
-  consider a map which had keys as emails, and the values as peoples' names.
-  Given an email, I can find out who has that email. However, given a person, I
-  can't easily find out their email using that map. I would need a different map
-  going in the opposite direction (keys as peoples' names mapping to values as
-  emails).
-
-## Collections
-
-Looking at the above ADTs, it seems like they also share some behaviors. We can
-_add_ elements, _remove_ elements, check if the ADT _contains_ a certain
-element, and get the _size_. This looks like somewhere we can define a separate
-ADT!
-
-The collection ADT represents a _collection of data_. Most of the data
-structures we will study the rest of this class are used to implement
-collections. At the most general level, pretty much anything you use to store
-multiple items at once is going to fulfill the requirements to be a
-_collection_. Throughout this course, we will continue to
-see implementations of these collections.
-
-So, what does it mean (in Java) for a `List`, an ADT, to be a `Collection`,
-another ADT? We say that interfaces can `extend` other interfaces:
-
-```java
-public interface List<Item> extends Collection<Item> {
-    ...
-}
-```
-
-This means that the `List` interface "inherits" all the methods in the
-`Collection` interface... or that a `List` has all the behaviors
-that a `Collection` has!
-
-As seen above, the Java interface for collections is, unsurprisingly,
-[`Collection`][Collection]. Typically, we'll implement the behaviors for a
-particular kind of collection, rather than the `Collection` interface itself.
-
-[Collection]: https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Collection.html
-
-### Maps and Collections
-
-Unlike **set** and **list**, `Map` is not a direct extension of the Java
-`Collection` interface. This is because `Collection` specifies collections of
-a single element type, but `Map` operates on key-value pairs. Instead, from
-[Java's `Map` documentation][Map], "The Map
-interface provides three _collection views_, which allow a map's contents to be
-viewed as a set of keys, collection of values, or set of key-value mappings."
-
-- `keySet()`, which returns a `Set` of all the keys. The keys are unique, so a
-  set is an appropriate choice here.
-- `values()`, which returns a `Collection` of all the values. The values are
-  not necessarily unique, which is why we prefer a more general `Collection`
-  rather than a `Set`.
-- `entrySet()`, which returns a `Set` of key-value pairs with a wrapper type
-  called `Entry`. The entry class's job is just to hold the key and the value
-  together in a single class, so you can imagine that it might look something
-  like this.
+Try running the test you just wrote; it should fail. *This is a good sign
+because it means our tests are working as expected.*
+
+Implement `reverse` *recursively*, and rerun the tests until all of them pass. A
+helper method that accepts an `IntListNode` will be helpful.
+
+*Hint*: This is a challenging problem. The following diagrams show the progression
+of reversing a linked list recursively using a helper method called `reverseHelper`.
+
+Initial call to helper function
+![](img/reversedhelper1.png)
+
+Given a reference to the true first node in our linked list, we will take the
+recursive leap of faith on the rest of the linked list as shown below.
+![](img/reversedhelper2.png)
+
+Hit a base case(the end of the list)
+![](img/reversedhelper3.png)
+
+Trusting our recursive leap of faith, we assign a `temp` variable to the returned
+value of our recursive call, which should have reversed the current frame's L tail.
+![](img/reversedhelper4.png)
+
+Set the end of the returned list to the current frame's L.
+![](img/reversedhelper5.png)
+
+Since the current frame is the "end" of our the reversed linked list so far, we set
+the current frame's L tail to be the sentinel.
+![](img/reversedhelper6.png)
+
+Return the front of the reversed list.
+![](img/reversedhelper7.png)
+
+Update sentinel to point to the front of the reversed linked list.
+![](img/reversedhelper8.png)
+
+Now you hopefully are feeling more comfortable writing your own JUnit code! How are you liking it?
+Does it build more confidence than just writing code and not testing it?
+Some people find the rush of TDD addictive. You basically set up a little game
+for yourself to solve. Some people hate it. Your mileage may vary. Whether you
+personally enjoy the TDD flow or not, writing tests will be one of the most
+important skills you learn here at Berkeley, and getting *[test-infected][]*
+will save you and your future colleagues an enormous amount of time and misery.
+
+[test-infected]: http://c2.com/cgi/wiki?TestInfected
+
+> If you find the concept of test-driven development interesting, or just want
+> to learn more about testing philosophy and the conversation around TDD, here
+> are a couple interesting leisure readings:
+>
+> - [Checking In on the State of TDD](https://redmonk.com/kholterhoff/2023/07/12/checking-in-on-the-state-of-tdd/)
+> - [Why Most Unit Testing is Waste](https://rbcs-us.com/documents/Why-Most-Unit-Testing-is-Waste.pdf)
+> - [A Response to "Why Most Unit Testing is Waste"](https://henrikwarne.com/2014/09/04/a-response-to-why-most-unit-testing-is-waste/)
+
+## Enhancement 3: Doubly-Linked
+
+There are some major issues, both efficiency-wise and code-simplicity-wise with
+the linked list implementations we've been working with so far:
+
+- It's easy to insert into the front of the list, but requires a lot more work
+  to insert into the back of the list.
+- If we want to remove a node in our linked list, even if we have a reference
+  to the node we want to remove, we have to traverse until we find the node
+before it in order to remove it.
+
+The solution to these problems is to use a **doubly-linked list**. Each node keeps track of the node after and before itself. If we aren't using a sentinel, then instead of just a `head` pointer, the list object maintains both a `head` and `tail` pointer, to the front and back of the list respectively. It looks like this:
+
+![encapsulation](img/encapsulation.png)
+
+This adds a bit of complexity to the operations, but allows for constant time insertion to the front and back, and allows the user to traverse the list either forwards or backwards. Additionally, this allows the list to delete any nodes, even in the middle of the list, in constant time without traversing to the middle **as long as it has a reference to the node that needs to be deleted**.
+
+> The notion of a constant time operation is something you might have already been introduced to in a previous class like CS 61A. We will be covering this in much more detail once we get to the asymptotics analysis lab, but will provide a quick refresher here.
+>
+> We will consider a constant time operation to be some piece of code or method call, whose runtime (meaning the number of steps the program takes to complete execution) does not depend on the size of the inputs to the function. For insertion, imagine that the size of the input refers to the length of the list. A constant time insertion would thus mean that, regardless of the length of this list, the runtime of an insertion at the front or back of the list would take the same amount of time.
+>
+> Think about how a doubly-linked list will compare to that of a singly-linked list, and discuss with someone how the doubly-linked list improves these runtimes. Make sure you understand this concept before continuing.
+
+If we are using a sentinel, then it will look like this:
+
+![sentinel](img/sentinel.png)
+
+Note that the sentinel's item is marked with an "X", again because that value is irrelevant.
+If our list is of non-primitive items, then we can make it null. If it is of primitive items (like the `int`s we've been using, then it can just be any arbitrary value (since primitives cannot be null)).
+
+Here's a more simplified visualization of the circular structure with DLList: 
+
+![sentine2l](img/sentinel2.png)
+
+With all of these enhancements, the encapsulated doubly-linked list with a sentinel node is typically used in practice as the linked list representation, like in Java's own standard library class, java.util.LinkedList.
+
+### Invariants
+An invariant is a fact about a data structure that is guaranteed to be true
+(assuming there are no bugs in your code). This gives us a convenient checklist
+every time we add a feature to our data structure. Users are also guaranteed
+certain properties that they trust will be maintained. For example, an `SLList`
+with a sentinel node has at least the following invariants:
+
+- The sentinel reference always points to a sentinel node.
+- The front item (if it exists), is always at sentinel.next.item.
+- The size variable is always the total number of items in the list.
+- The last node's next always points back at the sentinel node.
+
+Be sure that any invariant broken while performing an operation on a data structure
+is restored by the end of the function, so that subsequent function calls can rest
+assured that they are acting on a valid data structure and that all of the instance
+variables hold the proper values.
+
+## Enhancement 4: Generic Lists
+
+Our final alteration will be somewhat more minor than the other structural changes, but this will have a powerful impact on how generalizable our code is. So far we have considered our lists to be of some fixed type (`SLList`s contained `int`s). What if we want to use a list to store `double`s instead? What if we then want to extend it further to be a list of `String` objects? Up until now we would have had to create a new copy of the class for each of these data types. 
+
+The solution to this is to use something called generics. The basic principle is that instead of writing many classes which are specific to one type of data (e.g. `int`s, `double`s, `Strings`, etc.), we will write one class which has a _generic_ type. This generic type can be thought of as a placeholder type that will be filled in by a real type when we go to use the class. This is illustrated further with the example of how to generalize a `DLList` (doubly-linked list) by rewriting it with generics.
+
+Generic DLList
+: How can we modify our `DLList` so that it can be a list of whatever objects
+we choose? The class definition for `DLList`  with integers looks like this:
 
   ```java
-  public class Entry<Key, Value> {
-      private Key key;
-      private Value value;
-      public Key getKey();
-      public Value getValue();
-      // ...
+  public class DLList {
+      public void addLast(int x) { ... }
+      // more methods here
   }
   ```
 
-These methods are vital when iterating over anything which implements the
-`Map` interface.
+  We will change this to:
+  
+  ```java
+  public class DLList<T> {
+      public void addLast(T x) { ... }
+      // more methods here
+  }
+  ```
 
-[Map]: https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html
+  where `T` is a placeholder object type. Notice the angle bracket syntax. Also
+note that we don't have to use `T`; any variable name is fine. In our `DLList`,
+our item is now of type `T`, and our methods now take `T` instances as
+parameters. We can also rename our `IntNode` class to `TNode` for accuracy.
 
-## Exercise: `CodingChallenges`
+Using Generic DLList
+: Recall that to create a `DLList`, we originally typed:
 
-Knowing when, where, and how to use abstract data types is an important skill.
+  ```java
+  DLList list = new DLList(10);
+  ```
 
-For this part, we'll be using abstract data types to help us solve small
-programming challenges. These questions are similar to the kinds of questions
-you might get asked to solve in a technical interview for a software
-engineering position. Complete the methods outlined in `CodingChallenges.java`, and add tests in `CodingChallengesTest.java`. Review [Lab 03](../lab03) for how to write tests.
+  Before we did not need to specify the type for the `DLList` since it was always `int`. If we now want to create a `DLList` holding `String` objects (or any other type of objects), then we must specify what the placeholder `T` should be filled in with. An example of what that looks like :
 
+  ```java
+  DLList<String> list = new DLList<>("cs61bl");
+  list.addLast("rocks!")
+  ```
 
-Note that the first method, `missingNumber`, the input array is **not** in order.
-
-Hint: For `isPermutation`, use `toCharArray`. Look it up if you don't know what it is.
-
-Hint: Some of these instantiations might be useful for these problems:
-```java
-Set<Integer> seen = new HashSet<>();
-Map<Character, Integer> characterCounts = new HashMap<>();
-```
-
-## Exercise: Implementing Sets
-
-We will implement two kinds of sets, with different underyling implementations.
-
-The file `SimpleCollection.java` contains a simplified version of the
-`Collection` interface which only accepts integers as members. The files
-`SimpleSet.java` contains a simplified version of the `Set` interfaces.
-Read both files so you can understand how interfaces and interface extension are
-being used here, as well as to understand what each of the interfaces requires.
-
-### `ListSet`
-
-The file `ListSet.java` is an incomplete implementation of the `SimpleSet`
-interface. It maintains uniqueness of a set of elements by storing
-elements in an `ArrayList<Integer>`.
-
-Implement the methods of the `ListSet.java` class, and use the
-`ListSetTest.java` file to test your methods. You may use
-`List` methods in your implementation. We only provide a basic test,
-so feel free to add more comprehensive tests to this file.
-
-### `BooleanSet`
-
-The file `BooleanSet.java` is an incomplete implementation of the `SimpleSet`
-interface. It maintains uniqueness of elements in the set by storing a boolean
-array `contains` for a range `[0, maxElement]`. This version of the `SimpleSet`
-interface only deals with positive integers and uses a boolean array to keep
-track of what values are currently in the `Set`. Check the example below:
-
-![BooleanSet array](img/boolean-set-array.jpg)
-
-Implement the methods of the `BooleanSet.java` class, and use the
-`BooleanSetTest.java` file to test your methods. We only provide a basic test,
-so feel free to add more comprehensive tests to this file.
-
-### Tradeoffs
-
-What are the tradeoffs between these two implementations? Neither one is
-strictly "better" than the other in all situations, but when might we want to
-use one of them? Discuss with a partner.
-
-## Aside: Generics and Autoboxing
-
-As you should remember from [Lab 5](../lab05), generics allow us to
-define data structures without relying on the specific type of objects it holds.
-This allows us to even further generalize our code, creating reusable data structures.
-
-Autoboxing is an automatic conversion that Java performs when presented a **wrapper class**.
-A wrapper class is a class that has been "wrapped" around a primitive data type so that
-the programmer can rely on object oriented interactions. You may have seen some examples already,
-such as `Integer.java` and `Double.java`. Automatic conversion
-is performed between wrapper classes and the primitives they represent.
-
-{% include alert.html content="
-Read Chapter **[5.1][]** and **[5.3][]** which we skipped earlier, covering
-**generics** and **autoboxing** in Java. These two topics will be helpful for
-implementing data structures moving forward, though they aren't emphasized in this lab.
-" %}
-
-[5.1]: https://joshhug.gitbooks.io/hug61b/content/chap5/chap51.html
-[5.3]: https://joshhug.gitbooks.io/hug61b/content/chap5/chap53.html
+  On list creation, the compiler replaces all instances of `T` with `String`!
+Through the rest of the labs in the course we will continue to work with generics, as for most 
+data structures, they will be more useful if we can use them with many types of data!
 
 ## Recap
 
-We introduced a few key topics in this lab:
+Yesterday, we worked with a "naked" `IntList`, which was difficult to use because
+knowledge of implementation details were necessary in order for its use.
 
-Inheritance:
-We learned that we can use inheritance to make the structures of our programs more efficient by taking advantage of
-similarities in the different types of objects that we are using. We also learned about method overloading and overriding,
-the `super` keyword, and inheritance chains.
+Today, we solved this problem through **encapsulation**. By nesting our node class inside
+another class, we can setup an abstraction barrier to shield our users from the details,
+and we can provide utility functions to allow users to operate naively upon our data structure.
 
-Dynamic Method Selection
-We learned how Java decides what method to actually call when a program invokes a particular method signature.
-There are two phases to this process. The first is the compiler phase, where Java ensures that there is a valid method
-matching the invoked signature that can be called. The second is the runtime phase, where Java looks up what method to
-run based on the dynamic types of the object involved.
+To eliminate the need to have if statements that protect us from `NullPointerExceptions`,
+we can use a **sentinel**.
 
-Abstract Data Types
-: Abstract data types are defined to be some sort of data that is defined
-by a set of operations rather than the **implementation** of these operations.
+For efficiency purposes, we can introduce backwards `prev` links as well to make it **doubly-linked**.
 
-`List`, `Set`, `Map`, and `Collection`
-: Java has interfaces for several ADTs, and several implementations for each of
-these ADTs. If we want to write code using algorithms that work on ADTs,
-we can write code against these Java collection types.
+Finally, we generalized the code to work with any type of data through the use of generics.
 
-## Deliverables
+### Deliverables
 
-For full credit, submit:
+As always, ensure you have `git add`, `git commit`, and `git push origin main` all of your required files before submission.
 
-- Implement and test `nextDate` in `GregorianData.java`.
-- Implement and test each method in `CodingChallenges.java`.
-- Implement and test each method in `ListSet.java`.
-- Implement and test each method in `BooleanSet.java`.
+- `SLList.java`
+- `SLListTest.java`
+
+Though there are no associated deliverables, we **strongly** recommend reading the Doubly-Linked
+section **twice** as it is useful (*hint: vital*) for the project!!
+
+> Then, if you have any time remaining after you submit this lab, spend some time implementing your
+`LinkedListDeque` for [Project 1](../../projects/deques) in lab! You should now have all of the necessary skills to tackle the project.
+

@@ -1,20 +1,20 @@
 ---
 layout: page
 title: >-
-  Lab 05: Linked Lists
+  Lab 05: Intro to Linked Lists
 has_children: true
 parent: Labs
 has_toc: false
-nav_exclude: true
+nav_exclude: false
 has_right_toc: true
 released: true
 ---
 
-## [FAQ](faq.md)
+## [FAQ](faq)
 
 Each assignment will have an FAQ linked at the top. You can also access it by
-adding "/faq" to the end of the URL. The FAQ for Lab 4 is located
-[here](faq.md).
+adding "/faq" to the end of the URL. The FAQ for Lab 5 is located
+[here](faq).
 
 {: .warning}
 > **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
@@ -92,7 +92,7 @@ public class IntList {
 For this lab, we've written JUnit tests for you in `IntListTest.java`.
 Open it up and read through it. The first thing you'll notice are the imports at the top. These imports are
 what give you easy access to the JUnit methods and functionality that you'll
-need to run JUnit tests. If you want to read more about JUnit, refer to [Lab 3](../lab03/).
+need to run JUnit tests. If you want to read more about JUnit, refer to [Lab 4](../lab04/#testing-your-code-with-truth).
 
 ### Exercise: The `get` Method
 
@@ -117,7 +117,7 @@ Hint: Traverse the list until the specified position is reached. Throw an except
 
 ### Exercise: `toString` and `equals`
 
-In [Lab 2](../lab02/#exercise-pursuit-curves), we introduced you to the `toString` and `equals` methods and you worked with a `Point` class for your Pursuit Curves that implemented these methods.
+In [Lab 3](../lab03/#tostring-and-equals), we introduced you to the `toString` and `equals` methods and you worked with a `Point` class for your Pursuit Curves that implemented these methods.
 
 Implement the standard Java methods, `toString` and `equals`, in the `IntList`
 class.

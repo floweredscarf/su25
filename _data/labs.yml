@@ -94,15 +94,15 @@ labs:
     link:
     nonumber: True
     show_links: false
-  - title: "Linked Lists"
+  - title: "Intro to Linked Lists"
     due: "2025/07/01"
     link: "/labs/lab05"
-    show_links: false
-  - title: "Abstract Data Types"
+    show_links: true
+  - title: "Linked List Enhancements"
     due: "2025/07/02"
     link: "/labs/lab06"
-    show_links: false
-  - title: "Inheritance"
+    show_links: true
+  - title: "Abstract Data Types & Inheritance"
     due: "2025/07/03"
     link: "/labs/lab07"
     show_links: false
