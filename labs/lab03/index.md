@@ -257,7 +257,7 @@ public Potato(String variety, int age) {
 ```
 
 This constructor returns a `Potato` with its `variety` and `age` set to the
-values given as arguments. Now we can construct potatoes such as erik's 3
+values given as arguments. Now we can construct potatoes such as Erik's 3
 year old Yukon Gold potato.
 
 We will discuss how to declare objects in more detail during the **Boxes and Pointer Diagrams**
@@ -853,9 +853,6 @@ your code in `Path.java` using Java's graphics framework, uncomment this file af
 
 Also, testing code has been provided in `PathTest.java`. You can uncomment this file and run these tests in Intellij.
 
-As with the previous assignments,
-these tests are not entirely comprehensive. Feel free to add whatever testing code you desire.
-
 `Path.java` will represent the path traveled by the pursuer. You will need to
 keep track of the following two points:
 
@@ -970,8 +967,8 @@ public class Point {
 ```
 
 It is very important to understand the difference between the equality and
-identity of objects. If you have not already, read over the
-[Identity and Equality section of the Java guide](../../java/index.md#identity-and-equality).
+identity of objects. We recommend you read over the
+[Identity and Equality section of the Su23 Java guide](https://cs61bl.org/su23/java/#identity-and-equality).
  Many tricky bugs can arise from this if you misuse these two related but different concepts.
 
 ## Conclusion
