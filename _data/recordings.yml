@@ -7,10 +7,10 @@
 #   There is one line for every lecture day (MTWThF), so TThF will have no link.
 
 recordings:
-  - title: "Lec 0-1"
+  - title: "Lec 0-1" # 6/23
     link: "https://www.youtube.com/watch?v=vYaq9Rm_aXw&list=PL102eBoiAo8mDS-ccb43g6Frv6dNT6T9S&index=1"
-  # - title: "6/24"
-  - title: "Lec 2-3"
+  - title: # 6/24
+  - title: "Lec 2-3" # 6/25
     link: "https://www.youtube.com/watch?v=bbkM5ArWSIM&list=PL102eBoiAo8mDS-ccb43g6Frv6dNT6T9S&index=2"
   # - title: "6/26"
   # - title: "6/27"
