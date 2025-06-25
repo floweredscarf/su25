@@ -22,8 +22,8 @@ released: true
 
 Each assignment will have an FAQ linked at the top. You can also access it by adding `/faq` to the end of the URL. The FAQ for Project 0 is located [here](./faq).
 
-{: warning}
-Note that this project has limited submission tokens. Please see [Submission and Grading](#submission-and-grading) for more details.
+{: .warning}
+>Note that this project has limited submission tokens. Please see [Submission and Grading](#submission-and-grading) for more details.
 
 ## Overview
 
