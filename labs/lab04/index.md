@@ -68,7 +68,7 @@ Your job is to figure out what the passwords to each of these phrases is by
 {: .danger}
 > The code is written so that you can't find the password just by reading it. For this lab, you are **forbidden** from editing the `Bomb` code, whether to add print statements or otherwise modify it. The autograder tests will use our version of `Bomb`. However, you are free to set breakpoints in `Bomb.java` (which will not modify the code itself).
 
-> The point of this exercise is to get comfortable using tools that will help you a lot down the road. Please take it seriously!
+The point of this exercise is to get comfortable using tools that will help you a lot down the road. Please take it seriously!
 
 ### Interactive Debugging vs. Print Debugging
 
@@ -174,6 +174,8 @@ which threw the error, and so on.
 
 You can click on **`blue text`**{: .blue} to navigate to that file and line.
 
+Right now, the test error message is telling us `Cannot invoke "String.equals(Object)" because "password" is null`. When going to the `phase0` method in `Bomb.java`, we see that the expected input should be of type `String`. Try changing `null` into any `String`, allowing our code to bypass this particular error because "password" is no longer null. Once you've done this, when you run the test file, you should now see "Phase 0 went BOOM!" Upon finding the right password (i.e. the right `String`), Phase 0 should pass without going boom.
+
 ### `Bomb` Introduction (Phase 0)
 
 {: .info}
@@ -209,7 +211,9 @@ the variables in your program, which is much better suited for large objects wit
 To use the visualizer, run the debugger until you stop at a breakpoint, then click
 the "Java Visualizer" tab.
 
-The password for phase 1 is an `int[]`, not a `String`.
+<!-- The password for phase 1 is an `int[]`, not a `String`. -->
+
+**Note**: for this particular example, the Java Visualizer will not be as useful due to the password being a simple array of integers. However, in future assignments (especially project 1!), the Java Visualizer will be **extremely useful** when debugging, so we encourage you to use this as an opportunity to get familiar with using it!
 
 {: .task}
 > **Task**: Set a breakpoint at `phase1` and use the Java Visualizer to find the password for `phase1` and replace the `phase1` argument accordingly in `bomb/BombMain.java`.
