@@ -15,13 +15,16 @@ Each assignment will have an FAQ linked at the top. You can also access it by
 adding "/faq" to the end of the URL. The FAQ for Lab 3 is located
 [here](faq).
 
-{: .warning}
-> **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
+{: .info}
+>As a reminder, you should follow the steps in the [61B Assignment Workflow Guide](../../resources/assignment-workflow/) at the start of EVERY coding assignment in 61BL!!
 
 ## Before You Begin
 
 Run `git pull skeleton main` in your repo. You should get a `lab03/` folder.
 For this, and later labs, we strongly recommend opening up the lab in IntelliJ.
+
+{: .info}
+>As a reminder, you should follow the steps in the [61B Assignment Workflow Guide](../../resources/assignment-workflow/) at the start of EVERY coding assignment in 61BL!!
 
 **Note:** You may notice after pulling and setting up your workspace that two of the files, `PathHarness.java` and `PathTest.java`, will have orange coffee mugs next to their name instead of a blue circle. This is ok! We will revisit those files later in the lab.
 
