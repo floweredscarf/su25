@@ -74,8 +74,13 @@ If you have a disability, or think you may have a disability, you can work with 
 
 ### Lecture
 
-This summer, we will be using a _flipped classroom_ format. You are **expected** to watch pre-recorded lecture videos from previous semesters before attending class (except for the first lecture). Live lecture sessions will focus on deepening your understanding of the material through conceptual reviews, interactive problem-solving, and Q&A.
+This summer, we will be using a _flipped classroom_ format. You are **expected** to watch pre-recorded lecture videos from previous semesters before attending class (except for the first lecture). Live lecture sessions will focus on deepening your understanding of the material through conceptual reviews, interactive problem-solving, and Q&A. Pre-videos are **not** a replacement for attending live lecture.
+
 Lecture will be held on **Mondays and Wednesdays from 9–10am in Evans 10**. Because the classroom cannot accommodate all enrolled students, lectures will also be livestreamed over Zoom to ensure full access. Whether attending in person or virtually, active participation is encouraged to make the most of our collaborative in-class time.
+
+### Lecture Office Hours
+
+Noah will hold OH in Soda 779 on Tue/Thu from 10-11AM or by appointment.
 
 ### Labs
 
