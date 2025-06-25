@@ -206,7 +206,7 @@ to use the debugger to find the value of `correctPassword` and pass in a
 ### Visualizer (Phase 1)
 
 While being able to see variable values is great, sometimes we have data that's
-not the easiest to inspect. The Java Visualizer shows a box-and-pointer diagram of
+not the easiest to inspect. The Java Visualizer (installed in Lab 01 [here](../lab01/#installing-plugins)) shows a box-and-pointer diagram of
 the variables in your program, which is much better suited for large objects with a lot of data. 
 To use the visualizer, run the debugger until you stop at a breakpoint, then click
 the "Java Visualizer" tab.
