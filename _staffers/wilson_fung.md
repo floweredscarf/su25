@@ -1,7 +1,7 @@
 ---
 name: Wilson Fung
 pronouns: he/him
-role: Instructor
+role: Head TA
 spaaccess: True
 dspdata: True
 email: fungwilson3@berkeley.edu
