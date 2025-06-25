@@ -18,6 +18,9 @@ adding "/faq" to the end of the URL. The FAQ for Lab 04 is located
 {: .warning}
 > **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
 
+{: .info}
+>As a reminder, you should follow the steps in the [61B Assignment Workflow Guide](../../resources/assignment-workflow/) at the start of EVERY coding assignment in 61BL!!
+
 ## Introduction
 
 To debug a program, you must first know what's wrong. In this lab, you'll get
@@ -63,7 +66,7 @@ Your job is to figure out what the passwords to each of these phrases is by
 *using the IntelliJ debugger*.
 
 {: .danger}
-> The code is written so that you can't find the password just by reading it. For this lab, you are **forbidden** from editing the `Bomb` code, whether to add print statements or otherwise modify it. The autograder tests will use our version of `Bomb`.
+> The code is written so that you can't find the password just by reading it. For this lab, you are **forbidden** from editing the `Bomb` code, whether to add print statements or otherwise modify it. The autograder tests will use our version of `Bomb`. However, you are free to set breakpoints in `Bomb.java` (which will not modify the code itself).
 
 > The point of this exercise is to get comfortable using tools that will help you a lot down the road. Please take it seriously!
 
@@ -96,9 +99,9 @@ debugging and examine its state. This:
 -   Lets you see *all* the variables without needing to write print statements.
 -   Lets IntelliJ display everything in a structured manner
 
-To set a breakpoint, click the area just to the right of the line number.
+To set a breakpoint (red dot), click the line number.
 
-![code breakpoints](img/code_breakpoints.png){: style="max-height: 325px;" }
+![code breakpoints](img/su25_breakpoints.png){: style="max-height: 325px;" }
 
 A red circle or diamond should appear where you clicked. If nothing appears,
 make sure that you click next to a line with code. When the debugger reaches
