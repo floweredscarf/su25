@@ -91,7 +91,7 @@ lectures:
   - title:
     nonumber: True
   - title: "Instantiation, References, Primitives, Objects"
-    # slides: https://docs.google.com/presentation/d/1TGLZJuxBemPf6Ttdh49S04QJVzWWQa4ZYn-fIsgEFDI/edit#slide=id.g3291dab0df5_0_719
+    slides: https://docs.google.com/presentation/d/1xtTTtihHh7jbkyeivowUoJzT4_WiexdlwVLBa2aGyCw
     video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRqziLs3JZ6LIH73ZsVtvsGy"
     # reading: "https://cs61b-2.gitbook.io/cs61b-textbook/2.-defining-and-using-classes"
     # recording: https://youtu.be/K54flmpG11k
@@ -99,10 +99,12 @@ lectures:
     readings:
       - title: "Ch 2"
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/2.-defining-and-using-classes"
+      - title: "Ch 3"
+        link: "https://cs61b-2.gitbook.io/cs61b-textbook/3.-references-recursion-and-lists"
       - title: "Ch 6"
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/6.-arrays"
   - title: "Testing"
-    # slides: https://docs.google.com/presentation/d/1TGLZJuxBemPf6Ttdh49S04QJVzWWQa4ZYn-fIsgEFDI/edit#slide=id.g3291dab0df5_0_719
+    slides: https://docs.google.com/presentation/d/1xtTTtihHh7jbkyeivowUoJzT4_WiexdlwVLBa2aGyCw#slide=id.g36ac793381f_0_703
     # video: "" # https://www.youtube.com/playlist?list=PLnp31xXvnfRqziLs3JZ6LIH73ZsVtvsGy
     # reading: "https://cs61b-2.gitbook.io/cs61b-textbook/2.-defining-and-using-classes"
     # recording: https://youtu.be/K54flmpG11k
