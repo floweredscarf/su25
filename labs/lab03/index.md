@@ -15,9 +15,6 @@ Each assignment will have an FAQ linked at the top. You can also access it by
 adding "/faq" to the end of the URL. The FAQ for Lab 3 is located
 [here](faq).
 
-{: .info}
->As a reminder, you should follow the steps in the [61B Assignment Workflow Guide](../../resources/assignment-workflow/) at the start of EVERY coding assignment in 61BL!!
-
 ## Before You Begin
 
 Run `git pull skeleton main` in your repo. You should get a `lab03/` folder.
