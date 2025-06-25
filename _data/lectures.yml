@@ -90,7 +90,7 @@ lectures:
     nonumber: True
   - title:
     nonumber: True
-  - title: "Primitives and Objects"
+  - title: "Instantiation, References, Primitives, Objects"
     # slides: https://docs.google.com/presentation/d/1TGLZJuxBemPf6Ttdh49S04QJVzWWQa4ZYn-fIsgEFDI/edit#slide=id.g3291dab0df5_0_719
     video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRqziLs3JZ6LIH73ZsVtvsGy"
     # reading: "https://cs61b-2.gitbook.io/cs61b-textbook/2.-defining-and-using-classes"
@@ -132,7 +132,7 @@ lectures:
         link: https://cs61b-2.gitbook.io/cs61b-textbook/5.-dllists
       - title: "Ch 8"
         link: https://cs61b-2.gitbook.io/cs61b-textbook/8.-arraylist
-  - title: "Abstract Data Types"
+  - title: "Generics"
     # slides: https://docs.google.com/presentation/d/1TKQO-56_VvVaEiKFYyjCS_wYKfVg_DJE-nK9N62OWz4/edit?usp=sharing
     # video: "" # https://www.youtube.com/playlist?list=PLnp31xXvnfRqyuN_xxm4o1Woa44dXW_N8
     # recording: https://youtu.be/DJSlcdq-hCY
@@ -144,7 +144,7 @@ lectures:
     nonumber: True
   - title: 
     nonumber: True
-  - title: "Inheritance"
+  - title: "Abstract Data Types and Inheritance"
     # slides: https://docs.google.com/presentation/d/12Yrdoyq7Yad2figzvjSpBvezRIzzfov65gq-2mcu0gI/edit?usp=sharing
     # video: "" # https://youtube.com/playlist?list=PLnp31xXvnfRpPjLuN6-QJUFeK_mBZPve4&si=QGsZPljZc4hD_Nql
     # quiz: https://forms.gle/buUP4J1iwXCY1rRq8
@@ -154,7 +154,7 @@ lectures:
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/9.-inheritance-i-interface-and-implementation-inheritance"
       - title: "Ch 10"
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/10.-inheritance-ii-extends-casting-higher-order-functions"
-  - title: "Comparison, Iterators, and Generics"
+  - title: "Comparison and Iteration"
     # slides: https://docs.google.com/presentation/d/1Wc68rKn6FlGV7Y5JwgpA-g0NVDz973UIBmb1FYtxcKk
     # video: "" # https://youtube.com/playlist?list=PLnp31xXvnfRqRR4OQx_I3YPkA87bO0whh&si=xQ5YS5zJXKKzP7Eo
     # quiz: https://forms.gle/BgmDR57vwhXAfuA26
@@ -373,7 +373,7 @@ lectures:
     nonumber: True
   - title:
     nonumber: True
-  - title: "AMA"
+  - title: "Q&A, Review"
     classes:
       - schedule-red
     # slides: https://docs.google.com/presentation/d/1gVSdIOUq9aV91vlbzp4X-OB9CE9NJwqmP6a3aiWh-7k/edit?usp=sharing
@@ -388,9 +388,10 @@ lectures:
     nonumber: True
   - title: 
     nonumber: True
-  - title: "Review?"
-    classes:
-      - schedule-red
+  - title:
+    nonumber: True
+    # classes:
+      # - schedule-red
     # slides: https://docs.google.com/presentation/d/1x_mhGB5ay0jy9UXaq6TZBVXXMEn8PTy2n2xl6F6Ul3M/
     # video: https://www.youtube.com/watch?v=YgPtwbWpLaM&list=PLnp31xXvnfRqyRDKtQeHvjxhonhNuaOAK
     # recording: https://youtu.be/45cCK3PteOA
