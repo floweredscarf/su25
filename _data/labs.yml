@@ -93,7 +93,7 @@ labs:
     worksheet: https://drive.google.com/drive/folders/1j5op-CjZo6DMlAqczpJvHyLG1NiFnbDb?dmr=1&ec=wgc-drive-hero-goto
     link:
     nonumber: True
-    show_links: True
+    show_links: false
   - title: "Intro to Linked Lists"
     due: "2025/07/01"
     link: "/labs/lab05"
