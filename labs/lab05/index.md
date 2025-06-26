@@ -150,13 +150,7 @@ Try searching for the answer online! Talk to your peers! Consider referencing th
 the argument list are the same length and store equal items in corresponding
 positions (determined by using the elements' `equals` method).
 
-<details markdown="block">
-  <summary markdown="block">
-#### Hint: How would you check if the given object is of type `IntList`?
-{: .no_toc}
-  </summary>
-Check the [Java Documentation](https://docs.oracle.com/en/java/) for a method if you're unsure.
-</details>
+Tip: we recommend reading about how to use the [`instanceOf` keyword](https://www.geeksforgeeks.org/java/instanceof-keyword-in-java/)! As an extra note, to use `instanceOf` without the extra casting step, you can use `objectOne instanceOf <ClassName> objectTwo`, which will (1) return true/false and will (2) assign `objectTwo` to be a version of `objectOne` that is casted as a `<ClassName>`.
 
 ### Exercise: `add`
 
