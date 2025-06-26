@@ -88,9 +88,9 @@ labs:
   - title: "Theoretical #1: Introduction to Java Programming"
     theoretical: True
     video: false
-    # solutions: https://drive.google.com/file/d/1GMJUf-MPohF77rf9Ow0-63LDwvxt8xyQ/view
-    # slides: https://docs.google.com/presentation/d/1h3I3HAeOceDIeF14y3o2pHEpWj83W2F646ClBv1q4uM/edit?slide=id.p#slide=id.p
-    # worksheet: https://drive.google.com/file/d/1gJSlCf3UzPOhyiqVOg5MtsaeBPWtltVP/view
+    # solutions: https://drive.google.com/drive/folders/1j5op-CjZo6DMlAqczpJvHyLG1NiFnbDb?dmr=1&ec=wgc-drive-hero-goto
+    slides: https://docs.google.com/presentation/d/1YiMtbm8RpALnuNXj0yjNjy3rMwpetYHf/edit?slide=id.p1#slide=id.p1
+    worksheet: https://drive.google.com/drive/folders/1j5op-CjZo6DMlAqczpJvHyLG1NiFnbDb?dmr=1&ec=wgc-drive-hero-goto
     link:
     nonumber: True
     show_links: false
