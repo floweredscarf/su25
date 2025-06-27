@@ -19,7 +19,7 @@ description: >-
 released: true  
 ---
 
-## Due: Wednesday, February 19th, 11:59 PM PT 
+## Due: Sunday, July 6 at 11:59 PM PT
 
 {: .no_toc}
 
@@ -59,7 +59,7 @@ you should do, but not how.
 
 {: .info}
 >This section assumes you have watched and fully digested the lectures up till
->the `ArrayList` lecture, Lecture 7.
+>the `ADTs and Inheritance` lecture, Lecture 5.
 
 
 {: .task}
