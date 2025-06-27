@@ -86,14 +86,14 @@ labs:
     link: "/labs/lab04"
     show_links: true
   - title: "Theoretical #1: Introduction to Java Programming"
-    theoretical: True
+    theoretical: true
     video: false
     # solutions: https://drive.google.com/drive/folders/1j5op-CjZo6DMlAqczpJvHyLG1NiFnbDb?dmr=1&ec=wgc-drive-hero-goto
     slides: https://docs.google.com/presentation/d/1YiMtbm8RpALnuNXj0yjNjy3rMwpetYHf/edit?slide=id.p1#slide=id.p1
     worksheet: https://drive.google.com/drive/folders/1j5op-CjZo6DMlAqczpJvHyLG1NiFnbDb?dmr=1&ec=wgc-drive-hero-goto
     link:
     nonumber: True
-    show_links: false
+    show_links: true
   - title: "Intro to Linked Lists"
     due: "2025/07/01"
     link: "/labs/lab05"
