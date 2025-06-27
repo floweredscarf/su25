@@ -39,7 +39,7 @@ hidden, and it can be accessed by the user only through a documented interface.
 
 ## Enhancement 1: Encapsulation
 
-The "naked" implementation of `IntList` that we learned fom [Lab 4](../lab04)
+The "naked" implementation of `IntList` that we learned fom [Lab 5](../lab05)
 is impractical to use at scale. In it, the idea of a node in the list and the list itself
 are not separate. This means that someone who wants to use the `IntList` class
 would need to spend a lot of time adding `null` checks and handling errors that
@@ -53,7 +53,7 @@ list, much like an [*abstraction barrier*](http://composingprograms.com/pages/22
 see that this design philosophy of encapsulation will come up over and over
 again for each of the data structures we study in the coming weeks.
 
-Let's update our lab 4 `IntList` with encapsulation, which we will now call
+Let's update our lab 5 `IntList` with encapsulation, which we will now call
 a `SLList` (Singly Linked List).
 Note that in order to emphasize the encapsulation in box-and-pointer diagrams, we
 will be breaking the normal box-and-pointer rule that we don't put Objects
@@ -61,9 +61,9 @@ inside other Objects.
 
 > Note that throughout the lab, some of the images do not depict the `size` variable for simplicity. This variable is an instance variable for all `SLList`s even if it is not shown in our illustrations.
 
-![](img/intlist.png)
+![](img/sllist.png)
 
-All operations on the list are handled through an instance of an `SLList` object, which keeps a single instance variable `head` in order to track the first node in the linked list. The `SLList` object operates directly on the `IntListNode`s that make up the `SLList`. Note that `IntListNode` does not need any methods (other than some utility methods such as `toString()` and `equals()`, which you will use later). The main effect of using encapsulation, by using a reference to the `head` of a list,is hiding the internal representation and operations of the list from users. Instead, the users could simply operate on list as a whole and the `SLList` representation will take care of the operations, including any null checks, size checks, or further operations.
+All operations on the list are handled through an instance of an `SLList` object, which keeps a single instance variable `head` in order to track the first node in the linked list. The `SLList` object operates directly on the `IntListNode`s that make up the `SLList`. Note that `IntListNode` does not need any methods (other than some utility methods such as `toString()` and `equals()`, which you will use later). The main effect of using encapsulation, by using a reference to the `head` of a list, is hiding the internal representation and operations of the list from users. Instead, the users could simply operate on list as a whole and the `SLList` representation will take care of the operations, including any null checks, size checks, or further operations.
 
 ## Enhancement 2: Sentinel
 
