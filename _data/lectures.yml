@@ -134,7 +134,7 @@ lectures:
         link: https://cs61b-2.gitbook.io/cs61b-textbook/5.-dllists
   - title: "Generics, ArrayLists"
     # slides: https://docs.google.com/presentation/d/1TKQO-56_VvVaEiKFYyjCS_wYKfVg_DJE-nK9N62OWz4/edit?usp=sharing
-    # video: "" # https://www.youtube.com/playlist?list=PLnp31xXvnfRqyuN_xxm4o1Woa44dXW_N8
+    video: https://www.youtube.com/playlist?list=PLnp31xXvnfRrv834ePjKGB7i1az039-Gw
     # recording: https://youtu.be/DJSlcdq-hCY
     # quiz: https://forms.gle/GULhx2TsP6YrDnkA6
     readings:
@@ -144,9 +144,9 @@ lectures:
     nonumber: True
   - title: 
     nonumber: True
-  - title: "Abstract Data Types and Inheritance"
+  - title: "Abstract Data Types, Inheritance"
     # slides: https://docs.google.com/presentation/d/12Yrdoyq7Yad2figzvjSpBvezRIzzfov65gq-2mcu0gI/edit?usp=sharing
-    # video: "" # https://youtube.com/playlist?list=PLnp31xXvnfRpPjLuN6-QJUFeK_mBZPve4&si=QGsZPljZc4hD_Nql
+    video: "https://www.youtube.com/playlist?list=PL102eBoiAo8kKNZa9ZJ7g7zD9k4T5RxQ_"
     # quiz: https://forms.gle/buUP4J1iwXCY1rRq8
     # recording: https://youtu.be/GiLJktMHgy8
     readings:
@@ -156,9 +156,9 @@ lectures:
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/10.-inheritance-ii-extends-casting-higher-order-functions"
       - title: "Ch 16.1"
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/16.-adts-and-bsts/16.1-abstract-data-types"
-  - title: "Comparison and Iteration"
+  - title: "Object Methods, Comparison, Iteration"
     # slides: https://docs.google.com/presentation/d/1Wc68rKn6FlGV7Y5JwgpA-g0NVDz973UIBmb1FYtxcKk
-    # video: "" # https://youtube.com/playlist?list=PLnp31xXvnfRqRR4OQx_I3YPkA87bO0whh&si=xQ5YS5zJXKKzP7Eo
+    video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRrvh9PM0gK9fm7VAD0HdijJ"
     # quiz: https://forms.gle/BgmDR57vwhXAfuA26
     # extra: "[Bonus Video](https://youtu.be/1MzbwZwos6Q)"
     # recording: https://youtu.be/oXU9Owm9sfA
