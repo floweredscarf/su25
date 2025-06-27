@@ -93,7 +93,7 @@ projects:
     due: "2025/07/09"
     classes:
       - "schedule-blue"
-    rowspan: 3
+    rowspan: 4
   # - nonumber: true
   #   rowspan: 4
   - title: "Project 2A: NGrams"
@@ -102,7 +102,7 @@ projects:
     due: "2025/07/16"
     classes:
       - "schedule-purple"
-    rowspan: 6
+    rowspan: 5
   # - title: "Project 2B: Checkpoint"
   #   link: "/projects/proj2b"
   #   rowspan: 4
