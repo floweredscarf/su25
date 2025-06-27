@@ -80,29 +80,29 @@ projects:
     classes:
       - "schedule-green"
     rowspan: 5
-  - title: "Project 1: Deques Checkpoint"
-    link: "/projects/proj1"
+  - title: "Project 1A: LinkedListDeque"
+    link: "/projects/proj1a"
     show_links: false
     due: "2025/07/03"
     classes:
       - "schedule-blue"
     rowspan: 4
-  - title: "Project 1: Deques"
-    link: "/projects/proj1"
+  - title: "Project 1B: ArrayDeque"
+    link: "/projects/proj1b"
     show_links: false
-    due: "2025/07/06"
+    due: "2025/07/09"
     classes:
       - "schedule-blue"
-    rowspan: 1
+    rowspan: 3
   # - nonumber: true
   #   rowspan: 4
   - title: "Project 2A: NGrams"
     link: "/projects/proj2a"
     show_links: false
-    due: "2025/07/13"
+    due: "2025/07/16"
     classes:
       - "schedule-purple"
-    rowspan: 5
+    rowspan: 6
   # - title: "Project 2B: Checkpoint"
   #   link: "/projects/proj2b"
   #   rowspan: 4
@@ -116,7 +116,7 @@ projects:
     due: "2025/07/27"
     classes:
       - "schedule-purple"
-    rowspan: 10
+    rowspan: 7
   - title: "Project 3A: World Generation"
     link: "/projects/proj3/proj3a"
     show_links: false
