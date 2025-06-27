@@ -168,7 +168,7 @@ public void add(int value) {
 
 Implement the `smallest` method, which returns the smallest `int` that is
 stored in the list. For a list `6 4 3 2 3 2 2 5 999`, a call to `smallest`
-would return `2`.
+would return `2`. Feel free to use methods from the [Math class](https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html).
 
 ```java
 public int smallest() {
@@ -270,42 +270,40 @@ public static void dSquareList(IntList L) {
 ```
 
 ```java
-IntList origL = IntList.of(1, 2, 3)
-dSquareList(origL);
-// origL is now (1, 4, 9)
+IntList originalList = IntList.of(1, 2, 3)
+dSquareList(originalList);
+// originalList is now (1, 4, 9)
 ```
 
 The reason that `dSquareList` is destructive is because we change the values of
 the **original input** `IntList L`. As we go along, we square each value, and the
 action of changing the internal data persists.
 
-It is also important to observe that the bits in the `origL` box do not change. Objects
+It is also important to observe that the bits in the `originialList` box do not change. Objects
 are saved by reference, meaning the value tied to the variable will point to a memory address
 rather than the integer values in our list. Thus, though this method is destructive, it is changing
-the value saved in the memory location referred to by `origL`, not the value within `origL` itself. 
-For more about this, refer to [Lab 2](../lab02/).
+the value saved in the memory location referred to by `originalList`, not the value within `originalLlist` itself. 
+For more about this, refer to [Lab 3](../lab03/).
 
 #### Testing `dSquareList`
 
 The `dSquareList` implementation above is provided to you in your skeleton file as well.
 
-**Use the [Java Visualizer plugin][] to visualize the IntList** and to understand how the `dSquareList` method works, discussing with a
-partner as you do so. [Pointers and IntLists might seem confusing at first, but it's
-important that you understand these concepts!](https://www.youtube.com/watch?v=Gu8YiTeU9XU)
+**Use the [Java Visualizer plugin][] to visualize the IntList** and to understand how the `dSquareList` method works. Pointers and IntLists might seem confusing at first, but it's
+important that you understand these concepts!
 
 Note: The choice to return void rather than a pointer to `L` was an arbitrary
-decision. Different languages and libraries use different conventions ([and
-people get quite grumpy about which is the "right" one](https://en.wikipedia.org/wiki/Lilliput_and_Blefuscu)). We have the flexibility to decide
+decision. Different languages and libraries use different conventions. We have the flexibility to decide
 when writing destructive methods when mutating objects passed in as arguments. Talk to your
 partner about why this is and try to think of settings where one would be preferable over the other.
 
-[java visualizer plugin]: {{ site.baseurl }}/guides/plugin#java-visualizer
+[java visualizer plugin]: {{ site.baseurl }}/resources/using-intellij/#java-visualizer
 
 ### Non-Destructive Squaring
 
 `squareListIterative()` and `squareListRecursive()` are both *non-destructive*.
 That is, the underlying `IntList` passed into the methods does **not** get
-modified, and instead a fresh new copy is modified and returned.
+modified, and instead a **new copy** is modified and returned.
 
 ```java
 public static IntList squareListIterative(IntList L) {
@@ -353,7 +351,7 @@ To complete the lab, you will need to add test for `catenate` and `dcatenate`, a
 You may find the squaring methods from above to be useful as you write your
 code.
 
-You may also find (lab03)[../lab03/#test-driven-development]'s section on Test Driven Development useful as you write your tests.
+You may also find [Lab 4](../lab04/#test-driven-development)'s section on Test Driven Development useful as you write your tests.
 
 ```java
 @Test
@@ -415,8 +413,7 @@ works for other bigger cases.
 
 For this problem, it is okay for `dcatenate` to return one or the other list if
 one or both of `A` and `B` are `null`. For `catenate`, it is okay to attach `B`
-to the end of `A` without making a full copy of `B`. However, think about and
-discuss the following two questions with your partner:
+to the end of `A` without making a full copy of `B`. However, think about the following two questions:
 
 - Why does this still produce a 'correct' program?
 - What kinds of problems could this decision cause?
