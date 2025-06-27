@@ -694,7 +694,7 @@ compile and pass.
 ## Deliverables
 
 As a reminder, this assignment has an [FAQ page](faq).
-These are the required files, all inside the `lab01` directory:
+These are the required files, all inside the `lab02` directory:
 
 `TriangleDrawer.java`
 :   You should have created this class and implemented it such that `TriangleDrawerTest.java` passes.
