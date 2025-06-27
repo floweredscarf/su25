@@ -83,7 +83,59 @@
   {{ assignment_due }}
 {%- endif -%}
 
-{%- comment -%}
+{%- assign links_array = "" | split: "/" -%}
+
+<!-- {%- if include.element.theoretical -%}
+    <br>
+    <a href="{{ include.element.worksheet }}">Worksheet</a>
+    {%- if include.element.solutions -%}
+      &nbsp;/ <a href="{{ include.element.solutions }}">Solutions</a>
+    {%- endif -%}
+{%- endif -%} -->
+
+{%- capture worksheet -%}
+  {%- if include.element.worksheet != "" -%}
+    <a href="{{ include.element.worksheet }}">Worksheet</a>
+  {%- endif -%}
+{%- endcapture -%}
+{%- if include.element.worksheet -%}
+  {% assign links_array = links_array | push: worksheet %}
+{%- endif -%}
+
+{%- capture solutions -%}
+  {%- if include.element.solutions != "" -%}
+    <a href="{{ include.element.solutions }}">Solutions</a>
+  {%- endif -%}
+{%- endcapture -%}
+{%- if include.element.solutions -%}
+  {% assign links_array = links_array | push: solutions %}
+{%- endif -%}
+
+{%- capture slides -%}
+  {%- if include.element.slides != "" -%}
+    <a href="{{ include.element.slides }}">Slides</a>
+  {%- endif -%}
+{%- endcapture -%}
+{%- if include.element.slides -%}
+  {% assign links_array = links_array | push: slides %}
+{%- endif -%}
+
+{%- capture video -%}
+  {%- if include.element.video -%}
+    <a href="{{ include.element.video }}">Video</a>
+  {%- endif -%}
+{%- endcapture -%}
+{%- if include.element.video -%}
+  {% assign links_array = links_array | push: video %}
+{%- endif -%}
+
+  <br>
+{%- for link in links_array -%}
+  {{ link }}
+  {%- unless forloop.last %}{{}} / {{}}{% endunless -%}
+{%- endfor -%}
+
+<!-- {%- comment -%}
   - Render links to specific parts.
   - For each part: Link renders iff link exists AND show_links is true.
 {%- endcomment -%}
@@ -107,5 +159,5 @@
 {%- if include.element.extra -%}
   <br>
   {{ include.element.extra | markdownify }}
-{%- endif -%}
+{%- endif -%} -->
 </td>

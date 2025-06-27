@@ -89,9 +89,9 @@ labs:
     theoretical: true
     video: false
     # solutions: https://drive.google.com/drive/folders/1j5op-CjZo6DMlAqczpJvHyLG1NiFnbDb?dmr=1&ec=wgc-drive-hero-goto
-    slides: https://docs.google.com/presentation/d/1YiMtbm8RpALnuNXj0yjNjy3rMwpetYHf/edit?slide=id.p1#slide=id.p1
-    worksheet: https://drive.google.com/drive/folders/1j5op-CjZo6DMlAqczpJvHyLG1NiFnbDb?dmr=1&ec=wgc-drive-hero-goto
-    link:
+    slides: https://docs.google.com/presentation/d/1YiMtbm8RpALnuNXj0yjNjy3rMwpetYHf/edit?usp=sharing&ouid=111619450380883067671&rtpof=true&sd=true
+    worksheet: https://drive.google.com/file/d/1g5cAmAB4qYUwIp7wwRaSM8OGRhKtP4FE/view?usp=sharing
+    # link: https://docs.google.com/presentation/d/1YiMtbm8RpALnuNXj0yjNjy3rMwpetYHf/edit?slide=id.p1#slide=id.p1
     nonumber: True
     show_links: true
   - title: "Intro to Linked Lists"
@@ -115,7 +115,7 @@ labs:
     rowspan: 1
   - title: "Theoretical #2: Object Oriented Programming and Abstract Data Types"
     theoretical: True
-    video: True
+    video: false
     # worksheet: https://drive.google.com/file/d/1e-hJMsw48hXqtkg4Kj__fCCbmczJzKqz/view
     # slides: https://docs.google.com/presentation/d/1qRNwO0VVOiCwAwSVUdPKrsTeSy2HK1Zmy4-RS5_KCrY/edit?slide=id.p#slide=id.p
     # solutions: https://drive.google.com/file/d/1Xn0lEDtDesFNY_6jkU-yrrqE2jD3HFMb/view
@@ -136,7 +136,6 @@ labs:
     show_links: false
   - title: "Theoretical #3: Asymptotics and Trees"
     theoretical: True
-    examprep_video: True
     examprep_slides: True
     link: 
     show_links: false
