@@ -21,7 +21,7 @@ description: >-
 released: true
 ---
 
-## Due: Monday, February 10 at 11:59 PM PT
+## Due: Sunday, July 6 at 11:59 PM PT
 
 {: .no_toc}
 
@@ -54,7 +54,7 @@ much less scaffolding.
 
 {: .info}
 >This section assumes you have watched and fully digested the lectures up till
->the DLList lecture, Lecture 5.
+>the Linked Lists and Generics lecture, Lecture 3.
 
 {: .warning}
 >For this project, you must work alone! Please carefully read the
@@ -84,7 +84,7 @@ autograder.
 You can and should check your style locally with the CS 61B plugin. **We will
 not remove the velocity limit for failing to check style.**
 
-**We will not be enforcing style for tests so you can use magic numbers!**
+**We will not be enforcing style for tests.**
 
 ### Getting the Skeleton Files
 
@@ -107,10 +107,8 @@ You see a `proj1a` directory appear in your repo with the following structure:
 If you get some sort of error, STOP and either figure it out by carefully
 reading the [git WTFs](../../resources/guides/git/wtfs.md) or seek help at OH
 or Ed. You'll potentially save yourself a lot of trouble vs. guess-and-check
-with git commands. If you find yourself trying to use commands recommended by
-Google like `force push`,
-[don't](https://twitter.com/heathercmiller/status/526770571728531456).
-**Don't use force push, even if a post you found on Stack Overflow says to do it!**
+with git commands. **If you find yourself trying to use commands recommended by Google like `push --force`,**
+**[don't](https://twitter.com/heathercmiller/status/526770571728531456).**
 
 You can also watch Professor Hug's [demo](https://www.youtube.com/watch?v=tABtNcN5y0A)
 about how to get started and this [video](https://www.youtube.com/watch?v=Squ8TmG5mX0)
@@ -154,13 +152,9 @@ If you hover over the method name in IntelliJ, you'll see a popup that looks lik
 >are reading it as you complete the project.
 
 {: .danger}
-**You should not edit `Deque61B.java`.**
+**Do not edit `Deque61B.java`. You may fail the autograder if you do so.**
 
 **It is on you to read the descriptions of the other methods.**
-
-{: .danger}
->Seriously. Do not skip this. You will spend **hours** confused if you skip this
->step. Please save yourself the time and stress!
 
 ## `LinkedListDeque61B`
 
@@ -174,14 +168,8 @@ returned 9, expected 7". You have no idea if the problem is the `get` method
 itself, or if some other necessary methods are broken.
 
 To help encourage better programming habits, in Project 1A, we're going to hold
-your hands through the development process. You are not strictly required to
-follow the recommended steps, i.e. if you pass the autograder, then you get all
-the points, but we strongly encourage you to follow the steps outlined in
+your hand through the development process. We strongly encourage you to follow the steps outlined in
 this spec.
-
-{: .info}
->For the intended experience, follow these steps in order. If you do something
->else and ask us for help, we will refer you back to these steps.
 
 ### Creating the File
 
@@ -227,12 +215,9 @@ public LinkedListDeque61B() {
 }
 ```
 
-Note: You can also generate the constructor by clicking "Code", then "Generate"
-then "Constructor", though we prefer the typing-the-code-manually approach.
-
 Now you're ready to get started!
 
-### JUnit Tests
+### Unit Tests
 
 #### LinkedListDeque61BTest
 
@@ -257,7 +242,7 @@ In this test file, we've provided a few tests that check that your `LinkedListDe
 
 {: .task}
 >This section assumes you have watched and fully digested the lectures up to
->**and including** the `DLList` lecture, Lecture 5.
+>**and including** the `Linked Lists and Generics` lecture, Lecture 3.
 
 A "topology" is a structure that you can use to represent the linked list. Though there are numerous choices as discussed in lecture, for this project, you are **required** to implement a circular, doubly-linked topology with a sentinel:
 
@@ -620,15 +605,15 @@ autograder. You may or may not pass everything.
 This project, similar to Project 0, is divided into individual components, each
 of which you must implement _completely correctly_ to receive credit.
 
-1. **Empty list (15%)**: Define a valid `Node` class and correctly implement
+1. **Empty list (12.5%)**: Define a valid `Node` class and correctly implement
     the constructor.
-2. **Adding (25%)**: Correctly implement `addFirst`, `addLast`, and `toList`.
+2. **Adding (22.5%)**: Correctly implement `addFirst`, `addLast`, and `toList`.
 3. **`isEmpty`, `size` (5%)**: Correctly implement `isEmpty` and `size` with
     add methods working.
 4. **`get` (5%)**: Correctly implement `get`.
 5. **`getRecursive` (5%)**: Correctly implement `getRecursive`.
 6. **Removing (25%)**: Correctly implement `removeFirst` and `removeLast`.
-7. **Integration (10%)**: Pass an integration test suite that randomly calls all the methods.
+7. **Integration (15%)**: Pass an integration test suite that randomly calls all the methods.
 8. **Test Coverage (10%)**: Write tests to capture a sufficient number of flags.
 
 For the **test coverage** component, we will run your

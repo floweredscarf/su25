@@ -19,7 +19,7 @@ description: >-
 released: true  
 ---
 
-## Due: Wednesday, February 19th, 11:59 PM PT 
+## Due: Sunday, July 6 at 11:59 PM PT
 
 {: .no_toc}
 
@@ -59,7 +59,7 @@ you should do, but not how.
 
 {: .info}
 >This section assumes you have watched and fully digested the lectures up till
->the `ArrayList` lecture, Lecture 7.
+>the `ADTs and Inheritance` lecture, Lecture 5.
 
 
 {: .task}
@@ -95,12 +95,10 @@ You see a `proj1b` directory appear in your repo with the following structure:
  proj1b
 ├── src
 │   └── deque
-│       ├── Deque61B.java
-│       └── Maximizer61B.java
+│       └── Deque61B.java
 └── tests
     ├── ArrayDeque61BPreconditionTest.java
-    ├── ArrayDeque61BTest.java
-    └── Maximizer61BTest.java
+    └── ArrayDeque61BTest.java
 ```
 
 Note that you'll also see a `gh2` directory and the related test file `TestGuitarString.java`. 
@@ -549,28 +547,6 @@ techniques you have learned so far to write your own tests. You can structure th
 since we won't be testing them. One possible (and suggested) structure is to create a new file in the `tests` directory
 called `LinkedListDeque61BTest` so that you have a testing file for each implementation.
 
-## `Maximizer61B`
-
-{: .warning}
-> This section requires information covered in Lecture 9: Subtype Polymorphism, Comparators and Lecture 10: Iterators, Object Methods.
-
-For the final part of this project you will build the `Maximizer61B` class. This class is independent of the part where you wrote `ArrayDeque61B`. 
-
-This part of the project is admittedly disconnected from the previous parts, but we wanted to get you some practice with Iterables, Comparables, and Comparators.
-
-The `Maximizer61B` class has two static methods:
-
-- `public static <T extends Comparable<T>> T max(Iterable<T> iterable)`: returns the maximum element in the given iterable.
-- `public static <T> T max(Iterable<T> iterable, Comparator<T> comp)`: returns the maximum element in the given iterable according to the specified comparator.
-
-If the iterable is empty, simply return `null`.
-
-## Guitar Hero (Optional)
-
-Now that you have created a deque, let's use it for something interesting! In this part of the project, we will create another package for generating synthesized musical instruments using
-the `deque` package we just made. We'll get the opportunity to use our data structure for implementing an algorithm that
-allows us to simulate the plucking of a guitar string.
-
 ### The GH2 Package
 
 The `gh2` package has just one primary component that you will edit:
@@ -672,12 +648,11 @@ of which you must implement _completely correctly_ to receive credit.
 2. **`isEmpty`, `size` (3.33%)**: Correctly implement `isEmpty` and `size` with
    add methods working.
 3. **`get` (3.33%)**: Correctly implement `get`.
-4. **Removing (20%)**: Correctly implement `removeFirst` and `removeLast`.
+4. **Removing (25%)**: Correctly implement `removeFirst` and `removeLast`.
 5. **Memory (16.67%)**: Correctly implement resizing so that you do not use
    too much memory.
-6. **`LinkedListDeque61B` Object Methods (10%)**: Correctly implement `iterator`, `equals`, and `toString` in `LinkedListDeque61B`.
-7. **`ArrayDeque61B` Object Methods (10%)**: Correctly implement `iterator`, `equals`, and `toString` in `ArrayDeque61B`.
-8. **`Maximizer61B` Functionality (10%)**: Correctly implement `max()` and `max(Comparator<T> comp)` in `Maximizer61B`.
+6. **`LinkedListDeque61B` Object Methods (12.5%)**: Correctly implement `iterator`, `equals`, and `toString` in `LinkedListDeque61B`.
+7. **`ArrayDeque61B` Object Methods (12.5%)**: Correctly implement `iterator`, `equals`, and `toString` in `ArrayDeque61B`.
 9. **Test Coverage (6.67%)**: Write tests to capture a sufficient number of flags.
 
 For the **test coverage** component, we will run your
