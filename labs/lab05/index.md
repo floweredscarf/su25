@@ -149,7 +149,7 @@ Try searching for the answer online! Talk to your peers! Consider referencing th
 the argument list are the same length and store equal items in corresponding
 positions (determined by using the elements' `equals` method).
 
-**Tip**: we recommend reading about how to use the [`instanceOf` keyword](https://www.geeksforgeeks.org/java/instanceof-keyword-in-java/)! As an extra note, to use `instanceOf` without the extra casting step, you can use `objectOne instanceOf <ClassName> objectTwo`, which will (1) return true/false and will (2) assign `objectTwo` to be a version of `objectOne` that is casted as a `<ClassName>`.
+**Tip**: we recommend reading about how to use the [`instanceof` keyword](https://www.geeksforgeeks.org/java/instanceof-keyword-in-java/)! As an extra note, to use `instanceof` without the extra casting step, you can use `objectOne instanceof <ClassName> objectTwo`, which will (1) return true/false and will (2) assign `objectTwo` to be a version of `objectOne` that is casted as a `<ClassName>`.
 
 {: .task}
 > **Task**: Implement `toString` and `equals`.
