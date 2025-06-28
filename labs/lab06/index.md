@@ -116,17 +116,16 @@ public class SLList {
     /* ... more methods to operate on ... */
 }
 ```
-> The inner class is declared `private` to enforce our abstraction barrier, but what does the `static` modifier do?
-> The `static` modifier prevents the inner class from accessing instance variables or methods of the outer class.
-> This saves a bit of memory and helps prevent mistakes by making sure we don't modify anything we shouldn't.
+
+{: .info}
+> The inner class is declared `private` to enforce our abstraction barrier, but what does the `static` modifier do? The `static` modifier prevents the inner class from accessing instance variables or methods of the outer class. This saves a bit of memory and helps prevent mistakes by making sure we don't modify anything we shouldn't.
 
 
 ### `toString` and `equals`
 
 Just like yesterday, we will want a `toString` method so that our linked lists will be displayed
 in a more readable format in the debugger or when printing to the console. We will also want
-an `equals` method that checks whether or not list A and list B have the same content, rather than checking if `A` and `B` refer to the same object. 
-Overriding `equals()` means `assertEquals` in our tests will correctly verify whether two lists contain the same content. Here is an illustration of this difference:
+an `equals` method that checks whether or not list A and list B **contain the same content**, rather than checking if `A` and `B` refer to the same object. Here is an illustration of this difference:
 
 ![](img/equals.png)
 
@@ -151,6 +150,9 @@ public void add(int index, int x) {
 ```
 
 Check your solution with the tests provided in `SLListTest.java`. As always, feel free to add more testing methods!
+
+{: .task}
+>Implement the `add` method.
 
 ### Exercise: `reverse`
 
@@ -250,6 +252,9 @@ will save you and your future colleagues an enormous amount of time and misery.
 > - [Checking In on the State of TDD](https://redmonk.com/kholterhoff/2023/07/12/checking-in-on-the-state-of-tdd/)
 > - [Why Most Unit Testing is Waste](https://rbcs-us.com/documents/Why-Most-Unit-Testing-is-Waste.pdf)
 > - [A Response to "Why Most Unit Testing is Waste"](https://henrikwarne.com/2014/09/04/a-response-to-why-most-unit-testing-is-waste/)
+
+{: .task}
+>Implement the `reverse` method.
 
 ## Enhancement 3: Doubly-Linked
 
