@@ -53,8 +53,7 @@ public class IntList {
 
 ### IntList Box and Pointer Diagram
 
-Draw out the box and pointer diagram that would result after the following code has been executed.
-When you and a partner in your lab section have compared diagrams, check your accuracy using the Java Visualizer below.
+Draw out the box and pointer diagram that would result after the following code has been executed. You can visualize your code by clicking the "Visualize Code" below.
 
 {%- capture intListExample -%}
 public class IntList {
@@ -77,9 +76,8 @@ public class IntList {
     }
 }
 {%- endcapture -%}
-{% include java_visualizer.html caption="Introducing IntLists"
-   code=intListExample %}
-
+<br>
+{% include java_visualizer.html code=intListExample %}
 > If it's hard to see what's going on in the Java Visualizer, enable the
 > following two **options** from the code editor.
 >
@@ -87,12 +85,10 @@ public class IntList {
 > - **Force linked lists to display vertically**
 
 
-### IntList JUnit
+### IntList Tests
 
-For this lab, we've written JUnit tests for you in `IntListTest.java`.
-Open it up and read through it. The first thing you'll notice are the imports at the top. These imports are
-what give you easy access to the JUnit methods and functionality that you'll
-need to run JUnit tests. If you want to read more about JUnit, refer to [Lab 4](../lab04/#testing-your-code-with-truth).
+For this lab, we've written tests for you in `IntListTest.java` using the Google’s [Truth](https://truth.dev/) assertions library.
+Open it up and read through it. The first thing you'll notice are the imports at the top. These imports are what give you easy access to the methods from the Truth library and and functionality that you'll need to run those tests. If you want to read more about Google's Truth library, refer to [Lab 4](../lab04/#testing-your-code-with-truth).
 
 ### Exercise: The `get` Method
 
@@ -113,16 +109,18 @@ Depending on your IntelliJ setup, a window should pop up giving you multiple opt
 Choose the `IntListTest` next to the icon with a red and green arrow contained in a rectangle.
 If your implementation is correct, you should pass the `get` method tests.
 
-Hint: Traverse the list until the specified position is reached. Throw an exception if the position is out of bounds.
+**Tip**: Traverse the list until the specified position is reached. Throw an exception if the position is out of bounds.
+
+{: .task}
+> **Task**: Implement the `get` method.
 
 ### Exercise: `toString` and `equals`
 
 In [Lab 3](../lab03/#tostring-and-equals), we introduced you to the `toString` and `equals` methods and you worked with a `Point` class for your Pursuit Curves that implemented these methods.
 
-Implement the standard Java methods, `toString` and `equals`, in the `IntList`
-class.
+Implement the standard Java methods, `toString` and `equals`, in the `IntList` class.
 
-> Once you're done, test your code using the provided JUnit tester in `IntListTest.java`.
+> Once you're done, test your code using the provided tests in `IntListTest.java`.
 
 `toString`
 : The `toString` method for `IntList` returns the `String` representation of
@@ -138,7 +136,8 @@ this list, namely:
 
 <details markdown="block">
   <summary markdown="block">
-#### Hint: How would you convert an integer to a string in Java?
+  
+**Hint: How would you convert an integer to a string in Java?**
 {: .no_toc}
   </summary>
 Try searching for the answer online! Talk to your peers! Consider referencing the official [Java Documentation](https://docs.oracle.com/en/java/)!
@@ -150,7 +149,10 @@ Try searching for the answer online! Talk to your peers! Consider referencing th
 the argument list are the same length and store equal items in corresponding
 positions (determined by using the elements' `equals` method).
 
-Tip: we recommend reading about how to use the [`instanceOf` keyword](https://www.geeksforgeeks.org/java/instanceof-keyword-in-java/)! As an extra note, to use `instanceOf` without the extra casting step, you can use `objectOne instanceOf <ClassName> objectTwo`, which will (1) return true/false and will (2) assign `objectTwo` to be a version of `objectOne` that is casted as a `<ClassName>`.
+**Tip**: we recommend reading about how to use the [`instanceOf` keyword](https://www.geeksforgeeks.org/java/instanceof-keyword-in-java/)! As an extra note, to use `instanceOf` without the extra casting step, you can use `objectOne instanceOf <ClassName> objectTwo`, which will (1) return true/false and will (2) assign `objectTwo` to be a version of `objectOne` that is casted as a `<ClassName>`.
+
+{: .task}
+> **Task**: Implement `toString` and `equals`.
 
 ### Exercise: `add`
 
@@ -163,6 +165,9 @@ public void add(int value) {
     // TODO
 }
 ```
+
+{: .task}
+> **Task**: Implement the `add` method.
 
 ### Exercise: `smallest`
 
@@ -178,12 +183,16 @@ public int smallest() {
 
 <details markdown="block">
   <summary markdown="block">
-#### Hint: How do we ask specific questions about integers in Java?
+
+**Hint: How do we ask specific questions about integers in Java?**
 {: .no_toc}
   </summary>
 [You might find the Math Class documentation helpful.](https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html)
 
 </details>
+
+{: .task}
+> **Task**: Implement the `smallest` method.
 
 ### Exercise: `squaredSum`
 
@@ -198,6 +207,9 @@ public int squaredSum() {
 ```
 
 This type of function is called a *reducer*, as it reduces the whole list down to a single value! You might remember this idea from CS61A.
+
+{: .task}
+> **Task**: Implement the `squaredSum` method.
 
 ## Destructive vs. Non-Destructive
 
@@ -223,7 +235,7 @@ Running the above, destructive program would print,
     1 4 9 16
 
 > Observe that the `IntList.of()` method makes it much easier to create
-> IntLists compared to the brute force approach. This might be useful for writing your own tests.... ;)
+> IntLists compared to the brute force approach. This might be useful for writing your own tests...
 >
 > ```java
 > IntList myList = new IntList(0, null);
@@ -397,7 +409,7 @@ To complete the lab:
   first and finish it before you start the next, because then you'll be able to
   take advantage of the similar logic).
 
-`IntList` problems can be tricky to think about, and there are always several
+**Tip:** `IntList` problems can be tricky to think about, and there are always several
 approaches which can work. Don't be afraid to pull out pen and paper or go to
 the whiteboard and work out some examples! If you get stuck, drawing out the
 pointers can probably steer you back onto the path of progress. And, as always,
@@ -405,30 +417,31 @@ the debugger is a great option!
 
 Feel free to use either recursion or iteration. For extra practice, try both!
 
-It's also often useful to first think about base cases, such as when `A` is
+**Tip:** It's also often useful to first think about base cases, such as when `A` is
 `null`, for example. This works especially well for building up a recursive
 solution. In other words, write up a solution that would work for the base
 case, then stop and think about how to expand this solution into something that
 works for other bigger cases.
 
-For this problem, it is okay for `dcatenate` to return one or the other list if
+{: .info}
+>For this problem, it is okay for `dcatenate` to return one or the other list if
 one or both of `A` and `B` are `null`. For `catenate`, it is okay to attach `B`
-to the end of `A` without making a full copy of `B`. However, think about the following two questions:
+to the end of `A` without making a full copy of `B`. 
+
+However, think about the following two questions:
 
 - Why does this still produce a 'correct' program?
 - What kinds of problems could this decision cause?
 
+{: .task}
+> **Task**: Implement the `catenate` and `dcatenate` methods.
 
 ## Recap
 
 Today we talked about the `IntList`. Methods involving Linked Lists can be implemented
 iteratively and recursively. These functions can also be destructive or non-destructive.
 
-## What to do next
-
-You are now ready to start project 1! 
-
-### Deliverables
+## Deliverables
 
 - `IntList.java`
     - `get`
@@ -439,3 +452,7 @@ You are now ready to start project 1!
     - `squaredSum`
     - `catenate`
     - `dcatenate`
+
+
+{: .info}
+>After today's lab, you're now equipped with the knowledge to start Project 1A! 
