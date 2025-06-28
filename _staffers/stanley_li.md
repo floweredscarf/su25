@@ -4,6 +4,7 @@ pronouns: he/him
 role: Tutor
 spaaccess: false
 dspdata: false
+website: https://github.com/stanleytheli/wordHunter
 email: stanley_li@berkeley.edu
 photo: stanley_li.webp
 ---
