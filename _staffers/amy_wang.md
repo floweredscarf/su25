@@ -4,6 +4,7 @@ pronouns: she/her
 role: TA
 spaaccess: false
 dspdata: false
+website: https://rocky-headlight-582.notion.site/studio-ghibli-7e07338578d2442fb4df61dbb9aa3882
 email: amywanglw@berkeley.edu
 photo: amy_wang.webp
 ---

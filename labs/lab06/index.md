@@ -59,7 +59,7 @@ Note that in order to emphasize the encapsulation in box-and-pointer diagrams, w
 will be breaking the normal box-and-pointer rule that we don't put Objects
 inside other Objects.
 
-> Note that throughout the lab, some of the images do not depict the `size` variable for simplicity. This variable is an instance variable for all `SLList`s even if it is not shown in our illustrations.
+Note that throughout the lab, some of the images do not depict the `size` variable for simplicity. This variable is an instance variable for all `SLList`s even if it is not shown in our illustrations.
 
 ![](img/sllist.png)
 
