@@ -280,7 +280,8 @@ If we are using a sentinel, then it will look like this:
 
 ![sentinel](img/sentinel.png)
 
-Note that the sentinel's item is marked with an "X", again because that value is irrelevant.
+{: .info}
+>Note that the sentinel's item is marked with an "X", again because that value is irrelevant.
 If our list is of non-primitive items, then we can make it `null`. If it is of primitive items (like the `int`s we've been using, then it can just be any arbitrary value (since primitives cannot be `null`)).
 
 Here's a more simplified visualization of the circular structure with DLList: 

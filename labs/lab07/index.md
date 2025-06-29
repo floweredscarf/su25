@@ -19,10 +19,9 @@ The FAQ for Lab 7 is located [here](faq).
 
 ## Learning Goals
 
-First, we'll cover inheritance in Java, which comes in three main forms: interface implementation,
-abstract class extension, and concrete class extension. We will also discuss dynamic method selection (DMS),
+First, we'll cover inheritance in Java, which comes in three main forms: interface implementation, concrete class extension, and abstract class extension. We will also discuss dynamic method selection (DMS),
 a process that determines which functions get run upon program execution as a result of inheritance and
-Java's static typing. **For Summer 2025, DMS is optional and will not be tested on exams, but we recommend reading through this lab's DMS section if you're interested!**
+Java's static typing. **For Summer 2025, abstract classes and DMS are both optional and will not be tested on exams, but we recommend reading through this lab's corresponding sections if you're interested!**
 
 First, we'll look at some classes we've written so far, and identify patterns
 in what we can _do_ with them. We will connect this idea to _abstract data
@@ -334,6 +333,13 @@ public class SLList implements SimpleList, ComplexList {
 
 ### Abstract Classes
 
+<details markdown="block">
+<summary markdown="block">
+
+This section is optional and considered out of scope for Summer 2025. If you'd like to learn about abstract classes, click on the arrow to expand the section.
+
+</summary>
+
 Suppose for a moment that we wanted to inherit from a partial implementation of a class. Recall the Animal example from before, but slightly rewritten:
 
 ```java
@@ -382,12 +388,14 @@ keyword and therefore strictly adheres to a superclass-subclass inheritance. Bec
 abstract classes are helpful as representations of a common base class that can be
 `extend`ed and therefore avoids a lot of repeated code.
 
+</details>
+
 ## Dynamic Method Selection (DMS)
 
 <details markdown="block">
 <summary markdown="block">
 
-This section is optional and considered out of scope. If you'd like to learn about DMS, click on the arrow to expand the section.
+This section is optional and considered out of scope for Summer 2025. If you'd like to learn about DMS, click on the arrow to expand the section.
 
 </summary>
 
@@ -658,11 +666,10 @@ from any actual implementation. We call a collection of methods -- a
 description of what we can do with a collection of data -- an **abstract
 data type**. We often use interfaces to represent abstract data types.
 
-`SLList` and `DLList` are particular kinds of lists, an abstract data type
+`SLList` and `DLList` are particular kinds of **lists**, which is an abstract data type
 that has the methods listed above. Let's say that we use someone's code that
 defines another kind of list called `MysteryList`. Even though we might not
-know how its implementation works, we know that it can do at least everything
-a `List` can - because it's a `List`!
+know _how_ its implementation works, we know that it can do _everything_ a `List` can (and possibly more) because it's a `List`!
 
 ## ADTs in Java
 
@@ -671,11 +678,9 @@ what kinds of situations? What are their implementations in Java?
 
 ### Lists
 
-Let's define the list ADT in a bit more detail:
-
 A **list** is an ordered collection, or _sequence_, so the elements in a list
 have _positions_. An element can appear as many times as desired, as duplicates
-are allowed. Thus, they must support the following operations:
+are allowed. Thus, lists must support the following operations:
 
 - `add`ing an element to the list at a specific index
 - `remove`ing an element from the list at a specific index
@@ -687,7 +692,7 @@ are allowed. Thus, they must support the following operations:
 Java's [`List` interface][List] contains many more methods, but these are the minimum
 methods that make Java's `List`s behave like our mental model of a list.
 
-The `List` implementations that you will use most often is
+The `List` implementations that you will likely use most often is
 [`ArrayList`][ArrayList]. Another common implementation is
 [`LinkedList`][LinkedList], which is similar to our `DLList`.
 
@@ -731,6 +736,11 @@ often:
 [TreeSet]: https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/TreeSet.html
 [HashSet]: https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/HashSet.html
 
+```java
+Set<String> = new HashSet<>();
+Set<String> = new TreeSet<>();
+```
+
 This is a concrete example of why interfaces are useful -- when we're writing
 a method, we may not care about whether it's a `TreeSet` or a `HashSet`.
 However, the code calling that method might need the ordering of the `TreeSet`
@@ -738,11 +748,6 @@ or the speed of the `HashSet` -- we don't know how our code is going to be used!
 We can allow our code to
 be used by both by writing our method for the `Set` interface, instead
 of for `TreeSet` or for `HashSet`.
-
-```java
-Set<String> = new HashSet<>();
-Set<String> = new TreeSet<>();
-```
 
 ### Maps
 
@@ -760,7 +765,7 @@ A **map** is a collection of key-to-value mappings, like a dictionary from
 Python. A map is not necessarily ordered. Maps must support at least the
 following operations:
 
-- Change (`put`) the _value_ that a particular _key_ maps to.
+- Insert/change (`put`) the _value_ that a particular _key_ maps to.
 - `get` the _value_ that a particular _key_ maps to.
 - `remove` the value for a given _key_
 - Checking if the map `contains` a given **key**
@@ -808,8 +813,8 @@ multiple items at once is going to fulfill the requirements to be a
 _collection_. Throughout this course, we will continue to
 see implementations of these collections.
 
-So, what does it mean (in Java) for a `List`, an ADT, to be a `Collection`,
-another ADT? We say that interfaces can `extend` other interfaces:
+So, what does it mean (in Java) for a `List` (an ADT) to be a `Collection`
+(another ADT)? We say that interfaces can `extend` other interfaces:
 
 ```java
 public interface List<Item> extends Collection<Item> {
@@ -868,21 +873,39 @@ Knowing when, where, and how to use abstract data types is an important skill.
 For this part, we'll be using abstract data types to help us solve small
 programming challenges. These questions are similar to the kinds of questions
 you might get asked to solve in a technical interview for a software
-engineering position. Complete the methods outlined in `CodingChallenges.java`, and add tests in `CodingChallengesTest.java`. Review [Lab 04](../lab04) for how to write tests.
+engineering position. Complete the methods outlined in `CodingChallenges.java`, and add tests in `CodingChallengesTest.java`. Review [Lab 04](../lab04/#testing-your-code-with-truth) for how to write tests.
 
 
 Note that for the first method, `missingNumber`, the input array is **not** in order.
 
-Hint: For `isPermutation`, use `toCharArray`. Look it up if you don't know what it is.
+<details markdown="block">
+<summary markdown="block">
 
-Hint: Some of these instantiations might be useful for these problems:
+**Hint 1**
+
+</summary>
+
+For `isPermutation`, use `toCharArray`. Look it up if you don't know what it is.
+
+</details>
+
+<details markdown="block">
+<summary markdown="block">
+
+**Hint 2**
+
+</summary>
+
+Some of these instantiations might be useful for these problems:
 ```java
 Set<Integer> seen = new HashSet<>();
 Map<Character, Integer> characterCounts = new HashMap<>();
 ```
 
+</details>
+
 {: .task}
-> Implement the methods in `CodingChallenges.java`.
+> Implement the `missingNumber` and `isPermutation` methods in `CodingChallenges.java`.
 
 ## Exercise: Implementing Sets
 
@@ -902,7 +925,7 @@ elements in an `ArrayList<Integer>`.
 
 Implement the methods of the `ListSet.java` class, and use the
 `ListSetTest.java` file to test your methods. You may use
-`List` methods in your implementation. We only provide a basic test,
+`List` methods in your implementation. **We only provide a basic test**,
 so feel free to add more comprehensive tests to this file.
 
 ### `BooleanSet`
@@ -916,14 +939,11 @@ track of what values are currently in the `Set`. Check the example below:
 ![BooleanSet array](img/boolean-set-array.jpg)
 
 Implement the methods of the `BooleanSet.java` class, and use the
-`BooleanSetTest.java` file to test your methods. We only provide a basic test,
+`BooleanSetTest.java` file to test your methods. **We only provide a basic test**,
 so feel free to add more comprehensive tests to this file.
 
-### Tradeoffs
-
-What are the tradeoffs between these two implementations? Neither one is
-strictly "better" than the other in all situations, but when might we want to
-use one of them? Discuss with a partner.
+{: .info}
+>For BooleanSet, you do not have to handle inputs outside \[0, `maxElem`\] (inclusive).
 
 {: .task}
 > Implement the methods in `ListSet.java` and `BooleanSet.java`.

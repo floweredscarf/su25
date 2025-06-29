@@ -26,9 +26,3 @@ Specifically, the `List` interface has two `remove` methods:
 
 We would like to use the latter, so we must "autobox" the given `int` to
 `Integer` with the given assignment statement.
-
-## `BooleanSet`
-
-### Do we have to handle inputs outside \[0, `maxElem`\] (inclusive)?
-
-No.
