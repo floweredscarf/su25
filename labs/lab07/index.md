@@ -72,7 +72,7 @@ public class Cat {
 }
 ```
 
-Observe that this class is largely the same as the `Animal` class, but with one extra instance variable, and one extra instance method. And intuitively, a cat is an animal. Is there a way we can represent this in Java? As you may have already guessed, the formalization of this relationship is known as _inheritance_. The `Cat` class written with inheritance would look like:
+Observe that this class is largely the same as the `Animal` class, but with one extra instance variable (`tailSize`), and one extra instance method (`meow`). And intuitively, a cat is an animal. Is there a way we can represent this in Java? As you may have already guessed, the formalization of this relationship is known as **inheritance**. The `Cat` class written with inheritance would look like:
 
 ```java
 public class Cat extends Animal {
@@ -81,9 +81,10 @@ public class Cat extends Animal {
 }
 ```
 
-Here, we introduce the new keyword `extends`. This keyword goes after the declaration of a class, and indicates that the declared class "inherits" from the following class, which we call the superclass. In this case, `Cat` inherits from `Animal`. What does inheritance actually provide? An inheriting class implicitly contains, or "inherits", all of the non-private variables and methods from its superclass.
+Here, we introduce the new keyword `extends`. This keyword goes after the declaration of a class, and indicates that the declared class "inherits" from the following class, which we call the **superclass**. In this case, `Cat` inherits from `Animal`. What does inheritance actually provide? An inheriting class implicitly contains, or "inherits", all of the non-private variables and methods from its superclass.
 
-Note that a class can only `extend`, or inherit from, one other class. This is because, if inheriting from two or more were allowed, then it would be possible to inherit conflicting definitions of a method, and impossible to resolve that (which class would get priority in having its definition utilized).
+{: .info}
+>Note that a class can only `extend`, or inherit from, one other class. This is because, if inheriting from two or more were allowed, then it would be possible to inherit conflicting definitions of a method, and impossible to resolve that (which class would get priority in having its definition utilized).
 
 ### Overriding Methods
 
@@ -117,7 +118,10 @@ public class Cat extends Animal {
 }
 ```
 
-And that is all we need to do! Note that there is an `@Override` tag above the method. This tells the compiler to make sure that this method actually overrides a method in the superclass. Otherwise, it will not compile. Note that you do not need to have the `@Override` tag to override a method - it simply serves as a guard against human error (more details on this later).
+And that is all we need to do! 
+
+{: .info}
+>Note that there is an `@Override` tag above the method. This tells the compiler to make sure that this method actually overrides a method in the superclass. Otherwise, it will not compile. Note that you do not need to have the `@Override` tag to override a method - it simply serves as a guard against human error (more details on this later).
 
 ## The `super` keyword
 
@@ -132,15 +136,19 @@ public void thoroughlyConsumeFood(Food food) {
 
 The first call allows us to access Animal's eat method and invoke it. In some sense, `super` is like `this` but for the parent class.
 
-In java, subclasses do not directly inherit the constructor of their
+{: .info}
+In Java, subclasses do not directly inherit the constructor of their
 superclass. Rather, we have to directly reference the constructor of the parent class.
 We do this with the keyword `super`, which is treated as an invocation of the parent
 class' constructor. Thus, in the parenthesis following `super` you must supply the
 correct number and type of arguments.
 **This call to super must be the first line of the constructor.**
-Check out the implementation of `GregorianDate.java` for an example of `super` in action.
 
-## Exercise: `GregorianDate`
+{: .task}
+>Check out the implementation of `GregorianDate.java` for an example of `super` in action. There is no coding portion required, but make sure you understand how the `GregorianDate` inherits from and overrides the `Date` class!
+
+<!-- cut Su25 -->
+<!-- ## Exercise: `GregorianDate`
 
 Let's start with an example of an abstract class. `Date.java` is an abstract
 class used to represent calendar dates (we will **ignore** leap years). In addition,
@@ -197,6 +205,9 @@ not change `this`. Modify `GregorianDate` accordingly so that it follows
 the correct convention for dates. Make sure to test out your methods to be sure
 that they behave as you expect them to! Check out our initial tests in `GregorianDateTest.java` for how GregorianDate is used.
 
+{: .task}
+>Implement `GregorianDate` as described above. -->
+
 ## Inheritance Chains
 
 It is completely possible for a subclass to in turn be a superclass for another class! Consider the following example:
@@ -211,7 +222,7 @@ This is totally valid and legal Java. The `BritishBlue` class would inherit all 
 Specifically, a `Cat` instance would have access to all variables and methods defined in
 `Animal`, which would carry over to any `BritishBlue` instance as well; then, by `BritishBlue`'s
 inheritance of `Cat`, any `BritishBlue` instance would be able to access everything defined in `Cat`
-with the exception of the `tailSize` instance variable, which is `private`.
+with the exception of the `tailSize` instance variable, which is private.
 
 ## Overloading Methods
 
@@ -227,15 +238,15 @@ public void grow(int size) {
 }
 ```
 
-Would Java permit this, even though these two distinct methods have the same name? The answer is yes, thanks to method overloading! The idea behind method overloading is that we can have methods with the same name, as long as they have different method signatures. The method signature is the name combined with its list of parameters. Thus, because these two versions of `grow` have different parameters, it is possible to have both of them at the same time. We will formally cover method selection later, but for now intuitively see that, if we were to make a function call to `grow`, it would not be ambiguous which one we are referring to even at compile time because of the parameters being passed into the call.
+Would Java permit this, even though these two distinct methods have the same name? The answer is yes, because of **method overloading**! The idea behind method overloading is that we can have methods with the same name, as long as they have different method signatures. The **method signature** consists of the method name and parameters. Thus, because these two versions of `grow` have different parameters, it is possible to have both of them at the same time. We will formally cover method selection later, but for now intuitively see that, if we were to make a function call to `grow`, it would not be ambiguous which one we are referring to even at compile time because of the parameters being passed into the call.
 
 ## Interfaces
 
-In Java, interfaces are "classes" that define a specific
-set of behavior. Specifically, they provide the method signatures for all the
+In Java, interfaces serve as blueprints that define a specific
+set of behavior, which they do by providing the method signatures for all the
 required methods. Generally, interfaces do not have method implementations,
-because they only describe what they can do, not how they do it. This also
-means that interfaces cannot be instantiated.
+because they only describe _what_ they can do, not _how_ they do it. This also
+means that interfaces **cannot be instantiated**.
 
 If we can't directly instantiate them, then you might be wondering how we might use them. When we write code, we often don't care about the implementation details of the
 data types we're using, and only care about what we can do with them.
@@ -247,13 +258,8 @@ function according to their specification.
 
 ### Implementing Interfaces
 
-<!-- I didn't write or read this big paragraph too carefully. -->
-<!-- Revised and cut down -Elaine Shu -->
-
-When a class **implements** an interface, the class guarantees that it can
-perform the functionalities defined by its interface.
-Using interfaces is all about _not knowing the actual implementation_, but
-rather working with the defined behavior given by the interface.
+When a class **implements** an interface, the class _guarantees_ that it can
+perform the functionalities defined by its interface. We do not need to know the actual implementation of particular methods, and instead only work with the defined behavior given by the interface.
 Implementing an interface through a class, like you are asked for assignments
 and projects, is about making sure that your class methods give the correct output as defined by the interface.
 
@@ -293,16 +299,19 @@ public class SLList implements SimpleList {
 
 Some things to know about interfaces and related topics:
 
-Implementing classes must implement all method signatures from the interface
-: We can't partially implement an interface, because the implementation then
-does not meet all the requirements we have said it does. The one exception to this is
-if the method has the `default` keyword, then the method is already filled in the interface.
-
-`@Override`
+The `@Override` tag
 : This method annotation is not _required_ when implementing a method from an
 interface, but enforces that the method does override an interface method.
 This helps prevent typos, like accidentally defining `void ad(int i, int k)`,
 or `void add(int i)`, when we wanted to implement the interface method above.
+
+The `default` keyword
+: If an interface includes a `default` method, all classes that implement that interface can use the `default` method from that interface.
+
+Classes must implement all method signatures from the interface(s) they implement
+: We can't partially implement an interface, because the implementation then
+does not meet all the requirements we have said it does. The one exception to this is
+if the method has the `default` keyword, then the method is already filled in the interface.
 
 Interface methods are public by default.
 : Interfaces are a description of behavior (what we can do), and it doesn't
@@ -374,6 +383,13 @@ abstract classes are helpful as representations of a common base class that can 
 `extend`ed and therefore avoids a lot of repeated code.
 
 ## Dynamic Method Selection (DMS)
+
+<details markdown="block">
+<summary markdown="block">
+
+This section is optional and considered out of scope. If you'd like to learn about DMS, click on the arrow to expand the section.
+
+</summary>
 
 From the structure of inheritance and polymorphism arises a natural question:
 when you possess a Java object, and you evoke a particular method signature
@@ -618,6 +634,8 @@ runtime we run it.
 
 </details>
 
+</details>
+
 ## Abstract Data Types
 
 In the previous lab, we implemented two classes that had (and with a reasonable extension, could have had) many of the same methods: `SLList` and `DLList`.
@@ -850,10 +868,10 @@ Knowing when, where, and how to use abstract data types is an important skill.
 For this part, we'll be using abstract data types to help us solve small
 programming challenges. These questions are similar to the kinds of questions
 you might get asked to solve in a technical interview for a software
-engineering position. Complete the methods outlined in `CodingChallenges.java`, and add tests in `CodingChallengesTest.java`. Review [Lab 03](../lab03) for how to write tests.
+engineering position. Complete the methods outlined in `CodingChallenges.java`, and add tests in `CodingChallengesTest.java`. Review [Lab 04](../lab04) for how to write tests.
 
 
-Note that the first method, `missingNumber`, the input array is **not** in order.
+Note that for the first method, `missingNumber`, the input array is **not** in order.
 
 Hint: For `isPermutation`, use `toCharArray`. Look it up if you don't know what it is.
 
@@ -862,6 +880,9 @@ Hint: Some of these instantiations might be useful for these problems:
 Set<Integer> seen = new HashSet<>();
 Map<Character, Integer> characterCounts = new HashMap<>();
 ```
+
+{: .task}
+> Implement the methods in `CodingChallenges.java`.
 
 ## Exercise: Implementing Sets
 
@@ -904,9 +925,12 @@ What are the tradeoffs between these two implementations? Neither one is
 strictly "better" than the other in all situations, but when might we want to
 use one of them? Discuss with a partner.
 
+{: .task}
+> Implement the methods in `ListSet.java` and `BooleanSet.java`.
+
 ## Aside: Generics and Autoboxing
 
-As you should remember from [Lab 5](../lab05), generics allow us to
+As you should remember from [Lab 6](../lab06/#enhancement-4-generic-lists), generics allow us to
 define data structures without relying on the specific type of objects it holds.
 This allows us to even further generalize our code, creating reusable data structures.
 
@@ -929,23 +953,23 @@ implementing data structures moving forward, though they aren't emphasized in th
 
 We introduced a few key topics in this lab:
 
-Inheritance:
+**Inheritance:**
 We learned that we can use inheritance to make the structures of our programs more efficient by taking advantage of
 similarities in the different types of objects that we are using. We also learned about method overloading and overriding,
 the `super` keyword, and inheritance chains.
 
-Dynamic Method Selection
+**Dynamic Method Selection (optional):**
 We learned how Java decides what method to actually call when a program invokes a particular method signature.
 There are two phases to this process. The first is the compiler phase, where Java ensures that there is a valid method
 matching the invoked signature that can be called. The second is the runtime phase, where Java looks up what method to
 run based on the dynamic types of the object involved.
 
-Abstract Data Types
-: Abstract data types are defined to be some sort of data that is defined
+**Abstract Data Types:**
+Abstract data types are defined to be some sort of data that is defined
 by a set of operations rather than the **implementation** of these operations.
 
-`List`, `Set`, `Map`, and `Collection`
-: Java has interfaces for several ADTs, and several implementations for each of
+**`List`, `Set`, `Map`, and `Collection`:**
+Java has interfaces for several ADTs, and several implementations for each of
 these ADTs. If we want to write code using algorithms that work on ADTs,
 we can write code against these Java collection types.
 
@@ -953,7 +977,7 @@ we can write code against these Java collection types.
 
 For full credit, submit:
 
-- Implement and test `nextDate` in `GregorianData.java`.
+<!-- - Implement and test `nextDate` in `GregorianData.java`. -->
 - Implement and test each method in `CodingChallenges.java`.
 - Implement and test each method in `ListSet.java`.
 - Implement and test each method in `BooleanSet.java`.
