@@ -3,7 +3,7 @@ layout: page
 title: >-
   FAQ
 parent: >-
-  Lab 06: Inheritance
+  Lab 07: Abstract Data Types & Inheritance
 grand_parent: Labs
 has_right_toc: true
 released: true
@@ -11,6 +11,8 @@ released: true
 ## Dynamic method selection is so confusing!
 
 [Here](https://docs.google.com/presentation/d/1l9kslV4XB46fOOyD-hiXxi4sK-lmtFg9rMHRmS7_S5k/edit?usp=sharing) is Crystal's DMS Flow chart from a few semesters ago. You can follow steps methodically.
+
+Note that DMS is optional and out of scope for Summer 2025.
 
 ## `ListSet`
 

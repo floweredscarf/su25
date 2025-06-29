@@ -1,32 +1,28 @@
 ---
 layout: page
 title: >-
-  Lab 07: Inheritance
+  Lab 07: Abstract Data Types & Inheritance
 has_children: true
 parent: Labs
 has_toc: false
-nav_exclude: true
+nav_exclude: false
 has_right_toc: true
 released: true
 ---
 
-## [FAQ](faq.md)
+## [FAQ](faq)
 
-The FAQ for Lab 6 is located [here](faq.md).
+The FAQ for Lab 7 is located [here](faq).
 
 {: .warning}
 > **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
-
-## Before You Begin
-
-Pull the skeleton code from GitHub and open it on IntelliJ like usual.
 
 ## Learning Goals
 
 First, we'll cover inheritance in Java, which comes in three main forms: interface implementation,
 abstract class extension, and concrete class extension. We will also discuss dynamic method selection (DMS),
 a process that determines which functions get run upon program execution as a result of inheritance and
-Java's static typing.
+Java's static typing. **For Summer 2025, DMS is optional and will not be tested on exams, but we recommend reading through this lab's DMS section if you're interested!**
 
 First, we'll look at some classes we've written so far, and identify patterns
 in what we can _do_ with them. We will connect this idea to _abstract data
