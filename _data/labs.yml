@@ -105,7 +105,7 @@ labs:
   - title: "Abstract Data Types & Inheritance"
     due: "2025/07/03"
     link: "/labs/lab07"
-    show_links: false
+    show_links: true
   - title: "Comparison, Exceptions, and Iteration"
     due: "2025/07/04"
     link: "/labs/lab08"
