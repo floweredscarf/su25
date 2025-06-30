@@ -549,6 +549,9 @@ called `LinkedListDeque61BTest` so that you have a testing file for each impleme
 
 ## The GH2 Package **(Optional)**
 
+{: .info}
+> This section is optional (and will not be graded whatsoever), but it's good practice!
+
 The `gh2` package has just one primary component that you will edit:
 
 - `GuitarString`, a class which uses a `Deque61B<Double>` to implement the
