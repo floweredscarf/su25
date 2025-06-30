@@ -331,7 +331,7 @@ public class SLList implements SimpleList, ComplexList {
 }
 ```
 
-### Abstract Classes
+### Abstract Classes (Optional)
 
 <details markdown="block">
 <summary markdown="block">
@@ -390,7 +390,7 @@ abstract classes are helpful as representations of a common base class that can 
 
 </details>
 
-## Dynamic Method Selection (DMS)
+## Dynamic Method Selection (Optional)
 
 <details markdown="block">
 <summary markdown="block">
