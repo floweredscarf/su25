@@ -104,10 +104,7 @@ public class IntList {
 }
 ```
 
-Once you have something, **test your code** by running `IntListTest.java`.
-Depending on your IntelliJ setup, a window should pop up giving you multiple options.
-Choose the `IntListTest` next to the icon with a red and green arrow contained in a rectangle.
-If your implementation is correct, you should pass the `get` method tests.
+Once you have something, **test your code** by running `IntListTest.java`. If your implementation is correct, you should pass the `get` method tests.
 
 **Tip**: Traverse the list until the specified position is reached. Throw an exception if the position is out of bounds.
 
@@ -149,7 +146,7 @@ Try searching for the answer online! Talk to your peers! Consider referencing th
 the argument list are the same length and store equal items in corresponding
 positions (determined by using the elements' `equals` method).
 
-**Tip**: we recommend reading about how to use the [`instanceof` keyword](https://www.geeksforgeeks.org/java/instanceof-keyword-in-java/)! As an extra note, to use `instanceof` without the extra casting step, you can use `objectOne instanceof <ClassName> objectTwo`, which will (1) return true/false and will (2) assign `objectTwo` to be a version of `objectOne` that is casted as a `<ClassName>`.
+**Tip**: we recommend reading about how to use the [`instanceof` keyword](https://www.geeksforgeeks.org/java/instanceof-keyword-in-java/)! As an extra note, to use `instanceof` without the extra casting step, you can use `objectOne instanceof <ClassName> objectTwo`, which will return true if objectOne can be an instanceOf the specific object, and false otherwise. Additionally, if it returns true, it will also assign `objectTwo` to be a version of `objectOne` that is casted as a `<ClassName>`.
 
 {: .task}
 > **Task**: Implement `toString` and `equals`.
@@ -306,8 +303,7 @@ important that you understand these concepts!
 
 Note: The choice to return void rather than a pointer to `L` was an arbitrary
 decision. Different languages and libraries use different conventions. We have the flexibility to decide
-when writing destructive methods when mutating objects passed in as arguments. Talk to your
-partner about why this is and try to think of settings where one would be preferable over the other.
+when writing destructive methods when mutating objects passed in as arguments.
 
 [java visualizer plugin]: {{ site.baseurl }}/resources/using-intellij/#java-visualizer
 
