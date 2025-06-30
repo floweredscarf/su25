@@ -20,7 +20,7 @@ running the automated style checker. You can run the style checker in IntelliJ b
 > This will generate a list of style errors in the selected file.
 > Be sure to save or recompile your file before running the style checker again.
 
-![screenshot of intellij with right-click menu open](intellij_style_checker.png)
+![screenshot of intellij with right-click menu open](../style-guide-img/intellij_style_checker.png)
 
 This style guide may also be incomplete. I've attempted to make it as
 comprehensive as possible, but I may have missed describing some newly added
@@ -32,7 +32,7 @@ rules.
 
    For example, in the screenshot below, the blank Line 8 is necessary.
 
-   ![screenshot of intellij with a blank newline](style_checker_newline.png)
+   ![screenshot of intellij with a blank newline](../style-guide-img/style_checker_newline.png)
 
 2. Files may not contain horizontal tab characters. Use blanks (spaces) only for
    indentation.
