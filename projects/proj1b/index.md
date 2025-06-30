@@ -64,7 +64,7 @@ you should do, but not how.
 
 {: .task}
 >For this project, you must work alone! Please carefully read the
->[Policy on Collaboration and Cheating](../../policies/index.md#collaboration-and-academic-misconduct)
+>[Policy on Collaboration and Cheating](../../policies/#collaboration-and-academic-misconduct)
 >to see what this means exactly. In particular, do not look for solutions online.
 
 {: .danger}
@@ -76,7 +76,7 @@ you should do, but not how.
 ### Style
 
 As in Project 1A, **we will be enforcing style**. You must follow the
-[style guide](../../resources/guides/style/index.md), or you will be penalized on the
+[style guide](../../resources/style-guide), or you will be penalized on the
 autograder. Note that style penalties do **not** apply to test files.
 
 You can and should check your style locally with the CS 61B plugin. **We will
@@ -85,7 +85,7 @@ not remove the velocity limit for failing to check style.**
 ### Getting the Skeleton Files
 
 Follow the instructions in the
-[Assignment Workflow guide](../../resources/guides/assignment-workflow/index.md/#assignment-workflow)
+[Assignment Workflow guide](../../resources/assignment-workflow)
 to get the skeleton code and open it in IntelliJ. For this project, we will be
 working in the **`proj1b`** directory.
 
@@ -105,7 +105,7 @@ Note that you'll also see a `gh2` directory and the related test file `TestGuita
 These are related to an optional [Guitar Hero](#guitar-hero-optional) section, which you can read about further down.
 
 If you get some sort of error, STOP and either figure it out by carefully
-reading the [Git WTFs](../../resources/guides/git/wtfs.md) or seek help at OH
+reading the [Git WTFs](../../troubleshooting/git-wtfs) or seek help at OH
 or Ed. You'll potentially save yourself a lot of trouble vs. guess-and-check
 with git commands. If you find yourself trying to use commands recommended by
 Google like `force push`,
@@ -116,10 +116,10 @@ You can also watch Professor Hug's [demo](https://www.youtube.com/watch?v=tABtNc
 about how to get started and this [video](https://www.youtube.com/watch?v=Squ8TmG5mX0)
 if you encounter some git issues.
 
-## Deque: ADT and API
+## Deque61B: ADT and API
 
 If you need a refresher on `Deque61B`s, refer to the
-[Project 1A spec](../proj1a/index.md#deque-adt-and-api)
+[Project 1A spec](../proj1a/#deque61b-adt-and-api)
 and the `Deque61B.java` file.
 
 ## Creating the File
@@ -310,7 +310,7 @@ This method technically shouldn't be in the interface, but it's here to make tes
 {: .warning}
 We recommend you complete the other methods first, verify that they are working correctly without resizing, and come back to resizing after.
 
-#### Resizing Up
+### Resizing Up
 
 The exception to an Array Deque's "constant time" requirement is when the array fills, and
 you need to "resize" to have enough space to add the next element. In this case, you
@@ -338,7 +338,7 @@ Make sure to resize by a geometric factor.
 >your backing array resizes! For more info on resizing, check out [these slides](https://docs.google.com/presentation/d/1AUaNTKX0f-nFqmqEWEEecLxIQh9hrpTDtz_lWVMl5Fw/edit#slide=id.g625dc7e36_0943).
 
 
-#### Resizing Down
+### Resizing Down
 
 The amount of memory that your program uses at any given time must be
 proportional to the number of items. For example, if you add 10,000 items to
@@ -365,7 +365,7 @@ length 15 or less, your usage factor can be arbitrarily low.
 
 ### Writing Tests
 
-Refer to the [Project 1A spec](../proj1a/index.md#writing-tests) for
+Refer to the [Project 1A spec](../proj1a/#writing-tests) for
 a review of how to write tests. Similar to Project 1A, you will be scored on
 the coverage of your unit tests for Project 1B. You might find some of your
 tests from Project 1A to be reusable in this project; don't be afraid to
@@ -399,7 +399,7 @@ In this section of the project, you are going to expand upon the functionality o
 In order to implement the following methods, you should start by copying and pasting your Project 1A
 implementation of `LinkedListDeque61B` into the `src` directory.
 
-#### `iterator()`
+### `iterator()`
 
 One shortcoming of our `Deque61B` interface is that it can not be iterated over. That is, the code below fails to compile with the error "foreach not applicable to type".
 
@@ -444,7 +444,7 @@ Next, implement the `iterator()` method using the techniques described in lectur
 {: .danger}
 You are not allowed to call `toList` here.
 
-#### `equals()`
+### `equals()`
 
 Consider the following code:
 
@@ -506,7 +506,7 @@ Important: Make sure you use the `@Override` tag when overriding methods. A comm
 {: .danger}
 You are not allowed to call `toList` here.
 
-#### `toString()`
+### `toString()`
 
 Consider the code below, which prints out a `LinkedListDeque61B`.
 
@@ -540,14 +540,14 @@ In turn the `hashCode` method, which you have also not overridden, simply return
 >
 >Hint: Your implementation for `LinkedListDeque61B` and `ArrayDeque61B` should be exactly the same.
 
-#### Testing The Object Methods
+### Testing The Object Methods
 
 We haven't provided you with test files for these three object methods; however, we strongly encourage you to use the
 techniques you have learned so far to write your own tests. You can structure these tests however you'd like,
 since we won't be testing them. One possible (and suggested) structure is to create a new file in the `tests` directory
 called `LinkedListDeque61BTest` so that you have a testing file for each implementation.
 
-### The GH2 Package
+## The GH2 Package **(Optional)**
 
 The `gh2` package has just one primary component that you will edit:
 
@@ -621,7 +621,7 @@ averaging operation.
 You should now also be able to use the `GuitarHeroLite` class. Running it will provide a graphical interface, allowing
 the user (you!) to interactively play sounds using the `gh2` package's `GuitarString` class.
 
-### Submit to the Autograder
+## Submit to the Autograder
 
 Once you've written local tests and passed them, try submitting to the
 autograder. You may or may not pass everything.
@@ -633,13 +633,13 @@ autograder. You may or may not pass everything.
   local tests did not cover, despite having sufficient coverage for flags.
   This is **expected**. Coverage flags are an approximation! They also do not
   provide describe every single behavior that needs to be tested, nor do they
-  guarantee that you assert everything. [Here](./flags.md) is a list of them!
+  guarantee that you assert everything. [Here](./flags) is a list of them!
 - If you fail any of the timing tests, it means that your implementation does
   not meet the timing constraints described above.
 - You will have a token limit of 4 tokens every 24 hours. **We will not reinstate tokens for failing to add/commit/push your code, run style, etc.**
 - You may find messages in the autograder response that look something like this: `WARNING: A terminally deprecated method in java.lang.System has been called`. You can safely ignore any line tagged as a `WARNING`.
 
-### Scoring
+## Scoring
 
 This project, similar to Project 0, is divided into individual components, each
 of which you must implement _completely correctly_ to receive credit.
@@ -657,5 +657,6 @@ of which you must implement _completely correctly_ to receive credit.
 
 For the **test coverage** component, we will run your
 tests against a staff solution and check how many scenarios and edge cases are
-tested. You can receive partial credit for this component. [Here](./flags.md) is a list of them!
+tested. You can receive partial credit for this component. [Here](./flags) is a list of them!
 
+Finally, again, all components inside the `gh2` package are optional and will not be scored.

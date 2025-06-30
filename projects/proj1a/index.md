@@ -58,7 +58,7 @@ much less scaffolding.
 
 {: .warning}
 >For this project, you must work alone! Please carefully read the
->[Policy on Collaboration and Cheating](../../policies/index.md#collaboration-and-academic-misconduct)
+>[Policy on Collaboration and Cheating](../../policies/#collaboration-and-academic-misconduct)
 >to see what this means exactly. In particular, do not look for solutions online.
 >
 >
@@ -77,19 +77,17 @@ On this project, you will have a max of 4 submission tokens to the autograder, e
 
 ### Style
 
-On this project, **we will be enforcing style**. You must follow the
-[style guide](../../resources/guides/style/index.md), or you will be penalized on the
+On this project, **we will be enforcing style for all files except tests**. You must follow the
+[style guide](../../resources/style-guide/), or you will be penalized on the
 autograder.
 
 You can and should check your style locally with the CS 61B plugin. **We will
 not remove the velocity limit for failing to check style.**
 
-**We will not be enforcing style for tests.**
-
 ### Getting the Skeleton Files
 
 Follow the instructions in the
-[Assignment Workflow guide](../../resources/guides/assignment-workflow/index.md/#assignment-workflow)
+[Assignment Workflow guide](../../resources/assignment-workflow/)
 to get the skeleton code and open it in IntelliJ. For this project, we will be
 working in the **`proj1a`** directory.
 
@@ -105,7 +103,7 @@ You see a `proj1a` directory appear in your repo with the following structure:
 ```
 
 If you get some sort of error, STOP and either figure it out by carefully
-reading the [git WTFs](../../resources/guides/git/wtfs.md) or seek help at OH
+reading the [git WTFs](../../troubleshooting/git-wtfs/) or seek help at OH
 or Ed. You'll potentially save yourself a lot of trouble vs. guess-and-check
 with git commands. **If you find yourself trying to use commands recommended by Google like `push --force`,**
 **[don't](https://twitter.com/heathercmiller/status/526770571728531456).**
@@ -178,8 +176,8 @@ in the `proj1a/src` directory. To do this, right-click on the `src` directory,
 navigate to "New -> Java Class", and give it the name `LinkedListDeque61B`.
 
 We want our `LinkedListDeque61B` to be able to hold several different types. For
-example, a `LinkedListDeque61B<String>` holds `String`s and a
-`LinkedListDeque61B<Integer>` holds `Integer`s. To enable this, you should
+example, a `LinkedListDeque61B<String>` should hold `String`s and a
+`LinkedListDeque61B<Integer>` should hold `Integer`s. To enable this, you should
 edit the declaration of your class so that it reads:
 
 ```java
@@ -199,7 +197,7 @@ public class LinkedListDeque61B<T> implements Deque61B<T>
 ```
 
 However, this creates an error. In order for a `LinkedListDeque61B` to be a
-`Deque61B`, it needs to implement all the `Deque61B` methods. However your mouse over
+`Deque61B`, it needs to implement all the `Deque61B` methods. Hover your mouse over
 the red squiggle, and click the "implement methods" button when the error
 message box pops up. This will autogenerate the method headers for you.
 
@@ -217,9 +215,9 @@ public LinkedListDeque61B() {
 
 Now you're ready to get started!
 
-### Unit Tests
+## Unit Tests
 
-#### LinkedListDeque61BTest
+### LinkedListDeque61BTest
 
 Now open the `LinkedListDeque61BTest.java` file. You'll see that every line has a
 `//` preceding it. Let's remove all of the `//` comments except last line. To do
@@ -234,13 +232,13 @@ you haven't implemented any methods yet.
 Before you can pass these tests, there's a lot of work you'll need to do, so
 we're going to set aside the tests for now and come back to them much later.
 
-#### PreconditionTest
+### PreconditionTest
 
 In this test file, we've provided a few tests that check that your `LinkedListDeque61B` file to check your code structure for correctness. You do not need to understand these tests, but you should be able to run them.
 
 ### Writing and Verifying the Constructor
 
-{: .task}
+{: .info}
 >This section assumes you have watched and fully digested the lectures up to
 >**and including** the `Linked Lists and Generics` lecture, Lecture 3.
 
@@ -326,7 +324,7 @@ as you change your code. Imagine that you made some minor but uncertain change
 to `addLast`. To verify that you didn't break anything you'd have to go back
 and do that whole process again. Yuck.
 
-(Also, we have just under 1500 students! No way we're doing that to grade
+(Also, we have over 200 students! No way we're doing that to grade
 everyone's work.)
 
 What we really want are some automated tests. But unfortunately there's no easy
@@ -421,7 +419,7 @@ You should write your tests in `LinkedListDeque61BTest.java`.
 >the result of every call, checking the entire deque between every call, or
 >checking the results of other deque methods.
 
-#### Truth Assertions
+### Truth Assertions
 
 A Truth assertion takes the following format:
 
@@ -482,7 +480,7 @@ you suggestions for which assertion you can use.
 >
 > The last line of the above test should instead be `assertThat(lld.isEmpty()).isTrue();`.
 
-#### Example Test
+### Example Test
 
 Let's break down the provided `addLastTestBasic`:
 
@@ -518,7 +516,7 @@ In particular, **write tests before you implement.** This is called
 "test-driven development," and helps ensure that you know what your methods are
 supposed to do before you do them.
 
-#### `isEmpty` and `size`
+### `isEmpty` and `size`
 
 These two methods must take **constant time**. That is, the time it takes to for
 either method to finish execution should not depend on how many elements are in
@@ -540,7 +538,7 @@ to explore and find what granularity you prefer.
 >they fail. Then, implement the methods.
 
 
-#### `get`
+### `get`
 
 Write a test for the `get` method. Make sure to test the cases where `get`
 receives an invalid argument, e.g. `get(28723)` when the `Deque61B` only has 1
@@ -552,7 +550,7 @@ item, or a negative index. In these cases `get` should return `null`.
 >**Task**: **After you've written tests and verified that they fail**, implement
 >`get`.
 
-#### `getRecursive`
+### `getRecursive`
 
 Since we're working with a linked list, it is interesting to write a recursive
 get method, `getRecursive`.
@@ -566,7 +564,7 @@ in Java is a bit messy.)
 >**Task**: **After you've copy-pasted tests and verified that they fail**,
 >implement `getRecursive`.
 
-#### `removeFirst` and `removeLast`
+### `removeFirst` and `removeLast`
 
 Lastly, write some tests that test the behavior of `removeFirst` and
 `removeLast`, and again ensure that the tests fail. **For these tests you'll
@@ -589,18 +587,18 @@ for more information on what this means.
 >**Task**: **After you've written tests and verified that they fail**, implement
 >`removeFirst` and `removeLast`.
 
-### Submit to the Autograder
+## Submit to the Autograder
 
 Once you've written local tests and passed them, try submitting to the
 autograder. You may or may not pass everything.
 
 - If you fail any of the coverage tests, it means that there is a case that
-  your local tests did not cover. [Here](./flags.md) is a list of test cases that you should cover.
+  your local tests did not cover. [Here](./flags) is a list of test cases that you should cover.
 - If you fail any of the timing tests, it means that your implementation does
   not meet the timing constraints described above.
 - You will have a token limit of 4 tokens every 24 hours. **We will not reinstate tokens for failing to add/commit/push your code, run style, etc.**
 - 
-### Scoring
+## Scoring
 
 This project, similar to Project 0, is divided into individual components, each
 of which you must implement _completely correctly_ to receive credit.
@@ -618,7 +616,7 @@ of which you must implement _completely correctly_ to receive credit.
 
 For the **test coverage** component, we will run your
 tests against a staff solution and check how many scenarios and edge cases are
-tested. You can receive partial credit for this component. You can find the list of scenarios [here](./flags.md).
+tested. You can receive partial credit for this component. You can find the list of scenarios [here](./flags).
 
 ### Credits
 

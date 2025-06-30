@@ -69,11 +69,3 @@ released: true
 ### Flags for advanced resize tests
 
 - `resize_up_and_resize_down`: Trigger a resize up and then a resize down in the same test.
-
-
-### Flags for Maximizer61B tests
-
-- `max_default`: Check that max function works when not providing a comparator
-- `max_different_comp`: Check the max function works when providing a comparator
-- `max_empty`: Check the max function works on an empty iterable
-- `max_nonempty`: Check the max function works on a nonempty iterable
