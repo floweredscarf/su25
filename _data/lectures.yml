@@ -133,7 +133,7 @@ lectures:
       - title: "Ch 5"
         link: https://cs61b-2.gitbook.io/cs61b-textbook/5.-dllists
   - title: "Generics, ArrayLists"
-    # slides: https://docs.google.com/presentation/d/1TKQO-56_VvVaEiKFYyjCS_wYKfVg_DJE-nK9N62OWz4/edit?usp=sharing
+    slides: https://drive.google.com/file/d/1jrxOlTy8qo0X90q8ef34UrpkPH0AHEUI/view
     video: https://www.youtube.com/playlist?list=PLnp31xXvnfRrv834ePjKGB7i1az039-Gw
     # recording: https://youtu.be/DJSlcdq-hCY
     # quiz: https://forms.gle/GULhx2TsP6YrDnkA6
