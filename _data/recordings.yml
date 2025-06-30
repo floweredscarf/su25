@@ -14,8 +14,8 @@ recordings:
     link: "https://www.youtube.com/watch?v=bbkM5ArWSIM&list=PL102eBoiAo8mDS-ccb43g6Frv6dNT6T9S&index=2"
   # - title: "6/26"
   # - title: "6/27"
-  # - title: "6/30"
-  #   link: "https://www.eecs70.org/"
+  - title: "Lec 4-5" # 6/30
+    link: "https://www.youtube.com/watch?v=vaZHmAV7ws0&list=PL102eBoiAo8mDS-ccb43g6Frv6dNT6T9S&index=3&t=51s"
   # - title: "7/1"
   # - title: "7/2"
   #   link: "https://cs186berkeley.net/"
