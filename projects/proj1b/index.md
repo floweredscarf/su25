@@ -547,7 +547,7 @@ techniques you have learned so far to write your own tests. You can structure th
 since we won't be testing them. One possible (and suggested) structure is to create a new file in the `tests` directory
 called `LinkedListDeque61BTest` so that you have a testing file for each implementation.
 
-### The GH2 Package
+## The GH2 Package **(Optional)**
 
 The `gh2` package has just one primary component that you will edit:
 
@@ -621,7 +621,7 @@ averaging operation.
 You should now also be able to use the `GuitarHeroLite` class. Running it will provide a graphical interface, allowing
 the user (you!) to interactively play sounds using the `gh2` package's `GuitarString` class.
 
-### Submit to the Autograder
+## Submit to the Autograder
 
 Once you've written local tests and passed them, try submitting to the
 autograder. You may or may not pass everything.
@@ -639,7 +639,7 @@ autograder. You may or may not pass everything.
 - You will have a token limit of 4 tokens every 24 hours. **We will not reinstate tokens for failing to add/commit/push your code, run style, etc.**
 - You may find messages in the autograder response that look something like this: `WARNING: A terminally deprecated method in java.lang.System has been called`. You can safely ignore any line tagged as a `WARNING`.
 
-### Scoring
+## Scoring
 
 This project, similar to Project 0, is divided into individual components, each
 of which you must implement _completely correctly_ to receive credit.
@@ -659,3 +659,4 @@ For the **test coverage** component, we will run your
 tests against a staff solution and check how many scenarios and edge cases are
 tested. You can receive partial credit for this component. [Here](./flags) is a list of them!
 
+Finally, again, all components inside the `gh2` package are optional and will not be scored.

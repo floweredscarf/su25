@@ -587,7 +587,7 @@ for more information on what this means.
 >**Task**: **After you've written tests and verified that they fail**, implement
 >`removeFirst` and `removeLast`.
 
-### Submit to the Autograder
+## Submit to the Autograder
 
 Once you've written local tests and passed them, try submitting to the
 autograder. You may or may not pass everything.
@@ -598,7 +598,7 @@ autograder. You may or may not pass everything.
   not meet the timing constraints described above.
 - You will have a token limit of 4 tokens every 24 hours. **We will not reinstate tokens for failing to add/commit/push your code, run style, etc.**
 - 
-### Scoring
+## Scoring
 
 This project, similar to Project 0, is divided into individual components, each
 of which you must implement _completely correctly_ to receive credit.
