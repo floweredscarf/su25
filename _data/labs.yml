@@ -109,8 +109,8 @@ labs:
   - title: "Comparison, Exceptions, and Iteration"
     due: "2025/07/04"
     link: "/labs/lab08"
-    show_links: false
-  - title: "No Lab"
+    show_links: true
+  - title: "No Lab (Holiday)"
     nonumber: True
     rowspan: 1
   - title: "Theoretical #2: Object Oriented Programming and Abstract Data Types"
