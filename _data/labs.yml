@@ -107,7 +107,7 @@ labs:
     link: "/labs/lab07"
     show_links: true
   - title: "Comparison, Exceptions, and Iteration"
-    due: "2025/07/04"
+    due: "2025/07/05"
     link: "/labs/lab08"
     show_links: true
   - title: "No Lab (Holiday)"
