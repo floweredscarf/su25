@@ -539,11 +539,11 @@ different approaches to error handling. Some newer languages, such as [Go][], an
 [Go]: <https://go.dev/blog/error-handling-and-go>
 [Rust]: <https://doc.rust-lang.org/book/ch09-00-error-handling.html>
 
-Which seems most reasonable? If none, justify why all the options are bad.
+Out of the three above options, think about which seems most reasonable. If none, think about why all the options are bad.
 
 ### Exceptions
 
-There is a fourth option for handling errors, called an *exception*. Provided
+There is a fourth option for handling errors, called an **exception**. Provided
 by Java and other modern programming languages, including C++ and Python, an
 exception signals that an
 error of some sort has occurred. Java allows both the *signaling* of an error
@@ -551,7 +551,7 @@ and selective *handling* of the error. Methods called between the signaling
 method and the handling method need not be aware of the possibility of the
 error.
 
-An exception is *thrown* by the code that detects the exceptional situation,
+An exception is **thrown** by the code that detects the exceptional situation,
 and it is *caught* by the code that handles the problem, if any.
 
 Read Chapter **[6.2](https://joshhug.gitbooks.io/hug61b/content/chap6/chap62.html)** of the online textbook to learn more
@@ -620,9 +620,6 @@ try (Scanner scanner = new Scanner(System.in)) {
 {: .warning}
 >Even though we've presented exceptions last, this is solely because Java uses them as its error-handling mechanism. This shouldn't be interpreted as
 "exceptions are the best method of error-handling".
-
->Exceptions, similar to the other methods, of error-handling, have benefits
-and drawbacks. What are some of these benefits and drawbacks?
 
 ## Deliverables
 
