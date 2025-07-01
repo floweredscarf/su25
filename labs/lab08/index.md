@@ -49,7 +49,7 @@ motivate the problem we're solving and the tools we'll use along the way.
 
 Remember **casting** is a bit of special syntax where you can tell the compiler that a
 specific expression has a specific compile-time type. If the `maxDog` method
-below returns an object of static type `Dog`, the code normally wouldn't compile because we'd by trying to assign `largerPoodle` to an object of static type `Dog`, when we declared that `largerPoodle` is a `Poodle` (`Poodle` is a subtype of `Dog`, so not all `Dog`s are `Poodle`s). *Casting* tells Java to treat the `Dog` as if it were a `Poodle` for the purposes of compilation because it's possible that the `Dog` returned from `maxDog` *could be* a `Poodle`.
+below returns an object of static type `Dog`, the code normally wouldn't compile because we'd be trying to assign `largerPoodle` to an object of static type `Dog`, when we declared that `largerPoodle` is a `Poodle` (`Poodle` is a subtype of `Dog`, so not all `Dog`s are `Poodle`s). *Casting* tells Java to treat the `Dog` as if it were a `Poodle` for the purposes of compilation because it's possible that the `Dog` returned from `maxDog` *could be* a `Poodle`.
 
 ```java
 Poodle largerPoodle = (Poodle) maxDog(frank, frankJr);
@@ -396,7 +396,7 @@ private class SLListIterator implements Iterator<Item> {
 }
 ```
 
-Think about following questions:
+Think about the following questions:
 
 1. What's the invariant relation that's true between calls to `next`?
 2. In general, most experienced programmers prefer the organization introduced
@@ -420,14 +420,16 @@ This separates the `Iterator` from the underlying data structure or *iterable*.
 
 Modify the provided `AList` (array-backed list) class so that it `implements`
 `Iterable<Item>`. Then,
-add a nested `AListIterator` class which implements `Iterator<Item>`. Once you have properly completed this, the errors should go away. **Likewise, if you want 
-to test locally, you'll need to uncomment the test method in `AListTest.java`, and 
-make sure it doesn't have compilation errors.**
+add a nested `AListIterator` class which implements `Iterator<Item>`. 
 
 {: .warning}
-> If you submit to the autograder before you implement the above, your code likely will say
+> If you submit to the autograder _before_ you implement the above, your code likely will say
 that there are compilation errors coming from the autograder tests (you will see
 errors like "error: cannot find symbol" for calls to `a.iterator` or similar). 
+
+Once you have properly completed this, the errors should go away. **Likewise, if you want 
+to test locally, you'll need to uncomment the test method in `AListTest.java`, and 
+make sure it doesn't have compilation errors.**
 
 Note that `AList` itself does not implement `Iterator`. This is why we need
 a separate, nested, private class to be the iterator. Typically, this class
@@ -600,7 +602,7 @@ try {
 }
 ```
 
-This use of the `finally` block so common that the Java language developers
+This use of the `finally` block is so common that the Java language developers
 introduced the `try-with-resources` block. It allows you to declare resources
 being used as part of the try block, and automatically release those resources
 after the block finishes executing. The code below is equivalent to the snippet
