@@ -115,7 +115,7 @@ public class SLList {
 ```
 
 {: .info}
-> The inner class is declared `private` to enforce our abstraction barrier, but what does the `static` modifier do? The `static` modifier prevents the inner class from accessing instance variables or methods of the outer class. This saves a bit of memory and helps prevent mistakes by making sure we don't modify anything we shouldn't.
+> The inner class is declared `private` to enforce our abstraction barrier, but what does the `static` modifier do? The `static` modifier prevents the inner class from accessing _instance_ variables or methods of the outer class.(Note that the inner `static` class can still access _static_ (class) variables or methods of the outer class). This saves a bit of memory and helps prevent mistakes by making sure we don't modify anything we shouldn't.
 
 
 ### `toString` and `equals`
