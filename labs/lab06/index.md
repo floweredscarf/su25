@@ -10,12 +10,9 @@ has_right_toc: true
 released: true
 ---
 
-## [FAQ](faq.md)
+## [FAQ](faq)
 
 The FAQ for Lab 6 is located [here](faq).
-
-{: .warning}
-> **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
 
 ## Before You Begin
 
