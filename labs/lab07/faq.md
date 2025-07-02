@@ -12,7 +12,7 @@ released: true
 
 [Here](https://docs.google.com/presentation/d/1l9kslV4XB46fOOyD-hiXxi4sK-lmtFg9rMHRmS7_S5k/edit?usp=sharing) is Crystal's DMS Flow chart from a few semesters ago. You can follow steps methodically.
 
-Note that DMS is optional and out of scope for Summer 2025.
+Note that DMS is optional and out of scope for Summer 2025. The first slide of Crystal's flowchart is in scope, as there is no method selection involved.
 
 ## `ListSet`
 
