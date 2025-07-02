@@ -145,7 +145,7 @@ lectures:
   - title: 
     nonumber: True
   - title: "Abstract Data Types, Inheritance"
-    # slides: https://docs.google.com/presentation/d/12Yrdoyq7Yad2figzvjSpBvezRIzzfov65gq-2mcu0gI/edit?usp=sharing
+    slides: https://docs.google.com/presentation/d/1JqLcRbO8SrFaLfG4xPrdS4X0IC1nK13oJXnbsx1iXXI/
     video: "https://www.youtube.com/playlist?list=PL102eBoiAo8kKNZa9ZJ7g7zD9k4T5RxQ_"
     # quiz: https://forms.gle/buUP4J1iwXCY1rRq8
     # recording: https://youtu.be/GiLJktMHgy8
