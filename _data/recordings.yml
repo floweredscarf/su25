@@ -16,9 +16,9 @@ recordings:
   - title: "6/27"
   - title: "Lec 4-5" # 6/30
     link: "https://www.youtube.com/watch?v=vaZHmAV7ws0&list=PL102eBoiAo8mDS-ccb43g6Frv6dNT6T9S&index=3&t=51s"
-  # - title: "7/1"
-  # - title: "7/2"
-  #   link: "https://cs186berkeley.net/"
+  - title: "7/1"
+  - title: "Lec 6-7" # 7/2
+    link: "https://www.youtube.com/watch?v=mcsPp9Yzj6M&list=PL102eBoiAo8mDS-ccb43g6Frv6dNT6T9S&index=4"
   # - title: "7/3"
   # - title: "7/4"
   # - title: "7/7"
