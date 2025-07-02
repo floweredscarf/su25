@@ -139,7 +139,7 @@ The first call allows us to access Animal's eat method and invoke it. In some se
 In Java, subclasses do not directly inherit the constructor of their
 superclass. Rather, we have to directly reference the constructor of the parent class.
 We do this with the keyword `super`, which is treated as an invocation of the parent
-class' constructor. Thus, in the parenthesis following `super` you must supply the
+class' constructor. Thus, in the parentheses following `super`, you must supply the
 correct number and type of arguments.
 **This call to super must be the first line of the constructor.**
 
