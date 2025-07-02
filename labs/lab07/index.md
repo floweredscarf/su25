@@ -14,9 +14,6 @@ released: true
 
 The FAQ for Lab 7 is located [here](faq).
 
-{: .warning}
-> **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
-
 ## Learning Goals
 
 First, we'll cover inheritance in Java, which comes in three main forms: interface implementation, concrete class extension, and abstract class extension. We will also discuss dynamic method selection (DMS),
