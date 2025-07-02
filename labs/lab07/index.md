@@ -309,16 +309,16 @@ Classes must implement all method signatures from the interface(s) they implemen
 does not meet all the requirements we have said it does. The one exception to this is
 if the method has the `default` keyword, then the method is already filled in the interface.
 
-Interface methods are public by default.
+Interface methods are public by default
 : Interfaces are a description of behavior (what we can do), and it doesn't
 make sense to describe things that we can't do outside the class.
 
-Interfaces cannot have fields.
+Interfaces cannot have fields
 : Fields imply that the interface is storing some data, which implies that
 we are relying on its implementation -- which isn't allowed. The exception
 to this is that interfaces can have static constants (`static final`).
 
-Classes can implement more than one interface.
+Classes can implement more than one interface
 : Classes can behave like multiple things at once. To have a class implement
 more than one interface, we use commas:
 
@@ -468,17 +468,16 @@ Dog e = new Cat(); // invalid
 ```
 
 It is of course allowed to create an object whose static and dynamic types
-match, so examples `a` and `c` are acceptable. Intuitively, an `Animal` can be an `Animal`
-Likewise, we can declare a variable’s static type to be of a general class,
+match, so examples `a` and `c` are acceptable. Intuitively, an `Animal` can be an `Animal`. Likewise, we can declare a variable’s static type to be of a general class,
 and then assign its dynamic type to be something more specific.
 Since an object is, abstractly speaking, an
 API of methods and variables, any subclasses of that object will meet the
 requirements of the parent class API, and can be assigned that parent type
 statically. Thus, example `b` also is acceptable. Intuitively, a `Cat` can be an `Animal`.
-It is precisely for this same reason that examples `d`and`e`fail. A`Cat`object
-is more specific than an`Animal`, and could have extensions to the API that an
-`Animal`does not have. Thus, we cannot assign an`Animal`to be a`Cat`— an `Animal`may not be a`Cat`.
- Similarly, `Cat`and`Dog` are completely separate from each other, and could have differing
+It is precisely for this same reason that examples `d` and `e` fail. A `Cat` object
+is more specific than an `Animal`, and could have extensions to the API that an
+`Animal` does not have. Thus, we cannot assign an `Animal` to be a`Cat`— an `Animal` may not be a `Cat`.
+ Similarly, `Cat` and `Dog` are completely separate from each other, and could have differing
 extensions to the API. Thus, we cannot assign across the inheritance tree either.
 
 #### Method Signature Lookup
@@ -945,7 +944,7 @@ so feel free to add more comprehensive tests to this file.
 {: .task}
 > Implement the methods in `ListSet.java` and `BooleanSet.java`.
 
-## Aside: Generics and Autoboxing
+## Aside: Autoboxing and Generics
 
 As you should remember from [Lab 6](../lab06/#enhancement-4-generic-lists), generics allow us to
 define data structures without relying on the specific type of objects it holds.
@@ -959,7 +958,7 @@ is performed between wrapper classes and the primitives they represent.
 
 {% include alert.html content="
 Read Chapter **[5.1][]** and **[5.3][]** which we skipped earlier, covering
-**generics** and **autoboxing** in Java. These two topics will be helpful for
+**autoboxing** and **generics** in Java. These two topics will be helpful for
 implementing data structures moving forward, though they aren't emphasized in this lab.
 " %}
 
