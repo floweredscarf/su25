@@ -14,9 +14,6 @@ released: true
 
 This assignment has an [FAQ page](faq).
 
-{: .warning}
-> **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
-
 ## Learning Goals
 
 In this lab, we'll wrap up the Java-focused portion of the class.
@@ -343,15 +340,6 @@ public class SLList implements Iterable<Integer> {
 `curr` contains the index of the next value in the list to return.
 
 We can then use our `SLList` class in an enhanced `for` loop.
-
-```java
-SLList friends = SLList.of(5, 23, 42);
-Iterator<Integer> seer = friends.iterator();
-while (seer.hasNext()) {
-    int x = seer.next();
-    System.out.println(x);
-}
-```
 
 ```java
 SLList friends = SLList.of(5, 23, 42);

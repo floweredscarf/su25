@@ -5,13 +5,13 @@ title: >-
 has_children: true
 parent: Labs
 has_toc: false
-nav_exclude: true
+nav_exclude: false
 has_right_toc: true
 released: true
 ---
-## [FAQ](faq.md)
+## [FAQ](faq)
 
-The FAQ for Lab 9 is located [here](faq.md).
+The FAQ for Lab 9 is located [here](faq).
 
 {: .warning}
 > **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
@@ -20,10 +20,7 @@ The FAQ for Lab 9 is located [here](faq.md).
 
 Pull the files for lab 9 from the skeleton.
 
-> The online textbook readings in for this lab are optional. The lab covers
-> the same content as Chapter [8.2][], [8.3][], and [8.4][] but more concisely
-> so that there's not as much to read. You still may want to refer back to the
-> textbook if you prefer watching videos or reading more about the topic. Additionally there is overlap between this lab and todays's lecture. Asymptotic analysis is both a tough topic and an important one, so this repetition is intentional and should hopefully help to reinforce the topics. However, feel free to skip around the spec if you feel like you already have a good understanding of the content. 
+The online textbook readings in for this lab are optional. The lab covers the same content as Chapter [8.2][], [8.3][], and [8.4][]. You still may want to refer back to the textbook if you prefer watching videos or reading more about the topic. Feel free to skip around the spec if you feel like you already have a good understanding of the content. 
 
 [8.2]: https://joshhug.gitbooks.io/hug61b/content/chap8/chap82.html
 [8.3]: https://joshhug.gitbooks.io/hug61b/content/chap8/chap83.html
@@ -31,14 +28,6 @@ Pull the files for lab 9 from the skeleton.
 
 
 ## Learning Goals
-
-> “““““An engineer will do for a dime what any fool will do for a dollar.”
->
-> --- Arthur M. Wellington”
-> --- Paul Hilfinger”
-> --- Zephyr Omaly”
-> --- Laksith Prabu”
-> --- Dominic Conricode
 
 Efficiency comes in two flavors:
 
@@ -56,7 +45,7 @@ We've already seen many examples of reducing programming cost. We've written
 up front writing tests to save a lot of time down the line debugging programs.
 And we've seen how *encapsulation* can help reduce the cognitive load that a
 programmer needs to deal with by allowing them to think in terms of high-level
-abstractions like lists instead of having to deal with the nitty-gritty details
+abstractions like lists, as opposed to having to deal with the nitty-gritty details
 of pointer manipulation. We've also discussed some elements of design for
 methods and classes, like how we prefer passing arguments around over
 maintaining `static` variables.
@@ -65,7 +54,7 @@ We've only just scratched the surface on methods for reducing and optimizing
 programming costs, but for the coming weeks, it'll be helpful to have a working
 understanding of the idea of **execution cost**.
 
-In this lab, we consider ways of measuring the efficiency of a given code
+In this lab, we consider ways of **measuring the efficiency** of a given code
 segment. Given a function `f`, we want to find out how "quickly" that function runs.
 
 ## Algorithms
@@ -122,7 +111,7 @@ segment of code.
 
 The file `Sorter.java` contains a version of the insertion sort algorithm
 mentioned earlier. Its `main` method uses a command-line argument to determine
-how many items to sort. It fills an array of the specified size with randomly
+how many items to sort. Then, it fills an array of the specified size with randomly
 generated values, starts a timer, sorts the array, and prints the elapsed time
 when the sorting is finished.
 
@@ -134,9 +123,7 @@ java Sorter 300
 Compiling and running `Sorter` like above will tell us exactly how long it
 takes to sort an array of 300 randomly chosen elements.
 
-Alternatively, you can set command line arguments in IntelliJ by clicking on the class name next to the green run button on the top left and selecting "Edit Configurations." Next, you can enter command line arguments into the "Program arguments" field.
-
-
+Alternatively, you can set command line arguments in IntelliJ by clicking on the class name next to the green run button on the top left and selecting "Modify Run Configuration...". Next, you can enter command line arguments into the "Program arguments" field.
 
 <details markdown="block">
   <summary markdown="block">
@@ -1030,14 +1017,14 @@ observations.
 It's worth spending a little time proving each of these to yourself with a
 visual model! I personally recommend Desmos or WolframAlpha.
 
-### Deliverables
+## Deliverables
 
-A quick recap of what you need to do to finish today's lab.
+A quick recap of what you need to do to finish today's lab:
 
 - Look through the `Timer` class and try timing the algorithm in `Sorter.java`
   for different inputs. Discuss with your neighbors what you
 came up with.
 - Read through the content on asymptotic analysis (big-theta, O, and omega)
   focusing on how to handle logarithmic, iterative, and recursive algorithms.
-- **Complete the online assessment on Gradescope. There is no coding submission.**
+- **Complete the online assessment on Gradescope. There is no coding submission.** TODO: create and link Gradescope assignment
 
