@@ -152,7 +152,7 @@ labs:
     due: "2025/07/17"
     link: labs/lab14
     show_links: false
-  - title: "Theoretical #4: Binary Search Trees (Optional)"
+  - title: "Theoretical #4: Binary Search Trees"
     theoretical: True
     examprep_video: True
     examprep_slides: True
