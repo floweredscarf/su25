@@ -177,7 +177,7 @@ lectures:
     nonumber: True
   - title: "Asymptotics"
     # slides: https://docs.google.com/presentation/d/15n6HWzcTGlT1SNslOWMGUSua05dYOu1vcvUtC8XNAEs/
-    # video: "" # https://youtube.com/playlist?list=PLnp31xXvnfRrajvLNrqCND6CQUbqaR0mU&si=jR0uKF9obQWfVavZ
+    video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRrajvLNrqCND6CQUbqaR0mU"
     # recording: https://youtu.be/4sm57s0Xm6E
     # quiz: https://forms.gle/5hqMPYFenYXDTF1o6
     readings:
@@ -185,7 +185,7 @@ lectures:
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/13.-asymptotics-i"
   - title: "Asymptotics, Measuring Code Efficiency"
     # slides: https://docs.google.com/presentation/d/15n6HWzcTGlT1SNslOWMGUSua05dYOu1vcvUtC8XNAEs/
-    # video: "" # https://youtube.com/playlist?list=PLnp31xXvnfRrajvLNrqCND6CQUbqaR0mU&si=jR0uKF9obQWfVavZ
+    video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRqwuAZ5q3P5xUxe2xNZL3an"
     # recording: https://youtu.be/4sm57s0Xm6E
     # quiz: https://forms.gle/5hqMPYFenYXDTF1o6
     readings:
@@ -197,7 +197,7 @@ lectures:
     nonumber: True
   - title: "Introduction to Trees and Traversals"
     # slides: https://docs.google.com/presentation/d/15n6HWzcTGlT1SNslOWMGUSua05dYOu1vcvUtC8XNAEs/
-    # video: "" # https://youtube.com/playlist?list=PLnp31xXvnfRrajvLNrqCND6CQUbqaR0mU&si=jR0uKF9obQWfVavZ
+    video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRrks2Xi7wU8s82FcwPaINYs"
     # recording: https://youtu.be/4sm57s0Xm6E
     # quiz: https://forms.gle/5hqMPYFenYXDTF1o6
     readings:
