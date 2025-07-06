@@ -20,6 +20,9 @@ The FAQ for Lab 9 is located [here](faq).
 
 Pull the files for lab 9 from the skeleton.
 
+{: .info}
+>Lab 9 does not have any coding deliverables, but the ungraded exercise with `Sorter.java` may help with your understanding of asymptotics. The deliverable for this lab is a Gradescope multiple choice assignment, which you have unlimited attempts to submit. When you complete a subquestion, you can click the "Save Answer" button, which will tell you if your answer is incorrect or correct. To view explanations, submit your assignment and click through the question numbers in the table of contents on the right. You will only see an explanation if your answer is correct.
+
 The online textbook readings in for this lab are optional. The lab covers the same content as Chapter [8.2][], [8.3][], and [8.4][]. You still may want to refer back to the textbook if you prefer watching videos or reading more about the topic. Feel free to skip around the spec if you feel like you already have a good understanding of the content. 
 
 [8.2]: https://joshhug.gitbooks.io/hug61b/content/chap8/chap82.html
@@ -37,8 +40,8 @@ Programming cost
     - How maintainable is your code?
 
 Execution cost
-:   - **Time complexity**: How much time does your program take to execute?
-    - **Space complexity**: How much memory does your program require?
+:   - **Time complexity**: What is the asymptotic behavior of your program's runtime as the size if the input grows?
+    - **Space complexity**: What is the asymptotic behavior of your program's memory usage as the size if the input grows?
 
 We've already seen many examples of reducing programming cost. We've written
 *unit tests* and employed *test-driven development* to spend a little more time
@@ -115,15 +118,18 @@ how many items to sort. Then, it fills an array of the specified size with rando
 generated values, starts a timer, sorts the array, and prints the elapsed time
 when the sorting is finished.
 
+To compile and run `Sorter` with a command-line argument of 300 (to sort an array of length 300), run the below in your terminal:
+
 ```sh
 javac Sorter.java
 java Sorter 300
 ```
 
-Compiling and running `Sorter` like above will tell us exactly how long it
+This will output exactly how long it
 takes to sort an array of 300 randomly chosen elements.
 
-Alternatively, you can set command line arguments in IntelliJ by clicking on the class name next to the green run button on the top left and selecting "Modify Run Configuration...". Next, you can enter command line arguments into the "Program arguments" field.
+{: .info}
+>Alternatively, you can set command line arguments in IntelliJ by clicking on the class name next to the green run button on the top left and selecting "Modify Run Configuration...". Next, you can enter command line arguments into the "Program arguments" field.
 
 <details markdown="block">
   <summary markdown="block">
@@ -137,8 +143,8 @@ Alternatively, you can set command line arguments in IntelliJ by clicking on the
 
 </details>
 
-By compiling and running `Sorter.java` with different arguments, determine the size
-of the smallest array that needs 1 second (1000 milliseconds) to sort.
+By compiling and running `Sorter.java` with different arguments, **try to determine the size
+of the smallest array that needs 1 second (1000 milliseconds) to sort**.
 
 You may notice that other students in lab end up with different timing results
 and a different number of elements. What factors might contribute to these differences?
@@ -179,7 +185,7 @@ int b = 9 * (a - 24) / (9 - 7);
 In the example above, each assignment statement takes one additional step on
 top of however many steps it took to compute the right-hand side expressions.
 In this case, the first assignment to `a` takes one step to compute `4 * 6` and
-one more step to assign the result, 24, to the variable `a`. **How many steps
+one more step to assign the result, 24, to the variable `a`. **How many more steps
 does it take to finish the assignment to `b`?**
 
 Here are some rules about what we count as taking a single step to compute:
@@ -194,7 +200,7 @@ One important case to be aware of is that, while *calling* a function takes a
 single step to setup, *executing* the body of the function may require us to do
 **much** more than a single step of work.
 
-### Counting Conditionals
+### **Counting Conditionals**
 
 With conditional statements like `if` statements, the total step count depends
 on the outcome of the condition we are testing.
@@ -217,7 +223,7 @@ maximum number of steps a program can execute, and the **best case count**, or
 the minimum number of steps a program needs to execute. The worst case count
 for the program segment above is 4 and the best case count is 1.
 
-### `if ... else` Counting
+### **`if ... else` Counting**
 
 Consider an `if ... else` of the form,
 
@@ -238,7 +244,7 @@ Think back to your practice tracing through programs to figure out which parts
 of the conditional will be evaluated (given the condition is true or false),
 and which parts won't be evaluated.
 
-### Loop Counting
+### **Loop Counting**
 
 ```java
 for (int k = 0; k < N; k++) {
@@ -250,21 +256,23 @@ In terms of $$N$$, how many operations are executed in this loop? Remember that
 each of the actions in the for-loop header (the initialization of `k`, the exit
 condition, and the increment) count too!
 
-> It takes 1 step to execute the initialization, `int k = 0`. Then, to execute
-> the loop, we have the following sequence of steps:
->
+It takes 1 step to execute the initialization, `int k = 0`. Then, to execute
+the loop, we have the following sequence of steps:
+
 > - Check the loop condition, `k < N`
 > - Add 1 to the `sum`
 > - Update the value of `sum` by assignment
 > - Increment the loop counter, `k`
 > - Update `k` by assignment
->
-> This accounts for the first $$1 + 5N$$ steps. In the very last iteration of
-> the loop, after we increment `k` such that `k` now equals $$N$$, we spend one
-> more step checking the loop condition again to figure out that we need to
-> finally exit the loop so the final number of steps is $$1 + 5N + 1$$.
 
-### Example: `remove`
+This accounts for the first $$1 + 5N$$ steps. In the very last iteration of
+the loop, after we increment `k` such that `k` now equals $$N$$, we spend one
+more step checking the loop condition again to figure out that we need to
+finally exit the loop so the final number of steps is $$1 + 5N + 1$$.
+
+<!-- removing since this is pretty much useless and just hard to read -->
+
+<!-- ### Example: `remove`
 
 Now consider code for the `remove` method, which removes the item at a given position of an array `values` by shifting over all the remaining elements. We notice here that things become slightly more complicated as the number of steps performed matters both on `pos` and `len`, the number of items contained in `values`. We now count the number of steps performed in terms of these two variables.
 
@@ -381,25 +389,24 @@ We often prefer to simplify this by substituting `len` for a symbolic name like 
 
 $$5 \frac{N(N + 1)}{2} + 3N + 2$$
 
-That took... a while.
+That took... a while. -->
 
 ## Abbreviated Estimates
 
-> From this section onwards, we present a set of fairly precise definitions,
-> and we'll be relying on the example developed in this and the previous
-> part to build a solid definition for asymptotic notation. If you're
-> not fully comfortable with any of the material so far, now is the perfect
-> time to review it with someone in your lab or your TA!
+From this section onwards, we present a set of fairly precise definitions,
+and we'll be relying on the example developed in this and the previous
+part to build a solid definition for asymptotic notation. If you're
+not fully comfortable with any of the material so far, now is the perfect
+time to review it with someone in your lab or your TA!
 
 Producing step count figures even for those relatively simple program segments took a **lot**
-of work. But normally we don't actually need an exact step count but rather
-just an *estimate* of how many steps will be executed.
+of work. But normally we don't actually need an exact step count; rather, we just want an *estimate* of how many steps will be executed.
 
-In most cases, we only care about what happens for very large $$N$$ as that's
-where the differences between algorithms and their execution time really become
+In most cases, we only care about what happens for **very large $$N$$** as that's
+where the differences between algorithms and their execution time significantly become
 limiting factors in the scalability of a program.
 
-Why is this? Debate with someone in your lab. Then, see our thoughts below
+Why is this? Debate with someone in your lab. Then, see our thoughts below.
 
 <details markdown="block">
   <summary markdown="block">
@@ -421,9 +428,7 @@ examples listed below:
 - Social network with billions of users
 - Encoding billions of bytes of video data
 
-> Here we are using a generic value of $$N$$ to represent the size of an input passed into a function. Note that we will not always use $$N$$ to represent the size of a program input (though it is common).
->
-> Also notice that sometimes the program will be parameterized by more than just one input; however, for most examples in this class we will ask you to write the order of growth in terms of just one variable.
+Here we are using a generic value of $$N$$ to represent the size of an input passed into a function. Note that sometimes the program will be parameterized by more than just one input, so the order of growth may be in terms of multiple variables.
 
 The **asymptotic behavior** of a function `f` (any one of the programs above,
 for example) is a description of how the execution time of `f` changes as the
@@ -438,18 +443,14 @@ values of $$N$$, $$2N + 3$$ will be less than $$3N$$ and slightly greater than
 $$2N$$. As $$N$$ tends towards infinity, the $$+ 3$$ contributes less and less
 to the overall runtime.
 
-This pattern holds for higher-order terms too. Applying this estimation
-technique to the `removeZeroes` method above results in the following orders of
-growth.
+This pattern holds for higher-order terms too:
 
-- The order of growth for the best-case runtime of `removeZeroes`, $$5N + 2$$,
-  is proportional to the `len`, $$N$$.
-- The order of growth for the worst-case runtime of `removeZeroes`, $$5
-  \frac{N(N + 1)}{2} + 3N + 2$$, is $$N^2$$.
+- The order of growth for a function `f` with runtime $$5N + 2$$ is $$N$$.
+- The order of growth for a function `g` with runtime $$5
+  \frac{N(N + 1)}{2} + 3N + 2$$ is $$N^2$$.
 
-The intuitive simplification being made here is that we **discard all but the
-most significant term of the estimate and also any constant factor of that
-term**. Later, we will see exactly why this is true with a more formal proof.
+{: .info}
+>The intuitive simplification being made here is that we **discard all but the most significant term of the estimate and also any constant factor of that term**. Later, we will see exactly why this is true with a more formal proof.
 
 ## Asymptotic Analysis
 
@@ -467,9 +468,7 @@ fundamental assumption often isn't true.
 
 Compute the order of growth
 : Given the cost function, we can then compute the **order of growth** for a
-program. In the `removeZeroes` example, we saw how we could compute an exact
-count and then find the correct order of growth runtime classification for it
-by simplifying the expression.
+program. For example, if we computed the exact step count of a program, we can simplify that expression to find the correct order of growth runtime classification.
 
 Later, we'll learn a few shortcuts and practice building intuition / inspection
 to determine orders of growth, but it's helpful to remember that we're always
@@ -500,29 +499,24 @@ we're all on the same page with the claims we make, so long as we use them
 carefully and precisely.
 
 Learning new notation can be a little daunting, but we've actually already
-been making statements in big-theta terms. The first claim about `removeZeroes`
+been making statements in big-theta terms. The statement
 that we made earlier,
 
-> The order of growth for the best-case runtime of `removeZeroes`, $$5N + 2$$,
-> is proportional to the length of the array, $$N$$.
+> "The order of growth for a function `f` with runtime $$5N + 2$$ is $$N$$."
 
-is essentially equivalent to the claim: **In the best-case, `removeZeroes` is
-in $$\Theta(N)$$.**
+is essentially equivalent to the claim: **`f` is in $$\Theta(N)$$.**
 
-And, likewise, the second claim that we made earlier,
+And, likewise, the second statement that we made earlier,
 
-> The order of growth for the worst-case runtime of `removeZeroes`, $$5
-> \frac{N(N + 1)}{2} + 3N + 2$$, is $$N^2$$.
+> "The order of growth for a function `g` with runtime $$5
+  \frac{N(N + 1)}{2} + 3N + 2$$ is $$N^2$$."
 
-has its own equivalent in big-theta notation: **In the worst-case,
-`removeZeroes` is in $$\Theta(N^2)$$.**
+has its own equivalent in big-theta notation: **`g` is in $$\Theta(N^2)$$.**
 
-> When we use `removeZeroes` here, we mean the *runtime of the function* rather
-> than the function itself. In practice, we'll often use this English shortcut
-> as long as the meaning is clearly communicated, though it would be more
-> accurate to say the *runtime of the function*.
+{: .info}
+>When we use `f` (and `g`) here, we mean the *runtime of the function `f` (and `g`)* rather than the function itself. In practice, we'll often use this English shortcut as long as the meaning is clearly communicated, though it would be more accurate to say the *runtime of the function*.
 
-### Asymptotic Variables
+<!-- ### Asymptotic Variables
 
 You may have observed, in our analysis of `removeZeroes`, that we were careful
 to make clear what the running time estimate depended on, namely the value of
@@ -535,7 +529,7 @@ sorting later in the course. It may not always be clear what $$N$$ means.
 
 We'll often qualify our runtimes by stating, "where $$N$$ is the length of the
 list", but we often also say things like, "where $$N$$ is the value of the
-largest number in the list".
+largest number in the list". -->
 
 ### Asymptotic Bounds
 
@@ -544,12 +538,9 @@ positive constants $$k_1, k_2$$ such that $$k_1 \cdot f(N) \leq R(N) \leq k_2 \c
 f(N)$$ for all $$N$$ greater than some $$N_0$$ (very large $$N$$).
 
 In other words, $$R(N)$$ must be **bounded** above and below by $$f(N)$$
-asymptotically. But we've already seen something like this too.
+asymptotically. For example:
 
-> We say that the *order of growth* of $$2N + 3$$ is $$N$$ since, for large
-> values of $$N$$, $$2N + 3$$ will be less than $$3N$$ and slightly greater
-> than $$2N$$. As $$N$$ tends towards infinity, the $$+ 3$$ contributes less
-> and less to the overall runtime.
+> - We say that the *order of growth* of $$2N + 3$$ is $$N$$ since, for large values of $$N$$, $$2N + 3$$ will be less than $$3N$$ and slightly greater than $$2N$$. As $$N$$ tends towards infinity, the $$+ 3$$ contributes less and less to the overall runtime.
 
 In this example, we chose $$k_1 = 2$$ and $$k_2 = 3$$. These two choices of
 $$k$$ constitute a *tight-bound* for $$2N + 3$$ for all values of $$N \geq 3$$.
@@ -562,7 +553,7 @@ size increases, we'd expect the runtime to also increase linearly.
 ### Big-O
 
 But, there are many scenarios where we can't actually give a tight bound:
-sometimes, it just doesn't exist. And, practically-speaking, one of the common
+sometimes, a tight bound just doesn't exist. And, practically-speaking, one of the common
 use scenarios for runtime in the real world is to help choose between several
 different algorithms with different orders of growth. For these purposes, it's
 often sufficient just to give an *upper-bound* on the runtime of a program.
@@ -578,7 +569,7 @@ $$N$$).
 
 Note that this is a looser condition than big-theta since big-O doesn't include the lower bound.
 
-To see why we would prefer a theta bound consider the following simplified example. Would you know more about a person's age if they told you either 1. "I am between 30 and 40 years old" OR 2. "I am less than 40 years old"?
+To see why we would prefer a theta bound, consider the following simplified example: would you know more about a person's age if they told you either 1) "I am between 30 and 40 years old", or 2) "I am less than 40 years old"?
 
 ### Big-Omega
 
@@ -593,7 +584,7 @@ $$N$$).
 Note that this too is a looser condition than big-theta since big-Omega doesn't include
 the upper bound.
 
-We can return to our simplified example to again show why we prefer a theta bound. Would you know more about a person's age if they told you either 1. "I am between 30 and 40 years old" OR 2. "I am more than 30 years old"?
+We can return to our simplified example to again show why we prefer a theta bound: would you know more about a person's age if they told you either 1) "I am between 30 and 40 years old", or 2) "I am more than 30 years old"?
 
 ### Back to Big Theta
 
@@ -601,28 +592,10 @@ Now that we have learned big-Omega and big-O notation, where does big theta fall
 is in the same family as the tightest big-Omega bound? This means the code is both
 upper bounded **AND** lower bounded by the same family of functions! This is what we mean by **equal**.
 
-A theta bound only exists if the tightest big-O bound is equal to the tightest big-Omega bound.
+{: .info}
+>A theta bound only exists if the tightest big-O bound is equal to the tightest big-Omega bound.
 
-## Discussion: Case Analysis
-
-> Read the following three sections of **[Chapter 8.4 from Runtime Analysis
-> Subtleties][]** all the way through **Big Omega**. You don't need to read the
-> last section on *Amortized Analysis*, yet. We will see that in a few labs!
-
-[Chapter 8.4 from Runtime Analysis Subtleties]: https://joshhug.gitbooks.io/hug61b/content/chap8/chap84.html#runtime-analysis-subtleties
-
-Discuss with someone *why* each of the following claims are true.
-
-- `removeZeroes` is in $$\Omega(1)$$.
-- `removeZeroes` is in $$\Omega(N)$$.
-- `removeZeroes` is in $$O(N^2)$$.
-- A $$\Theta(\cdot)$$ bound does not exist for `removeZeroes`.
-- In the best case, `removeZeroes` is in $$O(N^2)$$.
-- In the best case, `removeZeroes` is in $$\Theta(N)$$.
-- In the worst case, `removeZeroes` is in $$\Omega(\log N)$$.
-- In the worst case, `removeZeroes` is in $$\Theta(N^2)$$.
-
-### Limit Definition
+<!-- ### Limit Definition
 
 An alternative, the calculus-based [limit definition][] is also sometimes useful,
 as you can apply L'Hopital's Rule to derive asymptotic simplifications like
@@ -631,7 +604,7 @@ dropping multiplicative constants and additive lower-order terms.
 We generally won't use this too often though, as the first definition provides
 a more useful and intuitive visualization of the lower and upper bounds.
 
-[limit definition]: https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-spring-2015/resources/mit6_042js15_session24/
+[limit definition]: https://ocw.mit.edu/courses/6-042j-mathematics-for-computer-science-spring-2015/resources/mit6_042js15_session24/ -->
 
 ## Common Orders of Growth
 
@@ -648,9 +621,9 @@ fastest growth.
 
 ![Orders of Growth](img/orders-of-growth.png)
 
-### Logarithmic Algorithms
+### Logarithms Review
 
-First, if you are shaky on the properties of logarithms, I suggest looking through
+First, if you are shaky on the properties of logarithms, we suggest looking through
 [this](https://www.khanacademy.org/math/algebra2/x2ec2f6f830c9fb89:logs/x2ec2f6f830c9fb89:log-prop/a/properties-of-logarithms) Khan academy section on log properties!
 
 We will shortly encounter algorithms that run in time proportional to $$\log
@@ -662,17 +635,17 @@ value. It is usually abbreviated as $$\log_{10}$$. Thus
 - $$\log_{10} 90$$ is slightly less than 2 because $$10^{2} = 100$$.
 - $$\log_{10} 1$$ is 0 because $$10^{0} = 1$$.
 
-In algorithms, we commonly deal with the base-2 logarithm, written as $$\lg$$,
+<!-- In algorithms, we commonly deal with the base-2 logarithm, written as $$\lg$$,
 defined similarly.
 
 - $$\lg 1024$$ is 10 because $$2^{10} = 1024$$.
 - $$\lg 9$$ is slightly more than 3 because $$2^{3} = 8$$.
-- $$\lg 1$$ is 0 because $$2^{0} = 1$$.
+- $$\lg 1$$ is 0 because $$2^{0} = 1$$. -->
 
 Another way to think of log is the following: $$\log_{\text{base}} N$$ is the
 number of times $$N$$ must be divided by the base before it hits 1. For the
 purposes of determining orders of growth, however, the log base actually
-doesn't make a difference because, by the change of base formula, we know that
+doesn't make a difference because, by the **change of base formula** (see below), we know that
 any logarithm of $$N$$ is within a constant factor of any other logarithm of
 $$N$$. We usually express a logarithmic algorithm as simply $$\log N$$ as a
 result.
@@ -680,9 +653,11 @@ result.
 Change of Base Formula
 : $$\log_b x = \frac{\log_a x}{\log_a b}$$
 
-Algorithms for which the running time is logarithmic are those where processing
-discards a large proportion of values in each iterations. The binary search
-algorithm is an example. We can use binary search in order to guess a number
+### Logarithmic Algorithms
+
+Algorithms for which the running time is logarithmic are those where **processing
+discards a large proportion of values in each iterations**. The binary search
+algorithm is an example. Given a sorted array, we can use binary search in order to guess a number
 that a person is thinking of. In each iteration, we guess a number and are told whether the number they're thinking of is higher or lower than our guess. The algorithm then discards half the
 possible values for the searched-for number, repeating the process in the other half. Thus, we continually divide the size of
 the problem by 2 until there is only one value left.
@@ -705,7 +680,7 @@ round would have the following numbers under consideration:
 | 10      | 2            |
 | 11      | 1            |
 
-We know from above that $$\lg 1024 = 10$$ which gives us an approximation of
+We know from above that $$\log_{2} 1024 = 10$$ which gives us an approximation of
 how many rounds it will take. We will see further applications of logarithmic
 behavior when we work with trees in subsequent activities.
 
@@ -831,7 +806,7 @@ difficult to model exactly how much work each recursive call will do. While a
 bar chart is a very useful way of representing the runtime of iterative
 functions, it's not always the right tool for recursive functions.
 
-Instead, let's try another strategy: drawing call trees. Like the charting
+Instead, let's try another strategy: **drawing call trees**. Like the charting
 approach we used for iteration earlier, the *call tree* will reduce the
 complexity of the problem and allow us to find the overall runtime of the
 program on large values of $$N$$ by taking the tree recursion out of the
@@ -866,11 +841,9 @@ factor $$b$$ and height $$h$$ we can compute the number of nodes as $$b^{h+1}-1$
 
 Spend a little time thinking about the maximum height of this tree: when does the base
 case tell us the tree recursion will stop?
-
-> Note that the counting the number of nodes in this recursive call tree for `fib` ends up being a little tricky because the tree is not symmetric i.e. each of the two recursive calls made from one call to `fib` are not the same.
->
-> If you are interested, you can check out [this article](https://www.geeksforgeeks.org/time-complexity-recursive-fibonacci-program/) which explains how to compute a tight bound for `fib`.
-
+> - Note that the counting the number of nodes in this recursive call tree for `fib` ends up being a little tricky because the tree is not symmetric i.e. each of the two recursive calls made from one call to `fib` are not the same.
+> - If you are interested, you can check out [this article](https://www.geeksforgeeks.org/time-complexity-recursive-fibonacci-program/) which explains how to compute a tight bound for `fib`.
+ 
 Returning to the original problem of `mitosis`, the call tree is setup just
 like `fib` except instead of decrementing $$N$$ by 1 or 2, we now divide $$N$$
 in half each time. Each node performs a constant amount of work but also makes
@@ -890,21 +863,22 @@ give us an overall runtime in $$\Theta(N)$$.
 
 There is another way to approach this analysis: going level by level. We can see that on the first level of the recursive call tree there is a single node doing a constant amount of work (1). On the second level we double the number of nodes, but each node still is doing a constant amount of work, so the total work on this layer is 1+1=2. Similarly, we can see that the work on level 3 is 4, on level 4 is 8, and so on following the pattern that the work on level $$i$$ is $$2^{i}$$. From the analysis above, we know that this tree has $$\log_{2} N$$ levels. Now, to figure out the total work done by the function we just need to sum up all the work done by all of the levels:
 
-$$1 + 2 + 4 + \cdots + 2^{(log_{2} N) - 2} + 2^{(log_{2} N) - 1}$$
+$$1 + 2 + 4 + \cdots + 2^{(log_{2} N) - 1} + 2^{log_{2} N}$$
 
-$$ = 1 + 2 + 4 + \cdots + \frac{N}{4} + \frac{N}{2}$$
+$$ = 1 + 2 + 4 + \cdots + \frac{N}{2} + N$$
 
 This is a geometric sum which is dominated by its last element. Here, the last element is larger than all of the elements that came before it combined (Exercise: prove this to yourself. As a hint, try out the first few powers of 2). This allows us to say the overall runtime is proportional to the last term giving us an overall runtime in $$\Theta(N)$$
 
-It will not always be the case that each layer in a recursive call tree will have the same amount of summed work, nor will it always be the case that each node in a recursive call tree will do the same amount of work. You will have to use the techniques at your disposal to solve these problems, which is a skill that takes time and practice to develop.
+{: .info}
+>It will not always be the case that each layer in a recursive call tree will have the same amount of summed work, nor will it always be the case that each node in a recursive call tree will do the same amount of work. You will have to use the techniques at your disposal to solve these problems, which is a skill that takes time and practice to develop.
 
 In general, for a recursion tree, we can think of the total work as:
 
 $$\sum_{\text{layers}} \frac{\text{nodes}}{\text{layer}
 }\frac{\text{work}}{\text{node}}$$
 
-For `mitosis`, we have $$\log N$$ levels,
-$$2^(i-1)$$ nodes in layer $$i$$, with $$1$$ work per node. Thus we see the summation will be as follows, which matches the quantity we just calculated:
+For `mitosis`, we have $$(\log N) + 1$$ levels,
+$$2^i$$ nodes in layer $$i$$, with $$1$$ work per node. Thus we see the summation will be as follows, which matches the quantity we just calculated:
 
 $$\sum_{i = 0}^{\log N} 2^i (1)$$
 
@@ -1014,9 +988,6 @@ observations.
 - All logarithms are proportional to each other by the Change of Base formula
   so we can express them generally as just $$\log$$.
 
-It's worth spending a little time proving each of these to yourself with a
-visual model! I personally recommend Desmos or WolframAlpha.
-
 ## Deliverables
 
 A quick recap of what you need to do to finish today's lab:
@@ -1026,5 +997,4 @@ A quick recap of what you need to do to finish today's lab:
 came up with.
 - Read through the content on asymptotic analysis (big-theta, O, and omega)
   focusing on how to handle logarithmic, iterative, and recursive algorithms.
-- **Complete the online assessment on Gradescope. There is no coding submission.** TODO: create and link Gradescope assignment
-
+- **Complete the online assessment on [Gradescope](https://www.gradescope.com/courses/1050654/assignments/6390614). There is no coding submission.**
