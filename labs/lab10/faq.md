@@ -3,7 +3,7 @@ layout: page
 title: >-
   FAQ
 parent: >-
-  Lab 09: Trees and Traversals
+  Lab 10: Trees and Traversals
 grand_parent: Labs
 has_right_toc: true
 released: true

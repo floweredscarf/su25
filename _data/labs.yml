@@ -129,7 +129,7 @@ labs:
   - title: "Trees and Traversals"
     due: "2025/07/10"
     link: labs/lab10
-    show_links: false
+    show_links: true
   - title: "Binary Search Trees"
     due: "2025/07/11"
     link: labs/lab11
