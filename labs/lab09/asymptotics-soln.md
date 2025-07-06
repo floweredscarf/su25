@@ -5,6 +5,7 @@ title: >-
 parent: >-
   Lab 09: Runtime Analysis
 grand_parent: Labs
+nav_exclude: true
 has_right_toc: true
 released: false
 ---
