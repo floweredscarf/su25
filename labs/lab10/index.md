@@ -362,11 +362,12 @@ public class DepthFirstIterator implements Iterator<TreeNode> {
 ```
 
 {: .task}
->Complete the conceptual exercises for the topics covered above on Gradescope!
+>Complete the Lab 10 multiple choice assignment on Gradescope! You have unlimited attempts.
 
-## Optinonal Coding Practice: Amoeba Family Tree
+## Optional Coding Practice: Amoeba Family Tree
 
-{% include alert.html type="info" content=" The following exercises are optional and are provided in the skeleton only as a reference for you to practice some recursive programming on your own! You can find the relevant files in the src and tests folders.  " %}
+{: .info}
+>The following exercises are optional and are provided in the skeleton only as a reference for you to practice some recursive programming on your own! You can find the relevant files in the src and tests folders. All the tests are provided locally for if you'd like to check your work.
 
 An amoeba family tree is an example of our above definition of a tree that you will
 be working with for this lab. It is simpler than a normal family tree because amoebas
@@ -412,11 +413,7 @@ The `Amoeba` objects are the nodes of our tree, represented by the
 `AmoebaFamily` will be implemented through recursive helper methods of the
 `Amoeba` class.
 
-> This organization structure should feel similar. Before for our `DLList` we had the 
-> `DLList` class and within it the inner class `Node`. The `DLList` 
-> encapsulated the recursive structure of the `Node`s. Now we will have our
-> `AmoebaFamily` which will encapsulate the recursive structure of the 
-> `Amoeba`s.
+This organization structure should feel similar. Before for our `DLList` we had the `DLList` class and within it the inner class `Node`. The `DLList` encapsulated the recursive structure of the `Node`s. Now we will have our `AmoebaFamily` which will encapsulate the recursive structure of the `Amoeba`s.
 
 ### Void Recursive Methods
 
@@ -433,7 +430,7 @@ anything; they have only been modifying the state of the `AmoebaFamily`. We will
 be able to do cooler things if we can return values, and the next example will
 take advantage of this.
 
-## Exercise: `longestName`
+## Optional Exercise: `longestName`
 
 Implement the `longestName` method in the `AmoebaFamily` class. Make this as
 similar to `longestNameLength` as possible. You will find that these non-void
@@ -445,9 +442,7 @@ You will not need to use `longestNameLength` directly in your implementation of
 
 ## Optional Exercise: Tree Iterators
 
-### Optional Exercise 1: `AmoebaDFSIterator`
-
-Switch which partner is doing the coding if you have not done so recently.
+### 1) `AmoebaDFSIterator`
 
 Complete the definition of the `AmoebaDFSIterator` class (within the
 `AmoebaFamily` class). It should successively return names of `Amoeba`s from the
@@ -464,10 +459,10 @@ while `next` runs in time proportional to the number of children of the element
 being returned.
 
 Add some code at the end of the `AmoebaFamily` main method to test your
-solution. We suggest using the tree examples and answers above as a starting
+solution. You can also write tests in the `AmoebaTest.java`, which  only consists of tests for the BFSIterator. We suggest using the tree examples and answers above as a starting
 point for your tests.
 
-### Optional Exercise 2: `AmoebaBFSIterator`
+### 2) `AmoebaBFSIterator`
 
 Now write the `AmoebaBFSIterator` class (within the `AmoebaFamily` class). This
 will result in `Amoeba` names being returned in breadth-first order. That is,
@@ -477,14 +472,12 @@ way to think about breadth-first search is a level order traversal. All of the
 nodes at depth 0 will be processed, then at depth 1, then at depth 2, etc.
 
 Your code for your `AmoebaBFSIterator` should be very similar to that of 
-`AmoebaDFSIterator` with one big exception. In `AmoebaBFSIterator` instead of 
-using a stack you should use a queue. By making this one change you will greatly
+`AmoebaDFSIterator` with one big exception. In `AmoebaBFSIterator`, instead of 
+using a stack, you should use a queue. By making this one change, you will greatly
 alter the behavior of your iterator. We recommend using `java.util.LinkedList`
 to implement your queue.
 
-> There is a `java.util.Queue` but it is just an interface. There are a number of 
-> Java classes which implement this interface, one of which being `java.util.LinkedList`.
-> Any non-abstract subclass of this interface should work for this exercise.
+> - There is a `java.util.Queue`, but it is just an interface. There are a number of Java classes which implement this interface, one of which being `java.util.LinkedList`. Any non-abstract subclass of this interface should work for this exercise.
 
 For the family constructed in the `AmoebaFamily` main method, your modification will
 result in the following iteration sequence:
@@ -512,9 +505,11 @@ queue during the traversal and try to see how the difference between
 the queue's FIFO behavior and the stack's LIFO behavior results in a different
 traversal.
 
+Once you have implemented `AmoebaBFSIterator`, all the provided tests in `AmoebaTest.java` should pass!
+
 ## Deliverables
 
 To finish this lab, make sure to finish the following:
 
 - Read through the lab spec and understand obtain a good understanding of these topics: tree definitions, traversals, stacks and queues.
-- Complete the lab 10 assignment on gradescope. **There is no coding submission required for this lab.**
+- Complete the Lab 10 assignment on gradescope. **There is no coding submission required for this lab, but all the tests are provided locally if you'd like to check your work.**
