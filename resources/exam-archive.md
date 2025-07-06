@@ -96,6 +96,22 @@ If an exam doesn't have the reference card or clarifications linked, it means we
       </td>
   </tr>
   <tr>
+      <td class="is-even">Summer 2024</td>
+      <td class="is-even">
+        <a href="https://drive.google.com/file/d/14opODA4SRMRgD_GU0p4_1E-hiv2CqVQI/view" aria-label="Questions for Summer 2024 Midterm">exam</a> / 
+        <a href="https://drive.google.com/file/d/1f67ZRMQ5a7DsgZ_KA_oSs-E9d-cB8IS0/view" aria-label="Solutions for Fall 2024 Midterm 1">sols</a> /
+        <a href="https://www.youtube.com/playlist?list=PL102eBoiAo8nnFD9CLwTELroTjP_dNN1-" aria-label="Videos for Summer 2024 Midterm">videos</a>
+      </td>
+      <td class="is-even">
+        Only 1 Midterm
+      </td>
+      <td class="is-even">
+        <a href="https://drive.google.com/file/d/1Iou0GOogSiI5dYXkQJSAHXeORucBL_oU/view?usp=sharing" aria-label="Questions for Fall 2024 Final">exam</a> / 
+        <a href="https://drive.google.com/file/d/1PaCSJ0TFeGjskO-KhwnwJQqZWP_1Hr0m/view?usp=sharing" aria-label="Solutions for Fall 2024 Final">sols</a> / 
+        <a href="https://www.youtube.com/watch?v=GMpu9jVKmXo&list=PL102eBoiAo8kT7fT-Rt08OP6mpXhEuzzU" aria-label="Videos for Fall 2024 Final">videos</a>
+      </td>
+  </tr>
+  <tr>
       <td>Spring 2024</td>
       <td>
         <a href="https://drive.google.com/file/d/1K8oZCuc37EqWlVmrBsES52Vkh-eWmYU-" aria-label="Questions for Spring 2024 Midterm 1">exam</a> / 
@@ -144,6 +160,22 @@ If an exam doesn't have the reference card or clarifications linked, it means we
         <a href="https://youtube.com/playlist?list=PLnp31xXvnfRrX8CIl9zJ-kxHHzf06Elw4" aria-label="Videos for Fall 2023 Final">videos</a> / 
         <a href="https://drive.google.com/file/d/1WTZkTSY336T7S9xPtRF-pqC2Koh7vnGq" aria-label="Reference for Fall 2023 Final">ref</a> / 
         <a href="https://docs.google.com/document/d/e/2PACX-1vQ3LJl9ak2aUpgaQx16K-qp3JECKRenNjfGrzCESmfkSTpquG3JPTTWj5iw1-ud_wN-_WWpYEOTheZH/pub" aria-label="Clarifications for Fall 2023 Final">clarifs</a>
+      </td>
+  </tr>
+  <tr>
+      <td class="is-even">Summer 2023</td>
+      <td class="is-even">
+        <a href="https://drive.google.com/file/d/1GH6lsClR_iAeW4eKtUvcwKxJXHVMTZZ9/view?usp=sharing" aria-label="Questions for Summer 2024 Midterm">exam</a> / 
+        <a href="https://drive.google.com/file/d/18ruXzGuc4A_97_12dILVx4T-cv5t5wtW/view?usp=sharing" aria-label="Solutions for Fall 2024 Midterm 1">sols</a> /
+        <a href="https://drive.google.com/drive/folders/1Of1itW97SPyUdVqPPA9XQ14HzFzTUajI?usp=drive_link" aria-label="Videos for Summer 2024 Midterm">videos</a>
+      </td>
+      <td class="is-even">
+        Only 1 Midterm
+      </td>
+      <td class="is-even">
+        <a href="https://drive.google.com/file/d/1BSJHNRdhieayHqTivujsi3vNtrZw2qPr/view?usp=sharing" aria-label="Questions for Fall 2024 Final">exam</a> / 
+        <a href="https://drive.google.com/file/d/1vvxqLDoG09GtwoRejN6x7pnY_QokcZcw/view?usp=sharing" aria-label="Solutions for Fall 2024 Final">sols</a> / 
+        <a href="https://www.youtube.com/playlist?list=PL102eBoiAo8lhMHRtbYPgrqVnANJ5azjV" aria-label="Videos for Fall 2024 Final">videos</a>
       </td>
   </tr>
   <tr>
