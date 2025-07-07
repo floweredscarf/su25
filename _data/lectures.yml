@@ -176,7 +176,7 @@ lectures:
   - title: 
     nonumber: True
   - title: "Asymptotics"
-    # slides: https://docs.google.com/presentation/d/15n6HWzcTGlT1SNslOWMGUSua05dYOu1vcvUtC8XNAEs/
+    slides: "https://docs.google.com/presentation/d/1dCVW0hhUKgTjp4Lq5-olavDyriBjsvSxej0vlm1TO-o"
     video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRrajvLNrqCND6CQUbqaR0mU"
     # recording: https://youtu.be/4sm57s0Xm6E
     # quiz: https://forms.gle/5hqMPYFenYXDTF1o6
