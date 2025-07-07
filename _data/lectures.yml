@@ -157,7 +157,7 @@ lectures:
       - title: "Ch 16.1"
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/16.-adts-and-bsts/16.1-abstract-data-types"
   - title: "Object Methods, Comparison, Iteration"
-    # slides: https://docs.google.com/presentation/d/1Wc68rKn6FlGV7Y5JwgpA-g0NVDz973UIBmb1FYtxcKk
+    slides: https://docs.google.com/presentation/d/1JqLcRbO8SrFaLfG4xPrdS4X0IC1nK13oJXnbsx1iXXI/view?slide=id.g36c4c9e5ad4_0_1097#slide=id.g36c4c9e5ad4_0_1097
     video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRrvh9PM0gK9fm7VAD0HdijJ"
     # quiz: https://forms.gle/BgmDR57vwhXAfuA26
     # extra: "[Bonus Video](https://youtu.be/1MzbwZwos6Q)"
@@ -183,8 +183,8 @@ lectures:
     readings:
       - title: "Ch 13"
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/13.-asymptotics-i"
-  - title: "Asymptotics, Measuring Code Efficiency"
-    # slides: https://docs.google.com/presentation/d/15n6HWzcTGlT1SNslOWMGUSua05dYOu1vcvUtC8XNAEs/
+  - title: "More Asymptotics"
+    slides: "https://docs.google.com/presentation/d/1dCVW0hhUKgTjp4Lq5-olavDyriBjsvSxej0vlm1TO-o"
     video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRqwuAZ5q3P5xUxe2xNZL3an"
     # recording: https://youtu.be/4sm57s0Xm6E
     # quiz: https://forms.gle/5hqMPYFenYXDTF1o6
