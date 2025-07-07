@@ -85,8 +85,16 @@ homeworks:
     rowspan: 5
     classes:
       - "schedule-yellow"
+  - title: "Homework 2"
+    due: "2025/07/08"
+    link: "https://www.gradescope.com/courses/1050654/assignments/6389510"
+    show_links: true
+    rowspan: 5
+    classes:
+      - "schedule-yellow"
   - nonumber: true
     rowspan: 50
+
   # - title: "Homework 0A"
   #   link: "homeworks/hw0/hw0a"
   #   show_links: true

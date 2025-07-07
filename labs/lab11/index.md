@@ -5,16 +5,16 @@ title: >-
 has_children: true
 parent: Labs
 has_toc: false
-nav_exclude: true
+nav_exclude: false
 has_right_toc: true
 released: true
 ---
 
-## [FAQ](faq.md)
+## [FAQ](faq)
 
 Each assignment will have an FAQ linked at the top. You can also access it by
 adding "/faq" to the end of the URL. The FAQ for Lab 11 is located
-[here](faq.md).
+[here](faq).
 
 {: .warning}
 > **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
@@ -33,7 +33,7 @@ technique will be widely used in the remainder of the class.
 
 We'll now move on from trees and explore a common, special case of the tree data
 structure: the binary tree. A binary tree is a tree in which each node has at
-most two children. Normally it has two separate variables `left` and
+most two children. Normally, it has two separate variables `left` and
 `right` for the left and right children of the binary tree.
 
 ## Exercise: `BinaryTree`
@@ -42,13 +42,10 @@ The file `BinaryTree.java` defines a `BinaryTree` class and a `TreeNode` class.
 First, read over the code, as well as the implementations for `printPreorder` and `printInorder`.
 
 Then, read over methods that generate sample trees (`sampleTreeX` methods) and try running the `main` method to understand how it works.
-In addition, consider adding more test cases to the `BinaryTreeTest.java`.
 
-Once you have understood the code, you can start working on the exercises below.
+Once you have understood the code, you can start working on the exercises below. All tests for these exercises have been provided locally in `BinaryTreeTest.java` for you to check your code.
 
 ### Exercise 1: `height`
-
-First, if you have a partner, switch which partner is coding if you haven't recently.
 
 Implement the `height` method in the `BinaryTree` class. The height of an empty tree is
 0; the height of a one-node tree is 1; the height of any other tree is 1 + the
@@ -60,15 +57,14 @@ Add an `isCompletelyBalanced` method for the `BinaryTree` class. A tree with no
 nodes and a tree with one node are both completely balanced; any other tree is
 completely balanced if and only if the height of its left child is equal to the
 height of its right child, and its left and right children are also completely
-balanced. Make sure you test your code with trees of height 3 or more to ensure
-that your code works!
+balanced. 
 
 ### Exercise 3: `fibTree`
 
 This exercise deals with "Fibonacci trees", trees that represents the recursive
-call structure of the Fibonacci computation. (The Fibonacci sequence is defined
+call structure of the Fibonacci computation. The Fibonacci sequence is defined
 as follows: $$F_0 = 0, F_1 = 1$$, and each subsequent number in the sequence is
-the sum of the previous two.) The root of a Fibonacci tree should contain the
+the sum of the previous two. The root of a Fibonacci tree should contain the
 value of the `N`th Fibonacci number, the left subtree should be the tree
 representing the computation of the `N-1`th Fibonacci number, and the right
 subtree should be the tree representing the computation of the `N-2`th
@@ -88,34 +84,36 @@ Write the static `fibTree` method in `BinaryTree` that takes in a non-negative
 integer `N`, and returns a `BinaryTree` that stores the `N`-th Fibonacci value
 using the representation above.
 
-{% include alert.html type="info" content=' You should be using recursion for these problems, and you should be adding your helper methods with modified arguments. Refer to the tree traversal code for reference!
+{: .info}
+>You should be using recursion for these problems, and you should be adding your helper methods with modified arguments. Refer to the tree traversal code for reference! Furthermore, because `fibTree` is a static method that returns a `BinaryTree`, your helper method must be static as well!
 
-Furthermore, because `fibTree` is a static method that returns a `BinaryTree`, your helper method must be static as well!' %}
+{: .task}
+>Implement the above three methods, then test them by running the provided tests in `BinaryTreeTest.java`.
+
+### Optional Exercise 4: BinaryTree Constructor
+
+For additional practice constructing Binary Trees, implement
+```java
+public BinaryTree(ArrayList<T> pre,  ArrayList<T> in)
+  ```
+which constructs a Binary Tree given the preorder traversal (pre) and inorder traversal (in) provided as ArrayList arguments in `BinaryTree.java`. We recommend a recursive approach. This method will not be graded, but there is a test provided in `BinaryTreeTest.java` if you'd like to check your work.
 
 ## Comparisons
 
 Here are a few key details from `compareTo`, slightly adapted:
 
-> Compares this object with the specified object for order. Returns a negative
-> integer or a positive integer if this object is less than
-> or greater than the specified object, respectively. Note that it can be any negative
-> or positive integer, not -1 and 1 necessarily.
+`compareTo`
+: Compares this object with the specified object (given as an argument). Returns a negative or positive integer if this object is less than or greater than the specified object, respectively. Note that it can be any negative or positive integer, not -1 and 1 necessarily. If both are equal, returns 0.
 
-There are other requirements that usually just happen naturally with a
+There are other requirements that usually happen naturally with a
 reasonable implementation, but are still important to specify:
 
-> The implementer must also ensure that the relation is transitive:
-> `x.compareTo(y) > 0 && y.compareTo(z) > 0` implies `x.compareTo(z) > 0`.
->
-> It is strongly recommended, but not strictly required that `x.compareTo(y) ==
-> 0` is equivalent to `x.equals(y)`. Generally speaking, any class that
-> implements the `Comparable` interface and violates this condition should
-> clearly indicate this fact. The recommended language is "Note: this class has
-> a natural ordering that is inconsistent with equals."
+> - The implementer must also ensure that the relation is transitive: `x.compareTo(y) > 0 && y.compareTo(z) > 0` implies `x.compareTo(z) > 0`. 
+> - It is strongly recommended, but not strictly required, that `x.compareTo(y) == 0` is equivalent to `x.equals(y)`. Generally speaking, any class that implements the `Comparable` interface and violates this condition should clearly indicate this fact. The recommended language is "Note: this class has a natural ordering that is inconsistent with equals."
 
 Typically, a class will compare to objects of the same type as itself (although
 it does not strictly have to). Doing so means data structures that require
-ordering (like sorted lists, and in the future, search trees) can contain the
+ordering (like sorted lists or TreeSets) can contain the
 class.
 
 ## Binary Search
@@ -138,7 +136,7 @@ elements of the array are **sorted** in increasing order, and executes the follo
       setting `high` to `mid - 1` or by setting `low` to `mid + 1`, depending on
       the result of the comparison.
 3. If the loop terminates with `low > high`, we know that `k` is not in the
-   array, so we return **`false`.
+   array, so we return **`false`**.
 
 The diagrams below portray a search if `k` was equal to 25. Elements removed
 from consideration at each iteration are greyed out.
@@ -156,10 +154,10 @@ from consideration at each iteration are greyed out.
 : ![Search](img/binary-search-4.png)
 
 What would be the worst case running time of a search for `k`?
-Highlight the next line for the answer *after* discussing with your peers:
+Highlight the next line for the answer:
 
 <p><span style="color:white"><em>Since (roughly) half the elements are removed from consideration at each step,
-the worst-case running time is proportional to log_2(N), where N is the
+the worst-case running time is proportional to $\log_{2} (N)$, where N is the
 number of elements in the array.</em></span>.</p>
 
 
@@ -359,15 +357,6 @@ will thus not contain any duplicate elements.
 *Hint*: You should be able to do this in a similar way to the `contains` method.
 When you're done with both, you can write a JUnit test suite to test your code.
 Don't forget edge cases!
-
-### Optional Exercise 4: Optional Constructor
-
-For additional practice constructing Binary Trees, implement
-```java
-public BinaryTree(ArrayList<T> pre,  ArrayList<T> in)
-  ```
-which constructs a Binary Tree given the preorder traversal (pre) and inorder
-traversal (in) provided as ArrayList arguments in `BinaryTree.java`. We recommend a recursive approach.
 
 ## Discussion: BST Deletion
 

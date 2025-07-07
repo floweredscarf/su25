@@ -3,7 +3,7 @@ layout: page
 title: >-
   FAQ
 parent: >-
-  Lab 10: Binary Search Trees
+  Lab 11: Binary Search Trees
 grand_parent: Labs
 has_right_toc: true
 released: true
