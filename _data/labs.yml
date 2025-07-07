@@ -116,9 +116,10 @@ labs:
   - title: "Theoretical #2: Object Oriented Programming and Abstract Data Types"
     theoretical: True
     video: false
-    # worksheet: https://drive.google.com/file/d/1e-hJMsw48hXqtkg4Kj__fCCbmczJzKqz/view
-    # slides: https://docs.google.com/presentation/d/1qRNwO0VVOiCwAwSVUdPKrsTeSy2HK1Zmy4-RS5_KCrY/edit?slide=id.p#slide=id.p
-    # solutions: https://drive.google.com/file/d/1Xn0lEDtDesFNY_6jkU-yrrqE2jD3HFMb/view
+    worksheet: https://drive.google.com/file/d/1V9Q8Tkek8xYb63GfpJBCTSS3n0xRlxHJ/view
+    slides: https://docs.google.com/presentation/d/1oSwJGeHD92B3sGSSqCiV4k8NcKXLda3E
+    # note 7/7/25: the following link is up-to-date for su25, just uncomment
+    # solutions: https://drive.google.com/file/d/1X-8oc73vvWUT4pXz7U5oDDwE0DxP6L9P/view
     link: 
     show_links: false
     nonumber: True
