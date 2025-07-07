@@ -19,10 +19,10 @@ recordings:
   - title: "7/1"
   - title: "Lec 6-7" # 7/2
     link: "https://www.youtube.com/watch?v=mcsPp9Yzj6M&list=PL102eBoiAo8mDS-ccb43g6Frv6dNT6T9S&index=4"
-  # - title: "7/3"
-  # - title: "7/4"
-  # - title: "7/7"
-  #   link: "https://sp25.cs161.org/"
+  - title: "7/3"
+  - title: "7/4"
+  - title: "Lec 8-9" # 7/7
+    link: "https://www.youtube.com/watch?v=ecfMmmRnZ4c&list=PL102eBoiAo8mDS-ccb43g6Frv6dNT6T9S&index=5"
   # - title: "7/8"
   # - title: "7/9"
   #   link: "https://cs170.org/"
