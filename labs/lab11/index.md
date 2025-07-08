@@ -225,7 +225,7 @@ Unfortunately, the use of a binary search tree does not guarantee efficient sear
 
 What would be the worst case runtime possible for a single call to `contains()`
 on a valid BST? Discuss with your peers and highlight the next line for the answer.
-<p><span style="color:white"><em> 	Θ(n) </em></span>.</p>
+<p><span style="color:white"><em>hiΘ(n)</em></span></p>
 
 For example, the tree
 
@@ -240,7 +240,7 @@ assumption that we don't need to worry much about balance.
 
 One can [prove (optional to read, but an important fact to know)][prove],
 incidentally, that search in a BST of $$$$N$$$$ keys will
-require only about $$$$2 \ln N$$$$ comparisons (where $$$$\ln$$$$ is the "natural log"
+require only about $$2 \ln N$$ comparisons (where $$\ln$$ is the "natural log"
 of $$$$N$$$$) if the keys are inserted in **random** order. Well-balanced trees are
 common, and degenerate trees are rare.
 
