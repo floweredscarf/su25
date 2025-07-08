@@ -256,9 +256,8 @@ insert the key 41 into the tree on the left.
 
 | ![t1](img/bst.png) |  ![t2](img/bst-and-41.png)  |
 
-However, to minimize restructuring of the tree and the creation of internal
-nodes, we choose in the following exercise to insert a new key only as a new
-*leaf*.
+To minimize restructuring of the tree and the creation of internal
+nodes, we choose in the following exercise to **insert a new key only as a new *leaf***.
 
 [USFCA put together a BST visualization][USFCA] interactive animation to help
 you visualize the BST insertion and deletion algorithms. Try inserting a key
@@ -269,35 +268,15 @@ a node with one child, and a node with two children.
 [USFCA]: https://www.cs.usfca.edu/~galles/visualization/BST.html
 
 Note that this animation deletes from the BST by swapping with the inorder
-*predecessor* rather than the inorder successor. Convince your peers that this is
-essentially equivalent.
+*predecessor* rather than the inorder successor. Deletion is covered in more detail later in this spec.
 
 ## Exercises: BST Implementation
 
-Now it's time to start writing code! As you go, don't forget to write JUnit
-tests.
+Now it's time to start writing code! As you go, don't forget to write tests.
 
 Since binary search trees share many of the characteristics of regular binary
 trees, we can define the `BinarySearchTree` class using inheritance from a
 provided `BinaryTree` class.
-
-### Exercise 1: Testing Utilities
-
-As always, we will start by ensuring our ability to test our code. In BinaryTree.java, 
-you can find a `print()` method that serves as the foundation for BinaryTreeTest.java. Any test run
-right now will fail, because `printInorder()` has not been implemented.
-
-Implement both:
-``` java 
-/* Print the values in the tree in inorder. */
-public void printInorder() {
-```
-in `BinaryTree` and
-```java
-/* Prints the nodes of the BinaryTree in inorder. Used for your testing. */
-private void printInorder() {
-```
-in `BinaryTree.TreeNode` to allow for our tests to function. 
 
 ### Binary Search Tree
 
@@ -320,7 +299,7 @@ used because the `Comparable` interface itself uses generic types (much like the
 Take a look through the `BinarySearchTree` and `BinaryTree` classes, and
 familiarize yourself with the methods that are available to you.
 
-### Exercise 2: `contains`
+### Exercise 1: `contains`
 
 Now, we will implement the `contains` method. We will use the following method
 signature:
@@ -334,15 +313,18 @@ contains it.
 
 Recall that `Comparable` objects provide an `int compareTo` method that returns:
 
-- a negative integer if this object is less than the argument,
-- a positive integer if this object is greater than the argument, and
-- 0 if the two objects have equal values.
+- a negative integer if this object is less than the argument
+- a positive integer if this object is greater than the argument
+- 0 if the two objects have equal values
 
 Depending on whether you take a recursive or iterative approach, you may need to
 define a helper method. If you're stuck, take a look at the pseudocode that we
 described above!
 
-### Exercise 3: `add`
+{: .task}
+>Implement the `contains` method.
+
+### Exercise 2: `add`
 
 We will now define an `add` method. We will use the following method signature:
 
@@ -355,8 +337,11 @@ only if it isn't already there*.  The trees you create with the `add` method
 will thus not contain any duplicate elements.
 
 *Hint*: You should be able to do this in a similar way to the `contains` method.
-When you're done with both, you can write a JUnit test suite to test your code.
+When you're done with both, you can write some unit tests to test your code.
 Don't forget edge cases!
+
+{: .task}
+>Implement the `add` method.
 
 ## Discussion: BST Deletion
 
@@ -368,7 +353,7 @@ some keys will be easy (leaves or keys with only one child), but our deletion
 method has to be able to delete *any* key from the tree.
 
 Here are a bunch of binary search trees that might result from deleting the root
-of the tree
+of the tree:
 
 ![BST](img/small-bst.png)
 
@@ -391,7 +376,7 @@ results from the removal.
    `remNode`, and return `remNode`.
 
 What is an *inorder successor*?  It is the node that would appear **AFTER** the
-`remNode` if you were to do an inorder traversal of the tree.
+`remNode` if you were to do an inorder traversal of the tree. What is an *inorder predecessor*? It is the node that would appear BEFORE the remNode if you were to do an inorder traversal of the tree.
 
 An example is diagrammed below. The node to remove is the node containing 4. It
 has two children, so it's not an easy node to remove. We locate the node with
@@ -407,9 +392,10 @@ delete the node that originally contained 5.
 
 Suppose `node` is the root node in a BST with both a left child and a right
 child. Will `sucNode`, the inorder successor of `node`, ALWAYS have a null
-left child? Discuss this with your peers.
+left child?
 
-We've implemented a `delete` method for you already. Take a look at it and
+{: .task}
+>We've implemented a `delete` method for you already. Take a look at it and
 **understand how it works**.
 
 ## The Engineer's Tradeoff
