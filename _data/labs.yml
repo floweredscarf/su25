@@ -120,7 +120,7 @@ labs:
     slides: https://docs.google.com/presentation/d/1oSwJGeHD92B3sGSSqCiV4k8NcKXLda3E
     solutions: https://drive.google.com/drive/folders/1LDMA8d9FMAB86oLyPd1B2PfI_8aaSj1t
     link: 
-    show_links: false
+    show_links: true
     nonumber: True
   - title: "Runtime Analysis"
     due: "2025/07/09"
