@@ -18,7 +18,7 @@ The FAQ for Lab 9 is located [here](faq).
 Pull the files for lab 9 from the skeleton.
 
 {: .info}
->Lab 9 does not have any coding deliverables, but the ungraded exercise with `Sorter.java` may help with your understanding of asymptotics. The deliverable for this lab is a Gradescope multiple choice assignment, which you have unlimited attempts to submit. When you complete a subquestion, you can click the "Save Answer" button, which will tell you if your answer is incorrect or correct. To view explanations, submit your assignment and click through the question numbers in the table of contents on the right. You will only see an explanation if your answer is correct.
+>Lab 9 does not have any coding deliverables, but the ungraded exercise with `Sorter.java` may help with your understanding of asymptotics. The deliverable for this lab is a Gradescope multiple choice assignment, which you have unlimited attempts to submit. When you complete a subquestion, you can click the "Save Answer" button, which will tell you if your answer is incorrect or correct. An explanation should also pop up (you will only see an explanation if your answer is correct).
 
 The online textbook readings in for this lab are optional. The lab covers the same content as Chapter [8.2][], [8.3][], and [8.4][]. You still may want to refer back to the textbook if you prefer watching videos or reading more about the topic. Feel free to skip around the spec if you feel like you already have a good understanding of the content. 
 

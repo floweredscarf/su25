@@ -22,7 +22,7 @@ The FAQ for Lab 10 is located [here](faq).
 As usual, pull the files from the skeleton and open the Lab 10 directory in IntelliJ.
 
 {: .info}
->Like Lab 9, Lab 10 does not have any coding deliverables, but the optional coding practice may help with your understanding of the lab. The deliverable for this lab is a Gradescope multiple choice assignment, which you have unlimited attempts to submit. When you complete a subquestion, you can click the "Save Answer" button, which will tell you if your answer is incorrect or correct. To view explanations, submit your assignment and click through the question numbers in the table of contents on the right. You will only see an explanation if your answer is correct.
+>Like Lab 9, Lab 10 does not have any coding deliverables, but the optional coding practice may help with your understanding of the lab. The deliverable for this lab is a Gradescope multiple choice assignment, which you have unlimited attempts to submit. When you complete a subquestion, you can click the "Save Answer" button, which will tell you if your answer is incorrect or correct. An explanation should also pop up (you will only see an explanation if your answer is correct).
 
 ## Introduction
 
