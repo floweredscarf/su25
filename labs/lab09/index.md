@@ -13,9 +13,6 @@ released: true
 
 The FAQ for Lab 9 is located [here](faq).
 
-{: .warning}
-> **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
-
 ## Before You Begin
 
 Pull the files for lab 9 from the skeleton.
@@ -40,8 +37,8 @@ Programming cost
     - How maintainable is your code?
 
 Execution cost
-:   - **Time complexity**: What is the asymptotic behavior of your program's runtime as the size if the input grows?
-    - **Space complexity**: What is the asymptotic behavior of your program's memory usage as the size if the input grows?
+:   - **Time complexity**: What is the asymptotic behavior of your program's runtime as the size of the input grows?
+    - **Space complexity**: What is the asymptotic behavior of your program's memory usage as the size of the input grows?
 
 We've already seen many examples of reducing programming cost. We've written
 *unit tests* and employed *test-driven development* to spend a little more time
@@ -85,14 +82,14 @@ algorithms.  Spend a little time playing around with these demos to get an
 understanding of how much time it takes for bubble sort or insertion sort to
 completely sort a list. We'll revisit sorting in more detail later in this
 course, but for now, try to get a feeling of how long each algorithm takes to
-sort a list. How many comparison does each sort need? And how many swaps?
+sort a list. How many comparisons does each sort need? How many swaps?
 
 [VisuAlgo]: http://visualgo.net/sorting
 [Sorting Algorithms]: https://www.toptal.com/developers/sorting-algorithms/
 [USF]: http://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html
 
 Since each comparison and each swap takes time, we want to know which is the
-faster algorithm: bubble sort or insertion sort? And how fast can we make our
+faster algorithm: bubble sort or insertion sort? How fast can we make our
 Java programs that implement them? Much of our subsequent work in this course
 will involve estimating program efficiency and differentiating between fast
 algorithms and slow algorithms in their specific settings.
@@ -137,9 +134,9 @@ takes to sort an array of 300 randomly chosen elements.
 {: .no_toc}
   </summary>
 
-![Edit run configurations](img/edit_configurations.png)
+![Edit run configurations](img/modify_config.png)
 
-![Set command line arguments](img/set_command_line_args.png)
+![Set command line arguments](img/set_cli_args.png)
 
 </details>
 
@@ -162,7 +159,7 @@ deterministically describe the runtime of programs.
 We define a single step as the execution of a single instruction or primitive
 function call. For example, the `+` operator which adds two numbers is
 considered a single step. We can see that `1 + 2 + 3` can be broken down into
-*two steps* where the first is `1 + 2` while the second takes that result and
+*two steps* where the first is `1 + 2`, while the second takes that result and
 adds it to 3. From here, we can combine simple steps into larger and more
 complex *expressions*.
 
@@ -218,9 +215,8 @@ conditional expression `a > b` and three steps for evaluating each line in the
 body of the condition. But this is only the case if `a > b`. If the condition
 is not true, then it only takes one step to check the conditional expression.
 
-That leads us to consider two quantities: the **worst case count**, or the
-maximum number of steps a program can execute, and the **best case count**, or
-the minimum number of steps a program needs to execute. The worst case count
+That leads us to consider two quantities: the **worst case count** (aka the
+maximum number of steps a program can execute), and the **best case count** (aka the minimum number of steps a program needs to execute). The worst case count
 for the program segment above is 4 and the best case count is 1.
 
 ### **`if ... else` Counting**
@@ -260,7 +256,7 @@ It takes 1 step to execute the initialization, `int k = 0`. Then, to execute
 the loop, we have the following sequence of steps:
 
 > - Check the loop condition, `k < N`
-> - Add 1 to the `sum`
+> - Add 1 to `sum`
 > - Update the value of `sum` by assignment
 > - Increment the loop counter, `k`
 > - Update `k` by assignment
@@ -268,7 +264,7 @@ the loop, we have the following sequence of steps:
 This accounts for the first $$1 + 5N$$ steps. In the very last iteration of
 the loop, after we increment `k` such that `k` now equals $$N$$, we spend one
 more step checking the loop condition again to figure out that we need to
-finally exit the loop so the final number of steps is $$1 + 5N + 1$$.
+finally exit the loop, so the final number of steps is $$1 + 5N + 1$$.
 
 <!-- removing since this is pretty much useless and just hard to read -->
 
@@ -416,7 +412,7 @@ Why is this? Debate with someone in your lab. Then, see our thoughts below.
 When our $$N$$ is really small, no reasonable function
 will take a long time to execute! Imagine a program that takes $$N^{12}$$ steps
 to execute. When $$N=3$$, it doesn't really matter! But when
-$$N \gg 3$$ ($$N$$ much larger than 3) we might start to get really impatient (or the universe might end)!
+$$N \gg 3$$ ($$N$$ much larger than 3), we might start to get really impatient (or the universe might end)!
 
 </details>
 
