@@ -118,8 +118,7 @@ labs:
     video: false
     worksheet: https://drive.google.com/file/d/1V9Q8Tkek8xYb63GfpJBCTSS3n0xRlxHJ/view
     slides: https://docs.google.com/presentation/d/1oSwJGeHD92B3sGSSqCiV4k8NcKXLda3E
-    # note 7/7/25: the following link is up-to-date for su25, just uncomment
-    # solutions: https://drive.google.com/file/d/1X-8oc73vvWUT4pXz7U5oDDwE0DxP6L9P/view
+    solutions: https://drive.google.com/drive/folders/1LDMA8d9FMAB86oLyPd1B2PfI_8aaSj1t
     link: 
     show_links: false
     nonumber: True
