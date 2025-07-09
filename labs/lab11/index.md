@@ -45,6 +45,9 @@ Then, read over methods that generate sample trees (`sampleTreeX` methods) and t
 
 Once you have understood the code, you can start working on the exercises below. All tests for these exercises have been provided locally in `BinaryTreeTest.java` for you to check your code.
 
+{: .info}
+>For the below exercises, you should be using recursion, and you should be adding your helper methods with modified arguments. Refer to the tree traversal code for reference!
+
 ### Exercise 1: `height`
 
 Implement the `height` method in the `BinaryTree` class. The height of an empty tree is
@@ -85,7 +88,7 @@ integer `N`, and returns a `BinaryTree` that stores the `N`-th Fibonacci value
 using the representation above.
 
 {: .info}
->You should be using recursion for these problems, and you should be adding your helper methods with modified arguments. Refer to the tree traversal code for reference! Furthermore, because `fibTree` is a static method that returns a `BinaryTree`, your helper method must be static as well!
+>Because `fibTree` is a static method that returns a `BinaryTree`, your helper method must be static as well!
 
 {: .task}
 >Implement the above three methods, then test them by running the provided tests in `BinaryTreeTest.java`.
