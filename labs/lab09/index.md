@@ -216,7 +216,7 @@ body of the condition. But this is only the case if `a > b`. If the condition
 is not true, then it only takes one step to check the conditional expression.
 
 That leads us to consider two quantities: the **worst case count** (aka the
-maximum number of steps a program can execute), and the **best case count** (aka the minimum number of steps a program needs to execute). The worst case count
+maximum number of steps a program can execute), and the **best case count** (aka the minimum number of steps a program can execute). The worst case count
 for the program segment above is 4 and the best case count is 1.
 
 ### **`if ... else` Counting**

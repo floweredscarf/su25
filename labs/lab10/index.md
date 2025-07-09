@@ -14,9 +14,6 @@ released: true
 
 The FAQ for Lab 10 is located [here](faq).
 
-{: .warning}
-> **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
-
 ## Before You Begin
 
 As usual, pull the files from the skeleton and open the Lab 10 directory in IntelliJ.

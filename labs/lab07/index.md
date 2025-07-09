@@ -387,14 +387,7 @@ abstract classes are helpful as representations of a common base class that can 
 
 </details>
 
-## Dynamic Method Selection (Optional)
-
-<details markdown="block">
-<summary markdown="block">
-
-This section is optional and considered out of scope for Summer 2025. If you'd like to learn about DMS, click on the arrow to expand the section.
-
-</summary>
+## Dynamic Method Selection 
 
 From the structure of inheritance and polymorphism arises a natural question:
 when you possess a Java object, and you evoke a particular method signature
@@ -635,8 +628,6 @@ for `A`.
 
 `b.h()`: Statically a `B`, we find an appropriate `h()` method to run, and then at
 runtime we run it.
-
-</details>
 
 </details>
 
