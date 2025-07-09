@@ -204,7 +204,7 @@ lectures:
       - title: "Ch 22.1-22.2"
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/22.-tree-traversals-and-graphs/22.1-tree-recap"
   - title: "Trees and Traversals"
-    # slides: https://docs.google.com/presentation/d/15n6HWzcTGlT1SNslOWMGUSua05dYOu1vcvUtC8XNAEs/
+    slides: https://docs.google.com/presentation/d/1tAXgjwVKsnH7AR-iCvkDM-rQFwrg4OnKVZzqPixZWI8
     video: "https://www.youtube.com/playlist?list=PLnp31xXvnfRrks2Xi7wU8s82FcwPaINYs"
     # recording: https://youtu.be/4sm57s0Xm6E
     # quiz: https://forms.gle/5hqMPYFenYXDTF1o6
