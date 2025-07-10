@@ -5,7 +5,7 @@ nav_order: 3
 parent: Projects
 has_children: true
 has_toc: false
-nav_exclude: true
+nav_exclude: false
 has_right_toc: true
 description: >-
   Project 2A spec.
@@ -17,9 +17,6 @@ released: true
 Each assignment will have an FAQ linked at the top. You can also access it by adding "/faq" to the end of the URL. The
 FAQ for Project 2A is located
 [here](faq.md).
-
-{: .warning}
-> **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
 
 ## Introduction
 
