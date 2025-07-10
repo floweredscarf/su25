@@ -98,7 +98,7 @@ projects:
   #   rowspan: 4
   - title: "Project 2A: NGrams"
     link: "/projects/proj2a"
-    show_links: false
+    show_links: true
     due: "2025/07/16"
     classes:
       - "schedule-purple"
