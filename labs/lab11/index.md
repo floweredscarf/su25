@@ -40,24 +40,30 @@ First, read over the code, as well as the implementations for `printPreorder` an
 
 Then, read over methods that generate sample trees (`sampleTreeX` methods) and try running the `main` method to understand how it works.
 
-Once you have understood the code, you can start working on the exercises below. All tests for these exercises have been provided locally in `BinaryTreeTest.java` for you to check your code.
+Once you have understood the code, you can start working on the exercises below. 
 
 {: .info}
->For the below exercises, you should be using recursion, and you should be adding your helper methods with modified arguments. Refer to the tree traversal code for reference!
+>For the below exercises, you should be using recursion, and you should be adding your helper methods with modified arguments. Refer to the tree traversal code for reference! All tests for these exercises have been provided locally in `BinaryTreeTest.java` for you to check your code.
 
 ### Exercise 1: `height`
 
-Implement the `height` method in the `BinaryTree` class. The height of an empty tree is
+The height of an empty tree is
 0; the height of a one-node tree is 1; the height of any other tree is 1 + the
 greater of the heights of the two children.
 
+{: .task}
+>Implement the `height` method in the `BinaryTree` class.
+
 ### Exercise 2: `isCompletelyBalanced`
 
-Add an `isCompletelyBalanced` method for the `BinaryTree` class. A tree with no
+A tree with no
 nodes and a tree with one node are both completely balanced; any other tree is
 completely balanced if and only if the height of its left child is equal to the
 height of its right child, and its left and right children are also completely
 balanced. 
+
+{: .task}
+>Implement the `isCompletelyBalanced` method for the `BinaryTree` class.
 
 ### Exercise 3: `fibTree`
 
@@ -88,7 +94,7 @@ using the representation above.
 >Because `fibTree` is a static method that returns a `BinaryTree`, your helper method must be static as well!
 
 {: .task}
->Implement the above three methods, then test them by running the provided tests in `BinaryTreeTest.java`.
+>Implement the `fibTree` method, then test it by running the provided tests in `BinaryTreeTest.java`.
 
 ### Optional Exercise 4: BinaryTree Constructor
 
@@ -217,15 +223,15 @@ objects, we have to use method calls for comparisons.
 
 The Java convention for this situation is to have the values stored in the tree
 be objects that implement the `Comparable` interface, which you learned about
-in lab 8.
+in [Lab 8](../lab08).
 
 ### Balance and Imbalance
 
 Unfortunately, the use of a binary search tree does not guarantee efficient search.
 
 What would be the worst case runtime possible for a single call to `contains()`
-on a valid BST? Discuss with your peers and highlight the next line for the answer.
-<p><span style="color:white"><em>hiΘ(n)</em></span></p>
+on a valid BST? Highlight the next line for the answer.
+<p><span style="color:white"><em>Θ(n)</em></span></p>
 
 For example, the tree
 
@@ -376,7 +382,7 @@ results from the removal.
    `remNode`, and return `remNode`.
 
 What is an *inorder successor*?  It is the node that would appear **AFTER** the
-`remNode` if you were to do an inorder traversal of the tree. What is an *inorder predecessor*? It is the node that would appear BEFORE the remNode if you were to do an inorder traversal of the tree.
+`remNode` if you were to do an inorder traversal of the tree. What is an *inorder predecessor*? It is the node that would appear **BEFORE** the remNode if you were to do an inorder traversal of the tree.
 
 An example is diagrammed below. The node to remove is the node containing 4. It
 has two children, so it's not an easy node to remove. We locate the node with

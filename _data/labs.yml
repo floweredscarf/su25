@@ -143,7 +143,7 @@ labs:
   - title: "Balanced Search Trees"
     due: "2025/07/15"
     link: labs/lab12
-    show_links: false
+    show_links: true
   - title: "Theoretical #4: Binary Search Trees"
     theoretical: True
     examprep_video: True
