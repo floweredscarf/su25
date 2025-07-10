@@ -92,6 +92,13 @@ homeworks:
     rowspan: 5
     classes:
       - "schedule-yellow"
+  - title: "Homework 3"
+    due: "2025/07/15"
+    link: "https://www.gradescope.com/courses/1050654/assignments/6402518"
+    show_links: true
+    rowspan: 5
+    classes:
+      - "schedule-yellow"
   - nonumber: true
     rowspan: 50
 
