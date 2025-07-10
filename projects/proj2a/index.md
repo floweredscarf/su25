@@ -379,11 +379,11 @@ open `DummyHistoryHandler`, you'll see why.
 
 You are responsible for implementing four classes:
 
-- **TimeSeries (12 pts)**: Correctly implement `TimeSeries.java`.
-- **NGramMap Count (8 pts)**: Correctly implement `countHistory()` and `totalCountHistory()` in `NGramMap.java`.
-- **NGramMap Weight (12 pts)**: Correctly implement `weightHistory()` and `summedWeightHistory()` in `NGramMap.java`.
-- **HistoryTextHandler (4 pts)**: Correctly implement `HistoryTextHandler.java`.
-- **HistoryHandler (4 pts)**: Correctly implement `HistoryHandler.java`.
+- **TimeSeries (30%)**: Correctly implement `TimeSeries.java`.
+- **NGramMap Count (20%)**: Correctly implement `countHistory()` and `totalCountHistory()` in `NGramMap.java`.
+- **NGramMap Weight (30%)**: Correctly implement `weightHistory()` and `summedWeightHistory()` in `NGramMap.java`.
+- **HistoryTextHandler (10%)**: Correctly implement `HistoryTextHandler.java`.
+- **HistoryHandler (10%)**: Correctly implement `HistoryHandler.java`.
 
 ### Submission
 
