@@ -23,9 +23,9 @@ recordings:
   - title: "7/4"
   - title: "Lec 8-9" # 7/7
     link: "https://www.youtube.com/watch?v=ecfMmmRnZ4c&list=PL102eBoiAo8mDS-ccb43g6Frv6dNT6T9S&index=5"
-  # - title: "7/8"
-  # - title: "7/9"
-  #   link: "https://cs170.org/"
+  - title: "7/8"
+  - title: "Lec 10-11" # 7/9
+    link: "https://www.youtube.com/watch?v=uz08OK2e888&list=PL102eBoiAo8mDS-ccb43g6Frv6dNT6T9S&index=6"
   # - title: "7/10"
   # - title: "7/11"
   # - title: "7/14"
