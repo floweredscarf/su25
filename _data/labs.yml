@@ -138,7 +138,7 @@ labs:
     theoretical: True
     video = false
     worksheet: https://drive.google.com/file/d/1ZN4tlDJwA4ogIiXYPbpx2erqPF_7lhHw/view?usp=sharing
-    # slides: https://docs.google.com/presentation/d/1JsPsh9N6LRPc8OhfKOiK4Jt8p2EGxL8j/edit?usp=sharing&rtpof=true&sd=true
+    slides: https://docs.google.com/presentation/d/1JsPsh9N6LRPc8OhfKOiK4Jt8p2EGxL8j/edit?usp=sharing&rtpof=true&sd=true
     # solutions: https://drive.google.com/file/d/1q-ZHotEalqHqYlcwzCP87jf_gHRX5FJP/view?usp=sharing
     link: 
     show_links: True
