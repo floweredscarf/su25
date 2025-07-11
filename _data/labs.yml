@@ -136,9 +136,12 @@ labs:
     show_links: true
   - title: "Theoretical #3: Asymptotics and Trees"
     theoretical: True
-    examprep_slides: True
+    video = false
+    worksheet: https://drive.google.com/file/d/1ZN4tlDJwA4ogIiXYPbpx2erqPF_7lhHw/view?usp=sharing
+    # slides: https://docs.google.com/presentation/d/1JsPsh9N6LRPc8OhfKOiK4Jt8p2EGxL8j/edit?usp=sharing&rtpof=true&sd=true
+    # solutions: https://drive.google.com/file/d/1q-ZHotEalqHqYlcwzCP87jf_gHRX5FJP/view?usp=sharing
     link: 
-    show_links: false
+    show_links: True
     nonumber: True
   - title: "Balanced Search Trees"
     due: "2025/07/15"
