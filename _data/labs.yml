@@ -163,19 +163,19 @@ labs:
     nonumber: True
     rowspan: 1
   - title: "Hashing"
-    due: "2025/07/16"
+    due: "2025/07/22"
     link: labs/lab13
     show_links: false
   - title: "Heaps and Priority Queues"
-    due: "2025/07/17"
+    due: "2025/07/23"
     link: labs/lab14
     show_links: false
   - title: "Disjoint Sets"
-    due: "2025/07/22"
+    due: "2025/07/24"
     link: labs/lab15
     show_links: false
   - title: "Graphs"
-    due: "2025/07/23"
+    due: "2025/07/25"
     link: labs/lab16
     show_links: false
   - title: "Theoretical #5: Hashing, Heaps, and Union Find"
@@ -193,11 +193,11 @@ labs:
     nonumber: True
     rowspan: 1
   - title: "Shortest Path Trees"
-    due: "2025/07/24"
+    due: "2025/07/31"
     link: labs/lab17
     show_links: false
   - title: "Minimum Spanning Trees"
-    due: "2025/07/25"
+    due: "2025/08/01"
     link: labs/lab18
     show_links: false
   - title: "Theoretical #6: Graphs"
@@ -208,10 +208,10 @@ labs:
     show_links: false
     nonumber: True
   - title: "Comparison Sorts"
-    due: "2025/07/30"
+    due: "2025/08/05"
     link: labs/lab20
   - title: "Counting Sorts"
-    due: "2025/07/31"
+    due: "2025/08/06"
     link: labs/lab21
     show_links: false
   - title: "BYOW OH & Checkoffs"
