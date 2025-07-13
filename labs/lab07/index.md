@@ -965,7 +965,7 @@ We learned that we can use inheritance to make the structures of our programs mo
 similarities in the different types of objects that we are using. We also learned about method overloading and overriding,
 the `super` keyword, and inheritance chains.
 
-**Dynamic Method Selection (optional):**
+**Dynamic Method Selection:**
 We learned how Java decides what method to actually call when a program invokes a particular method signature.
 There are two phases to this process. The first is the compiler phase, where Java ensures that there is a valid method
 matching the invoked signature that can be called. The second is the runtime phase, where Java looks up what method to
