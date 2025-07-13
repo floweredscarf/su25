@@ -34,7 +34,7 @@ In this lab, we will:
 
 ## Introduction
 
-Over the past few labs, we have analyzed the performance of algorithms for
+Over the past couple labs, we have analyzed the performance of algorithms for
 access and insertion into binary search trees. However, our analyses often
 made the assumption that the trees were *balanced*.
 
@@ -42,10 +42,10 @@ Informally, a tree being "balanced" means that the paths from root to every leaf
 are all roughly the same length. Any algorithm that looks once at each
 level of the tree -- such as searching for a value in a binary search tree --
 only looks at as many elements as the number of levels in the tree. As we discovered previously,
-the smallest number of levels we can have is logarithmic with respect to the number
+the smallest number of levels we can have is **logarithmic** with respect to the number
 of nodes.
 
-Balanced trees keep our number of levels in this efficient number of levels and prevents the worst case scenarios where we have spindly, unbalanced trees, which have a number of levels which is linear with respect to the number of nodes.
+Balanced trees keep our number of levels efficient (logarithmic), and prevents the worst case scenarios where we have spindly, unbalanced trees, which have a number of levels which is linear with respect to the number of nodes.
 
 We've seen how we can create these best-case and worst-case heights with an ordinary binary search tree. Now we'll explore how we can keep our tree closer to the best-case height.
 
@@ -58,7 +58,7 @@ All-at-once balancing
 : We don't do anything to keep the tree balanced until it gets too lopsided,
   then we completely rebalance the tree.
 
-We will only look at trees that perform incremental balancing.
+We will only look at trees that perform **incremental balancing**.
 
 <!--
 I'm leaving a comment here for future instructors, but:
@@ -91,27 +91,24 @@ Sorry, Ethan (again)... didn't see this suggestion until it was too late. Shared
 In a binary search tree, each tree node contains exactly one element. In a B-tree, instead of storing a single element per node, we will store *multiple* elements per node! A **2-3 tree** is a B-tree where a
 nodes can contain up to two elements.
 
-In a 2-3 tree each non-leaf node
-has either 2 or 3 children. Additionally, any non-leaf node **must** have
-one more child than element. That means that a node with 1 element must have
+In a 2-3, tree each non-leaf node
+has either 2 or 3 children. **One invariant of B-trees is that any non-leaf node must have *one* more child than element**. That means that a node with 1 element must have
 2 children, and a node with 2 elements must have 3 children.
 
-We refer to a node with N children as an "N-node", so a node with
-1 element and 2 children would be called a 2-node, and a node with 2 elements and 3
-children would be called a 3-node.
+{: .info}
+>We refer to a node with N children as an "N-node", so a node with
+1 element and 2 children would be called a 2-node, and a node with 2 elements and 3 children would be called a 3-node.
 
 Additionally, there are ordering invariants similar to the binary
-search tree. Nodes with 1 element and 2 children have the same invariant as a
-binary search tree, where elements in the left subtree must all be smaller; and
-elements in the right subtree must all be greater.
+search tree: nodes with 1 element and 2 children have the same invariant as a
+binary search tree, where **elements in the left subtree must all be smaller; and elements in the right subtree must all be greater**.
 
-We can extend this to 3-nodes as well. First, the left element inside the node must be smaller than
-the right element inside the node. Nodes in the left subtree must be less
-than the smaller element; nodes in the middle subtree must be between the two elements;
-and nodes in the right subtree must be greater than the larger element.
+We can extend this to 3-nodes (nodes with 2 elements and 3 children) as well. First, the left element *inside* the node must be smaller than
+the right element *inside* the node. Nodes in the left *subtree* must be less
+than the smaller element *inside* the node. Nodes in the middle *subtree* must be between the two elements *inside* the node. Nodes in the right *subtree* must be greater than the larger element *inside* the node.
 
 As in binary search trees, these ordering invariants must recursively hold.
-For this lab we won't worry about what to do with equal elements.
+For this lab, we won't worry about what to do with duplicate elements.
 
 Here's an example of a 2-3 tree:
 
@@ -123,20 +120,17 @@ We can take advantage of the ordering property to construct a search algorithm
 similar to the search algorithm for binary search trees. Assume that within
 a node, we check elements from left to right.
 
-Discuss the following with someone in your lab, based on the tree above:
+Think about the following questions based on the tree above:
 
-1. What is the order in which we check elements when we search for 7 (a element in the tree)?
-2. What is the order in which we check elements when we search for 13 (a element not in the tree)?
+1. What is the order in which we check elements when we search for 7 (an element in the tree)?
+2. What is the order in which we check elements when we search for 13 (an element not in the tree)?
 
 <details markdown="block">
 <summary markdown="block">
 **Answers (click to view):**
 </summary>
-1.  Check 5, see that it's greater. Check 9, see that it's smaller, explore to
-    the middle child. Check 7, see that we've found the element.
-2.  Check 5, see that it's greater. Check 9, see that it's greater, explore to
-    the right child. Check 10, see that it's greater. Check 12, see that it's
-    greater. No more children, so conclude that it's not in the tree.
+1.  Check 5, and see that it's greater. Check 9, see that it's smaller, and explore to the middle child. Check 7, and see that we've found the element.
+2.  Check 5, and see that it's greater. Check 9, and see that it's greater, and explore to the right child. Check 10, and see that it's greater. Check 12, and see that it's greater. There's no more children, so we conclude that it's not in the tree.
 </details>
 
 ### Insertion into a 2-3 Tree
@@ -144,10 +138,10 @@ Discuss the following with someone in your lab, based on the tree above:
 Although searching in a 2-3 tree is like searching in a BST, inserting a new
 item is a little different.
 
-Similar to a BST, we *always* insert the new element in a leaf node. We must find the
-correct place for the element that we insert to go by traversing down the tree,
+Similar to a BST, we always **insert the new element in a leaf node**. We must find the
+correct place for the new element by traversing down the tree,
 and then insert the new element into the appropriate place in the existing leaf.
-However, unlike in a BST, we can "stuff" more elements into the nodes in a 2-3
+However, unlike in a BST, we can "stuff" more elements into each node in a 2-3
 tree.
 
 #### Basic Insertion
@@ -174,32 +168,31 @@ Consider the following 2-3 tree:
 
 Let's try to insert 4. We see that it needs to go into the leaf
 node to the left with elements [1, 3]. We start by *temporarily* violating the
-3-element limitation, and "overstuffing" this node so that it has elements [1, 3, 4].
+2-element limitation, and "overstuffing" this node so that it has three elements: [1, 3, 4].
 
 ![insert-small](img/23tree-small-2.svg){: style="max-height: 200px;" }
 
-We need to "split" this node with 3 elements, so that all nodes continue to have
-1 or 2 elements. One way to do that could be to create a subtree, by moving the
-middle node "up", and splitting the remaining nodes.
+We need to "split" this node with 3 elements, so that **all nodes continue to have 1 or 2 elements** (an invariant for our 2-3 tree). One way to do that could be to create a subtree, by moving the
+middle element "up" into its own node (node with [3]), then and splitting the remaining elements into two nodes (nodes with [1] and [4]).
 
 ![insert-small](img/23tree-small-bad.svg){: style="max-height: 250px;" }
 
 **However, this makes some of the leaves (1 and 4) be further from the root
 than other leaves (7 and 9).** We want to keep our tree as *balanced* as
 possible, so we want to keep our leaves at the same height. To fix this,
-instead of keeping the middle element separate, we "push it up" to the parent node:
+instead of keeping the node with the middle element ([3]) separate, we "push it up" to the parent node ([5] becomes [3, 5]):
 
 ![insert-small](img/23tree-small-fixed.svg){: style="max-height: 200px;" }
 
 The tree invariants now hold, so we're done! Note that the other two elements in
-the overstuffed node (1 and 4) have become separate children of the newly
+the overstuffed node ([1] and [4]) have become *separate* children of the newly
 expanded node with elements 3 and 5.
 
 #### Push-Up Insertion... Again
 
 You may have noticed a problem in the previous section. What if this push-up
-causes the parent node to have too many elements? When the parent node has too many
-elements, we need to push up and split again -- which may cause another
+causes the *parent* node to have too many elements? When the parent node has too many
+elements, we need to push up and split *again* -- which may cause another
 overstuffing, and so on.
 
 Let's insert 8 into the tree we finished with last time:
@@ -210,25 +203,22 @@ Since we have an overstuffed node, we need to split and push up:
 
 ![insert-small](img/23tree-10.svg){: style="max-height: 200px;" }
 
-When we create an overstuffed node that temporarily has 3 elements, it has 4
-children, since all nodes have 1 more child than element.
+When we create an overstuffed node that temporarily has 3 elements, it has 4 children, since all nodes have 1 more child than element (an invariant).
 
 ![insert-small](img/23tree-11.svg){: style="max-height: 200px;" }
 
 When we reach the root node, we don't have a parent node to push up into.
-Instead, we push up the middle node (as usual), and create a new layer.
-This does not cause any of the leaves to be at different heights from the root.
-We're making a new root, and pushing down all leaves equally!
+Instead, we push up the middle element as its own node, and create a new layer.
+This does not cause any of the leaves to be at different heights from the root, because we're making a new root, which pushes down all leaves equally!
 
 ![insert-small](img/23tree-12.svg){: style="max-height: 250px;" }
 
-Wait, what happened to the 4 children from the split node -- why did they go
-*there*? Remember the binary search tree-like invariant. After we pull up
-5 and have 3 and 8 be split into separate children, we must maintain the
-ordering invariant. The subtree rooted at 4 could contain any elements "between
-3 and 5". To keep that true, we put 4's subtree in the new tree where it could
-still contain any elements between 3 and 5 -- to the left of 5, then to the right
-of 3.
+Wait, what happened to the four children from the split node -- why did [1] and [4] become children of [3], while [7] and [9] became children of [8]? Remember the binary search tree-like invariant. After we pull up
+[5] and split [3] and [8] into separate children, we must maintain the
+ordering invariant. The subtree (which is also a leaf in this case) rooted at [4] could contain any elements "between
+3 and 5". To keep that true, we put [4]'s subtree in the new tree where it could
+still contain any elements between [3] and [5] -- to the left of [5], then to the right
+of [3].
 
 #### Push-Up Insertion Summary
 
@@ -236,7 +226,7 @@ Here's a summary of different cases you might encounter when performing
 push-up insertion. Each of these cases can be explained by upholding the
 binary search invariant.
 
-Note: the end results of the cases on the right side (push-up when parent is a 3-node) will require the parent to push-up and split again. 
+Note: the end results of the cases on the right side (push-up when the parent node has three elements) will require the parent to push-up and split again. 
 
 ![insert-summary](img/23-insert-summary.png){: style="max-height: 400px;" }
 
@@ -251,26 +241,19 @@ Note: the end results of the cases on the right side (push-up when parent is a 3
     into an initially empty 2-3 tree. Which insertion causes the second split
     to take place?
 
-    Try to add these elements to an empty tree, and discuss your result with your
-    another person.
-
-{% include alert.html content="
-If you want to check your work, consider using [this visualization tool][] from
-the University of San Francisco. Make sure to set the degree of the tree
-appropriately. They have a few more interesting visualizations on their site
+If you want to check your work, consider using [this visualization tool][] from CSUB. Make sure to set the degree of the tree
+appropriately (degree = 3 for 2-3 trees). They have a few more interesting visualizations on their site
 if you want to use as a resource at a later point.
 
 To get the starting tree for (1), a sequence of insertions is
 3, 5, 7, 1, 9, 4, 8.
 
-[this visualization tool]: https://www.cs.usfca.edu/~galles/visualization/BTree.html
-" %}
+[this visualization tool]: https://www.cs.csub.edu/~msarr/visualizations/BTree.html
 
 ### Discuss: 2-3 Tree Balancing
 
 With the insertion procedure given above, why are 2-3 trees self-balancing?
-Can a leaf ever be further from the root than another? Are we guaranteed any runtimes for insertion or search?
-Discuss with someone in your lab or your TA.
+Can a leaf ever be further from the root than another? Are we guaranteed any runtimes for insertion or search? Feel free to discuss and check your answers with someone in your lab or your TA.
 
 ## Left-Leaning Red-Black Trees
 
@@ -294,7 +277,7 @@ qualities, self-balancing combined with relative ease of binary search operation
 is why Java's `TreeMap` and `TreeSet` are implemented as red-black trees!
 
 We will concern ourselves with a specific subset of red-black trees:
-left-leaning red-black trees, or LLRB trees.
+**left-leaning red-black trees**, or **LLRB** **trees**.
 
 ### 2-3 Trees &harr; LLRB Trees
 
@@ -309,10 +292,10 @@ We split the two elements into two nodes, and *color* them to indicate they are 
 ![](img/RBtree-1.svg){: style="max-height: 350px;" }
 
 Note the location of the child subtrees. Here, we've colored `a`
-**red**{: style="color: red;"}, to indicate that it is in the same 2-3 tree
+**red**{: style="color: red;"}, to indicate that it is in the *same* 2-3 tree
 node as its parent. We color all other nodes **black** to indicate that
 they are in a different 2-3 tree node from their parent. Note that you may also
-see LLRB trees represented using red links between connected nodes (rather than the
+see LLRB trees represented using red links *between* connected nodes (rather than the
 child node being colored red). 
 
 In this way, we also see that each 2-3 tree node corresponds to exactly
@@ -320,8 +303,8 @@ one black node (and vice-versa).
 
 Note that `a` could have been on top, with `b` being a child on the
 right. This is also technically valid! However, to simplify the cases we
-later consider, we always put the single red child on the left. This is what
-makes these trees *left-leaning*.
+later consider, we always put the single red child on the *left*. This is what
+makes these trees **left-leaning**.
 
 Here's a full 2-3 tree translated into the corresponding LLRB tree:
 
@@ -333,40 +316,39 @@ We can now specify some properties of LLRB trees that allow us to define
 them independently. In particular, we use the one-to-one mapping between
 valid LLRB trees and 2-3 trees to derive some of these properties.
 
-The root node must be colored black.
+The root node must be colored black
 : Our interpretation of red nodes is that they are in the same 2-3 node as
   their parent. The root node has no parent, so it cannot be red.
 
-If a node has one red child, it must be on the left.
-: This makes the tree left-leaning.
+If a node has one red child, that child must be on the left
+: This makes the tree *left*-leaning.
 
-No node can have two red children.
+No node can have two red children
 : If a node has two red children, then both children are in the same 2-3 node
   as the parent. This means that the corresponding 2-3 node contains 3 elements,
   which is not allowed.
 
-No red node can have a red parent; or every red node's parent is black.
+No red node can have a red parent (every red node's parent must be black)
 : If a red node has a red parent, then both the red child and red parent are in
   the same 2-3 node as the red parent's parent. This means that the
   corresponding 2-3 node contains 3 elements, which is not allowed.
 
-In a balanced LLRB tree, every path from the root to null goes through the same number of black nodes.
+In a balanced LLRB tree, every path from the root to **null** goes through the same number of black nodes
 : In a balanced 2-3 tree, every leaf node is the same distance from the root.
   We also know that every black node in an LLRB tree corresponds to exactly one
   node in the equivalent 2-3 tree. Therefore, every leaf node in an LLRB tree
   is the same number of black nodes from the root, just as every leaf node
-  in a 2-3 tree is the same distance from the root. This stricter invariant of Root-to-Null
+  in a 2-3 tree is the same distance from the root. This stricter invariant of Root-to-**Null**
   (rather than just saying Root-to-Leaf) avoids invalid trees like below: 
 
   ![insert-summary](img/root-to-null.png){: style="max-height: 200px;" }
 
 ### Discussion: LLRB Tree Properties
 
-Given the height of a 2-3 tree, what is the maximum height of the corresponding
-LLRB tree? Discuss with your someone in your lab.
+Given the height of a 2-3 tree, what is the maximum height of the corresponding LLRB tree?
 
-Then, discuss which of the following binary search tree
-operations we can use on red-black trees without any modification.
+Which of the following binary search tree
+operations can we use on red-black trees without any modification?
 
 1. Insertion
 2. Deletion
@@ -378,8 +360,7 @@ operations we can use on red-black trees without any modification.
 **Answers (click to view):**
 </summary>
 The tallest LLRB tree that we can get from a 2-3 tree is by stacking 3-nodes,
-which contain a black node on top of a red node. The maximum height of the LLRB tree
-is therefore double the height of the corresponding 2-3 tree.
+which contain a black node on top of a red node. If the height (longest path from root to leaf node) of the 2-3 tree is $H$, then the maximum height of the LLRB tree is $2H+1$.
 
 We can perform searches and range queries just like for binary search trees,
 since these don't modify the tree structure. However, we must change our
@@ -392,8 +373,7 @@ Read the code in `RedBlackTree.java` and `TwoThreeTree.java`.
 
 Then, in `RedBlackTree.java`, implement `buildRedBlackTree` which returns the
 root node of the red-black tree which has a one-to-one mapping to the given
-2-3 tree. **For a 2-3 tree node with 2 elements in a node, you must create
-a left-leaning red child to pass the autograder tests.** 
+2-3 tree. **For a 2-3 tree node with 2 elements in a node, you must create a *left*-leaning red child to pass the autograder tests.** 
 
 If you're stuck, refer to the example conversions shown above to help you write
 this method!
@@ -401,25 +381,26 @@ this method!
 Some further tips for writing this method if you are stuck:
 
 - You should be filling in the two cases which correspond to a 2-node and a
-  3-node. For a 2-node, you should need to make one new `RBTreeNode` object.
-  For a 3-node, you should need to make two new `RBTreeNode` objects.
-- You should rely on the `getItemAt` and `getChildAt` methods from the `Node` class
+  3-node. For a 2-node, you should make one new `RBTreeNode` object.
+  For a 3-node, you should make two new `RBTreeNode` objects.
+- You should use the `getItemAt` and `getChildAt` methods from the `Node` class
   which will return the appropriate items and children `Node`s.
 - Your code should involve the same number of recursive calls to `buildRedBlackTree`
   as the number of children in the `Node` you are translating, e.g. two recursive
   calls for a 2-node and three recursive nodes for a 3-node.
 - For both cases you should only make one of the `RBTreeNode`s be a black
-  node. For the cases where you have more than one `RBTreeNode` make sure that you are
+  node. For the cases where you have more than one `RBTreeNode`, make sure that you are
   returning the black node.
+
+{: .task}
+>Implement `buildRedBlackTree` in `RedBlackTree.java`.
 
 ## Inserting Into LLRB Trees
 
-{% include alert.html type="info" content="
-To gain a deeper understanding of the operations below and why they work, check out the [lecture slides](https://docs.google.com/presentation/d/1cLtmQeQhTuk6p41t57WasBGv1_RDTsbIMkEACrAHtPY/edit#slide=id.g13c3869d32c_0_1884) starting at slide 83.
-" %}
+To gain a deeper understanding of the operations below and why they work, check out the Su24 [lecture slides](https://docs.google.com/presentation/d/1cLtmQeQhTuk6p41t57WasBGv1_RDTsbIMkEACrAHtPY/edit#slide=id.g13c3869d32c_0_1884), starting at slide 83.
 
 Insertion into LLRB trees starts off with the regular binary search tree
-insertion algorithm, where we search to find the appropriate leaf location. Then we insert the element as a red node (recall in a 2-3 tree we always insert an element by stuffing it into an existing node).
+insertion algorithm, where we search to find the appropriate *leaf* location. Then we insert the element as a *red* node (recall in a 2-3 tree we always insert an element by stuffing it into an existing node).
 Placing the node can break the red-black tree
 invariants, so we need additional operations that can "restore" the red-black
 tree properties. We know that there is a one-to-one correspondence of valid
@@ -455,18 +436,20 @@ It seems like we want these nodes to be "turned" the other way, with `x` as
 the parent and `a` as the red child -- moving `a` and `x` to the left.
 To do this, we use the operation "**rotate left**" on the parent node `a`.
 
-![](img/RBtree-4.svg){: style="max-height: 300px;" }
+Applying the rotation by rotating left on `a`, we get:
 
-Here's a few things to notice about this "rotation":
+![](img/RBtree-5.svg){: style="max-height: 200px;" }
+
+### `rotateLeft`
+
+When calling `rotateLeft`, below of a few things to notice about the rotation:
+
+![](img/RBtree-4.svg){: style="max-height: 300px;" }
 
 - The root of the subtree has changed from `a` to `b`.
 - `a` and `b` have moved to the "left".
 - The two nodes swap colors so that the new root is the same color as the old root.
-- The reorganized subtree still satisfies the binary search property.
-
-Applying the rotation to the violation above by rotating left on `a`, we get:
-
-![](img/RBtree-5.svg){: style="max-height: 200px;" }
+- The reorganized subtree still satisfies the binary search property. Notice that the `(a, b)` node went from being the left child of `b` to being the right child of `a`.
 
 ### Cases: Second Child of a Black Node or Child of a Red Node
 
@@ -474,7 +457,7 @@ Here, we have three sub-cases for when the new element is added to a 2-3 tree le
 node that already contains two elements. This will cause a node split, which we
 will have to represent somehow.
 
-#### Case: Largest of Three
+**Sub-case: Largest of Three**
 
 In this case, `x` is the largest of the three values in the node, so it is
 placed as the right red child:
@@ -494,7 +477,7 @@ childrens' colors.
 
 We will return to this configuration later.
 
-#### Case: Smallest of Three
+**Sub-case: Smallest of Three**
 
 In this case, `x` is the smallest of the three values in the node, so it is
 placed as the left red child of the existing red child:
@@ -517,7 +500,7 @@ In this case, we rotate right on `b`:
 At this point, we notice that it's the same pattern as the previous case, so
 we apply a color flip to `a`.
 
-#### Case: Middle of Three
+**Sub-case: Middle of Three**
 
 In this case, `x` is the middle of the three values in the node, so it is
 placed as the right red child of the existing red child:
@@ -531,7 +514,7 @@ Rotating left on `a`, we get:
 Here, we have the previous case again, so we know that we can rotate right on
 `b` and apply a color flip to the root, `x`.
 
-#### Upward Propagation
+**Upward Propagation**
 
 Hold on -- each of these three cases ended up in a color flip. What if the
 subtree we modified was a *right subtree*, and the rest of the tree looked like
@@ -549,6 +532,9 @@ these cases until we either:
 
 In the second case, we must remember to flip the root back to black. This is
 equivalent to forming a new layer in the 2-3 tree.
+
+{: .info}
+>What this means is that performing some of these operations (color flip, rotate right, or rotate left) may end up breaking another invariant, resulting in more operations. As we try to resolve these cases, these transformations effectively work up the LLRB tree until we’ve resolved them according to the conditions above.
 
 ### LLRB Insertion Summary
 
@@ -578,6 +564,9 @@ old root red.
 *Hint*: The two operations are symmetric. Should the code significantly differ?
 If you find yourself stuck, take a look at the examples that are shown above!
 
+{: .task}
+>Implement `rotateRight` and `rotateLeft` in `RedBlackTree.java`.
+
 ### Exercise: Color Flip
 
 Now we consider the color flip operation that is essential to LLRB tree
@@ -585,6 +574,7 @@ implementation. Given a node, this operation simply flips the color of itself,
 and the left and right children. However simple it may look now, we will examine
 its consequences later on.
 
+{: .task}
 Implement the `flipColors` method in `RedBlackTree.java`.
 
 ### Exercise: `insert`
@@ -609,6 +599,9 @@ If you're stuck, write a recursive helper method similar to how we've seen
 In addition, think about the similarities between the cases presented above, and
 think about how you can integrate those similarities to simplify your code.
 Feel free to discuss all these points with other students in your lab and your TA.
+
+{: .task}
+>Implement the `insert` method in `RedBlackTree.java`.
 
 ### Discussion: `insert` Runtime
 
