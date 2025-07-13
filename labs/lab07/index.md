@@ -18,7 +18,7 @@ The FAQ for Lab 7 is located [here](faq).
 
 First, we'll cover inheritance in Java, which comes in three main forms: interface implementation, concrete class extension, and abstract class extension. We will also discuss dynamic method selection (DMS),
 a process that determines which functions get run upon program execution as a result of inheritance and
-Java's static typing. **For Summer 2025, abstract classes and DMS are both optional and will not be tested on exams, but we recommend reading through this lab's corresponding sections if you're interested!**
+Java's static typing. **For Summer 2025, abstract classes are optional and will not be tested on exams, but we recommend reading through this lab's corresponding sections if you're interested!**
 
 First, we'll look at some classes we've written so far, and identify patterns
 in what we can _do_ with them. We will connect this idea to _abstract data
