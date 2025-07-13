@@ -3,7 +3,7 @@ layout: page
 title: >-
   FAQ
 parent: >-
-  Lab 11: Balanced Search Trees
+  Lab 12: Balanced Search Trees
 grand_parent: Labs
 has_right_toc: true
 released: true
