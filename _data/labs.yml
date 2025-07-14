@@ -139,7 +139,7 @@ labs:
     video: false
     worksheet: https://drive.google.com/file/d/1KaYV8nUjTRvtQfM7g6tjYTrvarRynpFd/view?usp=sharing
     slides: https://docs.google.com/presentation/d/1JsPsh9N6LRPc8OhfKOiK4Jt8p2EGxL8j/edit?usp=sharing&rtpof=true&sd=true
-    # solutions: https://drive.google.com/file/d/1dE7zMUGDkRv-WB0IxeIo1dQbtUlCCwW2/view?usp=sharing
+    solutions: https://drive.google.com/file/d/1dE7zMUGDkRv-WB0IxeIo1dQbtUlCCwW2/view?usp=sharing
     link: 
     show_links: True
     nonumber: True
@@ -149,10 +149,11 @@ labs:
     show_links: true
   - title: "Theoretical #4: Binary Search Trees"
     theoretical: True
-    examprep_video: True
-    examprep_slides: True
+    worksheet: https://drive.google.com/file/d/1Dg0_2aXthjxW91J7VW16f-3aLqTz-WKR/view?usp=sharing
+    slides: https://docs.google.com/presentation/d/1SrPa-Yrzqt7_Xczruizttwhft9dF2kU4_2DyM4Ueh8o/edit?usp=sharing
+    solutions: https://drive.google.com/file/d/1oy15VkQZlLBtRdXxH0jVXf0oTOihhfo6/view?usp=sharing
     link: 
-    show_links: false
+    show_links: True
     nonumber: True
   - title: "Exam Review"
     show_links: true
