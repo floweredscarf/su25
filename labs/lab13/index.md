@@ -5,23 +5,23 @@ title: >-
 has_children: true
 parent: Labs
 has_toc: false
-nav_exclude: true
+nav_exclude: false
 has_right_toc: true
 released: true
 ---
 
-## [FAQ](faq.md)
+## [FAQ](faq)
 
 Each assignment will have an FAQ linked at the top. You can also access it by
 adding "/faq" to the end of the URL. The FAQ for Lab 13 is located
-[here](faq.md).
+[here](faq).
 
 {: .warning}
 > **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
 
 ## Introduction
 
-As usual, pull the files from the skeleton and make a new IntelliJ project.
+As usual, pull the files from the skeleton.
 
 This lab is on the long side, so it may be useful to program with a partner!
 
