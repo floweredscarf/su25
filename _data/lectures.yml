@@ -222,7 +222,7 @@ lectures:
   - title: 
     nonumber: True
   - title: "Tree Traversals"
-    # slides: https://docs.google.com/presentation/d/1hPFchcMeDChntsR6ReHa9wmv_yx_9yzuUFrnangXyFk
+    # slides: https://docs.google.com/presentation/d/1gIM_3Gc2wQfxMASSlXI_KeDRU-1jY45eAEVwlq8Ehx4
     # video: "" # 
     # recording: https://youtu.be/YmFuwyCzw6M
     # quiz: https://forms.gle/jpb36dpRNDMtjHRH8
@@ -232,7 +232,7 @@ lectures:
       - title: "Ch 22.2"
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/22.-tree-traversals-and-graphs/22.2-tree-traversals"
   - title: "B-Trees"
-    # slides: https://docs.google.com/presentation/d/1hPFchcMeDChntsR6ReHa9wmv_yx_9yzuUFrnangXyFk
+    slides: https://docs.google.com/presentation/d/1gIM_3Gc2wQfxMASSlXI_KeDRU-1jY45eAEVwlq8Ehx4
     video: "https://www.youtube.com/watch?v=0SCtnf84QrI&list=PL8FaHk7qbOD41EHkD7CgQuRw1jpH_Fv7-&index=1" # 
     # recording: https://youtu.be/YmFuwyCzw6M
     # quiz: https://forms.gle/jpb36dpRNDMtjHRH8
