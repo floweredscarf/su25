@@ -157,7 +157,7 @@ labs:
     show_links: true
   - title: "Exam Review"
     show_links: true
-  - title: "No Lab"
+  - title: "Office Hours"
     nonumber: True
     rowspan: 1
   - title: "No Lab"
