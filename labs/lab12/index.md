@@ -88,11 +88,11 @@ Sorry, Ethan (again)... didn't see this suggestion until it was too late. Shared
 
 ## 2-3 Trees
 
-In a binary search tree, each tree node contains exactly one element. In a B-tree, instead of storing a single element per node, we will store *multiple* elements per node! A **2-3 tree** is a B-tree where a
+In a binary search tree, each tree node contains exactly one element. In a B-tree, instead of storing a single element per node, we will store *multiple* elements per node! A **2-3 tree** is a B-tree where
 nodes can contain up to two elements.
 
-In a 2-3, tree each non-leaf node
-has either 2 or 3 children. **One invariant of B-trees is that any non-leaf node must have *one* more child than element**. That means that a node with 1 element must have
+In a 2-3 tree, each non-leaf node
+has either 2 or 3 children. **One invariant of B-trees is that any non-leaf node must have *one* more child than its number of elements**. That means that a node with 1 element must have
 2 children, and a node with 2 elements must have 3 children.
 
 {: .info}
@@ -316,25 +316,25 @@ We can now specify some properties of LLRB trees that allow us to define
 them independently. In particular, we use the one-to-one mapping between
 valid LLRB trees and 2-3 trees to derive some of these properties.
 
-The root node must be colored black
-: Our interpretation of red nodes is that they are in the same 2-3 node as
+1. **The root node must be colored black.**
+- Our interpretation of red nodes is that they are in the same 2-3 node as
   their parent. The root node has no parent, so it cannot be red.
 
-If a node has one red child, that child must be on the left
-: This makes the tree *left*-leaning.
+2. **If a node has one red child, that child must be on the left.**
+- This makes the tree *left*-leaning.
 
-No node can have two red children
-: If a node has two red children, then both children are in the same 2-3 node
+3. **No node can have two red children.**
+- If a node has two red children, then both children are in the same 2-3 node
   as the parent. This means that the corresponding 2-3 node contains 3 elements,
   which is not allowed.
 
-No red node can have a red parent (every red node's parent must be black)
-: If a red node has a red parent, then both the red child and red parent are in
+4. **No red node can have a red parent (every red node's parent must be black).**
+- If a red node has a red parent, then both the red child and red parent are in
   the same 2-3 node as the red parent's parent. This means that the
   corresponding 2-3 node contains 3 elements, which is not allowed.
 
-In a balanced LLRB tree, every path from the root to **null** goes through the same number of black nodes
-: In a balanced 2-3 tree, every leaf node is the same distance from the root.
+5. **In a balanced LLRB tree, every path from the root to **null** goes through the same number of black nodes.**
+- In a balanced 2-3 tree, every leaf node is the same distance from the root.
   We also know that every black node in an LLRB tree corresponds to exactly one
   node in the equivalent 2-3 tree. Therefore, every leaf node in an LLRB tree
   is the same number of black nodes from the root, just as every leaf node
@@ -360,7 +360,7 @@ operations can we use on red-black trees without any modification?
 **Answers (click to view):**
 </summary>
 The tallest LLRB tree that we can get from a 2-3 tree is by stacking 3-nodes,
-which contain a black node on top of a red node. If the height (longest path from root to leaf node) of the 2-3 tree is $H$, then the maximum height of the LLRB tree is $2H+1$.
+which contain a black node on top of a red node. If the height (longest path from root to leaf node) of the 2-3 tree is $H$, then the maximum height of the LLRB tree is $2H+1$. Try drawing a small diagram to convince yourself of why this is. As an example, a 2-3 tree that is 5 nodes tall would result in an LLRB that is at most 10 nodes tall (because the worst case is when every node in the 2-3 tree has two elements). The height of a 5-node-tall tree is 4, and the height of a 10-node-tall tree is 9.
 
 We can perform searches and range queries just like for binary search trees,
 since these don't modify the tree structure. However, we must change our
