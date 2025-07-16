@@ -233,6 +233,23 @@ If an exam doesn't have the reference card or clarifications linked, it means we
       </td>
   </tr>
   <tr>
+      <td class="is-even">Summer 2022</td>
+      <td class="is-even">
+        <a href="https://drive.google.com/file/d/1hmuydX_JDPkUW6B3SaoIp1HJrRb1iZEE/view" aria-label="Questions for Summer 2022 Midterm">exam</a> / 
+        <a href="https://drive.google.com/file/d/1W0yiZkfMn8AVMgVKBndcsMXaVkvlQZdo/view" aria-label="Solutions for Summer 2022 Midterm">sols</a> /
+        <a href="https://www.youtube.com/playlist?list=PL102eBoiAo8nY_fml71MSRSruLfxKjleJ" aria-label="Videos for Summer 2022 Midterm">videos</a>
+      </td>
+      <td class="is-even">
+        Only 1 Midterm
+      </td>
+      <td class="is-even">
+        TBD
+        <!-- <a href="https://drive.google.com/file/d/1Iou0GOogSiI5dYXkQJSAHXeORucBL_oU/view?usp=sharing" aria-label="Questions for Fall 2024 Final">exam</a> / 
+        <a href="https://drive.google.com/file/d/1PaCSJ0TFeGjskO-KhwnwJQqZWP_1Hr0m/view?usp=sharing" aria-label="Solutions for Fall 2024 Final">sols</a> / 
+        <a href="https://www.youtube.com/watch?v=GMpu9jVKmXo&list=PL102eBoiAo8kT7fT-Rt08OP6mpXhEuzzU" aria-label="Videos for Fall 2024 Final">videos</a> -->
+      </td>
+  </tr>
+  <tr>
       <td>Spring 2021</td>
       <td>
         <a href="https://drive.google.com/file/d/1S_Fyvyz50DFikHwMcOBcRuFGIZoQMmGK" aria-label="Questions for Spring 2021 Midterm 1">exam</a> / 
