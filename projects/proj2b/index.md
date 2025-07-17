@@ -28,7 +28,7 @@ As this is a quite new project, there may be occasional bugs or confusion with t
 
 > **IMPORTANT NOTE:** After you read the 2B spec, you may be tempted to start coding. We recommend not doing this!
 >
-> When desinging more complex systems (like WordNet), it is useful to create a [design document](https://docs.google.com/document/d/1Jmiy5qNA6Qrnw7sQBFSAIX_uPidOxG2Wa3gKLdpX0F8/edit?usp=sharing)! We highly recommend writing a design document > before beginning the project. You may use [this template](https://docs.google.com/document/d/1Jmiy5qNA6Qrnw7sQBFSAIX_uPidOxG2Wa3gKLdpX0F8/edit?usp=sharing) to get started.
+> When desinging more complex systems (like WordNet), it is useful to create a [design document](https://docs.google.com/document/d/1Jmiy5qNA6Qrnw7sQBFSAIX_uPidOxG2Wa3gKLdpX0F8/edit?usp=sharing)! We highly recommend writing a design document before starting to code. You may use [this template](https://docs.google.com/document/d/1Jmiy5qNA6Qrnw7sQBFSAIX_uPidOxG2Wa3gKLdpX0F8/edit?usp=sharing) to get started. *Please read through the entirety of the spec before starting your design document.*
 
 ### Design Notes
 
