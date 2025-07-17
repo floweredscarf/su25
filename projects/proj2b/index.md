@@ -6,7 +6,7 @@ parent: Projects
 has_children: true
 has_toc: false
 has_right_toc: true
-nav_exclude: true
+nav_exclude: false
 description: >-
   Project 2B spec.
 released: true
@@ -18,22 +18,17 @@ Each assignment will have an FAQ linked at the top. You can also access it by ad
 FAQ for Project 2B is located
 [here](faq.md).
 
-{: .warning}
-> **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
+## Due Sunday, 7/27 at 11:59 PM
 
-## Checkpoint & Design Doc Due 3/21/2025
-
-## Coding Due 4/4/2025
-
-In this project, you'll complete your implementation of the NGordnet tool.
+In this project, you'll complete your implementation of the NGordNet tool.
 
 As this is a quite new project, there may be occasional bugs or confusion with the spec. If you notice anything of this sort, please post on Ed.
 
 {: .danger}
 
-> **IMPORTANT NOTE:** After you read the 2B spec, you may be tempted to start coding. Don't do this!
+> **IMPORTANT NOTE:** After you read the 2B spec, you may be tempted to start coding. We recommend not doing this!
 >
-> Before implementing ANY code for 2B, complete the [Project 2B: Checkpoint](https://www.gradescope.com/courses/961758/assignments/5737910) and [Design Document](https://www.gradescope.com/courses/961758/assignments/5737948) before starting coding.
+> When desinging more complex systems (like WordNet), it is useful to create a [design document](https://docs.google.com/document/d/1Jmiy5qNA6Qrnw7sQBFSAIX_uPidOxG2Wa3gKLdpX0F8/edit?usp=sharing)! We highly recommend writing a design document before starting to code. You may use [this template](https://docs.google.com/document/d/1Jmiy5qNA6Qrnw7sQBFSAIX_uPidOxG2Wa3gKLdpX0F8/edit?usp=sharing) to get started. *Please read through the entirety of the spec before starting your design document.*
 
 ### Design Notes
 
@@ -85,16 +80,7 @@ proj2b
 
 ## Getting Started
 
-{: .warning}
-**IMPORTANT NOTE:** You should _really_ complete **[Project 2B: Checkpoint](https://www.gradescope.com/courses/961758/assignments/5737910)** first before starting coding, or even designing your project. We think this would be helpful for your understanding of the project. We will also require you to submit a [design document](https://docs.google.com/document/d/15j1vyx8zKwEi29JQ1Sd6Vl6R9AtbmJLWmL2BECFyx-w/edit?usp=sharing) to Gradescope. More details about the design document can be found in [Deliverables and Scoring](#deliverables-and-scoring).
-
-{: .task}
-
-> Complete **[Project 2B: Checkpoint](https://www.gradescope.com/courses/961758/assignments/5737910)**
->
-> After finishing the checkpoint, complete and submit your **[Design Document](https://www.gradescope.com/courses/961758/assignments/5737948)**
-
-This part of the project is designed for you to come up with efficient and correct design for your implementation. The design you come up with will be very important to handle these cases. Please read the 2B spec carefully before starting your design document.
+This part of the project is designed for you to come up with efficient and correct design for your implementation. The design you come up with will be very important to handle these cases. 
 
 The course staff has created a couple of introductory videos to the project and the starter code
 available [here](https://www.youtube.com/playlist?list=PLNpmrGKEeMf727KwSrG8Ez1o3odK--o9i). Bear in mind we have changed the structure of the project so some information might be outdated!
@@ -478,9 +464,7 @@ The EECS-course guide is not available on the interactive web staff solution so 
 For Project 2B, the only required deliverable is the `HyponymsHandler.java` file, in addition to any helper classes.
 However, we will not be directly grading these classes, since they can vary from student to student.
 
-- [Project 2B Checkpoint](https://www.gradescope.com/courses/961758/assignments/5737910/): 2.5 points - **Due March 21st**
-- [Project 2B Design Document](https://www.gradescope.com/courses/961758/assignments/5737948/): 2.5 points - **Due March 21st**
-- [Project 2B Coding](https://www.gradescope.com/courses/961758/assignments/5737804/): 80 points - **Due April 4th**
+- [Project 2B Coding]: 26 points - **Due July 27th**
   - `HyponymsHandler` k = 0, single word, single query per test
   - `HyponymsHandler` k = 0, single word, multiple queries per test
   - `HyponymsHandler` k = 0, multiple words, single query per test
@@ -490,18 +474,6 @@ However, we will not be directly grading these classes, since they can vary from
   - `HyponymsHandler` k != 0, multiple words, single query per test
   - `HyponymsHandler` k != 0, multiple words, multiple queries per test
   - `HyponymsHandler` Invalid Inputs
-
-As noted above, you will have to turn in your design document. This will be worth 2.5 points and it is due March 21st. The design document's main purpose is to serve as a foundation for your project. It is important to think and ideate before coding.
-What we are looking for in the design document:
-
-- Identify the data structures we have learned in the class that you will be using in your implementation.
-- Pseudocode / general overiview of your algorigthm for your implementation.
-
-Your design document should be around 1 - 2 pages long. Design document will be mainly graded on effort, thought, and completion.
-
-Please make a copy of [this template](https://docs.google.com/document/d/15j1vyx8zKwEi29JQ1Sd6Vl6R9AtbmJLWmL2BECFyx-w/edit?usp=sharing) and submit to [Gradescope](https://www.gradescope.com/courses/961758/assignments/5737948).
-
-Don't worry if you decide to change your design document after. You are free to do so! We want you to think about the implementation before coding therefore we require you to submit your design as the part of the project.
 
 The token limiting policy for this project will be as follows: You will start with 8 tokens, each of which has a 24-hour refresh time.
 
