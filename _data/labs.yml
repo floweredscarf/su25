@@ -118,7 +118,7 @@ labs:
     video: false
     worksheet: https://drive.google.com/file/d/1V9Q8Tkek8xYb63GfpJBCTSS3n0xRlxHJ/view
     slides: https://docs.google.com/presentation/d/1oSwJGeHD92B3sGSSqCiV4k8NcKXLda3E
-    solutions: https://drive.google.com/drive/folders/1LDMA8d9FMAB86oLyPd1B2PfI_8aaSj1t
+    solutions: https://drive.google.com/file/d/14I-Fywo_7SPpuJAwPD0dAKXH5JNMzyKX/view?usp=sharing
     link: 
     show_links: true
     nonumber: True
@@ -136,49 +136,55 @@ labs:
     show_links: true
   - title: "Theoretical #3: Asymptotics and Trees"
     theoretical: True
-    examprep_slides: True
+    video: false
+    worksheet: https://drive.google.com/file/d/1KaYV8nUjTRvtQfM7g6tjYTrvarRynpFd/view?usp=sharing
+    slides: https://docs.google.com/presentation/d/1JsPsh9N6LRPc8OhfKOiK4Jt8p2EGxL8j/edit?usp=sharing&rtpof=true&sd=true
+    solutions: https://drive.google.com/file/d/1dE7zMUGDkRv-WB0IxeIo1dQbtUlCCwW2/view?usp=sharing
     link: 
-    show_links: false
+    show_links: True
     nonumber: True
-  - title: "Balanced Search Trees"
-    due: "2025/07/15"
-    link: labs/lab12
-    show_links: true
   - title: "Theoretical #4: Binary Search Trees"
     theoretical: True
-    examprep_video: True
-    examprep_slides: True
+    worksheet: https://drive.google.com/file/d/12ERT2-P2a5XUr30PV40RrualXfxdli7d/view?usp=sharing
+    slides: https://docs.google.com/presentation/d/1SrPa-Yrzqt7_Xczruizttwhft9dF2kU4_2DyM4Ueh8o/edit?usp=sharing
+    solutions: https://drive.google.com/file/d/1XgzYPO8SKTAVFYXJXJKSXG4amXQGf6VM/view?usp=sharing
     link: 
-    show_links: false
+    show_links: True
     nonumber: True
+  - title: "Balanced Search Trees"
+    due: "2025/07/20"
+    link: labs/lab12
+    show_links: true
   - title: "Exam Review"
     show_links: true
-  - title: "No Lab"
+  - title: "Office Hours"
     nonumber: True
     rowspan: 1
   - title: "No Lab"
     nonumber: True
     rowspan: 1
   - title: "Hashing"
-    due: "2025/07/16"
+    due: "2025/07/22"
     link: labs/lab13
     show_links: false
   - title: "Heaps and Priority Queues"
-    due: "2025/07/17"
+    due: "2025/07/23"
     link: labs/lab14
     show_links: false
   - title: "Disjoint Sets"
-    due: "2025/07/22"
+    due: "2025/07/24"
     link: labs/lab15
     show_links: false
   - title: "Graphs"
-    due: "2025/07/23"
+    due: "2025/07/25"
     link: labs/lab16
     show_links: false
   - title: "Theoretical #5: Hashing, Heaps, and Union Find"
     theoretical: True
-    examprep_video: True
-    examprep_slides: True
+    video: false
+    # worksheet: https://drive.google.com/file/d/1ZN4tlDJwA4ogIiXYPbpx2erqPF_7lhHw/view?usp=sharing
+    #slides: https://docs.google.com/presentation/d/1JsPsh9N6LRPc8OhfKOiK4Jt8p2EGxL8j/edit?usp=sharing&rtpof=true&sd=true
+    # solutions: https://drive.google.com/file/d/1q-ZHotEalqHqYlcwzCP87jf_gHRX5FJP/view?usp=sharing
     link: 
     show_links: false
     nonumber: True
@@ -190,25 +196,27 @@ labs:
     nonumber: True
     rowspan: 1
   - title: "Shortest Path Trees"
-    due: "2025/07/24"
+    due: "2025/07/31"
     link: labs/lab17
     show_links: false
   - title: "Minimum Spanning Trees"
-    due: "2025/07/25"
+    due: "2025/08/01"
     link: labs/lab18
     show_links: false
   - title: "Theoretical #6: Graphs"
     theoretical: True
-    examprep_video: True
-    examprep_slides: True
+    video: false
+    # worksheet: https://drive.google.com/file/d/1ZN4tlDJwA4ogIiXYPbpx2erqPF_7lhHw/view?usp=sharing
+    # slides: https://docs.google.com/presentation/d/1JsPsh9N6LRPc8OhfKOiK4Jt8p2EGxL8j/edit?usp=sharing&rtpof=true&sd=true
+    # solutions: https://drive.google.com/file/d/1q-ZHotEalqHqYlcwzCP87jf_gHRX5FJP/view?usp=sharing
     link: 
     show_links: false
     nonumber: True
   - title: "Comparison Sorts"
-    due: "2025/07/30"
+    due: "2025/08/05"
     link: labs/lab20
   - title: "Counting Sorts"
-    due: "2025/07/31"
+    due: "2025/08/06"
     link: labs/lab21
     show_links: false
   - title: "BYOW OH & Checkoffs"
@@ -217,16 +225,18 @@ labs:
     nonumber: True
   - title: "Theoretical #7: Sorting"
     theoretical: True
-    examprep_video: True
-    examprep_slides: True
+    video: false
+    # worksheet: https://drive.google.com/file/d/1ZN4tlDJwA4ogIiXYPbpx2erqPF_7lhHw/view?usp=sharing
+    # slides: https://docs.google.com/presentation/d/1JsPsh9N6LRPc8OhfKOiK4Jt8p2EGxL8j/edit?usp=sharing&rtpof=true&sd=true
+    # solutions: https://drive.google.com/file/d/1q-ZHotEalqHqYlcwzCP87jf_gHRX5FJP/view?usp=sharing
     link:
     show_links: false
     nonumber: True
   - title: "BYOW OH & Checkoffs"
     nonumber: True
-  - title: "TBD"
+  - title: "No Lab"
     nonumber: True
-  - title: "TBD"
+  - title: "No Lab"
     nonumber: True
   - title: "No Lab"
     nonumber: True
