@@ -166,15 +166,15 @@ labs:
   - title: "Hashing"
     due: "2025/07/22"
     link: labs/lab13
-    show_links: false
+    show_links: true
   - title: "Heaps and Priority Queues"
     due: "2025/07/23"
     link: labs/lab14
-    show_links: false
+    show_links: true
   - title: "Disjoint Sets"
     due: "2025/07/24"
     link: labs/lab15
-    show_links: false
+    show_links: true
   - title: "Graphs"
     due: "2025/07/25"
     link: labs/lab16
