@@ -30,6 +30,18 @@ If an exam doesn't have the reference card or clarifications linked, it means we
 </thead>
 <tbody>
   <tr>
+    <td>Summer 2025</td>
+    <td>
+      <a href="/../../su25/assets/exam/cs61bl-su25-midterm.pdf" aria-label="Questions for Summer 2025 Midterm">exam</a> /
+      <a href="/../../su25/assets/exam/cs61bl-su25-midterm-solutions.pdf" aria-label="Solutions for Summer 2025 Midterm">sols</a>
+    </td>
+    <td>
+      Only 1 Midterm
+    </td>
+    <td>
+    </td>
+  </tr>
+    <tr>
       <td>Spring 2025</td>
       <td>
         <a href="https://drive.google.com/file/d/14XrrtR40_1CgEe_YySzUg7zsrS_EgqsW" aria-label="Questions for Spring 2025 Midterm 1">exam</a> / 
