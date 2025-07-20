@@ -154,7 +154,8 @@ labs:
     due: "2025/07/20"
     link: labs/lab12
     show_links: true
-  - title: "Exam Review"
+  - title: "Past Midterm Walkthroughs"
+    link: labs/lab-mt
     show_links: true
   - title: "Office Hours"
     nonumber: True

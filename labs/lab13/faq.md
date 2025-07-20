@@ -3,7 +3,7 @@ layout: page
 title: >-
   FAQ
 parent: >-
-  Lab 13: Hashing
+  Lab 14: Hashing
 grand_parent: Labs
 has_right_toc: true
 released: true

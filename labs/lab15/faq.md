@@ -3,7 +3,7 @@ layout: page
 title: >-
   FAQ
 parent: >-
-  Lab 15: Disjoint Sets
+  Lab 16: Disjoint Sets
 grand_parent: Labs
 has_right_toc: true
 released: true

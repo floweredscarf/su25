@@ -1,7 +1,7 @@
 ---
 layout: page
 title: >-
-  Lab 15: Disjoint Sets
+  Lab 16: Disjoint Sets
 has_children: true
 parent: Labs
 nav_exclude: false

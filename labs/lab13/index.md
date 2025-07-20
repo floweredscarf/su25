@@ -1,7 +1,7 @@
 ---
 layout: page
 title: >-
-  Lab 13: Hashing
+  Lab 14: Hashing
 has_children: true
 parent: Labs
 has_toc: false
