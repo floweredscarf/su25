@@ -1,7 +1,7 @@
 ---
 layout: page
 title: >-
-  Lab 14: Heaps and Priority Queues
+  Lab 15: Heaps and Priority Queues
 has_children: true
 parent: Labs
 has_toc: false
@@ -14,14 +14,14 @@ released: true
 
 Each assignment will have an FAQ linked at the top. You can also access it by
 adding "/faq" to the end of the URL. The FAQ for Lab 14 is located
-[here](faq.md).
+[here](faq).
 
 {: .warning}
 > **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
 
 ## Use the Debugger!
 
-Data structures labs can be tricky, so make sure to use the debugger to help! If you need a refresher on how to use the debugger, check out the lab 3 spec [debugging guide](/su24/labs/lab03/#debugger-overview).
+Data structures labs can be tricky, so make sure to use the debugger to help! If you need a refresher on how to use the debugger, check out the Lab 4 spec [debugging guide](../lab04/#debugger-overview).
 
 ## Before You Begin
 
@@ -29,23 +29,16 @@ As usual, pull the files from the skeleton and open them in IntelliJ.
 
 ## Overview
 
-In this lab, we will be implementing the Priority Queue, a data structure that automatically orders the data in it according to a certain priority value. To implement the priority queue, we will implement it using the heap, which is a tree-like structure that enforces an ordering based on priority going down the layers.
+In this lab, we will be implementing the Priority Queue, a data structure that arranges its elements according to a certain priority value. To implement the priority queue, we will implement it using the heap, which is a tree-like structure that enforces an arrangement based on priority going down the layers.
 
-
-{% include alert.html type="info" content="
-If you are having trouble seeing some of the images linked in this spec, try turning off dark mode -- some of the images may not be visible in dark mode.
-" %}
+If you are having trouble seeing some of the images linked in this spec, try turning off dark mode; some of the images may not be as visible in dark mode.
 
 ## Priority
 
-We've learned about a few abstract data types already,
-the *stack* and *queue*. The *stack* is a last-in-first-out (LIFO) abstract data type. Here,
-much like a physical stack, we can only access to the most recently added elements first
-and the oldest elements last. The *queue* is a first-in-first-out (FIFO) abstract data type.
-When we process items in a queue, we process the oldest elements first and the most recently
-added elements last.
+We've learned about a few abstract data types already, such as the *stack* and *queue*. The *stack* is a last-in-first-out (LIFO) abstract data type, where we can only access to the most recently added elements first
+and access the oldest elements last. The *queue* is a first-in-first-out (FIFO) abstract data type, where we can only access the oldest elements first and access the most recently added elements last.
 
-But what if we want to model an emergency room, where people waiting with the
+But, what if we want to model an emergency room, where people waiting with the
 most urgent conditions are helped first? We can't only rely on when the patients
 arrive in the emergency room, since those who arrived first or most recently will
 not necessarily be the ones who need to be seen first.
@@ -57,8 +50,8 @@ or a *priority value*.
 ### Priority vs. Priority Values
 
 Throughout this lab, we will be making a distinction between the *priority* and
-the *priority value*. *Priority* is how important an item is to the priority
-queue, while *priority value* is the value associated with each item inserted.
+the *priority value*. **Priority** is how important an item is to the priority
+queue, while **priority value** is the value associated with each item inserted.
 **The element with the highest priority may not always have the highest
 priority value.**
 
@@ -81,49 +74,36 @@ Let's take a look at two examples.
 
 ### Priority Queues
 
-The **priority queue** is an abstract data type that "orders" data based on
+The **priority queue** is an abstract data type that arranges data based on
 priority values. The priority queue contains the following methods:
 
-`insert(item, priorityValue)`
-: Inserts `item` into the priority queue with priority value `priorityValue`.
+- **`insert(item, priorityValue)`**: inserts `item` into the priority queue with priority value `priorityValue`.
 
-`peek()`
-: *Returns* (but does not remove) the item with highest priority in the priority queue.
+- **`peek()`**: *returns* (but does not remove) the item with highest priority in the priority queue.
 
-`poll()`
-: *Removes* and *returns* the item with highest priority in the priority queue.
+- **`poll()`**: *removes* and *returns* the item with highest priority in the priority queue.
 
 It is similar to a `Queue`, though the `insert` method will insert an item with
-a corresponding `priorityValue` and the `poll` method in the priority queue
-will remove the element with the highest priority, rather than the oldest
-element in the queue.
+a corresponding `priorityValue`, and the `poll` method in the priority queue
+will remove the element with the highest priority (rather than the oldest
+element in the queue).
 
-Priority queues come in two different flavors depending on which one of these
+{: .info}
+>Priority queues come in two different flavors depending on which one of these
 schemes they follow:
-
-- **Maximum priority queues** will prioritize elements with **larger priority
-  values** (emergency room)
-- **Minimum priority queues** will prioritize elements with **smaller priority
-  values** (refrigerator).
-
-We will typically consider minimum priority queues.
+>
+>- **Maximum priority queues** will prioritize elements with **larger priority
+  values** (e.g. emergency room).
+>- **Minimum priority queues** will prioritize elements with **smaller priority
+  values** (e.g. refrigerator).
 
 ### Discussion: PQ Implementations
 
-For the following exercises, we will think about the underlying implementations
-for our priority queue. Choose from the following runtimes:
-
-$$\Theta(1), \Theta(\log N), \Theta(N), \Theta(N \log N), \Theta(N^2)$$
-
-Note: For these exercises, each item will be associated with a priority value,
-and we will prioritize items with the smallest priority value first (e.g. like
-the refrigerator from above).
-
-For each of the following possible priority queue implementations, determine
+For each of the following possible priority queue implementations, each item will be associated with a priority value, and we will prioritize items with the smallest priority value first (e.g. like the refrigerator from above). For each implementation, determine
 the **worst-case** runtime to:
 
 - *insert* an item into the priority queue
-- *find and remove* (or *poll*) the element with the highest priority
+- *find* and *remove* (or *poll*) the element with the highest priority
 
 in terms of $$N$$, the number of elements in the priority queue.
 
@@ -165,62 +145,57 @@ Let's now go into the properties of heaps.
 
 ### Heap Properties
 
-Heaps are tree-like structures that follow two additional invariants that will
+Heaps are tree-like structures that follow two additional invariants, which will
 be discussed more below. Normally, elements in a heap can have any number of
 children, but in this lab we will restrict our view to **binary heaps**, where
-each element will have at most two children. Thus, binary heaps are essentially
+each element will have *at most* two children. Thus, binary heaps are essentially
 binary trees with two extra invariants. However, it is important to note that
 **they are not binary *search* trees.** The invariants are listed below.
 
-#### Invariant 1: Completeness
+**Invariant 1: Completeness**
 
-In order to keep our operations fast, we need to make sure the heap is well
+- In order to keep our operations fast, we need to make sure the heap is well
 balanced. We will define balance in a binary heap's underlying tree-like
 structure as *completeness*.
 
-A **complete tree** has all available positions for elements filled, except for
-possibly the last row, which must be filled left-to-right. A heap's underlying
-tree structure must be complete.
+- A **complete tree** has all available positions for elements filled, except for
+possibly the last row, which must be filled *left-to-right*. **A heap's underlying tree structure must be complete.**
 
-Here are some examples of trees that are complete:
+- Here are some examples of trees that are complete:
 
 | ![complete-1](img/complete-1.png){: style="max-height: 200px;" } | ![complete-2](img/complete-2.png){: style="max-height: 200px;" } |
 
-And here are some examples of trees that are **not** complete:
+- And here are some examples of trees that are **not** complete:
 
 | ![not-complete-1](img/not-complete-1.png){: style="max-height: 200px;" } | ![not-complete-2](img/not-complete-2.png){: style="max-height: 200px;" } |
 
-#### Invariant 2: Heap Property
+**Invariant 2: Heap Property**
 
-Here is another property that will allow us to organize the heap in a way that
-will result in fast operations.
+- Every element must follow the **heap property**, which states that each element
+must be *smaller than or equal to all of the elements in its subtree*.
 
-Every element must follow the **heap property**, which states that each element
-must be smaller than or equal to all of the elements in its subtree. This is known as
-the *heap property*.
-
-If we have a heap, this guarantees that the element with the lowest value
+- If we have a heap, this guarantees that the element with the *lowest* value
 will always be at the root of the tree. If the elements are our priority values,
-then we are guaranteed that the element with the lowest priority value
-(the minimum) is at the root of the tree. This helps us access that item
+then we are guaranteed that *the element with the lowest priority value
+(the minimum) is at the root of the tree*. This helps us access that item
 quickly, which is what we need for a (minimum) priority queue!
 
 For the rest of this lab, we will be discussing the representation and
-operations of **binary heaps**. However, this logic can be modified to apply
-to heap heaps with any number of children.
+operations of ***binary* heaps**. However, this logic can be modified to apply to heap heaps with any number of children.
 
-#### Max Heap
+### Max Heap
 
-The heap we described is also known more specifically as a "min-heap", because
-the heap property has the minimum element at the root at the root of the tree.
+The heap we described earlier is also known more specifically as a "min-heap", because
+the heap property has the *minimum* element at the root at the root of the tree.
 
 There is a variant of the heap data structure that is very similar: the
-*max* heap. Max heaps have the same completeness invariant, but have the
-*opposite* heap property. In a max heap, each element must be **larger** than or equal to
+*max* heap. **Max heaps** have the same completeness invariant, but have the
+*opposite* heap property. In a max heap, each element must be *larger* than or equal to
 all of the elements in its subtree. This means that the element with the
-highest priority value (the maximum) is at the root of the tree.
+*highest* priority value (the maximum) is at the root of the tree.
 
-Java's `PriorityQueue` uses a min-heap, but max-heap implementations exist.
+{: .info}
+>Java's `PriorityQueue` uses a min-heap, but max-heap implementations exist.
 
 ### Heap as `PriorityQueue`
 
@@ -240,29 +215,31 @@ Here's how we can represent a binary tree using an array:
 
 ![HeapArray](img/HeapArray.svg){: style="max-height: 400px;" }
 
-- The root of the tree will be in position 1 of the array (nothing is at position 0).
+- The root of the tree will be in position 1 of the array (nothing is at position 0 to make the below position calculations easier).
 - The left child of a node at position $$N$$ is at position $$2N$$.
 - The right child of a node at position $$N$$ is at position $$2N + 1$$.
 - The parent of a node at position $$N$$ is at position $$N / 2$$.
 
 Because binary heaps are essentially binary trees, we can use this array
-representation to represent our binary heaps!
-
-Note: this representation can be generalized to trees with any variable number
+representation to represent our binary heaps! This representation can be generalized to trees with any variable number
 of children, not only binary trees.
 
-{% include alert.html type="info" content="
-You might have asked why we placed the root at 1 instead of 0. We do this for this
+<details markdown="block">
+  <summary markdown="block">
+Why did we place the root at index 1 instead of index 0?
+{: .no_toc}
+  </summary>
+  We do this for this
 is to to make indexing more convenient. If we had placed the root at 0, then
 our calculations would be:
 
 - The left child of a node at position $$N$$ is at position $$2N + 1$$.
 - The right child of a node at position $$N$$ is at position $$2N + 2$$.
-- The parent of a node at position $$N$$ is at position $$(N - 1) / 2$$.
+- The parent of a node at position $$N$$ is at position $$(N - 1) / 2$$ (floor division).
 
-Unless otherwise specified we will place the root at position 1 to make the math
+Unless otherwise specified, we will place the root at position 1 to make the math
 slightly cleaner.
-" %}
+</details>
 
 ### Heap Operations
 
@@ -285,30 +262,30 @@ When we do these operations, we need to make sure to maintain the invariants
 mentioned earlier (completeness and the heap property). Let's walk through how
 to do each one.
 
-#### `findMin`
+`findMin`
 
-The element with the smallest value will always be stored at the root due to the
+- The element with the smallest value will always be stored at the root due to the
 min-heap property. Thus, we can just return the root node, without changing the
 structure of the heap.
 
-#### `insert`
+`insert`
 
-1. Put the item you're adding in the next available spot in the bottom row of
-   the tree. If the row is full, make a new row. This is equivalent to placing
+1. Put the item you're adding in the *next available spot* in the *bottom row of
+   the tree*. If the row is full, make a new row. This is equivalent to placing
    the element in the next free spot in the array representation of the heap.
    *This ensures the completeness of the heap* because we're filling in the
-   bottom-most row left to right.
+   bottom-most row *left to right*.
 
 2. If the element that has just been inserted is `N`, swap `N` with its parent
    as long as `N` is smaller than its parent or until `N` is the
-   new root. If `N` is equal to its parent, you can either swap the items or not.
+   new root. If `N` is equal to its parent, you do not need to swap the items.
 
-   This process is called **bubbling up** (sometimes referred to as
+- This process is called **bubbling up** (sometimes referred to as
    **swimming**), and this ensures the min-heap property is satisfied because
    once we finish bubbling `N` up, all elements below `N` must be greater than
    it, and all elements above must be less than it.
 
-   Here is iterative pseudocode for the bubble-up process:
+- Here is iterative pseudocode for the bubble-up process:
 
    ```text
    bubbleUp(index) {
@@ -319,13 +296,15 @@ structure of the heap.
    }
    ```
 
+- In the below example, we first insert the element $$1$$ into the next available spot in the bottom row of the tree. Then, we bubble up by (1) comparing $$1$$ with its parent $$6$$, (2) swapping $$1$$ with $$6$$, (3) comparing $$1$$ with its new parent $$4$$, and (4) swapping $$1$$ with $$4$$.
+
    ![Heap bubble up](img/Heap-bubbleUp.svg){: style="max-height: 200px;" }
 
-#### `removeMin`
+`removeMin`
 
-1. Swap the element at the root with the element in the bottom rightmost
-   position of the tree. Then, remove the bottom rightmost element of the tree
-   (which should be the previous root and the minimum element of the heap). *This
+1. Swap the element at the *root* with the element in the *bottom rightmost
+   position* of the tree. Then, remove the bottom rightmost element of the tree
+   (which is the previous root and is also the minimum element of the heap). *This
    ensures the completeness of the tree.*
 
 2. If the new root `N` is greater than either of its children, swap it with that
@@ -337,12 +316,12 @@ structure of the heap.
    so would be unnecessary work and our algorithm might be marginally faster if
    we skip this work.
 
-   This is called **bubbling down** (sometimes referred to as **sinking**), and
+- This is called **bubbling down** (sometimes referred to as **sinking**), and
    this ensures the min-heap property is satisfied because we stop bubbling down
    only when the element `N` is less than both of its children and also greater
    than its parent.
 
-   Here is iterative pseudocode for the bubble-down process:
+- Here is iterative pseudocode for the bubble-down process:
 
    ```text
    bubbleDown(index) {
@@ -353,9 +332,11 @@ structure of the heap.
    }
    ```
 
+- In the below example, we swap the root with the bottom rightmost node, $$9$$, then remove the old root (not show in the picture). Then, we bubble down by (1) comparing $$9$$ with its smaller child $$5$$, (2) swapping $$9$$ with $$5$$, (3) comparing $$9$$ with its new smaller child $$7$$, and (4) swapping $$9$$ with $$7$$.
+
    ![Heap bubble up](img/Heap-bubbleDown.svg){: style="max-height: 200px;" }
 
-## Heaps Visualization
+### Heaps Visualization
 
 If you want to see an online visualization of heaps, take a look at the [USFCA
 interactive animation of a min heap][]. You can type in numbers to insert, or
@@ -388,7 +369,60 @@ h.removeMin();
 <summary markdown="block">
 Answers (click to expand):
 </summary>
-Heap as a tree:
+Heap after insert 'f':
+```text
+   f
+```
+
+Heap after insert 'h':
+```text
+   f
+  / 
+ h   
+```
+
+Heap after insert 'd':
+```text
+   d
+  / \
+ h   f
+```
+
+Heap after insert 'b':
+```text
+     b
+    / \
+   d   f
+  /
+ h
+```
+
+Heap after insert 'c':
+```text
+     b
+    / \
+   c   f
+  / \
+ h   d
+```
+
+Heap after first removeMin:
+```text
+     c
+    / \
+   d   f
+  / 
+ h   
+```
+
+Heap after second removeMin:
+```text
+   d
+  / \
+ h   f
+```
+
+Final heap as a tree:
 
 ```text
    d
@@ -396,15 +430,14 @@ Heap as a tree:
  h   f
 ```
 
-Heap as an array: `[-,'d','h','f']`
+Final heap as an array: `[-,'d','h','f']`
 
 (`-` denotes the absence of the first element)
 </details>
 
 ### Runtimes
 
-Now that we've gotten the hang of the methods, let's evaluate the worst case
-runtimes for each of them! Consider an array-based min-heap with $$N$$ elements.
+Now that we've gotten the hang of the methods, let's evaluate the **worst case runtimes** for each of them! Consider an array-based min-heap with $$N$$ elements.
 As we insert elements, the backing array will run out of space and need to be
 resized. If we ignore the cost of resizing the array, what is the worst case
 asymptotic runtime of each of the following operations?
@@ -422,10 +455,10 @@ Answers (click to expand):
 - `removeMin`: $$\Theta(\log N)$$, because we may bubble down through $$\log N$$ layers
 </details>
 
-Now consider those same operations but also include the effects of resizing the
+Now, consider those same operations, but also include the effects of resizing the
 underlying array or `ArrayList`. You should answer this question for the
-operations `insert`, `removeMin`, and `findMin`. Also assume that we will only
-resize up and we will not resize down. 
+operations `insert`, `removeMin`, and `findMin`. *Assume that we will only
+resize up and we will not resize down. *
 
 <details markdown="block">
 <summary markdown="block">
@@ -472,6 +505,9 @@ resize our array manually, but the logic is the same. In addition, make sure to
 look through and use the methods provided in the skeleton (such as `getElement`)
 to help you implement the methods listed above!
 
+{: .task}
+>Implement the `getLeftOf`, `getRightOf`, `getParentOf`, and `min` methods in `MinHeap.java`.
+
 ### Operations
 
 After you've finished the methods above, fill in the following missing methods
@@ -492,27 +528,39 @@ should be using the methods you wrote above (such as `getLeft`, `getRight`,
 `getParent`, and `min`) and the ones provided in the skeleton (such as `swap`
 and `setElement`).
 
-**It is highly recommended to use the `swap` and `setElement` methods if you
+{: .warning}
+>**Do not use the `removeLast` method for `ArrayList`s!** The autograder is running on an older version of Java that doesn't recognize this method, so you will get a compilation error. Instead, use the `remove(int index)` or `remove(Object o)` methods.
+
+{: .warning}
+>**It is highly recommended to use the `swap` and `setElement` methods if you
 ever need to swap the location of two items or add a new item to your heap.**
 This will help keep your code more organized and make the next task of the lab
 a bit more straightforward. Additionally, this reinforces the abstraction barrier,
 which we love in CS61BL! When possible, don't break the abstraction barrier.
 
 Remember that we have provided pseudocode for `bubbleUp` and `bubbleDown`
-[above](#insert).
+[above](#heap-operations).
 
-Usually `MinHeap`'s should be able to contain duplicates but for the `insert`
+{: .info}
+>Usually `MinHeap`s should be able to contain duplicates, but for the `insert`
 method, **assume that our `MinHeap` cannot contain duplicate items**. To do
 this, use the `contains` method to check if `element` is in the `MinHeap` before
 you insert. If `element` is already in the `MinHeap`, throw an
-`IllegalArgumentException`. We'll talk about how to implement `contains` in the
-next section.
+`IllegalArgumentException`. The naive version of the `contains` method has already been implemented for you; optimizing this `contains` method is left as an optional exercise.
 
 Before moving on to the next section, we suggest that you test your code! We
 have provided a blank `MinHeapTest.java` file for you to put any JUnit tests
 you'd like to ensure the correctness of your methods.
 
-## (Optional) Exercise: `update` and `contains`
+{: .task}
+>Implement the remaining methods in `MinHeap.java`.
+
+## (Optional) Exercise: `update` and optimizing `contains`
+
+<details markdown="block">
+<summary markdown="block">
+Click to expand:
+</summary>
 
 We have two more methods that we would like to implement (`contains` and
 `update`) whose behaviors are described below:
@@ -540,15 +588,12 @@ Unfortunately, Steps 1 and 2 (checking if our `element` is present and finding
 the `element`) are actually nontrivial linear time operations since heaps are
 not optimized for this operation. To check if our heap contains an item, we'll
 have to iterate through our entire heap, looking for the item (see "Search"'s
-runtime [here](https://en.wikipedia.org/wiki/Binary_heap#Search)). There is a small
-optimization that we can make for this part if we know we have a max heap, but
-this would in general make our `update` method run in at least linear time.
+runtime [here](https://en.wikipedia.org/wiki/Binary_heap#Search)).
 
 This is not extremely bad, but applications of our heap would really benefit from
 having a fast `update` method.
 
-{% include alert.html type="info" content="
-We can get around this by introducing another data structure to our heap! Though
+We can get around this by introducing *another data structure* to our heap! Though
 this would increase the space complexity of the heap and is not how Java implements
 `PriorityQueue`, it will be worth the runtime speedup of our `update` method in any
 applications of our heap.
@@ -559,13 +604,18 @@ make step 1 (checking if our `MinHeap` contains a particular element) and step 2
 
 In order to implement this new optimized version you may need to update some
 methods in order to ensure that this data structure always has accurate
-information. There is no need to implement these optimization for this lab, but
+information. There is no need to implement these optimizations for this lab, but
 they would be needed in any large scale use of your data structure.
-" %}
 
 Implement `update(E element)` according to the steps listed above. Remember if
 `element` is not in the `MinHeap`, you should throw a `NoSuchElementException`.
-**The *optimized* `update(E element)` operation is not required for credit on this lab.**
+
+<details markdown="block">
+<summary markdown="block">
+What data structure should I use?
+</summary>
+What data structure did you learn about in Lab 14? &#128064;
+</details>
 
 ### `contains(E element)`
 
@@ -577,41 +627,45 @@ above, you can use the same data structure to implement a faster `contains`
 operation!
 " %}
 
+</details>
+
 ## Exercise: `MinHeapPQ`
 
-Now let's use the `MinHeap` class to implement our own priority queue! We will
-be doing this in our `MinHeapPQ` class.
+Now let's use the `MinHeap` class to implement our own priority queue! **We will be doing this in our `MinHeapPQ` class.**
 
 Take a look at the code provided for `MinHeapPQ`, a class that implements the
 `PriorityQueue` interface. In this class, we'll introduce a new wrapper class
 called `PriorityItem`, which wraps the `item` and `priorityValue` in a single
-object. This way, we can use `PriorityItem`'s as the elements of our underlying
+object. This way, we can use `PriorityItem`s as the elements of our underlying
 `MinHeap`.
 
 Before you start implementing these methods, we recommend that you write your
-tests! **Long live TDD!** Just like with `MinHeap`, we have provided a blank `MinHeapPQTest.java`
-file so you can write JUnit tests to ensure your code is working properly.
+tests! **We have provided some tests in the `MinHeapPQTest.java`
+file, but they are not comprehensive, so write your own tests to ensure your code is working properly!**
 
-Then, implement the remaining methods of the interface (duplicated below) of the
-`MinHeapPQ` class, except for the optional `update` method.
+{: .task}
+>Now, implement the remaining methods of the interface (duplicated below) of the
+`MinHeapPQ` class. The `update` and `changePriority` methods are optional.
 
 ```java
 public T peek();
 public void insert(T item, double priority);
 public T poll();
 public int size();
-public void changePriority(T item, double priority); // Optional
+public void update(E element); // optional
+public void changePriority(T item, double priority); // optional
 ```
 
 For the `changePriority` method, use the `update` method from the `MinHeap`
 class. The `contains` method has already been implemented for you.
 
-**Note: Do not just copy over what you have in `MinHeap.java`!**
+{: .warning}
+>**Do not just copy over what you have in `MinHeap.java`!**
 You shouldn't have to write too much code in this file. Remember that your
 `MinHeap` will do most of the work for you! It is of course fine if you add necessary edge case checks, but you should rely on the
 corresponding `MinHeap` methods as much as possible.
 
-### `compareTo()` vs `.equals()`
+### Note: `compareTo()` vs `.equals()`
 
 You may have noticed that the `PriorityItem` has a `compareTo` method that
 compares priority values, while the `equals` method compares the items
@@ -619,14 +673,13 @@ themselves. Because of this, it's possible that `compareTo` will return 0 (which
 usually means the items that we are comparing are equal) while `equals` will
 still return false. However, according to the Javadocs for
 [Comparable](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Comparable.html):
+- It is *strongly recommended*, but not strictly required that `(x.compareTo(y) == 0)
+== (x.equals(y))`. 
 
-{% include alert.html content="
-It is strongly recommended, but not strictly required that `(x.compareTo(y) == 0)
-== (x.equals(y))`. Generally speaking, any class that implements the Comparable
+Generally speaking, any class that implements the Comparable
 interface and violates this condition should clearly indicate this fact. We will
 not require this from you in CS61BL, but it is vital to know this requirement
 does not hold for real world programmers!
-" %}
 
 Thus, our `PriorityItem` class "has a natural ordering that is inconsistent with
 equals". Normally, we would want `x.compareTo(y) == 0` and `x.equals(y)` to both
@@ -639,7 +692,7 @@ Now, let's get into some deeper questions about heaps.
 
 ### Heaps and BSTs
 
-Consider binary trees that are both **max** heaps and binary search trees.
+Consider binary trees that are both **max** heaps and binary search trees. Assume no duplicates.
 
 How many nodes can such a tree have? Choose all that apply.
 
@@ -662,7 +715,7 @@ Such a tree can either have either 1 node or 2 nodes.
 
 It's not obvious how to verify that a binary tree is complete (assuming it is
 represented using children links rather than an array as we have discussed in this
-lab). A CS 61BL student suggests the following recursive algorithm to determine if a
+lab). A CS 61BL student suggests the following (not necessarily correct) recursive algorithm to determine if a
 tree is complete:
 
 1. A one-node tree is complete.
@@ -714,16 +767,6 @@ Answer (click to expand):
 Nodes: B, C, D, E, F, and G.
 </details>
 
-Which nodes could contain the third largest element in the heap **assuming that
-the heap can contain duplicates**?
-
-<details markdown="block">
-<summary markdown="block">
-Answer (click to expand):
-</summary>
-Nodes: A, B, C, D, E, F, G, H, I, J, K, L, M, N, and O.
-</details>
-
 ## Conclusion
 
 In today's lab, we learned about another abstract data type called the
@@ -737,34 +780,15 @@ of its core operations. We then explored a few conceptual questions about heaps.
 
 All in all, priority queues are an integral component of many algorithms for
 graph processing (which we'll cover in a few labs). For example, in the first few weeks of
-CS 170, Efficient Algorithms and Intractable Problems, you will see
+[CS 170](https://cs170.org/), Efficient Algorithms and Intractable Problems, you will see
 graph algorithms that use priority queues. Look out for priority queues
 in other CS classes as well! You'll find them invaluable in the operating
-systems class CS 162, where they're used to schedule which processes in a
+systems class [CS 162](https://cs162.org/), where they're used to schedule which processes in a
 computer to run at what times.
 
-### Deliverables
+## Deliverables
 
 To receive credit for this lab:
 
 - Complete `MinHeap.java`
-   - Representation:
-      - `private int getLeftOf(int index);`
-      - `private int getRightOf(int index);`
-      - `private int getParentOf(int index);`
-      - `private int min(int index1, int index2);`
-   - Operations:
-      - `public E findMin();`
-      - `private void bubbleUp(int index);`
-      - `private void bubbleDown(int index);`
-      - `public void insert(E element);`
-      - `public int size();`
-      - `public E removeMin();`
-      - Optional: `public void update(E element);`
-      - Optional: `public boolean contains(E element);`
 - Complete `MinHeapPQ.java`
-   - `public T peek();`
-   - `public void insert(T item, double priority);`
-   - `public T poll();`
-   - `public int size();`
-   - Optional: `public void changePriority(T item, double priority);`

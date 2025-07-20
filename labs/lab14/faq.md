@@ -3,7 +3,7 @@ layout: page
 title: >-
   FAQ
 parent: >-
-  Lab 14: Heaps and Priority Queues
+  Lab 15: Heaps and Priority Queues
 grand_parent: Labs
 has_right_toc: true
 released: true
