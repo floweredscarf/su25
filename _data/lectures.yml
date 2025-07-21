@@ -265,7 +265,7 @@ lectures:
   - title: 
     nonumber: True
   - title: "Hashing"
-    # slides: https://docs.google.com/presentation/d/1hPFchcMeDChntsR6ReHa9wmv_yx_9yzuUFrnangXyFk
+    slides: https://drive.google.com/file/d/1i3DqezrTMlLuCX2dmAopRFim34dAnvYs
     # video: "" # 
     # recording: https://youtu.be/YmFuwyCzw6M
     # quiz: https://forms.gle/jpb36dpRNDMtjHRH8
@@ -275,7 +275,7 @@ lectures:
       - title: "Ch 20"
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/20.-hashing-ii"
   - title: "Heaps and Priority Queues"
-    # slides: https://docs.google.com/presentation/d/1hPFchcMeDChntsR6ReHa9wmv_yx_9yzuUFrnangXyFk
+    slides: https://drive.google.com/file/d/1cRMFe20rSp1ur4izQePwcuAW_5IHZzSG
     # video: "" # 
     # recording: https://youtu.be/YmFuwyCzw6M
     # quiz: https://forms.gle/jpb36dpRNDMtjHRH8
