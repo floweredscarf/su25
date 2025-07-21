@@ -112,7 +112,7 @@ projects:
   #     - "schedule-green"
   - title: "Project 2B: Wordnet"
     link: "/projects/proj2b"
-    show_links: false
+    show_links: true
     due: "2025/07/27"
     classes:
       - "schedule-purple"

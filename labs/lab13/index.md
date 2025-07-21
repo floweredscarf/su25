@@ -13,7 +13,7 @@ released: true
 ## [FAQ](faq)
 
 Each assignment will have an FAQ linked at the top. You can also access it by
-adding "/faq" to the end of the URL. The FAQ for Lab 13 is located
+adding "/faq" to the end of the URL. The FAQ for Lab 14 is located
 [here](faq).
 
 {: .warning}
@@ -83,7 +83,7 @@ access to any arbitrary element?
 
 <details markdown="block">
   <summary markdown="block">
-Click to reveal answer:
+**Click to reveal answer:**
 {: .no_toc}
   </summary>
   An array!
@@ -131,7 +131,7 @@ public class String {
 
 <details markdown="block">
   <summary markdown="block">
-Side note: what does casting a character to an int do?
+*Side note*: what does casting a character to an int do?
 {: .no_toc}
   </summary>
   Casting a character to an int converts the character into the "associated" number. What is this associated number?
@@ -177,8 +177,7 @@ inserted into this map will **start with a different (unique) letter** (or else 
 
 In order to dive into this lab, we need to set the stage. This means we should
 aim to understand and set up the methods and structure specified by our interface.
-In this exercise, we will make the necessary changes to the skeleton to comply with the`Map61BL`
-interface.
+In this exercise, we will make the necessary changes to the skeleton to comply with the `Map61BL` interface.
 
 First, we will set the class header. We want to make sure that the key and value are *generic types*. Make sure to
 modify your instance variables and method signatures to match this change!
@@ -341,7 +340,7 @@ Let us establish the default size of our backing array. For this HashMap impleme
 Now, we will edit our previously-implemented methods to account for the `hashCode()` of the `key`s. 
 
 {: .task}
->Update the default size of your backing array, and make changes to the following functions to support using a `key`'s `hashCode()`.
+>**Update the default size of your backing array**, and make changes to the following functions to support using a `key`'s `hashCode()`.
 
 ```java
 public boolean containsKey(K key);
@@ -352,8 +351,8 @@ public boolean remove(K key, V value);
 ```
 
 Note that, to use `hashCode()`'s results as an index, we must convert the
-returned hash value to a valid index. Because `hashCode()` can return negative
-values, use the `floorMod` operation discussed above!
+returned hash value to a valid index. **Because `hashCode()` can return negative
+values, use the `floorMod` operation discussed above!**
 
 ## Idea Three: Collisions
 
@@ -383,7 +382,7 @@ above will cause a collision?
 
 <details markdown="block">
   <summary markdown="block">
-Click to reveal answer:
+**Click to reveal answer:**
   </summary>
 Aram and Adit share index 0 while Jedi and
 Jasmine share index 9. What happens if we need to include multiple A-names or
@@ -411,6 +410,7 @@ are listed below:
    list*.  This collection of entries sharing a single index is called a
    *bucket*.
 
+{: .info}
 **We primarily discuss external chaining implemented using LinkedLists in this lab.** But, we can also choose ArrayLists, TreeSets, or even other crazier data structures like PriorityQueues, to use as our collection type!
 
 ![hashtable-ds](img/hashtable-ds.png)
@@ -469,19 +469,19 @@ We just learned that collisions are troublesome: the amount of collisions makes 
 runtime. In order to reduce the number of collisions, we need a hash function that distributes our keys as evenly as possible
 throughout the map. An even distribution allows us to guarantee a close-to-constant time runtime for all of our operations.
 
-But first off, what hash functions can we choose from? Are all functions that
-return a number for each object a *valid* hash function? What makes a hash
-function *good*?
+**But first off, what hash functions can we choose from? Are all functions that return a number for each object a *valid* hash function? What makes a hash
+function *good*?**
 
-A hash function is **valid** if:
-
-- The hash function of two equal objects A and B (determined by the `.equals()` method) are the same value. We call this requirement
+{: .info}
+>A hash function is **valid** if:
+>
+>- The hash function of two equal objects A and B (determined by the `.equals()` method) are the same value. We call this requirement
   `determinism`. This means the hash function should not rely on attributes of the object
   that are not reflected in the `.equals()` method.
-- The hash function returns the same integer *every time* it is called on the same
+>- The hash function returns the same integer *every time* it is called on the same
   object. We call this requirement `consistency`.
-
-Note that there are no requirements that state that *unequal* items should have
+>
+>Note that there are no requirements that state that *unequal* items should have
 *different* hash function values. In other words, *unequal* items can still have the *same* hash function values.
 
 <!-- As an aside, I argue that these two requirements are in fact the same requirement.
@@ -493,14 +493,15 @@ formally define our statement "this same object `O`" above? Technically, the onl
 we consider `B` to be pointing to the same thing as `A` is because of the `.equals()` method!
 This is starting to sound an awful lot like the determinism requirement, huh! -->
 
-The properties of a **good** hash function are less defined, but here are some
+{: .info}
+>The properties of a **good** hash function are less defined, but here are some
 properties that are important for a good hash function (this is a non-exhaustive
 list):
-
-- The hash function should be valid.
-- Hash function values should be spread as
+>
+>- The hash function should be valid.
+>- Hash function values should be spread as
   uniformly as possible over the set of all integers.
-- The hash function should be "relatively quick" to compute.
+>- The hash function should be "relatively quick" to compute.
 
 Now let's think more specifically about the impact of the hashing function. In general,
 we assume most hash functions will be "relatively quick". Why do we make this assumption?
@@ -581,7 +582,7 @@ A couple notes:
   nearest integer.
 
 {: .task}
->Implement the resizing feature. Make sure to also implement/modify the `size` and `put` methods, as well as set the default load factor to 0.75.
+>Implement the resizing feature. Make sure to also implement/modify the `size` and `put` methods, as well as **set the default load factor to 0.75**.
 
 ## Testing
 
@@ -673,7 +674,7 @@ Would we get this behavior if we picked a resizing scheme which was additive and
 
 <details markdown="block">
   <summary markdown="block">
-Click to reveal answer:
+**Click to reveal answer:**
 {: .no_toc}
   </summary>
   No! It must be a multiplicative resize scheme. Try drawing the same graphs with an additive scheme.
