@@ -307,6 +307,9 @@ for (int i = 0; i < initialCapacity; i++) {
 }
 ```
 
+{: .info}
+>Make sure to set your default initialCapacity to **16**!
+
 We will explain the purpose of using an array of `LinkedList`s when discussing collisions and external chaining later below, so no worries if it doesn't make sense yet!
 
 {: .task}
