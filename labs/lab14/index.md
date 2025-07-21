@@ -13,7 +13,7 @@ released: true
 ## [FAQ](faq)
 
 Each assignment will have an FAQ linked at the top. You can also access it by
-adding "/faq" to the end of the URL. The FAQ for Lab 14 is located
+adding "/faq" to the end of the URL. The FAQ for Lab 15 is located
 [here](faq).
 
 {: .warning}

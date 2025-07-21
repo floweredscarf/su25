@@ -175,10 +175,8 @@ labs:
     due: "2025/07/24"
     link: labs/lab15
     show_links: true
-  - title: "Graphs"
-    due: "2025/07/25"
-    link: labs/lab16
-    show_links: false
+  - title: "Project 2 Office Hours"
+    nonumber: True
   - title: "Theoretical #5: Hashing, Heaps, and Union Find"
     theoretical: True
     examprep_video: True
@@ -186,13 +184,14 @@ labs:
     link: 
     show_links: false
     nonumber: True
-  - title: "Build Your Own World Introduction"
+  - title: "Graphs"
     due: "2025/07/29"
+    link: labs/lab16
+    show_links: false
+  - title: "Build Your Own World Introduction"
+    due: "2025/07/30"
     link: labs/lab19
     show_links: false
-  - title: "No Lab"
-    nonumber: True
-    rowspan: 1
   - title: "Shortest Path Trees"
     due: "2025/07/31"
     link: labs/lab17
