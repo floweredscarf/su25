@@ -1,4 +1,4 @@
----
+<!-- ---
 layout: page
 title: >-
   FAQ
@@ -11,4 +11,4 @@ released: true
 
 ### I'm getting an error with the size of the underlying array.
 
-Make sure the size of the underlying array is 16.
+Make sure the size of the underlying array is 16. -->
