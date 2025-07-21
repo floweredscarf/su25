@@ -3,16 +3,12 @@ layout: page
 title: >-
   FAQ
 parent: >-
-  Lab 15: Heaps and Priority Queues
+  Lab 14: Hashing
 grand_parent: Labs
 has_right_toc: true
 released: true
 ---
 
-### My `bubbleDown` might be wrong, but I think that I've written it correctly.
+### I'm getting an error with the size of the underlying array.
 
-Here's a few possibilites:
-
-- What if the current index does not have a right child but needs to swap with
-  its left?
-- Make sure that you update the index to the same one you swapped with.
+Make sure the size of the underlying array is 16.

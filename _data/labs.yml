@@ -156,7 +156,7 @@ labs:
     link: labs/lab12
     show_links: true
   - title: "Past Midterm Walkthroughs"
-    link: labs/lab-mt
+    link: labs/lab13
     show_links: true
   - title: "Office Hours"
     nonumber: True
@@ -166,11 +166,11 @@ labs:
     rowspan: 1
   - title: "Hashing"
     due: "2025/07/22"
-    link: labs/lab13
+    link: labs/lab14
     show_links: true
   - title: "Heaps and Priority Queues"
     due: "2025/07/23"
-    link: labs/lab14
+    link: labs/lab15
     show_links: true
   - title: "Disjoint Sets"
     due: "2025/07/24"

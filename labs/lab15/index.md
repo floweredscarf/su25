@@ -1,11 +1,11 @@
 ---
 layout: page
 title: >-
-  Lab 16: Disjoint Sets
+  Lab 15: Heaps and Priority Queues
 has_children: true
 parent: Labs
-nav_exclude: false
 has_toc: false
+nav_exclude: false
 has_right_toc: true
 released: true
 ---
@@ -13,391 +13,782 @@ released: true
 ## [FAQ](faq)
 
 Each assignment will have an FAQ linked at the top. You can also access it by
-adding "/faq" to the end of the URL. The FAQ for Lab 16 is located
+adding "/faq" to the end of the URL. The FAQ for Lab 15 is located
 [here](faq).
 
 {: .warning}
 > **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
 
+## Use the Debugger!
+
+Data structures labs can be tricky, so make sure to use the debugger to help! If you need a refresher on how to use the debugger, check out the Lab 4 spec [debugging guide](../lab04/#debugger-overview).
+
 ## Before You Begin
 
-As usual, pull the files from the skeleton.
+As usual, pull the files from the skeleton and open them in IntelliJ.
 
-## Introduction
+## Overview
 
-We have already seen a few implementations of the Set ADT, and in this lab
-we will see a slightly different approach to this ADT. Today we will learn
-about *disjoint sets*, which we can use next week to implement
-some minimum spanning tree algorithms.
+In this lab, we will be implementing the Priority Queue, a data structure that arranges its elements according to a certain priority value. To implement the priority queue, we will implement it using the heap, which is a tree-like structure that enforces an arrangement based on priority going down the layers.
 
-## Disjoint Sets
+If you are having trouble seeing some of the images linked in this spec, try turning off dark mode; some of the images may not be as visible in dark mode.
 
-Suppose we have a collection of companies that have gone under mergers or
-acquisitions. We want to develop a data structure that allows us to determine if
-any two companies are in the same conglomerate (group). For example, if company X and
-company Y were originally independent, but then Y acquired X, we want to be able to
-represent this new connection in our data structure. How would we do this? One
-way we can do this is by using the disjoint sets data structure.
+## Priority
 
-The **disjoint sets data structure** represents a *collection of sets that are disjoint*, meaning that any item in this data structure is found in no more than
-one set. When discussing this data structure, we often limit ourselves to two
-operations, `union` and `find`, which is also why this data structure is
-sometimes called the **union-find data structure**. We will be using the two names
-interchangeably for the remainder of this lab.
+We've learned about a few abstract data types already, such as the *stack* and *queue*. The *stack* is a last-in-first-out (LIFO) abstract data type, where we can only access to the most recently added elements first
+and access the oldest elements last. The *queue* is a first-in-first-out (FIFO) abstract data type, where we can only access the oldest elements first and access the most recently added elements last.
 
-The `union` operation will combine two sets into one set. The `find` operation
-will take in an item, and tell us which set that item belongs to. With this
-data structure, we will be able to keep track of the acquisitions and mergers
-that occur!
+But, what if we want to model an emergency room, where people waiting with the
+most urgent conditions are helped first? We can't only rely on when the patients
+arrive in the emergency room, since those who arrived first or most recently will
+not necessarily be the ones who need to be seen first.
 
-Let's run through an example of how we can represent our problem using disjoint
-sets with the following companies:
+As we see with the emergency room, sometimes processing items LIFO or FIFO is
+not what we want. We may instead want to process items in order of *importance*
+or a *priority value*.
 
-![disjoint](img/x-y-z.jpg)
+### Priority vs. Priority Values
 
-To start off, each company is in its *own set* with *only itself*. A call to
-`find(X)` will return $$X$$ (and similarly for all the other companies). If
-$$Y$$ acquired $$X$$, we will make a call to `union(X, Y)` (or `union(Y, X)`; order won't matter for our final implementation) to represent that
-the two companies should now be linked. As a result, a call to `find(X)` will
-now return $$Y$$, showing that $$X$$ is now in the set represented by $$Y$$. The `union`ed
-result is shown below.
+Throughout this lab, we will be making a distinction between the *priority* and
+the *priority value*. **Priority** is how important an item is to the priority
+queue, while **priority value** is the value associated with each item inserted.
+**The element with the highest priority may not always have the highest
+priority value.**
 
-![union](img/xy-z.jpg)
+Let's take a look at two examples.
+
+1. If we were in an emergency room and each patient was assigned a number based
+   on how severe their injury was (smaller numbers mean less severe and larger
+   numbers mean more severe), patients with higher numbers would have more
+   severe injuries and should be helped sooner, and thus have higher priority.
+   The numbers the patients are assigned are the *priority values*, so in this
+   case *larger priority values mean higher priority*.
+
+2. Alternatively, if we were looking in our refrigerator and assigned each item
+   in the fridge a number based on how much time this item has left before its
+   expiration date (items with smaller numbers mean that they will expire sooner
+   than items with larger numbers), items with smaller numbers would expire
+   sooner and should be eaten sooner, and thus have higher priority. The numbers
+   each item in the refrigerator are assigned are the *priority values*, so in
+   this case *smaller priority values mean higher priority*.
+
+### Priority Queues
+
+The **priority queue** is an abstract data type that arranges data based on
+priority values. The priority queue contains the following methods:
+
+- **`insert(item, priorityValue)`**: inserts `item` into the priority queue with priority value `priorityValue`.
+
+- **`peek()`**: *returns* (but does not remove) the item with highest priority in the priority queue.
+
+- **`poll()`**: *removes* and *returns* the item with highest priority in the priority queue.
+
+It is similar to a `Queue`, though the `insert` method will insert an item with
+a corresponding `priorityValue`, and the `poll` method in the priority queue
+will remove the element with the highest priority (rather than the oldest
+element in the queue).
 
 {: .info}
->For the rest of the lab, we will work with non-negative integers as the items in
-our disjoint sets. If you wanted to have a disjoint set of something that
-did not correspond to a set of integers, you could generalize this data
-structure by maintaining some sort of mapping between whatever the objects
-are and the set of integers contained within the disjoint set data structure.
+>Priority queues come in two different flavors depending on which one of these
+schemes they follow:
+>
+>- **Maximum priority queues** will prioritize elements with **larger priority
+  values** (e.g. emergency room).
+>- **Minimum priority queues** will prioritize elements with **smaller priority
+  values** (e.g. refrigerator).
 
-{: .info}
->In this lab, we will talk about four different implementations for disjoint sets, namely **Quick Find**, **Quick Union**, **Weighted Quick Union**, and **Weighted Quick Union with Path Compression**. You will be implementing the last one in `UnionFind.java`, and that will be your deliverable for this lab. To read about each of these implementations, press "Click to expand:".
+### Discussion: PQ Implementations
 
-### **Quick Find**
+For each of the following possible priority queue implementations, each item will be associated with a priority value, and we will prioritize items with the smallest priority value first (e.g. like the refrigerator from above). For each implementation, determine
+the **worst-case** runtime to:
+
+- *insert* an item into the priority queue
+- *find* and *remove* (or *poll*) the element with the highest priority
+
+in terms of $$N$$, the number of elements in the priority queue.
+
+1.  Unordered linked list
+2.  Ordered linked list (on insertion, elements are placed so that the list
+    stays sorted)
+3.  Balanced binary search tree
 
 <details markdown="block">
-  <summary markdown="block">
-**Click to expand:**
-  </summary>
-
-Lets begin our first attempt to implement the union-find structure: we'll call this one the **quick find**. In order to implement disjoint sets, we need know to which set each item belongs to. Quick find's backing data structure is an array that details just that.
-
-{: .info}
->For **quick find**:
->- In our array, *the index will represent the item* (hence using non-negative integers as our items)
-and *the value at that index will represent which set that item belongs to*.
-
-The way we will represent our sets is with an "representative element". In our analogy with the conglomerates, this might be the company that is acquiring all the other companies; you can think of it as the parent company. Based on this implementation, if the $$N^{\text{th}}$$ item in our array is in a set *represented* by the $$M^{\text{th}}$$ item, then the value at index $$N$$ will be $$M$$.
-
-For example, if our set looked like this,
-
-![union-find-1](img/union-find-1.jpg)
-
-then we could represent the connections like this:
-
-![union-find-2](img/union-find-2.jpg)
-
-Here, we will be choosing the smallest number of the set to represent the face
-of the set, which is why the set numbers are 0, 3, and 5. By looking at the second image, which shows the underlying array, we can see that indices 0, 1, and 2 all have a value of 0. This directly corresponds to saying items 0, 1, and 2 are all in the same set, which has a representative element 0!
-
-This approach uses the *quick-find* algorithm, **prioritizing the runtime of the `find` operation but making the `union` operations slow**. How slow is the `find` operation in the worst case, and how slow is the `union` operation in the worst case?
-
-<details markdown="block">
-  <summary markdown="block">
-**Click to reveal answers:**
+<summary markdown="block">
+Answers (click to expand):
 </summary>
-1. Worst-case runtime for quick-find data structure's <code>find</code> with N items: $$\Theta(1)$$. We can directly index into the array to look up what value an index corresponds to.<br>
-2. Worst-case runtime for quick-find data structure's <code>union</code> with N items: $$\Theta(N)$$. We need to loop through all array elements to update the necessary values. As an example, consider unioning $$N-1$$ elements with the remaining $$1$$ element.
-</details>
+
+1. Unordered linked list:
+   - inserting takes $$\Theta(1)$$ - one can just insert to the end or the beginning, which would take constant time.
+   - polling takes $$\Theta(N)$$ - one needs to iterate through the entire list to find the smallest element.
+1. Ordered linked list
+   - inserting takes $$\Theta(N)$$ - one needs to iterate through the entire list to find the correct position to insert the element.
+   - polling takes $$\Theta(1)$$ - one can just remove the first element, which would take constant time.
+1. Balanced binary search tree
+   - inserting takes $$\Theta(\log N)$$ - one can insert an element into a balanced binary search tree in $$\Theta(\log N)$$ time.
+   - polling takes $$\Theta(\log N)$$ - one can find the smallest element in a balance binary search tree by traversing to the leftmost node, which would take $$\Theta(\log N)$$ time.
 
 </details>
 
-### **Quick Union**
+As you can see, these options are not particularly great. So now we ask the natural question, can we do better? As it turns out, we can!
 
-<details markdown="block">
-  <summary markdown="block">
-**Click to expand:**
-  </summary>
+For the remainder of this lab, we will study a data structure that is
+asymptotically "better" than all of the above options -- specifically, the
+exact data structure that Java uses in its own `PriorityQueue`!
 
-Quick find prioritized making the `find` operation fast, but supposed we prioritize making the `union` operation fast instead. **Quick union** does this by representing each set as a *tree*, as opposed to what we did above.
+## Heaps
 
-This tree will have the following qualities:
+A **heap** is a tree-like data structure that will help us implement a
+priority queue with fast operations. In general, heaps will organize elements
+such that the lowest or highest valued element will be easy to access.
 
-- The nodes will be the items in our set
-- Each node only needs a reference to its *parent*, rather than a direct reference
-  to the *face* of the set
-- The top of each tree (i.e. the **root**) will be
-  the face of the set it represents.
+Let's now go into the properties of heaps.
 
-Now, if we were to union two sets represented by items $$X$$ and $$Y$$, we wouldn't have to scan the whole array to change the parent of *every single item* in $$X$$'s set to be $$Y$$. Instead, we could just change $$X$$'s parent to $$Y$$, and be done!
+### Heap Properties
 
-In the example from the beginning of lab, $$Y$$ would be the face of the set
-represented by $$X$$ and $$Y$$, so $$Y$$ would be the root of the tree
-containing $$X$$ and $$Y$$:
+Heaps are tree-like structures that follow two additional invariants, which will
+be discussed more below. Normally, elements in a heap can have any number of
+children, but in this lab we will restrict our view to **binary heaps**, where
+each element will have *at most* two children. Thus, binary heaps are essentially
+binary trees with two extra invariants. However, it is important to note that
+**they are not binary *search* trees.** The invariants are listed below.
 
-<img src="img/bob.png" alt="XYset" width="50%"/>
-<!-- ![bob](img/bob.png) -->
+**Invariant 1: Completeness**
 
-How do we modify our data structure from quick find to make this quick union? **We will just need to replace the set references with parent references!**
+- In order to keep our operations fast, we need to make sure the heap is well
+balanced. We will define balance in a binary heap's underlying tree-like
+structure as *completeness*.
+
+- A **complete tree** has all available positions for elements filled, except for
+possibly the last row, which must be filled *left-to-right*. **A heap's underlying tree structure must be complete.**
+
+- Here are some examples of trees that are complete:
+
+| ![complete-1](img/complete-1.png){: style="max-height: 200px;" } | ![complete-2](img/complete-2.png){: style="max-height: 200px;" } |
+
+- And here are some examples of trees that are **not** complete:
+
+| ![not-complete-1](img/not-complete-1.png){: style="max-height: 200px;" } | ![not-complete-2](img/not-complete-2.png){: style="max-height: 200px;" } |
+
+**Invariant 2: Heap Property**
+
+- Every element must follow the **heap property**, which states that each element
+must be *smaller than or equal to all of the elements in its subtree*.
+
+- If we have a heap, this guarantees that the element with the *lowest* value
+will always be at the root of the tree. If the elements are our priority values,
+then we are guaranteed that *the element with the lowest priority value
+(the minimum) is at the root of the tree*. This helps us access that item
+quickly, which is what we need for a (minimum) priority queue!
+
+For the rest of this lab, we will be discussing the representation and
+operations of ***binary* heaps**. However, this logic can be modified to apply to heap heaps with any number of children.
+
+### Max Heap
+
+The heap we described earlier is also known more specifically as a "min-heap", because
+the heap property has the *minimum* element at the root at the root of the tree.
+
+There is a variant of the heap data structure that is very similar: the
+*max* heap. **Max heaps** have the same completeness invariant, but have the
+*opposite* heap property. In a max heap, each element must be *larger* than or equal to
+all of the elements in its subtree. This means that the element with the
+*highest* priority value (the maximum) is at the root of the tree.
 
 {: .info}
->For **quick union**:
->- The indices of
-the array will still correspond to the item itself, but we will put the *parent*
-references inside the array instead of direct *set* references.
->- If an item does
-not have a parent, that means this item is the face of the set (i.e. the root of the tree) and we will instead put the value $$-x$$ inside the array, where $$x$$ is the **size** of the tree (total number of nodes). We make this value negative to distinguish the size from parent references. Now, if the value at a given index is less than 0, we know that the index corresponds to the *root* of a set. If the value is greater than 0, then that value is the parent of the current item!
+>Java's `PriorityQueue` uses a min-heap, but max-heap implementations exist.
 
-When we `union(u, v)`, we will **find the set that each of the values `u` and `v` belong to (the roots of their respective trees), and make one the child of the other**. If `u` and `v` are both the face of their respective sets (i.e. the roots of their own tree), `union(u, v)` is a fast $$\Theta(1)$$ operation because we just need to make the root of one set connect to the root of the other set!
+### Heap as `PriorityQueue`
 
-Let's go
-through an example of this quick union data structure. The array
-representation of the data structure is shown first, followed by the abstract
-tree representation of the data structure.
+To use a heap as the underlying implementation of a priority queue, we can use the
+priority values of each of the priority queue's items as the elements inside our
+heap. This way, the lowest or highest priority value object will be at the top
+of the heap, and the priority queue's `peek` operation will be very fast.
 
-1. Initially, each item is in its own set, so we will initialize all of the
-elements in the array to `-1`.
+### Heap Representation
 
-![initial](img/initial.png)
+In Project 1, we discovered that deques could be implemented using arrays or
+linked nodes. It turns out that this dual representation extends to trees as
+well! Trees are generally implemented using nodes with parent and child links,
+but they can also be represented using arrays.
 
-2. After we call `union(0,1)` and `union(2,3)`, our array and our abstract
-representation look as below:
+Here's how we can represent a binary tree using an array:
 
-![union1](img/union1.png)
+![HeapArray](img/HeapArray.svg){: style="max-height: 400px;" }
 
-3. After calling `union(0,2)`, they look like:
+- The root of the tree will be in position 1 of the array (nothing is at position 0 to make the below position calculations easier).
+- The left child of a node at position $$N$$ is at position $$2N$$.
+- The right child of a node at position $$N$$ is at position $$2N + 1$$.
+- The parent of a node at position $$N$$ is at position $$N / 2$$.
 
-![union2](img/union2.png)
-
-<!-- As an example of how the array is used for quick union, take a look at the image below. 
-- The left side shows two disjoint sets (tree representation) and the corresponding array.
-- After calling `union(1, 5)`, we find the root of their respective trees (in this case, the nodes `1` and `5` themselves), then arbitrarily set one to be the parent of the other. In this example, we chose to set `5` as `1`'s parent, as indicated in the tree (`1`'s parent is `5`) and in the array (`array[1] = 5`).
-- Notice that `5`'s value (array[5]) is $-1$, indicating that it is a root of a tree.
-
-![quick-union](img/quick-union.png) -->
-
-We see that quick union can make the `union` method faster; however, the cost is that **`find` can now be slow**. In order to
-find which set an item is in, we must jump through all the parent references and
-travel to the root of the tree, which is **$$\Theta(N)$$ in the worst case**. Here's
-an example of a tree that would lead to the worst case runtime, which we again
-refer to as **spindly**:
-
-![worst](img/worst.png)
-
-In addition, `union`-ing two leaves could lead to the same worst case runtime as
-`find`, because we would have to first find the parents of each of the leaves before completing `union` operation. We will now expore some
-optimizations to make this runtime faster. 
-
-</details>
-
-### **Weighted Quick Union**
+Because binary heaps are essentially binary trees, we can use this array
+representation to represent our binary heaps! This representation can be generalized to trees with any variable number
+of children, not only binary trees.
 
 <details markdown="block">
   <summary markdown="block">
-**Click to expand:**
+Why did we place the root at index 1 instead of index 0?
+{: .no_toc}
   </summary>
-The first optimization that we will do for our quick union data structure is
-called "union by size". This will be done in order to keep the trees as shallow
-as possible (i.e. have smaller height) and avoid the spindly trees that result in the worst-case runtimes.
-When we `union` two trees, we will make the smaller tree (the tree with less
-nodes) a subtree of the larger
-one, breaking ties arbitrarily. We call this **weighted quick union**.
+  We do this for this
+is to to make indexing more convenient. If we had placed the root at 0, then
+our calculations would be:
 
-Because we are now using "union by size", the maximum depth of any item will be
-in $$O(\log N)$$, where $$N$$ is the number of items stored in the data
-structure. This is a great improvement over the linear time runtime of the
-unoptimized quick union. Check the [textbook](https://cs61b-2.gitbook.io/cs61b-textbook/14.-disjoint-sets/14.4-weighted-quick-union-wqu) for a more detailed look on why.
+- The left child of a node at position $$N$$ is at position $$2N + 1$$.
+- The right child of a node at position $$N$$ is at position $$2N + 2$$.
+- The parent of a node at position $$N$$ is at position $$(N - 1) / 2$$ (floor division).
 
-See the following visual for some intuition on how this works:
-![Weighted Quick Union](img/weighted.png)
-
-#### **Example**
-
-Let’s go over a example of what this all looks like for weighted quick union. When we initially create our disjoint set, each item is in its own set, so we will initialize all of the elements in the array to $$-1$$. For this representation, we want to track our size in the array, so we **store the weight of a set at its root as the negated weight** (-weight) (to also distinguish between a parent and the weight of the set).
-
-{: .info}
->The tie-breaking scheme in this example is that the smallest element becomes the root - note that this isn’t always the case depending on the implementation.
-
-![a](img/sp24-1.png)
-
-After we call `union(0,1)` and `union(2,3)`, our array and our abstract representation will end up as below:
-
-![b](img/sp24-2.png)
-
-Notice that for above, the values stored at 0 and 2 are $$-2$$, as the roots of the respective set are storing their (negated) size. Now let’s call `union(0,2)`. It’ll look like this:
-
-<img src="img/sp24-3.png" alt="sp24-3" width="55%"/>
-<!-- ![c](img/sp24-3.png) -->
-
-For the sake of an example, let’s say we have another disjoint set, in the current state shown below (we are using the same tie-breaking scheme above):
-
-![d](img/sp24-4.png)
-
-If we were to connect the two larger sets, through `union(7, 2)`, we would get the following:
-
-![e](img/sp24-5.png)
-
-In this case, we connect the roots of the sets that 7 and 2 belong to respectively, with the smaller set’s root becoming the child of the larger set’s root. With weighted quick union, we update two values in the array:
-- the smaller root’s parent becomes the root of the larger set
-- the larger root’s value is updated accordingly with a new size
-
+Unless otherwise specified, we will place the root at position 1 to make the math
+slightly cleaner.
 </details>
 
-### **Weighted Quick Union with Path Compression** TODO
+### Heap Operations
+
+For min heaps, there are three operations that we care about:
+
+`findMin`
+: Returning the lowest value without removal. (If we were using our min heap to
+implement a priority queue, this would correspond to accessing the highest
+priority element.)
+
+`insert`
+: Inserting an element to the heap.
+
+`removeMin`
+: Removing and returning the item with the lowest value. (If we were using our
+min heap to implement a priority queue, this would correspond to removing and
+returning the highest priority element.)
+
+When we do these operations, we need to make sure to maintain the invariants
+mentioned earlier (completeness and the heap property). Let's walk through how
+to do each one.
+
+`findMin`
+
+- The element with the smallest value will always be stored at the root due to the
+min-heap property. Thus, we can just return the root node, without changing the
+structure of the heap.
+
+`insert`
+
+1. Put the item you're adding in the *next available spot* in the *bottom row of
+   the tree*. If the row is full, make a new row. This is equivalent to placing
+   the element in the next free spot in the array representation of the heap.
+   *This ensures the completeness of the heap* because we're filling in the
+   bottom-most row *left to right*.
+
+2. If the element that has just been inserted is `N`, swap `N` with its parent
+   as long as `N` is smaller than its parent or until `N` is the
+   new root. If `N` is equal to its parent, you do not need to swap the items.
+
+- This process is called **bubbling up** (sometimes referred to as
+   **swimming**), and this ensures the min-heap property is satisfied because
+   once we finish bubbling `N` up, all elements below `N` must be greater than
+   it, and all elements above must be less than it.
+
+- Here is iterative pseudocode for the bubble-up process:
+
+   ```text
+   bubbleUp(index) {
+      while (index is not the root and arr[index] is smaller than parent) {
+         swap arr[index] with arr[parent]
+         update index to parent
+      }
+   }
+   ```
+
+- In the below example, we first insert the element $$1$$ into the next available spot in the bottom row of the tree. Then, we bubble up by (1) comparing $$1$$ with its parent $$6$$, (2) swapping $$1$$ with $$6$$, (3) comparing $$1$$ with its new parent $$4$$, and (4) swapping $$1$$ with $$4$$.
+
+   ![Heap bubble up](img/Heap-bubbleUp.svg){: style="max-height: 200px;" }
+
+`removeMin`
+
+1. Swap the element at the *root* with the element in the *bottom rightmost
+   position* of the tree. Then, remove the bottom rightmost element of the tree
+   (which is the previous root and is also the minimum element of the heap). *This
+   ensures the completeness of the tree.*
+
+2. If the new root `N` is greater than either of its children, swap it with that
+   child. If it is greater than both of its children, choose the smaller of the
+   two children. Continue swapping `N` with its children in the same manner
+   until `N` is smaller than its children or it has no children. If `N` is equal
+   to both of its children or is equal to the lesser of the two children, you
+   can choose to swap the items or not. Typically we would choose to not, as doing
+   so would be unnecessary work and our algorithm might be marginally faster if
+   we skip this work.
+
+- This is called **bubbling down** (sometimes referred to as **sinking**), and
+   this ensures the min-heap property is satisfied because we stop bubbling down
+   only when the element `N` is less than both of its children and also greater
+   than its parent.
+
+- Here is iterative pseudocode for the bubble-down process:
+
+   ```text
+   bubbleDown(index) {
+      while (there is a child and arr[index] is greater than either child) {
+         swap arr[index] with the SMALLER child
+         update index to the index of the swapped child
+      }
+   }
+   ```
+
+- In the below example, we swap the root with the bottom rightmost node, $$9$$, then remove the old root (not show in the picture). Then, we bubble down by (1) comparing $$9$$ with its smaller child $$5$$, (2) swapping $$9$$ with $$5$$, (3) comparing $$9$$ with its new smaller child $$7$$, and (4) swapping $$9$$ with $$7$$.
+
+   ![Heap bubble up](img/Heap-bubbleDown.svg){: style="max-height: 200px;" }
+
+### Heaps Visualization
+
+If you want to see an online visualization of heaps, take a look at the [USFCA
+interactive animation of a min heap][]. You can type in numbers to insert, or
+remove the min element (ignore the `BuildHeap` button for now; we'll talk about
+that later this lab) and see how the heap structure changes.
+
+[USFCA interactive animation of a min heap]: http://www.cs.usfca.edu/~galles/JavascriptVisual/Heap.html
+
+## Discussion: Heaps Practice and Runtimes
+
+### Min Heap Operations
+
+Assume that `Heap` is a binary min-heap (smallest value on top) data structure
+that is a properly-implemented heap. Draw the heap and its corresponding array
+representation after all of the operations below have occurred. Characters are
+compared in alphabetical order.
+
+```java
+Heap<Character> h = new Heap<>();
+h.insert('f');
+h.insert('h');
+h.insert('d');
+h.insert('b');
+h.insert('c');
+h.removeMin();
+h.removeMin();
+```
 
 <details markdown="block">
-  <summary markdown="block">
-**Click to expand:**
+<summary markdown="block">
+Answers (click to expand):
 </summary>
-Even though we have made a speedup by using a weighted quick union data
-structure, there is still yet another optimization that we can do! What would
-happen if we had a tall tree and called `find` repeatedly on the deepest leaf?
-Each time, we would have to traverse the tree from the leaf to the root.
+Heap after insert 'f':
+```text
+   f
+```
 
-A clever optimization is to move the leaf up the tree so it becomes a direct
-child of the root. That way, the next time you call `find` on that leaf, it
-will run much more quickly. An even more clever idea is that we could do the
-same thing to *every* node that is on the path from the leaf to the root,
-connecting each node to the root as we traverse up the tree. This optimization
-is called **path compression**. Once you find an item, path compression will
-make finding it (and all the nodes on the path to the root) in the future
-faster.
+Heap after insert 'h':
+```text
+   f
+  / 
+ h   
+```
 
-The runtime for any combination of $$f$$ `find` and $$u$$ `union` operations
-takes $$\Theta(u + f \alpha(f+u,u))$$ time, where $$\alpha$$ is an *extremely*
-slowly-growing function called the [*inverse Ackermann function*](https://en.wikipedia.org/wiki/Ackermann_function#Inverse). And by
-"extremely slowly-growing", we mean it grows so slowly that for any practical
-input that you will ever use, the inverse Ackermann function will never be
-larger than 4. That means for any practical purpose, a weighted quick union data
-structure with path compression has `find` operations that take constant time on
-average!
+Heap after insert 'd':
+```text
+   d
+  / \
+ h   f
+```
 
-![path-compression](img/path-compression.png)
+Heap after insert 'b':
+```text
+     b
+    / \
+   d   f
+  /
+ h
+```
 
-<!-- credit: https://www.slideshare.net/slideshow/time-complexity-of-union-find-55858534/55858534 -->
+Heap after insert 'c':
+```text
+     b
+    / \
+   c   f
+  / \
+ h   d
+```
 
-> It is important to note that even though this operation can be considered
-> constant time for all practically sized inputs, we should not describe
-> this whole data structure as constant time. We could say something like,
-> it will be constant for all inputs smaller than some incredibly large size.
-> Without that qualification we should still describe it by using the inverse
-> Ackermann function.
+Heap after first removeMin:
+```text
+     c
+    / \
+   d   f
+  / 
+ h   
+```
 
+Heap after second removeMin:
+```text
+   d
+  / \
+ h   f
+```
+
+Final heap as a tree:
+
+```text
+   d
+  / \
+ h   f
+```
+
+Final heap as an array: `[-,'d','h','f']`
+
+(`-` denotes the absence of the first element)
 </details>
 
-{: .info}
->You can visit this link
-[here](http://www.cs.usfca.edu/~galles/visualization/DisjointSets.html) to play
-around with disjoint sets.
+### Runtimes
 
-## Exercise: `UnionFind`
+Now that we've gotten the hang of the methods, let's evaluate the **worst case runtimes** for each of them! Consider an array-based min-heap with $$N$$ elements.
+As we insert elements, the backing array will run out of space and need to be
+resized. If we ignore the cost of resizing the array, what is the worst case
+asymptotic runtime of each of the following operations?
 
-We will now implement our own disjoint sets data structure. When you open up
-`UnionFind.java`, you’ll see that some skeleton code has been provided for you - you’ll have to fill in the implementation for the following methods:
+- `findMin`
+- `insert`
+- `removeMin`
 
-- `UnionFind(int N)`: This is the constructor. It creates a `UnionFind` data structure that holds N items.
-- `int sizeOf(int v)`: Returns the size of the set that `v` belongs to.
-- `int parent(int v)`: Returns the parent of `v`.
-- `boolean connected(int v1, int v2)`: Returns `true` if the two vertices are connected. Consider using the `find` method.
-- `int find(int v)`: Returns the root of the set that `v` belongs to.
-- `void union(int v1, int v2)`: Connects `v1` and `v2` together.
+<details markdown="block">
+<summary markdown="block">
+Answers (click to expand):
+</summary>
+- `findMin`: $$\Theta(1)$$
+- `insert`: $$\Theta(\log N)$$, because we may bubble up through $$\log N$$ layers
+- `removeMin`: $$\Theta(\log N)$$, because we may bubble down through $$\log N$$ layers
+</details>
 
-Read the documentation to get an understanding of what methods need to be filled
-out. Remember to implement both optimizations discussed above, so a **weighted quick union with path compression**, and take note of
-the **tie-breaking scheme** that is described in the comments of some of the
-methods. This scheme is done for autograding purposes and is chosen arbitrarily.
-In addition, remember to ensure that the inputs to your functions are within bounds, and should otherwise throw an `IllegalArgumentException`.
+Now, consider those same operations, but also include the effects of resizing the
+underlying array or `ArrayList`. You should answer this question for the
+operations `insert`, `removeMin`, and `findMin`. *Assume that we will only
+resize up and we will not resize down. *
 
-{: .info}
->We recommend that you start with implementing the constructor and taking a look at `find` before the rest of the other methods.
+<details markdown="block">
+<summary markdown="block">
+Answers (click to expand):
+</summary>
+- `findMin`: $$\Theta(1)$$
+- `insert`: $$\Theta(N)$$, because resizing takes linear time
+- `removeMin`: $$\Theta(\log N)$$, because we don't resize down
+</details>
 
-{: .warning}
->Things to note for this lab:
->- We will work with **non-negative integers** as the items in our disjoint sets.
->- You’ll want to implement the following tie-breaking scheme: if the sizes of the sets are equal, tie break by connecting v1'’s root to v2’s root.
->- You should also correctly handle faulty inputs; e.g if invalid vertices are passed into the functions, throw an `IllegalArgumentException`.
+## `PriorityQueue` Implementation
+
+Now, let's implement what we've just learned about priority queues and heaps!
+There are a few files given to you in the skeleton, which will be broken down
+here for you:
+
+- `PriorityQueue.java`: This interface represents our priority queue, detailing
+  what methods we want to exist in our PQ.
+- `MinHeap.java`: This class represents our array-backed binary min heap.
+- `MinHeapPQ.java`: This class represents a possible implementation of a
+  priority queue, which will use our `MinHeap` to implement the `PriorityQueue`
+  interface.
+
+We will start with implementing our `MinHeap` and then move onto `MinHeapPQ`.
+You do not have to do anything with `PriorityQueue` (it has been provided for
+you).
+
+## Exercise: `MinHeap`
+
+### Representation
+
+In the `MinHeap` class, implement the array-based representation of a heap
+discussed above by implementing the following methods:
+
+```java
+private int getLeftOf(int index);
+private int getRightOf(int index);
+private int getParentOf(int index);
+private int min(int index1, int index2);
+```
+
+Our code will use an `ArrayList` instead of an array so we will not have to
+resize our array manually, but the logic is the same. In addition, make sure to
+look through and use the methods provided in the skeleton (such as `getElement`)
+to help you implement the methods listed above!
 
 {: .task}
->Complete the methods in `UnionFind.java`. **You’ll want to use `find` in `union`.**
+>Implement the `getLeftOf`, `getRightOf`, `getParentOf`, and `min` methods in `MinHeap.java`.
 
-## Testing
-For this lab, we have provided all the tests locally in `UnionFindTest.java` (yay!) to help you debug.
+### Operations
 
-## Discussion: `UnionFind`
+After you've finished the methods above, fill in the following missing methods
+in `MinHeap.java`. We recommend doing these methods in order.
 
-Our `UnionFind` uses only non-negative values as the items in our set.
+```java
+public E findMin();
+private void bubbleUp(int index);
+private void bubbleDown(int index);
+public void insert(E element);
+public int size();
+public E removeMin();
+```
 
-How can we use the data structure that we created above to keep track of
-different values, such as all integers or companies undergoing mergers and
-acquisitions? Discuss with a partner.
+When you implement `insert` and `removeMin`, you should be using `bubbleUp`
+and/or `bubbleDown`, and when you implement `bubbleUp` and `bubbleDown`, you
+should be using the methods you wrote above (such as `getLeft`, `getRight`,
+`getParent`, and `min`) and the ones provided in the skeleton (such as `swap`
+and `setElement`).
 
-## Recap
+{: .warning}
+>**Do not use the `removeLast` method for `ArrayList`s!** The autograder is running on an older version of Java that doesn't recognize this method, so you will get a compilation error. Instead, use the `remove(int index)` or `remove(Object o)` methods.
 
-The ultimate goal of this lab was to develop a data type that support the
-following operations on $$N$$ objects:
- - `union(int p, int q)` (sometimes called `connect`)
- - `connected(int p, int q)` (sometimes called `isConnected`)
+{: .warning}
+>**It is highly recommended to use the `swap` and `setElement` methods if you
+ever need to swap the location of two items or add a new item to your heap.**
+This will help keep your code more organized and make the next task of the lab
+a bit more straightforward. Additionally, this reinforces the abstraction barrier,
+which we love in CS61BL! When possible, don't break the abstraction barrier.
 
-We do not care about finding the actual *path* between `p` and `q`; we care
-only about their *connectedness*. A third operation we can support is very
-closely related to `connected`:
-
- - `find(int p)`: The `find` method is defined so that `find(p) == find(q)` if
-   and only if `connected(p, q)`. We did not use this in class.
+Remember that we have provided pseudocode for `bubbleUp` and `bubbleDown`
+[above](#heap-operations).
 
 {: .info}
-Below are summaries of the four implementations of disjoint sets we covered in this lab. Click on each line to expand the corresponding summary.
+>Usually `MinHeap`s should be able to contain duplicates, but for the `insert`
+method, **assume that our `MinHeap` cannot contain duplicate items**. To do
+this, use the `contains` method to check if `element` is in the `MinHeap` before
+you insert. If `element` is already in the `MinHeap`, throw an
+`IllegalArgumentException`. The naive version of the `contains` method has already been implemented for you; optimizing this `contains` method is left as an optional exercise.
+
+Before moving on to the next section, we suggest that you test your code! We
+have provided a blank `MinHeapTest.java` file for you to put any JUnit tests
+you'd like to ensure the correctness of your methods.
+
+{: .task}
+>Implement the remaining methods in `MinHeap.java`.
+
+## (Optional) Exercise: `update` and optimizing `contains`
 
 <details markdown="block">
-  <summary markdown="block">
-**Quick Find**
-  </summary>
-This is the most natural solution, where each object is given an explicit
-number. Uses an array `id` of length $$N$$, **where `id[i]` is the set number of object `i`** (which is returned by `find(i)`). To connect two objects `p` and
-`q`, we change the value of every object in `p`'s bucket to be `q`'s number (or vice versa).
+<summary markdown="block">
+Click to expand:
+</summary>
 
- - `union`: May require many changes to `id`. Takes $$\Theta(N)$$ time, as
-   the algorithm must iterate over the entire array.
- - `connected` (and `find`): Takes $$\Theta(1)$$ time.
- </details>
+We have two more methods that we would like to implement (`contains` and
+`update`) whose behaviors are described below:
+
+- `update(E element)`: Sometimes, priorities change. Our heap invariant can be
+  violated if an element's priority changes while it is in the heap. If
+  `element` is in the `MinHeap`, replace the `MinHeap`'s version of this
+  element with `element` and update its position in the `MinHeap`.
+- `contains(E element)`: Checks if `element` is in our `MinHeap`.
+
+Let's take a look at the `update` method first.
+
+### `update(E element)`
+
+The `update(E element)` method will consist of the following four steps:
+
+1. Check if `element` is in our `MinHeap`.
+1. If so, find the `element` in our `MinHeap` (by finding the index the
+   element is at).
+2. Replace the element with the new `element`.
+2. Bubble `element` up or down depending on how it was changed since its initial
+   insertion into the `MinHeap`.
+
+Unfortunately, Steps 1 and 2 (checking if our `element` is present and finding
+the `element`) are actually nontrivial linear time operations since heaps are
+not optimized for this operation. To check if our heap contains an item, we'll
+have to iterate through our entire heap, looking for the item (see "Search"'s
+runtime [here](https://en.wikipedia.org/wiki/Binary_heap#Search)).
+
+This is not extremely bad, but applications of our heap would really benefit from
+having a fast `update` method.
+
+We can get around this by introducing *another data structure* to our heap! Though
+this would increase the space complexity of the heap and is not how Java implements
+`PriorityQueue`, it will be worth the runtime speedup of our `update` method in any
+applications of our heap.
+
+We would essentially want to use this extra data structure to speed to help us
+make step 1 (checking if our `MinHeap` contains a particular element) and step 2
+(get the index corresponding to a particular element) fast.
+
+In order to implement this new optimized version you may need to update some
+methods in order to ensure that this data structure always has accurate
+information. There is no need to implement these optimizations for this lab, but
+they would be needed in any large scale use of your data structure.
+
+Implement `update(E element)` according to the steps listed above. Remember if
+`element` is not in the `MinHeap`, you should throw a `NoSuchElementException`.
 
 <details markdown="block">
-  <summary markdown="block">
-**Quick Union**
-  </summary>
-An alternate approach is to change the meaning of our `id` array. In this
-strategy, each set is represented as a tree, **where `id[i]` is the parent of object `i`**. The `find` method climbs the ladder of parents until it reaches the root (an object whose value in the array is -1). To union `p` and `q`, we set the root of `p` to point to the root of `q`.
-
- - `union`: Requires only one change to `id`, but also requires finding the root (worst case $$\Theta(N)$$ time).
- - `connected` (and `find`): Requires finding the root (worst case $$\Theta(N)$$ time).
+<summary markdown="block">
+What data structure should I use?
+</summary>
+What data structure did you learn about in Lab 14? &#128064;
 </details>
 
-<details markdown="block">
-  <summary markdown="block">
-**Weighted Quick Union**
-  </summary>
-Rather than `union(p, q)` making the root of `p` point to the root of `q`,
-we instead make the root of the *smaller tree* point to the root of the *larger tree* (arbitrary tie-breaking unless specified). The tree's *size* is the **number of nodes**, not the height of the tree. This added condition to `union` results in tree heights of $$\log N$$.
+### `contains(E element)`
 
- - `union`: Requires only one change to `id`, but also requires finding the root (worst case $$\log N$$ time).
- - `connected` (and `find`): Requires finding the root (worst case $$\log N$$
-   time).
+Now, implement `contains(E element)`.
+
+{% include alert.html type="info" content="
+Note that if you do choose to implement the optimized approach we have hinted at
+above, you can use the same data structure to implement a faster `contains`
+operation!
+" %}
 
 </details>
 
+## Exercise: `MinHeapPQ`
+
+Now let's use the `MinHeap` class to implement our own priority queue! **We will be doing this in our `MinHeapPQ` class.**
+
+Take a look at the code provided for `MinHeapPQ`, a class that implements the
+`PriorityQueue` interface. In this class, we'll introduce a new wrapper class
+called `PriorityItem`, which wraps the `item` and `priorityValue` in a single
+object. This way, we can use `PriorityItem`s as the elements of our underlying
+`MinHeap`.
+
+Before you start implementing these methods, we recommend that you write your
+tests! **We have provided some tests in the `MinHeapPQTest.java`
+file, but they are not comprehensive, so write your own tests to ensure your code is working properly!**
+
+{: .task}
+>Now, implement the remaining methods of the interface (duplicated below) of the
+`MinHeapPQ` class. The `update` and `changePriority` methods are optional.
+
+```java
+public T peek();
+public void insert(T item, double priority);
+public T poll();
+public int size();
+public void update(E element); // optional
+public void changePriority(T item, double priority); // optional
+```
+
+For the `changePriority` method, use the `update` method from the `MinHeap`
+class. The `contains` method has already been implemented for you.
+
+{: .warning}
+>**Do not just copy over what you have in `MinHeap.java`!**
+You shouldn't have to write too much code in this file. Remember that your
+`MinHeap` will do most of the work for you! It is of course fine if you add necessary edge case checks, but you should rely on the
+corresponding `MinHeap` methods as much as possible.
+
+### Note: `compareTo()` vs `.equals()`
+
+You may have noticed that the `PriorityItem` has a `compareTo` method that
+compares priority values, while the `equals` method compares the items
+themselves. Because of this, it's possible that `compareTo` will return 0 (which
+usually means the items that we are comparing are equal) while `equals` will
+still return false. However, according to the Javadocs for
+[Comparable](https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Comparable.html):
+- It is *strongly recommended*, but not strictly required that `(x.compareTo(y) == 0)
+== (x.equals(y))`. 
+
+Generally speaking, any class that implements the Comparable
+interface and violates this condition should clearly indicate this fact. We will
+not require this from you in CS61BL, but it is vital to know this requirement
+does not hold for real world programmers!
+
+Thus, our `PriorityItem` class "has a natural ordering that is inconsistent with
+equals". Normally, we would want `x.compareTo(y) == 0` and `x.equals(y)` to both
+return true for the same two objects, but this class will be an exception. Make
+sure to clearly note this exception in the documentation of your code!
+
+## Discussion: Heap Brainteasers
+
+Now, let's get into some deeper questions about heaps.
+
+### Heaps and BSTs
+
+Consider binary trees that are both **max** heaps and binary search trees. Assume no duplicates.
+
+How many nodes can such a tree have? Choose all that apply.
+
+- 1 node
+- 2 nodes
+- 3 nodes
+- 4 nodes
+- 5 nodes
+- Any number of nodes
+- No trees exist
+
 <details markdown="block">
-  <summary markdown="block">
-**Weighted Quick Union with Path Compression**
-  </summary>
-This implementation is like Weighted Quick Union, except with one optimization:
-- Every time `find` is called on a node $x$, every node along the path (from root to $x$) gets their parent changed to the root. This results in nearly flat trees. Making $$M$$ calls to union and find with $$N$$
-objects results in no more than $$O(M \log^* N)$$ array accesses (see the inverse Ackermann function mentioned above), not counting the creation of the arrays. For any reasonable values of $$N$$ in this universe
-that we inhabit, $$\log^* N$$ is at most 5.
+<summary markdown="block">
+Answer (click to expand):
+</summary>
+Such a tree can either have either 1 node or 2 nodes.
 </details>
+
+### Determining Completeness
+
+It's not obvious how to verify that a binary tree is complete (assuming it is
+represented using children links rather than an array as we have discussed in this
+lab). A CS 61BL student suggests the following (not necessarily correct) recursive algorithm to determine if a
+tree is complete:
+
+1. A one-node tree is complete.
+
+2. A tree with two or more nodes is complete if its left subtree is complete and
+   has depth $$k$$ for some $$k$$, and its right subtree is complete and has
+   depth $$k$$ or $$k - 1$$.
+
+Here are some example trees. Think about whether or not the student's proposed
+algorithm works correctly on them.
+
+![sample-trees](img/sample-trees.jpg)
+
+Choose all that apply to test your understanding of the proposed algorithm.
+
+- Tree 1 is complete
+- Tree 1 would be identified as complete
+- Tree 2 is complete
+- Tree 2 would be identified as complete
+- Tree 3 is complete
+- Tree 3 would be identified as complete
+- Tree 4 is complete
+- Tree 4 would be identified as complete
+
+<details markdown="block">
+<summary markdown="block">
+Answer (click to expand):
+</summary>
+The correct answers are:
+- "Tree 1 would be identified as complete"
+- "Tree 2 is complete"
+- "Tree 2 would be identified as complete"
+- "Tree 4 would be identified as complete".
+</details>
+
+### Third Biggest Element in a Max Heap
+
+Here's an example **max** heap.
+
+![third-largest](img/third-largest.jpg)
+
+Which nodes could contain the third largest element in the heap **assuming that
+the heap does not contain any duplicates**?
+
+<details markdown="block">
+<summary markdown="block">
+Answer (click to expand):
+</summary>
+Nodes: B, C, D, E, F, and G.
+</details>
+
+## Conclusion
+
+In today's lab, we learned about another abstract data type called the
+**priority queue**. Priority queues can be implemented in many ways, but are
+often implemented with a binary min heap. It is very easy to conflate the
+priority queue abstract data type and the heap data structure, so make sure to
+understand the difference between the two!
+
+Additionally, we learned how to represent a heap with an array, as well as some
+of its core operations. We then explored a few conceptual questions about heaps.
+
+All in all, priority queues are an integral component of many algorithms for
+graph processing (which we'll cover in a few labs). For example, in the first few weeks of
+[CS 170](https://cs170.org/), Efficient Algorithms and Intractable Problems, you will see
+graph algorithms that use priority queues. Look out for priority queues
+in other CS classes as well! You'll find them invaluable in the operating
+systems class [CS 162](https://cs162.org/), where they're used to schedule which processes in a
+computer to run at what times.
 
 ## Deliverables
 
 To receive credit for this lab:
 
-- Implement the methods in `UnionFind.java`.
+- Complete `MinHeap.java`
+- Complete `MinHeapPQ.java`

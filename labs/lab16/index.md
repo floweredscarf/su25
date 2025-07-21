@@ -1,541 +1,403 @@
 ---
 layout: page
 title: >-
-  Lab 16: Graphs
+  Lab 16: Disjoint Sets
 has_children: true
 parent: Labs
+nav_exclude: false
 has_toc: false
-nav_exclude: true
 has_right_toc: true
 released: true
 ---
 
-## [FAQ](faq.md)
+## [FAQ](faq)
 
 Each assignment will have an FAQ linked at the top. You can also access it by
-adding "/faq" to the end of the URL. The FAQ for Lab 17 is located
-[here](faq.md).
+adding "/faq" to the end of the URL. The FAQ for Lab 16 is located
+[here](faq).
 
 {: .warning}
 > **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
 
+## Before You Begin
+
+As usual, pull the files from the skeleton.
+
 ## Introduction
 
-As usual, pull the files from the skeleton and make a new IntelliJ project.
+We have already seen a few implementations of the Set ADT, and in this lab
+we will see a slightly different approach to this ADT. Today we will learn
+about *disjoint sets*, which we can use next week to implement
+some minimum spanning tree algorithms.
 
-## Linked lists $$\subseteq$$ Trees $$\subseteq$$ Graphs
+## Disjoint Sets
 
-One of the first data structures we studied in this course was the linked list,
-which consisted of a set of nodes connected in sequence. Then, we looked at
-trees, which were a generalized version of linked lists. We can consider a tree
-as a linked list if we *relaxed* the constraint that a node could only have one
-child. Now, we'll look at a generalization of a tree, called a *graph*. We can
-consider a graph as a tree if we *relaxed* the constraint that we can't have
-cycles.
+Suppose we have a collection of companies that have gone under mergers or
+acquisitions. We want to develop a data structure that allows us to determine if
+any two companies are in the same conglomerate (group). For example, if company X and
+company Y were originally independent, but then Y acquired X, we want to be able to
+represent this new connection in our data structure. How would we do this? One
+way we can do this is by using the disjoint sets data structure.
 
-In a graph, we still have a collection of nodes, but each node in a graph can be
-connected to any other node without limitation. This means there isn't
-necessarily a hierarchical structure like we get in a tree. For example, here's
-a tree, where every node is descended from one another:
+The **disjoint sets data structure** represents a *collection of sets that are disjoint*, meaning that any item in this data structure is found in no more than
+one set. When discussing this data structure, we often limit ourselves to two
+operations, `union` and `find`, which is also why this data structure is
+sometimes called the **union-find data structure**. We will be using the two names
+interchangeably for the remainder of this lab.
 
-![tree](img/tree.png)
+The `union` operation will combine two sets into one set. The `find` operation
+will take in an item, and tell us which set that item belongs to. With this
+data structure, we will be able to keep track of the acquisitions and mergers
+that occur!
 
-Now suppose we add an edge back up the tree, like this:
+Let's run through an example of how we can represent our problem using disjoint
+sets with the following companies:
 
-![back-edge](img/back-edge.png)
+![disjoint](img/x-y-z.jpg)
 
-Notice the hierarchical structure is broken. Is $$C$$ descended from $$A$$ or
-is $$A$$ descended from $$C$$? This is no longer a tree, but it is still a
-graph!
+To start off, each company is in its *own set* with *only itself*. A call to
+`find(X)` will return $$X$$ (and similarly for all the other companies). If
+$$Y$$ acquired $$X$$, we will make a call to `union(X, Y)` (or `union(Y, X)`; order won't matter for our final implementation) to represent that
+the two companies should now be linked. As a result, a call to `find(X)` will
+now return $$Y$$, showing that $$X$$ is now in the set represented by $$Y$$. The `union`ed
+result is shown below.
 
-There are other edges that are not allowed in a tree, but are allowed in a
-graph. Let's take a look at the following:
+![union](img/xy-z.jpg)
 
-![cross-edge](img/cross-edge.png)
+{: .info}
+>For the rest of the lab, we will work with non-negative integers as the items in
+our disjoint sets. If you wanted to have a disjoint set of something that
+did not correspond to a set of integers, you could generalize this data
+structure by maintaining some sort of mapping between whatever the objects
+are and the set of integers contained within the disjoint set data structure.
 
-Now, node E looks like it is descended from two nodes. Again, this is no longer
-a tree but it is a graph.
+{: .info}
+>In this lab, we will talk about four different implementations for disjoint sets, namely **Quick Find**, **Quick Union**, **Weighted Quick Union**, and **Weighted Quick Union with Path Compression**. You will be implementing the last one in `UnionFind.java`, and that will be your deliverable for this lab. To read about each of these implementations, press "Click to expand:".
 
-In general, a graph can have any possible connection between nodes, as shown
-below:
-
-![graph](img/graph.png)
-
-## Graphs
-
-Graphs are a good way to represent relationships between objects. First, let's
-go over some terminology. A node in a graph is called a *vertex*. Vertices
-usually represent the objects in our graph (the things that have the
-relationships such as people, places, or things). A relationship between two
-vertices is represented by an *edge*.
-
-Here are a few examples of graphs in the everyday world:
-
-- **Road maps** are a great example of graphs. Each city is a vertex, and the
-  edges that connect these vertices are the roads and freeways that connect the
-  cities. An abstract example of what such a graph would look like can be found
-  [here](http://inst.eecs.berkeley.edu/~cs61b/fa05/diagrams/freeway-graph.png).
-  For a more local example, each building on the Berkeley campus can be thought
-  of as a vertex, and the paths that connect those buildings would be the edges.
-
-- **Computer networks** are also graphs. In this case, computers and other
-  network machinery (like routers and switches) are the vertices, and the edges
-  are the network cables. For a wireless network, an edge is an established
-  connection between a single computer and a single wireless router.
-
-### Directed vs. Undirected Graphs
-
-If all edges in a graph are showing a relationship between two vertices that
-works in both directions, then it is called an *undirected graph*. A picture of
-an undirected graph looks like this:
-
-![undirected-graph](img/undirected-graph.png)
-
-But not all edges in graphs are the same. Sometimes the relationships between
-two vertices only go in one direction. Such a relationship can be represented
-with a *directed* graph. An example of this could be a city map, where the edges
-are sometimes one-way streets between locations. A two-way street would have to
-be represented as two edges, one of them going from location $$A$$ to location
-$$B$$, and the other from location $$B$$ to location $$A$$.
-
-Visually, an undirected graph will not have arrow heads on its edges because the
-edge connects the vertices in both directions. A directed graph will have arrow
-heads on its edges that point in the direction the edge is going. An example of
-a directed graph appears below.
-
-![directed-graph](img/directed-graph.png)
-
-Any undirected edge can be represented with 2 directed edges. This means every undirected graph is a directed graph, but the converse is not true. 
-
-### Graph Definitions
-
-Now that we have the basics of what a graph is, here are a few more terms that
-might come in handy while discussing graphs.
-
-| Term                | Definition                                                                                      |
-|---------------------|-------------------------------------------------------------------------------------------------|
-| Adjacent            | A vertex `u` is *adjacent* to a vertex `v` if `v` has an edge connecting to `u`.                |
-| Path                | A *path* is a sequence of edges from one vertex to another where no edge or vertex is repeated. |
-| Connected           | A graph is *connected* if every vertex has a path to all other vertices.                        |
-| Neighbor            | A vertex `u` is a *neighbor* of a vertex `v` if they are adjacent.                              |
-| Incident to an edge | A vertex that is an endpoint of an edge is *incident* to it                                     |
-| Indegree            | A vertex `v`'s *indegree* is the number of vertices `u` where a directed edge from `u` to `v` exists.             |
-| Outdegree            | A vertex `v`'s *outdegree* is the number of vertices `u` where a directed edge from `v` to `u` exists.             |
-| Degree            | A vertex `v`'s *degree* is the number of vertices adjacent to it. Note the we calculate the degree of a vertex for undirected graphs, and indegree/outdegree for directed graphs.             |
-| Cycle               | A *cycle* is a path that ends at the same vertex where it originally started.                   |
-
-## Exercise: Edge vs. Vertex Count
-For the following questions, discuss your solution with someone in your lab.
-
-### Exercise 1
-
-Suppose that $$G$$ is a *directed* graph with $$N$$ vertices. What's the
-maximum number of edges that $$G$$ can have? Assume that a vertex cannot have
-an edge pointing to itself, and that for each vertex $$u$$ and $$v$$, there is
-at most one edge $$(u, v)$$.
-
-Options:
-
-$$N, N^2, N(N-1), \frac{N(N-1)}{2}$$
+### **Quick Find**
 
 <details markdown="block">
   <summary markdown="block">
-#### Solution
-{: .no_toc}
+**Click to expand:**
   </summary>
-N(N-1). There are N vertices and each one can have an edge to each of the other N-1 vertices.
-</details>
 
-### Exercise 2
+Lets begin our first attempt to implement the union-find structure: we'll call this one the **quick find**. In order to implement disjoint sets, we need know to which set each item belongs to. Quick find's backing data structure is an array that details just that.
 
-Now suppose the same graph $$G$$ in the above question is an *undirected*
-graph.  Again assume that no vertex is adjacent to itself, and at most one edge
-connects any pair of vertices. What's the maximum number of edges that $$G$$
-can have compared to the directed graph of $$G$$?
+{: .info}
+>For **quick find**:
+>- In our array, *the index will represent the item* (hence using non-negative integers as our items)
+and *the value at that index will represent which set that item belongs to*.
 
-Options:
+The way we will represent our sets is with an "representative element". In our analogy with the conglomerates, this might be the company that is acquiring all the other companies; you can think of it as the parent company. Based on this implementation, if the $$N^{\text{th}}$$ item in our array is in a set *represented* by the $$M^{\text{th}}$$ item, then the value at index $$N$$ will be $$M$$.
 
-- half as many edges
-- the same number of edges
-- twice as many edges
+For example, if our set looked like this,
+
+![union-find-1](img/union-find-1.jpg)
+
+then we could represent the connections like this:
+
+![union-find-2](img/union-find-2.jpg)
+
+Here, we will be choosing the smallest number of the set to represent the face
+of the set, which is why the set numbers are 0, 3, and 5. By looking at the second image, which shows the underlying array, we can see that indices 0, 1, and 2 all have a value of 0. This directly corresponds to saying items 0, 1, and 2 are all in the same set, which has a representative element 0!
+
+This approach uses the *quick-find* algorithm, **prioritizing the runtime of the `find` operation but making the `union` operations slow**. How slow is the `find` operation in the worst case, and how slow is the `union` operation in the worst case?
 
 <details markdown="block">
   <summary markdown="block">
-#### Solution
-{: .no_toc}
-  </summary>
-Half as many edges. Every pair of directed edges u->v, v->u can be represented with a single undirected edge.
+**Click to reveal answers:**
+</summary>
+1. Worst-case runtime for quick-find data structure's <code>find</code> with N items: $$\Theta(1)$$. We can directly index into the array to look up what value an index corresponds to.<br>
+2. Worst-case runtime for quick-find data structure's <code>union</code> with N items: $$\Theta(N)$$. We need to loop through all array elements to update the necessary values. As an example, consider unioning $$N-1$$ elements with the remaining $$1$$ element.
 </details>
 
-### Exercise 3
+</details>
 
-What's the *minimum* number of edges that a connected undirected graph with N
-vertices can have?
-
-Options:
-
-$$N - 1, N, N^2, N(N-1), \frac{N(N-1)}{2}$$
+### **Quick Union**
 
 <details markdown="block">
   <summary markdown="block">
-#### Solution
-{: .no_toc}
+**Click to expand:**
   </summary>
-N-1. A graph with 1 vertex needs 0 edges to be connected. Every time you add a new vertex you need minimum one new edge to connect it. 
+
+Quick find prioritized making the `find` operation fast, but supposed we prioritize making the `union` operation fast instead. **Quick union** does this by representing each set as a *tree*, as opposed to what we did above.
+
+This tree will have the following qualities:
+
+- The nodes will be the items in our set
+- Each node only needs a reference to its *parent*, rather than a direct reference
+  to the *face* of the set
+- The top of each tree (i.e. the **root**) will be
+  the face of the set it represents.
+
+Now, if we were to union two sets represented by items $$X$$ and $$Y$$, we wouldn't have to scan the whole array to change the parent of *every single item* in $$X$$'s set to be $$Y$$. Instead, we could just change $$X$$'s parent to $$Y$$, and be done!
+
+In the example from the beginning of lab, $$Y$$ would be the face of the set
+represented by $$X$$ and $$Y$$, so $$Y$$ would be the root of the tree
+containing $$X$$ and $$Y$$:
+
+<img src="img/bob.png" alt="XYset" width="50%"/>
+<!-- ![bob](img/bob.png) -->
+
+How do we modify our data structure from quick find to make this quick union? **We will just need to replace the set references with parent references!**
+
+{: .info}
+>For **quick union**:
+>- The indices of
+the array will still correspond to the item itself, but we will put the *parent*
+references inside the array instead of direct *set* references.
+>- If an item does
+not have a parent, that means this item is the face of the set (i.e. the root of the tree) and we will instead put the value $$-x$$ inside the array, where $$x$$ is the **size** of the tree (total number of nodes). We make this value negative to distinguish the size from parent references. Now, if the value at a given index is less than 0, we know that the index corresponds to the *root* of a set. If the value is greater than 0, then that value is the parent of the current item!
+
+When we `union(u, v)`, we will **find the set that each of the values `u` and `v` belong to (the roots of their respective trees), and make one the child of the other**. If `u` and `v` are both the face of their respective sets (i.e. the roots of their own tree), `union(u, v)` is a fast $$\Theta(1)$$ operation because we just need to make the root of one set connect to the root of the other set!
+
+Let's go
+through an example of this quick union data structure. The array
+representation of the data structure is shown first, followed by the abstract
+tree representation of the data structure.
+
+1. Initially, each item is in its own set, so we will initialize all of the
+elements in the array to `-1`.
+
+![initial](img/initial.png)
+
+2. After we call `union(0,1)` and `union(2,3)`, our array and our abstract
+representation look as below:
+
+![union1](img/union1.png)
+
+3. After calling `union(0,2)`, they look like:
+
+![union2](img/union2.png)
+
+<!-- As an example of how the array is used for quick union, take a look at the image below. 
+- The left side shows two disjoint sets (tree representation) and the corresponding array.
+- After calling `union(1, 5)`, we find the root of their respective trees (in this case, the nodes `1` and `5` themselves), then arbitrarily set one to be the parent of the other. In this example, we chose to set `5` as `1`'s parent, as indicated in the tree (`1`'s parent is `5`) and in the array (`array[1] = 5`).
+- Notice that `5`'s value (array[5]) is $-1$, indicating that it is a root of a tree.
+
+![quick-union](img/quick-union.png) -->
+
+We see that quick union can make the `union` method faster; however, the cost is that **`find` can now be slow**. In order to
+find which set an item is in, we must jump through all the parent references and
+travel to the root of the tree, which is **$$\Theta(N)$$ in the worst case**. Here's
+an example of a tree that would lead to the worst case runtime, which we again
+refer to as **spindly**:
+
+![worst](img/worst.png)
+
+In addition, `union`-ing two leaves could lead to the same worst case runtime as
+`find`, because we would have to first find the parents of each of the leaves before completing `union` operation. We will now expore some
+optimizations to make this runtime faster. 
+
 </details>
 
-## Graph Representation
-
-Now that we know how to draw a graph on paper and understand the basic concepts
-and definitions, we can now consider how a graph should be represented inside of
-a computer. We want to be able to get quick answers for the following questions
-about a graph:
-
-- Are given vertices `u` and `v` adjacent?
-- What vertices are adjacent to `v`?
-- What edges are incident to `v`?
-
-The next portion of today's lab will involve thinking about how fast and how efficient each
-of these operations is using different representations of a graph.
-
-Imagine that we want to represent a graph that looks like this:
-
-![directed-graph](img/directed-graph.png)
-
-One data structure we could use to implement this graph is called an *array of
-adjacency lists*. In such a data structure, an array is created that has the
-same size as the number of vertices in the graph. Each position in the array
-represents one of the vertices in the graph. Each of these positions point to a
-list. These lists are called adjacency lists, as each element in the list
-represents a neighbor of the vertex.
-
-The array of adjacency lists (using linked lists) that represents the above graph looks like this:
-
-![adjacency-list](img/adjacency-list.png)
-
-Another data structure we could use to represent the edges in a graph is called
-an *adjacency matrix*. In this data structure, we have a two dimensional array
-of size $$N \times N$$ (where $$N$$ is the number of vertices) which contains
-boolean values. The entry (*i*, *j*) in this matrix is true when there is an
-edge from *i* to *j*, and false when no such edge exists. Thus, each vertex has a row
-and a column in the matrix, and the boolean values in that row/column represent the existence of outgoing/incoming
-edges to/from each other vertex.
-
-The adjacency matrix that represents the above graph looks like this:
-
-![adjacency-matrix](img/adjacency-matrix.png)
-
-What will this matrix will look like for an *undirected* graph? Discuss with
-someone in your lab. Considering drawing out the matrix and trying to notice some
-patterns.
-
-## Discussion: Representation
-
-A third data structure we could use to represent a graph is simply an extension
-of the linked nodes idea. We can create a `Vertex` object for each vertex in
-the graph, and each of `Vertex` will contain pointers to the `Vertex` objects of
-their neighbors. This may seem like the most straightforward approach: aren't
-the adjacency list and adjacency matrix roundabout in comparison?
-
-Discuss with someone in your lab reasons for why the adjacency list or adjacency matrix
-might be preferred for a graph. Consider the runtime of our desired graph operations.
-
-Additionally, we could also represent a tree using an adjacency matrix or list.
-Discuss why an adjacency list or adjacency matrix might not be preferred for a tree.
-
-Now, which is generally more efficient: an adjacency matrix or an array of adjacency
-lists?
-
-## Exercise: `Graph.java`
-
-We have given you framework code for a class `Graph`. It implements a graph of
-integers using adjacency lists.
-
-Fill in the following methods:
-
-```java
-public void addEdge(int v1, int v2, int weight);
-public void addUndirectedEdge(int v1, int v2, int weight);
-public boolean isAdjacent(int from, int to);
-public List<Integer> neighbors(int vertex);
-public int inDegree(int vertex);
-```
-
-## Graph Traversals
-
-Earlier in the course, we used the general traversal algorithm to process all
-elements of a tree:
-
-```java
-Stack<TreeNode> fringe = new Stack<>();
-fringe.push(root);
-
-while (!fringe.isEmpty()) {
-    TreeNode node = fringe.pop();
-    process(node);
-    fringe.push(node.right);
-    fringe.push(node.left);
-}
-```
-
-The code above processes the tree's values in depth-first order. If we wanted a
-breadth-first traversal of a tree, we'd replace the `Stack` with a queue such
-as a `LinkedList`.
-
-Now, how would we modify this algorithm to traverse a graph?
-
-Analogous code to process every vertex in a connected graph may look something
-like:
-
-```java
-Stack<Vertex> fringe = new Stack<>();
-fringe.push(startVertex);
-
-while (!fringe.isEmpty()) {
-    Vertex v = fringe.pop();
-    process(v);
-    for (Vertex neighbor: v.neighbors) {
-        fringe.push(neighbor);
-    }
-}
-```
-
-However, this doesn't quite work. Unlike trees, a graph may contain a *cycle* of
-vertices and as a result, the code will loop infinitely.
-
-We don't want to process the same vertex more than once, so the fix is to keep
-track of vertices that we've put on our fringe and the vertices that we've
-visited already. Here is the correct pseudocode for graph traversal:
-
-```java
-Stack<Vertex> fringe = new Stack<>();
-HashSet<Vertex> visited = new HashSet<>();
-fringe.push(startVertex);
-
-while (!fringe.isEmpty()) {
-    Vertex v = fringe.pop();
-    if (!visited.contains(v)) {
-        process(v);
-        visited.add(v);
-        for (Vertex neighbor: v.neighbors) {
-            fringe.push(neighbor);
-        }
-    }
-}
-```
-### Discussion: A Graph Traversal Modification
-Instead of checking that the popped vertex `v` is
-not yet visited, suppose we do this check before adding some neighbor to the
-fringe. The body of the `while` loop would then look like the below:
-```java
-Vertex v = fringe.pop();
-process(v);
-for (Vertex neighbor: v.neighbors) {
-    if (!visited.contains(neighbor)) {
-        fringe.push(neighbor);
-        visited.add(neighbor);
-    }  
-}
-```
-Would this change work?
+### **Weighted Quick Union**
 
 <details markdown="block">
   <summary markdown="block">
-#### Answer:
-{: .no_toc}
+**Click to expand:**
   </summary>
-Yes, this would work. Although it is convention to check that the popped vertex is not yet visited.
+The first optimization that we will do for our quick union data structure is
+called "union by size". This will be done in order to keep the trees as shallow
+as possible (i.e. have smaller height) and avoid the spindly trees that result in the worst-case runtimes.
+When we `union` two trees, we will make the smaller tree (the tree with less
+nodes) a subtree of the larger
+one, breaking ties arbitrarily. We call this **weighted quick union**.
+
+Because we are now using "union by size", the maximum depth of any item will be
+in $$O(\log N)$$, where $$N$$ is the number of items stored in the data
+structure. This is a great improvement over the linear time runtime of the
+unoptimized quick union. Check the [textbook](https://cs61b-2.gitbook.io/cs61b-textbook/14.-disjoint-sets/14.4-weighted-quick-union-wqu) for a more detailed look on why.
+
+See the following visual for some intuition on how this works:
+![Weighted Quick Union](img/weighted.png)
+
+#### **Example**
+
+Let’s go over a example of what this all looks like for weighted quick union. When we initially create our disjoint set, each item is in its own set, so we will initialize all of the elements in the array to $$-1$$. For this representation, we want to track our size in the array, so we **store the weight of a set at its root as the negated weight** (-weight) (to also distinguish between a parent and the weight of the set).
+
+{: .info}
+>The tie-breaking scheme in this example is that the smallest element becomes the root - note that this isn’t always the case depending on the implementation.
+
+![a](img/sp24-1.png)
+
+After we call `union(0,1)` and `union(2,3)`, our array and our abstract representation will end up as below:
+
+![b](img/sp24-2.png)
+
+Notice that for above, the values stored at 0 and 2 are $$-2$$, as the roots of the respective set are storing their (negated) size. Now let’s call `union(0,2)`. It’ll look like this:
+
+<img src="img/sp24-3.png" alt="sp24-3" width="55%"/>
+<!-- ![c](img/sp24-3.png) -->
+
+For the sake of an example, let’s say we have another disjoint set, in the current state shown below (we are using the same tie-breaking scheme above):
+
+![d](img/sp24-4.png)
+
+If we were to connect the two larger sets, through `union(7, 2)`, we would get the following:
+
+![e](img/sp24-5.png)
+
+In this case, we connect the roots of the sets that 7 and 2 belong to respectively, with the smaller set’s root becoming the child of the larger set’s root. With weighted quick union, we update two values in the array:
+- the smaller root’s parent becomes the root of the larger set
+- the larger root’s value is updated accordingly with a new size
+
 </details>
 
-Note that the choice of data structure for the fringe can change. As with tree
-traversal, we can visit vertices in depth-first or breadth-first order merely by
-choosing a stack or a queue to represent the fringe. In the next lab session we will see
-applications that use a priority queue to implement something more like
-*best-first traversal*.
+### **Weighted Quick Union with Path Compression** TODO
 
-## Exercise: Practice Graph Traversal
+<details markdown="block">
+  <summary markdown="block">
+**Click to expand:**
+</summary>
+Even though we have made a speedup by using a weighted quick union data
+structure, there is still yet another optimization that we can do! What would
+happen if we had a tall tree and called `find` repeatedly on the deepest leaf?
+Each time, we would have to traverse the tree from the leaf to the root.
 
-Suppose we are using the graph traversal code from the last example, copied below:
-```java
-Stack<Vertex> fringe = new Stack<>();
-HashSet<Vertex> visited = new HashSet<>();
-fringe.push(startVertex);
+A clever optimization is to move the leaf up the tree so it becomes a direct
+child of the root. That way, the next time you call `find` on that leaf, it
+will run much more quickly. An even more clever idea is that we could do the
+same thing to *every* node that is on the path from the leaf to the root,
+connecting each node to the root as we traverse up the tree. This optimization
+is called **path compression**. Once you find an item, path compression will
+make finding it (and all the nodes on the path to the root) in the future
+faster.
 
-while (!fringe.isEmpty()) {
-    Vertex v = fringe.pop();
-    if (!visited.contains(v)) {
-        process(v);
-        visited.add(v);
-        for (Vertex neighbor: v.neighbors) {
-            fringe.push(neighbor);
-        }
-    }
-}
-```
-Determine the order in which the nodes
-are visited if you start at vertices 1 through 5. Break ties by defaulting
-to the smaller vertex number first (ie. if a node has multiple neighbors, visit its 
-lowest number neighbor first). In other words, fill in the table below:
+The runtime for any combination of $$f$$ `find` and $$u$$ `union` operations
+takes $$\Theta(u + f \alpha(f+u,u))$$ time, where $$\alpha$$ is an *extremely*
+slowly-growing function called the [*inverse Ackermann function*](https://en.wikipedia.org/wiki/Ackermann_function#Inverse). And by
+"extremely slowly-growing", we mean it grows so slowly that for any practical
+input that you will ever use, the inverse Ackermann function will never be
+larger than 4. That means for any practical purpose, a weighted quick union data
+structure with path compression has `find` operations that take constant time on
+average!
 
-| Starting vertex | Order of visiting remaining vertices |
-|-----------------|--------------------------------------|
-| 1               |                                      |
-| 2               |                                      |
-| 3               |                                      |
-| 4               |                                      |
-| 5               |                                      |
+![path-compression](img/path-compression.png)
 
+<!-- credit: https://www.slideshare.net/slideshow/time-complexity-of-union-find-55858534/55858534 -->
 
-<!-- ![crazy-graph](img/crazy-graph.jpg) -->
-<table>
-  <tr>
-    <td><img src="img/crazy-graph.jpg"></td>
-    <td><img src="img/graph-neighbor-list.png"></td>
-  </tr>
- </table>
+> It is important to note that even though this operation can be considered
+> constant time for all practically sized inputs, we should not describe
+> this whole data structure as constant time. We could say something like,
+> it will be constant for all inputs smaller than some incredibly large size.
+> Without that qualification we should still describe it by using the inverse
+> Ackermann function.
 
-<!-- ![graph-neighbor-list]() -->
-<!-- | Node | Neighbors |
-|-----------------|--------------------------------------|
-| 1               | 3           |
-| 2               | 5, 4           |
-| 3               | 4, 7, 9, 6, 1           |
-| 4               | 2, 8, 7, 9, 6, 3           |
-| 5               | 8, 7, 2           |
-| 6               | 3, 4, 7, 9          |
-| 7               | 4, 5, 8, 10, 9, 6, 3           |
-| 8               | 5, 7, 4           |
-| 9               | 3, 4, 7, 6           |
-| 10               | 7           | -->
+</details>
 
-### Answers for Practicing Graph Traversal
+{: .info}
+>You can visit this link
+[here](http://www.cs.usfca.edu/~galles/visualization/DisjointSets.html) to play
+around with disjoint sets.
 
-| Starting vertex | Order of visiting remaining vertices |
-|-----------------|--------------------------------------|
-| 1               | 3, 4, 2, 5, 7, 6, 9, 8, 10           |
-| 2               | 4, 3, 1, 6, 7, 5, 8, 9, 10           |
-| 3               | 1, 4, 2, 5, 7, 6, 9, 8, 10           |
-| 4               | 2, 5, 7, 3, 1, 6, 9, 8, 10           |
-| 5               | 2, 4, 3, 1, 6, 7, 8, 9, 10           |
+## Exercise: `UnionFind`
 
-## Read the code: `DFSIterator`
+We will now implement our own disjoint sets data structure. When you open up
+`UnionFind.java`, you’ll see that some skeleton code has been provided for you - you’ll have to fill in the implementation for the following methods:
 
-Read through the `DFSIterator` inner class. As its name suggests, it iterates
-through all of the vertices in the graph in DFS order, starting from a vertex
-that is passed in as an argument.
+- `UnionFind(int N)`: This is the constructor. It creates a `UnionFind` data structure that holds N items.
+- `int sizeOf(int v)`: Returns the size of the set that `v` belongs to.
+- `int parent(int v)`: Returns the parent of `v`.
+- `boolean connected(int v1, int v2)`: Returns `true` if the two vertices are connected. Consider using the `find` method.
+- `int find(int v)`: Returns the root of the set that `v` belongs to.
+- `void union(int v1, int v2)`: Connects `v1` and `v2` together.
 
-Note: This iterator may not print out all the vertices in the graph if they are
-unreachable from the starting vertex, and that's okay!
+Read the documentation to get an understanding of what methods need to be filled
+out. Remember to implement both optimizations discussed above, so a **weighted quick union with path compression**, and take note of
+the **tie-breaking scheme** that is described in the comments of some of the
+methods. This scheme is done for autograding purposes and is chosen arbitrarily.
+In addition, remember to ensure that the inputs to your functions are within bounds, and should otherwise throw an `IllegalArgumentException`.
 
-## Exercise: `pathExists`
+{: .info}
+>We recommend that you start with implementing the constructor and taking a look at `find` before the rest of the other methods.
 
-Complete the method `pathExists` in `Graph.java`, which returns whether or not
-any path exists that goes from `start` to `stop`. Remember that a path is any
-set of edges that exists which you can follow that such you travel from one
-vertex to another by only using valid edges. Additionally, you may use
-the `generateGX` methods to generate some sample `Graph`s to test your
-implementation for this method (and the following methods)!
+{: .warning}
+>Things to note for this lab:
+>- We will work with **non-negative integers** as the items in our disjoint sets.
+>- You’ll want to implement the following tie-breaking scheme: if the sizes of the sets are equal, tie break by connecting v1'’s root to v2’s root.
+>- You should also correctly handle faulty inputs; e.g if invalid vertices are passed into the functions, throw an `IllegalArgumentException`.
 
-In addition, paths may not visit an edge or a vertex more
-than once. You may find it helpful for your method to call the `dfs` method,
-which uses the `DFSIterator` class.
+{: .task}
+>Complete the methods in `UnionFind.java`. **You’ll want to use `find` in `union`.**
 
-## Exercise: `path`
+## Testing
+For this lab, we have provided all the tests locally in `UnionFindTest.java` (yay!) to help you debug.
 
-Now you will actually find a path from one vertex to another if it exists. Write
-code in the body of the method named `path` that, given a `start` vertex and a
-`stop` vertex, returns a list of the vertices that lie on the path from `start`
-to `stop`. If no such path exists, you should return an empty list.
+## Discussion: `UnionFind`
 
-*Hint*: Base your method on `dfs`, with the following differences. First, add
-code to stop calling `next` when you encounter the finish vertex. Then, trace
-back from the finish vertex to the start, by first finding a visited vertex u
-for which (u, finish) is an edge, then a vertex v visited earlier than u for
-which (v, u) is an edge, and so on, finally finding a vertex w for which (start,
-w) is an edge (`isAdjacent` may be useful here!). Collecting all these vertices
-in the correct sequence produces the desired path. We recommend that you try
-this by hand with a graph or two to see that it works.
+Our `UnionFind` uses only non-negative values as the items in our set.
 
-## Topological Sort
+How can we use the data structure that we created above to keep track of
+different values, such as all integers or companies undergoing mergers and
+acquisitions? Discuss with a partner.
 
-A *topological* sort (sometimes also called a *linearization*) of a graph is a
-ordering of the vertices such that if there was a directed path from vertex `v`
-to vertex `w` in the graph, then `v` precedes `w` in the ordering. For instance, looking at the graph below, let **`A`** be `v` and **`F`** be `w`. Notice that there is a directed path from `A` to `F`, so `A` must precede `F` in the topological ordering.
+## Recap
 
-This only works on directed, acyclic graphs, and they are commonly referred to
-by their acronym: *DAG*.
+The ultimate goal of this lab was to develop a data type that support the
+following operations on $$N$$ objects:
+ - `union(int p, int q)` (sometimes called `connect`)
+ - `connected(int p, int q)` (sometimes called `isConnected`)
 
-Here is an example of a DAG:
+We do not care about finding the actual *path* between `p` and `q`; we care
+only about their *connectedness*. A third operation we can support is very
+closely related to `connected`:
 
-![dag](img/dag.png)
+ - `find(int p)`: The `find` method is defined so that `find(p) == find(q)` if
+   and only if `connected(p, q)`. We did not use this in class.
 
-In the above DAG, a few of the possible topological sorts could be:
+{: .info}
+Below are summaries of the four implementations of disjoint sets we covered in this lab. Click on each line to expand the corresponding summary.
 
-    A B C D E F G H
-    A C B E G D F H
-    B E G A D C F H
+<details markdown="block">
+  <summary markdown="block">
+**Quick Find**
+  </summary>
+This is the most natural solution, where each object is given an explicit
+number. Uses an array `id` of length $$N$$, **where `id[i]` is the set number of object `i`** (which is returned by `find(i)`). To connect two objects `p` and
+`q`, we change the value of every object in `p`'s bucket to be `q`'s number (or vice versa).
 
-Notice that the topological sort for the above DAG has to start with either A or
-B, and must end with H. (For this reason, A and B are called *sources*, and H is
-called a *sink*.)
+ - `union`: May require many changes to `id`. Takes $$\Theta(N)$$ time, as
+   the algorithm must iterate over the entire array.
+ - `connected` (and `find`): Takes $$\Theta(1)$$ time.
+ </details>
 
-Another way to think about it is that the vertices in a DAG represent a bunch of
-tasks you need to complete on a to-do list. Some of those tasks cannot be
-completed until others are done. For example, when getting dressed in the
-morning, you may need to put on shoes and socks, but you can't just do them in
-any order. The socks must be put on before the shoes. Thus, a topological sort
-of your morning routine must have socks appear first before shoes.
+<details markdown="block">
+  <summary markdown="block">
+**Quick Union**
+  </summary>
+An alternate approach is to change the meaning of our `id` array. In this
+strategy, each set is represented as a tree, **where `id[i]` is the parent of object `i`**. The `find` method climbs the ladder of parents until it reaches the root (an object whose value in the array is -1). To union `p` and `q`, we set the root of `p` to point to the root of `q`.
 
-The edges in the DAG represent dependencies between the tasks. In this example
-above, that would mean that task A must be completed before tasks C and D, task
-B must be completed before tasks D and E, E before G, C and D before F, and
-finally F and G before H. A topological sort gives you an order in which you can
-do the tasks (it puts the tasks in a linear order). Informally, a topological sort
-returns a sequence of the vertices in the graph that doesn't violate the
-dependencies between any two vertices.
+ - `union`: Requires only one change to `id`, but also requires finding the root (worst case $$\Theta(N)$$ time).
+ - `connected` (and `find`): Requires finding the root (worst case $$\Theta(N)$$ time).
+</details>
 
-### Discussion: Topological Sorts and DAG's
+<details markdown="block">
+  <summary markdown="block">
+**Weighted Quick Union**
+  </summary>
+Rather than `union(p, q)` making the root of `p` point to the root of `q`,
+we instead make the root of the *smaller tree* point to the root of the *larger tree* (arbitrary tie-breaking unless specified). The tree's *size* is the **number of nodes**, not the height of the tree. This added condition to `union` results in tree heights of $$\log N$$.
 
-Why can we only perform topological sorts on DAG's? Think about the two
-properties of DAG's and how that relates with our "to-do list" analogy. Discuss
-your thoughts with someone in your lab.
+ - `union`: Requires only one change to `id`, but also requires finding the root (worst case $$\log N$$ time).
+ - `connected` (and `find`): Requires finding the root (worst case $$\log N$$
+   time).
 
-### The Topological Sort Algorithm
+</details>
 
-One algorithm for taking a graph and finding a topological sort uses an array
-named `currentInDegree` with one element per vertex. `currentInDegree[v]` is
-initialized with the in-degree of each vertex `v`.
+<details markdown="block">
+  <summary markdown="block">
+**Weighted Quick Union with Path Compression**
+  </summary>
+This implementation is like Weighted Quick Union, except with one optimization:
+- Every time `find` is called on a node $x$, every node along the path (from root to $x$) gets their parent changed to the root. This results in nearly flat trees. Making $$M$$ calls to union and find with $$N$$
+objects results in no more than $$O(M \log^* N)$$ array accesses (see the inverse Ackermann function mentioned above), not counting the creation of the arrays. For any reasonable values of $$N$$ in this universe
+that we inhabit, $$\log^* N$$ is at most 5.
+</details>
 
-The algorithm also uses a fringe. The fringe is initialized with all vertices
-whose in-degree is 0. When a vertex is popped off the fringe and added to a
-results list, the `currentInDegree` value of its neighbors are reduced by 1.
-Then the fringe is updated again with vertices whose in-degree is now 0.
+## Deliverables
 
-## Exercise: `TopologicalIterator`
+To receive credit for this lab:
 
-Implement the `TopologicalIterator` class so that it successively returns
-vertices in topological order as described above. The `TopologicalIterator`
-class will slightly resemble the `DFSIterator` class, except that it will use a
-`currentInDegree` array as described above, and instead of pushing unvisited
-vertices on the stack, it will push only vertices whose in-degree is 0. Try to
-walk through this algorithm, where you successively process vertices with
-in-degrees of 0, on our DAG example above.
-
-**If you're having trouble passing the autograder tests for the topological traversals,
-think about the effect of duplicate values in the fringe on your iterator.** Try
-constructing a complete graph, and testing your `TopologicalIterator` on that! Also make sure that your previously written methods work as intended. 
-
-## Conclusion
-
-### Deliverables
-
-- Complete the following methods of the `Graph` class:
-  - `addEdge`
-  - `addUndirectedEdge`
-  - `isAdjacent`
-  - `neighbors`
-  - `inDegree`
-  - `pathExists`
-  - `path`
-- Complete the implementation of the following nested iterator:
-  - `TopologicalIterator`
+- Implement the methods in `UnionFind.java`.
