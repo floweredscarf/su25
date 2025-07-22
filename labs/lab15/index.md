@@ -50,7 +50,7 @@ or a *priority value*.
 ### Priority vs. Priority Values
 
 Throughout this lab, we will be making a distinction between the *priority* and
-the *priority value*. **Priority** is how important an item is to the priority
+the *priority value*. **Priority** is how important an item is within the priority
 queue, while **priority value** is the value associated with each item inserted.
 **The element with the highest priority may not always have the highest
 priority value.**
@@ -229,8 +229,7 @@ of children, not only binary trees.
 Why did we place the root at index 1 instead of index 0?
 {: .no_toc}
   </summary>
-  We do this for this
-is to to make indexing more convenient. If we had placed the root at 0, then
+  We do this to make indexing more convenient. If we had placed the root at 0, then
 our calculations would be:
 
 - The left child of a node at position $$N$$ is at position $$2N + 1$$.
@@ -553,7 +552,7 @@ have provided a blank `MinHeapTest.java` file for you to put any JUnit tests
 you'd like to ensure the correctness of your methods.
 
 {: .task}
->Implement the remaining methods in `MinHeap.java`.
+>Implement the remaining methods in `MinHeap.java` as listed above [here](#operations).
 
 ## (Optional) Exercise: `update` and optimizing `contains`
 

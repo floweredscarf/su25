@@ -308,7 +308,7 @@ In addition, remember to ensure that the inputs to your functions are within bou
 {: .warning}
 >Things to note for this lab:
 >- We will work with **non-negative integers** as the items in our disjoint sets.
->- You’ll want to implement the following tie-breaking scheme: if the sizes of the sets are equal, tie break by connecting v1'’s root to v2’s root.
+>- You’ll want to implement the following tie-breaking scheme: if the sizes of the sets are equal, tie break by connecting `v1`'’s root to `v2`’s root.
 >- You should also correctly handle faulty inputs; e.g if invalid vertices are passed into the functions, throw an `IllegalArgumentException`.
 
 {: .task}
