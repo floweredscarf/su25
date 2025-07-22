@@ -59,7 +59,7 @@ To start off, each company is in its *own set* with *only itself*. A call to
 `find(X)` will return $$X$$ (and similarly for all the other companies). If
 $$Y$$ acquired $$X$$, we will make a call to `union(X, Y)` (or `union(Y, X)`; order won't matter for our final implementation) to represent that
 the two companies should now be linked. As a result, a call to `find(X)` will
-now return $$Y$$, showing that $$X$$ is now in the set represented by $$Y$$. The `union`ed
+now return $$Y$$ (assuming $$Y$$ acquired $$X$$ as mentioned above), showing that $$X$$ is now in the set represented by $$Y$$. The `union`ed
 result is shown below.
 
 ![union](img/xy-z.jpg)
@@ -149,7 +149,7 @@ references inside the array instead of direct *set* references.
 >- If an item does
 not have a parent, that means this item is the face of the set (i.e. the root of the tree) and we will instead put the value $$-x$$ inside the array, where $$x$$ is the **size** of the tree (total number of nodes). We make this value negative to distinguish the size from parent references. Now, if the value at a given index is less than 0, we know that the index corresponds to the *root* of a set. If the value is greater than 0, then that value is the parent of the current item!
 
-When we `union(u, v)`, we will **find the set that each of the values `u` and `v` belong to (the roots of their respective trees), and make one the child of the other**. If `u` and `v` are both the face of their respective sets (i.e. the roots of their own tree), `union(u, v)` is a fast $$\Theta(1)$$ operation because we just need to make the root of one set connect to the root of the other set!
+When we `union(u, v)`, we will **find the set that each of the values `u` and `v` belong to (the roots of their respective trees), and make one the child of the other (depending on tie-breaking scheme)**. If `u` and `v` are both the face of their respective sets (i.e. the roots of their own tree), `union(u, v)` is a fast $$\Theta(1)$$ operation because we just need to make the root of one set connect to the root of the other set!
 
 Let's go
 through an example of this quick union data structure. The array
@@ -308,7 +308,7 @@ In addition, remember to ensure that the inputs to your functions are within bou
 {: .warning}
 >Things to note for this lab:
 >- We will work with **non-negative integers** as the items in our disjoint sets.
->- You’ll want to implement the following tie-breaking scheme: if the sizes of the sets are equal, tie break by connecting `v1`'’s root to `v2`’s root.
+>- You’ll want to implement the following tie-breaking scheme: if the sizes of the sets are equal, tie break by connecting `v1`'s root to `v2`'s root.
 >- You should also correctly handle faulty inputs; e.g if invalid vertices are passed into the functions, throw an `IllegalArgumentException`.
 
 {: .task}
