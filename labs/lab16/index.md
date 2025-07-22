@@ -72,7 +72,7 @@ structure by maintaining some sort of mapping between whatever the objects
 are and the set of integers contained within the disjoint set data structure.
 
 {: .info}
->In this lab, we will talk about four different implementations for disjoint sets, namely **Quick Find**, **Quick Union**, **Weighted Quick Union**, and **Weighted Quick Union with Path Compression**. You will be implementing the last one in `UnionFind.java`, and that will be your deliverable for this lab. To read about each of these implementations, press "Click to expand:".
+>In this lab, we will talk about four different implementations for disjoint sets, namely **Quick Find**, **Quick Union**, **Weighted Quick Union**, and **Weighted Quick Union with Path Compression**. You will be implementing the last one in `UnionFind.java`, and that will be your deliverable for this lab. To read about each of these implementations, press "**Click to expand:**".
 
 ### **Quick Find**
 
@@ -244,25 +244,16 @@ In this case, we connect the roots of the sets that 7 and 2 belong to respective
 
 </details>
 
-### **Weighted Quick Union with Path Compression** TODO
+### **Weighted Quick Union with Path Compression**
 
 <details markdown="block">
   <summary markdown="block">
 **Click to expand:**
 </summary>
 Even though we have made a speedup by using a weighted quick union data
-structure, there is still yet another optimization that we can do! What would
-happen if we had a tall tree and called `find` repeatedly on the deepest leaf?
-Each time, we would have to traverse the tree from the leaf to the root.
+structure, there is still yet another optimization that we can do! What would happen if we had a tall tree and called `find` repeatedly on the deepest leaf? With our weighted quick union implementation, each time we would have to traverse the tree from the leaf to the root.
 
-A clever optimization is to move the leaf up the tree so it becomes a direct
-child of the root. That way, the next time you call `find` on that leaf, it
-will run much more quickly. An even more clever idea is that we could do the
-same thing to *every* node that is on the path from the leaf to the root,
-connecting each node to the root as we traverse up the tree. This optimization
-is called **path compression**. Once you find an item, path compression will
-make finding it (and all the nodes on the path to the root) in the future
-faster.
+A clever optimization is to move the leaf up the tree so it becomes a *direct child* of the root. That way, the next time you call `find` on that leaf, it will run much more quickly. An even more clever idea is that we could do the same thing to *every* node that is on the path from that leaf to the root, connecting each node to the root as we traverse up the tree. This optimization is called **path compression**. Once you find an item, path compression will make finding it (and all the nodes on the path to the root) in the future faster.
 
 The runtime for any combination of $$f$$ `find` and $$u$$ `union` operations
 takes $$\Theta(u + f \alpha(f+u,u))$$ time, where $$\alpha$$ is an *extremely*
@@ -273,16 +264,18 @@ larger than 4. That means for any practical purpose, a weighted quick union data
 structure with path compression has `find` operations that take constant time on
 average!
 
-![path-compression](img/path-compression.png)
+- It is important to note that even though this operation can be considered constant time for all practically sized inputs, we should not describe this whole data structure as constant time. We could say something like, it will be constant for all inputs smaller than some incredibly large size. Without that qualification we should still describe it by using the inverse Ackermann function.
 
-<!-- credit: https://www.slideshare.net/slideshow/time-complexity-of-union-find-55858534/55858534 -->
+An example of this is shown below, where we start out with the following
 
-> It is important to note that even though this operation can be considered
-> constant time for all practically sized inputs, we should not describe
-> this whole data structure as constant time. We could say something like,
-> it will be constant for all inputs smaller than some incredibly large size.
-> Without that qualification we should still describe it by using the inverse
-> Ackermann function.
+{: .warning}
+>This is only an example to demonstrate what path compression does. Note that you can’t get this structure (the first image, directly below) with a weighted quick union.
+
+<img src="img/blah1.png" alt="wqupc1" width="60%"/>
+
+After we call on `find(5)`, all of the nodes we traversed to get to the root are updated so that they now connect directly to the root:
+
+<img src="img/blah2.png" alt="wqupc2" width="60%"/>
 
 </details>
 
@@ -393,7 +386,7 @@ we instead make the root of the *smaller tree* point to the root of the *larger 
 This implementation is like Weighted Quick Union, except with one optimization:
 - Every time `find` is called on a node $x$, every node along the path (from root to $x$) gets their parent changed to the root. This results in nearly flat trees. Making $$M$$ calls to union and find with $$N$$
 objects results in no more than $$O(M \log^* N)$$ array accesses (see the inverse Ackermann function mentioned above), not counting the creation of the arrays. For any reasonable values of $$N$$ in this universe
-that we inhabit, $$\log^* N$$ is at most 5.
+that we inhabit, $$\log^* N$$ is at most 4.
 </details>
 
 ## Deliverables
