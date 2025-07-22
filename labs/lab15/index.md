@@ -16,9 +16,6 @@ Each assignment will have an FAQ linked at the top. You can also access it by
 adding "/faq" to the end of the URL. The FAQ for Lab 15 is located
 [here](faq).
 
-{: .warning}
-> **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
-
 ## Use the Debugger!
 
 Data structures labs can be tricky, so make sure to use the debugger to help! If you need a refresher on how to use the debugger, check out the Lab 4 spec [debugging guide](../lab04/#debugger-overview).
