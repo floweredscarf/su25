@@ -39,11 +39,11 @@ week_extra:
     link: "https://forms.gle/cXx7Qn2TJCgFuK6g7"
     show_extra: true
   - name: "Survey" # week 4
-    link: "https://forms.gle/AvUvzey3bEu1bRBv67"
+    link: "https://forms.gle/pK8UH97rLRW7m2Zu5"
     show_extra: true
   - name: "Survey" # week 5
     link: "https://forms.gle/pK8UH97rLRW7m2Zu5"
-    show_extra: true
+    show_extra: false
   - name: "Survey" # week 6
     link: "https://forms.gle/xQiovC19W31f338QA"
     show_extra: false
