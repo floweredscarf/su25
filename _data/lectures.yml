@@ -265,7 +265,7 @@ lectures:
   - title: 
     nonumber: True
   - title: "Hashing"
-    # slides: https://docs.google.com/presentation/d/1hPFchcMeDChntsR6ReHa9wmv_yx_9yzuUFrnangXyFk
+    slides: https://drive.google.com/file/d/1i3DqezrTMlLuCX2dmAopRFim34dAnvYs
     # video: "" # 
     # recording: https://youtu.be/YmFuwyCzw6M
     # quiz: https://forms.gle/jpb36dpRNDMtjHRH8
@@ -275,7 +275,7 @@ lectures:
       - title: "Ch 20"
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/20.-hashing-ii"
   - title: "Heaps and Priority Queues"
-    # slides: https://docs.google.com/presentation/d/1hPFchcMeDChntsR6ReHa9wmv_yx_9yzuUFrnangXyFk
+    slides: https://drive.google.com/file/d/1cRMFe20rSp1ur4izQePwcuAW_5IHZzSG
     # video: "" # 
     # recording: https://youtu.be/YmFuwyCzw6M
     # quiz: https://forms.gle/jpb36dpRNDMtjHRH8
@@ -288,7 +288,7 @@ lectures:
     nonumber: True
   - title: "Disjoint Sets"
     # slides: https://docs.google.com/presentation/d/1hPFchcMeDChntsR6ReHa9wmv_yx_9yzuUFrnangXyFk
-    # video: "" # 
+    video: https://www.youtube.com/playlist?list=PL8FaHk7qbOD44CGmkFro1gqxkDl5gIpXB
     # recording: https://youtu.be/YmFuwyCzw6M
     # quiz: https://forms.gle/jpb36dpRNDMtjHRH8
     readings:
@@ -296,8 +296,8 @@ lectures:
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/14.-disjoint-sets"
   - title: "Introduction to Graphs"
     # slides: https://docs.google.com/presentation/d/1MRK7tIlSVaErvySFtkpN9E5PIc04XdcXkHbZCa8uCNQ/
-    # video: "" # https://youtube.com/playlist?list=PLnp31xXvnfRqwuAZ5q3P5xUxe2xNZL3an&si=agzrdMt5sFdJh4d0
-    # recording: https://youtu.be/mbP26v50xGQ
+    video: https://www.youtube.com/playlist?list=PL102eBoiAo8lIvMgucwBNyopHnGJJPFeh
+    # recording: https://www.youtube.com/playlist?list=PL102eBoiAo8lIvMgucwBNyopHnGJJPFeh
     # quiz: https://forms.gle/wHvCgH9dX5UBhu8K8
     readings:
       - title: "Ch 22.3-22.4"
