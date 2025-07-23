@@ -16,9 +16,6 @@ Each assignment will have an FAQ linked at the top. You can also access it by
 adding "/faq" to the end of the URL. The FAQ for Lab 16 is located
 [here](faq).
 
-{: .warning}
-> **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
-
 ## Before You Begin
 
 As usual, pull the files from the skeleton.
@@ -337,7 +334,7 @@ only about their *connectedness*. A third operation we can support is very
 closely related to `connected`:
 
  - `find(int p)`: The `find` method is defined so that `find(p) == find(q)` if
-   and only if `connected(p, q)`. We did not use this in class.
+   and only if `connected(p, q)`.
 
 {: .info}
 Below are summaries of the four implementations of disjoint sets we covered in this lab. Click on each line to expand the corresponding summary.
