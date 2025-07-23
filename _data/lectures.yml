@@ -287,9 +287,9 @@ lectures:
   - title:
     nonumber: True
   - title: "Disjoint Sets"
-    # slides: https://docs.google.com/presentation/d/1hPFchcMeDChntsR6ReHa9wmv_yx_9yzuUFrnangXyFk
+    slides: https://docs.google.com/presentation/d/13rKFMQK7D_LTVr2aF-GOm7rkp_4Y44RRF6LVFufBuco/edit?usp=sharing
     video: https://www.youtube.com/playlist?list=PL8FaHk7qbOD44CGmkFro1gqxkDl5gIpXB
-    # recording: https://youtu.be/YmFuwyCzw6M
+    recording: https://youtu.be/FYuuKhAkPWk?feature=shared
     # quiz: https://forms.gle/jpb36dpRNDMtjHRH8
     readings:
       - title: "Ch 14"
