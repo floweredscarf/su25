@@ -287,15 +287,15 @@ lectures:
   - title:
     nonumber: True
   - title: "Disjoint Sets"
-    slides: https://docs.google.com/presentation/d/13rKFMQK7D_LTVr2aF-GOm7rkp_4Y44RRF6LVFufBuco/edit?usp=sharing
+    slides: https://docs.google.com/presentation/d/13rKFMQK7D_LTVr2aF-GOm7rkp_4Y44RRF6LVFufBuco/edit?slide=id.g20e53a1f10d_0_135#slide=id.g20e53a1f10d_0_135
     video: https://www.youtube.com/playlist?list=PL8FaHk7qbOD44CGmkFro1gqxkDl5gIpXB
-    recording: https://youtu.be/FYuuKhAkPWk?feature=shared
+    #recording:
     # quiz: https://forms.gle/jpb36dpRNDMtjHRH8
     readings:
       - title: "Ch 14"
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/14.-disjoint-sets"
   - title: "Introduction to Graphs"
-    # slides: https://docs.google.com/presentation/d/1MRK7tIlSVaErvySFtkpN9E5PIc04XdcXkHbZCa8uCNQ/
+    slides: https://docs.google.com/presentation/d/13rKFMQK7D_LTVr2aF-GOm7rkp_4Y44RRF6LVFufBuco/edit?slide=id.g36f824b9f08_0_2#slide=id.g36f824b9f08_0_2
     video: https://www.youtube.com/playlist?list=PL102eBoiAo8lIvMgucwBNyopHnGJJPFeh
     # recording: https://www.youtube.com/playlist?list=PL102eBoiAo8lIvMgucwBNyopHnGJJPFeh
     # quiz: https://forms.gle/wHvCgH9dX5UBhu8K8
