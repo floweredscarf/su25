@@ -1,11 +1,11 @@
 ---
 layout: page
 title: >-
-  Lab 17: Shortest Path Trees
+  Lab 17: Graphs
 has_children: true
 parent: Labs
 has_toc: false
-nav_exclude: true
+nav_exclude: false
 has_right_toc: true
 released: true
 ---
@@ -13,7 +13,7 @@ released: true
 ## [FAQ](faq.md)
 
 Each assignment will have an FAQ linked at the top. You can also access it by
-adding "/faq" to the end of the URL. The FAQ for Lab 18 is located
+adding "/faq" to the end of the URL. The FAQ for Lab 17 is located
 [here](faq.md).
 
 {: .warning}
@@ -21,346 +21,521 @@ adding "/faq" to the end of the URL. The FAQ for Lab 18 is located
 
 ## Introduction
 
-Pull the skeleton, as usual. Copy your implementation of the following methods of `Graph.java` file from the
-last lab into `src/Graph.java`:
-- addEdge
-- addUndirectedEdge
-- isAdjacent
-- neighbors
-- inDegree
+As usual, pull the files from the skeleton and make a new IntelliJ project.
 
-## More Graph Algorithms
+## Linked lists $$\subseteq$$ Trees $$\subseteq$$ Graphs
 
-Last lab, we introduced graphs and their representations, and then we moved to
-basic graph iteration. A variety of algorithms for processing graphs are based
-on this kind of iteration, and we've already seen the following algorithms:
+One of the first data structures we studied in this course was the linked list,
+which consisted of a set of nodes connected in sequence. Then, we looked at
+trees, which were a generalized version of linked lists. We can consider a tree
+as a linked list if we *relaxed* the constraint that a node could only have one
+child. Now, we'll look at a generalization of a tree, called a *graph*. We can
+consider a graph as a tree if we *relaxed* the constraint that we can't have
+cycles.
 
-- Determining if a path exists between two different vertices
-- Finding a path between two different vertices
-- Topological sorting
+In a graph, we still have a collection of nodes, but each node in a graph can be
+connected to any other node without limitation. This means there isn't
+necessarily a hierarchical structure like we get in a tree. For example, here's
+a tree, where every node is descended from one another:
 
-None of these algorithms depended on the fringe representation. Either
-depth-first traversal (using a stack) or breadth-first traversal (using a queue)
-would have worked.
+![tree](img/tree.png)
 
-We're now going to investigate an algorithm where the ordering of the fringe
-*does* matter. But first...
+Now suppose we add an edge back up the tree, like this:
 
-### Storing Extra Information
+![back-edge](img/back-edge.png)
 
-Recall the exercise from last lab where you determined the path from a `start`
-vertex to a `stop` vertex. A solution to this exercise involved building a
-traversal, and then filtering the vertices that were not on the path. Here was
-the suggested procedure:
+Notice the hierarchical structure is broken. Is $$C$$ descended from $$A$$ or
+is $$A$$ descended from $$C$$? This is no longer a tree, but it is still a
+graph!
 
-> Then, trace back from the finish vertex to the start, by first finding a
-> visited vertex `u` for which `(u, finish)` is an edge, then a vertex `v`
-> visited earlier than `u` for which `(v, u)` is an edge, and so on, finally
-> finding a vertex `w` for which `(start, w)` is an edge (`isAdjacent` may be
-> useful here!). Collecting all these vertices in the correct sequence produces
-> the desired path.
+There are other edges that are not allowed in a tree, but are allowed in a
+graph. Let's take a look at the following:
 
-Instead of searching for the previous vertex along the path in all of the
-visited nodes like we did last lab, we can create predecessor links. If each
-fringe element contains a vertex and its predecessor along the traversed path,
-we can make the construction of the path more efficient. This is an example
-where it is useful to store *extra information* in the fringe along with a
-vertex.
+![cross-edge](img/cross-edge.png)
 
-### Associating Distances with Edges
+Now, node E looks like it is descended from two nodes. Again, this is no longer
+a tree but it is a graph.
 
-In graph applications we've dealt with so far, edges were used only to connect
-vertices. A given pair of vertices were either connected by an edge or they
-were not. Other applications, however, process edges with *weights*, which are
-numeric values associated with each edge. Remember that in an application, an
-edge just represents some kind of relationship between two vertices, so the
-weight of the edge could represent something like the strength, weakness, or
-cost of that relationship.
+In general, a graph can have any possible connection between nodes, as shown
+below:
 
-In today's exercises, the weight associated with an edge will represent the
-*distance* between the vertices connected by the edge. In other algorithms, a
-weight might represent the cost of traversing an edge or the time needed to
-process the edge.
+![graph](img/graph.png)
 
-A graph with edge weights is shown below.
+## Graphs
 
-![weighted-graph](img/weighted-graph.png)
+Graphs are a good way to represent relationships between objects. First, let's
+go over some terminology. A node in a graph is called a *vertex*. Vertices
+usually represent the objects in our graph (the things that have the
+relationships such as people, places, or things). A relationship between two
+vertices is represented by an *edge*.
 
-Observe the weights on the edges (the small numbers in the diagram), and note
-that in a directed graph, the weight of an edge `(v, w)` doesn't have to be equal to the weight of
-the edge `(w, v)`, its reverse.
+Here are a few examples of graphs in the everyday world:
 
-## Shortest Paths
+- **Road maps** are a great example of graphs. Each city is a vertex, and the
+  edges that connect these vertices are the roads and freeways that connect the
+  cities. An abstract example of what such a graph would look like can be found
+  [here](http://inst.eecs.berkeley.edu/~cs61b/fa05/diagrams/freeway-graph.png).
+  For a more local example, each building on the Berkeley campus can be thought
+  of as a vertex, and the paths that connect those buildings would be the edges.
 
-A common problem involving a graph with weighted edges is to find the *shortest path* between two vertices. This means to find the sequence of edges from one
-vertex to the other such that the sum of weights along the path is smallest. Note that though Breadth First Search might be able to find a path with the least number of edges, it's not capable of finding a shortest path based off the total edge weight.
+- **Computer networks** are also graphs. In this case, computers and other
+  network machinery (like routers and switches) are the vertices, and the edges
+  are the network cables. For a wireless network, an edge is an established
+  connection between a single computer and a single wireless router.
 
-This is a core problem found in real life mapping applications. Say you want
-directions from one location to another. Your mapping software will try to find
-the shortest path from your location (a vertex), to another location (another
-vertex). Different paths in the graph may have different lengths and different
-amounts of traffic, which could be the weights of the paths. You would want
-your software to find the shortest, or fastest, path for you.
+### Directed vs. Undirected Graphs
 
-### Discussion: Shortest Path
+If all edges in a graph are showing a relationship between two vertices that
+works in both directions, then it is called an *undirected graph*. A picture of
+an undirected graph looks like this:
 
-For the graph pictured above, what is the shortest path that connects vertex 0 with vertex 2?
+![undirected-graph](img/undirected-graph.png)
 
-<details>
-<summary>Click to reveal answer!</summary>
-0 4 1 2
+But not all edges in graphs are the same. Sometimes the relationships between
+two vertices only go in one direction. Such a relationship can be represented
+with a *directed* graph. An example of this could be a city map, where the edges
+are sometimes one-way streets between locations. A two-way street would have to
+be represented as two edges, one of them going from location $$A$$ to location
+$$B$$, and the other from location $$B$$ to location $$A$$.
+
+Visually, an undirected graph will not have arrow heads on its edges because the
+edge connects the vertices in both directions. A directed graph will have arrow
+heads on its edges that point in the direction the edge is going. An example of
+a directed graph appears below.
+
+![directed-graph](img/directed-graph.png)
+
+Any undirected edge can be represented with 2 directed edges. This means every undirected graph is a directed graph, but the converse is not true. 
+
+### Graph Definitions
+
+Now that we have the basics of what a graph is, here are a few more terms that
+might come in handy while discussing graphs.
+
+| Term                | Definition                                                                                      |
+|---------------------|-------------------------------------------------------------------------------------------------|
+| Adjacent            | A vertex `u` is *adjacent* to a vertex `v` if `v` has an edge connecting to `u`.                |
+| Path                | A *path* is a sequence of edges from one vertex to another where no edge or vertex is repeated. |
+| Connected           | A graph is *connected* if every vertex has a path to all other vertices.                        |
+| Neighbor            | A vertex `u` is a *neighbor* of a vertex `v` if they are adjacent.                              |
+| Incident to an edge | A vertex that is an endpoint of an edge is *incident* to it                                     |
+| Indegree            | A vertex `v`'s *indegree* is the number of vertices `u` where a directed edge from `u` to `v` exists.             |
+| Outdegree            | A vertex `v`'s *outdegree* is the number of vertices `u` where a directed edge from `v` to `u` exists.             |
+| Degree            | A vertex `v`'s *degree* is the number of vertices adjacent to it. Note the we calculate the degree of a vertex for undirected graphs, and indegree/outdegree for directed graphs.             |
+| Cycle               | A *cycle* is a path that ends at the same vertex where it originally started.                   |
+
+## Exercise: Edge vs. Vertex Count
+For the following questions, discuss your solution with someone in your lab.
+
+### Exercise 1
+
+Suppose that $$G$$ is a *directed* graph with $$N$$ vertices. What's the
+maximum number of edges that $$G$$ can have? Assume that a vertex cannot have
+an edge pointing to itself, and that for each vertex $$u$$ and $$v$$, there is
+at most one edge $$(u, v)$$.
+
+Options:
+
+$$N, N^2, N(N-1), \frac{N(N-1)}{2}$$
+
+<details markdown="block">
+  <summary markdown="block">
+#### Solution
+{: .no_toc}
+  </summary>
+N(N-1). There are N vertices and each one can have an edge to each of the other N-1 vertices.
 </details>
 
-For the graph pictured above, what is the shortest path that connects vertex 2
-with vertex 1?
+### Exercise 2
 
-<details>
-<summary>Click to reveal answer!</summary>
-2 3 0 4 1
+Now suppose the same graph $$G$$ in the above question is an *undirected*
+graph.  Again assume that no vertex is adjacent to itself, and at most one edge
+connects any pair of vertices. What's the maximum number of edges that $$G$$
+can have compared to the directed graph of $$G$$?
+
+Options:
+
+- half as many edges
+- the same number of edges
+- twice as many edges
+
+<details markdown="block">
+  <summary markdown="block">
+#### Solution
+{: .no_toc}
+  </summary>
+Half as many edges. Every pair of directed edges u->v, v->u can be represented with a single undirected edge.
 </details>
 
-For the graph pictured above, what is the shortest path that connects vertex 1
-with vertex 0?
+### Exercise 3
 
-<details>
-<summary>Click to reveal answer!</summary>
-1 4 3 0
+What's the *minimum* number of edges that a connected undirected graph with N
+vertices can have?
+
+Options:
+
+$$N - 1, N, N^2, N(N-1), \frac{N(N-1)}{2}$$
+
+<details markdown="block">
+  <summary markdown="block">
+#### Solution
+{: .no_toc}
+  </summary>
+N-1. A graph with 1 vertex needs 0 edges to be connected. Every time you add a new vertex you need minimum one new edge to connect it. 
 </details>
 
-## Dijkstra's Algorithm
+## Graph Representation
 
-How did you do on the shortest path self-test? It's pretty tricky, right?
-Luckily, there is an algorithm devised by Edsger Dijkstra (usually referred to
-as *Dijkstra's Algorithm*), that can find the shortest paths on a graph, and
-not just for a pair of vertices $$(0, 2)$$, but all the shortest paths from a
-start vertex `s` to *every other vertex reachable from `s`*. The algorithm is
-somewhat tedious for humans to do by hand, but it isn't too inefficient for
-computers.
+Now that we know how to draw a graph on paper and understand the basic concepts
+and definitions, we can now consider how a graph should be represented inside of
+a computer. We want to be able to get quick answers for the following questions
+about a graph:
 
-Below is an overview of the algorithm. The algorithm below finds the
-shortest paths from a starting vertex to all other nodes in a graph, also known
-as a **shortest paths tree**. To just find the shortest path between two
-specified vertices `s` and `t`, simply terminate the algorithm after `t` has
-been visited.
+- Are given vertices `u` and `v` adjacent?
+- What vertices are adjacent to `v`?
+- What edges are incident to `v`?
 
-We will use a priority queue for our fringe. Here, we're using a min priority queue, because we want to prioritize visiting nodes with *smaller* total distance from the start point.
+The next portion of today's lab will involve thinking about how fast and how efficient each
+of these operations is using different representations of a graph.
 
-Initialization:
-  1. Maintain a mapping, from vertices to their distance from the start vertex.
-     This will be used by the fringe to determine the next vertex to visit.
-     We will use a priority queue to implement this fringe. Here, an item's priority is its distance from the start vertex.
-  2. Add the start vertex to the fringe with distance/priority zero.
-  3. All other nodes can be left out of the fringe. If a node is not in the
-     fringe, assume it has distance infinity.
-  4. For each vertex, keep track of which other node is the predecessor for the
-     node along the shortest path found.
+Imagine that we want to represent a graph that looks like this:
 
-While Loop: Loop until the fringe is empty.
+![directed-graph](img/directed-graph.png)
 
-  1. Let `v` be the vertex in the fringe with the shortest distance to the
-     start (or the highest priority).  Remove and hold onto `v`.
-     * Dijkstra's visits vertices that are closest to the start first, thanks to our priority queue. Then if we have just popped `v` off the queue, it must have been the next closest vertex from the start. This means that there is no possible shorter path to get to  `v` through any vertices still on the queue, because they're all farther from the start than `v`! **So whenever we visit a vertex, we know we've found the shortest possible path to that vertex.** You can find more in depth proofs of this [online](https://web.cs.ucdavis.edu/~amenta/w10/dijkstra.pdf).
+One data structure we could use to implement this graph is called an *array of
+adjacency lists*. In such a data structure, an array is created that has the
+same size as the number of vertices in the graph. Each position in the array
+represents one of the vertices in the graph. Each of these positions point to a
+list. These lists are called adjacency lists, as each element in the list
+represents a neighbor of the vertex.
 
-  2. If `v` is the destination vertex, terminate now (this is optional and depends
-     on whether you want to find a path to one goal or to all others). Otherwise,
-     mark it as visited. Any visited vertices should not be visited again.
+The array of adjacency lists (using linked lists) that represents the above graph looks like this:
 
-  3. Then, for each neighbor `w` of `v`, do the following:
+![adjacency-list](img/adjacency-list.png)
 
-     1. As an optimization, if `w` has been visited already, skip it (*Dijkstra's Algorithm* visits vertices in distance-order from the root, so if we are revisiting a node, we have already found a shorter path that gets us there).
+Another data structure we could use to represent the edges in a graph is called
+an *adjacency matrix*. In this data structure, we have a two dimensional array
+of size $$N \times N$$ (where $$N$$ is the number of vertices) which contains
+boolean values. The entry (*i*, *j*) in this matrix is true when there is an
+edge from *i* to *j*, and false when no such edge exists. Thus, each vertex has a row
+and a column in the matrix, and the boolean values in that row/column represent the existence of outgoing/incoming
+edges to/from each other vertex.
 
-     2. If `w` is not in the fringe (or another way to think of it - it's
-        distance is infinity or undefined in our distance mapping), add it to
-the fringe (with the appropriate distance and previous pointers).
+The adjacency matrix that represents the above graph looks like this:
 
-     3. Otherwise, `w`'s distance might need updating if the path through `v`
-        to `w` is a shorter path than what we've seen so far. If that is indeed
-the case, replace the distance for `w`'s fringe entry with the distance from
-`start` to `v` plus the weight of the edge `(v, w)`, and replace its
-predecessor with `v`.  If you are using a `java.util.PriorityQueue`, you will
-need to call `add` or `offer` again so that the priority updates correctly - do
-not call `remove` as this takes linear time.
+![adjacency-matrix](img/adjacency-matrix.png)
 
-Every time a vertex is dequeued from the fringe, that vertex's shortest path has
-been found and it is finalized. The algorithm ends when the stop vertex is
-returned by `next`. Follow the predecessors to reconstruct the path.
+What will this matrix will look like for an *undirected* graph? Discuss with
+someone in your lab. Considering drawing out the matrix and trying to notice some
+patterns.
 
-> * We can't guarantee the correctness of Dijkstra's algorithm on graphs with
-> negative edge weights*! Consider why this is the case. In CS 170, you'll learn
-> about the Bellman-Ford algorithm, which solves the same single-source
-> shortest paths problem for graphs with negative edge weights too.
+## Discussion: Representation
 
-### Dijkstra's Algorithm Animation
+A third data structure we could use to represent a graph is simply an extension
+of the linked nodes idea. We can create a `Vertex` object for each vertex in
+the graph, and each of `Vertex` will contain pointers to the `Vertex` objects of
+their neighbors. This may seem like the most straightforward approach: aren't
+the adjacency list and adjacency matrix roundabout in comparison?
 
-Dijkstra's algorithm is pretty complicated to explain in text, so it might help
-you to see **[an animation of it](http://youtu.be/8Ls1RqHCOPw)**.
+Discuss with someone in your lab reasons for why the adjacency list or adjacency matrix
+might be preferred for a graph. Consider the runtime of our desired graph operations.
 
-As you watch the video, think about the following questions with your partner:
+Additionally, we could also represent a tree using an adjacency matrix or list.
+Discuss why an adjacency list or adjacency matrix might not be preferred for a tree.
 
-- In the animation you just watched, how can you tell what vertices were
-  currently in the fringe for a given step?
-- In the animation you just watched, after the algorithm has been run through,
-  how can you look at the chart and figure out what the shortest path from
-$$A$$ to $$H$$ is?
+Now, which is generally more efficient: an adjacency matrix or an array of adjacency
+lists?
 
-Note that in this video, the fringe is initialized by putting all the vertices
-into it at the beginning with their distance set to infinity. While this is also
-a valid way to run Dijkstra's algorithm for finding shortest paths (and one of
-the original ways it was defined), this is inefficient for large graphs.
-Semantically, it is the same to think of any vertex not in the fringe as having
-infinite distance, as a path to it has not yet been found.
+## Exercise: `Graph.java`
 
-## Exercise: Dijkstra's Algorithm
+We have given you framework code for a class `Graph`. It implements a graph of
+integers using adjacency lists.
 
-With your partner, run Dijkstra's algorithm by hand on the pictured graph below,
-finding the shortest path from vertex 0 to vertex 4. Keep track of what the
-fringe contains at every step.
-
-![SampleDijkstra's](img/koffman12.26.png)
-
-We recommend keeping track of a table like in the animation. Also, please make
-sure you know what the fringe contains at each step.
-
-Answer below. Each of the entries is listed as "<dist> (<from>)" e.g.
-if there was a listing for vertex 2 that was "3 (4)" it means that for this iteration
-the distance to vertex 2 is 3 and the path to that comes from vertex 4. Also asterisks
-denote vertices which have been removed from the fringe and should no longer be
-considered.
-<details>
-<summary>Cilck to reveal answer!</summary>
-<table style="max-width: 500px; width: 100%">
-  <tr>
-    <th>Iteration</th>
-    <th>0</th>
-    <th>1</th>
-    <th>2</th>
-    <th>3</th>
-    <th>4</th>
-  </tr>
-  <tr>
-    <td>0</td>
-    <td>0 (0)</td>
-    <td><script type="math/tex">\infty</script> (-)</td>
-    <td><script type="math/tex">\infty</script> (-)</td>
-    <td><script type="math/tex">\infty</script> (-)</td>
-    <td><script type="math/tex">\infty</script> (-)</td>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>0 (0)*</td>
-    <td>10 (0)</td>
-    <td><script type="math/tex">\infty</script> (-)</td>
-    <td>30 (0)</td>
-    <td>100 (0)</td>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>0 (0)*</td>
-    <td>10 (0)*</td>
-    <td>60 (1)</td>
-    <td>30 (0)</td>
-    <td>100 (0)</td>
-  </tr>
-  <tr>
-    <td>3</td>
-    <td>0 (0)*</td>
-    <td>10 (0)*</td>
-    <td>50 (3)</td>
-    <td>30 (0)*</td>
-    <td>90 (3)</td>
-  </tr>
-  <tr>
-    <td>4</td>
-    <td>0 (0)*</td>
-    <td>10 (0)*</td>
-    <td>50 (3)*</td>
-    <td>30 (0)*</td>
-    <td>60 (2)</td>
-  </tr>
-  <tr>
-    <td>5</td>
-    <td>0 (0)*</td>
-    <td>10 (0)*</td>
-    <td>50 (3)*</td>
-    <td>30 (0)*</td>
-    <td>60 (2)*</td>
-  </tr>
-</table>
-</details>
-
-## Exercise: `shortestPath`
-
-Add Dijkstra's algorithm to `Graph.java` from yesterday. Here's the method
-header:
+Fill in the following methods:
 
 ```java
-public List<Integer> shortestPath(int start, int stop) {
-    // TODO: YOUR CODE HERE
-    return null;
+public void addEdge(int v1, int v2, int weight);
+public void addUndirectedEdge(int v1, int v2, int weight);
+public boolean isAdjacent(int from, int to);
+public List<Integer> neighbors(int vertex);
+public int inDegree(int vertex);
+```
+
+## Graph Traversals
+
+Earlier in the course, we used the general traversal algorithm to process all
+elements of a tree:
+
+```java
+Stack<TreeNode> fringe = new Stack<>();
+fringe.push(root);
+
+while (!fringe.isEmpty()) {
+    TreeNode node = fringe.pop();
+    process(node);
+    fringe.push(node.right);
+    fringe.push(node.left);
 }
 ```
 
-For this method, you will need to refer to each `Edge` object's `weight` field.
-Additionally, it may be useful to write a `getEdge` method, that will return the
-`Edge` object corresponding to the input variables. Here's the header:
+The code above processes the tree's values in depth-first order. If we wanted a
+breadth-first traversal of a tree, we'd replace the `Stack` with a queue such
+as a `LinkedList`.
+
+Now, how would we modify this algorithm to traverse a graph?
+
+Analogous code to process every vertex in a connected graph may look something
+like:
 
 ```java
-private Edge getEdge(int v1, int v2) {
-    // TODO: YOUR CODE HERE
-    return null;
+Stack<Vertex> fringe = new Stack<>();
+fringe.push(startVertex);
+
+while (!fringe.isEmpty()) {
+    Vertex v = fringe.pop();
+    process(v);
+    for (Vertex neighbor: v.neighbors) {
+        fringe.push(neighbor);
+    }
 }
 ```
 
-*Hint*: At a certain point in Dijkstra's algorithm, you have to change the value
-of nodes in the fringe. Java's [`PriorityQueue`](https://docs.oracle.com/javase/7/docs/api/java/util/PriorityQueue.html)
-does not support this operation directly, but **we can add a new entry into the `PriorityQueue` that contains the updated value (and will always be dequeued before any previous entries).** Then,
-by tracking which nodes have been visited already, you can simply ignore any
-copies after the first copy dequeued.
+However, this doesn't quite work. Unlike trees, a graph may contain a *cycle* of
+vertices and as a result, the code will loop infinitely.
 
-Additionally, adding the vertices to our `PriorityQueue` fringe directly won't
-be enough. Our vertices are integers, so the `PriorityQueue` will order them by
-their *natural ordering*. Write a comparator to change the ordering of the
-vertices. **You may find [this constructor](https://docs.oracle.com/javase/7/docs/api/java/util/PriorityQueue.html#PriorityQueue(int,%20java.util.Comparator)) of Java's `PriorityQueue` helpful.**
+We don't want to process the same vertex more than once, so the fix is to keep
+track of vertices that we've put on our fringe and the vertices that we've
+visited already. Here is the correct pseudocode for graph traversal:
 
-### Runtime
+```java
+Stack<Vertex> fringe = new Stack<>();
+HashSet<Vertex> visited = new HashSet<>();
+fringe.push(startVertex);
 
-Implemented properly using a priority queue backed by a binary heap, Dijkstra's
-algorithm should run in `O((|V| + |E|) log |V|)` time. This is because at all
-times our heap size remains a polynomial factor of `|V|` (even with lazy
-removal, our heap size never exceeds `|V|^2`), and we make at most `|V|`
-dequeues and `|E|` updates requiring heap operations.
+while (!fringe.isEmpty()) {
+    Vertex v = fringe.pop();
+    if (!visited.contains(v)) {
+        process(v);
+        visited.add(v);
+        for (Vertex neighbor: v.neighbors) {
+            fringe.push(neighbor);
+        }
+    }
+}
+```
+### Discussion: A Graph Traversal Modification
+Instead of checking that the popped vertex `v` is
+not yet visited, suppose we do this check before adding some neighbor to the
+fringe. The body of the `while` loop would then look like the below:
+```java
+Vertex v = fringe.pop();
+process(v);
+for (Vertex neighbor: v.neighbors) {
+    if (!visited.contains(neighbor)) {
+        fringe.push(neighbor);
+        visited.add(neighbor);
+    }  
+}
+```
+Would this change work?
 
-For connected graphs, the runtime can be simplified to `O(|E| log |V|)`, as the
-number of edges must be at least `|V| - 1`. Using alternative implementations of
-the priority queue can lead to increased or decreased runtimes.
+<details markdown="block">
+  <summary markdown="block">
+#### Answer:
+{: .no_toc}
+  </summary>
+Yes, this would work. Although it is convention to check that the popped vertex is not yet visited.
+</details>
 
-## A* search
-Sometimes, we know more about a graph than just the edge weights. If we're looking for the shortest path from `s` to `t`, we might have an *estimate* of how far any other vertex is to `t`. For example, imagine you're in Berkeley, and you want to know the shortest path to Daly City. The two nearest vertices to Berkeley are San Francsico and Oakland. Oakland is a little closer to your starting point, but you can estimate that San Francisco is ultimately closer to the goal.  If we were using Dijkstra's right now, we'd still go to Oakland first, since Dijkstra's only considers how close something is to the start. With A* though, we can take into account our estimate, and go to San Francisco first!
+Note that the choice of data structure for the fringe can change. As with tree
+traversal, we can visit vertices in depth-first or breadth-first order merely by
+choosing a stack or a queue to represent the fringe. In the next lab session we will see
+applications that use a priority queue to implement something more like
+*best-first traversal*.
 
-This estimate is found by using a *heuristic*. In A*, our heuristic function is some way to calculate an approximate distance of any given vertex to a goal.
+## Exercise: Practice Graph Traversal
+
+Suppose we are using the graph traversal code from the last example, copied below:
+```java
+Stack<Vertex> fringe = new Stack<>();
+HashSet<Vertex> visited = new HashSet<>();
+fringe.push(startVertex);
+
+while (!fringe.isEmpty()) {
+    Vertex v = fringe.pop();
+    if (!visited.contains(v)) {
+        process(v);
+        visited.add(v);
+        for (Vertex neighbor: v.neighbors) {
+            fringe.push(neighbor);
+        }
+    }
+}
+```
+Determine the order in which the nodes
+are visited if you start at vertices 1 through 5. Break ties by defaulting
+to the smaller vertex number first (ie. if a node has multiple neighbors, visit its 
+lowest number neighbor first). In other words, fill in the table below:
+
+| Starting vertex | Order of visiting remaining vertices |
+|-----------------|--------------------------------------|
+| 1               |                                      |
+| 2               |                                      |
+| 3               |                                      |
+| 4               |                                      |
+| 5               |                                      |
 
 
-A* runs extremely similar to Dijkstra's. The primary difference is that for a vertex `v`, its priority in the priority queue is the sum of the known distance from `s` to `v`, and the estimated distance from `v` to the goal, `t`. By doing so, each node is prioritized by what we believe the total path will be if we go through that node. This makes sense when considering that the path lengths should add up: `dist(s, v) + dist(v, t) = dist(s, t)`.
+<!-- ![crazy-graph](img/crazy-graph.jpg) -->
+<table>
+  <tr>
+    <td><img src="img/crazy-graph.jpg"></td>
+    <td><img src="img/graph-neighbor-list.png"></td>
+  </tr>
+ </table>
 
-So by looking at the priority queue this way, we are first looking at paths we think will have the lowest *total* distance, not just the lowest distance so far. However, if our heuristic is completely misguided, then our judgements will be wrong. **We say that an A\* is only guaranteed to find the correct shortest path if the heuristic is *admissive* and *consistent*.**
-* *Admissive* means that the heuristic never OVERestimates the real distance to the goal. Consider that if our heuristic was not admissive, we might be deterred from visiting a vertex that was actually involved in the correct shortest path.
-* *Consistent* means the the heuristic never has huge logical gaps between any neighboring vertices. Consider if I told you Berkeley was an estimated 500 miles from Daly City, and San Francisco was an estimated 5 miles away from Daly City. Similarly to how we know edge weights in a graph, we also know that the distance from Berkeley to San Francisco is 13 miles. But then our estimations for the distances to Daly City make no sense, and are completely *inconsistent*!
+<!-- ![graph-neighbor-list]() -->
+<!-- | Node | Neighbors |
+|-----------------|--------------------------------------|
+| 1               | 3           |
+| 2               | 5, 4           |
+| 3               | 4, 7, 9, 6, 1           |
+| 4               | 2, 8, 7, 9, 6, 3           |
+| 5               | 8, 7, 2           |
+| 6               | 3, 4, 7, 9          |
+| 7               | 4, 5, 8, 10, 9, 6, 3           |
+| 8               | 5, 7, 4           |
+| 9               | 3, 4, 7, 6           |
+| 10               | 7           | -->
 
-You'll learn more about A* in theoretical lab!
+### Answers for Practicing Graph Traversal
 
-## Optional Applications
+| Starting vertex | Order of visiting remaining vertices |
+|-----------------|--------------------------------------|
+| 1               | 3, 4, 2, 5, 7, 6, 9, 8, 10           |
+| 2               | 4, 3, 1, 6, 7, 5, 8, 9, 10           |
+| 3               | 1, 4, 2, 5, 7, 6, 9, 8, 10           |
+| 4               | 2, 5, 7, 3, 1, 6, 9, 8, 10           |
+| 5               | 2, 4, 3, 1, 6, 7, 8, 9, 10           |
 
-Graphs have very real applications! For example, some approaches to BYOW that we've seen in the past have used graph algorithms. We can also use graphs to solve other problems in
-computer science such as:
+## Read the code: `DFSIterator`
 
-- [Garbage Collection][], the problem of managing memory in Java.
-- Search engines utilize algorithms (most famously, Google's [PageRank][]) to
-  sovle the problem of organizing information on the internet and making
-efficient queries on the data to return the best results.
+Read through the `DFSIterator` inner class. As its name suggests, it iterates
+through all of the vertices in the graph in DFS order, starting from a vertex
+that is passed in as an argument.
 
-[Garbage Collection]: https://inst.eecs.berkeley.edu/~cs61b/fa17/materials/lectures/lect37.pdf
-[PageRank]: https://en.wikipedia.org/wiki/PageRank
+Note: This iterator may not print out all the vertices in the graph if they are
+unreachable from the starting vertex, and that's okay!
 
-## Deliverables
+## Exercise: `pathExists`
 
-- Complete the `shortestPath` method in `Graph.java`.
+Complete the method `pathExists` in `Graph.java`, which returns whether or not
+any path exists that goes from `start` to `stop`. Remember that a path is any
+set of edges that exists which you can follow that such you travel from one
+vertex to another by only using valid edges. Additionally, you may use
+the `generateGX` methods to generate some sample `Graph`s to test your
+implementation for this method (and the following methods)!
+
+In addition, paths may not visit an edge or a vertex more
+than once. You may find it helpful for your method to call the `dfs` method,
+which uses the `DFSIterator` class.
+
+## Exercise: `path`
+
+Now you will actually find a path from one vertex to another if it exists. Write
+code in the body of the method named `path` that, given a `start` vertex and a
+`stop` vertex, returns a list of the vertices that lie on the path from `start`
+to `stop`. If no such path exists, you should return an empty list.
+
+*Hint*: Base your method on `dfs`, with the following differences. First, add
+code to stop calling `next` when you encounter the finish vertex. Then, trace
+back from the finish vertex to the start, by first finding a visited vertex u
+for which (u, finish) is an edge, then a vertex v visited earlier than u for
+which (v, u) is an edge, and so on, finally finding a vertex w for which (start,
+w) is an edge (`isAdjacent` may be useful here!). Collecting all these vertices
+in the correct sequence produces the desired path. We recommend that you try
+this by hand with a graph or two to see that it works.
+
+## Topological Sort
+
+A *topological* sort (sometimes also called a *linearization*) of a graph is a
+ordering of the vertices such that if there was a directed path from vertex `v`
+to vertex `w` in the graph, then `v` precedes `w` in the ordering. For instance, looking at the graph below, let **`A`** be `v` and **`F`** be `w`. Notice that there is a directed path from `A` to `F`, so `A` must precede `F` in the topological ordering.
+
+This only works on directed, acyclic graphs, and they are commonly referred to
+by their acronym: *DAG*.
+
+Here is an example of a DAG:
+
+![dag](img/dag.png)
+
+In the above DAG, a few of the possible topological sorts could be:
+
+    A B C D E F G H
+    A C B E G D F H
+    B E G A D C F H
+
+Notice that the topological sort for the above DAG has to start with either A or
+B, and must end with H. (For this reason, A and B are called *sources*, and H is
+called a *sink*.)
+
+Another way to think about it is that the vertices in a DAG represent a bunch of
+tasks you need to complete on a to-do list. Some of those tasks cannot be
+completed until others are done. For example, when getting dressed in the
+morning, you may need to put on shoes and socks, but you can't just do them in
+any order. The socks must be put on before the shoes. Thus, a topological sort
+of your morning routine must have socks appear first before shoes.
+
+The edges in the DAG represent dependencies between the tasks. In this example
+above, that would mean that task A must be completed before tasks C and D, task
+B must be completed before tasks D and E, E before G, C and D before F, and
+finally F and G before H. A topological sort gives you an order in which you can
+do the tasks (it puts the tasks in a linear order). Informally, a topological sort
+returns a sequence of the vertices in the graph that doesn't violate the
+dependencies between any two vertices.
+
+### Discussion: Topological Sorts and DAG's
+
+Why can we only perform topological sorts on DAG's? Think about the two
+properties of DAG's and how that relates with our "to-do list" analogy. Discuss
+your thoughts with someone in your lab.
+
+### The Topological Sort Algorithm
+
+One algorithm for taking a graph and finding a topological sort uses an array
+named `currentInDegree` with one element per vertex. `currentInDegree[v]` is
+initialized with the in-degree of each vertex `v`.
+
+The algorithm also uses a fringe. The fringe is initialized with all vertices
+whose in-degree is 0. When a vertex is popped off the fringe and added to a
+results list, the `currentInDegree` value of its neighbors are reduced by 1.
+Then the fringe is updated again with vertices whose in-degree is now 0.
+
+## Exercise: `TopologicalIterator`
+
+Implement the `TopologicalIterator` class so that it successively returns
+vertices in topological order as described above. The `TopologicalIterator`
+class will slightly resemble the `DFSIterator` class, except that it will use a
+`currentInDegree` array as described above, and instead of pushing unvisited
+vertices on the stack, it will push only vertices whose in-degree is 0. Try to
+walk through this algorithm, where you successively process vertices with
+in-degrees of 0, on our DAG example above.
+
+**If you're having trouble passing the autograder tests for the topological traversals,
+think about the effect of duplicate values in the fringe on your iterator.** Try
+constructing a complete graph, and testing your `TopologicalIterator` on that! Also make sure that your previously written methods work as intended. 
+
+## Conclusion
+
+### Deliverables
+
+- Complete the following methods of the `Graph` class:
+  - `addEdge`
+  - `addUndirectedEdge`
+  - `isAdjacent`
+  - `neighbors`
+  - `inDegree`
+  - `pathExists`
+  - `path`
+- Complete the implementation of the following nested iterator:
+  - `TopologicalIterator`
