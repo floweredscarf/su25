@@ -190,18 +190,18 @@ labs:
   - title: "Graphs"
     due: "2025/07/29"
     link: labs/lab17
-    show_links: false
+    show_links: true
   - title: "Build Your Own World Introduction"
     due: "2025/07/30"
-    link: labs/lab19
-    show_links: false
+    link: labs/lab18
+    show_links: true
   - title: "Shortest Path Trees"
     due: "2025/07/31"
-    link: labs/lab17
+    link: labs/lab19
     show_links: false
   - title: "Minimum Spanning Trees"
     due: "2025/08/01"
-    link: labs/lab18
+    link: labs/lab20
     show_links: false
   - title: "Theoretical #6: Graphs"
     theoretical: True
