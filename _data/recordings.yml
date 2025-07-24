@@ -26,17 +26,22 @@ recordings:
   - title: "7/8"
   - title: "Lec 10-11" # 7/9
     link: "https://www.youtube.com/watch?v=uz08OK2e888&list=PL102eBoiAo8mDS-ccb43g6Frv6dNT6T9S&index=6"
+  - title: "7/10"
   - title: "7/11"
-  - title: "7/12"
   - title: "Lec 12 (Tree Traversals Only)" # 7/14
     link: "https://www.youtube.com/watch?v=PZDQudfH6GY&list=PL102eBoiAo8mDS-ccb43g6Frv6dNT6T9S&index=7"
   - title: "7/15"
   - title: "Lec 14-15" # 7/16
     link: "https://www.youtube.com/watch?v=K9lOew-iXSQ&list=PL102eBoiAo8mDS-ccb43g6Frv6dNT6T9S&index=8"
+  - title: "7/17"
   - title: "7/18"
-  - title: "7/19"
   - title: "Lec 16-17" # 7/21
     link: "https://www.youtube.com/watch?v=cBe1Jf0_QaM&list=PL102eBoiAo8mDS-ccb43g6Frv6dNT6T9S&index=9"
-
-
+  - title: "7/22"
+  - title: "Lec 18-19" # 7/23
+    link: "https://www.youtube.com/watch?v=FYuuKhAkPWk&list=PL102eBoiAo8mDS-ccb43g6Frv6dNT6T9S&index=10"
+  - title: "7/24"
+  - title: "7/25"
+  # - title: "Lec 20-21" # 7/28
+  #   link: "https://www.youtube.com/watch?v=1b2d3g0j4aY&list=PL102eBoiAo8mDS-ccb43g6Frv6dNT6T9S&index=11"
   
