@@ -13,9 +13,6 @@ description: >-
 released: true
 ---
 
-{: .warning}
-> **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
-
 ## Deadlines
 
 {% capture deadlines %}{% include proj3-deadlines.html %}{% endcapture %}
@@ -94,7 +91,7 @@ To animate your game, you need to continuously re-render updates to your game st
 3. Render the updated game state in the game window.
 4. Repeat steps 2 and 3 until the player quits.
 
-Check out `GameLoopDemo.java`, located in the `demo` folder of your Project 3 repo, for an example of what this might look like. Note: **lab 9, task 3A** involves implementing a game loop, and is strongly recommended before tackling a game loop for your project 3.
+Check out `GameLoopDemo.java`, located in the `demo` folder of your Project 3 repo, for an example of what this might look like. Note: **lab 18, task 3A** involves implementing a game loop, and is strongly recommended before tackling a game loop for your project 3.
 
 In general, good coding practice is to first build small procedures with explicit 
 purposes and then compose more complex methods using the basic ones. It will give you a clear path forward in development and will be easier to break down your logic for unit testing.
@@ -127,7 +124,7 @@ Add a "Heads up Display" (HUD) that provides additional information that maybe u
 
 At the bare minimum, this should include Text that describes the tile currently under the mouse pointer. Ideally, your HUD should not flicker as the mouse moves. The HUD must update as you move the mouse cursor, i.e. you must update even if the user is only moving the mouse and isn't pressing any keys.
 
-Note: **lab 9, task 3B** involves adding a HUD, and is strongly recommended before adding a HUD to your project 3.
+Note: **lab 18, task 3B** involves adding a HUD, and is strongly recommended before adding a HUD to your project 3.
 
 As an example of the bare minimum, the simple interface below displays a grid of tiles and a HUD that displays the description of the tile under the mouse pointer (click image for higher resolution). Here, the mouse cursor (not shown) is over the g, and the text is there to tell the user that the green g represents a goblin.
 
@@ -175,13 +172,6 @@ Here are some cases of undefined behavior. Remember, undefined behavior means yo
 
 Now that you have a basic game working, in the last part of the project, you'll get a chance to add creative features of your own choosing! 
 
-```java
-// This method was written by Gemini 2.5.
-public void someMethod() {
-    // ...
-}
-```
-
 {: .task}
 > Implement at least **one primary** Ambition Feature and **one secondary** Ambition Feature either from the list below or of your choosing. 
 > You are more than welcome to implement more than the minimum requirement, such as two primary Ambition Features, etc.
@@ -220,18 +210,6 @@ Project 3B will be graded in a live checkoff with a TA. These checkoffs typicall
 Exact details, including how to sign up for a checkoff slot, will be posted on Ed closer to the start of checkoffs.
 
 [For a full run-down of how the checkoff will work, see the checkoff script.](/../projects/proj3/checkoff)
-
-
-### Post-Project Partnership Form
-
-{: .task}
-Submit the [Project 3 Post-Project Partnership Form](https://forms.gle/wwhDtsjq3deqhdRo9).
-
-You will receive an email receipt to confirm that you've submitted it.
-
-Your form response is confidential between you and staff. The response will not be shared with your partner.
-
-Warning: Don't forget the form! Students every semester forget this form and they are sad.
 
 ### Style
 

@@ -35,13 +35,7 @@ The following is what the TA will exactly do when checking you off: we recommend
 
 ## Attendance
 
-Both partners should be present **in-person** for the checkoff.
-
-{: .info}
-> If one partner is sick, traveling, or has some other **documented** excuse, please fill out the [Project 3 Checkoff Extenuating Circumstances Form](https://docs.google.com/forms/d/e/1FAIpQLSemhqG4c2vAaAHQAfJVM_0ZMPZwtSOZbwHnmySKZaj6k50bLQ/viewform?usp=sharing) **before the time of your checkoff slot**. 
-> Once completed, proceed with the checkoff as normal with your partner on a Zoom hosted by you.
->
-> It's your responsibility to make sure that the remote partner is on call before the checkoff starts. We can't wait for you to open a Zoom call after the checkoff slot has already started.
+If applicable, both partners should be present **in-person** for the checkoff.
 
 ## Setup
 
@@ -88,40 +82,39 @@ Designate one partner to be the presenter; this should be the partner who signed
 They will then grade each requirement of the game. Each requirement can either be evaluated as full points, half points,
 or zero points.
 
-### Basic World Functionality (50 points total)
+### Basic World Functionality (15 points total)
 
 The TA will run your project and will check for the following features:
 
-- The world has a main menu screen with a New World, Load, and Quit option (2 points)
-- The TA will hit "n" or "N" (they may do either) and check that the world prompts for a seed (2 points)
-- The TA should type in a few random numbers and hit "s" or "S" (they may do either) which should immediately start the world. The TA should also be able to see the numbers you are typing on the screen. (3 points)
+- The world has a main menu screen with a New World, Load, and Quit option (0.5 points)
+- The TA will hit "n" or "N" (they may do either) and check that the world prompts for a seed (0.5 points)
+- The TA should type in a few random numbers and hit "s" or "S" (they may do either) which should immediately start the world. The TA should also be able to see the numbers you are typing on the screen. (1 point)
 
 At this point, the program should be running and there should be a visible world.
 
-- World has visually distinct walls and floors (4 points)
-- World has at least two hallways which are 1 tile wide (1 point)
-- World has at least 1 hallway containing a turn in it. If current world doesn't, ask students to generate a world that has a turning hallway. (3 points)
-- World has some number of rooms that are connected via hallways (7 points)
+- World has visually distinct walls and floors (0.5 points)
+- World has at least two hallways which are 1 tile wide (0.5 point)
+- World has at least 1 hallway containing a turn in it. If current world doesn't, ask students to generate a world that has a turning hallway. (1 points)
+- World has some number of rooms that are connected via hallways (2 points)
 
 The TA will now try the basic commands that should be available during gameplay.
 
-- TA should hit the W, A, S, and D keys randomly and check the player movement is consistent with the key pressed (4 points)
-- TA should hover over 3 different tiles and make sure their names show up somewhere on screen and that the names make sense (4 points)
-- TA should verify that the HUD does not flicker (3 points)
-- TA should move into a wall and make sure the player stops at the wall instead of moving into it (1 points)
-- TA should type ":q" or ":Q" (they may do either) in "world mode" which should quit the world and close the program. TA should remember the world layout at this point (3 points)
+- TA should hit the W, A, S, and D keys randomly and check the player movement is consistent with the key pressed (2 points)
+- TA should hover over 3 different tiles and make sure their names show up somewhere on screen and that the names make sense (2 points)
+- TA should verify that the HUD does not flicker (0.25 points)
+- TA should move into a wall and make sure the player stops at the wall instead of moving into it (0.25 points)
+- TA should type ":q" or ":Q" (they may do either) in "world mode" which should quit the world and close the program. TA should remember the world layout at this point. "q" or "Q" alone should not quit the game. (1 points)
 
 The program is now closed, and we will test the load feature.
 
 The TA will run the world again after it has been closed and the main menu should appear again.
 
-- TA should hit "l" or "L" and the world should immediately start (3 points)
-- TA should check that the world layout is exactly as it was before closing the world (3 points)
-- TA will run through the basic commands again (listed above) to make sure the world still works (3 points)
-- TA will quit and load again and make sure that the basic commands work (3 points).
-- TA will check that "q" or "Q" alone in "world mode" does not quit the game (1 points).
+- TA should hit "l" or "L" and the world should immediately start (0.5 points)
+- TA should check that the world layout is exactly as it was before closing the world (2 points)
+- TA will run through the basic commands again (listed above) to make sure the world still works (0.5 points)
+- TA will quit and load again and make sure that the basic commands work (0.5 points).
 
-### Randomness (20 points total)
+### Randomness (8 points total)
 
 - The TA should close the world again and will begin testing to see if worlds are randomly generated.
 - The student pair should've explained to the TA where they are making use of randomness and make mention of any pieces of their world which is consistent across all seeds
@@ -130,13 +123,12 @@ The TA will run the world again after it has been closed and the main menu shoul
 - The TA will be looking for your world's ability to generate variety in both world structure and player experience while exploring that world. What this means is when two different seeds are used to generate new worlds, these worlds should not feel identical (or close to identical).
 
 The grading breakdown is as follows:
-- 20 points: The worlds are mainly random, as described by the above section.
-- 10 points: The worlds exhibit a few random elements, but generally look the same
+- 8 points: The worlds are mainly random, as described by the above section.
+- 4 points: The worlds exhibit a few random elements, but generally look the same
 - 0 points: The worlds contain no random elements.
 
 
-### Ambition Points (30 points total)
+### Ambition Points (12 points total)
 
 - The student should state and demonstrate the features that are in the Ambition category. You should be very explicit about how to "activate" or use that feature.
 - The TA will write in the features the student successfully demonstrated and their point values based on the spec, awarding either Full, Half, or Zero credit for each item.
-- For students participating in the LLM pilot project, each point counts for half, i.e. they'll need 60 ambition points to get full credit on this part of the project.

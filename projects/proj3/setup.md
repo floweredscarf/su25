@@ -38,7 +38,7 @@ The setup for this project is different from all other assignments so far. **Rea
 
 4. Click "SSH" and copy the link that appears. It should look like this, with `***` replaced with some group number:
 
-    `git@github.com:Berkeley-CS61B-Student/{{ site.semester }}-proj3-g***.git`
+    `git@github.com:Berkeley-CS61B-Student/su25-proj3-g***.git`
 
     <img alt="Copy SSH link." src="../assets/proj3-setup/4-ssh-copy.webp">
 
@@ -46,25 +46,25 @@ The setup for this project is different from all other assignments so far. **Rea
 
 6. Use `cd` to navigate to your CS 61B folder. Most students have a folder called `cs61b`.
 
-    Warning: Do not navigate to your personal `{{ site.semester }}-s***` repo! You should not be cloning your group repo inside your personal one.
+    Warning: Do not navigate to your personal `su25-s***` repo! You should not be cloning your group repo inside your personal one.
 
 7. Type `pwd` in your terminal. This will output the current directory you are in.
 
-    Make sure you do not see `{{ site.semester }}-s***` in the output! If you do, go back to Step 6.
+    Make sure you do not see `su25-s***` in the output! If you do, go back to Step 6.
 
-    <img alt="pwd should not display your fa24-s*** personal repo." src="../assets/proj3-setup/8-pwd.webp">
+    <img alt="pwd should not display your su25-s*** personal repo." src="../assets/proj3-setup/8-pwd.webp">
 
 8. In your terminal, clone your repo, replacing the URL with the one you copied earlier:
 
-    `git clone git@github.com:Berkeley-CS61B-Student/{{ site.semester }}-proj3-g***.git`
+    `git clone git@github.com:Berkeley-CS61B-Student/su25-proj3-g***.git`
 
 9. Navigate into the repo you just cloned:
 
-    `cd {{ site.semester }}-proj3-g***`
+    `cd su25-proj3-g***`
 
 10. Tell Github where to find the skeleton repo:
 
-    `git remote add skeleton https://github.com/Berkeley-CS61B/proj3-skeleton-{{ site.semester }}.git`
+    `git remote add skeleton https://github.com/Berkeley-CS61B/proj3-skeleton-su25.git`
 
 11. Pull the skeleton code:
 
