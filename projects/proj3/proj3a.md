@@ -13,9 +13,6 @@ description: >-
 released: true
 ---
 
-{: .warning}
-> **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
-
 ## Deadlines
 
 {% capture deadlines %}{% include proj3-deadlines.html %}{% endcapture %}
@@ -24,9 +21,9 @@ released: true
 
 ## Code Overview
 
-### Lab 9
+### Lab 18
 
-Before you start this project, **we highly recommend that you complete at least the first 3 tasks in lab 9**. These tasks will introduce you to:
+Before you start this project, **we highly recommend that you complete at least the first 3 tasks in lab 18**. These tasks will introduce you to:
  - The Project 3 tile engine.
  - The StdDraw library.
  - Creating a simple user interface and a real time "game loop".
@@ -84,7 +81,7 @@ Important notes on orientation:
 
 <img alt="2D grid with coordinates (0,0) at bottom-left, (8,0) at bottom-right, and (0,3) at top-right." src="../assets/proj3a/coords.webp">
 
-If you're unsure of the tile layout, **you should complete lab 9** in which you'll write some short sample programs that draw sample grids to deepen your understanding. If you confuse x/y or up/down, you're going to be incredibly confused when debugging.
+If you're unsure of the tile layout, **you should complete lab 18** in which you'll write some short sample programs that draw sample grids to deepen your understanding. If you confuse x/y or up/down, you're going to be incredibly confused when debugging.
 
 Each entry of the 2D array can be filled in with a tile from our default library of tiles in `Tileset.java`.
 
@@ -375,19 +372,9 @@ Staff cannot answer questions like "is my world valid" or "is my world good enou
     </details>
 
 
-## Task 2: Design Document
+## Task 2 (Optional): Design Document
 
-Before you begin writing any code, you will need to write a design document! This lets you plan out the overall design of your codebase, so that you can organize your code into smaller pieces and tackle one thing at a time.
-
-{: .task}
-> Write a design document for Project 3. Your design document should be at least 1 - 2 pages long.
->
-> The design document will be mainly graded on effort, thought, and completion.
-
-{: .warning}
-> This document is required to request staff help.
-> 
-> If you request help on Ed or in office hours, we will need to see your design document before we can start helping you.
+Before you begin writing any code, we recommend writing a design document! This lets you plan out the overall design of your codebase, so that you can organize your code into smaller pieces and tackle one thing at a time.
 
 In your design document, you can identify what data structures you'll be using in your implementation. You can also write pseudocode or a general English overview of the algorithms you plan to use.
 
@@ -418,12 +405,6 @@ Besides the `Main.main` requirement, your world generation code can live anywher
 
 ## Deliverables
 
-### Design Doc
-
-Please submit your design document to the assignment on Gradescope as a group, where one partner submits it and adds the other partner to the submission. It should be formatted as a PDF.
-
-Don’t worry if you decide to change your design document after. You are free to do so! We want you to think about the implementation before coding therefore we require you to submit your design as the part of the project.
-
 ### World Screenshots
 
 1. [Go to this Java Visualizer link](https://cscircles.cemc.uwaterloo.ca/java_visualize/#code=import+java.util.Random%3B%0A%0Apublic+class+SeedGenerator+%7B%0A+++public+static+void+main(String%5B%5D+args)+%7B%0A++++++%0A++++++//+Replace+1270+with+your+sp25-g***+group+ID.%0A++++++Random+r+%3D+new+Random(1270)%3B%0A++++++%0A++++++System.out.println(%22Your+seeds+are%3A+%22)%3B%0A++++++%0A++++++for+(int+i+%3D+0%3B+i+%3C+5%3B+i+%2B%3D+1)+%7B%0A+++++++++System.out.println(Math.abs(r.nextLong()))%3B%0A++++++%7D%0A++++++%0A++++++%0A+++%7D%0A%7D&mode=edit) to generate 5 seeds. Remember to replace `1270` with your group ID.
@@ -444,33 +425,13 @@ Don’t worry if you decide to change your design document after. You are free t
 
     Warning: All 5 of your worlds should be generated with the same code. You shouldn't submit 3 worlds from one algorithm, and 2 worlds from another one. We will use your commit log to check this.
 
-7. Make sure that only one partner submits, and then [tags the other partner](https://guides.gradescope.com/hc/en-us/articles/21863861823373-Adding-Group-Members-to-a-Submission) on Gradescope. Each group should only have one submission.
+7. Make sure that only one partner submits, and then, if applicable, [tags the other partner](https://guides.gradescope.com/hc/en-us/articles/21863861823373-Adding-Group-Members-to-a-Submission) on Gradescope. Each group should only have one submission.
 
 Warning: Don't hard-code worlds in your code. Your world generation code should be able to generate pseudo-random worlds for any seed we provide, not just the 5 seeds. Again, we will use your commit log to check this.
 
 **Grading:**
 
 We will grade your worlds after the Project 3A deadline, but before the Project 3B deadline. It can take up to a week to grade your world (especially if you have an extension), so please be patient.
-
-If your worlds do not receive full credit, you can submit a regrade request on Gradescope.
-
-In your regrade request, please include:
-- A screenshot of `git show --summary` with the commit of the new code you used to generate your fixed worlds.
-- The 5 worlds you generated with your fixed code. Use the same seeds as you did originally.
-
-It can take up to a week to respond to your regrade request, so please be patient.
-
-
-### Mid-Project Partnership Form
-
-{: .task}
-Submit the [Project 3 Mid-Project Partnership Form](https://forms.gle/HN2hCG3cgL5GXnry7).
-
-You will receive an email receipt to confirm that you've submitted it.
-
-Your form response is confidential between you and staff. The response will not be shared with your partner.
-
-Warning: Don't forget the form! Students every semester forget this form and they are sad.
 
 ### Style
 

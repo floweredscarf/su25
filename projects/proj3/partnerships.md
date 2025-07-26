@@ -22,11 +22,7 @@ released: true
 ## Task 0: Pre-Project Partnership Form
 
 {: .task}
-Submit the [Project 3 Pre-Project Partnership Form](https://forms.gle/NJSmTFZpuFPc9jGJ7). 
-
-You will receive an email receipt to confirm that you've submitted it. We also recommend checking out the [Project 3 Partnership Guide](../../resources/guides/partnerships/index.md).
+Submit the [Project 3 Pre-Project Partnership Form](https://forms.gle/adLc3vvk9ZQjbyny9). 
 
 {: .warning}
 > Once we create your partnership, you cannot change it later. 
-> 
-> If you believe an error occurred in your partnership formation, or you would like to request to dissolve your partnership, please fill out the [Project 3 Partnership Adjustment Form](https://forms.gle/VWrfcYeST7etriyGA).

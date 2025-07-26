@@ -127,9 +127,9 @@ projects:
   - title: "Project 3B: Interactivity"
     link: "/projects/proj3/proj3b"
     show_links: false
-    due: "2025/04/29"
+    due: "2025/08/10"
     classes:
       - "schedule-green"
-    rowspan: 5
+    rowspan: 6
   - nonumber: true
     rowspan: 10

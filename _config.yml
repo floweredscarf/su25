@@ -179,7 +179,7 @@ toc_collapse_depth: 3
 # - If you have files that should not be built on the website, list them here.
 # - Example: Your project spec has a README that's for staff editing the spec.
 # - Example: You have a Python script you use to automate something in the repo.
-exclude: ["Gemfile", "Gemfile.lock", "LICENSE", "vendor", "README.md"]
+exclude: ["Gemfile", "Gemfile.lock", "gemset.nix", "flake.nix", "flake.lock", "LICENSE", "vendor", "README.md"]
 
 # - Every few years, we may need to update the JTD version to pull from upstream.
 theme: just-the-docs

@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "BYOW Common Bugs"
+title: "Common Bugs"
 nav_order: 6
 parent: >-
    Project 3: Build Your Own World

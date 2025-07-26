@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "BYOW Ambition Features"
+title: "Ambition Features"
 nav_order: 4
 parent: >-
     Project 3: Build Your Own World
@@ -21,21 +21,19 @@ released: true
 
 ## Ambition Features
 
-30 points of your project score will be based on features of your choosing, which we call your "ambition score". The big idea is that beyond the base requirements of this project, we want you to try to polish your product a bit more and add some cool features. Below is a list of features worth either 22 points (primary feature) or 8 points (secondary feature).
+12 points of your project score will be based on features of your choosing, which we call your "ambition score". The big idea is that beyond the base requirements of this project, we want you to try to polish your product a bit more and add some cool features. Below is a list of features worth either 8 points (primary feature) or 4 points (secondary feature).
 
-From these two categories, you need to implement 30 points of features, and at least one of your features must be a primary feature. Here are some ways to achieve this:
+From these two categories, you need to implement 12 points of features, and at least one of your features must be a primary feature. Here are some ways to achieve this:
 - One primary feature and one secondary feature. This is the most common way.
 - Two primary features.
 
-This "ambition" category is only worth 30 points. For example, if you implement 38 points of features, you do not get extra credit. However, feel free to add as many features as you'd like if you have the time and inclination.
+This "ambition" category is only worth 12 points. For example, if you implement 16 points of features, you do not get extra credit. However, feel free to add as many features as you'd like if you have the time and inclination.
 
 Your project must still meet the basic requirements described earlier in the spec! For example, if you allow the user to use mouse clicks, the project should still allow keyboard based movement!
 
 Under the description of some primary features, we've provided some GIFS that would score full points on their respective ambition point items to help clear any confusions. Yours do not need to look exactly like the examples given.
 
 You are not restricted to the features we list below! We strongly encourage you to come up with your own. We have an Ed megathread ([Feature Request Ed thread](https://edstem.org/us/courses/74627/discussion/6483454)) where you can run your ideas by us to confirm that it meets our standards.
-
-If you're participating in the LLM pilot project, your features are only worth half credit each, i.e. you might implement e.g. two primary features (11 points each) and two secondary features (4 points each) to reach 30 points.
 
 ### Files
 
@@ -45,7 +43,7 @@ In addition, use *relative file paths* instead of absolute file paths. For insta
 
 Doing both of these steps will allow anyone who has your project on their laptop to be able to view and use your files.
 
-## Primary Features (22 points)
+## Primary Features (8 points)
 
 - **Line of Sight**: Create a system so that the tile renderer only displays tiles on the screen that are within the line of sight of the avatar. The line of sight must be able to be toggled on and off with a keypress.
 
@@ -81,7 +79,7 @@ Doing both of these steps will allow anyone who has your project on their laptop
 
 - **Altered Terrain**: Implement the ability for the avatar to significantly alter the landscape of the world, e.g. digging, triggering traps that cause parts of the world to become dangerous or impassible, solving puzzles that make some rooms accessible only after fulfilling some objective.
 
-## Secondary Features (8 points)
+## Secondary Features (4 points)
 
 - **Replay**: Add the ability for the user to "replay" their most recent save, visually displaying all the actions taken since the last time a new world was created. This must result in the same final state as would occur if the user had loaded the most recent save. This means that the game should be playable once the replay is complete.
 
