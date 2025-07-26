@@ -48,8 +48,8 @@ Designate one partner to be the presenter; this should be the partner who signed
 
 ## Checkoff Script
 
-1. The grader will ask for everyone's class ID ({{ site.semester }}-s\*\*\*)
-2. One partner should designate their laptop as the "check-in laptop", and already have a terminal window in their `{{ site.semester }}-proj3-g***/proj3`. Their Git should be in a clean state (git status should be clean), IntelliJ should be open, and the Project 3 main menu should be running.
+1. The grader will ask for everyone's class ID (su25-s\*\*\*)
+2. One partner should designate their laptop as the "check-in laptop", and already have a terminal window in their `su25-proj3-g***/proj3`. Their Git should be in a clean state (git status should be clean), IntelliJ should be open, and the Project 3 main menu should be running.
    - If any of these requirements are not fulfilled, you may not receive a grade for Proj3 checkoff.
 3. Run "git log" and make sure that the HEAD commit is a commit from before the deadline. Run "pwd". Make sure the path
    matches that of the open IntelliJ window. The students may choose to demo a late commit for partial credit.

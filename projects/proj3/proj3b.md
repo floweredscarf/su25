@@ -178,7 +178,7 @@ Now that you have a basic game working, in the last part of the project, you'll 
 > 
 > If you'd like to implement your own feature(s), please ask on the [Feature Request Ed thread]() and ask ***early*** so we can let you know if your feature is approved!
 
-[For a list of pre-approved ambition features, see our ambition features list.](/../projects/proj3/ambition)
+[For a list of pre-approved ambition features, see our ambition features list.](/../su25/projects/proj3/ambition)
 
 {: .warning}
 > Note that your game should retain the same functionality from previous tasks (e.g. Main Menu, Interactivity, Saving and Loading). 
@@ -209,7 +209,7 @@ Project 3B will be graded in a live checkoff with a TA. These checkoffs typicall
 
 Exact details, including how to sign up for a checkoff slot, will be posted on Ed closer to the start of checkoffs.
 
-[For a full run-down of how the checkoff will work, see the checkoff script.](/../projects/proj3/checkoff)
+[For a full run-down of how the checkoff will work, see the checkoff script.](/../su25/projects/proj3/checkoff)
 
 ### Style
 

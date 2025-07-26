@@ -64,10 +64,10 @@ The setup for this project is different from all other assignments so far. **Rea
 
 10. Tell Github where to find the skeleton repo:
 
-    `git remote add skeleton https://github.com/Berkeley-CS61B/proj3-skeleton-su25.git`
+    `git remote add skeleton https://github.com/cs61bl/proj3-skeleton-su25`
 
 11. Pull the skeleton code:
 
     `git pull skeleton main --allow-unrelated-histories`
 
-Once you’ve completed the above steps, you should see your new group repo called `{{ site.semester }}-proj3-g***` in your local files, and if you open this repo, you’ll see the `proj3` skeleton folder. From here, you and your partner can proceed as normal, by adding, committing, pushing, and pulling from this repo as you would otherwise.
+Once you’ve completed the above steps, you should see your new group repo called `su25-proj3-g***` in your local files, and if you open this repo, you’ll see the `proj3` skeleton folder. From here, you and your partner can proceed as normal, by adding, committing, pushing, and pulling from this repo as you would otherwise.
