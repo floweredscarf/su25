@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "BYOW Ambition Features"
+title: "Ambition Features"
 nav_order: 4
 parent: >-
     Project 3: Build Your Own World

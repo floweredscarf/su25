@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "BYOW Checkoff Script"
+title: "Checkoff Script"
 nav_order: 5
 parent: >-
     Project 3: Build Your Own World
