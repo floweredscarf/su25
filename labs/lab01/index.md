@@ -604,7 +604,7 @@ library-su25
 ```
 
 {: .task}
-> **Task**: Follow the instructions above to get the course libraries.
+> **Task**: Follow the instructions above to get the course libraries. You're not done yet, you will need to import the libraries into IntelliJ later.
 
 ## IntelliJ Setup
 
@@ -809,7 +809,7 @@ pane:
 ![arithmetic intellij](img/lab01-structure-su25.png){: style="max-height: 250;" }
 
 When you open `Arithmetic` and `ArithmeticTest`, you should not see any red
-text or red squiggles.
+text or red squiggles. If you do, check to make sure you've run every step of the [Assignment Workflow guide](../../resources/assignment-workflow/) (in particular, importing libraries into IntelliJ).
 
 ### IntelliJ Test
 
