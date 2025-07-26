@@ -425,9 +425,9 @@ that is passed in as an argument.
 Complete the method `pathExists` in `Graph.java`, which returns whether or not
 any path exists that goes from `start` to `stop`. Remember that a path is any
 set of edges that exists which you can follow that such you travel from one
-vertex to another by only using valid edges. Additionally, you may use
+vertex to another by only using valid edges. **You may use
 the `generateGX` methods to generate some sample `Graph`s to test your
-implementation for this method (and the following methods)!
+implementation for this method (and the following methods)!**
 
 In addition, paths may not visit an edge or a vertex more
 than once. You may find it helpful for your method to call the `dfs` method,
