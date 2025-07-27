@@ -3,15 +3,23 @@ layout: page
 title: >-
   FAQ
 parent: >-
-  Lab 21: Counting Sorts
+  Lab 21: Comparison Sorts
 grand_parent: Labs
 has_right_toc: true
 released: true
 ---
 
+
 ### Where can I find all of the videos?
 
-Puppy Cat Dog proof of N Log N lower bound: https://www.youtube.com/watch?v=ByjmA0x_D2A
+Insertion Sort Wrap-up: https://youtu.be/JtS5yGftYZ8
 
 
-Sohum's LSD introduction: https://youtu.be/tWZhdFzVqXY
+Selection Sort Wrap-up: https://youtu.be/yZtvSYeTQi4
+
+
+HeapSort Introduction: https://www.youtube.com/watch?v=H5kAcmGOn4Q
+
+
+HeapSort Wrap-up: https://youtu.be/WuuQqsDftGU
+

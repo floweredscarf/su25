@@ -198,11 +198,11 @@ labs:
   - title: "Shortest Path Trees"
     due: "2025/07/31"
     link: labs/lab19
-    show_links: false
+    show_links: true
   - title: "Minimum Spanning Trees"
     due: "2025/08/01"
     link: labs/lab20
-    show_links: false
+    show_links: true
   - title: "Theoretical #6: Graphs"
     theoretical: True
     video: false

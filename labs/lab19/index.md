@@ -1,11 +1,11 @@
 ---
 layout: page
 title: >-
-  Lab 17: Shortest Path Trees
+  Lab 19: Shortest Path Trees
 has_children: true
 parent: Labs
 has_toc: false
-nav_exclude: true
+nav_exclude: false
 has_right_toc: true
 released: true
 ---
