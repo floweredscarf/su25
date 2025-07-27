@@ -52,8 +52,6 @@ The setup for this project is different from all other assignments so far. **Rea
 
     Make sure you do not see `su25-s***` in the output! If you do, go back to Step 6.
 
-    <img alt="pwd should not display your su25-s*** personal repo." src="../assets/proj3-setup/8-pwd.webp">
-
 8. In your terminal, clone your repo, replacing the URL with the one you copied earlier:
 
     `git clone git@github.com:Berkeley-CS61B-Student/su25-proj3-g***.git`
@@ -64,7 +62,7 @@ The setup for this project is different from all other assignments so far. **Rea
 
 10. Tell Github where to find the skeleton repo:
 
-    `git remote add skeleton https://github.com/cs61bl/proj3-skeleton-su25`
+    `git remote add skeleton git@github.com:cs61bl/proj3-skeleton-su25.git`
 
 11. Pull the skeleton code:
 
