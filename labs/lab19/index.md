@@ -333,7 +333,7 @@ copies after the first copy dequeued.
 </details>
 
 {: .task}
->Implement the `shortestPath` method in `Graph.java`, and write a comparator to change the ordering of the vertices. We also recommend implementing the `getEdge` helper method, though it is not required. **All tests have been provided locally (yayyy) to help you debug!**
+>Implement the `shortestPath` method in `Graph.java`, and write a comparator for the vertices. We also recommend implementing the `getEdge` helper method, though it is not required. **All tests have been provided locally (yayyy) to help you debug!**
 
 ## A* search
 Sometimes, we know more about a graph than just the edge weights. If we're looking for the shortest path from `s` to `t` (aka we have a particular destination in mind), we might have an *estimate* of how far any other vertex is to `t`. We'll see how to solve this problem using an algorithm called **A\*** ("A star"), which is like Dijkstra's with an additional factor.
