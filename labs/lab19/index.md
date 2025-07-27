@@ -318,8 +318,7 @@ private Edge getEdge(int v1, int v2) {
 
 Additionally, adding the vertices to our `PriorityQueue` fringe directly won't
 be enough. Our vertices are integers, so the `PriorityQueue` will order them by
-their *natural ordering*. Write a comparator to change the ordering of the
-vertices. **You may find [this constructor](https://docs.oracle.com/javase/7/docs/api/java/util/PriorityQueue.html#PriorityQueue(int,%20java.util.Comparator)) of Java's `PriorityQueue` helpful.**
+their *natural ordering*. **Write a comparator to change the ordering of the vertices.** You may find [this constructor](https://docs.oracle.com/javase/7/docs/api/java/util/PriorityQueue.html#PriorityQueue(int,%20java.util.Comparator)) of Java's `PriorityQueue` helpful.
 
 <details markdown="block">
   <summary markdown="block">
@@ -334,7 +333,7 @@ copies after the first copy dequeued.
 </details>
 
 {: .task}
->Implement the `shortestPath` method in `Graph.java`. We also recommend implementing the `getEdge` helper method, though it is not required. **All tests have been provided locally (yayyy) to help you debug!**
+>Implement the `shortestPath` method in `Graph.java`, and write a comparator to change the ordering of the vertices. We also recommend implementing the `getEdge` helper method, though it is not required. **All tests have been provided locally (yayyy) to help you debug!**
 
 ## A* search
 Sometimes, we know more about a graph than just the edge weights. If we're looking for the shortest path from `s` to `t` (aka we have a particular destination in mind), we might have an *estimate* of how far any other vertex is to `t`. We'll see how to solve this problem using an algorithm called **A\*** ("A star"), which is like Dijkstra's with an additional factor.
