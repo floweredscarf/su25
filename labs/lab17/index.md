@@ -524,7 +524,7 @@ Implement the `TopologicalIterator` class so that it successively returns
 vertices in topological order as described above. The `TopologicalIterator`
 class will slightly resemble the `DFSIterator` class, except that it will use a
 `currentInDegree` array as described above, and instead of pushing unvisited
-vertices on the stack, it will push only vertices whose in-degree is 0. Try to
+vertices onto the stack, it will push only vertices whose in-degree is 0. Try to
 walk through this algorithm, where you successively process vertices with
 in-degrees of 0, on our DAG example above.
 
