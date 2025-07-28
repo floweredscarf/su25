@@ -322,7 +322,7 @@ lectures:
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/23.-graph-traversals-and-implementations"
       - title: "Ch 28"
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/28.-reductions-and-decomposition"
-  - title: "BYOW Introduction and Software Engineering"
+  - title: "BYOW Introduction"
     # slides: https://docs.google.com/presentation/d/17_BnS03_dM2oeZVe7fQL5PHXJhIMBXMjuXpsjPYgMpY/edit#slide=id.g1f5aad9eaf1_0_269
     # video: "" # https://www.youtube.com/watch?v=0SCtnf84QrI&list=PL8FaHk7qbOD41EHkD7CgQuRw1jpH_Fv7-
     # recording: https://youtu.be/bJqx0WoNNZc
@@ -344,7 +344,7 @@ lectures:
     nonumber: True
   - title: "Shortest Path Trees"
     # slides: https://docs.google.com/presentation/d/19BrUSntsqpGcIbVxEMgVj5YV75l1fJKuoMtBLVSbIKQ
-    # video: "" # https://www.youtube.com/watch?v=990kImS-_nA&list=PL8FaHk7qbOD7xI6LkyBe2_AdaZp-XFXr3
+    video: https://www.youtube.com/watch?v=iMoFtG1md3w&list=PLnp31xXvnfRrbIn8mZ3pmpgygnfwp2zjW
     # recording: https://youtu.be/nTQm7ORCgJM
     # quiz: https://forms.gle/sJ7QvuspcsA5AARn9
     readings:
@@ -353,7 +353,7 @@ lectures:
       
   - title: "Minimum Spanning Trees"
     # slides: https://docs.google.com/presentation/d/1a4LW0Zsxny9On74OqJ_Q1VHlgYjuyBL-Z5_nFkXSxJ4/edit?usp=sharing
-    # video: "" # https://www.youtube.com/watch?v=kkd8d0QhiQ0&list=PL8FaHk7qbOD6aKgTz2W-foDiTeBEaBoS3&index=3
+    video: https://www.youtube.com/watch?v=vnKK38JS9Ik&list=PL8FaHk7qbOD7SvlWei_-neNmgmXzJG2ad
     # recording: https://youtu.be/vI2_0iKeuGU
     # quiz: https://forms.gle/FSS2WpAgWbNaVR4C8
     readings:
