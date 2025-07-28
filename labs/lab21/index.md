@@ -1,20 +1,20 @@
 ---
 layout: page
 title: >-
-  Lab 20: Comparison Sorts
+  Lab 21: Comparison Sorts
 has_children: true
 parent: Labs
-nav_exclude: true
+nav_exclude: false
 has_toc: false
 has_right_toc: true
 released: true
 ---
 
-## [FAQ](faq.md)
+## [FAQ](faq)
 
 Each assignment will have an FAQ linked at the top. You can also access it by
-adding "/faq" to the end of the URL. The FAQ for Lab 20 is located
-[here](faq.md).
+adding "/faq" to the end of the URL. The FAQ for Lab 21 is located
+[here](faq).
 
 {: .warning}
 > **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
