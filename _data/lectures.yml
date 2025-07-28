@@ -318,6 +318,8 @@ lectures:
     # recording: https://youtu.be/3QnElmfYYwM
     # quiz: https://forms.gle/1qr1w48Vyr21pFCJ6
     readings:
+      - title: "Ch 23"
+        link: "https://cs61b-2.gitbook.io/cs61b-textbook/23.-graph-traversals-and-implementations"
       - title: "Ch 28"
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/28.-reductions-and-decomposition"
   - title: "BYOW Introduction and Software Engineering"
