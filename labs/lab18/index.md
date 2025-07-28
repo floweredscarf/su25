@@ -370,7 +370,7 @@ After you’ve done this you should be able to run `MemoryGame.java` and play yo
 {: .info}
 >To get credit for this lab, a TA will check your `PlusWorld.java` and `MemoryGame.java` *visually*. You will be asked to show that you can generate a single plus at various sizings (or a whole tesselation), and that you can play your memory game. Once the TA verifies that those two requirements have been met, they will give you a magic word, which you should type into `magic_word.txt`. **You will be solely graded off if your magic word is present.** This is similar to how you will be graded for BYOW: your final product will be graded in a live checkoff with a staff member.
 
-**In-person Lab Checkoff**
+**In-person/Online Lab Checkoff**
 
 You may go to any lab section for a live checkoff.
 
