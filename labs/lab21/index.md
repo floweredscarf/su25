@@ -21,11 +21,10 @@ adding "/faq" to the end of the URL. The FAQ for Lab 21 is located
 
 ## Introduction
 
-As usual, pull the files from the skeleton and make a new IntelliJ project.
+As usual, pull the files from the skeleton.
 
-In today's lab, we'll be discussing **sorting**, algorithms for rearranging elements
-in a collection to be in a specific order. There are many problems you can more easily solve with a sorted collection, including performing binary search in $$O(\log N)$$ time,
-efficiently identifying adjacent pairs within a list, finding the $$k^{th}$$
+In today's lab, we'll be discussing **sorting** algorithms, used for rearranging elements
+in a collection to be in a specific order. There are many problems you can more easily solve with a sorted collection, including performing binary search in $$O(\log N)$$ time, finding the $$k^{th}$$
 largest element, and so forth.
 
 There are several kinds of sorting algorithms, each of which is appropriate for
