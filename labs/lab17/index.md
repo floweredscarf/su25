@@ -120,13 +120,12 @@ might come in handy while discussing graphs.
 
 | Term                | Definition                                                                                      |
 |---------------------|-------------------------------------------------------------------------------------------------|
-| Adjacent            | A vertex `u` is *adjacent* to a vertex `v` if `v` has an edge connecting to `u`.                |
+| Adjacent            | For an *undirected* graph, vertices `u` and `v` are *adjacent* if they are connected by an edge. The definition for *adjacent* is more ambiguous for *directed* graphs; in this lab, our `isAdjacent(u, v)` method for our directed graph will return `true` if there is an edge *from `u` to `v`*.               |
 | Path                | A *path* is a sequence of edges from one vertex to another *where no edge or vertex is repeated*. Note that this definition may vary from other sources; this is the definition we use in CS61BL unless otherwise specified.|
 | Connected           | A graph is *connected* if every vertex has a path to all other vertices.                        |
 | Neighbor            | A vertex `u` is a *neighbor* of a vertex `v` if they are adjacent.                              |
-| Incident to an edge | A vertex that is an endpoint of an edge is *incident* to it                                     |
-| Indegree            | A vertex `v`'s *indegree* is the number of vertices `u` where a directed edge from `u` to `v` exists.             |
-| Outdegree            | A vertex `v`'s *outdegree* is the number of vertices `u` where a directed edge from `v` to `u` exists.             |
+| Indegree            | A vertex `v`'s *indegree* is the number of vertices `u` where a directed edge from `u` to `v` exists (aka the number of edges pointing *in* to `v`).             |
+| Outdegree            | A vertex `v`'s *outdegree* is the number of vertices `u` where a directed edge from `v` to `u` exists (aka the number of edges pointing *out* of `v`).        |
 | Degree            | A vertex `v`'s *degree* is the number of vertices adjacent to it. Note the we calculate the degree of a vertex for undirected graphs, and indegree/outdegree for directed graphs.             |
 | Cycle               | A *cycle* is a path that ends at the same vertex where it originally started.                   |
 
@@ -199,9 +198,8 @@ and definitions, we can now consider how a graph should be represented inside of
 a computer. We want to be able to get quick answers for the following questions
 about a graph:
 
-- Are given vertices `u` and `v` adjacent?
+- Are given vertices `u` and `v` neighbors?
 - What vertices are adjacent to `v`?
-- What edges are incident to `v`?
 
 {: .info}
 The next portion of today's lab will involve thinking about how fast and how efficient each
@@ -238,7 +236,7 @@ The adjacency matrix that represents the above graph looks like this:
 
 ![adjacency-matrix](img/adjacency-matrix.png)
 
-What will this matrix will look like for an *undirected* graph? Considering drawing out the matrix to look for patterns.
+If our above graph was *undirected* (i.e. for every edge between two vertices, there is another edge pointing the other way), what will this matrix will look like? Considering drawing out the matrix to look for patterns.
 
 ## Discussion: Representation
 
@@ -265,8 +263,8 @@ integers using adjacency lists.
 public void addEdge(int v1, int v2, int weight);
 public void addUndirectedEdge(int v1, int v2, int weight);
 public boolean isAdjacent(int from, int to);
-public List<Integer> neighbors(int vertex);
-public int inDegree(int vertex);
+public List<Integer> neighbors(int v);
+public int inDegree(int v);
 ```
 
 ## Graph Traversals
