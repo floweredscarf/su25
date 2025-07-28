@@ -3,7 +3,7 @@ layout: page
 title: >-
   FAQ
 parent: >-
-  Lab 21: Counting Sorts
+  Lab 22: Counting Sorts
 grand_parent: Labs
 has_right_toc: true
 released: true

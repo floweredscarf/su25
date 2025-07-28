@@ -215,10 +215,11 @@ labs:
   - title: "Comparison Sorts"
     due: "2025/08/05"
     link: labs/lab20
+    show_links: true
   - title: "Counting Sorts"
     due: "2025/08/06"
     link: labs/lab21
-    show_links: false
+    show_links: true
   - title: "BYOW OH & Checkoffs"
     nonumber: True
   - title: "BYOW OH & Checkoffs"
