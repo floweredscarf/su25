@@ -16,9 +16,6 @@ Each assignment will have an FAQ linked at the top. You can also access it by
 adding "/faq" to the end of the URL. The FAQ for Lab 17 is located
 [here](faq).
 
-{: .warning}
-> **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
-
 ## Introduction
 
 As usual, pull the files from the skeleton and make a new IntelliJ project.
