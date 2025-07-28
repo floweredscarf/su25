@@ -48,8 +48,7 @@ Doing both of these steps will allow anyone who has your project on their laptop
 - **Line of Sight**: Create a system so that the tile renderer only displays tiles on the screen that are within the line of sight of the avatar. The line of sight must be able to be toggled on and off with a keypress.
 
 {: .warning}
-> Line of sight **MUST** be blocked by wall tiles. You aren't allowed to, for example, just cut out a square of tiles around the avatar. This will only get **half credit**. Try searching online for 2D line-of-sight algorithms!
-
+> Line of sight **MUST** be blocked by wall tiles. An approach that, for example, just cuts out a square of tiles around the avatar would only recieve **half credit**. Try searching online for 2D line-of-sight algorithms!
 
 - **Light Sources**: Add the ability for light sources to affect how the world is rendered, with at least one light source that can be turned on and off with a keypress. The intensity of the light must diminish in a gradient as the distance from the source increases. Light sources should fill a majority of the room it belongs to, and light should not pass through walls.
 
