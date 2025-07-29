@@ -21,8 +21,30 @@ released: true
 
 ## Task 1: Setup
 
-The setup for this project is different from all other assignments so far. **Read this carefully and do not skip any steps!**
+{: .danger}
+> The setup for this project is different from all other assignments so far. **Read this carefully and do not skip any steps!**
 
+1. [Join the SU25 GitHub Classroom for Project 3 here](https://classroom.github.com/a/DcyBFCe2). You should see a page that looks like this:
+    ![GitHub Classroom page](../assets/proj3-setup/0-github-classroom-team.png)
+
+2. **DO NOT JOIN OR CREATE A TEAM YET!**
+3. If you are working alone, click "Or... Create a new team" and enter your desired team name.
+
+4. If you are working with a partner and they have already created a team, click "Join" on your partner's team name. **DO NOT JOIN A TEAM THAT ISN'T YOUR PARTNER'S!** If your partner has not yet created a team, they should do so now (see step 3). Once they have created a team, you can join it. **Only one partner needs to create a new team. The other should merely join the team.**
+5. At this point, you should see a page like this:
+    ![GitHub Classroom page accept team](../assets/proj3-setup/0-github-classroom-accept.png)
+
+6. Click "Accept this assignment" and you should see a similar page to this:
+    ![GitHub Classroom page with team name](../assets/proj3-setup/0-github-classroom-repo.png)
+7. Click the blue highlighted repository link ("https://github.com/...") to go to your Project 3 repository. You should see a page that looks like this:
+    ![GitHub group repo](../assets/proj3-setup/0-group-repo.png)
+
+8. This repo is your group's code for Project 3, and will be **completely separate** from every other assignment in this class.
+9.  In your command line terminal, navigate to the folder where you want to clone your group repo. **Do not clone this repo inside your personal `su25-s***` repo!** You should not be cloning your group repo inside your personal one. You can `cd ..` to go up one directory level from your `su25-s***` repo, after which it should be safe to clone.
+10.  Clone your group repo with `git clone git@github.com:Berkeley-CS61B-Classroom/project-3-byow-<YOUR GROUP NAME HERE>.git`.
+11. You now have the skeleton code locally! Both you and your partner should be able to add, commit, push to, and pull from `origin main` in this repo as you would otherwise (be careful of merge conflicts!).
+
+<!-- old setup below
 {: .danger}
 > You need to accept your Github repo invite **within a week** of it being sent, or else it will expire, and you will not be able to work on the project.
 > 
@@ -68,4 +90,4 @@ The setup for this project is different from all other assignments so far. **Rea
 
     `git pull skeleton main --allow-unrelated-histories`
 
-Once you’ve completed the above steps, you should see your new group repo called `su25-proj3-g***` in your local files, and if you open this repo, you’ll see the `proj3` skeleton folder. From here, you and your partner can proceed as normal, by adding, committing, pushing, and pulling from this repo as you would otherwise.
+Once you’ve completed the above steps, you should see your new group repo called `su25-proj3-g***` in your local files, and if you open this repo, you’ll see the `proj3` skeleton folder. From here, you and your partner can proceed as normal, by adding, committing, pushing, and pulling from this repo as you would otherwise. -->
