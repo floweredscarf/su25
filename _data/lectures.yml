@@ -313,7 +313,7 @@ lectures:
   - title: 
     nonumber: True
   - title: "Graph Traversals, DAGs, Topological Sorts"
-    # slides: https://docs.google.com/presentation/d/12VCENn-07ZMsSt0ZlJj_YpXNWtR3aEeNlLp6KD0PGf8/edit#slide=id.g636c46f3c_0973
+    slides: https://docs.google.com/presentation/d/1OvzGBBQCjw5EwYrKQIG_f-245_tnVjaE1VgYrXYbQk8/edit?slide=id.g371c074f726_0_4566#slide=id.g371c074f726_0_4566
     # video: "" # https://www.youtube.com/playlist?list=PL8FaHk7qbOD44CGmkFro1gqxkDl5gIpXB
     # recording: https://youtu.be/3QnElmfYYwM
     # quiz: https://forms.gle/1qr1w48Vyr21pFCJ6
@@ -323,7 +323,7 @@ lectures:
       - title: "Ch 28"
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/28.-reductions-and-decomposition"
   - title: "BYOW Introduction"
-    # slides: https://docs.google.com/presentation/d/17_BnS03_dM2oeZVe7fQL5PHXJhIMBXMjuXpsjPYgMpY/edit#slide=id.g1f5aad9eaf1_0_269
+    slides: https://docs.google.com/presentation/d/1OvzGBBQCjw5EwYrKQIG_f-245_tnVjaE1VgYrXYbQk8/edit?slide=id.g371c074f726_0_8647#slide=id.g371c074f726_0_8647
     # video: "" # https://www.youtube.com/watch?v=0SCtnf84QrI&list=PL8FaHk7qbOD41EHkD7CgQuRw1jpH_Fv7-
     # recording: https://youtu.be/bJqx0WoNNZc
     # quiz: https://forms.gle/eurAbBiqWFo6enas8
