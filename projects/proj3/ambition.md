@@ -33,7 +33,7 @@ Your project must still meet the basic requirements described earlier in the spe
 
 Under the description of some primary features, we've provided some GIFS that would score full points on their respective ambition point items to help clear any confusions. Yours do not need to look exactly like the examples given.
 
-You are not restricted to the features we list below! We strongly encourage you to come up with your own. We have an Ed megathread ([Feature Request Ed thread](https://edstem.org/us/courses/74627/discussion/6483454)) where you can run your ideas by us to confirm that it meets our standards.
+You are not restricted to the features we list below! We strongly encourage you to come up with your own. We have an Ed megathread ([Feature Request Ed thread](https://edstem.org/us/courses/79523/discussion/6842893)) where you can run your ideas by us to confirm that it meets our standards.
 
 ### Files
 
