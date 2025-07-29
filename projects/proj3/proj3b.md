@@ -176,7 +176,7 @@ Now that you have a basic game working, in the last part of the project, you'll 
 > Implement at least **one primary** Ambition Feature and **one secondary** Ambition Feature either from the list below or of your choosing. 
 > You are more than welcome to implement more than the minimum requirement, such as two primary Ambition Features, etc.
 > 
-> If you'd like to implement your own feature(s), please ask on the [Feature Request Ed thread]() and ask ***early*** so we can let you know if your feature is approved!
+> If you'd like to implement your own feature(s), please ask on the [Feature Request Ed thread](https://edstem.org/us/courses/79523/discussion/6842893) and ask ***early*** so we can let you know if your feature is approved!
 
 [For a list of pre-approved ambition features, see our ambition features list.](/../su25/projects/proj3/ambition)
 
