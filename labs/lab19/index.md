@@ -333,7 +333,9 @@ copies after the first copy dequeued.
 >Implement the `shortestPath` method in `Graph.java`, and write a comparator for the vertices. We also recommend implementing the `getEdge` helper method, though it is not required. **All tests have been provided locally (yayyy) to help you debug!**
 
 {: .info}
->**Tie-breaking scheme**: if two vertices are the *same* distance away from the source, you may tiebreak arbitrarily.
+>**Tie-breaking scheme**: if there are multiple possible shortest paths to a vertex (i.e. different paths with same total weight), tiebreak by choosing the path that was traversed *first*. In other words, **when considering if we want to update a vertex's predecessor, we should only update it if the new distance is *strictly less than* the old distance**.
+
+two vertices are the *same* distance away from the source, you may tiebreak arbitrarily.
 
 ## A* search
 Sometimes, we know more about a graph than just the edge weights. If we're looking for the shortest path from `s` to `t` (aka we have a particular destination in mind), we might have an *estimate* of how far any other vertex is to `t`. We'll see how to solve this problem using an algorithm called **A\*** ("A star"), which is like Dijkstra's with an additional factor.
