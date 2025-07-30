@@ -343,7 +343,7 @@ lectures:
   - title: 
     nonumber: True
   - title: "Shortest Path Trees"
-    # slides: https://docs.google.com/presentation/d/19BrUSntsqpGcIbVxEMgVj5YV75l1fJKuoMtBLVSbIKQ
+    slides: https://docs.google.com/presentation/d/1b-ijZRPzb-lgM5owCasfL4gsPKPcWl5hlmsQ0MNt1Ug
     video: https://www.youtube.com/watch?v=iMoFtG1md3w&list=PLnp31xXvnfRrbIn8mZ3pmpgygnfwp2zjW
     # recording: https://youtu.be/nTQm7ORCgJM
     # quiz: https://forms.gle/sJ7QvuspcsA5AARn9
@@ -352,7 +352,7 @@ lectures:
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/24.-shortest-paths"
       
   - title: "Minimum Spanning Trees"
-    # slides: https://docs.google.com/presentation/d/1a4LW0Zsxny9On74OqJ_Q1VHlgYjuyBL-Z5_nFkXSxJ4/edit?usp=sharing
+    slides: https://docs.google.com/presentation/d/1WAPxzccRiBmlgfk6ih-oCs2ZwtLSDxvIp1BZngiH5iQ
     video: https://www.youtube.com/watch?v=vnKK38JS9Ik&list=PL8FaHk7qbOD7SvlWei_-neNmgmXzJG2ad
     # recording: https://youtu.be/vI2_0iKeuGU
     # quiz: https://forms.gle/FSS2WpAgWbNaVR4C8
