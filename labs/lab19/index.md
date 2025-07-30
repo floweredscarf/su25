@@ -16,9 +16,6 @@ Each assignment will have an FAQ linked at the top. You can also access it by
 adding "/faq" to the end of the URL. The FAQ for Lab 19 is located
 [here](faq).
 
-{: .warning}
-> **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
-
 ## Introduction
 
 Pull the skeleton, as usual. 
@@ -85,7 +82,7 @@ the edge `(w, v)`, its reverse.**
 ## Shortest Paths
 
 A common problem involving a graph with weighted edges is to find the **shortest path** between two vertices. This means to find the sequence of edges from one
-vertex to the other such that the *sum of weights along the path* is smallest. Note that though Breadth First Search might be able to find a path with the least *number* of edges, it's not capable of finding a shortest path based off the total *edge weight*.
+vertex to the other such that the *sum of weights along the path* is smallest. Note that though Breadth First Search might be able to find a path with the least *number* of edges, it's not capable of finding a shortest path based off the total *edge weight* if *edge weights* are different.
 
 {: .info}
 >This is a core problem found in real life mapping applications. Say you want
@@ -355,7 +352,7 @@ A* runs extremely similar to Dijkstra's. The primary difference is that for a ve
 By looking at the priority queue this way, we are first looking at paths we think will have the lowest *total* distance (according to our heuristic), not just the lowest distance so far. 
 
 {: .warning}
->**If our heuristic is completely misguided (a very bad heuristic), then our judgements will likely be wrong.** In the earlier Davis -> New York example, consider if the heuristic for Lake Tahoe was 5000 (i.e. Lake Tahoe is estimated to be 5000 units away from Davis), and the heuristic for San Francisco was 5 (i.e. San Francisco is estimated to be 5 units away from Davis). These estimations for the Davis-SF and Davis-Tahoe distances are way off, which will throw off our calculations when performing A* from Davis to New York and cause us to output the wrong shortest path!
+>**If our heuristic is completely misguided (a very bad heuristic), then our judgements will likely be wrong.** In the earlier Davis -> New York example, consider if the heuristic for Lake Tahoe was 5000 (i.e. Lake Tahoe is estimated to be 5000 units away from New York), and the heuristic for San Francisco was 5 (i.e. San Francisco is estimated to be 5 units away from New York). These estimations for the Davis-SF and Davis-Tahoe distances are way off, which will throw off our calculations when performing A* from Davis to New York and cause us to output the wrong shortest path!
 
 {: .info}
 >CS61BL doesn't cover how good heuristics are calculated/chosen; take CS188 if you'd like to learn more about it!
