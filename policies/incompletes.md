@@ -2,7 +2,7 @@
 layout: page
 title: "Incomplete Grades"
 parent: Policies
-nav_exclude: true # set to true so students don't find this before end of semester ~peyrin
+nav_exclude: false # set to true so students don't find this before end of semester ~peyrin
 ---
 
 # Incomplete Grades
