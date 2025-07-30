@@ -28,7 +28,7 @@ In CS61B, you may receive an incomplete on at most **2 projects** or **1 project
 
 As you're deciding whether to take an incomplete, we highly recommend talking to an academic advisor. Here are some links you may be able to use to set up an appointment:
 
-- [Data Science Advising](https://engineering.berkeley.edu/students/advising-counseling/ess-advising/)
+- [Data Science Advising](https://cdss.berkeley.edu/advising)
 - [College of Engineering Advising](https://engineering.berkeley.edu/students/advising-counseling/ess-advising/)
 - [L&S CS Advising](https://eecs.berkeley.edu/resources/undergrads/cs/advising)
 
