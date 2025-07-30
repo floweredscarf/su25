@@ -2,7 +2,7 @@
 layout: page
 title: "Incomplete Grades"
 parent: Policies
-nav_exclude: false # set to true so students don't find this before end of semester ~peyrin
+nav_exclude: true # set to true so students don't find this before end of semester ~peyrin
 ---
 
 # Incomplete Grades
@@ -14,13 +14,13 @@ Incomplete grades allow you to complete coursework after the semester if you wer
 A couple important requirements from the website:
 
 - "Students who fail to turn in all required work cannot request an I grade unless they have been unable to finish because of circumstances beyond their control."
-- Your work must be of "passing quality", meaning that completing the projects you're taking an incomplete for would bring you to at least a passing grade in the course. The grade bins can be found in [the syllabus](/policies#grades).
+- Your work must be of "passing quality", meaning that completing the projects you're taking an incomplete for would bring you to at least a passing grade in the course. The grade bins can be found in [the syllabus](/policies#grading).
 
 In CS61B, you may receive an incomplete on at most **2 projects** or **1 project/1 exam**.
 
 ## Incomplete deadlines
 
-- By default, the deadline to turn in incomplete assignments will be **Sunday, August 24th (8/24)**. We will not be granting further extensions aside from exceptional cases.
+- By default, the deadline to turn in incomplete assignments will be **Monday, September 29th, 2025 (9/29)**. We will not be granting further extensions aside from exceptional cases.
     - For project 3, the latest deadline will be right before [checkoff session 2](#assignment-incomplete-logistics). We will send an email regarding the exact date after the content schedule is finalized for Fall 2025. 
 - If you are taking an incomplete on the final, you will take the **Fall 2025 final exam.**
 
@@ -42,11 +42,11 @@ An incomplete grants you additional time on assignments that you may not have be
 {: .danger}
 **You will not be able to request for an incomplete for this class if you have/had a misconduct case from course assignments or exams.**
 
-An alternative to taking an incomplete is [late dropping](https://lsadvising.berkeley.edu/policies/late-change-class-schedule) the course. With another chance at the course, you'll have more time to learn the fundamental concepts and a chance to improve your grade. Many 61B assignments don't change much from semester to semester, so a lot of your efforts this semester can be reused if you decide to retake the course. The late drop deadline is **Friday, May 2nd (5/2)**.
+An alternative to taking an incomplete is [late dropping]([https://lsadvising.berkeley.edu/policies/late-change-class-schedule](https://summer.berkeley.edu/enrollment-changes/dropping-courses)) the course. With another chance at the course, you'll have more time to learn the fundamental concepts and a chance to improve your grade. Many 61B(L) assignments don't change much from semester to semester, so a lot of your efforts this semester can be reused if you decide to retake the course. The late drop deadline is **Friday, August 15th (8/15)**. Please note for summer session courses, you will not be refunded but provide Summer Tuition Credit you can use a following summer.
 
 ## Requesting an incomplete
 
-To request an incomplete, please fill out [this form](https://forms.gle/CpchZxBEEy9PRQ1q6) by **Sunday, May 11th (5/11) at 11:59pm**. We will be processing incomplete requests on a rolling basis.
+To request an incomplete, please fill out [this form](https://forms.gle/CpchZxBEEy9PRQ1q6) by **Sunday, August 10th (8/10) at 11:59pm**. We will be processing incomplete requests on a rolling basis.
 
 {: .info}
 If you do not meet one of the requirements above, we will still review your request on a case-by-case basis. Please sign up for a student support meeting [here]({{site.links.student_support_meetings}}) to further discuss your case. 
@@ -56,7 +56,7 @@ If you do not meet one of the requirements above, we will still review your requ
 ### Timeline
 **Q: When can I request for an incomplete?**
 
-A: You can request for an incomplete grade from now until the request form closes on **Sunday, May 11th (5/11) at 11:59pm.**
+A: You can request for an incomplete grade from now until the request form closes on **Sunday, August 10th (8/10) at 11:59pm.**
 
 **Q: When will I hear back regarding the decision of my incomplete request?**
 
@@ -64,7 +64,7 @@ A: You should expect to wait for around 1 week (including business and non-busin
 
 **Q: When should I start working on my incomplete assignment? When should I complete them by?**
 
-A: You can start working on your incomplete assignment anytime after your incomplete request is approved. For all asssignments except project 3, you should complete them by the deadline established above (8/24, 2025). For project 3, you should complete it before the intended [checkoff session](#assignment-incomplete-logistics) you want to attend.
+A: You can start working on your incomplete assignment anytime after your incomplete request is approved. For all asssignments except project 3, you should complete them by the deadline established above (9/29, 2025). For project 3, you should complete it before the intended [checkoff session](#assignment-incomplete-logistics) you want to attend.
 
 **Q: When will my incomplete grade be resolved?**
 
@@ -72,7 +72,7 @@ A: We will conduct two rounds of incomplete resolution processes:
 - At the beginning of the Fall 2025 semester (after [checkoff session 1](#assignment-incomplete-logistics))
 - Near the end of the Fall 2025 semester (after final).
 
-If you have an incomplete on project assignments, it will take us up to 3 weeks to resolve your incomplete after the deadline (8/24, 2025). If you have an incomplete on the final exam, it will take us up to 3 weeks to resolve your incomplete after Fall 2025's final exam. It might take us longer to update your grade on CalCentral. 
+If you have an incomplete on project assignments, it will take us up to 3 weeks to resolve your incomplete after the deadline (9/30, 2025). If you have an incomplete on the final exam, it will take us up to 3 weeks to resolve your incomplete after Fall 2025's final exam. It might take us longer to update your grade on CalCentral. 
 
 If you need your grade to be finalized and released at an earlier date, please reach out to us through cs61b-incompletes@berkeley.edu. 
 
@@ -93,7 +93,7 @@ You can find the exact calculation formula of your exam score [here](/policies/e
 
 **Q: How will my exam grade be calculated if the semester I'm resolving incomplete has a different policy ?**
 
-A: We will calculate your grade according to the exam policies of this semester (Spring 2025). 
+A: We will calculate your grade according to the exam policies of this semester (Summer 2025). 
 
 ### Assignment Incomplete Logistics
 
@@ -119,7 +119,7 @@ A: We may be able to find you a partner in some cases, but you should expect to 
 
 A: Please sign up for a student support meeting [here]({{site.links.student_support_meetings}}) to further discuss your case. 
 
-We will have **limited student support meeting** slots from now till the end of the incomplete request window, so please reach out to us as soon as possible. If you are unable to sign up to meet, email cs61b-incompletes@berkeley.edu. 
+We will have **limited student support meeting** slots from now till the end of the incomplete request window, so please reach out to us as soon as possible. If you are unable to sign up to meet, email cs61bl@berkeley.edu. 
 
 **Q: What kind of course resources do I have access as an incomplete student?**
 
