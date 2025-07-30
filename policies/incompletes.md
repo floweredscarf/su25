@@ -14,7 +14,7 @@ Incomplete grades allow you to complete coursework after the semester if you wer
 A couple important requirements from the website:
 
 - "Students who fail to turn in all required work cannot request an I grade unless they have been unable to finish because of circumstances beyond their control."
-- Your work must be of "passing quality", meaning that completing the projects you're taking an incomplete for would bring you to at least a passing grade in the course. The grade bins can be found in [the syllabus]([/policies#grading](https://cs61bl.org/su25/policies/#grading)).
+- Your work must be of "passing quality", meaning that completing the projects you're taking an incomplete for would bring you to at least a passing grade in the course. The grade bins can be found in [the syllabus](https://cs61bl.org/su25/policies/#grading).
 
 In CS61B, you may receive an incomplete on at most **2 projects** or **1 project/1 exam**.
 
@@ -42,11 +42,11 @@ An incomplete grants you additional time on assignments that you may not have be
 {: .danger}
 **You will not be able to request for an incomplete for this class if you have/had a misconduct case from course assignments or exams.**
 
-An alternative to taking an incomplete is [late dropping]([https://lsadvising.berkeley.edu/policies/late-change-class-schedule](https://summer.berkeley.edu/enrollment-changes/dropping-courses)) the course. With another chance at the course, you'll have more time to learn the fundamental concepts and a chance to improve your grade. Many 61B(L) assignments don't change much from semester to semester, so a lot of your efforts this semester can be reused if you decide to retake the course. The late drop deadline is **Friday, August 15th (8/15)**. Please note for summer session courses, you will not be refunded but provide Summer Tuition Credit you can use a following summer.
+An alternative to taking an incomplete is [late dropping](https://summer.berkeley.edu/enrollment-changes/dropping-courses) the course. With another chance at the course, you'll have more time to learn the fundamental concepts and a chance to improve your grade. Many 61B(L) assignments don't change much from semester to semester, so a lot of your efforts this semester can be reused if you decide to retake the course. The late drop deadline is **Friday, August 15th (8/15)**. Please note for summer session courses, you will not be refunded but provide Summer Tuition Credit you can use a following summer.
 
 ## Requesting an incomplete
 
-To request an incomplete, please fill out [this form](https://forms.gle/CpchZxBEEy9PRQ1q6) by **Sunday, August 10th (8/10) at 11:59pm**. We will be processing incomplete requests on a rolling basis.
+To request an incomplete, please fill out [this form](https://forms.gle/MTnfvgrp1soUFrRFA) by **Sunday, August 10th (8/10) at 11:59pm**. We will be processing incomplete requests on a rolling basis.
 
 {: .info}
 If you do not meet one of the requirements above, we will still review your request on a case-by-case basis. Please sign up for a student support meeting [here]({{site.links.student_support_meetings}}) to further discuss your case. 
@@ -89,7 +89,7 @@ A: We will send you an email with the final grade and breakdown from cs61b-incom
 
 A: We will calculate your z-score based on scores from next semester's final (e.g. if you take the Fall 2025 final, your z-score is calculated relative to the Fall 2025 scores). That z-score will be used when clobbering your midterm scores from the current semester.
 
-You can find the exact calculation formula of your exam score [here](/policies/exams/index.md#exam-score-computation-formula).
+You can find the exact calculation formula of your exam score [here](/policies/exams/#final-exam-clobbering).
 
 **Q: How will my exam grade be calculated if the semester I'm resolving incomplete has a different policy ?**
 
