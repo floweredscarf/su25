@@ -24,7 +24,7 @@ released: true
 {: .danger}
 > The setup for this project is different from all other assignments so far. **Read this carefully and do not skip any steps!**
 
-1. [Join the SU25 GitHub Classroom for Project 3 here](https://classroom.github.com/a/DcyBFCe2). You should see a page that looks like this:
+1. **DO NOT JOIN OR CREATE A TEAM YET!** [Join the SU25 GitHub Classroom for Project 3 here](https://classroom.github.com/a/DcyBFCe2). You should see a page that looks like this:
     ![GitHub Classroom page](../assets/proj3-setup/0-github-classroom-team.png)
 
 2. **DO NOT JOIN OR CREATE A TEAM YET!**
