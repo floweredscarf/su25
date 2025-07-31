@@ -16,9 +16,6 @@ Each assignment will have an FAQ linked at the top. You can also access it by
 adding "/faq" to the end of the URL. The FAQ for Lab 20 is located
 [here](faq).
 
-{: .warning}
-> **Warning:** this assignment is not officially released yet. This spec is subject to change until this warning disappears.
-
 ## Before You Begin
 
 As usual, pull the files from the skeleton.
@@ -54,7 +51,7 @@ Consider the graph below. Which edge is **not** in the MST of this graph?
 
 $$\overline{AB}, \overline{AD}, \overline{BD}, \overline{DC}$$
 
-![graph](img/graph.png)
+![graph](img/mst-cycle.png)
 
 <details markdown="block">
 <summary markdown="block">
@@ -88,7 +85,7 @@ Using these two terms, we can define a new property called the **cut property**.
 >The **cut property** states that *given any cut of a graph, the crossing edge with the smallest weight is in all MSTs*. If multiple crossing edges have the same
 minimum weight, then each of these edges is in *some* MST.
 
-We omit the proof in this class, as you'll learn more about proofs in CS (1)70.
+We omit the proof in this class, as you'll learn more about proofs in CS 70 and CS 170.
 If you're interested, [Wikipedia][Wikipedia cut] has a very short summary.
 
 [Wikipedia cut]: <https://en.wikipedia.org/wiki/Minimum_spanning_tree#Cut_property>
