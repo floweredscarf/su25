@@ -220,10 +220,6 @@ labs:
     due: "2025/08/06"
     link: labs/lab22
     show_links: true
-  - title: "BYOW OH & Checkoffs"
-    nonumber: True
-  - title: "BYOW OH & Checkoffs"
-    nonumber: True
   - title: "Theoretical #7: Sorting"
     theoretical: True
     video: false
@@ -232,6 +228,10 @@ labs:
     # solutions: https://drive.google.com/file/d/1q-ZHotEalqHqYlcwzCP87jf_gHRX5FJP/view?usp=sharing
     link:
     show_links: false
+    nonumber: True
+  - title: "BYOW OH & Checkoffs"
+    nonumber: True
+  - title: "BYOW OH & Checkoffs"
     nonumber: True
   - title: "BYOW OH & Checkoffs"
     nonumber: True
