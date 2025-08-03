@@ -21,13 +21,10 @@ adding "/faq" to the end of the URL. The FAQ for lab 22 is located
 
 ## Introduction
 
-As usual, pull the files from the skeleton and make a new IntelliJ project.
-
-For demos of the algorithms discussed in this lab, look [here](https://inst.eecs.berkeley.edu//~cs61b/fa17/materials/demos/)
+As usual, pull the files from the skeleton.
 
 This lab is very reading-heavy, with fairly short coding sections. You should 
-try to fully understand each section before moving on. If you have any confusion, 
-clarify with your TA!
+try to fully understand each section before moving on. If you have any confusion, don't hesitate to ask!
 
 ## Average-Case Runtimes
 
@@ -35,37 +32,37 @@ Before we talk about the topics of today's lab, let's talk about insertion sort
 and quicksort's runtime in the "average" case.
 
 <details markdown="block">
-  <summary markdown="block">
-## Runtime Summaries (Optional, but HIGHLY Suggested)
+  <summary markdown="block">**Expand for Insertion Sort:** 
   </summary>
+**Insertion Sort**
 
-### Insertion Sort
-{: .no_toc}
 Let's consider first the case of insertion sort, and define the idea of an
-*inversion*. An inversion is a pair of elements $$j$$ and $$k$$ such that $$j$$
-is less than $$k$$ but $$j$$ comes after $$k$$ in the input array. That is,
+**inversion**. An inversion is a pair of elements $$j$$ and $$k$$ such that $$j$$
+is less than $$k$$, but $$j$$ comes *after* $$k$$ in the input array. That is,
 $$j$$ and $$k$$ are out of order.
 
 This means that the maximum number of inversions in an array is bounded by the
-number of pairs, and is $$\frac{N(N - 1)}{2}$$.
+number of pairs, which is $$\frac{N(N - 1)}{2}$$.
 
-For every inversion, insertion sort needs to make one swap. Convince yourself
+**For every inversion, insertion sort needs to make one swap.** Convince yourself
 that this is true with an example: in the array `[1, 3, 4, 2]`, there are two
 inversions, `(3, 2)` and `(4, 2)`, and the key 2 needs to be swapped backward
-twice to be in place. Thus the runtime of insertion sort is $$\Theta(N + k)$$,
+twice to be in place. Thus, the **runtime of insertion sort is** $$\Theta(N + k)$$,
 where $$k$$ is the number of inversions. Hence, if $$k$$ is small, linear, or
-even linearithmic, insertion sort runs quickly (just as fast as, or even faster
-than, merge sort and quicksort).
+even linearithmic (proportional to $$NlogN$$), insertion sort runs quickly (just as fast as merge sort and quicksort, or maybe even faster).
 
 How many inversions are in an average array? Every pair of numbers has an equal
 chance of being either inverted or not inverted, so the number of inversions is
-uniformly distributed between 0 and $$\frac{N(N - 1)}{2}$$; thus the expected
-(average) number of inversions is precisely the middle, $$\frac{N(N - 1)}{4}$$.
+uniformly distributed between 0 and $$\frac{N(N - 1)}{2}$$; therefore the expected number of inversions is the average of the two, $$\frac{N(N - 1)}{4}$$.
 This value is in $$\Theta(N^2)$$, so insertion sort's average case runtime is
 $$\Theta(N^2)$$.
+</details>
 
-### Quicksort
-{: .no_toc}
+<details markdown="block">
+  <summary markdown="block">**Expand for Quicksort:** 
+  </summary>
+
+**Quicksort**
 
 The average case runtime of quicksort depends on the pivot chosen. Recall that
 in the best case, the pivot chosen is the median, meaning 50% of the elements
@@ -78,12 +75,11 @@ partitioning.
 Assuming the choice of pivot is uniformly random, the split obtained is uniformly
 random between 50/50 and 0/100. That means in the average case, we expect a
 split of 25/75. This gives a recursion tree of height $$\log_\frac{4}{3}(N)$$
-where each level does $$N$$ work. Then quicksort still takes $$O(N \log N)$$
-time in the average case.
+where each level does $$N$$ work. **Then, quicksort still takes $$O(N \log N)$$ time in the average case.**
 
 How often does the bad-pivot case come up if we pick pivots uniformly at random?
 If we consider half of the array as bad pivots, as the array gets longer, the
-probability of picking a bad pivot for every recursive call to quicksort
+probability of picking a bad pivot for *every* recursive call to quicksort
 exponentially decreases.
 
 For an array of length 30, the probability of picking all bad pivots is
@@ -98,25 +94,34 @@ lottery in one ticket.
 Of course, there's the chance you pick something in between, and the analysis
 can get far more complicated, especially with variants of quicksort. For
 practical purposes, in this course, we treat quicksort like it's in $$O(N \log N)$$.
-For a more in-depth treatment, sign up for CS174!
+For a more in-depth treatment, take CS174!
 </details>
-
 
 ## A Sorting Lower Bound
 
 Is it possible to do better than $$O(N \log N)$$ in the worst case for these
 comparison-based sorts?
 
+Turns out, **EVERY comparison-based sorting algorithm takes $$\Omega(N \log N)$$ worst-case
+time.**
+
+<details markdown="block">
+  <summary markdown="block">Why?
+  </summary>
+
 Suppose we have a scrambled array of $$N$$ numbers, with each number from $$1$$
 to $$N$$ occurring once. How many possible orders can the numbers be in?
 
-The answer is $$N!$$, where $$N! = 1 * 2 * 3 * \dots * (N - 2) * (N - 1) * N$$.
-Here's why: the first number in the array can be anything from $$1$$ to $$N$$,
-yielding $$N$$ possibilities. Once the first number is chosen, the second number
+The answer is $$N!$$, where $$N! = 1 * 2 * 3 * \dots * (N - 2) * (N - 1) * N$$. Why?
+- The first number in the array can be anything from $$1$$ to $$N$$,
+yielding $$N$$ possibilities. 
+- Once the first number is chosen, the second number
 can be any of the remaining $$N - 1$$ numbers, so there are $$N(N - 1)$$
-possible choices of the first two numbers. The third number can be any of the
+possible choices of the first two numbers. 
+- The third number can be any of the
 remaining $$N - 2$$ numbers, yielding $$N * (N - 1) * (N - 2)$$ possibilities
-for the first three numbers. We can continue this reasoning to get a total of
+for the first three numbers. 
+- We can continue this reasoning to get a total of
 $$N!$$ arrangements of the numbers $$1$$ to $$N$$.
 
 Each different order is called a *permutation* of the numbers, and there are
@@ -152,7 +157,7 @@ Suppose that two computers run the *same* sorting algorithm at the same time on
 two *different* inputs. Suppose that every time one computer executes an "if"
 statement and finds it true, the other computer executes the same "if"
 statement and also finds it true; likewise, when one computer executes an "if"
-and finds it false, so does the other. Then both computers perform exactly the
+and finds it false, so does the other. Then, both computers perform exactly the
 same data movements (e.g. swapping the numbers at indices i and j) in exactly
 the same order, so they both permute their inputs in *exactly* the same way.
 
@@ -181,11 +186,12 @@ time for all inputs of length $$N$$.
 In the worst case, a comparison-based sort (with 2-way decisions) must take at
 least $$\Omega(N \log N)$$ time. But what if instead of making a 2-way
 true/false decision, we make a k-way decision?
+</details>
 
 ## A Linear Time Sort
 
 Before diving in, we recommend **watching [this](https://youtu.be/tWZhdFzVqXY) 
-video** on LSD sort made by a past summer's instructor and counting sort to 
+video** on LSD sort and counting sort made by a past summer's instructor to 
 introduce the ideas in the following sections.
 
 Suppose we have an array of a million `String`s, but we happen to know that
@@ -195,11 +201,11 @@ dogs, then the people. How would we do it? We could use merge sort or quicksort
 and get a runtime proportional to $$N \log N$$, where $$N$$ is roughly one
 million, but can we do better?
 
-We can propose an algorithm called **counting sort**. For the above example, it
+We propose an algorithm called **counting sort**. For the above example, it
 works like this:
 
 1. First, let's create an integer array of size three called the `counts` array.
-   This array will count the total number of each `String`, where "cat" will
+   This array will count the total *number of occurrences* of each `String`, where "cat" will
    correspond to `counts[0]`, "dog" will correspond to `counts[1]`, and "person"
    will correspond to `counts[2]`.
 
@@ -241,10 +247,12 @@ intuitive.
 
 ### Exercise 1: `countingSort`
 
-Implement the `countingSort` method in `DistributionSorts.java`. Assume the only
-integers it will receive are 0, 1, 2, 3, 4, 5, 6, 7, 8, and 9.
+{: .task}
+>Implement the `countingSort` method in `DistributionSorts.java`. Assume the only
+integers it will receive are 0, 1, 2, 3, 4, 5, 6, 7, 8, and 9. Refer to the above steps if you're having trouble with this method!
 
-Refer to the above steps if you're having trouble with this method!
+{: .info}
+>`countingSort` **destructively** sorts the input array.
 
 ### Exercise 2: Runtime
 
@@ -257,15 +265,18 @@ the following two variables:
 
 $$N, NK, N^2K, N + K, N^2 + K$$
 
-Discuss with your partner, then highlight the next line for the answer:
-<p><span style="color:white"> N + K </span>.</p>
+<details markdown="block">
+  <summary markdown="block">**Click to reveal answer:** 
+  </summary>
+  $$N + K$$
+</details>
 
 ### Runtime: Counting Sort
 
 Wow, look at that runtime! Does this mean counting sort is a strict improvement
 from quicksort? Not quite, because counting sort has two major weaknesses:
 
-- It can only be used to sort *discrete* values. A set of values is discrete if each item
+- It can only be used to sort **discrete** values. A set of values is discrete if each item
 is distinct from every other item.
 - It will fail if $$K$$ is too large, because creating the intermediate `counts`
   array (of size $$K$$) will be too slow.
@@ -281,61 +292,61 @@ sorting algorithm!
 ## Radix Sort
 
 Aside from counting sort, all the sorting methods we've seen so far are
-comparison-based, that is, they use comparisons to determine whether two
+comparison-based. That is, they use comparisons to determine whether two
 elements are out of order. We also saw the proof that any comparison-based sort
 needs *at least* $$\Omega(N \log N)$$ comparisons to sort $$N$$ elements in the
-worst case. However, there are sorting methods that don't depend on comparisons
-that allow sorting of $$N$$ elements in time proportional to $$N$$. Counting
-sort was one, but turned out to be impractical.
+worst case. However, there are sorting methods that don't depend on comparisons, but still allow sorting of $$N$$ elements in time proportional to $$N$$. Counting
+sort was one, but it turned out to be impractical.
 
-However, we now have all the ingredients necessary to describe *radix sort*,
+However, we now have all the ingredients necessary to describe **radix sort**,
 another linear-time non-comparison sort that can be practical.
 
-Let's first define the word, radix. The *radix* of a number system is the number
+Let's first define the word radix. The **radix** of a number system is the number
 of values a single digit can take on (also called the base of a number). Binary
 numbers form a radix-2 system; decimal notation is radix-10. Radix sorts examine
-elements in passes, and a radix sort might have one pass for the rightmost
+elements in *passes*: a radix sort might have one pass for the rightmost
 digit, one for the next-to-rightmost digit, and so on.
 
-We'll now describe radix sort in detail. In radix sort, we will pretend each digit is a separate key,
+We'll now describe radix sort in detail. In **radix sort**, we will pretend each digit is a separate key,
 and then we sort on all the keys at once, with the higher digits taking
 precedence over the lower ones.
 
 Here are two good strategies to approach sorting on multiple keys:
 
-- First sort everything on the least important key. Then sort everything on the
-  next key. Continue, until you reach the highest key. **Note: This strategy
-  requires the sorts to be stable.**
-- First sort everything on the high key. Group all the items with the same high
+- First, sort everything on the lowest key. Then, sort everything on the
+  next key. Continue until you reach the highest key. **Note: This strategy
+  requires the sorts to be *stable*.**
+- First, sort everything on the highest key. Group all the items with the same high
   key into buckets. Recursively radix sort each bucket on the next highest key.
   Concatenate your buckets back together.
 
 Here's an example of using the first strategy. Imagine we have the following
 numbers we wish to sort:
 
-356, 112, 904, 294, 209, 820, 394, 810
+- 356, 112, 904, 294, 209, 820, 394, 810
 
-First, we sort them by the first digit:
+First, we sort them by the first (lowest/smallest) digit:
 
-82**0**, 81**0**, 11**2**, 90**4**, 29**4**, 39**4**, 35**6**, 20**9**
+- 82**0**, 81**0**, 11**2**, 90**4**, 29**4**, 39**4**, 35**6**, 20**9**
 
-Then we sort them by the second digit, keeping numbers with the same second
+Then, we sort them by the second digit, keeping numbers with the same second
 digit in their order from the previous step:
 
-9**0**4, 2**0**9, 8**1**0, 1**1**2, 8**2**0, 3**5**6, 2**9**4, 3**9**4
+- 9**0**4, 2**0**9, 8**1**0, 1**1**2, 8**2**0, 3**5**6, 2**9**4, 3**9**4
 
-Finally, we sort by the third digit, keeping numbers with the same third digit
-in their order from the previous step:
+Finally, we sort by the third (highest/largest) digit, keeping numbers with the same third digit
+in their order (*stable*) from the previous step:
 
-**1**12, **2**09, **2**94, **3**56, **3**94, **8**10, **8**20, **9**04
+- **1**12, **2**09, **2**94, **3**56, **3**94, **8**10, **8**20, **9**04
 
 All done!
 
-Hopefully it's not hard to see how these can be extended to more than three
-digits. This strategy is known as *LSD radix sort*. The second strategy is
-called *MSD radix sort*. LSD and MSD stand for *least significant digit* and
-*most significant digit* respectively, reflecting the order in which the digits
+This strategy is known as **LSD radix sort**, and can be extended to more than three digits (Which the above example used). The second strategy is
+called **MSD radix sort**. LSD and MSD stand for ***least** significant digit* and
+***most** significant digit* respectively, reflecting the order in which the digits
 are considered.
+
+#### LSD Radix Sort Pseudocode
 
 Here's some pseudocode for the first strategy:
 
@@ -350,26 +361,31 @@ public static void LSDRadixSort(int[] arr) {
 (the 0th digit is the smallest digit, or the one furthest to the right in the
 number)
 
-### Radix Sort's Helper Method
+### Radix Sort's Subroutine
 
-Notice that both LSD and MSD radix sort call another sort as a helper method (in
-LSD's case, it must be a stable sort). Which sort should we use for this helper
-method? Insertion sort? Merge sort? Those would work. However, notice one key
-property of this helper sort: It only sorts based on a single digit. And a
-single digit can only take 10 possible values (for radix-10 systems). This means
-we're doing a sort where the variety of things to sort is small. Do we know a
-sort that's good for this? It's counting sort! Counting sort turns out to be
-useful as a helper method to radix sort when it comes to sorting the elements by
+Notice that both LSD and MSD radix sort call another sort as its subroutine (in
+LSD's case, it must be a stable sort). Which sort should we use for this subroutine? Insertion sort? Merge sort? Those would work. However, notice one key
+property of this subroutine: it only sorts based on a single digit. For radix-10 systems, a
+single digit can only take 10 possible values. This means
+we're doing a sort where the variety of things to sort is *small*. Do we know a
+sort that's good for this? 
+
+It's counting sort! Counting sort turns out to be
+useful as a subroutine to radix sort when it comes to sorting the elements by
 a particular digit.
 
 ## Exercise: `LSDRadixSort`
 
-Now that you've learned what radix sort is, it's time to try it out yourself. Complete the `lsdRadixSort` method in `DistributionSorts.java` by implementing
-the `countingSortOnDigit` method. You won't be able to reuse your `countingSort`
-from before verbatim because you need a method to do counting sort only
-considering one digit, but you will be able to use something very similar.
+Now that you've learned what radix sort is, it's time to try it out yourself!
 
-Disclaimer: Radix sort is commonly implemented at a lower level than base-10,
+{: .task}
+>Complete the `lsdRadixSort` method in `DistributionSorts.java` by implementing
+the `countingSortOnDigit` method. You won't be able to reuse your `countingSort`
+from before verbatim because you need a method to do counting sort *only
+considering one digit*, but you will be able to use something very similar.
+
+{: .info}
+>Disclaimer: Radix sort is commonly implemented at a lower level than base-10,
 such as with bits (base-2) or bytes (base-16). This is because everything on
 your computer is represented with bits. Through bit operations, it is quicker to
 isolate a single bit or byte than to get a base-10 digit. However, because we
@@ -380,13 +396,13 @@ applications of Radix sort!
 
 ### Runtime: LSD Radix Sort
 
-To analyze the runtime of radix sort, examine the pseudocode given for LSD radix
+To analyze the runtime of LSD radix sort, examine the [pseudocode](#lsd-radix-sort-pseudocode) given for LSD radix
 sort. From this, we can tell that its runtime is proportional to
 `numDigitsInAnInteger` * (the runtime of `stableSortOnDigit`).
 
 Let's call `numDigitsInAnInteger` the variable $$D$$, which is the max number of
-digits that an integer in our input array has. Next, remember that we decided
-`stableSortOnDigit` is really counting sort, which has runtime proportional to
+digits that an integer in our input array has. Next, remember that
+`stableSortOnDigit` is really just counting sort, which has runtime proportional to
 $$N + K$$, where $$K$$ is the number of possible digits, in this case 10. This
 means the total runtime of LSD radix sort is $$O(D(N + K))$$!
 
@@ -400,18 +416,21 @@ and **watch [this](https://youtu.be/8zgZ0yvdfvg)** video to understand the
 solution and get a review of MSD radix sort.
 
 With this understanding of how MSD sort works, what is its runtime? How does it differ from LSD radix sort's
-runtime? Discuss with your partner.
+runtime?
 
-Hint: Unlike LSD radix sort, it will be important to distinguish best-case and worst-case runtimes for MSD.
+<details markdown="block">
+  <summary markdown="block">**Click to reveal answer:** 
+  </summary>
+Best Case: $$\Theta(N + K)$$
 
-Highlight below to see the answer:
-<p><span style="color:white"> 
-Best Case: Theta(N + K) 
-Worst Case: Theta(D(N + K))
-</span>.</p>
+Worst Case: $$\Theta(D(N + K))$$
+</details>
 
+<!-- ### Optional: Advanced Runtime and Radix Selection
 
-### Advanced Runtime and Radix Selection
+<details markdown="block">
+  <summary markdown="block">**Click to expand:** 
+  </summary>
 
 Let's go back and analyze the LSD radix sort runtime (despite the best-case
 runtime of MSD radix sort, LSD radix sort is typically better in practice). You
@@ -454,6 +473,7 @@ in $$O(\lg N)$$, this remains in guaranteed linear time. It's worth noting that
 because it takes $$\lg N$$ bits to represent N items, this is a very reasonable
 model of growth for typical things that might be sorted - as long as your input
 is not distributed scarcely.
+</details> -->
 
 ## Conclusion
 
@@ -464,21 +484,22 @@ comparison-based sorts like quicksort can perform better in practice. For more
 specialized mathematical computations, like in geometry, machine learning, and
 graphics, for example, radix sort finds use.
 
-In modern libraries like Java and Python's standard library, a new type of sort,
+{: .info}
+>In modern libraries like Java and Python's standard library, a new type of sort,
 TimSort, is used. It's a hybrid sort between merge sort and insertion sort that
 also has a linear-time guarantee - if the input data is sorted, or almost
 sorted, it performs in linear time. In practice, on real-world inputs, it's
 shown to be very powerful and has been a staple in standard library comparison
 sorts.
 
-### Deliverables
+## Deliverables
 
 To receive credit for this lab:
 - Complete the following methods of `DistributionSorts.java`:
   - `countingSort`
   - `countingSortOnDigit`
 
-### Credit
+## Credit
 
 Credit to Jonathan Shewchuk for his [notes][] on the lower bound of
 comparison-based sorting algorithms.
