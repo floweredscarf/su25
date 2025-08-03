@@ -369,7 +369,7 @@ lectures:
     nonumber: True
   - title: "Comparison Sorts"
     # slides: https://docs.google.com/presentation/d/1JelUuuXlyeHQam1UDOamQdkOucFj_vCI5bNZWFkhTuM/edit
-    # video: "" # https://www.youtube.com/playlist?list=PLnp31xXvnfRr_rFqN57yjZtcw_P4UiJ7a
+    video: https://www.youtube.com/playlist?list=PLnp31xXvnfRrK9o_QZyGOCbQVFTsqOPtN
     # recording: https://youtu.be/0sCPc87O304
     # quiz: https://forms.gle/AexqSsU8n3aJFK4D9
     readings:
@@ -379,7 +379,7 @@ lectures:
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/34.-sorting-and-algorithmic-bounds"
   - title: "Quicksort"
     # slides: https://docs.google.com/presentation/d/1JelUuuXlyeHQam1UDOamQdkOucFj_vCI5bNZWFkhTuM/edit
-    # video: "" # https://www.youtube.com/playlist?list=PLnp31xXvnfRr_rFqN57yjZtcw_P4UiJ7a
+    video: https://www.youtube.com/playlist?list=PLnp31xXvnfRrHHQP93qqc_QBNBF_WEQLy
     # recording: https://youtu.be/0sCPc87O304
     # quiz: https://forms.gle/AexqSsU8n3aJFK4D9
     readings:
@@ -392,7 +392,7 @@ lectures:
   - title:
   - title: "Radix Sorts"
     # slides: https://docs.google.com/presentation/d/1SNMyAbboJ5ArhN9WmkaeOgFrMJUWFbcZn2hbTSWGcuY/edit
-    # video: "" # https://youtube.com/playlist?list=PLnp31xXvnfRrSxUje7m5-Y41ELVPm50N_&si=5plPlOH7IPamR6YH
+    video: https://www.youtube.com/playlist?list=PL8FaHk7qbOD4vkAp0vFBizBL6IywKFdT5
     # recording: https://youtu.be/ADAnAolmqJc
     # quiz: https://forms.gle/kk4nynSew1vMhAWs7
     readings:
