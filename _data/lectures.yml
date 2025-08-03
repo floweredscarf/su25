@@ -379,7 +379,7 @@ lectures:
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/34.-sorting-and-algorithmic-bounds"
   - title: "Quicksort"
     # slides: https://docs.google.com/presentation/d/1JelUuuXlyeHQam1UDOamQdkOucFj_vCI5bNZWFkhTuM/edit
-    video: https://www.youtube.com/playlist?list=PLnp31xXvnfRrHHQP93qqc_QBNBF_WEQLy
+    video: https://www.youtube.com/playlist?list=PLnp31xXvnfRqsfDWZNS86oYmHFY6UKA2t
     # recording: https://youtu.be/0sCPc87O304
     # quiz: https://forms.gle/AexqSsU8n3aJFK4D9
     readings:
