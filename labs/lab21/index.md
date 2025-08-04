@@ -116,7 +116,7 @@ Any sorting algorithm that takes in an input of size N is going to have to work 
 
 Note that the definition of in-place can vary. In CS61BL, we say only a constant amount of additional space qualifies as being in-place, but other sources may say using a logarithmic amount is okay.
 
-## Discussion: Sorting by Hand
+<!-- ## Discussion: Sorting by Hand
 
 Think about how you would sort a hand of 13 playing cards if you
 are dealt the cards one-by-one. Your hand should end up sorted first by suit,
@@ -125,7 +125,7 @@ and then by rank within each suit.
 Then, think about how you would sort a pile of 300 CS 61BL exams by student ID. If
 it's different than your card-sorting algorithm of the previous step, why?
 
-How do the runtimes of your algorithms compare?
+How do the runtimes of your algorithms compare? -->
 
 ## Insertion Sort
 
@@ -381,7 +381,7 @@ Three-way partioning quicksort is *stable*, since the ordering of equal elements
 elements to the left and right of our pivot the relative ordering of equal
 elements can change.
 
-Before moving on to the next part of the lab, check out [this video](https://www.youtube.com/watch?v=7cjXkEW1STY&t=1h24m55s) to solidify your understanding of quicksort. Note this was taken from summer 2021's lecture, so you can stop after the section on quicksort. That is, you can stop at 1:41:00. 
+Before moving on to the next part of the lab, check out [this video](https://www.youtube.com/watch?v=7cjXkEW1STY&t=1h24m55s) to solidify your understanding of quicksort. Make sure you're logged into your Berkeley email to view it. Note that this video was taken from summer 2021's lecture, so you can stop after the section on quicksort. That is, you can stop at 1:41:00. 
 
 ### Exercise: `quicksort`
 
@@ -540,20 +540,18 @@ having trouble understanding these sorts, use these resources as tools to help
 build intuition about how each sort works.
 
 - [VisuAlgo][]
-- [Sorting.at][]
 - [Sorting Algorithms Animations][]
 - [USF Comparison of Sorting Algorithms](http://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html)
 - [AlgoRhythmics][]: sorting demos through folk dance including
   [insertion sort][], [selection sort][], [merge sort][], and [quicksort][]
 
 [VisuAlgo]: http://visualgo.net/sorting
-[Sorting.at]: http://sorting.at/
 [Sorting Algorithms Animations]: http://www.sorting-algorithms.com/
 [USF Comparison of Sorting Algorithms]: http://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html
 [AlgoRhythmics]: https://www.youtube.com/user/AlgoRythmics/videos
 [insertion sort]: https://www.youtube.com/watch?v=ROalU379l3U
 [selection sort]: https://www.youtube.com/watch?v=Ns4TPTC8whw
-[merge sort]: https://www.youtube.com/watch?v=XaqR3G*NVoo
+[merge sort]: https://www.youtube.com/watch?v=XaqR3G_NVoo
 [quicksort]: https://www.youtube.com/watch?v=ywWBy6J5gz8
 
 To summarize the sorts that we've learned, take a look at the following table. 
@@ -576,4 +574,3 @@ To get credit for this lab:
     - `HeapSort.java`
     - `MergeSort.java`
     - `QuickSort.java`
-    
