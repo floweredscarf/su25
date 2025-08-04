@@ -377,7 +377,7 @@ lectures:
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/29.-basic-sorts"
       - title: "Ch 34"
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/34.-sorting-and-algorithmic-bounds"
-  - title: "Stability"
+  - title: "Quicksort and Stability"
     slides: https://docs.google.com/presentation/d/16m8K__tWJTZrGwwGreg862wAwTpKu1jn72LxSucKieU/view?slide=id.g372c8b04462_0_11083#slide=id.g372c8b04462_0_11083
     video: https://www.youtube.com/playlist?list=PLnp31xXvnfRqsfDWZNS86oYmHFY6UKA2t
     # recording: https://youtu.be/0sCPc87O304
