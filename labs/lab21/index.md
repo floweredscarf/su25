@@ -449,9 +449,9 @@ its runtime?
 <details markdown="block">
   <summary markdown="block">**Click to reveal answer:** 
   </summary>
-  The best pivot would be an item that is the median of our collection, so roughly half the elements will go in the "smaller" collection, and half of the elements will go in the "larger" collection, dividing our problem size by two. The runtime for finding a median, however, is best case $\Theta (N)$, so this form of pivot selection would significantly affect the runtime of quicksort.
+  The best pivot would be an item that is the median of our collection, so roughly half the elements will go in the "smaller" collection, and half of the elements will go in the "larger" collection, dividing our problem size by two. The runtime for finding a median, however, is best case $\Theta (N)$, which incurs more cost.
 
-  Instead, we usually randomly pick a pivot, which still roughly breaks our problem down logarithmically, without incurring the extra runtime of finding the median (the proof is covered in CS170).
+  Instead, we usually randomly pick a pivot, which still roughly breaks our problem down logarithmically without incurring the extra runtime of finding the median (the proof is covered in CS170).
 </details>
 
 </details>
