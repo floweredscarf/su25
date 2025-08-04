@@ -382,7 +382,7 @@ Now that you've learned what radix sort is, it's time to try it out yourself!
 >Complete the `lsdRadixSort` method in `DistributionSorts.java` by implementing
 the `countingSortOnDigit` method. You won't be able to reuse your `countingSort`
 from before verbatim because you need a method to do counting sort *only
-considering one digit*, but you will be able to use something very similar.
+considering one digit*, but you will be able to use something very similar. Remember that `countingSortOnDigit` should be *stable*!
 
 {: .info}
 >Disclaimer: Radix sort is commonly implemented at a lower level than base-10,
