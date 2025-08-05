@@ -226,9 +226,9 @@ labs:
   - title: "Theoretical #7: Sorting"
     theoretical: True
     video: false
-    # worksheet: https://drive.google.com/file/d/1ZN4tlDJwA4ogIiXYPbpx2erqPF_7lhHw/view?usp=sharing
-    # slides: https://docs.google.com/presentation/d/1JsPsh9N6LRPc8OhfKOiK4Jt8p2EGxL8j/edit?usp=sharing&rtpof=true&sd=true
-    # solutions: https://drive.google.com/file/d/1q-ZHotEalqHqYlcwzCP87jf_gHRX5FJP/view?usp=sharing
+    worksheet: https://drive.google.com/file/d/1WX7RbeCsu7elXzsZIDMzPuVOsiM97upn/view?usp=sharing
+    slides: https://docs.google.com/presentation/d/1zWK16eoIrSBzmZrhjLzx9Ndt6n7n_vDs/edit?usp=sharing
+    # solutions: https://drive.google.com/file/d/1Kbvlb1WXoVFXRjrP0S7ZWEavj5zda8tY/view?usp=sharing
     link:
     show_links: false
     nonumber: True
