@@ -217,7 +217,7 @@ labs:
     link: labs/lab21
     show_links: true
   - title: "Counting Sorts"
-    due: "2025/08/06"
+    due: "2025/08/07"
     link: labs/lab22
     show_links: true
   - title: "Theoretical #7: Sorting"
