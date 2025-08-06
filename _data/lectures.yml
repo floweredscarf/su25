@@ -389,6 +389,8 @@ lectures:
         link: "https://cs61b-2.gitbook.io/cs61b-textbook/32.-more-quick-sort-sorting-summary"
   - title: 
     nonumber: True
+  - title: 
+    nonumber: True
   - title: "Radix Sorts"
     slides: https://docs.google.com/presentation/d/1U2FSzsHin8ldLLuAxF0Iq7_KMaCHZoQQfi3j_Jxs8RU/view
     video: https://www.youtube.com/playlist?list=PL8FaHk7qbOD4vkAp0vFBizBL6IywKFdT5
@@ -411,8 +413,6 @@ lectures:
     # quiz: https://forms.gle/ajsbXnM2SjbUvZNS7
   - title:
     nonumber: True
-  - title:
-    nonumber: True
   - title: 
     nonumber: True
   - title:
@@ -425,6 +425,7 @@ lectures:
     # quiz: https://forms.gle/wBsQ9ggY3WhWsQTP9
     readings:
   - title: "Exam Review / Q&A"
+    nonumber: True
   - title:
     nonumber: True
   - title: "**Final Exam (Tues, Aug 12, 3-6pm)**"
