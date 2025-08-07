@@ -417,7 +417,7 @@ lectures:
     nonumber: True
   - title:
     nonumber: True
-    # classes:
+    #  classes:
       # - schedule-red
     # slides: https://docs.google.com/presentation/d/1x_mhGB5ay0jy9UXaq6TZBVXXMEn8PTy2n2xl6F6Ul3M/
     # video: https://www.youtube.com/watch?v=YgPtwbWpLaM&list=PLnp31xXvnfRqyRDKtQeHvjxhonhNuaOAK
