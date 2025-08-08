@@ -80,6 +80,14 @@ categories:
     darkTheme:
       --event-background: "#164B32"
       --event-border-color: "#C0E1D2"
+  - name: "Office Hours"
+    match: "OH"
+    lightTheme:
+      --event-background: "#C0E1D2"
+      --event-border-color: "#1E6142"
+    darkTheme:
+      --event-background: "#164B32"
+      --event-border-color: "#C0E1D2"
   - name: "Lecture"
     match: "lecture"
     lightTheme:
@@ -88,14 +96,6 @@ categories:
     darkTheme:
       --event-background: "#363197"
       --event-border-color: "#CAC8EB"
-  - name: "Online"
-    match: "online"
-    lightTheme:
-      --event-background: "#EAB59E"
-      --event-border-color: "#B43600"
-    darkTheme:
-      --event-background: "#7A2500"
-      --event-border-color: "#EAB59E"
   - name: "Practical Lab"
     match: "practical lab"
     lightTheme:
@@ -112,8 +112,24 @@ categories:
     darkTheme:
       --event-background: "#6A4625"
       --event-border-color: "#ECD9C9"
+  - name: "Online"
+    match: "online"
+    lightTheme:
+      --event-background: "#EAB59E"
+      --event-border-color: "#B43600"
+    darkTheme:
+      --event-background: "#7A2500"
+      --event-border-color: "#EAB59E"
   - name: "Project Party"
     match: "(?=.*project)(?=.*party)"
+    lightTheme:
+      --event-background: "#EBC8EB"
+      --event-border-color: "#873179"
+    darkTheme:
+      --event-background: "#4D134D"
+      --event-border-color: "#EBC8EB"
+  - name: "Review Session"
+    match: "review session"
     lightTheme:
       --event-background: "#EBC8EB"
       --event-border-color: "#873179"
@@ -128,11 +144,4 @@ categories:
     darkTheme:
       --event-background: "#363187"
       --event-border-color: "#CAC8EB"
-  - name: "Review Session"
-    match: "review session"
-    lightTheme:
-      --event-background: "#EBC8EB"
-      --event-border-color: "#873179"
-    darkTheme:
-      --event-background: "#4D134D"
-      --event-border-color: "#EBC8EB"
+  
