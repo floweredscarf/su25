@@ -39,6 +39,8 @@ If an exam doesn't have the reference card or clarifications linked, it means we
       Only 1 Midterm
     </td>
     <td>
+      <a href="https://drive.google.com/file/d/1IQdbMNtb1fSsSz12mX0ynx81vePv7Jz7/view?usp=sharing" aria-label="Questions for Summer 2025 Midterm">exam</a> /
+      <a href="https://drive.google.com/file/d/1rphNyn2Tz95H0avRMfciWVyYkICFufX5/view?usp=sharing" aria-label="Solutions for Summer 2025 Midterm">sols</a>
     </td>
   </tr>
     <tr>
