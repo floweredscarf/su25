@@ -79,7 +79,7 @@ Important notes on orientation:
 - The first coordinate is the x-coordinate. For example, `world[8][0]` is 8 spaces to the right of the bottom-left tile.
 - The second coordinate is the y-coordinate. For example, `world[0][3]` is 3 spaces above the bottom-left tile.
 
-<img alt="2D grid with coordinates (0,0) at bottom-left, (8,0) at bottom-right, and (0,3) at top-right." src="../assets/proj3a/coords.webp">
+<img alt="2D grid with coordinates (0,0) at bottom-left, (8,0) at bottom-right, and (0,3) at top-right." src="./assets/proj3a/coords.webp">
 
 If you're unsure of the tile layout, **you should complete lab 18** in which you'll write some short sample programs that draw sample grids to deepen your understanding. If you confuse x/y or up/down, you're going to be incredibly confused when debugging.
 
@@ -109,7 +109,7 @@ world[2][2] = Tileset.MOUNTAIN; // The gray triangle.
 
 The resulting world would look like this when it's rendered:
 
-<img alt="2D grid with coordinates (0,1), (3,0), and (2,2) filled in." src="../assets/proj3a/filling-tiles.webp">
+<img alt="2D grid with coordinates (0,1), (3,0), and (2,2) filled in." src="./assets/proj3a/filling-tiles.webp">
 
 Notice that we had to explicitly assign unused squares to `Tileset.NOTHING`, the pure black tile. If you don't initialize unused squares, you'll get a NullPointerException when you try to draw the world.
 
@@ -190,9 +190,9 @@ Your goal in Project 3A is to write a world generator that can create pseudorand
 
 Here are some examples of valid worlds, where `#` is wall, dot/quote is floor, and the empty square is the empty space (outside the world).
 
-<img alt="A valid 2D world with hallways and rooms." src="../assets/proj3a/valid-world.webp">
+<img alt="A valid 2D world with hallways and rooms." src="./assets/proj3a/valid-world.webp">
 
-<img alt="Another valid 2D world with hallways and rooms." src="../assets/proj3a/valid-world-2.webp">
+<img alt="Another valid 2D world with hallways and rooms." src="./assets/proj3a/valid-world-2.webp">
 
 
 ### Valid
@@ -208,9 +208,9 @@ Here are some examples of valid worlds, where `#` is wall, dot/quote is floor, a
     <details>
         <summary>(click to expand) Examples of invalid worlds, because we can't tell where rooms and hallways are.</summary>
 
-        <img alt="Invalid world where hallways and rooms are indistinguishable." src="../assets/proj3a/invalid-indistinct-hallways.webp">
+        <img alt="Invalid world where hallways and rooms are indistinguishable." src="./assets/proj3a/invalid-indistinct-hallways.webp">
 
-        <img alt="Another invalid world where hallways and rooms are indistinguishable." src="../assets/proj3a/invalid-indistinct-hallways2.webp">
+        <img alt="Another invalid world where hallways and rooms are indistinguishable." src="./assets/proj3a/invalid-indistinct-hallways2.webp">
     </details>
 
 2. At least some rooms should be rectangular. You can optionally support rooms of other shapes as well.
@@ -226,7 +226,7 @@ Here are some examples of valid worlds, where `#` is wall, dot/quote is floor, a
 
         <br>
 
-        <img alt="Width 1 hallway." src="../assets/proj3a/width1-hallway.webp">
+        <img alt="Width 1 hallway." src="./assets/proj3a/width1-hallway.webp">
 
         <br>
 
@@ -234,7 +234,7 @@ Here are some examples of valid worlds, where `#` is wall, dot/quote is floor, a
 
         <br>
 
-        <img alt="Width 2 hallway." src="../assets/proj3a/width2-hallway.webp">
+        <img alt="Width 2 hallway." src="./assets/proj3a/width2-hallway.webp">
     </details>
 
 4. Your world generator must be capable of generating hallways that include turns (or equivalently, straight hallways that intersect). Random worlds should generate a turning hallway with high frequency, in that a majority of worlds should have a turning hallway.
@@ -244,7 +244,7 @@ Here are some examples of valid worlds, where `#` is wall, dot/quote is floor, a
     <details>
         <summary>(click to expand) Example of an invalid world, because it has a dead-end hallway.</summary>
 
-        <img alt="Invalid world where there's a dead-end hallway." src="../assets/proj3a/invalid-dead-end-hallway.webp">
+        <img alt="Invalid world where there's a dead-end hallway." src="./assets/proj3a/invalid-dead-end-hallway.webp">
     </details>
 
 6. Walls, floors, and empty spaces should all be visually distinct.
@@ -254,7 +254,7 @@ Here are some examples of valid worlds, where `#` is wall, dot/quote is floor, a
     <details>
         <summary>(click to expand) Example of an invalid world, because we can't distinguish between walls and floors.</summary>
 
-        <img alt="Invalid world where walls and rooms are yellow squares." src="../assets/proj3a/invalid-indistinct-walls.webp">
+        <img alt="Invalid world where walls and rooms are yellow squares." src="./assets/proj3a/invalid-indistinct-walls.webp">
     </details>
 
 7. Walls in the corners of rooms and hallways are optional.
@@ -268,13 +268,13 @@ Here are some examples of valid worlds, where `#` is wall, dot/quote is floor, a
 
         <br>
 
-        <img alt="Example of rooms with and without corner walls." src="../assets/proj3a/room-corners.webp">
+        <img alt="Example of rooms with and without corner walls." src="./assets/proj3a/room-corners.webp">
 
         As an example, the top-left corner of this hallway has a wall tile, but the top-right corner of this hallway does not have a wall tile. Either one is fine. (Note: This world itself would be invalid because there are no rooms.)
 
         <br>
 
-        <img alt="Example of hallways with and without corner walls." src="../assets/proj3a/hallway-corners.webp">
+        <img alt="Example of hallways with and without corner walls." src="./assets/proj3a/hallway-corners.webp">
     </details>
 
 8. All floor tiles (rooms and hallways) should be reachable from each other. Note: As part of the ambition features you may end up with worlds that are only conditionally reachable, e.g. using teleporters, locked doors, destructable walls, etc.
@@ -290,7 +290,7 @@ Here are some examples of valid worlds, where `#` is wall, dot/quote is floor, a
     <details>
         <summary>(click to expand) Example of an invalid world, because it clips off the world.</summary>
 
-        <img alt="Invalid world where a room clips off the world." src="../assets/proj3a/invalid-clipping-world.webp">
+        <img alt="Invalid world where a room clips off the world." src="./assets/proj3a/invalid-clipping-world.webp">
     </details>
 
 11. The world must not have excess unused space. There's no strict requirement, but try to consistently fill at least 50% of the world with rooms and hallways.
@@ -298,7 +298,7 @@ Here are some examples of valid worlds, where `#` is wall, dot/quote is floor, a
     <details>
         <summary>(click to expand) Example of an invalid world, because there are too few rooms.</summary>
 
-        <img alt="Invalid world where there are only three rooms." src="../assets/proj3a/invalid-insufficient-rooms.webp">
+        <img alt="Invalid world where there are only three rooms." src="./assets/proj3a/invalid-insufficient-rooms.webp">
     </details>
 
 
@@ -350,11 +350,11 @@ Staff cannot answer questions like "is my world valid" or "is my world good enou
 
         Two rooms separated by a single wall:
 
-        <img alt="Two rooms separated by a single wall." src="../assets/proj3a/single-wall.webp">
+        <img alt="Two rooms separated by a single wall." src="./assets/proj3a/single-wall.webp">
 
         Two rooms separated by a double wall:
 
-        <img alt="Two rooms separated by a double wall." src="../assets/proj3a/double-wall.webp">
+        <img alt="Two rooms separated by a double wall." src="./assets/proj3a/double-wall.webp">
     </details>
 
 2. Walls should not appear inside a room, because this makes it hard to tell which squares belong to a room and which squares belong to a hallway.
@@ -368,7 +368,7 @@ Staff cannot answer questions like "is my world valid" or "is my world good enou
 
         This is invalid if it happens often.
 
-        <img alt="A room with a wall inside it." src="../assets/proj3a/wall-inside-room.webp">
+        <img alt="A room with a wall inside it." src="./assets/proj3a/wall-inside-room.webp">
     </details>
 
 
@@ -419,7 +419,7 @@ Besides the `Main.main` requirement, your world generation code can live anywher
 
 5. In your terminal, navigate to your group repo, and type `git show --summary`. Make sure that the latest commit you see corresponds to the code you used to generate these worlds:
 
-    <img alt="git show output." src="../assets/proj3a/git-show.webp">
+    <img alt="git show output." src="./assets/proj3a/git-show.webp">
 
 6. Take a screenshot of the `git show --summary` output and upload it to Gradescope.
 
